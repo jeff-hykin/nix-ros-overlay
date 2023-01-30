@@ -8,9 +8,9 @@ buildRosPackage {
   version = "1.12.0-r1";
 
   src = fetchurl {
-    url = "https://github.com/ros-gbp/image_common-release/archive/release/noetic/polled_camera/1.12.0-1.tar.gz";
+    url = "https://github.com/ros-gbp/image_common-release/archive/97b80c9dfb3b3d198082b17beb25d99bcdfc01f7.tar.gz";
     name = "1.12.0-1.tar.gz";
-    sha256 = "ef7758bb4a5e8e9cde9fb84846474e2df5ed0051eb17913f901f7d7c7889973e";
+    sha256 = lib.fakeSha256;
   };
 
   buildType = "catkin";
