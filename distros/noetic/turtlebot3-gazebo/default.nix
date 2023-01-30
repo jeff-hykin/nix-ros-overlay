@@ -10,7 +10,7 @@ buildRosPackage {
   src = fetchurl {
     url = "https://github.com/ROBOTIS-GIT-release/turtlebot3_simulations-release/archive/release/noetic/turtlebot3_gazebo/1.3.2-2.tar.gz";
     name = "1.3.2-2.tar.gz";
-    sha256 = "97f6e5a041d1edd6a549e8c696331ece95e96f285ae4dd595d29cf8a4c1d29a8";
+    sha256 = "0mg4msjha9g0c5mpi805za9dv56382x0swkrqcl5h72sirdify1g";
   };
 
   buildType = "catkin";
