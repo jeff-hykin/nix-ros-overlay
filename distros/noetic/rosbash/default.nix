@@ -8,9 +8,10 @@ buildRosPackage {
   version = "1.15.8-r1";
 
   src = fetchurl {
-    url = "https://github.com/ros-gbp/ros-release/archive/release/noetic/rosbash/1.15.8-1.tar.gz";
+    # https://github.com/ros-gbp/ros-release/
+    url = "https://github.com/ros-gbp/ros-release/archive/bda9f415771aa41dddd81bfaa8e31a2c038524ef.tar.gz";
     name = "1.15.8-1.tar.gz";
-    sha256 = "9e29d79829b5a974db4142d1d8f1bc5ed0e412d85694cf707316c503bce81af5";
+    sha256 = "sha256-muuWgpFIHK4m69/ZxW/kIp7lqsizip+8nN3ZaXeQR8Y=";
   };
 
   buildType = "catkin";
