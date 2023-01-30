@@ -10,7 +10,7 @@ buildRosPackage {
   src = fetchurl {
     url = "https://github.com/ros-gbp/image_common-release/archive/97b80c9dfb3b3d198082b17beb25d99bcdfc01f7.tar.gz";
     name = "1.12.0-1.tar.gz";
-    sha256 = "9g195MQsPHHCpV+u/K2p0jsTUYu88+Awba0kmU0aJ98"; # 9g195MQsPHHCpV+u/K2p0jsTUYu88+Awba0kmU0aJ98
+    sha256 = "sha256-9g195MQsPHHCpV+u/K2p0jsTUYu88+Awba0kmU0aJ98="; # 9g195MQsPHHCpV+u/K2p0jsTUYu88+Awba0kmU0aJ98
   };
     #   specified: sha256-NcGy/xsp8SfWIetFmw+F7jHZFoQ7uclVfBrZ6vZQqj0=
         # got:     sha256-9g195MQsPHHCpV+u/K2p0jsTUYu88+Awba0kmU0aJ98=
