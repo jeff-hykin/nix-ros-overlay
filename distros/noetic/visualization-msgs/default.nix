@@ -7,8 +7,6 @@ buildRosPackage {
   pname = "ros-noetic-visualization-msgs";
   version = "1.13.1-r1";
 
-"/Users/jeffhykin/Downloads/common_msgs-release-d2e7d1c63efa65c8082f3a6d125eac6bf6c0a037.tar.gz"
-
   src = fetchurl {
     url = "https://github.com/ros-gbp/common_msgs-release/archive/d2e7d1c63efa65c8082f3a6d125eac6bf6c0a037.tar.gz";
     name = "1.13.1-1.tar.gz";
