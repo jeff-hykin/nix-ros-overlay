@@ -10,7 +10,7 @@ buildRosPackage {
   src = fetchurl {
     url = "https://github.com/ros-gbp/gazebo_ros_pkgs-release/archive/release/noetic/gazebo_msgs/2.9.2-1.tar.gz";
     name = "2.9.2-1.tar.gz";
-    sha256 = "45114343951b0c49c73cc33840dc3c8a1d83e169d4c6e7798da9dfaa048a079b";
+    sha256 = "sha256-brcfgTfxuju4v7FwLPAIXBgZ3UuSO0Pn5pacoisXVhQ=";
   };
 
   buildType = "catkin";
