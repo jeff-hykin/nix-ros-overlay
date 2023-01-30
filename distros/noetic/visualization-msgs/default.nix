@@ -8,9 +8,9 @@ buildRosPackage {
   version = "1.13.1-r1";
 
   src = fetchurl {
-    url = "https://github.com/ros-gbp/common_msgs-release/archive/release/noetic/visualization_msgs/1.13.1-1.tar.gz";
+    url = "https://github.com/ros-gbp/common_msgs-release/archive/d2e7d1c63efa65c8082f3a6d125eac6bf6c0a037.tar.gz";
     name = "1.13.1-1.tar.gz";
-    sha256 = "8b797706ed360a8918380e718f3b05702bcb85fd55d6cdec6ad4721e75dc84a6";
+    sha256 = lib.fakeSha256;
   };
 
   buildType = "catkin";
