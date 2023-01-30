@@ -10,7 +10,7 @@ buildRosPackage {
   src = fetchurl {
     url = "https://github.com/ROBOTIS-GIT-release/turtlebot3-release/archive/release/noetic/turtlebot3_description/1.2.5-1.tar.gz";
     name = "1.2.5-1.tar.gz";
-    sha256 = "b422283952d188f4abbdf83309e54003f3f62d2befbc211641db85a32656960b";
+    sha256 = "1pn35im66rjc2ppzmi358yj0gri3jk30vh186fgx8qwy27wwhr8j";
   };
 
   buildType = "catkin";
