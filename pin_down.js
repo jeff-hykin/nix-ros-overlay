@@ -499,12 +499,13 @@ async function pinDown(filePath) {
             commitHash = tagToCommitHash[tag]
             if (commitHash) {
                 const pinnedUrl = `${githubUrl}/archive/${commitHash}.tar.gz`
-                // const sha256 = (await run`nix_sha256 ${pinnedUrl} ${Stdout(returnAsString)}`).replace(/\s|\n/g,"")
+                const sha256 = (await run`nix-prefetch fetchFromGitHub --repo ${repo} --owner ${owner} --rev ${commitHash} ${Stdout(returnAsString)}`).split("\n").filter(each=>each.trim())[0]
                 replacements.push(
                     ` (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
 ${indent}repo = "${repo}";
 ${indent}rev = "${commitHash}";
-${indent}owner = "${owner}";`
+${indent}owner = "${owner}";
+${indent}sha256 = "${sha256}";`
                 )
             } else {
                 replacements.push(match[0])
