@@ -19,7 +19,7 @@ async function pinDown(filePath) {
     //     name = "0.6.13-1.tar.gz";
     //     sha256 = "f6056d5196ddb7a95f096a3fa54a62bf18614e51b30a3e185df9bfb60fa36498";
     // };
-    const pattern = /fetchurl *{ *url *= "(.+)"; *\n( *)name *= * ".+\.tar\.gz"; *\n *sha256 *= *"(.+)";/g
+    const pattern = /fetchurl *{ *\n *url *= "(.+)"; *\n( *)name *= * ".+\.tar\.gz"; *\n *sha256 *= *"(.+)";/g
     const replacements = []
     for (let match of text.matchAll(pattern)) {
         console.debug(`    found match`)
@@ -29,8 +29,9 @@ async function pinDown(filePath) {
         // url = "https://github.com/ROBOTIS-GIT-release/turtlebot3_simulations-release/archive/release/noetic/turtlebot3_gazebo/1.3.2-2.tar.gz"
         // folders = [ ".", "https:", "github.com", "ROBOTIS-GIT-release", "turtlebot3_simulations-release", "archive", "release", "noetic", "turtlebot3_gazebo" ],
         let commitHash
+        let githubUrl
         if (folders[2].match("github")) {
-            const githubUrl = `${folders[1]}//${folders[2]}/${folders[3]}/${folders[4]}`
+            githubUrl = `${folders[1]}//${folders[2]}/${folders[3]}/${folders[4]}`
             const owner = folders[3]
             const repo = folders[4]
             const tag = `${folders.slice(6).join("/")}/${itemName.replace(/\.tar$/,"")}`
@@ -496,31 +497,24 @@ async function pinDown(filePath) {
             )
             
             commitHash = tagToCommitHash[tag]
-        }
-        if (commitHash) {
-            const pinnedUrl = `${githubUrl}/archive/${commitHash}.tar.gz`
-            const sha256 = (await run`nix_sha256 ${pinnedUrl} ${Stdout(returnAsString)}`).replace(/\s|\n/g,"")
-            replacements.push(
-                ` (builtins.import (builtins.fetchTarball ({url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+            if (commitHash) {
+                const pinnedUrl = `${githubUrl}/archive/${commitHash}.tar.gz`
+                const sha256 = (await run`nix_sha256 ${pinnedUrl} ${Stdout(returnAsString)}`).replace(/\s|\n/g,"")
+                replacements.push(
+                    ` (builtins.import (builtins.fetchTarball ({url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
 ${indent}repo = "${repo}";
 ${indent}rev="${commitHash}";
-${indent}owner="${owner}"; 
-            `
-            )
+${indent}owner="${owner}";`
+                )
+            } else {
+                replacements.push(match[0])
+            }
         } else {
             replacements.push(match[0])
         }
     }
 
-    const replacementText = text.replace(pattern, (string)=>{
-        let replacement = replacements.shift()
-        if (!replacement) {
-            return string
-        } else {
-            let [ pinnedUrl, indent, sha256 ] = replacement
-            return `url = "${pinnedUrl}";\n${indent}sha256 = "${sha256}";`
-        }
-    })
+    const replacementText = text.replace(pattern, (string)=>replacements.shift())
     
     if (replacementText != text) {
         await FileSystem.write({
@@ -531,5 +525,5 @@ ${indent}owner="${owner}";
 }
 
 await Promise.all(
-    filePaths.map(each=>pinDown(each).catch(error=>console.log(`error with: ${each}`)))
+    filePaths.map(each=>pinDown(each).catch(error=>console.log(`error with: ${each}, ${error}`)))
 )
