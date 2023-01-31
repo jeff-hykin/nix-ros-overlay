@@ -1,635 +1,635 @@
-# echo checking ./default.nix                                                                 && ./pin_down.js ./default.nix
-# echo checking ./modules/default.nix                                                         && ./pin_down.js ./modules/default.nix
-# echo checking ./lib/default.nix                                                             && ./pin_down.js ./lib/default.nix
-# echo checking ./distros/catkin-setup-hook/default.nix                                       && ./pin_down.js ./distros/catkin-setup-hook/default.nix
-# echo checking ./pkgs/bson/default.nix                                                       && ./pin_down.js ./pkgs/bson/default.nix
-# echo checking ./pkgs/rosdep/default.nix                                                     && ./pin_down.js ./pkgs/rosdep/default.nix
-# echo checking ./pkgs/rosdistro/default.nix                                                  && ./pin_down.js ./pkgs/rosdistro/default.nix
-# echo checking ./pkgs/sdformat/default.nix                                                   && ./pin_down.js ./pkgs/sdformat/default.nix
-# echo checking ./pkgs/osrf-pycommon/default.nix                                              && ./pin_down.js ./pkgs/osrf-pycommon/default.nix
-# echo checking ./pkgs/openni2/default.nix                                                    && ./pin_down.js ./pkgs/openni2/default.nix
-# echo checking ./pkgs/superflore/default.nix                                                 && ./pin_down.js ./pkgs/superflore/default.nix
-# echo checking ./pkgs/default.nix                                                            && ./pin_down.js ./pkgs/default.nix
-# echo checking ./pkgs/catkin-pkg/default.nix                                                 && ./pin_down.js ./pkgs/catkin-pkg/default.nix
-# echo checking ./pkgs/rosidl-generator-rs/default.nix                                        && ./pin_down.js ./pkgs/rosidl-generator-rs/default.nix
-# echo checking ./pkgs/geographiclib/default.nix                                              && ./pin_down.js ./pkgs/geographiclib/default.nix
-# echo checking ./pkgs/rosinstall-generator/default.nix                                       && ./pin_down.js ./pkgs/rosinstall-generator/default.nix
-# echo checking ./pkgs/ignition/fuel-tools/default.nix                                        && ./pin_down.js ./pkgs/ignition/fuel-tools/default.nix
-# echo checking ./pkgs/ignition/msgs/default.nix                                              && ./pin_down.js ./pkgs/ignition/msgs/default.nix
-# echo checking ./pkgs/ignition/common/default.nix                                            && ./pin_down.js ./pkgs/ignition/common/default.nix
-# echo checking ./pkgs/ignition/cmake/default.nix                                             && ./pin_down.js ./pkgs/ignition/cmake/default.nix
-# echo checking ./pkgs/ignition/transport/default.nix                                         && ./pin_down.js ./pkgs/ignition/transport/default.nix
-# echo checking ./pkgs/ignition/utils/default.nix                                             && ./pin_down.js ./pkgs/ignition/utils/default.nix
-# echo checking ./pkgs/ignition/math/default.nix                                              && ./pin_down.js ./pkgs/ignition/math/default.nix
-# echo checking ./pkgs/ignition/tools/default.nix                                             && ./pin_down.js ./pkgs/ignition/tools/default.nix
-# echo checking ./pkgs/gazebo/default.nix                                                     && ./pin_down.js ./pkgs/gazebo/default.nix
-# echo checking ./pkgs/rospkg/default.nix                                                     && ./pin_down.js ./pkgs/rospkg/default.nix
-# echo checking ./pkgs/cargo-ament-build/default.nix                                          && ./pin_down.js ./pkgs/cargo-ament-build/default.nix
-# echo checking ./pkgs/catkin-tools/default.nix                                               && ./pin_down.js ./pkgs/catkin-tools/default.nix
-# echo checking ./pkgs/opensplice/default.nix                                                 && ./pin_down.js ./pkgs/opensplice/default.nix
-# echo checking ./distros/default.nix                                                         && ./pin_down.js ./distros/default.nix
-# echo checking ./distros/ament-cmake-core-setup-hook/default.nix                             && ./pin_down.js ./distros/ament-cmake-core-setup-hook/default.nix
-# echo checking ./distros/build-ros-package/default.nix                                       && ./pin_down.js ./distros/build-ros-package/default.nix
-# echo checking ./distros/build-env/default.nix                                               && ./pin_down.js ./distros/build-env/default.nix
-# echo checking ./distros/rolling/unique-identifier-msgs/default.nix                          && ./pin_down.js ./distros/rolling/unique-identifier-msgs/default.nix
-# echo checking ./distros/rolling/examples-rclcpp-wait-set/default.nix                        && ./pin_down.js ./distros/rolling/examples-rclcpp-wait-set/default.nix
-# echo checking ./distros/melodic/costmap-cspace-rviz-plugins/default.nix                     && ./pin_down.js ./distros/melodic/costmap-cspace-rviz-plugins/default.nix
-# echo checking ./distros/rolling/ros2launch/default.nix                                      && ./pin_down.js ./distros/rolling/ros2launch/default.nix
-# echo checking ./distros/rolling/examples-rclpy-minimal-action-client/default.nix            && ./pin_down.js ./distros/rolling/examples-rclpy-minimal-action-client/default.nix
-# echo checking ./distros/melodic/tile-map/default.nix                                        && ./pin_down.js ./distros/melodic/tile-map/default.nix
-# echo checking ./distros/melodic/lanelet2-examples/default.nix                               && ./pin_down.js ./distros/melodic/lanelet2-examples/default.nix
-# echo checking ./distros/melodic/turtlebot3-autorace-detect/default.nix                      && ./pin_down.js ./distros/melodic/turtlebot3-autorace-detect/default.nix
-# echo checking ./distros/melodic/mrpt-sensorlib/default.nix                                  && ./pin_down.js ./distros/melodic/mrpt-sensorlib/default.nix
-# echo checking ./distros/melodic/image-pipeline/default.nix                                  && ./pin_down.js ./distros/melodic/image-pipeline/default.nix
-# echo checking ./distros/melodic/roseus-smach/default.nix                                    && ./pin_down.js ./distros/melodic/roseus-smach/default.nix
-# echo checking ./distros/melodic/nav-2d-msgs/default.nix                                     && ./pin_down.js ./distros/melodic/nav-2d-msgs/default.nix
-# echo checking ./distros/melodic/robosense-description/default.nix                           && ./pin_down.js ./distros/melodic/robosense-description/default.nix
-# echo checking ./distros/melodic/foxglove-bridge/default.nix                                 && ./pin_down.js ./distros/melodic/foxglove-bridge/default.nix
-# echo checking ./distros/melodic/hdf5-map-io/default.nix                                     && ./pin_down.js ./distros/melodic/hdf5-map-io/default.nix
-# echo checking ./distros/melodic/novatel-gps-driver/default.nix                              && ./pin_down.js ./distros/melodic/novatel-gps-driver/default.nix
-# echo checking ./distros/melodic/scan-to-cloud-converter/default.nix                         && ./pin_down.js ./distros/melodic/scan-to-cloud-converter/default.nix
-# echo checking ./distros/galactic/mapviz-plugins/default.nix                                 && ./pin_down.js ./distros/galactic/mapviz-plugins/default.nix
-# echo checking ./distros/humble/turtlesim/default.nix                                        && ./pin_down.js ./distros/humble/turtlesim/default.nix
-# echo checking ./distros/galactic/velocity-controllers/default.nix                           && ./pin_down.js ./distros/galactic/velocity-controllers/default.nix
-# echo checking ./distros/galactic/marti-visualization-msgs/default.nix                       && ./pin_down.js ./distros/galactic/marti-visualization-msgs/default.nix
-# echo checking ./distros/humble/aws-robomaker-small-warehouse-world/default.nix              && ./pin_down.js ./distros/humble/aws-robomaker-small-warehouse-world/default.nix
-# echo checking ./distros/humble/grid-map-loader/default.nix                                  && ./pin_down.js ./distros/humble/grid-map-loader/default.nix
-# echo checking ./distros/humble/pybind11-vendor/default.nix                                  && ./pin_down.js ./distros/humble/pybind11-vendor/default.nix
-# echo checking ./distros/humble/plotjuggler-ros/default.nix                                  && ./pin_down.js ./distros/humble/plotjuggler-ros/default.nix
-# echo checking ./distros/humble/behaviortree-cpp-v3/default.nix                              && ./pin_down.js ./distros/humble/behaviortree-cpp-v3/default.nix
-# echo checking ./distros/humble/domain-bridge/default.nix                                    && ./pin_down.js ./distros/humble/domain-bridge/default.nix
-# echo checking ./distros/humble/rosidl-adapter/default.nix                                   && ./pin_down.js ./distros/humble/rosidl-adapter/default.nix
-# echo checking ./distros/humble/libyaml-vendor/default.nix                                   && ./pin_down.js ./distros/humble/libyaml-vendor/default.nix
-# echo checking ./distros/humble/serial-driver/default.nix                                    && ./pin_down.js ./distros/humble/serial-driver/default.nix
-# echo checking ./distros/humble/rmf-site-map-msgs/default.nix                                && ./pin_down.js ./distros/humble/rmf-site-map-msgs/default.nix
-# echo checking ./distros/humble/tracetools-image-pipeline/default.nix                        && ./pin_down.js ./distros/humble/tracetools-image-pipeline/default.nix
-# echo checking ./distros/humble/examples-rclcpp-minimal-client/default.nix                   && ./pin_down.js ./distros/humble/examples-rclcpp-minimal-client/default.nix
-# echo checking ./distros/humble/phidgets-high-speed-encoder/default.nix                      && ./pin_down.js ./distros/humble/phidgets-high-speed-encoder/default.nix
-# echo checking ./distros/humble/nav2-dwb-controller/default.nix                              && ./pin_down.js ./distros/humble/nav2-dwb-controller/default.nix
-# echo checking ./distros/foxy/sensor-msgs-py/default.nix                                     && ./pin_down.js ./distros/foxy/sensor-msgs-py/default.nix
-# echo checking ./distros/foxy/turtlebot3-description/default.nix                             && ./pin_down.js ./distros/foxy/turtlebot3-description/default.nix
-# echo checking ./distros/foxy/ament-cmake-export-definitions/default.nix                     && ./pin_down.js ./distros/foxy/ament-cmake-export-definitions/default.nix
-# echo checking ./distros/foxy/plotjuggler-ros/default.nix                                    && ./pin_down.js ./distros/foxy/plotjuggler-ros/default.nix
-# echo checking ./distros/foxy/moveit-servo/default.nix                                       && ./pin_down.js ./distros/foxy/moveit-servo/default.nix
-# echo checking ./distros/foxy/behaviortree-cpp-v3/default.nix                                && ./pin_down.js ./distros/foxy/behaviortree-cpp-v3/default.nix
-# echo checking ./distros/foxy/nav2-dwb-controller/default.nix                                && ./pin_down.js ./distros/foxy/nav2-dwb-controller/default.nix
-# echo checking ./distros/foxy/rosidl-adapter/default.nix                                     && ./pin_down.js ./distros/foxy/rosidl-adapter/default.nix
-# echo checking ./distros/foxy/pybind11-vendor/default.nix                                    && ./pin_down.js ./distros/foxy/pybind11-vendor/default.nix
-# echo checking ./distros/foxy/libyaml-vendor/default.nix                                     && ./pin_down.js ./distros/foxy/libyaml-vendor/default.nix
-# echo checking ./distros/foxy/serial-driver/default.nix                                      && ./pin_down.js ./distros/foxy/serial-driver/default.nix
-# echo checking ./distros/foxy/tracetools-image-pipeline/default.nix                          && ./pin_down.js ./distros/foxy/tracetools-image-pipeline/default.nix
-# echo checking ./distros/foxy/gscam/default.nix                                              && ./pin_down.js ./distros/foxy/gscam/default.nix
-# echo checking ./distros/foxy/phidgets-high-speed-encoder/default.nix                        && ./pin_down.js ./distros/foxy/phidgets-high-speed-encoder/default.nix
-# echo checking ./distros/foxy/examples-rclcpp-minimal-client/default.nix                     && ./pin_down.js ./distros/foxy/examples-rclcpp-minimal-client/default.nix
-# echo checking ./distros/foxy/rqt-runtime-monitor/default.nix                                && ./pin_down.js ./distros/foxy/rqt-runtime-monitor/default.nix
-# echo checking ./distros/foxy/stereo-msgs/default.nix                                        && ./pin_down.js ./distros/foxy/stereo-msgs/default.nix
-# echo checking ./distros/foxy/rclc-parameter/default.nix                                     && ./pin_down.js ./distros/foxy/rclc-parameter/default.nix
-# echo checking ./distros/foxy/osrf-testing-tools-cpp/default.nix                             && ./pin_down.js ./distros/foxy/osrf-testing-tools-cpp/default.nix
-# echo checking ./distros/foxy/ecl-utilities/default.nix                                      && ./pin_down.js ./distros/foxy/ecl-utilities/default.nix
-# echo checking ./distros/foxy/turtlebot3-bringup/default.nix                                 && ./pin_down.js ./distros/foxy/turtlebot3-bringup/default.nix
-# echo checking ./distros/foxy/libphidget22/default.nix                                       && ./pin_down.js ./distros/foxy/libphidget22/default.nix
-# echo checking ./distros/foxy/phidgets-magnetometer/default.nix                              && ./pin_down.js ./distros/foxy/phidgets-magnetometer/default.nix
-# echo checking ./distros/rolling/ur-moveit-config/default.nix                                && ./pin_down.js ./distros/rolling/ur-moveit-config/default.nix
-# echo checking ./distros/melodic/grid-map-costmap-2d/default.nix                             && ./pin_down.js ./distros/melodic/grid-map-costmap-2d/default.nix
-# echo checking ./distros/noetic/xpp-states/default.nix                                       && ./pin_down.js ./distros/noetic/xpp-states/default.nix
-# echo checking ./distros/noetic/rwt-app-chooser/default.nix                                  && ./pin_down.js ./distros/noetic/rwt-app-chooser/default.nix
-# echo checking ./distros/noetic/ros-ethercat-eml/default.nix                                 && ./pin_down.js ./distros/noetic/ros-ethercat-eml/default.nix
-# echo checking ./distros/rolling/dummy-sensors/default.nix                                   && ./pin_down.js ./distros/rolling/dummy-sensors/default.nix
-# echo checking ./distros/melodic/audibot-gazebo/default.nix                                  && ./pin_down.js ./distros/melodic/audibot-gazebo/default.nix
-# echo checking ./distros/noetic/cartesian-msgs/default.nix                                   && ./pin_down.js ./distros/noetic/cartesian-msgs/default.nix
-# echo checking ./distros/melodic/costmap-tf-layer/default.nix                                && ./pin_down.js ./distros/melodic/costmap-tf-layer/default.nix
-# echo checking ./distros/foxy/ros-environment/default.nix                                    && ./pin_down.js ./distros/foxy/ros-environment/default.nix
-# echo checking ./distros/humble/pcl-conversions/default.nix                                  && ./pin_down.js ./distros/humble/pcl-conversions/default.nix
-# echo checking ./distros/noetic/exotica-ilqg-solver/default.nix                              && ./pin_down.js ./distros/noetic/exotica-ilqg-solver/default.nix
-# echo checking ./distros/foxy/image-transport-plugins/default.nix                            && ./pin_down.js ./distros/foxy/image-transport-plugins/default.nix
-# echo checking ./distros/humble/microstrain-inertial-driver/default.nix                      && ./pin_down.js ./distros/humble/microstrain-inertial-driver/default.nix
-# echo checking ./distros/melodic/people-tracking-filter/default.nix                          && ./pin_down.js ./distros/melodic/people-tracking-filter/default.nix
-# echo checking ./distros/humble/point-cloud-msg-wrapper/default.nix                          && ./pin_down.js ./distros/humble/point-cloud-msg-wrapper/default.nix
-# echo checking ./distros/humble/desktop-full/default.nix                                     && ./pin_down.js ./distros/humble/desktop-full/default.nix
-# echo checking ./distros/foxy/ament-nodl/default.nix                                         && ./pin_down.js ./distros/foxy/ament-nodl/default.nix
-# echo checking ./distros/galactic/compressed-depth-image-transport/default.nix               && ./pin_down.js ./distros/galactic/compressed-depth-image-transport/default.nix
-# echo checking ./distros/foxy/fmilibrary-vendor/default.nix                                  && ./pin_down.js ./distros/foxy/fmilibrary-vendor/default.nix
-# echo checking ./distros/melodic/ecl-build/default.nix                                       && ./pin_down.js ./distros/melodic/ecl-build/default.nix
-# echo checking ./distros/rolling/neo-simulation2/default.nix                                 && ./pin_down.js ./distros/rolling/neo-simulation2/default.nix
-# echo checking ./distros/galactic/rosidl-typesupport-interface/default.nix                   && ./pin_down.js ./distros/galactic/rosidl-typesupport-interface/default.nix
-# echo checking ./distros/foxy/forward-command-controller/default.nix                         && ./pin_down.js ./distros/foxy/forward-command-controller/default.nix
-# echo checking ./distros/melodic/rosdiagnostic/default.nix                                   && ./pin_down.js ./distros/melodic/rosdiagnostic/default.nix
-# echo checking ./distros/galactic/turtlebot3-description/default.nix                         && ./pin_down.js ./distros/galactic/turtlebot3-description/default.nix
-# echo checking ./distros/humble/moveit-resources-pr2-description/default.nix                 && ./pin_down.js ./distros/humble/moveit-resources-pr2-description/default.nix
-# echo checking ./distros/galactic/turtlebot3-bringup/default.nix                             && ./pin_down.js ./distros/galactic/turtlebot3-bringup/default.nix
-# echo checking ./distros/galactic/realsense2-camera/default.nix                              && ./pin_down.js ./distros/galactic/realsense2-camera/default.nix
-# echo checking ./distros/melodic/pr2-move-base/default.nix                                   && ./pin_down.js ./distros/melodic/pr2-move-base/default.nix
-# echo checking ./distros/rolling/dolly-ignition/default.nix                                  && ./pin_down.js ./distros/rolling/dolly-ignition/default.nix
-# echo checking ./distros/galactic/picknik-ament-copyright/default.nix                        && ./pin_down.js ./distros/galactic/picknik-ament-copyright/default.nix
-# echo checking ./distros/rolling/pendulum-control/default.nix                                && ./pin_down.js ./distros/rolling/pendulum-control/default.nix
-# echo checking ./distros/noetic/leo-viz/default.nix                                          && ./pin_down.js ./distros/noetic/leo-viz/default.nix
-# echo checking ./distros/rolling/geodesy/default.nix                                         && ./pin_down.js ./distros/rolling/geodesy/default.nix
-# echo checking ./distros/rolling/moveit-resources-prbt-moveit-config/default.nix             && ./pin_down.js ./distros/rolling/moveit-resources-prbt-moveit-config/default.nix
-# echo checking ./distros/rolling/control-toolbox/default.nix                                 && ./pin_down.js ./distros/rolling/control-toolbox/default.nix
-# echo checking ./distros/rolling/stubborn-buddies-msgs/default.nix                           && ./pin_down.js ./distros/rolling/stubborn-buddies-msgs/default.nix
-# echo checking ./distros/rolling/rclc-examples/default.nix                                   && ./pin_down.js ./distros/rolling/rclc-examples/default.nix
-# echo checking ./distros/rolling/rc-genicam-driver/default.nix                               && ./pin_down.js ./distros/rolling/rc-genicam-driver/default.nix
-# echo checking ./distros/rolling/octomap-ros/default.nix                                     && ./pin_down.js ./distros/rolling/octomap-ros/default.nix
-# echo checking ./distros/rolling/rqt-image-view/default.nix                                  && ./pin_down.js ./distros/rolling/rqt-image-view/default.nix
-# echo checking ./distros/rolling/ament-xmllint/default.nix                                   && ./pin_down.js ./distros/rolling/ament-xmllint/default.nix
-# echo checking ./distros/rolling/turtle-tf2-cpp/default.nix                                  && ./pin_down.js ./distros/rolling/turtle-tf2-cpp/default.nix
-# echo checking ./distros/rolling/rosbag2-storage-mcap-testdata/default.nix                   && ./pin_down.js ./distros/rolling/rosbag2-storage-mcap-testdata/default.nix
-# echo checking ./distros/rolling/marti-sensor-msgs/default.nix                               && ./pin_down.js ./distros/rolling/marti-sensor-msgs/default.nix
-# echo checking ./distros/rolling/ecl-config/default.nix                                      && ./pin_down.js ./distros/rolling/ecl-config/default.nix
-# echo checking ./distros/rolling/rviz-visual-testing-framework/default.nix                   && ./pin_down.js ./distros/rolling/rviz-visual-testing-framework/default.nix
-# echo checking ./distros/rolling/soccer-object-msgs/default.nix                              && ./pin_down.js ./distros/rolling/soccer-object-msgs/default.nix
-# echo checking ./distros/rolling/dummy-map-server/default.nix                                && ./pin_down.js ./distros/rolling/dummy-map-server/default.nix
-# echo checking ./distros/rolling/mavros-extras/default.nix                                   && ./pin_down.js ./distros/rolling/mavros-extras/default.nix
-# echo checking ./distros/rolling/control-msgs/default.nix                                    && ./pin_down.js ./distros/rolling/control-msgs/default.nix
-# echo checking ./distros/rolling/ros2cli-test-interfaces/default.nix                         && ./pin_down.js ./distros/rolling/ros2cli-test-interfaces/default.nix
-# echo checking ./distros/rolling/gps-umd/default.nix                                         && ./pin_down.js ./distros/rolling/gps-umd/default.nix
-# echo checking ./distros/rolling/performance-test-fixture/default.nix                        && ./pin_down.js ./distros/rolling/performance-test-fixture/default.nix
-# echo checking ./distros/rolling/ament-download/default.nix                                  && ./pin_down.js ./distros/rolling/ament-download/default.nix
-# echo checking ./distros/rolling/tango-icons-vendor/default.nix                              && ./pin_down.js ./distros/rolling/tango-icons-vendor/default.nix
-# echo checking ./distros/rolling/rosgraph-msgs/default.nix                                   && ./pin_down.js ./distros/rolling/rosgraph-msgs/default.nix
-# echo checking ./distros/rolling/rqt-py-common/default.nix                                   && ./pin_down.js ./distros/rolling/rqt-py-common/default.nix
-# echo checking ./distros/rolling/ompl/default.nix                                            && ./pin_down.js ./distros/rolling/ompl/default.nix
-# echo checking ./distros/rolling/fmi-adapter-examples/default.nix                            && ./pin_down.js ./distros/rolling/fmi-adapter-examples/default.nix
-# echo checking ./distros/rolling/soccer-vision-3d-msgs/default.nix                           && ./pin_down.js ./distros/rolling/soccer-vision-3d-msgs/default.nix
-# echo checking ./distros/rolling/camera-calibration-parsers/default.nix                      && ./pin_down.js ./distros/rolling/camera-calibration-parsers/default.nix
-# echo checking ./distros/rolling/ublox-ubx-msgs/default.nix                                  && ./pin_down.js ./distros/rolling/ublox-ubx-msgs/default.nix
-# echo checking ./distros/rolling/tf-transformations/default.nix                              && ./pin_down.js ./distros/rolling/tf-transformations/default.nix
-# echo checking ./distros/humble/moveit-resources/default.nix                                 && ./pin_down.js ./distros/humble/moveit-resources/default.nix
-# echo checking ./distros/humble/ros2cli/default.nix                                          && ./pin_down.js ./distros/humble/ros2cli/default.nix
-# echo checking ./distros/foxy/plotjuggler/default.nix                                        && ./pin_down.js ./distros/foxy/plotjuggler/default.nix
-# echo checking ./distros/foxy/connext-cmake-module/default.nix                               && ./pin_down.js ./distros/foxy/connext-cmake-module/default.nix
-# echo checking ./distros/foxy/graph-msgs/default.nix                                         && ./pin_down.js ./distros/foxy/graph-msgs/default.nix
-# echo checking ./distros/foxy/rclc/default.nix                                               && ./pin_down.js ./distros/foxy/rclc/default.nix
-# echo checking ./distros/foxy/rmw-dds-common/default.nix                                     && ./pin_down.js ./distros/foxy/rmw-dds-common/default.nix
-# echo checking ./distros/foxy/mavlink/default.nix                                            && ./pin_down.js ./distros/foxy/mavlink/default.nix
-# echo checking ./distros/foxy/python-cmake-module/default.nix                                && ./pin_down.js ./distros/foxy/python-cmake-module/default.nix
-# echo checking ./distros/melodic/volta-description/default.nix                               && ./pin_down.js ./distros/melodic/volta-description/default.nix
-# echo checking ./distros/melodic/tuw-airskin-msgs/default.nix                                && ./pin_down.js ./distros/melodic/tuw-airskin-msgs/default.nix
-# echo checking ./distros/melodic/turtle-tf/default.nix                                       && ./pin_down.js ./distros/melodic/turtle-tf/default.nix
-# echo checking ./distros/galactic/ecl-core/default.nix                                       && ./pin_down.js ./distros/galactic/ecl-core/default.nix
-# echo checking ./distros/melodic/autoware-lanelet2-msgs/default.nix                          && ./pin_down.js ./distros/melodic/autoware-lanelet2-msgs/default.nix
-# echo checking ./distros/melodic/ypspur/default.nix                                          && ./pin_down.js ./distros/melodic/ypspur/default.nix
-# echo checking ./distros/noetic/rosbag-snapshot/default.nix                                  && ./pin_down.js ./distros/noetic/rosbag-snapshot/default.nix
-# echo checking ./distros/noetic/novatel-oem7-msgs/default.nix                                && ./pin_down.js ./distros/noetic/novatel-oem7-msgs/default.nix
-# echo checking ./distros/melodic/effort-controllers/default.nix                              && ./pin_down.js ./distros/melodic/effort-controllers/default.nix
-# echo checking ./distros/noetic/lgsvl-msgs/default.nix                                       && ./pin_down.js ./distros/noetic/lgsvl-msgs/default.nix
-# echo checking ./distros/noetic/web-video-server/default.nix                                 && ./pin_down.js ./distros/noetic/web-video-server/default.nix
-# echo checking ./distros/noetic/aruco-ros/default.nix                                        && ./pin_down.js ./distros/noetic/aruco-ros/default.nix
-# echo checking ./distros/noetic/aruco-msgs/default.nix                                       && ./pin_down.js ./distros/noetic/aruco-msgs/default.nix
-# echo checking ./distros/noetic/trac-ik-examples/default.nix                                 && ./pin_down.js ./distros/noetic/trac-ik-examples/default.nix
-# echo checking ./distros/noetic/ecl-linear-algebra/default.nix                               && ./pin_down.js ./distros/noetic/ecl-linear-algebra/default.nix
-# echo checking ./distros/noetic/moveit-planners/default.nix                                  && ./pin_down.js ./distros/noetic/moveit-planners/default.nix
-# echo checking ./distros/noetic/cartesian-control-msgs/default.nix                           && ./pin_down.js ./distros/noetic/cartesian-control-msgs/default.nix
-# echo checking ./distros/noetic/laser-scan-matcher/default.nix                               && ./pin_down.js ./distros/noetic/laser-scan-matcher/default.nix
-# echo checking ./distros/noetic/phidgets-api/default.nix                                     && ./pin_down.js ./distros/noetic/phidgets-api/default.nix
-# echo checking ./distros/noetic/jskeus/default.nix                                           && ./pin_down.js ./distros/noetic/jskeus/default.nix
-# echo checking ./distros/noetic/cob-control-msgs/default.nix                                 && ./pin_down.js ./distros/noetic/cob-control-msgs/default.nix
-# echo checking ./distros/rolling/zenoh-bridge-dds/default.nix                                && ./pin_down.js ./distros/rolling/zenoh-bridge-dds/default.nix
-# echo checking ./distros/rolling/ur-controllers/default.nix                                  && ./pin_down.js ./distros/rolling/ur-controllers/default.nix
-# echo checking ./distros/rolling/phidgets-temperature/default.nix                            && ./pin_down.js ./distros/rolling/phidgets-temperature/default.nix
-# echo checking ./distros/rolling/swri-math-util/default.nix                                  && ./pin_down.js ./distros/rolling/swri-math-util/default.nix
-# echo checking ./distros/noetic/khi-rs-ikfast-plugin/default.nix                             && ./pin_down.js ./distros/noetic/khi-rs-ikfast-plugin/default.nix
-# echo checking ./distros/rolling/joy-teleop/default.nix                                      && ./pin_down.js ./distros/rolling/joy-teleop/default.nix
-# echo checking ./distros/rolling/admittance-controller/default.nix                           && ./pin_down.js ./distros/rolling/admittance-controller/default.nix
-# echo checking ./distros/rolling/py-trees-ros-interfaces/default.nix                         && ./pin_down.js ./distros/rolling/py-trees-ros-interfaces/default.nix
-# echo checking ./distros/rolling/marti-perception-msgs/default.nix                           && ./pin_down.js ./distros/rolling/marti-perception-msgs/default.nix
-# echo checking ./distros/rolling/ur-dashboard-msgs/default.nix                               && ./pin_down.js ./distros/rolling/ur-dashboard-msgs/default.nix
-# echo checking ./distros/humble/v4l2-camera/default.nix                                      && ./pin_down.js ./distros/humble/v4l2-camera/default.nix
-# echo checking ./distros/humble/rqt/default.nix                                              && ./pin_down.js ./distros/humble/rqt/default.nix
-# echo checking ./distros/humble/perception-pcl/default.nix                                   && ./pin_down.js ./distros/humble/perception-pcl/default.nix
-# echo checking ./distros/humble/sros2/default.nix                                            && ./pin_down.js ./distros/humble/sros2/default.nix
-# echo checking ./distros/humble/nav2-theta-star-planner/default.nix                          && ./pin_down.js ./distros/humble/nav2-theta-star-planner/default.nix
-# echo checking ./distros/humble/cv-bridge/default.nix                                        && ./pin_down.js ./distros/humble/cv-bridge/default.nix
-# echo checking ./distros/humble/rmf-demos-maps/default.nix                                   && ./pin_down.js ./distros/humble/rmf-demos-maps/default.nix
-# echo checking ./distros/humble/rqt-graph/default.nix                                        && ./pin_down.js ./distros/humble/rqt-graph/default.nix
-# echo checking ./distros/humble/moveit-ros-robot-interaction/default.nix                     && ./pin_down.js ./distros/humble/moveit-ros-robot-interaction/default.nix
-# echo checking ./distros/humble/ament-copyright/default.nix                                  && ./pin_down.js ./distros/humble/ament-copyright/default.nix
-# echo checking ./distros/humble/turtlebot3/default.nix                                       && ./pin_down.js ./distros/humble/turtlebot3/default.nix
-# echo checking ./distros/foxy/ur-controllers/default.nix                                     && ./pin_down.js ./distros/foxy/ur-controllers/default.nix
-# echo checking ./distros/foxy/phidgets-msgs/default.nix                                      && ./pin_down.js ./distros/foxy/phidgets-msgs/default.nix
-# echo checking ./distros/foxy/rmf-demos-tasks/default.nix                                    && ./pin_down.js ./distros/foxy/rmf-demos-tasks/default.nix
-# echo checking ./distros/foxy/sbg-driver/default.nix                                         && ./pin_down.js ./distros/foxy/sbg-driver/default.nix
-# echo checking ./distros/noetic/rosserial-msgs/default.nix                                   && ./pin_down.js ./distros/noetic/rosserial-msgs/default.nix
-# echo checking ./distros/noetic/delphi-srr-msgs/default.nix                                  && ./pin_down.js ./distros/noetic/delphi-srr-msgs/default.nix
-# echo checking ./distros/noetic/controller-manager-tests/default.nix                         && ./pin_down.js ./distros/noetic/controller-manager-tests/default.nix
-# echo checking ./distros/noetic/libpcan/default.nix                                          && ./pin_down.js ./distros/noetic/libpcan/default.nix
-# echo checking ./distros/noetic/statistics-msgs/default.nix                                  && ./pin_down.js ./distros/noetic/statistics-msgs/default.nix
-# echo checking ./distros/foxy/rmf-traffic/default.nix                                        && ./pin_down.js ./distros/foxy/rmf-traffic/default.nix
-# echo checking ./distros/noetic/dynamic-graph-tutorial/default.nix                           && ./pin_down.js ./distros/noetic/dynamic-graph-tutorial/default.nix
-# echo checking ./distros/noetic/swri-prefix-tools/default.nix                                && ./pin_down.js ./distros/noetic/swri-prefix-tools/default.nix
-# echo checking ./distros/galactic/asio-cmake-module/default.nix                              && ./pin_down.js ./distros/galactic/asio-cmake-module/default.nix
-# echo checking ./distros/noetic/mobile-robot-simulator/default.nix                           && ./pin_down.js ./distros/noetic/mobile-robot-simulator/default.nix
-# echo checking ./distros/noetic/dwa-local-planner/default.nix                                && ./pin_down.js ./distros/noetic/dwa-local-planner/default.nix
-# echo checking ./distros/galactic/nav2-rotation-shim-controller/default.nix                  && ./pin_down.js ./distros/galactic/nav2-rotation-shim-controller/default.nix
-# echo checking ./distros/noetic/mongodb-store-msgs/default.nix                               && ./pin_down.js ./distros/noetic/mongodb-store-msgs/default.nix
-# echo checking ./distros/melodic/tra1-moveit-config/default.nix                              && ./pin_down.js ./distros/melodic/tra1-moveit-config/default.nix
-# echo checking ./distros/galactic/ros2param/default.nix                                      && ./pin_down.js ./distros/galactic/ros2param/default.nix
-# echo checking ./distros/noetic/rosbag/default.nix                                           && ./pin_down.js ./distros/noetic/rosbag/default.nix
-# echo checking ./distros/noetic/qb-chain-description/default.nix                             && ./pin_down.js ./distros/noetic/qb-chain-description/default.nix
-# echo checking ./distros/melodic/gazebo-ros/default.nix                                      && ./pin_down.js ./distros/melodic/gazebo-ros/default.nix
-# echo checking ./distros/melodic/turtlebot3-bringup/default.nix                              && ./pin_down.js ./distros/melodic/turtlebot3-bringup/default.nix
-# echo checking ./distros/galactic/examples-rclcpp-minimal-action-client/default.nix          && ./pin_down.js ./distros/galactic/examples-rclcpp-minimal-action-client/default.nix
-# echo checking ./distros/galactic/pendulum-control/default.nix                               && ./pin_down.js ./distros/galactic/pendulum-control/default.nix
-# echo checking ./distros/noetic/rosserial-mbed/default.nix                                   && ./pin_down.js ./distros/noetic/rosserial-mbed/default.nix
-# echo checking ./distros/noetic/dataspeed-ulc/default.nix                                    && ./pin_down.js ./distros/noetic/dataspeed-ulc/default.nix
-# echo checking ./distros/humble/mvsim/default.nix                                            && ./pin_down.js ./distros/humble/mvsim/default.nix
-# echo checking ./distros/humble/marvelmind-ros2/default.nix                                  && ./pin_down.js ./distros/humble/marvelmind-ros2/default.nix
-# echo checking ./distros/humble/libstatistics-collector/default.nix                          && ./pin_down.js ./distros/humble/libstatistics-collector/default.nix
-# echo checking ./distros/galactic/phidgets-digital-outputs/default.nix                       && ./pin_down.js ./distros/galactic/phidgets-digital-outputs/default.nix
-# echo checking ./distros/melodic/image-publisher/default.nix                                 && ./pin_down.js ./distros/melodic/image-publisher/default.nix
-# echo checking ./distros/melodic/rqt-gui-py/default.nix                                      && ./pin_down.js ./distros/melodic/rqt-gui-py/default.nix
-# echo checking ./distros/melodic/laser-cb-detector/default.nix                               && ./pin_down.js ./distros/melodic/laser-cb-detector/default.nix
-# echo checking ./distros/melodic/settlerlib/default.nix                                      && ./pin_down.js ./distros/melodic/settlerlib/default.nix
-# echo checking ./distros/melodic/prbt-hardware-support/default.nix                           && ./pin_down.js ./distros/melodic/prbt-hardware-support/default.nix
-# echo checking ./distros/melodic/boost-sml/default.nix                                       && ./pin_down.js ./distros/melodic/boost-sml/default.nix
-# echo checking ./distros/melodic/rostime/default.nix                                         && ./pin_down.js ./distros/melodic/rostime/default.nix
-# echo checking ./distros/melodic/moveit-planners/default.nix                                 && ./pin_down.js ./distros/melodic/moveit-planners/default.nix
-# echo checking ./distros/melodic/trac-ik-examples/default.nix                                && ./pin_down.js ./distros/melodic/trac-ik-examples/default.nix
-# echo checking ./distros/melodic/yujin-ocs/default.nix                                       && ./pin_down.js ./distros/melodic/yujin-ocs/default.nix
-# echo checking ./distros/melodic/cob-control-msgs/default.nix                                && ./pin_down.js ./distros/melodic/cob-control-msgs/default.nix
-# echo checking ./distros/noetic/dwb-plugins/default.nix                                      && ./pin_down.js ./distros/noetic/dwb-plugins/default.nix
-# echo checking ./distros/melodic/ecl-linear-algebra/default.nix                              && ./pin_down.js ./distros/melodic/ecl-linear-algebra/default.nix
-# echo checking ./distros/noetic/canopen-motor-node/default.nix                               && ./pin_down.js ./distros/noetic/canopen-motor-node/default.nix
-# echo checking ./distros/noetic/std-msgs/default.nix                                         && ./pin_down.js ./distros/noetic/std-msgs/default.nix
-# echo checking ./distros/noetic/transmission-interface/default.nix                           && ./pin_down.js ./distros/noetic/transmission-interface/default.nix
-# echo checking ./distros/noetic/resource-retriever/default.nix                               && ./pin_down.js ./distros/noetic/resource-retriever/default.nix
-# echo checking ./distros/noetic/fuse-viz/default.nix                                         && ./pin_down.js ./distros/noetic/fuse-viz/default.nix
-# echo checking ./distros/noetic/robotont-msgs/default.nix                                    && ./pin_down.js ./distros/noetic/robotont-msgs/default.nix
-# echo checking ./distros/noetic/cob-hand-bridge/default.nix                                  && ./pin_down.js ./distros/noetic/cob-hand-bridge/default.nix
-# echo checking ./distros/noetic/openni2-camera/default.nix                                   && ./pin_down.js ./distros/noetic/openni2-camera/default.nix
-# echo checking ./distros/noetic/libg2o/default.nix                                           && ./pin_down.js ./distros/noetic/libg2o/default.nix
-# echo checking ./distros/noetic/franka-control/default.nix                                   && ./pin_down.js ./distros/noetic/franka-control/default.nix
-# echo checking ./distros/noetic/openzen-sensor/default.nix                                   && ./pin_down.js ./distros/noetic/openzen-sensor/default.nix
-# echo checking ./distros/noetic/libphidgets/default.nix                                      && ./pin_down.js ./distros/noetic/libphidgets/default.nix
-# echo checking ./distros/noetic/mrpt-rawlog/default.nix                                      && ./pin_down.js ./distros/noetic/mrpt-rawlog/default.nix
-# echo checking ./distros/noetic/pid/default.nix                                              && ./pin_down.js ./distros/noetic/pid/default.nix
-# echo checking ./distros/noetic/slam-toolbox/default.nix                                     && ./pin_down.js ./distros/noetic/slam-toolbox/default.nix
-# echo checking ./distros/noetic/dual-quaternions-ros/default.nix                             && ./pin_down.js ./distros/noetic/dual-quaternions-ros/default.nix
-# echo checking ./distros/noetic/robot-nav-tools/default.nix                                  && ./pin_down.js ./distros/noetic/robot-nav-tools/default.nix
-# echo checking ./distros/noetic/swri-console/default.nix                                     && ./pin_down.js ./distros/noetic/swri-console/default.nix
-# echo checking ./distros/noetic/webots-ros/default.nix                                       && ./pin_down.js ./distros/noetic/webots-ros/default.nix
-# echo checking ./distros/noetic/bayesian-belief-networks/default.nix                         && ./pin_down.js ./distros/noetic/bayesian-belief-networks/default.nix
-# echo checking ./distros/noetic/cob-extern/default.nix                                       && ./pin_down.js ./distros/noetic/cob-extern/default.nix
-# echo checking ./distros/noetic/cob-manipulation-msgs/default.nix                            && ./pin_down.js ./distros/noetic/cob-manipulation-msgs/default.nix
-# echo checking ./distros/noetic/p2os-urdf/default.nix                                        && ./pin_down.js ./distros/noetic/p2os-urdf/default.nix
-# echo checking ./distros/noetic/rosserial-tivac/default.nix                                  && ./pin_down.js ./distros/noetic/rosserial-tivac/default.nix
-# echo checking ./distros/noetic/hector-geotiff-plugins/default.nix                           && ./pin_down.js ./distros/noetic/hector-geotiff-plugins/default.nix
-# echo checking ./distros/noetic/lanelet2/default.nix                                         && ./pin_down.js ./distros/noetic/lanelet2/default.nix
-# echo checking ./distros/noetic/jackal-tutorials/default.nix                                 && ./pin_down.js ./distros/noetic/jackal-tutorials/default.nix
-# echo checking ./distros/noetic/ridgeback-description/default.nix                            && ./pin_down.js ./distros/noetic/ridgeback-description/default.nix
-# echo checking ./distros/noetic/image-exposure-msgs/default.nix                              && ./pin_down.js ./distros/noetic/image-exposure-msgs/default.nix
-# echo checking ./distros/noetic/canopen-master/default.nix                                   && ./pin_down.js ./distros/noetic/canopen-master/default.nix
-# echo checking ./distros/noetic/carrot-planner/default.nix                                   && ./pin_down.js ./distros/noetic/carrot-planner/default.nix
-# echo checking ./distros/noetic/cob-supported-robots/default.nix                             && ./pin_down.js ./distros/noetic/cob-supported-robots/default.nix
-# echo checking ./distros/galactic/nav2-smac-planner/default.nix                              && ./pin_down.js ./distros/galactic/nav2-smac-planner/default.nix
-# echo checking ./distros/noetic/roseus/default.nix                                           && ./pin_down.js ./distros/noetic/roseus/default.nix
-# echo checking ./distros/galactic/ros2cli-test-interfaces/default.nix                        && ./pin_down.js ./distros/galactic/ros2cli-test-interfaces/default.nix
-# echo checking ./distros/galactic/rc-reason-clients/default.nix                              && ./pin_down.js ./distros/galactic/rc-reason-clients/default.nix
-# echo checking ./distros/galactic/ur-robot-driver/default.nix                                && ./pin_down.js ./distros/galactic/ur-robot-driver/default.nix
-# echo checking ./distros/galactic/ament-cmake-nose/default.nix                               && ./pin_down.js ./distros/galactic/ament-cmake-nose/default.nix
-# echo checking ./distros/galactic/rmf-building-map-msgs/default.nix                          && ./pin_down.js ./distros/galactic/rmf-building-map-msgs/default.nix
-# echo checking ./distros/galactic/ros2lifecycle/default.nix                                  && ./pin_down.js ./distros/galactic/ros2lifecycle/default.nix
-# echo checking ./distros/galactic/console-bridge-vendor/default.nix                          && ./pin_down.js ./distros/galactic/console-bridge-vendor/default.nix
-# echo checking ./distros/galactic/laser-proc/default.nix                                     && ./pin_down.js ./distros/galactic/laser-proc/default.nix
-# echo checking ./distros/galactic/rcss3d-agent-basic/default.nix                             && ./pin_down.js ./distros/galactic/rcss3d-agent-basic/default.nix
-# echo checking ./distros/galactic/moveit-hybrid-planning/default.nix                         && ./pin_down.js ./distros/galactic/moveit-hybrid-planning/default.nix
-# echo checking ./distros/galactic/pinocchio/default.nix                                      && ./pin_down.js ./distros/galactic/pinocchio/default.nix
-# echo checking ./distros/galactic/io-context/default.nix                                     && ./pin_down.js ./distros/galactic/io-context/default.nix
-# echo checking ./distros/galactic/rviz-rendering-tests/default.nix                           && ./pin_down.js ./distros/galactic/rviz-rendering-tests/default.nix
-# echo checking ./distros/galactic/rmf-traffic-ros2/default.nix                               && ./pin_down.js ./distros/galactic/rmf-traffic-ros2/default.nix
-# echo checking ./distros/galactic/rmf-demos-panel/default.nix                                && ./pin_down.js ./distros/galactic/rmf-demos-panel/default.nix
-# echo checking ./distros/galactic/qt-gui-app/default.nix                                     && ./pin_down.js ./distros/galactic/qt-gui-app/default.nix
-# echo checking ./distros/galactic/nao-lola/default.nix                                       && ./pin_down.js ./distros/galactic/nao-lola/default.nix
-# echo checking ./distros/galactic/rclcpp-lifecycle/default.nix                               && ./pin_down.js ./distros/galactic/rclcpp-lifecycle/default.nix
-# echo checking ./distros/galactic/rmf-visualization-msgs/default.nix                         && ./pin_down.js ./distros/galactic/rmf-visualization-msgs/default.nix
-# echo checking ./distros/galactic/swri-transform-util/default.nix                            && ./pin_down.js ./distros/galactic/swri-transform-util/default.nix
-# echo checking ./distros/galactic/ros-workspace/default.nix                                  && ./pin_down.js ./distros/galactic/ros-workspace/default.nix
-# echo checking ./distros/galactic/iceoryx-binding-c/default.nix                              && ./pin_down.js ./distros/galactic/iceoryx-binding-c/default.nix
-# echo checking ./distros/galactic/ntpd-driver/default.nix                                    && ./pin_down.js ./distros/galactic/ntpd-driver/default.nix
-# echo checking ./distros/melodic/wireless-watcher/default.nix                                && ./pin_down.js ./distros/melodic/wireless-watcher/default.nix
-# echo checking ./distros/melodic/microstrain-inertial-driver/default.nix                     && ./pin_down.js ./distros/melodic/microstrain-inertial-driver/default.nix
-# echo checking ./distros/melodic/sot-dynamic-pinocchio/default.nix                           && ./pin_down.js ./distros/melodic/sot-dynamic-pinocchio/default.nix
-# echo checking ./distros/melodic/move-base-sequence/default.nix                              && ./pin_down.js ./distros/melodic/move-base-sequence/default.nix
-# echo checking ./distros/melodic/osg-interactive-markers/default.nix                         && ./pin_down.js ./distros/melodic/osg-interactive-markers/default.nix
-# echo checking ./distros/melodic/velodyne-simulator/default.nix                              && ./pin_down.js ./distros/melodic/velodyne-simulator/default.nix
-# echo checking ./distros/galactic/automotive-autonomy-msgs/default.nix                       && ./pin_down.js ./distros/galactic/automotive-autonomy-msgs/default.nix
-# echo checking ./distros/galactic/marti-perception-msgs/default.nix                          && ./pin_down.js ./distros/galactic/marti-perception-msgs/default.nix
-# echo checking ./distros/noetic/cob-command-gui/default.nix                                  && ./pin_down.js ./distros/noetic/cob-command-gui/default.nix
-# echo checking ./distros/noetic/quanergy-client-ros/default.nix                              && ./pin_down.js ./distros/noetic/quanergy-client-ros/default.nix
-# echo checking ./distros/noetic/jackal-control/default.nix                                   && ./pin_down.js ./distros/noetic/jackal-control/default.nix
-# echo checking ./distros/galactic/phidgets-temperature/default.nix                           && ./pin_down.js ./distros/galactic/phidgets-temperature/default.nix
-# echo checking ./distros/galactic/swri-math-util/default.nix                                 && ./pin_down.js ./distros/galactic/swri-math-util/default.nix
-# echo checking ./distros/galactic/teleop-tools-msgs/default.nix                              && ./pin_down.js ./distros/galactic/teleop-tools-msgs/default.nix
-# echo checking ./distros/galactic/py-trees-ros-interfaces/default.nix                        && ./pin_down.js ./distros/galactic/py-trees-ros-interfaces/default.nix
-# echo checking ./distros/galactic/joy-teleop/default.nix                                     && ./pin_down.js ./distros/galactic/joy-teleop/default.nix
-# echo checking ./distros/galactic/nav2-core/default.nix                                      && ./pin_down.js ./distros/galactic/nav2-core/default.nix
-# echo checking ./distros/noetic/microstrain-3dmgx2-imu/default.nix                           && ./pin_down.js ./distros/noetic/microstrain-3dmgx2-imu/default.nix
-# echo checking ./distros/noetic/tesseract-visualization/default.nix                          && ./pin_down.js ./distros/noetic/tesseract-visualization/default.nix
-# echo checking ./distros/noetic/qb-device-bringup/default.nix                                && ./pin_down.js ./distros/noetic/qb-device-bringup/default.nix
-# echo checking ./distros/noetic/image-cb-detector/default.nix                                && ./pin_down.js ./distros/noetic/image-cb-detector/default.nix
-# echo checking ./distros/noetic/executive-smach-visualization/default.nix                    && ./pin_down.js ./distros/noetic/executive-smach-visualization/default.nix
-# echo checking ./distros/noetic/gmcl/default.nix                                             && ./pin_down.js ./distros/noetic/gmcl/default.nix
-# echo checking ./distros/noetic/rosgraph/default.nix                                         && ./pin_down.js ./distros/noetic/rosgraph/default.nix
-# echo checking ./distros/noetic/qb-hand-hardware-interface/default.nix                       && ./pin_down.js ./distros/noetic/qb-hand-hardware-interface/default.nix
-# echo checking ./distros/noetic/face-detector/default.nix                                    && ./pin_down.js ./distros/noetic/face-detector/default.nix
-# echo checking ./distros/noetic/rqt-publisher/default.nix                                    && ./pin_down.js ./distros/noetic/rqt-publisher/default.nix
-# echo checking ./distros/noetic/ur-description/default.nix                                   && ./pin_down.js ./distros/noetic/ur-description/default.nix
-# echo checking ./distros/noetic/smclib/default.nix                                           && ./pin_down.js ./distros/noetic/smclib/default.nix
-# echo checking ./distros/noetic/object-recognition-msgs/default.nix                          && ./pin_down.js ./distros/noetic/object-recognition-msgs/default.nix
-# echo checking ./distros/noetic/checkerboard-detector/default.nix                            && ./pin_down.js ./distros/noetic/checkerboard-detector/default.nix
-# echo checking ./distros/noetic/gpp-interface/default.nix                                    && ./pin_down.js ./distros/noetic/gpp-interface/default.nix
-# echo checking ./distros/noetic/network-interface/default.nix                                && ./pin_down.js ./distros/noetic/network-interface/default.nix
-# echo checking ./distros/noetic/moveit-planners-ompl/default.nix                             && ./pin_down.js ./distros/noetic/moveit-planners-ompl/default.nix
-# echo checking ./distros/noetic/ypspur-ros/default.nix                                       && ./pin_down.js ./distros/noetic/ypspur-ros/default.nix
-# echo checking ./distros/noetic/flir-camera-driver/default.nix                               && ./pin_down.js ./distros/noetic/flir-camera-driver/default.nix
-# echo checking ./distros/noetic/neonavigation/default.nix                                    && ./pin_down.js ./distros/noetic/neonavigation/default.nix
-# echo checking ./distros/noetic/moveit-kinematics/default.nix                                && ./pin_down.js ./distros/noetic/moveit-kinematics/default.nix
-# echo checking ./distros/noetic/ros-core/default.nix                                         && ./pin_down.js ./distros/noetic/ros-core/default.nix
-# echo checking ./distros/noetic/slam-toolbox-msgs/default.nix                                && ./pin_down.js ./distros/noetic/slam-toolbox-msgs/default.nix
-# echo checking ./distros/noetic/rm-control/default.nix                                       && ./pin_down.js ./distros/noetic/rm-control/default.nix
-# echo checking ./distros/noetic/naoqi-libqi/default.nix                                      && ./pin_down.js ./distros/noetic/naoqi-libqi/default.nix
-# echo checking ./distros/noetic/ecl-filesystem/default.nix                                   && ./pin_down.js ./distros/noetic/ecl-filesystem/default.nix
-# echo checking ./distros/melodic/track-odometry/default.nix                                  && ./pin_down.js ./distros/melodic/track-odometry/default.nix
-# echo checking ./distros/melodic/rsm-rviz-plugins/default.nix                                && ./pin_down.js ./distros/melodic/rsm-rviz-plugins/default.nix
-# echo checking ./distros/noetic/rosbag-pandas/default.nix                                    && ./pin_down.js ./distros/noetic/rosbag-pandas/default.nix
-# echo checking ./distros/noetic/computer-status-msgs/default.nix                             && ./pin_down.js ./distros/noetic/computer-status-msgs/default.nix
-# echo checking ./distros/noetic/dbw-fca/default.nix                                          && ./pin_down.js ./distros/noetic/dbw-fca/default.nix
-# echo checking ./distros/noetic/graceful-controller-ros/default.nix                          && ./pin_down.js ./distros/noetic/graceful-controller-ros/default.nix
-# echo checking ./distros/melodic/kalman-filter/default.nix                                   && ./pin_down.js ./distros/melodic/kalman-filter/default.nix
-# echo checking ./distros/melodic/mrp2-robot/default.nix                                      && ./pin_down.js ./distros/melodic/mrp2-robot/default.nix
-# echo checking ./distros/melodic/rslidar-sdk/default.nix                                     && ./pin_down.js ./distros/melodic/rslidar-sdk/default.nix
-# echo checking ./distros/melodic/kvh-geo-fog-3d-driver/default.nix                           && ./pin_down.js ./distros/melodic/kvh-geo-fog-3d-driver/default.nix
-# echo checking ./distros/melodic/cloudwatch-metrics-common/default.nix                       && ./pin_down.js ./distros/melodic/cloudwatch-metrics-common/default.nix
-# echo checking ./distros/melodic/mavros-msgs/default.nix                                     && ./pin_down.js ./distros/melodic/mavros-msgs/default.nix
-# echo checking ./distros/melodic/moveit-resources-pr2-description/default.nix                && ./pin_down.js ./distros/melodic/moveit-resources-pr2-description/default.nix
-# echo checking ./distros/melodic/cob-frame-tracker/default.nix                               && ./pin_down.js ./distros/melodic/cob-frame-tracker/default.nix
-# echo checking ./distros/melodic/grasping-msgs/default.nix                                   && ./pin_down.js ./distros/melodic/grasping-msgs/default.nix
-# echo checking ./distros/melodic/eml/default.nix                                             && ./pin_down.js ./distros/melodic/eml/default.nix
-# echo checking ./distros/melodic/heron-controller/default.nix                                && ./pin_down.js ./distros/melodic/heron-controller/default.nix
-# echo checking ./distros/melodic/ecl-eigen/default.nix                                       && ./pin_down.js ./distros/melodic/ecl-eigen/default.nix
-# echo checking ./distros/melodic/roscpp-tutorials/default.nix                                && ./pin_down.js ./distros/melodic/roscpp-tutorials/default.nix
-# echo checking ./distros/melodic/moveit-ros-move-group/default.nix                           && ./pin_down.js ./distros/melodic/moveit-ros-move-group/default.nix
-# echo checking ./distros/melodic/openni2-launch/default.nix                                  && ./pin_down.js ./distros/melodic/openni2-launch/default.nix
-# echo checking ./distros/melodic/openni2-camera/default.nix                                  && ./pin_down.js ./distros/melodic/openni2-camera/default.nix
-# echo checking ./distros/melodic/open-manipulator-controller/default.nix                     && ./pin_down.js ./distros/melodic/open-manipulator-controller/default.nix
-# echo checking ./distros/melodic/franka-ros/default.nix                                      && ./pin_down.js ./distros/melodic/franka-ros/default.nix
-# echo checking ./distros/melodic/pilz-industrial-motion-testutils/default.nix                && ./pin_down.js ./distros/melodic/pilz-industrial-motion-testutils/default.nix
-# echo checking ./distros/melodic/pddl-planner/default.nix                                    && ./pin_down.js ./distros/melodic/pddl-planner/default.nix
-# echo checking ./distros/melodic/rqt-common-plugins/default.nix                              && ./pin_down.js ./distros/melodic/rqt-common-plugins/default.nix
-# echo checking ./distros/melodic/rsm-additions/default.nix                                   && ./pin_down.js ./distros/melodic/rsm-additions/default.nix
-# echo checking ./distros/melodic/open-manipulator-p-controller/default.nix                   && ./pin_down.js ./distros/melodic/open-manipulator-p-controller/default.nix
-# echo checking ./distros/melodic/open-manipulator-p-simulations/default.nix                  && ./pin_down.js ./distros/melodic/open-manipulator-p-simulations/default.nix
-# echo checking ./distros/melodic/asmach/default.nix                                          && ./pin_down.js ./distros/melodic/asmach/default.nix
-# echo checking ./distros/melodic/razor-imu-9dof/default.nix                                  && ./pin_down.js ./distros/melodic/razor-imu-9dof/default.nix
-# echo checking ./distros/melodic/cob-moveit-config/default.nix                               && ./pin_down.js ./distros/melodic/cob-moveit-config/default.nix
-# echo checking ./distros/noetic/pr2-run-stop-auto-restart/default.nix                        && ./pin_down.js ./distros/noetic/pr2-run-stop-auto-restart/default.nix
-# echo checking ./distros/melodic/ouster-driver/default.nix                                   && ./pin_down.js ./distros/melodic/ouster-driver/default.nix
-# echo checking ./distros/melodic/rospack/default.nix                                         && ./pin_down.js ./distros/melodic/rospack/default.nix
-# echo checking ./distros/melodic/diagnostic-updater/default.nix                              && ./pin_down.js ./distros/melodic/diagnostic-updater/default.nix
-# echo checking ./distros/melodic/depth-image-proc/default.nix                                && ./pin_down.js ./distros/melodic/depth-image-proc/default.nix
-# echo checking ./distros/noetic/um7/default.nix                                              && ./pin_down.js ./distros/noetic/um7/default.nix
-# echo checking ./distros/noetic/ipa-differential-docking/default.nix                         && ./pin_down.js ./distros/noetic/ipa-differential-docking/default.nix
-# echo checking ./distros/melodic/pr2-mechanism-controllers/default.nix                       && ./pin_down.js ./distros/melodic/pr2-mechanism-controllers/default.nix
-# echo checking ./distros/noetic/osm-cartography/default.nix                                  && ./pin_down.js ./distros/noetic/osm-cartography/default.nix
-# echo checking ./distros/noetic/tf-remapper-cpp/default.nix                                  && ./pin_down.js ./distros/noetic/tf-remapper-cpp/default.nix
-# echo checking ./distros/noetic/laser-tilt-controller-filter/default.nix                     && ./pin_down.js ./distros/noetic/laser-tilt-controller-filter/default.nix
-# echo checking ./distros/melodic/fetchit-challenge/default.nix                               && ./pin_down.js ./distros/melodic/fetchit-challenge/default.nix
-# echo checking ./distros/noetic/diffbot-mbf/default.nix                                      && ./pin_down.js ./distros/noetic/diffbot-mbf/default.nix
-# echo checking ./distros/noetic/rc-genicam-driver/default.nix                                && ./pin_down.js ./distros/noetic/rc-genicam-driver/default.nix
-# echo checking ./distros/noetic/qb-device-utils/default.nix                                  && ./pin_down.js ./distros/noetic/qb-device-utils/default.nix
-# echo checking ./distros/noetic/rc-silhouettematch-client/default.nix                        && ./pin_down.js ./distros/noetic/rc-silhouettematch-client/default.nix
-# echo checking ./distros/noetic/cob-gazebo-objects/default.nix                               && ./pin_down.js ./distros/noetic/cob-gazebo-objects/default.nix
-# echo checking ./distros/noetic/dbw-polaris-description/default.nix                          && ./pin_down.js ./distros/noetic/dbw-polaris-description/default.nix
-# echo checking ./distros/noetic/ompl/default.nix                                             && ./pin_down.js ./distros/noetic/ompl/default.nix
-# echo checking ./distros/noetic/arbotix-msgs/default.nix                                     && ./pin_down.js ./distros/noetic/arbotix-msgs/default.nix
-# echo checking ./distros/noetic/rqt-py-common/default.nix                                    && ./pin_down.js ./distros/noetic/rqt-py-common/default.nix
-# echo checking ./distros/noetic/rosgraph-msgs/default.nix                                    && ./pin_down.js ./distros/noetic/rosgraph-msgs/default.nix
-# echo checking ./distros/noetic/arbotix-firmware/default.nix                                 && ./pin_down.js ./distros/noetic/arbotix-firmware/default.nix
-# echo checking ./distros/noetic/sick-scan/default.nix                                        && ./pin_down.js ./distros/noetic/sick-scan/default.nix
-# echo checking ./distros/noetic/fmi-adapter-examples/default.nix                             && ./pin_down.js ./distros/noetic/fmi-adapter-examples/default.nix
-# echo checking ./distros/noetic/scaled-controllers/default.nix                               && ./pin_down.js ./distros/noetic/scaled-controllers/default.nix
-# echo checking ./distros/noetic/camera-calibration-parsers/default.nix                       && ./pin_down.js ./distros/noetic/camera-calibration-parsers/default.nix
-# echo checking ./distros/noetic/rosbag-snapshot-msgs/default.nix                             && ./pin_down.js ./distros/noetic/rosbag-snapshot-msgs/default.nix
-# echo checking ./distros/noetic/cob-safety-controller/default.nix                            && ./pin_down.js ./distros/noetic/cob-safety-controller/default.nix
-# echo checking ./distros/noetic/paho-mqtt-cpp/default.nix                                    && ./pin_down.js ./distros/noetic/paho-mqtt-cpp/default.nix
-# echo checking ./distros/noetic/control-toolbox/default.nix                                  && ./pin_down.js ./distros/noetic/control-toolbox/default.nix
-# echo checking ./distros/noetic/rosbag-storage/default.nix                                   && ./pin_down.js ./distros/noetic/rosbag-storage/default.nix
-# echo checking ./distros/noetic/roslisp/default.nix                                          && ./pin_down.js ./distros/noetic/roslisp/default.nix
-# echo checking ./distros/noetic/laser-assembler/default.nix                                  && ./pin_down.js ./distros/noetic/laser-assembler/default.nix
-# echo checking ./distros/noetic/rqt-shell/default.nix                                        && ./pin_down.js ./distros/noetic/rqt-shell/default.nix
-# echo checking ./distros/noetic/driver-common/default.nix                                    && ./pin_down.js ./distros/noetic/driver-common/default.nix
-# echo checking ./distros/noetic/rospy/default.nix                                            && ./pin_down.js ./distros/noetic/rospy/default.nix
-# echo checking ./distros/noetic/test-mavros/default.nix                                      && ./pin_down.js ./distros/noetic/test-mavros/default.nix
-# echo checking ./distros/noetic/cob-gazebo-worlds/default.nix                                && ./pin_down.js ./distros/noetic/cob-gazebo-worlds/default.nix
-# echo checking ./distros/noetic/perception-pcl/default.nix                                   && ./pin_down.js ./distros/noetic/perception-pcl/default.nix
-# echo checking ./distros/noetic/cob-relayboard/default.nix                                   && ./pin_down.js ./distros/noetic/cob-relayboard/default.nix
-# echo checking ./distros/melodic/usb-cam-hardware/default.nix                                && ./pin_down.js ./distros/melodic/usb-cam-hardware/default.nix
-# echo checking ./distros/noetic/exotica-pendulum-dynamics-solver/default.nix                 && ./pin_down.js ./distros/noetic/exotica-pendulum-dynamics-solver/default.nix
-# echo checking ./distros/melodic/rr-openrover-simulation/default.nix                         && ./pin_down.js ./distros/melodic/rr-openrover-simulation/default.nix
-# echo checking ./distros/melodic/eigen-stl-containers/default.nix                            && ./pin_down.js ./distros/melodic/eigen-stl-containers/default.nix
-# echo checking ./distros/melodic/ecl-core/default.nix                                        && ./pin_down.js ./distros/melodic/ecl-core/default.nix
-# echo checking ./distros/melodic/franka-control/default.nix                                  && ./pin_down.js ./distros/melodic/franka-control/default.nix
-# echo checking ./distros/melodic/ifm3d-core/default.nix                                      && ./pin_down.js ./distros/melodic/ifm3d-core/default.nix
-# echo checking ./distros/melodic/pilz-trajectory-generation/default.nix                      && ./pin_down.js ./distros/melodic/pilz-trajectory-generation/default.nix
-# echo checking ./distros/melodic/marti-common-msgs/default.nix                               && ./pin_down.js ./distros/melodic/marti-common-msgs/default.nix
-# echo checking ./distros/melodic/joy-listener/default.nix                                    && ./pin_down.js ./distros/melodic/joy-listener/default.nix
-# echo checking ./distros/melodic/pr2-navigation-local/default.nix                            && ./pin_down.js ./distros/melodic/pr2-navigation-local/default.nix
-# echo checking ./distros/melodic/nextage-ros-bridge/default.nix                              && ./pin_down.js ./distros/melodic/nextage-ros-bridge/default.nix
-# echo checking ./distros/melodic/sick-safetyscanners/default.nix                             && ./pin_down.js ./distros/melodic/sick-safetyscanners/default.nix
-# echo checking ./distros/melodic/igvc-self-drive-gazebo/default.nix                          && ./pin_down.js ./distros/melodic/igvc-self-drive-gazebo/default.nix
-# echo checking ./distros/melodic/carrot-planner/default.nix                                  && ./pin_down.js ./distros/melodic/carrot-planner/default.nix
-# echo checking ./distros/melodic/abb-rapid-msgs/default.nix                                  && ./pin_down.js ./distros/melodic/abb-rapid-msgs/default.nix
-# echo checking ./distros/melodic/pr2-self-test-msgs/default.nix                              && ./pin_down.js ./distros/melodic/pr2-self-test-msgs/default.nix
-# echo checking ./distros/noetic/ecl-config/default.nix                                       && ./pin_down.js ./distros/noetic/ecl-config/default.nix
-# echo checking ./distros/melodic/microstrain-3dmgx2-imu/default.nix                          && ./pin_down.js ./distros/melodic/microstrain-3dmgx2-imu/default.nix
-# echo checking ./distros/melodic/moveit-kinematics/default.nix                               && ./pin_down.js ./distros/melodic/moveit-kinematics/default.nix
-# echo checking ./distros/melodic/fuse-variables/default.nix                                  && ./pin_down.js ./distros/melodic/fuse-variables/default.nix
-# echo checking ./distros/melodic/uuv-gazebo-plugins/default.nix                              && ./pin_down.js ./distros/melodic/uuv-gazebo-plugins/default.nix
-# echo checking ./distros/melodic/rocon-semantic-version/default.nix                          && ./pin_down.js ./distros/melodic/rocon-semantic-version/default.nix
-# echo checking ./distros/melodic/mbf-costmap-nav/default.nix                                 && ./pin_down.js ./distros/melodic/mbf-costmap-nav/default.nix
-# echo checking ./distros/melodic/open-manipulator-with-tb3-waffle-moveit/default.nix         && ./pin_down.js ./distros/melodic/open-manipulator-with-tb3-waffle-moveit/default.nix
-# echo checking ./distros/noetic/ur-gazebo/default.nix                                        && ./pin_down.js ./distros/noetic/ur-gazebo/default.nix
-# echo checking ./distros/melodic/gmapping/default.nix                                        && ./pin_down.js ./distros/melodic/gmapping/default.nix
-# echo checking ./distros/noetic/cmvision/default.nix                                         && ./pin_down.js ./distros/noetic/cmvision/default.nix
-# echo checking ./distros/noetic/interactive-marker-twist-server/default.nix                  && ./pin_down.js ./distros/noetic/interactive-marker-twist-server/default.nix
-# echo checking ./distros/noetic/eus-qpoases/default.nix                                      && ./pin_down.js ./distros/noetic/eus-qpoases/default.nix
-# echo checking ./distros/noetic/rm-calibration-controllers/default.nix                       && ./pin_down.js ./distros/noetic/rm-calibration-controllers/default.nix
-# echo checking ./distros/noetic/mesh-map/default.nix                                         && ./pin_down.js ./distros/noetic/mesh-map/default.nix
-# echo checking ./distros/noetic/mrpt-slam/default.nix                                        && ./pin_down.js ./distros/noetic/mrpt-slam/default.nix
-# echo checking ./distros/noetic/usb-cam-controllers/default.nix                              && ./pin_down.js ./distros/noetic/usb-cam-controllers/default.nix
-# echo checking ./distros/noetic/pilz-control/default.nix                                     && ./pin_down.js ./distros/noetic/pilz-control/default.nix
-# echo checking ./distros/noetic/rokubimini-description/default.nix                           && ./pin_down.js ./distros/noetic/rokubimini-description/default.nix
-# echo checking ./distros/noetic/nav-grid-server/default.nix                                  && ./pin_down.js ./distros/noetic/nav-grid-server/default.nix
-# echo checking ./distros/noetic/diff-drive-controller/default.nix                            && ./pin_down.js ./distros/noetic/diff-drive-controller/default.nix
-# echo checking ./distros/noetic/fetch-drivers/default.nix                                    && ./pin_down.js ./distros/noetic/fetch-drivers/default.nix
-# echo checking ./distros/noetic/flexbe-core/default.nix                                      && ./pin_down.js ./distros/noetic/flexbe-core/default.nix
-# echo checking ./distros/noetic/cob-phidget-em-state/default.nix                             && ./pin_down.js ./distros/noetic/cob-phidget-em-state/default.nix
-# echo checking ./distros/melodic/urdfdom-py/default.nix                                      && ./pin_down.js ./distros/melodic/urdfdom-py/default.nix
-# echo checking ./distros/melodic/scan-tools/default.nix                                      && ./pin_down.js ./distros/melodic/scan-tools/default.nix
-# echo checking ./distros/melodic/pf-description/default.nix                                  && ./pin_down.js ./distros/melodic/pf-description/default.nix
-# echo checking ./distros/melodic/ixblue-ins-driver/default.nix                               && ./pin_down.js ./distros/melodic/ixblue-ins-driver/default.nix
-# echo checking ./distros/melodic/moveit-runtime/default.nix                                  && ./pin_down.js ./distros/melodic/moveit-runtime/default.nix
-# echo checking ./distros/melodic/parameter-assertions/default.nix                            && ./pin_down.js ./distros/melodic/parameter-assertions/default.nix
-# echo checking ./distros/melodic/uuv-simulator/default.nix                                   && ./pin_down.js ./distros/melodic/uuv-simulator/default.nix
-# echo checking ./distros/melodic/ros-babel-fish/default.nix                                  && ./pin_down.js ./distros/melodic/ros-babel-fish/default.nix
-# echo checking ./distros/melodic/rr-openrover-stack/default.nix                              && ./pin_down.js ./distros/melodic/rr-openrover-stack/default.nix
-# echo checking ./distros/melodic/um6/default.nix                                             && ./pin_down.js ./distros/melodic/um6/default.nix
-# echo checking ./distros/melodic/naoqi-libqi/default.nix                                     && ./pin_down.js ./distros/melodic/naoqi-libqi/default.nix
-# echo checking ./distros/melodic/franka-msgs/default.nix                                     && ./pin_down.js ./distros/melodic/franka-msgs/default.nix
-# echo checking ./distros/melodic/omnibase-description/default.nix                            && ./pin_down.js ./distros/melodic/omnibase-description/default.nix
-# echo checking ./distros/melodic/geometry2/default.nix                                       && ./pin_down.js ./distros/melodic/geometry2/default.nix
-# echo checking ./distros/melodic/dataspeed-can/default.nix                                   && ./pin_down.js ./distros/melodic/dataspeed-can/default.nix
-# echo checking ./distros/melodic/robot-one/default.nix                                       && ./pin_down.js ./distros/melodic/robot-one/default.nix
-# echo checking ./distros/melodic/khi-robot-bringup/default.nix                               && ./pin_down.js ./distros/melodic/khi-robot-bringup/default.nix
-# echo checking ./distros/melodic/smach-ros/default.nix                                       && ./pin_down.js ./distros/melodic/smach-ros/default.nix
-# echo checking ./distros/melodic/moveit-planners-ompl/default.nix                            && ./pin_down.js ./distros/melodic/moveit-planners-ompl/default.nix
-# echo checking ./distros/melodic/jsk-footstep-controller/default.nix                         && ./pin_down.js ./distros/melodic/jsk-footstep-controller/default.nix
-# echo checking ./distros/melodic/hebi-description/default.nix                                && ./pin_down.js ./distros/melodic/hebi-description/default.nix
-# echo checking ./distros/noetic/pose-base-controller/default.nix                             && ./pin_down.js ./distros/noetic/pose-base-controller/default.nix
-# echo checking ./distros/noetic/vrpn-client-ros/default.nix                                  && ./pin_down.js ./distros/noetic/vrpn-client-ros/default.nix
-# echo checking ./distros/noetic/cob-android-resource-server/default.nix                      && ./pin_down.js ./distros/noetic/cob-android-resource-server/default.nix
-# echo checking ./distros/noetic/diffbot-msgs/default.nix                                     && ./pin_down.js ./distros/noetic/diffbot-msgs/default.nix
-# echo checking ./distros/noetic/joint-state-publisher-gui/default.nix                        && ./pin_down.js ./distros/noetic/joint-state-publisher-gui/default.nix
-# echo checking ./distros/noetic/jsk-footstep-planner/default.nix                             && ./pin_down.js ./distros/noetic/jsk-footstep-planner/default.nix
-# echo checking ./distros/noetic/ncd-parser/default.nix                                       && ./pin_down.js ./distros/noetic/ncd-parser/default.nix
-# echo checking ./distros/noetic/mrpt-local-obstacles/default.nix                             && ./pin_down.js ./distros/noetic/mrpt-local-obstacles/default.nix
-# echo checking ./distros/noetic/pr2-power-board/default.nix                                  && ./pin_down.js ./distros/noetic/pr2-power-board/default.nix
-# echo checking ./distros/noetic/mir-msgs/default.nix                                         && ./pin_down.js ./distros/noetic/mir-msgs/default.nix
-# echo checking ./distros/melodic/robosense-simulator/default.nix                             && ./pin_down.js ./distros/melodic/robosense-simulator/default.nix
-# echo checking ./distros/melodic/laser-filters/default.nix                                   && ./pin_down.js ./distros/melodic/laser-filters/default.nix
-# echo checking ./distros/melodic/cob-bms-driver/default.nix                                  && ./pin_down.js ./distros/melodic/cob-bms-driver/default.nix
-# echo checking ./distros/melodic/rdl-urdfreader/default.nix                                  && ./pin_down.js ./distros/melodic/rdl-urdfreader/default.nix
-# echo checking ./distros/melodic/rotate-recovery/default.nix                                 && ./pin_down.js ./distros/melodic/rotate-recovery/default.nix
-# echo checking ./distros/noetic/leo-example-line-follower/default.nix                        && ./pin_down.js ./distros/noetic/leo-example-line-follower/default.nix
-# echo checking ./distros/noetic/rosunit/default.nix                                          && ./pin_down.js ./distros/noetic/rosunit/default.nix
-# echo checking ./distros/noetic/gazebo-ros-control-select-joints/default.nix                 && ./pin_down.js ./distros/noetic/gazebo-ros-control-select-joints/default.nix
-# echo checking ./distros/noetic/exotica-aico-solver/default.nix                              && ./pin_down.js ./distros/noetic/exotica-aico-solver/default.nix
-# echo checking ./distros/noetic/abb-rapid-sm-addin-msgs/default.nix                          && ./pin_down.js ./distros/noetic/abb-rapid-sm-addin-msgs/default.nix
-# echo checking ./distros/noetic/rosserial-client/default.nix                                 && ./pin_down.js ./distros/noetic/rosserial-client/default.nix
-# echo checking ./distros/noetic/sot-tools/default.nix                                        && ./pin_down.js ./distros/noetic/sot-tools/default.nix
-# echo checking ./distros/noetic/automotive-autonomy-msgs/default.nix                         && ./pin_down.js ./distros/noetic/automotive-autonomy-msgs/default.nix
-# echo checking ./distros/noetic/drone-wrapper/default.nix                                    && ./pin_down.js ./distros/noetic/drone-wrapper/default.nix
-# echo checking ./distros/noetic/jsk-rviz-plugins/default.nix                                 && ./pin_down.js ./distros/noetic/jsk-rviz-plugins/default.nix
-# echo checking ./distros/noetic/convex-decomposition/default.nix                             && ./pin_down.js ./distros/noetic/convex-decomposition/default.nix
-# echo checking ./distros/noetic/teleop-tools-msgs/default.nix                                && ./pin_down.js ./distros/noetic/teleop-tools-msgs/default.nix
-# echo checking ./distros/noetic/slam-toolbox-rviz/default.nix                                && ./pin_down.js ./distros/noetic/slam-toolbox-rviz/default.nix
-# echo checking ./distros/noetic/bota-worker/default.nix                                      && ./pin_down.js ./distros/noetic/bota-worker/default.nix
-# echo checking ./distros/noetic/rosping/default.nix                                          && ./pin_down.js ./distros/noetic/rosping/default.nix
-# echo checking ./distros/melodic/genlisp/default.nix                                         && ./pin_down.js ./distros/melodic/genlisp/default.nix
-# echo checking ./distros/noetic/joy-teleop/default.nix                                       && ./pin_down.js ./distros/noetic/joy-teleop/default.nix
-# echo checking ./distros/noetic/mir-actions/default.nix                                      && ./pin_down.js ./distros/noetic/mir-actions/default.nix
-# echo checking ./distros/noetic/fetch-auto-dock-msgs/default.nix                             && ./pin_down.js ./distros/noetic/fetch-auto-dock-msgs/default.nix
-# echo checking ./distros/noetic/swri-profiler-msgs/default.nix                               && ./pin_down.js ./distros/noetic/swri-profiler-msgs/default.nix
-# echo checking ./distros/noetic/swri-math-util/default.nix                                   && ./pin_down.js ./distros/noetic/swri-math-util/default.nix
-# echo checking ./distros/noetic/phidgets-temperature/default.nix                             && ./pin_down.js ./distros/noetic/phidgets-temperature/default.nix
-# echo checking ./distros/noetic/marti-perception-msgs/default.nix                            && ./pin_down.js ./distros/noetic/marti-perception-msgs/default.nix
-# echo checking ./distros/melodic/rc-reason-msgs/default.nix                                  && ./pin_down.js ./distros/melodic/rc-reason-msgs/default.nix
-# echo checking ./distros/noetic/mesh-msgs-hdf5/default.nix                                   && ./pin_down.js ./distros/noetic/mesh-msgs-hdf5/default.nix
-# echo checking ./distros/noetic/mcl-3dl/default.nix                                          && ./pin_down.js ./distros/noetic/mcl-3dl/default.nix
-# echo checking ./distros/noetic/gencpp/default.nix                                           && ./pin_down.js ./distros/noetic/gencpp/default.nix
-# echo checking ./distros/noetic/jsk-footstep-msgs/default.nix                                && ./pin_down.js ./distros/noetic/jsk-footstep-msgs/default.nix
-# echo checking ./distros/noetic/voxel-grid/default.nix                                       && ./pin_down.js ./distros/noetic/voxel-grid/default.nix
-# echo checking ./distros/noetic/exotica-ompl-solver/default.nix                              && ./pin_down.js ./distros/noetic/exotica-ompl-solver/default.nix
-# echo checking ./distros/noetic/rviz-visual-tools/default.nix                                && ./pin_down.js ./distros/noetic/rviz-visual-tools/default.nix
-# echo checking ./distros/noetic/vision-opencv/default.nix                                    && ./pin_down.js ./distros/noetic/vision-opencv/default.nix
-# echo checking ./distros/noetic/diagnostic-analysis/default.nix                              && ./pin_down.js ./distros/noetic/diagnostic-analysis/default.nix
-# echo checking ./distros/noetic/diagnostic-common-diagnostics/default.nix                    && ./pin_down.js ./distros/noetic/diagnostic-common-diagnostics/default.nix
-# echo checking ./distros/noetic/pcl-ros/default.nix                                          && ./pin_down.js ./distros/noetic/pcl-ros/default.nix
-# echo checking ./distros/noetic/urdf-tutorial/default.nix                                    && ./pin_down.js ./distros/noetic/urdf-tutorial/default.nix
-# echo checking ./distros/noetic/robot-localization/default.nix                               && ./pin_down.js ./distros/noetic/robot-localization/default.nix
-# echo checking ./distros/noetic/imagezero-ros/default.nix                                    && ./pin_down.js ./distros/noetic/imagezero-ros/default.nix
-# echo checking ./distros/noetic/compressed-image-transport/default.nix                       && ./pin_down.js ./distros/noetic/compressed-image-transport/default.nix
-# echo checking ./distros/noetic/map-msgs/default.nix                                         && ./pin_down.js ./distros/noetic/map-msgs/default.nix
-# echo checking ./distros/noetic/turtle-actionlib/default.nix                                 && ./pin_down.js ./distros/noetic/turtle-actionlib/default.nix
-# echo checking ./distros/noetic/iris-lama-ros/default.nix                                    && ./pin_down.js ./distros/noetic/iris-lama-ros/default.nix
-# echo checking ./distros/noetic/moveit-ros-planning/default.nix                              && ./pin_down.js ./distros/noetic/moveit-ros-planning/default.nix
-# echo checking ./distros/noetic/leo-description/default.nix                                  && ./pin_down.js ./distros/noetic/leo-description/default.nix
-# echo checking ./distros/noetic/realtime-tools/default.nix                                   && ./pin_down.js ./distros/noetic/realtime-tools/default.nix
-# echo checking ./distros/noetic/geometry-tutorials/default.nix                               && ./pin_down.js ./distros/noetic/geometry-tutorials/default.nix
-# echo checking ./distros/noetic/nav2d-operator/default.nix                                   && ./pin_down.js ./distros/noetic/nav2d-operator/default.nix
-# echo checking ./distros/noetic/cob-teleop/default.nix                                       && ./pin_down.js ./distros/noetic/cob-teleop/default.nix
-# echo checking ./distros/noetic/qb-device-srvs/default.nix                                   && ./pin_down.js ./distros/noetic/qb-device-srvs/default.nix
-# echo checking ./distros/noetic/roslint/default.nix                                          && ./pin_down.js ./distros/noetic/roslint/default.nix
-# echo checking ./distros/noetic/ros-type-introspection/default.nix                           && ./pin_down.js ./distros/noetic/ros-type-introspection/default.nix
-# echo checking ./distros/noetic/librviz-tutorial/default.nix                                 && ./pin_down.js ./distros/noetic/librviz-tutorial/default.nix
-# echo checking ./distros/noetic/pybind11-catkin/default.nix                                  && ./pin_down.js ./distros/noetic/pybind11-catkin/default.nix
-# echo checking ./distros/noetic/qt-gui-core/default.nix                                      && ./pin_down.js ./distros/noetic/qt-gui-core/default.nix
-# echo checking ./distros/melodic/robot-nav-viz-demos/default.nix                             && ./pin_down.js ./distros/melodic/robot-nav-viz-demos/default.nix
-# echo checking ./distros/noetic/cob-default-robot-behavior/default.nix                       && ./pin_down.js ./distros/noetic/cob-default-robot-behavior/default.nix
-# echo checking ./distros/noetic/kobuki-core/default.nix                                      && ./pin_down.js ./distros/noetic/kobuki-core/default.nix
-# echo checking ./distros/noetic/moveit-ros-planning-interface/default.nix                    && ./pin_down.js ./distros/noetic/moveit-ros-planning-interface/default.nix
-# echo checking ./distros/noetic/derived-object-msgs/default.nix                              && ./pin_down.js ./distros/noetic/derived-object-msgs/default.nix
-# echo checking ./distros/melodic/laser-filtering/default.nix                                 && ./pin_down.js ./distros/melodic/laser-filtering/default.nix
-# echo checking ./distros/noetic/pr2-motor-diagnostic-tool/default.nix                        && ./pin_down.js ./distros/noetic/pr2-motor-diagnostic-tool/default.nix
-# echo checking ./distros/noetic/bota-driver-testing/default.nix                              && ./pin_down.js ./distros/noetic/bota-driver-testing/default.nix
-# echo checking ./distros/melodic/roslisp-common/default.nix                                  && ./pin_down.js ./distros/melodic/roslisp-common/default.nix
-# echo checking ./distros/melodic/grid-map-octomap/default.nix                                && ./pin_down.js ./distros/melodic/grid-map-octomap/default.nix
-# echo checking ./distros/melodic/eusurdf/default.nix                                         && ./pin_down.js ./distros/melodic/eusurdf/default.nix
-# echo checking ./distros/noetic/velodyne/default.nix                                         && ./pin_down.js ./distros/noetic/velodyne/default.nix
-# echo checking ./distros/melodic/power-monitor/default.nix                                   && ./pin_down.js ./distros/melodic/power-monitor/default.nix
-# echo checking ./distros/melodic/eus-nlopt/default.nix                                       && ./pin_down.js ./distros/melodic/eus-nlopt/default.nix
-# echo checking ./distros/melodic/turtlebot3-autorace/default.nix                             && ./pin_down.js ./distros/melodic/turtlebot3-autorace/default.nix
-# echo checking ./distros/noetic/pr2-simulator/default.nix                                    && ./pin_down.js ./distros/noetic/pr2-simulator/default.nix
-# echo checking ./distros/melodic/nonpersistent-voxel-layer/default.nix                       && ./pin_down.js ./distros/melodic/nonpersistent-voxel-layer/default.nix
-# echo checking ./distros/melodic/mpc-local-planner-examples/default.nix                      && ./pin_down.js ./distros/melodic/mpc-local-planner-examples/default.nix
-# echo checking ./distros/melodic/rosbag-snapshot-msgs/default.nix                            && ./pin_down.js ./distros/melodic/rosbag-snapshot-msgs/default.nix
-# echo checking ./distros/melodic/safe-teleop-base/default.nix                                && ./pin_down.js ./distros/melodic/safe-teleop-base/default.nix
-# echo checking ./distros/melodic/rosbridge-suite/default.nix                                 && ./pin_down.js ./distros/melodic/rosbridge-suite/default.nix
-# echo checking ./distros/melodic/radial-menu-msgs/default.nix                                && ./pin_down.js ./distros/melodic/radial-menu-msgs/default.nix
-# echo checking ./distros/melodic/lauv-gazebo/default.nix                                     && ./pin_down.js ./distros/melodic/lauv-gazebo/default.nix
-# echo checking ./distros/melodic/rqt-py-common/default.nix                                   && ./pin_down.js ./distros/melodic/rqt-py-common/default.nix
-# echo checking ./distros/melodic/rosparam-shortcuts/default.nix                              && ./pin_down.js ./distros/melodic/rosparam-shortcuts/default.nix
-# echo checking ./distros/melodic/arbotix-msgs/default.nix                                    && ./pin_down.js ./distros/melodic/arbotix-msgs/default.nix
-# echo checking ./distros/melodic/rc-genicam-driver/default.nix                               && ./pin_down.js ./distros/melodic/rc-genicam-driver/default.nix
-# echo checking ./distros/melodic/ompl/default.nix                                            && ./pin_down.js ./distros/melodic/ompl/default.nix
-# echo checking ./distros/noetic/dataspeed-ulc-can/default.nix                                && ./pin_down.js ./distros/noetic/dataspeed-ulc-can/default.nix
-# echo checking ./distros/melodic/pr2-calibration/default.nix                                 && ./pin_down.js ./distros/melodic/pr2-calibration/default.nix
-# echo checking ./distros/melodic/cob-gazebo-objects/default.nix                              && ./pin_down.js ./distros/melodic/cob-gazebo-objects/default.nix
-# echo checking ./distros/melodic/scaled-controllers/default.nix                              && ./pin_down.js ./distros/melodic/scaled-controllers/default.nix
-# echo checking ./distros/melodic/navigation-tutorials/default.nix                            && ./pin_down.js ./distros/melodic/navigation-tutorials/default.nix
-# echo checking ./distros/melodic/arbotix-firmware/default.nix                                && ./pin_down.js ./distros/melodic/arbotix-firmware/default.nix
-# echo checking ./distros/melodic/sand-island/default.nix                                     && ./pin_down.js ./distros/melodic/sand-island/default.nix
-# echo checking ./distros/melodic/libqt-gui/default.nix                                       && ./pin_down.js ./distros/melodic/libqt-gui/default.nix
-# echo checking ./distros/melodic/rc-silhouettematch-client/default.nix                       && ./pin_down.js ./distros/melodic/rc-silhouettematch-client/default.nix
-# echo checking ./distros/melodic/yocs-ar-marker-tracking/default.nix                         && ./pin_down.js ./distros/melodic/yocs-ar-marker-tracking/default.nix
-# echo checking ./distros/melodic/sick-scan/default.nix                                       && ./pin_down.js ./distros/melodic/sick-scan/default.nix
-# echo checking ./distros/melodic/dbw-polaris-description/default.nix                         && ./pin_down.js ./distros/melodic/dbw-polaris-description/default.nix
-# echo checking ./distros/melodic/fmi-adapter-examples/default.nix                            && ./pin_down.js ./distros/melodic/fmi-adapter-examples/default.nix
-# echo checking ./distros/melodic/rosgraph-msgs/default.nix                                   && ./pin_down.js ./distros/melodic/rosgraph-msgs/default.nix
-# echo checking ./distros/melodic/libqt-core/default.nix                                      && ./pin_down.js ./distros/melodic/libqt-core/default.nix
-# echo checking ./distros/melodic/camera-calibration-parsers/default.nix                      && ./pin_down.js ./distros/melodic/camera-calibration-parsers/default.nix
-# echo checking ./distros/melodic/cob-safety-controller/default.nix                           && ./pin_down.js ./distros/melodic/cob-safety-controller/default.nix
-# echo checking ./distros/melodic/rosbag-storage/default.nix                                  && ./pin_down.js ./distros/melodic/rosbag-storage/default.nix
-# echo checking ./distros/melodic/cob-substitute/default.nix                                  && ./pin_down.js ./distros/melodic/cob-substitute/default.nix
-# echo checking ./distros/melodic/simple-navigation-goals-tutorial/default.nix                && ./pin_down.js ./distros/melodic/simple-navigation-goals-tutorial/default.nix
-# echo checking ./distros/melodic/roslisp/default.nix                                         && ./pin_down.js ./distros/melodic/roslisp/default.nix
-# echo checking ./distros/melodic/rocon-tools/default.nix                                     && ./pin_down.js ./distros/melodic/rocon-tools/default.nix
-# echo checking ./distros/melodic/moose-msgs/default.nix                                      && ./pin_down.js ./distros/melodic/moose-msgs/default.nix
-# echo checking ./distros/melodic/control-toolbox/default.nix                                 && ./pin_down.js ./distros/melodic/control-toolbox/default.nix
-# echo checking ./distros/melodic/pddl-planner-viewer/default.nix                             && ./pin_down.js ./distros/melodic/pddl-planner-viewer/default.nix
-# echo checking ./distros/melodic/laser-assembler/default.nix                                 && ./pin_down.js ./distros/melodic/laser-assembler/default.nix
-# echo checking ./distros/melodic/driver-common/default.nix                                   && ./pin_down.js ./distros/melodic/driver-common/default.nix
-# echo checking ./distros/melodic/heron-simulator/default.nix                                 && ./pin_down.js ./distros/melodic/heron-simulator/default.nix
-# echo checking ./distros/melodic/rqt-shell/default.nix                                       && ./pin_down.js ./distros/melodic/rqt-shell/default.nix
-# echo checking ./distros/melodic/test-mavros/default.nix                                     && ./pin_down.js ./distros/melodic/test-mavros/default.nix
-# echo checking ./distros/melodic/people-msgs/default.nix                                     && ./pin_down.js ./distros/melodic/people-msgs/default.nix
-# echo checking ./distros/melodic/cob-gazebo-worlds/default.nix                               && ./pin_down.js ./distros/melodic/cob-gazebo-worlds/default.nix
-# echo checking ./distros/melodic/rospy/default.nix                                           && ./pin_down.js ./distros/melodic/rospy/default.nix
-# echo checking ./distros/melodic/exotica-pendulum-dynamics-solver/default.nix                && ./pin_down.js ./distros/melodic/exotica-pendulum-dynamics-solver/default.nix
-# echo checking ./distros/melodic/cob-relayboard/default.nix                                  && ./pin_down.js ./distros/melodic/cob-relayboard/default.nix
-# echo checking ./distros/melodic/perception-pcl/default.nix                                  && ./pin_down.js ./distros/melodic/perception-pcl/default.nix
-# echo checking ./distros/melodic/asmach-tutorials/default.nix                                && ./pin_down.js ./distros/melodic/asmach-tutorials/default.nix
-# echo checking ./distros/melodic/mrp2-teleop/default.nix                                     && ./pin_down.js ./distros/melodic/mrp2-teleop/default.nix
-# echo checking ./distros/melodic/aws-ros1-common/default.nix                                 && ./pin_down.js ./distros/melodic/aws-ros1-common/default.nix
-# echo checking ./distros/melodic/hostapd-access-point/default.nix                            && ./pin_down.js ./distros/melodic/hostapd-access-point/default.nix
-# echo checking ./distros/melodic/dwb-msgs/default.nix                                        && ./pin_down.js ./distros/melodic/dwb-msgs/default.nix
-# echo checking ./distros/melodic/audibot/default.nix                                         && ./pin_down.js ./distros/melodic/audibot/default.nix
-# echo checking ./distros/melodic/rc-genicam-api/default.nix                                  && ./pin_down.js ./distros/melodic/rc-genicam-api/default.nix
-# echo checking ./distros/melodic/sick-tim/default.nix                                        && ./pin_down.js ./distros/melodic/sick-tim/default.nix
-# echo checking ./distros/melodic/rocon-python-redis/default.nix                              && ./pin_down.js ./distros/melodic/rocon-python-redis/default.nix
-# echo checking ./distros/melodic/industrial-deprecated/default.nix                           && ./pin_down.js ./distros/melodic/industrial-deprecated/default.nix
-# echo checking ./distros/melodic/pilz-industrial-motion/default.nix                          && ./pin_down.js ./distros/melodic/pilz-industrial-motion/default.nix
-# echo checking ./distros/melodic/exotica-ilqr-solver/default.nix                             && ./pin_down.js ./distros/melodic/exotica-ilqr-solver/default.nix
+echo checking ./default.nix                                                                 && ./pin_down.js ./default.nix
+echo checking ./modules/default.nix                                                         && ./pin_down.js ./modules/default.nix
+echo checking ./lib/default.nix                                                             && ./pin_down.js ./lib/default.nix
+echo checking ./distros/catkin-setup-hook/default.nix                                       && ./pin_down.js ./distros/catkin-setup-hook/default.nix
+echo checking ./pkgs/bson/default.nix                                                       && ./pin_down.js ./pkgs/bson/default.nix
+echo checking ./pkgs/rosdep/default.nix                                                     && ./pin_down.js ./pkgs/rosdep/default.nix
+echo checking ./pkgs/rosdistro/default.nix                                                  && ./pin_down.js ./pkgs/rosdistro/default.nix
+echo checking ./pkgs/sdformat/default.nix                                                   && ./pin_down.js ./pkgs/sdformat/default.nix
+echo checking ./pkgs/osrf-pycommon/default.nix                                              && ./pin_down.js ./pkgs/osrf-pycommon/default.nix
+echo checking ./pkgs/openni2/default.nix                                                    && ./pin_down.js ./pkgs/openni2/default.nix
+echo checking ./pkgs/superflore/default.nix                                                 && ./pin_down.js ./pkgs/superflore/default.nix
+echo checking ./pkgs/default.nix                                                            && ./pin_down.js ./pkgs/default.nix
+echo checking ./pkgs/catkin-pkg/default.nix                                                 && ./pin_down.js ./pkgs/catkin-pkg/default.nix
+echo checking ./pkgs/rosidl-generator-rs/default.nix                                        && ./pin_down.js ./pkgs/rosidl-generator-rs/default.nix
+echo checking ./pkgs/geographiclib/default.nix                                              && ./pin_down.js ./pkgs/geographiclib/default.nix
+echo checking ./pkgs/rosinstall-generator/default.nix                                       && ./pin_down.js ./pkgs/rosinstall-generator/default.nix
+echo checking ./pkgs/ignition/fuel-tools/default.nix                                        && ./pin_down.js ./pkgs/ignition/fuel-tools/default.nix
+echo checking ./pkgs/ignition/msgs/default.nix                                              && ./pin_down.js ./pkgs/ignition/msgs/default.nix
+echo checking ./pkgs/ignition/common/default.nix                                            && ./pin_down.js ./pkgs/ignition/common/default.nix
+echo checking ./pkgs/ignition/cmake/default.nix                                             && ./pin_down.js ./pkgs/ignition/cmake/default.nix
+echo checking ./pkgs/ignition/transport/default.nix                                         && ./pin_down.js ./pkgs/ignition/transport/default.nix
+echo checking ./pkgs/ignition/utils/default.nix                                             && ./pin_down.js ./pkgs/ignition/utils/default.nix
+echo checking ./pkgs/ignition/math/default.nix                                              && ./pin_down.js ./pkgs/ignition/math/default.nix
+echo checking ./pkgs/ignition/tools/default.nix                                             && ./pin_down.js ./pkgs/ignition/tools/default.nix
+echo checking ./pkgs/gazebo/default.nix                                                     && ./pin_down.js ./pkgs/gazebo/default.nix
+echo checking ./pkgs/rospkg/default.nix                                                     && ./pin_down.js ./pkgs/rospkg/default.nix
+echo checking ./pkgs/cargo-ament-build/default.nix                                          && ./pin_down.js ./pkgs/cargo-ament-build/default.nix
+echo checking ./pkgs/catkin-tools/default.nix                                               && ./pin_down.js ./pkgs/catkin-tools/default.nix
+echo checking ./pkgs/opensplice/default.nix                                                 && ./pin_down.js ./pkgs/opensplice/default.nix
+echo checking ./distros/default.nix                                                         && ./pin_down.js ./distros/default.nix
+echo checking ./distros/ament-cmake-core-setup-hook/default.nix                             && ./pin_down.js ./distros/ament-cmake-core-setup-hook/default.nix
+echo checking ./distros/build-ros-package/default.nix                                       && ./pin_down.js ./distros/build-ros-package/default.nix
+echo checking ./distros/build-env/default.nix                                               && ./pin_down.js ./distros/build-env/default.nix
+echo checking ./distros/rolling/unique-identifier-msgs/default.nix                          && ./pin_down.js ./distros/rolling/unique-identifier-msgs/default.nix
+echo checking ./distros/rolling/examples-rclcpp-wait-set/default.nix                        && ./pin_down.js ./distros/rolling/examples-rclcpp-wait-set/default.nix
+echo checking ./distros/melodic/costmap-cspace-rviz-plugins/default.nix                     && ./pin_down.js ./distros/melodic/costmap-cspace-rviz-plugins/default.nix
+echo checking ./distros/rolling/ros2launch/default.nix                                      && ./pin_down.js ./distros/rolling/ros2launch/default.nix
+echo checking ./distros/rolling/examples-rclpy-minimal-action-client/default.nix            && ./pin_down.js ./distros/rolling/examples-rclpy-minimal-action-client/default.nix
+echo checking ./distros/melodic/tile-map/default.nix                                        && ./pin_down.js ./distros/melodic/tile-map/default.nix
+echo checking ./distros/melodic/lanelet2-examples/default.nix                               && ./pin_down.js ./distros/melodic/lanelet2-examples/default.nix
+echo checking ./distros/melodic/turtlebot3-autorace-detect/default.nix                      && ./pin_down.js ./distros/melodic/turtlebot3-autorace-detect/default.nix
+echo checking ./distros/melodic/mrpt-sensorlib/default.nix                                  && ./pin_down.js ./distros/melodic/mrpt-sensorlib/default.nix
+echo checking ./distros/melodic/image-pipeline/default.nix                                  && ./pin_down.js ./distros/melodic/image-pipeline/default.nix
+echo checking ./distros/melodic/roseus-smach/default.nix                                    && ./pin_down.js ./distros/melodic/roseus-smach/default.nix
+echo checking ./distros/melodic/nav-2d-msgs/default.nix                                     && ./pin_down.js ./distros/melodic/nav-2d-msgs/default.nix
+echo checking ./distros/melodic/robosense-description/default.nix                           && ./pin_down.js ./distros/melodic/robosense-description/default.nix
+echo checking ./distros/melodic/foxglove-bridge/default.nix                                 && ./pin_down.js ./distros/melodic/foxglove-bridge/default.nix
+echo checking ./distros/melodic/hdf5-map-io/default.nix                                     && ./pin_down.js ./distros/melodic/hdf5-map-io/default.nix
+echo checking ./distros/melodic/novatel-gps-driver/default.nix                              && ./pin_down.js ./distros/melodic/novatel-gps-driver/default.nix
+echo checking ./distros/melodic/scan-to-cloud-converter/default.nix                         && ./pin_down.js ./distros/melodic/scan-to-cloud-converter/default.nix
+echo checking ./distros/galactic/mapviz-plugins/default.nix                                 && ./pin_down.js ./distros/galactic/mapviz-plugins/default.nix
+echo checking ./distros/humble/turtlesim/default.nix                                        && ./pin_down.js ./distros/humble/turtlesim/default.nix
+echo checking ./distros/galactic/velocity-controllers/default.nix                           && ./pin_down.js ./distros/galactic/velocity-controllers/default.nix
+echo checking ./distros/galactic/marti-visualization-msgs/default.nix                       && ./pin_down.js ./distros/galactic/marti-visualization-msgs/default.nix
+echo checking ./distros/humble/aws-robomaker-small-warehouse-world/default.nix              && ./pin_down.js ./distros/humble/aws-robomaker-small-warehouse-world/default.nix
+echo checking ./distros/humble/grid-map-loader/default.nix                                  && ./pin_down.js ./distros/humble/grid-map-loader/default.nix
+echo checking ./distros/humble/pybind11-vendor/default.nix                                  && ./pin_down.js ./distros/humble/pybind11-vendor/default.nix
+echo checking ./distros/humble/plotjuggler-ros/default.nix                                  && ./pin_down.js ./distros/humble/plotjuggler-ros/default.nix
+echo checking ./distros/humble/behaviortree-cpp-v3/default.nix                              && ./pin_down.js ./distros/humble/behaviortree-cpp-v3/default.nix
+echo checking ./distros/humble/domain-bridge/default.nix                                    && ./pin_down.js ./distros/humble/domain-bridge/default.nix
+echo checking ./distros/humble/rosidl-adapter/default.nix                                   && ./pin_down.js ./distros/humble/rosidl-adapter/default.nix
+echo checking ./distros/humble/libyaml-vendor/default.nix                                   && ./pin_down.js ./distros/humble/libyaml-vendor/default.nix
+echo checking ./distros/humble/serial-driver/default.nix                                    && ./pin_down.js ./distros/humble/serial-driver/default.nix
+echo checking ./distros/humble/rmf-site-map-msgs/default.nix                                && ./pin_down.js ./distros/humble/rmf-site-map-msgs/default.nix
+echo checking ./distros/humble/tracetools-image-pipeline/default.nix                        && ./pin_down.js ./distros/humble/tracetools-image-pipeline/default.nix
+echo checking ./distros/humble/examples-rclcpp-minimal-client/default.nix                   && ./pin_down.js ./distros/humble/examples-rclcpp-minimal-client/default.nix
+echo checking ./distros/humble/phidgets-high-speed-encoder/default.nix                      && ./pin_down.js ./distros/humble/phidgets-high-speed-encoder/default.nix
+echo checking ./distros/humble/nav2-dwb-controller/default.nix                              && ./pin_down.js ./distros/humble/nav2-dwb-controller/default.nix
+echo checking ./distros/foxy/sensor-msgs-py/default.nix                                     && ./pin_down.js ./distros/foxy/sensor-msgs-py/default.nix
+echo checking ./distros/foxy/turtlebot3-description/default.nix                             && ./pin_down.js ./distros/foxy/turtlebot3-description/default.nix
+echo checking ./distros/foxy/ament-cmake-export-definitions/default.nix                     && ./pin_down.js ./distros/foxy/ament-cmake-export-definitions/default.nix
+echo checking ./distros/foxy/plotjuggler-ros/default.nix                                    && ./pin_down.js ./distros/foxy/plotjuggler-ros/default.nix
+echo checking ./distros/foxy/moveit-servo/default.nix                                       && ./pin_down.js ./distros/foxy/moveit-servo/default.nix
+echo checking ./distros/foxy/behaviortree-cpp-v3/default.nix                                && ./pin_down.js ./distros/foxy/behaviortree-cpp-v3/default.nix
+echo checking ./distros/foxy/nav2-dwb-controller/default.nix                                && ./pin_down.js ./distros/foxy/nav2-dwb-controller/default.nix
+echo checking ./distros/foxy/rosidl-adapter/default.nix                                     && ./pin_down.js ./distros/foxy/rosidl-adapter/default.nix
+echo checking ./distros/foxy/pybind11-vendor/default.nix                                    && ./pin_down.js ./distros/foxy/pybind11-vendor/default.nix
+echo checking ./distros/foxy/libyaml-vendor/default.nix                                     && ./pin_down.js ./distros/foxy/libyaml-vendor/default.nix
+echo checking ./distros/foxy/serial-driver/default.nix                                      && ./pin_down.js ./distros/foxy/serial-driver/default.nix
+echo checking ./distros/foxy/tracetools-image-pipeline/default.nix                          && ./pin_down.js ./distros/foxy/tracetools-image-pipeline/default.nix
+echo checking ./distros/foxy/gscam/default.nix                                              && ./pin_down.js ./distros/foxy/gscam/default.nix
+echo checking ./distros/foxy/phidgets-high-speed-encoder/default.nix                        && ./pin_down.js ./distros/foxy/phidgets-high-speed-encoder/default.nix
+echo checking ./distros/foxy/examples-rclcpp-minimal-client/default.nix                     && ./pin_down.js ./distros/foxy/examples-rclcpp-minimal-client/default.nix
+echo checking ./distros/foxy/rqt-runtime-monitor/default.nix                                && ./pin_down.js ./distros/foxy/rqt-runtime-monitor/default.nix
+echo checking ./distros/foxy/stereo-msgs/default.nix                                        && ./pin_down.js ./distros/foxy/stereo-msgs/default.nix
+echo checking ./distros/foxy/rclc-parameter/default.nix                                     && ./pin_down.js ./distros/foxy/rclc-parameter/default.nix
+echo checking ./distros/foxy/osrf-testing-tools-cpp/default.nix                             && ./pin_down.js ./distros/foxy/osrf-testing-tools-cpp/default.nix
+echo checking ./distros/foxy/ecl-utilities/default.nix                                      && ./pin_down.js ./distros/foxy/ecl-utilities/default.nix
+echo checking ./distros/foxy/turtlebot3-bringup/default.nix                                 && ./pin_down.js ./distros/foxy/turtlebot3-bringup/default.nix
+echo checking ./distros/foxy/libphidget22/default.nix                                       && ./pin_down.js ./distros/foxy/libphidget22/default.nix
+echo checking ./distros/foxy/phidgets-magnetometer/default.nix                              && ./pin_down.js ./distros/foxy/phidgets-magnetometer/default.nix
+echo checking ./distros/rolling/ur-moveit-config/default.nix                                && ./pin_down.js ./distros/rolling/ur-moveit-config/default.nix
+echo checking ./distros/melodic/grid-map-costmap-2d/default.nix                             && ./pin_down.js ./distros/melodic/grid-map-costmap-2d/default.nix
+echo checking ./distros/noetic/xpp-states/default.nix                                       && ./pin_down.js ./distros/noetic/xpp-states/default.nix
+echo checking ./distros/noetic/rwt-app-chooser/default.nix                                  && ./pin_down.js ./distros/noetic/rwt-app-chooser/default.nix
+echo checking ./distros/noetic/ros-ethercat-eml/default.nix                                 && ./pin_down.js ./distros/noetic/ros-ethercat-eml/default.nix
+echo checking ./distros/rolling/dummy-sensors/default.nix                                   && ./pin_down.js ./distros/rolling/dummy-sensors/default.nix
+echo checking ./distros/melodic/audibot-gazebo/default.nix                                  && ./pin_down.js ./distros/melodic/audibot-gazebo/default.nix
+echo checking ./distros/noetic/cartesian-msgs/default.nix                                   && ./pin_down.js ./distros/noetic/cartesian-msgs/default.nix
+echo checking ./distros/melodic/costmap-tf-layer/default.nix                                && ./pin_down.js ./distros/melodic/costmap-tf-layer/default.nix
+echo checking ./distros/foxy/ros-environment/default.nix                                    && ./pin_down.js ./distros/foxy/ros-environment/default.nix
+echo checking ./distros/humble/pcl-conversions/default.nix                                  && ./pin_down.js ./distros/humble/pcl-conversions/default.nix
+echo checking ./distros/noetic/exotica-ilqg-solver/default.nix                              && ./pin_down.js ./distros/noetic/exotica-ilqg-solver/default.nix
+echo checking ./distros/foxy/image-transport-plugins/default.nix                            && ./pin_down.js ./distros/foxy/image-transport-plugins/default.nix
+echo checking ./distros/humble/microstrain-inertial-driver/default.nix                      && ./pin_down.js ./distros/humble/microstrain-inertial-driver/default.nix
+echo checking ./distros/melodic/people-tracking-filter/default.nix                          && ./pin_down.js ./distros/melodic/people-tracking-filter/default.nix
+echo checking ./distros/humble/point-cloud-msg-wrapper/default.nix                          && ./pin_down.js ./distros/humble/point-cloud-msg-wrapper/default.nix
+echo checking ./distros/humble/desktop-full/default.nix                                     && ./pin_down.js ./distros/humble/desktop-full/default.nix
+echo checking ./distros/foxy/ament-nodl/default.nix                                         && ./pin_down.js ./distros/foxy/ament-nodl/default.nix
+echo checking ./distros/galactic/compressed-depth-image-transport/default.nix               && ./pin_down.js ./distros/galactic/compressed-depth-image-transport/default.nix
+echo checking ./distros/foxy/fmilibrary-vendor/default.nix                                  && ./pin_down.js ./distros/foxy/fmilibrary-vendor/default.nix
+echo checking ./distros/melodic/ecl-build/default.nix                                       && ./pin_down.js ./distros/melodic/ecl-build/default.nix
+echo checking ./distros/rolling/neo-simulation2/default.nix                                 && ./pin_down.js ./distros/rolling/neo-simulation2/default.nix
+echo checking ./distros/galactic/rosidl-typesupport-interface/default.nix                   && ./pin_down.js ./distros/galactic/rosidl-typesupport-interface/default.nix
+echo checking ./distros/foxy/forward-command-controller/default.nix                         && ./pin_down.js ./distros/foxy/forward-command-controller/default.nix
+echo checking ./distros/melodic/rosdiagnostic/default.nix                                   && ./pin_down.js ./distros/melodic/rosdiagnostic/default.nix
+echo checking ./distros/galactic/turtlebot3-description/default.nix                         && ./pin_down.js ./distros/galactic/turtlebot3-description/default.nix
+echo checking ./distros/humble/moveit-resources-pr2-description/default.nix                 && ./pin_down.js ./distros/humble/moveit-resources-pr2-description/default.nix
+echo checking ./distros/galactic/turtlebot3-bringup/default.nix                             && ./pin_down.js ./distros/galactic/turtlebot3-bringup/default.nix
+echo checking ./distros/galactic/realsense2-camera/default.nix                              && ./pin_down.js ./distros/galactic/realsense2-camera/default.nix
+echo checking ./distros/melodic/pr2-move-base/default.nix                                   && ./pin_down.js ./distros/melodic/pr2-move-base/default.nix
+echo checking ./distros/rolling/dolly-ignition/default.nix                                  && ./pin_down.js ./distros/rolling/dolly-ignition/default.nix
+echo checking ./distros/galactic/picknik-ament-copyright/default.nix                        && ./pin_down.js ./distros/galactic/picknik-ament-copyright/default.nix
+echo checking ./distros/rolling/pendulum-control/default.nix                                && ./pin_down.js ./distros/rolling/pendulum-control/default.nix
+echo checking ./distros/noetic/leo-viz/default.nix                                          && ./pin_down.js ./distros/noetic/leo-viz/default.nix
+echo checking ./distros/rolling/geodesy/default.nix                                         && ./pin_down.js ./distros/rolling/geodesy/default.nix
+echo checking ./distros/rolling/moveit-resources-prbt-moveit-config/default.nix             && ./pin_down.js ./distros/rolling/moveit-resources-prbt-moveit-config/default.nix
+echo checking ./distros/rolling/control-toolbox/default.nix                                 && ./pin_down.js ./distros/rolling/control-toolbox/default.nix
+echo checking ./distros/rolling/stubborn-buddies-msgs/default.nix                           && ./pin_down.js ./distros/rolling/stubborn-buddies-msgs/default.nix
+echo checking ./distros/rolling/rclc-examples/default.nix                                   && ./pin_down.js ./distros/rolling/rclc-examples/default.nix
+echo checking ./distros/rolling/rc-genicam-driver/default.nix                               && ./pin_down.js ./distros/rolling/rc-genicam-driver/default.nix
+echo checking ./distros/rolling/octomap-ros/default.nix                                     && ./pin_down.js ./distros/rolling/octomap-ros/default.nix
+echo checking ./distros/rolling/rqt-image-view/default.nix                                  && ./pin_down.js ./distros/rolling/rqt-image-view/default.nix
+echo checking ./distros/rolling/ament-xmllint/default.nix                                   && ./pin_down.js ./distros/rolling/ament-xmllint/default.nix
+echo checking ./distros/rolling/turtle-tf2-cpp/default.nix                                  && ./pin_down.js ./distros/rolling/turtle-tf2-cpp/default.nix
+echo checking ./distros/rolling/rosbag2-storage-mcap-testdata/default.nix                   && ./pin_down.js ./distros/rolling/rosbag2-storage-mcap-testdata/default.nix
+echo checking ./distros/rolling/marti-sensor-msgs/default.nix                               && ./pin_down.js ./distros/rolling/marti-sensor-msgs/default.nix
+echo checking ./distros/rolling/ecl-config/default.nix                                      && ./pin_down.js ./distros/rolling/ecl-config/default.nix
+echo checking ./distros/rolling/rviz-visual-testing-framework/default.nix                   && ./pin_down.js ./distros/rolling/rviz-visual-testing-framework/default.nix
+echo checking ./distros/rolling/soccer-object-msgs/default.nix                              && ./pin_down.js ./distros/rolling/soccer-object-msgs/default.nix
+echo checking ./distros/rolling/dummy-map-server/default.nix                                && ./pin_down.js ./distros/rolling/dummy-map-server/default.nix
+echo checking ./distros/rolling/mavros-extras/default.nix                                   && ./pin_down.js ./distros/rolling/mavros-extras/default.nix
+echo checking ./distros/rolling/control-msgs/default.nix                                    && ./pin_down.js ./distros/rolling/control-msgs/default.nix
+echo checking ./distros/rolling/ros2cli-test-interfaces/default.nix                         && ./pin_down.js ./distros/rolling/ros2cli-test-interfaces/default.nix
+echo checking ./distros/rolling/gps-umd/default.nix                                         && ./pin_down.js ./distros/rolling/gps-umd/default.nix
+echo checking ./distros/rolling/performance-test-fixture/default.nix                        && ./pin_down.js ./distros/rolling/performance-test-fixture/default.nix
+echo checking ./distros/rolling/ament-download/default.nix                                  && ./pin_down.js ./distros/rolling/ament-download/default.nix
+echo checking ./distros/rolling/tango-icons-vendor/default.nix                              && ./pin_down.js ./distros/rolling/tango-icons-vendor/default.nix
+echo checking ./distros/rolling/rosgraph-msgs/default.nix                                   && ./pin_down.js ./distros/rolling/rosgraph-msgs/default.nix
+echo checking ./distros/rolling/rqt-py-common/default.nix                                   && ./pin_down.js ./distros/rolling/rqt-py-common/default.nix
+echo checking ./distros/rolling/ompl/default.nix                                            && ./pin_down.js ./distros/rolling/ompl/default.nix
+echo checking ./distros/rolling/fmi-adapter-examples/default.nix                            && ./pin_down.js ./distros/rolling/fmi-adapter-examples/default.nix
+echo checking ./distros/rolling/soccer-vision-3d-msgs/default.nix                           && ./pin_down.js ./distros/rolling/soccer-vision-3d-msgs/default.nix
+echo checking ./distros/rolling/camera-calibration-parsers/default.nix                      && ./pin_down.js ./distros/rolling/camera-calibration-parsers/default.nix
+echo checking ./distros/rolling/ublox-ubx-msgs/default.nix                                  && ./pin_down.js ./distros/rolling/ublox-ubx-msgs/default.nix
+echo checking ./distros/rolling/tf-transformations/default.nix                              && ./pin_down.js ./distros/rolling/tf-transformations/default.nix
+echo checking ./distros/humble/moveit-resources/default.nix                                 && ./pin_down.js ./distros/humble/moveit-resources/default.nix
+echo checking ./distros/humble/ros2cli/default.nix                                          && ./pin_down.js ./distros/humble/ros2cli/default.nix
+echo checking ./distros/foxy/plotjuggler/default.nix                                        && ./pin_down.js ./distros/foxy/plotjuggler/default.nix
+echo checking ./distros/foxy/connext-cmake-module/default.nix                               && ./pin_down.js ./distros/foxy/connext-cmake-module/default.nix
+echo checking ./distros/foxy/graph-msgs/default.nix                                         && ./pin_down.js ./distros/foxy/graph-msgs/default.nix
+echo checking ./distros/foxy/rclc/default.nix                                               && ./pin_down.js ./distros/foxy/rclc/default.nix
+echo checking ./distros/foxy/rmw-dds-common/default.nix                                     && ./pin_down.js ./distros/foxy/rmw-dds-common/default.nix
+echo checking ./distros/foxy/mavlink/default.nix                                            && ./pin_down.js ./distros/foxy/mavlink/default.nix
+echo checking ./distros/foxy/python-cmake-module/default.nix                                && ./pin_down.js ./distros/foxy/python-cmake-module/default.nix
+echo checking ./distros/melodic/volta-description/default.nix                               && ./pin_down.js ./distros/melodic/volta-description/default.nix
+echo checking ./distros/melodic/tuw-airskin-msgs/default.nix                                && ./pin_down.js ./distros/melodic/tuw-airskin-msgs/default.nix
+echo checking ./distros/melodic/turtle-tf/default.nix                                       && ./pin_down.js ./distros/melodic/turtle-tf/default.nix
+echo checking ./distros/galactic/ecl-core/default.nix                                       && ./pin_down.js ./distros/galactic/ecl-core/default.nix
+echo checking ./distros/melodic/autoware-lanelet2-msgs/default.nix                          && ./pin_down.js ./distros/melodic/autoware-lanelet2-msgs/default.nix
+echo checking ./distros/melodic/ypspur/default.nix                                          && ./pin_down.js ./distros/melodic/ypspur/default.nix
+echo checking ./distros/noetic/rosbag-snapshot/default.nix                                  && ./pin_down.js ./distros/noetic/rosbag-snapshot/default.nix
+echo checking ./distros/noetic/novatel-oem7-msgs/default.nix                                && ./pin_down.js ./distros/noetic/novatel-oem7-msgs/default.nix
+echo checking ./distros/melodic/effort-controllers/default.nix                              && ./pin_down.js ./distros/melodic/effort-controllers/default.nix
+echo checking ./distros/noetic/lgsvl-msgs/default.nix                                       && ./pin_down.js ./distros/noetic/lgsvl-msgs/default.nix
+echo checking ./distros/noetic/web-video-server/default.nix                                 && ./pin_down.js ./distros/noetic/web-video-server/default.nix
+echo checking ./distros/noetic/aruco-ros/default.nix                                        && ./pin_down.js ./distros/noetic/aruco-ros/default.nix
+echo checking ./distros/noetic/aruco-msgs/default.nix                                       && ./pin_down.js ./distros/noetic/aruco-msgs/default.nix
+echo checking ./distros/noetic/trac-ik-examples/default.nix                                 && ./pin_down.js ./distros/noetic/trac-ik-examples/default.nix
+echo checking ./distros/noetic/ecl-linear-algebra/default.nix                               && ./pin_down.js ./distros/noetic/ecl-linear-algebra/default.nix
+echo checking ./distros/noetic/moveit-planners/default.nix                                  && ./pin_down.js ./distros/noetic/moveit-planners/default.nix
+echo checking ./distros/noetic/cartesian-control-msgs/default.nix                           && ./pin_down.js ./distros/noetic/cartesian-control-msgs/default.nix
+echo checking ./distros/noetic/laser-scan-matcher/default.nix                               && ./pin_down.js ./distros/noetic/laser-scan-matcher/default.nix
+echo checking ./distros/noetic/phidgets-api/default.nix                                     && ./pin_down.js ./distros/noetic/phidgets-api/default.nix
+echo checking ./distros/noetic/jskeus/default.nix                                           && ./pin_down.js ./distros/noetic/jskeus/default.nix
+echo checking ./distros/noetic/cob-control-msgs/default.nix                                 && ./pin_down.js ./distros/noetic/cob-control-msgs/default.nix
+echo checking ./distros/rolling/zenoh-bridge-dds/default.nix                                && ./pin_down.js ./distros/rolling/zenoh-bridge-dds/default.nix
+echo checking ./distros/rolling/ur-controllers/default.nix                                  && ./pin_down.js ./distros/rolling/ur-controllers/default.nix
+echo checking ./distros/rolling/phidgets-temperature/default.nix                            && ./pin_down.js ./distros/rolling/phidgets-temperature/default.nix
+echo checking ./distros/rolling/swri-math-util/default.nix                                  && ./pin_down.js ./distros/rolling/swri-math-util/default.nix
+echo checking ./distros/noetic/khi-rs-ikfast-plugin/default.nix                             && ./pin_down.js ./distros/noetic/khi-rs-ikfast-plugin/default.nix
+echo checking ./distros/rolling/joy-teleop/default.nix                                      && ./pin_down.js ./distros/rolling/joy-teleop/default.nix
+echo checking ./distros/rolling/admittance-controller/default.nix                           && ./pin_down.js ./distros/rolling/admittance-controller/default.nix
+echo checking ./distros/rolling/py-trees-ros-interfaces/default.nix                         && ./pin_down.js ./distros/rolling/py-trees-ros-interfaces/default.nix
+echo checking ./distros/rolling/marti-perception-msgs/default.nix                           && ./pin_down.js ./distros/rolling/marti-perception-msgs/default.nix
+echo checking ./distros/rolling/ur-dashboard-msgs/default.nix                               && ./pin_down.js ./distros/rolling/ur-dashboard-msgs/default.nix
+echo checking ./distros/humble/v4l2-camera/default.nix                                      && ./pin_down.js ./distros/humble/v4l2-camera/default.nix
+echo checking ./distros/humble/rqt/default.nix                                              && ./pin_down.js ./distros/humble/rqt/default.nix
+echo checking ./distros/humble/perception-pcl/default.nix                                   && ./pin_down.js ./distros/humble/perception-pcl/default.nix
+echo checking ./distros/humble/sros2/default.nix                                            && ./pin_down.js ./distros/humble/sros2/default.nix
+echo checking ./distros/humble/nav2-theta-star-planner/default.nix                          && ./pin_down.js ./distros/humble/nav2-theta-star-planner/default.nix
+echo checking ./distros/humble/cv-bridge/default.nix                                        && ./pin_down.js ./distros/humble/cv-bridge/default.nix
+echo checking ./distros/humble/rmf-demos-maps/default.nix                                   && ./pin_down.js ./distros/humble/rmf-demos-maps/default.nix
+echo checking ./distros/humble/rqt-graph/default.nix                                        && ./pin_down.js ./distros/humble/rqt-graph/default.nix
+echo checking ./distros/humble/moveit-ros-robot-interaction/default.nix                     && ./pin_down.js ./distros/humble/moveit-ros-robot-interaction/default.nix
+echo checking ./distros/humble/ament-copyright/default.nix                                  && ./pin_down.js ./distros/humble/ament-copyright/default.nix
+echo checking ./distros/humble/turtlebot3/default.nix                                       && ./pin_down.js ./distros/humble/turtlebot3/default.nix
+echo checking ./distros/foxy/ur-controllers/default.nix                                     && ./pin_down.js ./distros/foxy/ur-controllers/default.nix
+echo checking ./distros/foxy/phidgets-msgs/default.nix                                      && ./pin_down.js ./distros/foxy/phidgets-msgs/default.nix
+echo checking ./distros/foxy/rmf-demos-tasks/default.nix                                    && ./pin_down.js ./distros/foxy/rmf-demos-tasks/default.nix
+echo checking ./distros/foxy/sbg-driver/default.nix                                         && ./pin_down.js ./distros/foxy/sbg-driver/default.nix
+echo checking ./distros/noetic/rosserial-msgs/default.nix                                   && ./pin_down.js ./distros/noetic/rosserial-msgs/default.nix
+echo checking ./distros/noetic/delphi-srr-msgs/default.nix                                  && ./pin_down.js ./distros/noetic/delphi-srr-msgs/default.nix
+echo checking ./distros/noetic/controller-manager-tests/default.nix                         && ./pin_down.js ./distros/noetic/controller-manager-tests/default.nix
+echo checking ./distros/noetic/libpcan/default.nix                                          && ./pin_down.js ./distros/noetic/libpcan/default.nix
+echo checking ./distros/noetic/statistics-msgs/default.nix                                  && ./pin_down.js ./distros/noetic/statistics-msgs/default.nix
+echo checking ./distros/foxy/rmf-traffic/default.nix                                        && ./pin_down.js ./distros/foxy/rmf-traffic/default.nix
+echo checking ./distros/noetic/dynamic-graph-tutorial/default.nix                           && ./pin_down.js ./distros/noetic/dynamic-graph-tutorial/default.nix
+echo checking ./distros/noetic/swri-prefix-tools/default.nix                                && ./pin_down.js ./distros/noetic/swri-prefix-tools/default.nix
+echo checking ./distros/galactic/asio-cmake-module/default.nix                              && ./pin_down.js ./distros/galactic/asio-cmake-module/default.nix
+echo checking ./distros/noetic/mobile-robot-simulator/default.nix                           && ./pin_down.js ./distros/noetic/mobile-robot-simulator/default.nix
+echo checking ./distros/noetic/dwa-local-planner/default.nix                                && ./pin_down.js ./distros/noetic/dwa-local-planner/default.nix
+echo checking ./distros/galactic/nav2-rotation-shim-controller/default.nix                  && ./pin_down.js ./distros/galactic/nav2-rotation-shim-controller/default.nix
+echo checking ./distros/noetic/mongodb-store-msgs/default.nix                               && ./pin_down.js ./distros/noetic/mongodb-store-msgs/default.nix
+echo checking ./distros/melodic/tra1-moveit-config/default.nix                              && ./pin_down.js ./distros/melodic/tra1-moveit-config/default.nix
+echo checking ./distros/galactic/ros2param/default.nix                                      && ./pin_down.js ./distros/galactic/ros2param/default.nix
+echo checking ./distros/noetic/rosbag/default.nix                                           && ./pin_down.js ./distros/noetic/rosbag/default.nix
+echo checking ./distros/noetic/qb-chain-description/default.nix                             && ./pin_down.js ./distros/noetic/qb-chain-description/default.nix
+echo checking ./distros/melodic/gazebo-ros/default.nix                                      && ./pin_down.js ./distros/melodic/gazebo-ros/default.nix
+echo checking ./distros/melodic/turtlebot3-bringup/default.nix                              && ./pin_down.js ./distros/melodic/turtlebot3-bringup/default.nix
+echo checking ./distros/galactic/examples-rclcpp-minimal-action-client/default.nix          && ./pin_down.js ./distros/galactic/examples-rclcpp-minimal-action-client/default.nix
+echo checking ./distros/galactic/pendulum-control/default.nix                               && ./pin_down.js ./distros/galactic/pendulum-control/default.nix
+echo checking ./distros/noetic/rosserial-mbed/default.nix                                   && ./pin_down.js ./distros/noetic/rosserial-mbed/default.nix
+echo checking ./distros/noetic/dataspeed-ulc/default.nix                                    && ./pin_down.js ./distros/noetic/dataspeed-ulc/default.nix
+echo checking ./distros/humble/mvsim/default.nix                                            && ./pin_down.js ./distros/humble/mvsim/default.nix
+echo checking ./distros/humble/marvelmind-ros2/default.nix                                  && ./pin_down.js ./distros/humble/marvelmind-ros2/default.nix
+echo checking ./distros/humble/libstatistics-collector/default.nix                          && ./pin_down.js ./distros/humble/libstatistics-collector/default.nix
+echo checking ./distros/galactic/phidgets-digital-outputs/default.nix                       && ./pin_down.js ./distros/galactic/phidgets-digital-outputs/default.nix
+echo checking ./distros/melodic/image-publisher/default.nix                                 && ./pin_down.js ./distros/melodic/image-publisher/default.nix
+echo checking ./distros/melodic/rqt-gui-py/default.nix                                      && ./pin_down.js ./distros/melodic/rqt-gui-py/default.nix
+echo checking ./distros/melodic/laser-cb-detector/default.nix                               && ./pin_down.js ./distros/melodic/laser-cb-detector/default.nix
+echo checking ./distros/melodic/settlerlib/default.nix                                      && ./pin_down.js ./distros/melodic/settlerlib/default.nix
+echo checking ./distros/melodic/prbt-hardware-support/default.nix                           && ./pin_down.js ./distros/melodic/prbt-hardware-support/default.nix
+echo checking ./distros/melodic/boost-sml/default.nix                                       && ./pin_down.js ./distros/melodic/boost-sml/default.nix
+echo checking ./distros/melodic/rostime/default.nix                                         && ./pin_down.js ./distros/melodic/rostime/default.nix
+echo checking ./distros/melodic/moveit-planners/default.nix                                 && ./pin_down.js ./distros/melodic/moveit-planners/default.nix
+echo checking ./distros/melodic/trac-ik-examples/default.nix                                && ./pin_down.js ./distros/melodic/trac-ik-examples/default.nix
+echo checking ./distros/melodic/yujin-ocs/default.nix                                       && ./pin_down.js ./distros/melodic/yujin-ocs/default.nix
+echo checking ./distros/melodic/cob-control-msgs/default.nix                                && ./pin_down.js ./distros/melodic/cob-control-msgs/default.nix
+echo checking ./distros/noetic/dwb-plugins/default.nix                                      && ./pin_down.js ./distros/noetic/dwb-plugins/default.nix
+echo checking ./distros/melodic/ecl-linear-algebra/default.nix                              && ./pin_down.js ./distros/melodic/ecl-linear-algebra/default.nix
+echo checking ./distros/noetic/canopen-motor-node/default.nix                               && ./pin_down.js ./distros/noetic/canopen-motor-node/default.nix
+echo checking ./distros/noetic/std-msgs/default.nix                                         && ./pin_down.js ./distros/noetic/std-msgs/default.nix
+echo checking ./distros/noetic/transmission-interface/default.nix                           && ./pin_down.js ./distros/noetic/transmission-interface/default.nix
+echo checking ./distros/noetic/resource-retriever/default.nix                               && ./pin_down.js ./distros/noetic/resource-retriever/default.nix
+echo checking ./distros/noetic/fuse-viz/default.nix                                         && ./pin_down.js ./distros/noetic/fuse-viz/default.nix
+echo checking ./distros/noetic/robotont-msgs/default.nix                                    && ./pin_down.js ./distros/noetic/robotont-msgs/default.nix
+echo checking ./distros/noetic/cob-hand-bridge/default.nix                                  && ./pin_down.js ./distros/noetic/cob-hand-bridge/default.nix
+echo checking ./distros/noetic/openni2-camera/default.nix                                   && ./pin_down.js ./distros/noetic/openni2-camera/default.nix
+echo checking ./distros/noetic/libg2o/default.nix                                           && ./pin_down.js ./distros/noetic/libg2o/default.nix
+echo checking ./distros/noetic/franka-control/default.nix                                   && ./pin_down.js ./distros/noetic/franka-control/default.nix
+echo checking ./distros/noetic/openzen-sensor/default.nix                                   && ./pin_down.js ./distros/noetic/openzen-sensor/default.nix
+echo checking ./distros/noetic/libphidgets/default.nix                                      && ./pin_down.js ./distros/noetic/libphidgets/default.nix
+echo checking ./distros/noetic/mrpt-rawlog/default.nix                                      && ./pin_down.js ./distros/noetic/mrpt-rawlog/default.nix
+echo checking ./distros/noetic/pid/default.nix                                              && ./pin_down.js ./distros/noetic/pid/default.nix
+echo checking ./distros/noetic/slam-toolbox/default.nix                                     && ./pin_down.js ./distros/noetic/slam-toolbox/default.nix
+echo checking ./distros/noetic/dual-quaternions-ros/default.nix                             && ./pin_down.js ./distros/noetic/dual-quaternions-ros/default.nix
+echo checking ./distros/noetic/robot-nav-tools/default.nix                                  && ./pin_down.js ./distros/noetic/robot-nav-tools/default.nix
+echo checking ./distros/noetic/swri-console/default.nix                                     && ./pin_down.js ./distros/noetic/swri-console/default.nix
+echo checking ./distros/noetic/webots-ros/default.nix                                       && ./pin_down.js ./distros/noetic/webots-ros/default.nix
+echo checking ./distros/noetic/bayesian-belief-networks/default.nix                         && ./pin_down.js ./distros/noetic/bayesian-belief-networks/default.nix
+echo checking ./distros/noetic/cob-extern/default.nix                                       && ./pin_down.js ./distros/noetic/cob-extern/default.nix
+echo checking ./distros/noetic/cob-manipulation-msgs/default.nix                            && ./pin_down.js ./distros/noetic/cob-manipulation-msgs/default.nix
+echo checking ./distros/noetic/p2os-urdf/default.nix                                        && ./pin_down.js ./distros/noetic/p2os-urdf/default.nix
+echo checking ./distros/noetic/rosserial-tivac/default.nix                                  && ./pin_down.js ./distros/noetic/rosserial-tivac/default.nix
+echo checking ./distros/noetic/hector-geotiff-plugins/default.nix                           && ./pin_down.js ./distros/noetic/hector-geotiff-plugins/default.nix
+echo checking ./distros/noetic/lanelet2/default.nix                                         && ./pin_down.js ./distros/noetic/lanelet2/default.nix
+echo checking ./distros/noetic/jackal-tutorials/default.nix                                 && ./pin_down.js ./distros/noetic/jackal-tutorials/default.nix
+echo checking ./distros/noetic/ridgeback-description/default.nix                            && ./pin_down.js ./distros/noetic/ridgeback-description/default.nix
+echo checking ./distros/noetic/image-exposure-msgs/default.nix                              && ./pin_down.js ./distros/noetic/image-exposure-msgs/default.nix
+echo checking ./distros/noetic/canopen-master/default.nix                                   && ./pin_down.js ./distros/noetic/canopen-master/default.nix
+echo checking ./distros/noetic/carrot-planner/default.nix                                   && ./pin_down.js ./distros/noetic/carrot-planner/default.nix
+echo checking ./distros/noetic/cob-supported-robots/default.nix                             && ./pin_down.js ./distros/noetic/cob-supported-robots/default.nix
+echo checking ./distros/galactic/nav2-smac-planner/default.nix                              && ./pin_down.js ./distros/galactic/nav2-smac-planner/default.nix
+echo checking ./distros/noetic/roseus/default.nix                                           && ./pin_down.js ./distros/noetic/roseus/default.nix
+echo checking ./distros/galactic/ros2cli-test-interfaces/default.nix                        && ./pin_down.js ./distros/galactic/ros2cli-test-interfaces/default.nix
+echo checking ./distros/galactic/rc-reason-clients/default.nix                              && ./pin_down.js ./distros/galactic/rc-reason-clients/default.nix
+echo checking ./distros/galactic/ur-robot-driver/default.nix                                && ./pin_down.js ./distros/galactic/ur-robot-driver/default.nix
+echo checking ./distros/galactic/ament-cmake-nose/default.nix                               && ./pin_down.js ./distros/galactic/ament-cmake-nose/default.nix
+echo checking ./distros/galactic/rmf-building-map-msgs/default.nix                          && ./pin_down.js ./distros/galactic/rmf-building-map-msgs/default.nix
+echo checking ./distros/galactic/ros2lifecycle/default.nix                                  && ./pin_down.js ./distros/galactic/ros2lifecycle/default.nix
+echo checking ./distros/galactic/console-bridge-vendor/default.nix                          && ./pin_down.js ./distros/galactic/console-bridge-vendor/default.nix
+echo checking ./distros/galactic/laser-proc/default.nix                                     && ./pin_down.js ./distros/galactic/laser-proc/default.nix
+echo checking ./distros/galactic/rcss3d-agent-basic/default.nix                             && ./pin_down.js ./distros/galactic/rcss3d-agent-basic/default.nix
+echo checking ./distros/galactic/moveit-hybrid-planning/default.nix                         && ./pin_down.js ./distros/galactic/moveit-hybrid-planning/default.nix
+echo checking ./distros/galactic/pinocchio/default.nix                                      && ./pin_down.js ./distros/galactic/pinocchio/default.nix
+echo checking ./distros/galactic/io-context/default.nix                                     && ./pin_down.js ./distros/galactic/io-context/default.nix
+echo checking ./distros/galactic/rviz-rendering-tests/default.nix                           && ./pin_down.js ./distros/galactic/rviz-rendering-tests/default.nix
+echo checking ./distros/galactic/rmf-traffic-ros2/default.nix                               && ./pin_down.js ./distros/galactic/rmf-traffic-ros2/default.nix
+echo checking ./distros/galactic/rmf-demos-panel/default.nix                                && ./pin_down.js ./distros/galactic/rmf-demos-panel/default.nix
+echo checking ./distros/galactic/qt-gui-app/default.nix                                     && ./pin_down.js ./distros/galactic/qt-gui-app/default.nix
+echo checking ./distros/galactic/nao-lola/default.nix                                       && ./pin_down.js ./distros/galactic/nao-lola/default.nix
+echo checking ./distros/galactic/rclcpp-lifecycle/default.nix                               && ./pin_down.js ./distros/galactic/rclcpp-lifecycle/default.nix
+echo checking ./distros/galactic/rmf-visualization-msgs/default.nix                         && ./pin_down.js ./distros/galactic/rmf-visualization-msgs/default.nix
+echo checking ./distros/galactic/swri-transform-util/default.nix                            && ./pin_down.js ./distros/galactic/swri-transform-util/default.nix
+echo checking ./distros/galactic/ros-workspace/default.nix                                  && ./pin_down.js ./distros/galactic/ros-workspace/default.nix
+echo checking ./distros/galactic/iceoryx-binding-c/default.nix                              && ./pin_down.js ./distros/galactic/iceoryx-binding-c/default.nix
+echo checking ./distros/galactic/ntpd-driver/default.nix                                    && ./pin_down.js ./distros/galactic/ntpd-driver/default.nix
+echo checking ./distros/melodic/wireless-watcher/default.nix                                && ./pin_down.js ./distros/melodic/wireless-watcher/default.nix
+echo checking ./distros/melodic/microstrain-inertial-driver/default.nix                     && ./pin_down.js ./distros/melodic/microstrain-inertial-driver/default.nix
+echo checking ./distros/melodic/sot-dynamic-pinocchio/default.nix                           && ./pin_down.js ./distros/melodic/sot-dynamic-pinocchio/default.nix
+echo checking ./distros/melodic/move-base-sequence/default.nix                              && ./pin_down.js ./distros/melodic/move-base-sequence/default.nix
+echo checking ./distros/melodic/osg-interactive-markers/default.nix                         && ./pin_down.js ./distros/melodic/osg-interactive-markers/default.nix
+echo checking ./distros/melodic/velodyne-simulator/default.nix                              && ./pin_down.js ./distros/melodic/velodyne-simulator/default.nix
+echo checking ./distros/galactic/automotive-autonomy-msgs/default.nix                       && ./pin_down.js ./distros/galactic/automotive-autonomy-msgs/default.nix
+echo checking ./distros/galactic/marti-perception-msgs/default.nix                          && ./pin_down.js ./distros/galactic/marti-perception-msgs/default.nix
+echo checking ./distros/noetic/cob-command-gui/default.nix                                  && ./pin_down.js ./distros/noetic/cob-command-gui/default.nix
+echo checking ./distros/noetic/quanergy-client-ros/default.nix                              && ./pin_down.js ./distros/noetic/quanergy-client-ros/default.nix
+echo checking ./distros/noetic/jackal-control/default.nix                                   && ./pin_down.js ./distros/noetic/jackal-control/default.nix
+echo checking ./distros/galactic/phidgets-temperature/default.nix                           && ./pin_down.js ./distros/galactic/phidgets-temperature/default.nix
+echo checking ./distros/galactic/swri-math-util/default.nix                                 && ./pin_down.js ./distros/galactic/swri-math-util/default.nix
+echo checking ./distros/galactic/teleop-tools-msgs/default.nix                              && ./pin_down.js ./distros/galactic/teleop-tools-msgs/default.nix
+echo checking ./distros/galactic/py-trees-ros-interfaces/default.nix                        && ./pin_down.js ./distros/galactic/py-trees-ros-interfaces/default.nix
+echo checking ./distros/galactic/joy-teleop/default.nix                                     && ./pin_down.js ./distros/galactic/joy-teleop/default.nix
+echo checking ./distros/galactic/nav2-core/default.nix                                      && ./pin_down.js ./distros/galactic/nav2-core/default.nix
+echo checking ./distros/noetic/microstrain-3dmgx2-imu/default.nix                           && ./pin_down.js ./distros/noetic/microstrain-3dmgx2-imu/default.nix
+echo checking ./distros/noetic/tesseract-visualization/default.nix                          && ./pin_down.js ./distros/noetic/tesseract-visualization/default.nix
+echo checking ./distros/noetic/qb-device-bringup/default.nix                                && ./pin_down.js ./distros/noetic/qb-device-bringup/default.nix
+echo checking ./distros/noetic/image-cb-detector/default.nix                                && ./pin_down.js ./distros/noetic/image-cb-detector/default.nix
+echo checking ./distros/noetic/executive-smach-visualization/default.nix                    && ./pin_down.js ./distros/noetic/executive-smach-visualization/default.nix
+echo checking ./distros/noetic/gmcl/default.nix                                             && ./pin_down.js ./distros/noetic/gmcl/default.nix
+echo checking ./distros/noetic/rosgraph/default.nix                                         && ./pin_down.js ./distros/noetic/rosgraph/default.nix
+echo checking ./distros/noetic/qb-hand-hardware-interface/default.nix                       && ./pin_down.js ./distros/noetic/qb-hand-hardware-interface/default.nix
+echo checking ./distros/noetic/face-detector/default.nix                                    && ./pin_down.js ./distros/noetic/face-detector/default.nix
+echo checking ./distros/noetic/rqt-publisher/default.nix                                    && ./pin_down.js ./distros/noetic/rqt-publisher/default.nix
+echo checking ./distros/noetic/ur-description/default.nix                                   && ./pin_down.js ./distros/noetic/ur-description/default.nix
+echo checking ./distros/noetic/smclib/default.nix                                           && ./pin_down.js ./distros/noetic/smclib/default.nix
+echo checking ./distros/noetic/object-recognition-msgs/default.nix                          && ./pin_down.js ./distros/noetic/object-recognition-msgs/default.nix
+echo checking ./distros/noetic/checkerboard-detector/default.nix                            && ./pin_down.js ./distros/noetic/checkerboard-detector/default.nix
+echo checking ./distros/noetic/gpp-interface/default.nix                                    && ./pin_down.js ./distros/noetic/gpp-interface/default.nix
+echo checking ./distros/noetic/network-interface/default.nix                                && ./pin_down.js ./distros/noetic/network-interface/default.nix
+echo checking ./distros/noetic/moveit-planners-ompl/default.nix                             && ./pin_down.js ./distros/noetic/moveit-planners-ompl/default.nix
+echo checking ./distros/noetic/ypspur-ros/default.nix                                       && ./pin_down.js ./distros/noetic/ypspur-ros/default.nix
+echo checking ./distros/noetic/flir-camera-driver/default.nix                               && ./pin_down.js ./distros/noetic/flir-camera-driver/default.nix
+echo checking ./distros/noetic/neonavigation/default.nix                                    && ./pin_down.js ./distros/noetic/neonavigation/default.nix
+echo checking ./distros/noetic/moveit-kinematics/default.nix                                && ./pin_down.js ./distros/noetic/moveit-kinematics/default.nix
+echo checking ./distros/noetic/ros-core/default.nix                                         && ./pin_down.js ./distros/noetic/ros-core/default.nix
+echo checking ./distros/noetic/slam-toolbox-msgs/default.nix                                && ./pin_down.js ./distros/noetic/slam-toolbox-msgs/default.nix
+echo checking ./distros/noetic/rm-control/default.nix                                       && ./pin_down.js ./distros/noetic/rm-control/default.nix
+echo checking ./distros/noetic/naoqi-libqi/default.nix                                      && ./pin_down.js ./distros/noetic/naoqi-libqi/default.nix
+echo checking ./distros/noetic/ecl-filesystem/default.nix                                   && ./pin_down.js ./distros/noetic/ecl-filesystem/default.nix
+echo checking ./distros/melodic/track-odometry/default.nix                                  && ./pin_down.js ./distros/melodic/track-odometry/default.nix
+echo checking ./distros/melodic/rsm-rviz-plugins/default.nix                                && ./pin_down.js ./distros/melodic/rsm-rviz-plugins/default.nix
+echo checking ./distros/noetic/rosbag-pandas/default.nix                                    && ./pin_down.js ./distros/noetic/rosbag-pandas/default.nix
+echo checking ./distros/noetic/computer-status-msgs/default.nix                             && ./pin_down.js ./distros/noetic/computer-status-msgs/default.nix
+echo checking ./distros/noetic/dbw-fca/default.nix                                          && ./pin_down.js ./distros/noetic/dbw-fca/default.nix
+echo checking ./distros/noetic/graceful-controller-ros/default.nix                          && ./pin_down.js ./distros/noetic/graceful-controller-ros/default.nix
+echo checking ./distros/melodic/kalman-filter/default.nix                                   && ./pin_down.js ./distros/melodic/kalman-filter/default.nix
+echo checking ./distros/melodic/mrp2-robot/default.nix                                      && ./pin_down.js ./distros/melodic/mrp2-robot/default.nix
+echo checking ./distros/melodic/rslidar-sdk/default.nix                                     && ./pin_down.js ./distros/melodic/rslidar-sdk/default.nix
+echo checking ./distros/melodic/kvh-geo-fog-3d-driver/default.nix                           && ./pin_down.js ./distros/melodic/kvh-geo-fog-3d-driver/default.nix
+echo checking ./distros/melodic/cloudwatch-metrics-common/default.nix                       && ./pin_down.js ./distros/melodic/cloudwatch-metrics-common/default.nix
+echo checking ./distros/melodic/mavros-msgs/default.nix                                     && ./pin_down.js ./distros/melodic/mavros-msgs/default.nix
+echo checking ./distros/melodic/moveit-resources-pr2-description/default.nix                && ./pin_down.js ./distros/melodic/moveit-resources-pr2-description/default.nix
+echo checking ./distros/melodic/cob-frame-tracker/default.nix                               && ./pin_down.js ./distros/melodic/cob-frame-tracker/default.nix
+echo checking ./distros/melodic/grasping-msgs/default.nix                                   && ./pin_down.js ./distros/melodic/grasping-msgs/default.nix
+echo checking ./distros/melodic/eml/default.nix                                             && ./pin_down.js ./distros/melodic/eml/default.nix
+echo checking ./distros/melodic/heron-controller/default.nix                                && ./pin_down.js ./distros/melodic/heron-controller/default.nix
+echo checking ./distros/melodic/ecl-eigen/default.nix                                       && ./pin_down.js ./distros/melodic/ecl-eigen/default.nix
+echo checking ./distros/melodic/roscpp-tutorials/default.nix                                && ./pin_down.js ./distros/melodic/roscpp-tutorials/default.nix
+echo checking ./distros/melodic/moveit-ros-move-group/default.nix                           && ./pin_down.js ./distros/melodic/moveit-ros-move-group/default.nix
+echo checking ./distros/melodic/openni2-launch/default.nix                                  && ./pin_down.js ./distros/melodic/openni2-launch/default.nix
+echo checking ./distros/melodic/openni2-camera/default.nix                                  && ./pin_down.js ./distros/melodic/openni2-camera/default.nix
+echo checking ./distros/melodic/open-manipulator-controller/default.nix                     && ./pin_down.js ./distros/melodic/open-manipulator-controller/default.nix
+echo checking ./distros/melodic/franka-ros/default.nix                                      && ./pin_down.js ./distros/melodic/franka-ros/default.nix
+echo checking ./distros/melodic/pilz-industrial-motion-testutils/default.nix                && ./pin_down.js ./distros/melodic/pilz-industrial-motion-testutils/default.nix
+echo checking ./distros/melodic/pddl-planner/default.nix                                    && ./pin_down.js ./distros/melodic/pddl-planner/default.nix
+echo checking ./distros/melodic/rqt-common-plugins/default.nix                              && ./pin_down.js ./distros/melodic/rqt-common-plugins/default.nix
+echo checking ./distros/melodic/rsm-additions/default.nix                                   && ./pin_down.js ./distros/melodic/rsm-additions/default.nix
+echo checking ./distros/melodic/open-manipulator-p-controller/default.nix                   && ./pin_down.js ./distros/melodic/open-manipulator-p-controller/default.nix
+echo checking ./distros/melodic/open-manipulator-p-simulations/default.nix                  && ./pin_down.js ./distros/melodic/open-manipulator-p-simulations/default.nix
+echo checking ./distros/melodic/asmach/default.nix                                          && ./pin_down.js ./distros/melodic/asmach/default.nix
+echo checking ./distros/melodic/razor-imu-9dof/default.nix                                  && ./pin_down.js ./distros/melodic/razor-imu-9dof/default.nix
+echo checking ./distros/melodic/cob-moveit-config/default.nix                               && ./pin_down.js ./distros/melodic/cob-moveit-config/default.nix
+echo checking ./distros/noetic/pr2-run-stop-auto-restart/default.nix                        && ./pin_down.js ./distros/noetic/pr2-run-stop-auto-restart/default.nix
+echo checking ./distros/melodic/ouster-driver/default.nix                                   && ./pin_down.js ./distros/melodic/ouster-driver/default.nix
+echo checking ./distros/melodic/rospack/default.nix                                         && ./pin_down.js ./distros/melodic/rospack/default.nix
+echo checking ./distros/melodic/diagnostic-updater/default.nix                              && ./pin_down.js ./distros/melodic/diagnostic-updater/default.nix
+echo checking ./distros/melodic/depth-image-proc/default.nix                                && ./pin_down.js ./distros/melodic/depth-image-proc/default.nix
+echo checking ./distros/noetic/um7/default.nix                                              && ./pin_down.js ./distros/noetic/um7/default.nix
+echo checking ./distros/noetic/ipa-differential-docking/default.nix                         && ./pin_down.js ./distros/noetic/ipa-differential-docking/default.nix
+echo checking ./distros/melodic/pr2-mechanism-controllers/default.nix                       && ./pin_down.js ./distros/melodic/pr2-mechanism-controllers/default.nix
+echo checking ./distros/noetic/osm-cartography/default.nix                                  && ./pin_down.js ./distros/noetic/osm-cartography/default.nix
+echo checking ./distros/noetic/tf-remapper-cpp/default.nix                                  && ./pin_down.js ./distros/noetic/tf-remapper-cpp/default.nix
+echo checking ./distros/noetic/laser-tilt-controller-filter/default.nix                     && ./pin_down.js ./distros/noetic/laser-tilt-controller-filter/default.nix
+echo checking ./distros/melodic/fetchit-challenge/default.nix                               && ./pin_down.js ./distros/melodic/fetchit-challenge/default.nix
+echo checking ./distros/noetic/diffbot-mbf/default.nix                                      && ./pin_down.js ./distros/noetic/diffbot-mbf/default.nix
+echo checking ./distros/noetic/rc-genicam-driver/default.nix                                && ./pin_down.js ./distros/noetic/rc-genicam-driver/default.nix
+echo checking ./distros/noetic/qb-device-utils/default.nix                                  && ./pin_down.js ./distros/noetic/qb-device-utils/default.nix
+echo checking ./distros/noetic/rc-silhouettematch-client/default.nix                        && ./pin_down.js ./distros/noetic/rc-silhouettematch-client/default.nix
+echo checking ./distros/noetic/cob-gazebo-objects/default.nix                               && ./pin_down.js ./distros/noetic/cob-gazebo-objects/default.nix
+echo checking ./distros/noetic/dbw-polaris-description/default.nix                          && ./pin_down.js ./distros/noetic/dbw-polaris-description/default.nix
+echo checking ./distros/noetic/ompl/default.nix                                             && ./pin_down.js ./distros/noetic/ompl/default.nix
+echo checking ./distros/noetic/arbotix-msgs/default.nix                                     && ./pin_down.js ./distros/noetic/arbotix-msgs/default.nix
+echo checking ./distros/noetic/rqt-py-common/default.nix                                    && ./pin_down.js ./distros/noetic/rqt-py-common/default.nix
+echo checking ./distros/noetic/rosgraph-msgs/default.nix                                    && ./pin_down.js ./distros/noetic/rosgraph-msgs/default.nix
+echo checking ./distros/noetic/arbotix-firmware/default.nix                                 && ./pin_down.js ./distros/noetic/arbotix-firmware/default.nix
+echo checking ./distros/noetic/sick-scan/default.nix                                        && ./pin_down.js ./distros/noetic/sick-scan/default.nix
+echo checking ./distros/noetic/fmi-adapter-examples/default.nix                             && ./pin_down.js ./distros/noetic/fmi-adapter-examples/default.nix
+echo checking ./distros/noetic/scaled-controllers/default.nix                               && ./pin_down.js ./distros/noetic/scaled-controllers/default.nix
+echo checking ./distros/noetic/camera-calibration-parsers/default.nix                       && ./pin_down.js ./distros/noetic/camera-calibration-parsers/default.nix
+echo checking ./distros/noetic/rosbag-snapshot-msgs/default.nix                             && ./pin_down.js ./distros/noetic/rosbag-snapshot-msgs/default.nix
+echo checking ./distros/noetic/cob-safety-controller/default.nix                            && ./pin_down.js ./distros/noetic/cob-safety-controller/default.nix
+echo checking ./distros/noetic/paho-mqtt-cpp/default.nix                                    && ./pin_down.js ./distros/noetic/paho-mqtt-cpp/default.nix
+echo checking ./distros/noetic/control-toolbox/default.nix                                  && ./pin_down.js ./distros/noetic/control-toolbox/default.nix
+echo checking ./distros/noetic/rosbag-storage/default.nix                                   && ./pin_down.js ./distros/noetic/rosbag-storage/default.nix
+echo checking ./distros/noetic/roslisp/default.nix                                          && ./pin_down.js ./distros/noetic/roslisp/default.nix
+echo checking ./distros/noetic/laser-assembler/default.nix                                  && ./pin_down.js ./distros/noetic/laser-assembler/default.nix
+echo checking ./distros/noetic/rqt-shell/default.nix                                        && ./pin_down.js ./distros/noetic/rqt-shell/default.nix
+echo checking ./distros/noetic/driver-common/default.nix                                    && ./pin_down.js ./distros/noetic/driver-common/default.nix
+echo checking ./distros/noetic/rospy/default.nix                                            && ./pin_down.js ./distros/noetic/rospy/default.nix
+echo checking ./distros/noetic/test-mavros/default.nix                                      && ./pin_down.js ./distros/noetic/test-mavros/default.nix
+echo checking ./distros/noetic/cob-gazebo-worlds/default.nix                                && ./pin_down.js ./distros/noetic/cob-gazebo-worlds/default.nix
+echo checking ./distros/noetic/perception-pcl/default.nix                                   && ./pin_down.js ./distros/noetic/perception-pcl/default.nix
+echo checking ./distros/noetic/cob-relayboard/default.nix                                   && ./pin_down.js ./distros/noetic/cob-relayboard/default.nix
+echo checking ./distros/melodic/usb-cam-hardware/default.nix                                && ./pin_down.js ./distros/melodic/usb-cam-hardware/default.nix
+echo checking ./distros/noetic/exotica-pendulum-dynamics-solver/default.nix                 && ./pin_down.js ./distros/noetic/exotica-pendulum-dynamics-solver/default.nix
+echo checking ./distros/melodic/rr-openrover-simulation/default.nix                         && ./pin_down.js ./distros/melodic/rr-openrover-simulation/default.nix
+echo checking ./distros/melodic/eigen-stl-containers/default.nix                            && ./pin_down.js ./distros/melodic/eigen-stl-containers/default.nix
+echo checking ./distros/melodic/ecl-core/default.nix                                        && ./pin_down.js ./distros/melodic/ecl-core/default.nix
+echo checking ./distros/melodic/franka-control/default.nix                                  && ./pin_down.js ./distros/melodic/franka-control/default.nix
+echo checking ./distros/melodic/ifm3d-core/default.nix                                      && ./pin_down.js ./distros/melodic/ifm3d-core/default.nix
+echo checking ./distros/melodic/pilz-trajectory-generation/default.nix                      && ./pin_down.js ./distros/melodic/pilz-trajectory-generation/default.nix
+echo checking ./distros/melodic/marti-common-msgs/default.nix                               && ./pin_down.js ./distros/melodic/marti-common-msgs/default.nix
+echo checking ./distros/melodic/joy-listener/default.nix                                    && ./pin_down.js ./distros/melodic/joy-listener/default.nix
+echo checking ./distros/melodic/pr2-navigation-local/default.nix                            && ./pin_down.js ./distros/melodic/pr2-navigation-local/default.nix
+echo checking ./distros/melodic/nextage-ros-bridge/default.nix                              && ./pin_down.js ./distros/melodic/nextage-ros-bridge/default.nix
+echo checking ./distros/melodic/sick-safetyscanners/default.nix                             && ./pin_down.js ./distros/melodic/sick-safetyscanners/default.nix
+echo checking ./distros/melodic/igvc-self-drive-gazebo/default.nix                          && ./pin_down.js ./distros/melodic/igvc-self-drive-gazebo/default.nix
+echo checking ./distros/melodic/carrot-planner/default.nix                                  && ./pin_down.js ./distros/melodic/carrot-planner/default.nix
+echo checking ./distros/melodic/abb-rapid-msgs/default.nix                                  && ./pin_down.js ./distros/melodic/abb-rapid-msgs/default.nix
+echo checking ./distros/melodic/pr2-self-test-msgs/default.nix                              && ./pin_down.js ./distros/melodic/pr2-self-test-msgs/default.nix
+echo checking ./distros/noetic/ecl-config/default.nix                                       && ./pin_down.js ./distros/noetic/ecl-config/default.nix
+echo checking ./distros/melodic/microstrain-3dmgx2-imu/default.nix                          && ./pin_down.js ./distros/melodic/microstrain-3dmgx2-imu/default.nix
+echo checking ./distros/melodic/moveit-kinematics/default.nix                               && ./pin_down.js ./distros/melodic/moveit-kinematics/default.nix
+echo checking ./distros/melodic/fuse-variables/default.nix                                  && ./pin_down.js ./distros/melodic/fuse-variables/default.nix
+echo checking ./distros/melodic/uuv-gazebo-plugins/default.nix                              && ./pin_down.js ./distros/melodic/uuv-gazebo-plugins/default.nix
+echo checking ./distros/melodic/rocon-semantic-version/default.nix                          && ./pin_down.js ./distros/melodic/rocon-semantic-version/default.nix
+echo checking ./distros/melodic/mbf-costmap-nav/default.nix                                 && ./pin_down.js ./distros/melodic/mbf-costmap-nav/default.nix
+echo checking ./distros/melodic/open-manipulator-with-tb3-waffle-moveit/default.nix         && ./pin_down.js ./distros/melodic/open-manipulator-with-tb3-waffle-moveit/default.nix
+echo checking ./distros/noetic/ur-gazebo/default.nix                                        && ./pin_down.js ./distros/noetic/ur-gazebo/default.nix
+echo checking ./distros/melodic/gmapping/default.nix                                        && ./pin_down.js ./distros/melodic/gmapping/default.nix
+echo checking ./distros/noetic/cmvision/default.nix                                         && ./pin_down.js ./distros/noetic/cmvision/default.nix
+echo checking ./distros/noetic/interactive-marker-twist-server/default.nix                  && ./pin_down.js ./distros/noetic/interactive-marker-twist-server/default.nix
+echo checking ./distros/noetic/eus-qpoases/default.nix                                      && ./pin_down.js ./distros/noetic/eus-qpoases/default.nix
+echo checking ./distros/noetic/rm-calibration-controllers/default.nix                       && ./pin_down.js ./distros/noetic/rm-calibration-controllers/default.nix
+echo checking ./distros/noetic/mesh-map/default.nix                                         && ./pin_down.js ./distros/noetic/mesh-map/default.nix
+echo checking ./distros/noetic/mrpt-slam/default.nix                                        && ./pin_down.js ./distros/noetic/mrpt-slam/default.nix
+echo checking ./distros/noetic/usb-cam-controllers/default.nix                              && ./pin_down.js ./distros/noetic/usb-cam-controllers/default.nix
+echo checking ./distros/noetic/pilz-control/default.nix                                     && ./pin_down.js ./distros/noetic/pilz-control/default.nix
+echo checking ./distros/noetic/rokubimini-description/default.nix                           && ./pin_down.js ./distros/noetic/rokubimini-description/default.nix
+echo checking ./distros/noetic/nav-grid-server/default.nix                                  && ./pin_down.js ./distros/noetic/nav-grid-server/default.nix
+echo checking ./distros/noetic/diff-drive-controller/default.nix                            && ./pin_down.js ./distros/noetic/diff-drive-controller/default.nix
+echo checking ./distros/noetic/fetch-drivers/default.nix                                    && ./pin_down.js ./distros/noetic/fetch-drivers/default.nix
+echo checking ./distros/noetic/flexbe-core/default.nix                                      && ./pin_down.js ./distros/noetic/flexbe-core/default.nix
+echo checking ./distros/noetic/cob-phidget-em-state/default.nix                             && ./pin_down.js ./distros/noetic/cob-phidget-em-state/default.nix
+echo checking ./distros/melodic/urdfdom-py/default.nix                                      && ./pin_down.js ./distros/melodic/urdfdom-py/default.nix
+echo checking ./distros/melodic/scan-tools/default.nix                                      && ./pin_down.js ./distros/melodic/scan-tools/default.nix
+echo checking ./distros/melodic/pf-description/default.nix                                  && ./pin_down.js ./distros/melodic/pf-description/default.nix
+echo checking ./distros/melodic/ixblue-ins-driver/default.nix                               && ./pin_down.js ./distros/melodic/ixblue-ins-driver/default.nix
+echo checking ./distros/melodic/moveit-runtime/default.nix                                  && ./pin_down.js ./distros/melodic/moveit-runtime/default.nix
+echo checking ./distros/melodic/parameter-assertions/default.nix                            && ./pin_down.js ./distros/melodic/parameter-assertions/default.nix
+echo checking ./distros/melodic/uuv-simulator/default.nix                                   && ./pin_down.js ./distros/melodic/uuv-simulator/default.nix
+echo checking ./distros/melodic/ros-babel-fish/default.nix                                  && ./pin_down.js ./distros/melodic/ros-babel-fish/default.nix
+echo checking ./distros/melodic/rr-openrover-stack/default.nix                              && ./pin_down.js ./distros/melodic/rr-openrover-stack/default.nix
+echo checking ./distros/melodic/um6/default.nix                                             && ./pin_down.js ./distros/melodic/um6/default.nix
+echo checking ./distros/melodic/naoqi-libqi/default.nix                                     && ./pin_down.js ./distros/melodic/naoqi-libqi/default.nix
+echo checking ./distros/melodic/franka-msgs/default.nix                                     && ./pin_down.js ./distros/melodic/franka-msgs/default.nix
+echo checking ./distros/melodic/omnibase-description/default.nix                            && ./pin_down.js ./distros/melodic/omnibase-description/default.nix
+echo checking ./distros/melodic/geometry2/default.nix                                       && ./pin_down.js ./distros/melodic/geometry2/default.nix
+echo checking ./distros/melodic/dataspeed-can/default.nix                                   && ./pin_down.js ./distros/melodic/dataspeed-can/default.nix
+echo checking ./distros/melodic/robot-one/default.nix                                       && ./pin_down.js ./distros/melodic/robot-one/default.nix
+echo checking ./distros/melodic/khi-robot-bringup/default.nix                               && ./pin_down.js ./distros/melodic/khi-robot-bringup/default.nix
+echo checking ./distros/melodic/smach-ros/default.nix                                       && ./pin_down.js ./distros/melodic/smach-ros/default.nix
+echo checking ./distros/melodic/moveit-planners-ompl/default.nix                            && ./pin_down.js ./distros/melodic/moveit-planners-ompl/default.nix
+echo checking ./distros/melodic/jsk-footstep-controller/default.nix                         && ./pin_down.js ./distros/melodic/jsk-footstep-controller/default.nix
+echo checking ./distros/melodic/hebi-description/default.nix                                && ./pin_down.js ./distros/melodic/hebi-description/default.nix
+echo checking ./distros/noetic/pose-base-controller/default.nix                             && ./pin_down.js ./distros/noetic/pose-base-controller/default.nix
+echo checking ./distros/noetic/vrpn-client-ros/default.nix                                  && ./pin_down.js ./distros/noetic/vrpn-client-ros/default.nix
+echo checking ./distros/noetic/cob-android-resource-server/default.nix                      && ./pin_down.js ./distros/noetic/cob-android-resource-server/default.nix
+echo checking ./distros/noetic/diffbot-msgs/default.nix                                     && ./pin_down.js ./distros/noetic/diffbot-msgs/default.nix
+echo checking ./distros/noetic/joint-state-publisher-gui/default.nix                        && ./pin_down.js ./distros/noetic/joint-state-publisher-gui/default.nix
+echo checking ./distros/noetic/jsk-footstep-planner/default.nix                             && ./pin_down.js ./distros/noetic/jsk-footstep-planner/default.nix
+echo checking ./distros/noetic/ncd-parser/default.nix                                       && ./pin_down.js ./distros/noetic/ncd-parser/default.nix
+echo checking ./distros/noetic/mrpt-local-obstacles/default.nix                             && ./pin_down.js ./distros/noetic/mrpt-local-obstacles/default.nix
+echo checking ./distros/noetic/pr2-power-board/default.nix                                  && ./pin_down.js ./distros/noetic/pr2-power-board/default.nix
+echo checking ./distros/noetic/mir-msgs/default.nix                                         && ./pin_down.js ./distros/noetic/mir-msgs/default.nix
+echo checking ./distros/melodic/robosense-simulator/default.nix                             && ./pin_down.js ./distros/melodic/robosense-simulator/default.nix
+echo checking ./distros/melodic/laser-filters/default.nix                                   && ./pin_down.js ./distros/melodic/laser-filters/default.nix
+echo checking ./distros/melodic/cob-bms-driver/default.nix                                  && ./pin_down.js ./distros/melodic/cob-bms-driver/default.nix
+echo checking ./distros/melodic/rdl-urdfreader/default.nix                                  && ./pin_down.js ./distros/melodic/rdl-urdfreader/default.nix
+echo checking ./distros/melodic/rotate-recovery/default.nix                                 && ./pin_down.js ./distros/melodic/rotate-recovery/default.nix
+echo checking ./distros/noetic/leo-example-line-follower/default.nix                        && ./pin_down.js ./distros/noetic/leo-example-line-follower/default.nix
+echo checking ./distros/noetic/rosunit/default.nix                                          && ./pin_down.js ./distros/noetic/rosunit/default.nix
+echo checking ./distros/noetic/gazebo-ros-control-select-joints/default.nix                 && ./pin_down.js ./distros/noetic/gazebo-ros-control-select-joints/default.nix
+echo checking ./distros/noetic/exotica-aico-solver/default.nix                              && ./pin_down.js ./distros/noetic/exotica-aico-solver/default.nix
+echo checking ./distros/noetic/abb-rapid-sm-addin-msgs/default.nix                          && ./pin_down.js ./distros/noetic/abb-rapid-sm-addin-msgs/default.nix
+echo checking ./distros/noetic/rosserial-client/default.nix                                 && ./pin_down.js ./distros/noetic/rosserial-client/default.nix
+echo checking ./distros/noetic/sot-tools/default.nix                                        && ./pin_down.js ./distros/noetic/sot-tools/default.nix
+echo checking ./distros/noetic/automotive-autonomy-msgs/default.nix                         && ./pin_down.js ./distros/noetic/automotive-autonomy-msgs/default.nix
+echo checking ./distros/noetic/drone-wrapper/default.nix                                    && ./pin_down.js ./distros/noetic/drone-wrapper/default.nix
+echo checking ./distros/noetic/jsk-rviz-plugins/default.nix                                 && ./pin_down.js ./distros/noetic/jsk-rviz-plugins/default.nix
+echo checking ./distros/noetic/convex-decomposition/default.nix                             && ./pin_down.js ./distros/noetic/convex-decomposition/default.nix
+echo checking ./distros/noetic/teleop-tools-msgs/default.nix                                && ./pin_down.js ./distros/noetic/teleop-tools-msgs/default.nix
+echo checking ./distros/noetic/slam-toolbox-rviz/default.nix                                && ./pin_down.js ./distros/noetic/slam-toolbox-rviz/default.nix
+echo checking ./distros/noetic/bota-worker/default.nix                                      && ./pin_down.js ./distros/noetic/bota-worker/default.nix
+echo checking ./distros/noetic/rosping/default.nix                                          && ./pin_down.js ./distros/noetic/rosping/default.nix
+echo checking ./distros/melodic/genlisp/default.nix                                         && ./pin_down.js ./distros/melodic/genlisp/default.nix
+echo checking ./distros/noetic/joy-teleop/default.nix                                       && ./pin_down.js ./distros/noetic/joy-teleop/default.nix
+echo checking ./distros/noetic/mir-actions/default.nix                                      && ./pin_down.js ./distros/noetic/mir-actions/default.nix
+echo checking ./distros/noetic/fetch-auto-dock-msgs/default.nix                             && ./pin_down.js ./distros/noetic/fetch-auto-dock-msgs/default.nix
+echo checking ./distros/noetic/swri-profiler-msgs/default.nix                               && ./pin_down.js ./distros/noetic/swri-profiler-msgs/default.nix
+echo checking ./distros/noetic/swri-math-util/default.nix                                   && ./pin_down.js ./distros/noetic/swri-math-util/default.nix
+echo checking ./distros/noetic/phidgets-temperature/default.nix                             && ./pin_down.js ./distros/noetic/phidgets-temperature/default.nix
+echo checking ./distros/noetic/marti-perception-msgs/default.nix                            && ./pin_down.js ./distros/noetic/marti-perception-msgs/default.nix
+echo checking ./distros/melodic/rc-reason-msgs/default.nix                                  && ./pin_down.js ./distros/melodic/rc-reason-msgs/default.nix
+echo checking ./distros/noetic/mesh-msgs-hdf5/default.nix                                   && ./pin_down.js ./distros/noetic/mesh-msgs-hdf5/default.nix
+echo checking ./distros/noetic/mcl-3dl/default.nix                                          && ./pin_down.js ./distros/noetic/mcl-3dl/default.nix
+echo checking ./distros/noetic/gencpp/default.nix                                           && ./pin_down.js ./distros/noetic/gencpp/default.nix
+echo checking ./distros/noetic/jsk-footstep-msgs/default.nix                                && ./pin_down.js ./distros/noetic/jsk-footstep-msgs/default.nix
+echo checking ./distros/noetic/voxel-grid/default.nix                                       && ./pin_down.js ./distros/noetic/voxel-grid/default.nix
+echo checking ./distros/noetic/exotica-ompl-solver/default.nix                              && ./pin_down.js ./distros/noetic/exotica-ompl-solver/default.nix
+echo checking ./distros/noetic/rviz-visual-tools/default.nix                                && ./pin_down.js ./distros/noetic/rviz-visual-tools/default.nix
+echo checking ./distros/noetic/vision-opencv/default.nix                                    && ./pin_down.js ./distros/noetic/vision-opencv/default.nix
+echo checking ./distros/noetic/diagnostic-analysis/default.nix                              && ./pin_down.js ./distros/noetic/diagnostic-analysis/default.nix
+echo checking ./distros/noetic/diagnostic-common-diagnostics/default.nix                    && ./pin_down.js ./distros/noetic/diagnostic-common-diagnostics/default.nix
+echo checking ./distros/noetic/pcl-ros/default.nix                                          && ./pin_down.js ./distros/noetic/pcl-ros/default.nix
+echo checking ./distros/noetic/urdf-tutorial/default.nix                                    && ./pin_down.js ./distros/noetic/urdf-tutorial/default.nix
+echo checking ./distros/noetic/robot-localization/default.nix                               && ./pin_down.js ./distros/noetic/robot-localization/default.nix
+echo checking ./distros/noetic/imagezero-ros/default.nix                                    && ./pin_down.js ./distros/noetic/imagezero-ros/default.nix
+echo checking ./distros/noetic/compressed-image-transport/default.nix                       && ./pin_down.js ./distros/noetic/compressed-image-transport/default.nix
+echo checking ./distros/noetic/map-msgs/default.nix                                         && ./pin_down.js ./distros/noetic/map-msgs/default.nix
+echo checking ./distros/noetic/turtle-actionlib/default.nix                                 && ./pin_down.js ./distros/noetic/turtle-actionlib/default.nix
+echo checking ./distros/noetic/iris-lama-ros/default.nix                                    && ./pin_down.js ./distros/noetic/iris-lama-ros/default.nix
+echo checking ./distros/noetic/moveit-ros-planning/default.nix                              && ./pin_down.js ./distros/noetic/moveit-ros-planning/default.nix
+echo checking ./distros/noetic/leo-description/default.nix                                  && ./pin_down.js ./distros/noetic/leo-description/default.nix
+echo checking ./distros/noetic/realtime-tools/default.nix                                   && ./pin_down.js ./distros/noetic/realtime-tools/default.nix
+echo checking ./distros/noetic/geometry-tutorials/default.nix                               && ./pin_down.js ./distros/noetic/geometry-tutorials/default.nix
+echo checking ./distros/noetic/nav2d-operator/default.nix                                   && ./pin_down.js ./distros/noetic/nav2d-operator/default.nix
+echo checking ./distros/noetic/cob-teleop/default.nix                                       && ./pin_down.js ./distros/noetic/cob-teleop/default.nix
+echo checking ./distros/noetic/qb-device-srvs/default.nix                                   && ./pin_down.js ./distros/noetic/qb-device-srvs/default.nix
+echo checking ./distros/noetic/roslint/default.nix                                          && ./pin_down.js ./distros/noetic/roslint/default.nix
+echo checking ./distros/noetic/ros-type-introspection/default.nix                           && ./pin_down.js ./distros/noetic/ros-type-introspection/default.nix
+echo checking ./distros/noetic/librviz-tutorial/default.nix                                 && ./pin_down.js ./distros/noetic/librviz-tutorial/default.nix
+echo checking ./distros/noetic/pybind11-catkin/default.nix                                  && ./pin_down.js ./distros/noetic/pybind11-catkin/default.nix
+echo checking ./distros/noetic/qt-gui-core/default.nix                                      && ./pin_down.js ./distros/noetic/qt-gui-core/default.nix
+echo checking ./distros/melodic/robot-nav-viz-demos/default.nix                             && ./pin_down.js ./distros/melodic/robot-nav-viz-demos/default.nix
+echo checking ./distros/noetic/cob-default-robot-behavior/default.nix                       && ./pin_down.js ./distros/noetic/cob-default-robot-behavior/default.nix
+echo checking ./distros/noetic/kobuki-core/default.nix                                      && ./pin_down.js ./distros/noetic/kobuki-core/default.nix
+echo checking ./distros/noetic/moveit-ros-planning-interface/default.nix                    && ./pin_down.js ./distros/noetic/moveit-ros-planning-interface/default.nix
+echo checking ./distros/noetic/derived-object-msgs/default.nix                              && ./pin_down.js ./distros/noetic/derived-object-msgs/default.nix
+echo checking ./distros/melodic/laser-filtering/default.nix                                 && ./pin_down.js ./distros/melodic/laser-filtering/default.nix
+echo checking ./distros/noetic/pr2-motor-diagnostic-tool/default.nix                        && ./pin_down.js ./distros/noetic/pr2-motor-diagnostic-tool/default.nix
+echo checking ./distros/noetic/bota-driver-testing/default.nix                              && ./pin_down.js ./distros/noetic/bota-driver-testing/default.nix
+echo checking ./distros/melodic/roslisp-common/default.nix                                  && ./pin_down.js ./distros/melodic/roslisp-common/default.nix
+echo checking ./distros/melodic/grid-map-octomap/default.nix                                && ./pin_down.js ./distros/melodic/grid-map-octomap/default.nix
+echo checking ./distros/melodic/eusurdf/default.nix                                         && ./pin_down.js ./distros/melodic/eusurdf/default.nix
+echo checking ./distros/noetic/velodyne/default.nix                                         && ./pin_down.js ./distros/noetic/velodyne/default.nix
+echo checking ./distros/melodic/power-monitor/default.nix                                   && ./pin_down.js ./distros/melodic/power-monitor/default.nix
+echo checking ./distros/melodic/eus-nlopt/default.nix                                       && ./pin_down.js ./distros/melodic/eus-nlopt/default.nix
+echo checking ./distros/melodic/turtlebot3-autorace/default.nix                             && ./pin_down.js ./distros/melodic/turtlebot3-autorace/default.nix
+echo checking ./distros/noetic/pr2-simulator/default.nix                                    && ./pin_down.js ./distros/noetic/pr2-simulator/default.nix
+echo checking ./distros/melodic/nonpersistent-voxel-layer/default.nix                       && ./pin_down.js ./distros/melodic/nonpersistent-voxel-layer/default.nix
+echo checking ./distros/melodic/mpc-local-planner-examples/default.nix                      && ./pin_down.js ./distros/melodic/mpc-local-planner-examples/default.nix
+echo checking ./distros/melodic/rosbag-snapshot-msgs/default.nix                            && ./pin_down.js ./distros/melodic/rosbag-snapshot-msgs/default.nix
+echo checking ./distros/melodic/safe-teleop-base/default.nix                                && ./pin_down.js ./distros/melodic/safe-teleop-base/default.nix
+echo checking ./distros/melodic/rosbridge-suite/default.nix                                 && ./pin_down.js ./distros/melodic/rosbridge-suite/default.nix
+echo checking ./distros/melodic/radial-menu-msgs/default.nix                                && ./pin_down.js ./distros/melodic/radial-menu-msgs/default.nix
+echo checking ./distros/melodic/lauv-gazebo/default.nix                                     && ./pin_down.js ./distros/melodic/lauv-gazebo/default.nix
+echo checking ./distros/melodic/rqt-py-common/default.nix                                   && ./pin_down.js ./distros/melodic/rqt-py-common/default.nix
+echo checking ./distros/melodic/rosparam-shortcuts/default.nix                              && ./pin_down.js ./distros/melodic/rosparam-shortcuts/default.nix
+echo checking ./distros/melodic/arbotix-msgs/default.nix                                    && ./pin_down.js ./distros/melodic/arbotix-msgs/default.nix
+echo checking ./distros/melodic/rc-genicam-driver/default.nix                               && ./pin_down.js ./distros/melodic/rc-genicam-driver/default.nix
+echo checking ./distros/melodic/ompl/default.nix                                            && ./pin_down.js ./distros/melodic/ompl/default.nix
+echo checking ./distros/noetic/dataspeed-ulc-can/default.nix                                && ./pin_down.js ./distros/noetic/dataspeed-ulc-can/default.nix
+echo checking ./distros/melodic/pr2-calibration/default.nix                                 && ./pin_down.js ./distros/melodic/pr2-calibration/default.nix
+echo checking ./distros/melodic/cob-gazebo-objects/default.nix                              && ./pin_down.js ./distros/melodic/cob-gazebo-objects/default.nix
+echo checking ./distros/melodic/scaled-controllers/default.nix                              && ./pin_down.js ./distros/melodic/scaled-controllers/default.nix
+echo checking ./distros/melodic/navigation-tutorials/default.nix                            && ./pin_down.js ./distros/melodic/navigation-tutorials/default.nix
+echo checking ./distros/melodic/arbotix-firmware/default.nix                                && ./pin_down.js ./distros/melodic/arbotix-firmware/default.nix
+echo checking ./distros/melodic/sand-island/default.nix                                     && ./pin_down.js ./distros/melodic/sand-island/default.nix
+echo checking ./distros/melodic/libqt-gui/default.nix                                       && ./pin_down.js ./distros/melodic/libqt-gui/default.nix
+echo checking ./distros/melodic/rc-silhouettematch-client/default.nix                       && ./pin_down.js ./distros/melodic/rc-silhouettematch-client/default.nix
+echo checking ./distros/melodic/yocs-ar-marker-tracking/default.nix                         && ./pin_down.js ./distros/melodic/yocs-ar-marker-tracking/default.nix
+echo checking ./distros/melodic/sick-scan/default.nix                                       && ./pin_down.js ./distros/melodic/sick-scan/default.nix
+echo checking ./distros/melodic/dbw-polaris-description/default.nix                         && ./pin_down.js ./distros/melodic/dbw-polaris-description/default.nix
+echo checking ./distros/melodic/fmi-adapter-examples/default.nix                            && ./pin_down.js ./distros/melodic/fmi-adapter-examples/default.nix
+echo checking ./distros/melodic/rosgraph-msgs/default.nix                                   && ./pin_down.js ./distros/melodic/rosgraph-msgs/default.nix
+echo checking ./distros/melodic/libqt-core/default.nix                                      && ./pin_down.js ./distros/melodic/libqt-core/default.nix
+echo checking ./distros/melodic/camera-calibration-parsers/default.nix                      && ./pin_down.js ./distros/melodic/camera-calibration-parsers/default.nix
+echo checking ./distros/melodic/cob-safety-controller/default.nix                           && ./pin_down.js ./distros/melodic/cob-safety-controller/default.nix
+echo checking ./distros/melodic/rosbag-storage/default.nix                                  && ./pin_down.js ./distros/melodic/rosbag-storage/default.nix
+echo checking ./distros/melodic/cob-substitute/default.nix                                  && ./pin_down.js ./distros/melodic/cob-substitute/default.nix
+echo checking ./distros/melodic/simple-navigation-goals-tutorial/default.nix                && ./pin_down.js ./distros/melodic/simple-navigation-goals-tutorial/default.nix
+echo checking ./distros/melodic/roslisp/default.nix                                         && ./pin_down.js ./distros/melodic/roslisp/default.nix
+echo checking ./distros/melodic/rocon-tools/default.nix                                     && ./pin_down.js ./distros/melodic/rocon-tools/default.nix
+echo checking ./distros/melodic/moose-msgs/default.nix                                      && ./pin_down.js ./distros/melodic/moose-msgs/default.nix
+echo checking ./distros/melodic/control-toolbox/default.nix                                 && ./pin_down.js ./distros/melodic/control-toolbox/default.nix
+echo checking ./distros/melodic/pddl-planner-viewer/default.nix                             && ./pin_down.js ./distros/melodic/pddl-planner-viewer/default.nix
+echo checking ./distros/melodic/laser-assembler/default.nix                                 && ./pin_down.js ./distros/melodic/laser-assembler/default.nix
+echo checking ./distros/melodic/driver-common/default.nix                                   && ./pin_down.js ./distros/melodic/driver-common/default.nix
+echo checking ./distros/melodic/heron-simulator/default.nix                                 && ./pin_down.js ./distros/melodic/heron-simulator/default.nix
+echo checking ./distros/melodic/rqt-shell/default.nix                                       && ./pin_down.js ./distros/melodic/rqt-shell/default.nix
+echo checking ./distros/melodic/test-mavros/default.nix                                     && ./pin_down.js ./distros/melodic/test-mavros/default.nix
+echo checking ./distros/melodic/people-msgs/default.nix                                     && ./pin_down.js ./distros/melodic/people-msgs/default.nix
+echo checking ./distros/melodic/cob-gazebo-worlds/default.nix                               && ./pin_down.js ./distros/melodic/cob-gazebo-worlds/default.nix
+echo checking ./distros/melodic/rospy/default.nix                                           && ./pin_down.js ./distros/melodic/rospy/default.nix
+echo checking ./distros/melodic/exotica-pendulum-dynamics-solver/default.nix                && ./pin_down.js ./distros/melodic/exotica-pendulum-dynamics-solver/default.nix
+echo checking ./distros/melodic/cob-relayboard/default.nix                                  && ./pin_down.js ./distros/melodic/cob-relayboard/default.nix
+echo checking ./distros/melodic/perception-pcl/default.nix                                  && ./pin_down.js ./distros/melodic/perception-pcl/default.nix
+echo checking ./distros/melodic/asmach-tutorials/default.nix                                && ./pin_down.js ./distros/melodic/asmach-tutorials/default.nix
+echo checking ./distros/melodic/mrp2-teleop/default.nix                                     && ./pin_down.js ./distros/melodic/mrp2-teleop/default.nix
+echo checking ./distros/melodic/aws-ros1-common/default.nix                                 && ./pin_down.js ./distros/melodic/aws-ros1-common/default.nix
+echo checking ./distros/melodic/hostapd-access-point/default.nix                            && ./pin_down.js ./distros/melodic/hostapd-access-point/default.nix
+echo checking ./distros/melodic/dwb-msgs/default.nix                                        && ./pin_down.js ./distros/melodic/dwb-msgs/default.nix
+echo checking ./distros/melodic/audibot/default.nix                                         && ./pin_down.js ./distros/melodic/audibot/default.nix
+echo checking ./distros/melodic/rc-genicam-api/default.nix                                  && ./pin_down.js ./distros/melodic/rc-genicam-api/default.nix
+echo checking ./distros/melodic/sick-tim/default.nix                                        && ./pin_down.js ./distros/melodic/sick-tim/default.nix
+echo checking ./distros/melodic/rocon-python-redis/default.nix                              && ./pin_down.js ./distros/melodic/rocon-python-redis/default.nix
+echo checking ./distros/melodic/industrial-deprecated/default.nix                           && ./pin_down.js ./distros/melodic/industrial-deprecated/default.nix
+echo checking ./distros/melodic/pilz-industrial-motion/default.nix                          && ./pin_down.js ./distros/melodic/pilz-industrial-motion/default.nix
+echo checking ./distros/melodic/exotica-ilqr-solver/default.nix                             && ./pin_down.js ./distros/melodic/exotica-ilqr-solver/default.nix
 echo checking ./distros/melodic/toposens-echo-driver/default.nix                            && ./pin_down.js ./distros/melodic/toposens-echo-driver/default.nix
 echo checking ./distros/melodic/heifu-simple-waypoint/default.nix                           && ./pin_down.js ./distros/melodic/heifu-simple-waypoint/default.nix
 echo checking ./distros/melodic/dbw-fca-can/default.nix                                     && ./pin_down.js ./distros/melodic/dbw-fca-can/default.nix
