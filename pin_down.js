@@ -1,7 +1,4 @@
-#!/usr/bin/env sh
-"\"",`$(echo --% ' |out-null)" >$null;function :{};function dv{<#${/*'>/dev/null )` 2>/dev/null;dv() { #>
-echo "1.29.4"; : --% ' |out-null <#';};v="$(dv)";d="$HOME/.deno/$v/bin/deno";if [ -x "$d" ];then exec "$d" run -q -A "$0" "$@";elif [ -f "$d" ];then chmod +x "$d" && exec "$d" run -q -A "$0" "$@";fi;bin_dir="$HOME/.deno/$v/bin";exe="$bin_dir/deno";has() { command -v "$1" >/dev/null; };if ! has unzip;then :;if ! has apt-get;then has brew && brew install unzip;else if [ "$(whoami)" = "root" ];then apt-get install unzip -y;elif has sudo;then echo "Can I install unzip for you? (its required for this command to work) ";read ANSWER;echo;if [ "$ANSWER" =~ ^[Yy] ];then sudo apt-get install unzip -y;fi;elif has doas;then echo "Can I install unzip for you? (its required for this command to work) ";read ANSWER;echo;if [ "$ANSWER" =~ ^[Yy] ];then doas apt-get install unzip -y;fi;fi;fi;fi;if ! has unzip;then echo "";echo "So I couldn't find an 'unzip' command";echo "And I tried to auto install it, but it seems that failed";echo "(This script needs unzip and either curl or wget)";echo "Please install the unzip command manually then re-run this script";exit 1;fi;if [ "$OS" = "Windows_NT" ];then target="x86_64-pc-windows-msvc";else :; case $(uname -sm) in "Darwin x86_64") target="x86_64-apple-darwin" ;; "Darwin arm64") target="aarch64-apple-darwin" ;; *) target="x86_64-unknown-linux-gnu" ;; esac;fi;deno_uri="https://github.com/denoland/deno/releases/download/v$v/deno-$target.zip";if [ ! -d "$bin_dir" ];then mkdir -p "$bin_dir";fi;if has curl;then curl --fail --location --progress-bar --output "$exe.zip" "$deno_uri";elif has wget;then wget --output-document="$exe.zip" "$deno_uri";else echo "Howdy! I looked for the 'curl' and for 'wget' commands but I didn't see either of them.";echo "Please install one of them";echo "Otherwise I have no way to install the missing deno version needed to run this code";fi;unzip -d "$bin_dir" -o "$exe.zip";chmod +x "$exe";rm "$exe.zip";exec "$d" run -q -A "$0" "$@"; #>};$DenoInstall = "${HOME}\.deno$(dv)";$BinDir = "$DenoInstall\bin"; $DenoExe = "$BinDir\deno.exe"; if (-not(Test-Path -Path "$DenoExe" -PathType Leaf)) { $DenoZip = "$BinDir\deno.zip";$DenoUri = "https://github.com/denoland/deno/releases/download/v$(dv)/deno-x86_64-pc-windows-msvc.zip";[Net.ServicePointManager]::SecurityProtocol=[Net.SecurityProtocolType]::Tls12;if(!(Test-Path $BinDir)){ New-Item $BinDir -ItemType Directory |Out-Null;};curl.exe -Lo $DenoZip $DenoUri;tar.exe xf $DenoZip -C $BinDir; Remove-Item $DenoZip;$User = [EnvironmentVariableTarget]::User; $Path = [Environment]::GetEnvironmentVariable('Path', $User); if (!(";$Path;".ToLower() -like "*;$BinDir;*".ToLower())) { [Environment]::SetEnvironmentVariable('Path', "$Path;$BinDir", $User); $Env:Path += ";$BinDir"; } }; & "$DenoExe" run -q -A "$PSCommandPath" @args; Exit $LastExitCode;# */0}`;
-// */}`
+#!/usr/bin/env -S deno run --allow-all
 
 // 
 // this is a work in progress
@@ -12,7 +9,7 @@ import { FileSystem, glob } from "https://deno.land/x/quickr@0.6.15/main/file_sy
 import { run, throwIfFails, zipInto, mergeInto, returnAsString, Timeout, Env, Cwd, Stdin, Stdout, Stderr, Out, Overwrite, AppendTo } from "https://deno.land/x/quickr@0.6.15/main/run.js"
 
 const tempPath = `${FileSystem.pwd}/.ignore.temp`
-const filePath = Deno.args[0]
+const filePaths = Deno.args
 
 async function pinDown(filePath) {
     const text = await FileSystem.read(filePath)
@@ -25,7 +22,7 @@ async function pinDown(filePath) {
     const pattern = /url *= "(.+)"; *\n( *)name *= * ".+\.tar\.gz"; *\n *sha256 *= *"(.+)";/g
     const replacements = []
     for (let match of text.matchAll(pattern)) {
-        console.debug(`match is:`,match)
+        console.debug(`    found match`)
         let url = match[1]
         let indent = match[2]
         const [ folders, itemName, itemExtensionWithDot ] = FileSystem.pathPieces(url)
@@ -474,15 +471,18 @@ async function pinDown(filePath) {
         // 3e92225f63dc2ccacd060898c80143ced0ebebee        refs/tags/upstream/1.2.0
         // 8ff1c415eaf0b330533e78649a393a0d36f023bd        refs/tags/upstream/1.3.1
         // 54881640297504b28a4e832d5ce55a53124d75c7        refs/tags/upstream/1.3.2
-        const tagInfoString = await run`git ls-remote ${githubUrl} ${Stdout(returnAsString)}`
+        const process = Deno.run({
+            cmd: ["git", "ls-remote", githubUrl ], 
+            stdout: "piped",
+            stderr: "piped"
+        })
+        const tagInfoString = new TextDecoder().decode(await process.output())
         const afterFilter = tagInfoString.split(/\n/g).filter(
-                each=>each.match(/.+refs\/tags\//)
-            )
-        console.debug(`afterFilter is:`,afterFilter)
+            each=>each.match(/.+refs\/tags\//)
+        )
         const afterSplit = afterFilter.map(
             each=>each.split(/\trefs\/tags\//g).reverse() // reverse = make the tag the key instead of the value
         )
-        console.debug(`afterSplit is:`,afterSplit)
         const tagToCommitHash = Object.fromEntries(
             tagInfoString.split(/\n/g).filter(
                 each=>each.match(/.+refs\/tags\//)
@@ -491,15 +491,11 @@ async function pinDown(filePath) {
             )
         )
         const commitHash = tagToCommitHash[tag]
-        console.debug(`commitHash is:`,commitHash)
         if (commitHash) {
             const pinnedUrl = `${githubUrl}/archive/${commitHash}.tar.gz`
             const sha256 = (await run`nix_sha256 ${pinnedUrl} ${Stdout(returnAsString)}`).replace(/\s|\n/g,"")
             replacements.push([ pinnedUrl, indent, sha256 ])
         } else {
-            console.debug("couldn't find commit for a tag")
-            console.debug(`tag is:`,tag)
-            console.debug(`tagToCommitHash is:`,tagToCommitHash)
             replacements.push(null)
         }
     }
@@ -522,4 +518,6 @@ async function pinDown(filePath) {
     }
 }
 
-await pinDown(filePath)
+await Promise.all(
+    filePaths.map(each=>pinDown(each).catch(error=>console.log(`error with: ${each}`)))
+)
