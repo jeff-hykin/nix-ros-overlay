@@ -8,9 +8,8 @@ buildRosPackage {
   version = "0.22.0-r1";
 
   src = fetchurl {
-    url = "https://github.com/ros2-gbp/launch_ros-release/archive/release/rolling/ros2launch/0.22.0-1.tar.gz";
-    name = "0.22.0-1.tar.gz";
-    sha256 = "f90241be4c37c4f5441a5c811df5c52c8abf3cbc3812f59c306428bb7dcb8bfa";
+    url = "https://github.com/ros2-gbp/launch_ros-release/archive/33e393bb1f8201adf615f53ed175025a87438d4e.tar.gz";
+    sha256 = "sha256-iroAp5ujn6hwcSuW6FA5FkPvZGdlTWWWJp5vYTwbsWE=";
   };
 
   buildType = "ament_python";

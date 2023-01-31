@@ -8,9 +8,8 @@ buildRosPackage {
   version = "1.7.4-r1";
 
   src = fetchurl {
-    url = "https://github.com/tork-a/jsk_roseus-release/archive/release/melodic/roseus_smach/1.7.4-1.tar.gz";
-    name = "1.7.4-1.tar.gz";
-    sha256 = "d174a427c36c766fcc47ceb18a95cc3dda75a74b04550a7b7d2b8de78af3edde";
+    url = "https://github.com/tork-a/jsk_roseus-release/archive/2b422b096d9b710cc13dc9399e386dc4c248c3b1.tar.gz";
+    sha256 = "sha256-JsSwAXxA64pUYiSc+UHIRV4NyzOmsEUAz44q1hb3E2I=";
   };
 
   buildType = "catkin";

@@ -8,9 +8,8 @@ buildRosPackage {
   version = "2.3.1-r1";
 
   src = fetchurl {
-    url = "https://github.com/ros2-gbp/unique_identifier_msgs-release/archive/release/rolling/unique_identifier_msgs/2.3.1-1.tar.gz";
-    name = "2.3.1-1.tar.gz";
-    sha256 = "8ccd77c6fca634f4511eadeef45eb4d8e841af3b6da932fb67817127dd0aa4a6";
+    url = "https://github.com/ros2-gbp/unique_identifier_msgs-release/archive/fe77b02c8028c4463448d7a7e8313829b048e234.tar.gz";
+    sha256 = "sha256-FqmSJTXKhYJNGFfYzan04aouvqn5hmHygfypePyo4JM=";
   };
 
   buildType = "ament_cmake";

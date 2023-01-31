@@ -8,9 +8,8 @@ buildRosPackage {
   version = "0.2.2-r1";
 
   src = fetchurl {
-    url = "https://github.com/foxglove/ros_foxglove_bridge-release/archive/release/melodic/foxglove_bridge/0.2.2-1.tar.gz";
-    name = "0.2.2-1.tar.gz";
-    sha256 = "bff9c1a2651cacd73e4020a5412bf4cb7dd6043d0c3b2de84862a6c635f15028";
+    url = "https://github.com/foxglove/ros_foxglove_bridge-release/archive/8dc7214aa7747d752ddb3bb5312a25a45826218e.tar.gz";
+    sha256 = "sha256-G1VqLpc+S2Yng1cVVBxbYH4EsGP9TZQWwWa7cj9/8dY=";
   };
 
   buildType = "catkin";

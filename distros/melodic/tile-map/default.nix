@@ -8,9 +8,8 @@ buildRosPackage {
   version = "1.4.2-r1";
 
   src = fetchurl {
-    url = "https://github.com/swri-robotics-gbp/mapviz-release/archive/release/melodic/tile_map/1.4.2-1.tar.gz";
-    name = "1.4.2-1.tar.gz";
-    sha256 = "b8dff88df9fe3838b14c477a6d9ac3ae00085e8deb0b7d58ddd37130e32582f4";
+    url = "https://github.com/swri-robotics-gbp/mapviz-release/archive/82cc88ae1978105e77b728cf99ee5fa7fa8673c0.tar.gz";
+    sha256 = "sha256-avDvm2BvpzVJJJ88DPTJesFdIznBLyQRyZ12ycmBt7A=";
   };
 
   buildType = "catkin";

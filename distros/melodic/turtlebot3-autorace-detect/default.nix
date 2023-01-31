@@ -8,9 +8,8 @@ buildRosPackage {
   version = "1.2.0";
 
   src = fetchurl {
-    url = "https://github.com/ROBOTIS-GIT-release/turtlebot3_autorace-release/archive/release/melodic/turtlebot3_autorace_detect/1.2.0-0.tar.gz";
-    name = "1.2.0-0.tar.gz";
-    sha256 = "51d9465e570d60f2d1fe2500d9c9f285a801800c131f38fba376b0034eff3288";
+    url = "https://github.com/ROBOTIS-GIT-release/turtlebot3_autorace-release/archive/eb876e46161439c9948202f914a285ab16a5e3e0.tar.gz";
+    sha256 = "sha256-97/3GqrLmdynA5gZuT/ZnkM9kZCNdLeZZtWBSH7hon0=";
   };
 
   buildType = "catkin";

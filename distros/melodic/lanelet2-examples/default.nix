@@ -8,9 +8,8 @@ buildRosPackage {
   version = "1.0.1-r1";
 
   src = fetchurl {
-    url = "https://github.com/fzi-forschungszentrum-informatik/lanelet2-release/archive/release/melodic/lanelet2_examples/1.0.1-1.tar.gz";
-    name = "1.0.1-1.tar.gz";
-    sha256 = "9f93b536ff1bc3af4626a20119bbcf166d0468f0b3ddd108ac6a484ca7e67ffc";
+    url = "https://github.com/fzi-forschungszentrum-informatik/lanelet2-release/archive/dadd82ddff7d33237e3f8080397882a5b9e3b842.tar.gz";
+    sha256 = "sha256-rq0B8gzC9cG7IVN3QBPKpTmL/HxYog5JtFFOx2C41X4=";
   };
 
   buildType = "catkin";

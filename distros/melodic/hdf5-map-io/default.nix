@@ -8,9 +8,8 @@ buildRosPackage {
   version = "1.1.0-r1";
 
   src = fetchurl {
-    url = "https://github.com/uos-gbp/mesh-tools/archive/release/melodic/hdf5_map_io/1.1.0-1.tar.gz";
-    name = "1.1.0-1.tar.gz";
-    sha256 = "13f5cf1290c667d40005dfb864ec17d5a2329410dfa8714a4574ab4764754c72";
+    url = "https://github.com/uos-gbp/mesh-tools/archive/c50b5562932686a326ae7a658855d5751d7e5c95.tar.gz";
+    sha256 = "sha256-uGfz9W97JDomrPLt7PKwlP4UGNdee8XJwzovBpzyra8=";
   };
 
   buildType = "catkin";

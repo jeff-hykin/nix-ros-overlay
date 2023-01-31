@@ -8,9 +8,8 @@ buildRosPackage {
   version = "0.0.2-r1";
 
   src = fetchurl {
-    url = "https://github.com/mrpt-ros-pkg-release/mrpt_sensors-release/archive/release/melodic/mrpt_sensorlib/0.0.2-1.tar.gz";
-    name = "0.0.2-1.tar.gz";
-    sha256 = "a0e9b917797b73226f1b1880273bf7328b88616e9617db3c3882d6f707dc6cb5";
+    url = "https://github.com/mrpt-ros-pkg-release/mrpt_sensors-release/archive/d6848f2484811372f0810a1a9496f87a5026ef33.tar.gz";
+    sha256 = "sha256-qSgppjhZk98hlF7X1tscTHmd6lnIQTJkpO9MpADFCx4=";
   };
 
   buildType = "catkin";

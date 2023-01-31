@@ -8,9 +8,8 @@ buildRosPackage {
   version = "0.3.3-r2";
 
   src = fetchurl {
-    url = "https://github.com/ros-gbp/scan_tools-release/archive/release/melodic/scan_to_cloud_converter/0.3.3-2.tar.gz";
-    name = "0.3.3-2.tar.gz";
-    sha256 = "3ec240f339589c404db018ccf98fda92f2dc33e740678a6246ffa248f2dab533";
+    url = "https://github.com/ros-gbp/scan_tools-release/archive/f852d2c24155358e9000fb08149f2a6e1939f146.tar.gz";
+    sha256 = "sha256-PbqPH8KR7i6Einlcettf0P73PN7E67K96puohcJPUn4=";
   };
 
   buildType = "catkin";

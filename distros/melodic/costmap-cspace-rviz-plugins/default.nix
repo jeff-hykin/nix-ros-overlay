@@ -8,9 +8,8 @@ buildRosPackage {
   version = "0.11.6-r1";
 
   src = fetchurl {
-    url = "https://github.com/at-wat/neonavigation_rviz_plugins-release/archive/release/melodic/costmap_cspace_rviz_plugins/0.11.6-1.tar.gz";
-    name = "0.11.6-1.tar.gz";
-    sha256 = "bcd73822b9dd77d03b425ddad5918adea6d64ac3e9b7bbe8f4605ef9048af760";
+    url = "https://github.com/at-wat/neonavigation_rviz_plugins-release/archive/d682a9c4e2146bbda8674986df66b6c659171aa7.tar.gz";
+    sha256 = "sha256-AZXjHbkeKfD4qwfQ4109dCTQVvKOpA6QfPkrNsvaiOc=";
   };
 
   buildType = "catkin";

@@ -8,9 +8,8 @@ buildRosPackage {
   version = "1.4.2-r1";
 
   src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros_tutorials-release/archive/release/humble/turtlesim/1.4.2-1.tar.gz";
-    name = "1.4.2-1.tar.gz";
-    sha256 = "e259c12d06533fe5943d8b5c5606cb215d2b2cfb309e0aaae263f51f5147d6f3";
+    url = "https://github.com/ros2-gbp/ros_tutorials-release/archive/0e3f0af8deac5a3837eecb37d750b0d5cae321c9.tar.gz";
+    sha256 = "sha256-aasLRqKCjuLL2lV4bWgYs/teS/UyiGhEVpy5P+fKXt4=";
   };
 
   buildType = "ament_cmake";

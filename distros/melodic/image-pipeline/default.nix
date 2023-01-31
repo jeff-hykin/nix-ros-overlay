@@ -8,9 +8,8 @@ buildRosPackage {
   version = "1.15.2-r1";
 
   src = fetchurl {
-    url = "https://github.com/ros-gbp/image_pipeline-release/archive/release/melodic/image_pipeline/1.15.2-1.tar.gz";
-    name = "1.15.2-1.tar.gz";
-    sha256 = "4a7d7906fa86fb64308ab843b43e48fabe79bfaaa085e662a95dfbd4517c1991";
+    url = "https://github.com/ros-gbp/image_pipeline-release/archive/81db469e1155c835671f231af0f2aa15d5681073.tar.gz";
+    sha256 = "sha256-BLH4XfHsW1NN/Nkwc177PC8mX+ibtZp/tLXgN3/a4WQ=";
   };
 
   buildType = "catkin";

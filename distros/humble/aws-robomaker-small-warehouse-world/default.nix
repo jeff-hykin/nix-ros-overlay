@@ -8,9 +8,8 @@ buildRosPackage {
   version = "1.0.5-r1";
 
   src = fetchurl {
-    url = "https://github.com/ros2-gbp/aws_robomaker_small_warehouse_world-release/archive/release/humble/aws_robomaker_small_warehouse_world/1.0.5-1.tar.gz";
-    name = "1.0.5-1.tar.gz";
-    sha256 = "65dfe041bacd9e53224fef4ea1c98b594c9d6e78e2c88e018b5fca1982292de1";
+    url = "https://github.com/ros2-gbp/aws_robomaker_small_warehouse_world-release/archive/f9c9070e9cd91a1427854905bb1f46810f66d37d.tar.gz";
+    sha256 = "sha256-bMYgLcTRb5UvNDZS4HmtCbd1SRpRfQypQmT4SJPbONY=";
   };
 
   buildType = "ament_cmake";

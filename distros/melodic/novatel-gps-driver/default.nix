@@ -8,9 +8,8 @@ buildRosPackage {
   version = "3.9.0-r1";
 
   src = fetchurl {
-    url = "https://github.com/swri-robotics-gbp/novatel_gps_driver-release/archive/release/melodic/novatel_gps_driver/3.9.0-1.tar.gz";
-    name = "3.9.0-1.tar.gz";
-    sha256 = "6ef15030ebde3bece473d8bbddc617d7e58b972e4de490e48e63b1e885ad06f8";
+    url = "https://github.com/swri-robotics-gbp/novatel_gps_driver-release/archive/fab3371440e2860aa4312daf24341c631541eeaf.tar.gz";
+    sha256 = "sha256-L8vDk9aHMXH/KBT6V1EJTvDrkppgG30LjqbvtsfwNyo=";
   };
 
   buildType = "catkin";

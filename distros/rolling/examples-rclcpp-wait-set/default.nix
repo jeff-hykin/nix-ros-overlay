@@ -8,9 +8,8 @@ buildRosPackage {
   version = "0.16.2-r1";
 
   src = fetchurl {
-    url = "https://github.com/ros2-gbp/examples-release/archive/release/rolling/examples_rclcpp_wait_set/0.16.2-1.tar.gz";
-    name = "0.16.2-1.tar.gz";
-    sha256 = "1c20dc37ea3f683c6fcdcf05cd1f0ed8a0735914e01dc5f9b68994f70a6734ff";
+    url = "https://github.com/ros2-gbp/examples-release/archive/c8edcca8c68c67c8905e3989ceb728471a74de1c.tar.gz";
+    sha256 = "sha256-peItFxyuhXk6d9dZStLOU+d4SXVEWh9SQlxcta+CiHM=";
   };
 
   buildType = "ament_cmake";

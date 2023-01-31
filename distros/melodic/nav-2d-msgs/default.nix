@@ -8,9 +8,8 @@ buildRosPackage {
   version = "0.3.0-r1";
 
   src = fetchurl {
-    url = "https://github.com/DLu/robot_navigation-release/archive/release/melodic/nav_2d_msgs/0.3.0-1.tar.gz";
-    name = "0.3.0-1.tar.gz";
-    sha256 = "c23cf1eba45980b80b02ed35cb823d39cefeb8d03d2832bed92e2028ad8f9ea0";
+    url = "https://github.com/DLu/robot_navigation-release/archive/cabaf15c588d9e740aedebf7c8439a4708fda61c.tar.gz";
+    sha256 = "sha256-6wogATbnVAQIGGezE79TDqqMVpzEp85aYLAd2p6Q+cw=";
   };
 
   buildType = "catkin";
