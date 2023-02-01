@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-behaviortree-cpp-v3";
   version = "3.8.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/behaviortree_cpp-release/archive/release/humble/behaviortree_cpp_v3/3.8.0-1.tar.gz";
-    name = "3.8.0-1.tar.gz";
-    sha256 = "f7bd10548468db4db6421e0637f09cf8a6e480fbc482323efecde32a99999a79";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "behaviortree_cpp-release";
+    rev = "b5aee62b3a69259bebce49462fa1064b858c09b1";
+    owner = "ros2-gbp";
+    sha256 = "sha256-oQken785w4AIUgMM/fUcZ5Cka1PNfrFhFxhgqMfCKqs=";
   };
 
   buildType = "ament_cmake";

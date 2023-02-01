@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-cob-trajectory-controller";
   version = "0.8.20-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_control-release/archive/release/noetic/cob_trajectory_controller/0.8.20-1.tar.gz";
-    name = "0.8.20-1.tar.gz";
-    sha256 = "ce2951c0f6ba2d5e69a3d8e21391d0baf2f0456bf0b65c45b86f87f47c27378f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_control-release";
+    rev = "f92ba48951bf54995db50be6594c05a60f891275";
+    owner = "ipa320";
+    sha256 = "sha256-4P43qMPlz3fOLPNv2DnyKd/S0IbsJc4d1U7uYOIzjTM=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-dwb-core";
   version = "0.4.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/SteveMacenski/navigation2-release/archive/release/foxy/dwb_core/0.4.7-1.tar.gz";
-    name = "0.4.7-1.tar.gz";
-    sha256 = "447ed10918519f8c802ba479fb2530dff87e147b608a2e406d5af96adfa6d4c2";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation2-release";
+    rev = "3c91699174a85494395c9276242c01ae0b56fc29";
+    owner = "SteveMacenski";
+    sha256 = "sha256-i73z1htZVKnEzYrzSPi7dNv3ghCrgJBD20ByNTvoLQ8=";
   };
 
   buildType = "ament_cmake";

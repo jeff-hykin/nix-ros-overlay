@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-tf2-bullet";
   version = "0.17.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/geometry2-release/archive/release/galactic/tf2_bullet/0.17.5-1.tar.gz";
-    name = "0.17.5-1.tar.gz";
-    sha256 = "7cbbc3890a953149c5d2cc103e22711e2016592d34b21ab2d2bf4db3803b67a3";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "geometry2-release";
+    rev = "daae84e5a1410c69f2886350c37bf27bf120cd50";
+    owner = "ros2-gbp";
+    sha256 = "sha256-RmfHvYNkeqLCwCpFvrwkc0kp4avPdhxcMDMci5RLLeA=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-stage-ros";
   version = "1.8.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/stage_ros-release/archive/release/noetic/stage_ros/1.8.0-1.tar.gz";
-    name = "1.8.0-1.tar.gz";
-    sha256 = "eb77956a339447194a8b45177863165109b0ff1718486ef406f50a9abafe2609";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "stage_ros-release";
+    rev = "69e425533130f0d16d8ba6395f74cd65e10e6e05";
+    owner = "ros-gbp";
+    sha256 = "sha256-8N+wPzN7yC0rVdaTnq/17aCyQfsbCgLafRrgfPjgous=";
   };
 
   buildType = "catkin";

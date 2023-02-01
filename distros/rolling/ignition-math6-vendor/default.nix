@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-ignition-math6-vendor";
   version = "0.0.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ignition_math6_vendor-release/archive/release/rolling/ignition_math6_vendor/0.0.2-1.tar.gz";
-    name = "0.0.2-1.tar.gz";
-    sha256 = "b5dce2e3cca9f97c52f41616ad1c43c16c16feda0f67e4b427e41b3173e11a17";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ignition_math6_vendor-release";
+    rev = "ee96645c26be6a1654f6fda884011f1aab152ec8";
+    owner = "ros2-gbp";
+    sha256 = "sha256-HR32tjvnD5KaVPw4YWj43yrNsA3PGhuwcALJlBciHYQ=";
   };
 
   buildType = "cmake";

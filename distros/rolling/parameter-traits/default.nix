@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-parameter-traits";
   version = "0.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/PickNikRobotics/generate_parameter_library-release/archive/release/rolling/parameter_traits/0.3.0-1.tar.gz";
-    name = "0.3.0-1.tar.gz";
-    sha256 = "9abb0f7275b3a4a05645b572fb47b2100b96d73f6825d5a85d351e5ddc78c87c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "generate_parameter_library-release";
+    rev = "e7c327291539c0f4daa0a3cee9bcabd4b63d768f";
+    owner = "PickNikRobotics";
+    sha256 = "sha256-CE7WX8x5Ilik/BADGqMSQOBYcG2ZakWdUKs7Ergu22g=";
   };
 
   buildType = "ament_cmake";

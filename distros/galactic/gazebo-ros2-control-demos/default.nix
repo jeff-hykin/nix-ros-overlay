@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-gazebo-ros2-control-demos";
   version = "0.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/gazebo_ros2_control-release/archive/release/galactic/gazebo_ros2_control_demos/0.2.0-1.tar.gz";
-    name = "0.2.0-1.tar.gz";
-    sha256 = "6dfcae7e75f8b389b2690af93c57298cc29af90d505af722d78ea5924fdc84d2";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "gazebo_ros2_control-release";
+    rev = "31fe66732761adcd5e98fe9dca87777946951649";
+    owner = "ros2-gbp";
+    sha256 = "sha256-iW38EcLlIds5C67RrztHOtXG7ygtIL5BzovH/eBMtTs=";
   };
 
   buildType = "ament_cmake";

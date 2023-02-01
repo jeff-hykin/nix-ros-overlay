@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-fkie-master-sync";
   version = "1.3.2-r2";
 
-  src = fetchurl {
-    url = "https://github.com/fkie-release/multimaster_fkie-release/archive/release/noetic/fkie_master_sync/1.3.2-2.tar.gz";
-    name = "1.3.2-2.tar.gz";
-    sha256 = "0986d615fc344af3fa7fbf4107ee5c1809f647c82754cae34cdcea4e53d07933";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "multimaster_fkie-release";
+    rev = "30294cdb9d5c76bc88ffa8001f03da6c61749d0f";
+    owner = "fkie-release";
+    sha256 = "sha256-ETFhGHpn503BLHiZkj11BVXIRjHB9zraUOCYxwScXSk=";
   };
 
   buildType = "catkin";

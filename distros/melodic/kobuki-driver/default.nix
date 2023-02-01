@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-kobuki-driver";
   version = "0.7.12-r1";
 
-  src = fetchurl {
-    url = "https://github.com/yujinrobot-release/kobuki_core-release/archive/release/melodic/kobuki_driver/0.7.12-1.tar.gz";
-    name = "0.7.12-1.tar.gz";
-    sha256 = "38e54041401f657447538999ea3adb4ba2c8c34f8677a80df31d7685eafa896f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "kobuki_core-release";
+    rev = "4fe47552372440f10702888a028be9524c25e4fc";
+    owner = "yujinrobot-release";
+    sha256 = "sha256-d09KDqqPXd6jw3/dU6Y7aHSyv7xBhOJhwAY72amQGIM=";
   };
 
   buildType = "catkin";

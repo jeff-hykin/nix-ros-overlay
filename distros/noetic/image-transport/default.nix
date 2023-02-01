@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-image-transport";
   version = "1.12.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/image_common-release/archive/release/noetic/image_transport/1.12.0-1.tar.gz";
-    name = "1.12.0-1.tar.gz";
-    sha256 = "22806dd3683201412ecd38f44e40255a7736221fe13f1bc06c660c83eddf3692";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "image_common-release";
+    rev = "8bdf77f0cc6bf79b8dce54d75acab95af5649867";
+    owner = "ros-gbp";
+    sha256 = "sha256-0MoEpnPELHrepZ2Q8d/rqAweME89Ywu7zzn9ElEUqeg=";
   };
 
   buildType = "catkin";

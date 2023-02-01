@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-industrial-robot-client";
   version = "0.7.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-industrial-release/industrial_core-release/archive/release/melodic/industrial_robot_client/0.7.3-1.tar.gz";
-    name = "0.7.3-1.tar.gz";
-    sha256 = "752478205c90b5ca1bfb45a88e14ad235f773377af99444ef9a42ad23bb015e0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "industrial_core-release";
+    rev = "b180c6e78ffc4aa4efe27d9f34aa9d964732a902";
+    owner = "ros-industrial-release";
+    sha256 = "sha256-LgvtZfdDxAZjIa9OvxJbl+lOHxfAiz5mJiMScB1qf2k=";
   };
 
   buildType = "catkin";

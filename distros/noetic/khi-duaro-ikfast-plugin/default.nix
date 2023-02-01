@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-khi-duaro-ikfast-plugin";
   version = "1.3.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/Kawasaki-Robotics/khi_robot-release/archive/release/noetic/khi_duaro_ikfast_plugin/1.3.0-2.tar.gz";
-    name = "1.3.0-2.tar.gz";
-    sha256 = "8e04bf9a27110105da896f1bfc4a47241f7269c0faf124bb354355a1181c191a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "khi_robot-release";
+    rev = "6e58d0efb8fdbb35a708e880be2526d392e1b5b0";
+    owner = "Kawasaki-Robotics";
+    sha256 = "sha256-VoTn3ujaq3vuKx6C9JFp70whb6HgyOsTsxZVelcU9fU=";
   };
 
   buildType = "catkin";

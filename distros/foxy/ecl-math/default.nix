@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-ecl-math";
   version = "1.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/yujinrobot-release/ecl_core-release/archive/release/foxy/ecl_math/1.2.0-1.tar.gz";
-    name = "1.2.0-1.tar.gz";
-    sha256 = "130441861953371a243817ffd77e56a2396082e1c5105e2b40da579fca45cae4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ecl_core-release";
+    rev = "700920e931d573d0a6a88ac36375f493f3fc2864";
+    owner = "yujinrobot-release";
+    sha256 = "sha256-NeevQ8lIx9k/BjzaS+pXu0qanSmP8jDhWZea+Irdp40=";
   };
 
   buildType = "ament_cmake";

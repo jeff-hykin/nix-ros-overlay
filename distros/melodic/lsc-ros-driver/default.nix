@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-lsc-ros-driver";
   version = "1.0.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/AutonicsLiDAR-release/lsc_ros_driver-release/archive/release/melodic/lsc_ros_driver/1.0.2-1.tar.gz";
-    name = "1.0.2-1.tar.gz";
-    sha256 = "32a1896f2074ea84a3cd92299deabc1e3303ec42744cd6a2c6064c857ed52e12";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "lsc_ros_driver-release";
+    rev = "60d2f9cc6f291735b4a6e3139c3e608234a8eb8e";
+    owner = "AutonicsLiDAR-release";
+    sha256 = "sha256-xYpSqVbtrXn/3u/Xxe7aYYJnOGgMohZ2Chgf/aTFFZo=";
   };
 
   buildType = "catkin";

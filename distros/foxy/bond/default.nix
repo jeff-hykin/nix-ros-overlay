@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-bond";
   version = "2.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/bond_core-release/archive/release/foxy/bond/2.1.0-1.tar.gz";
-    name = "2.1.0-1.tar.gz";
-    sha256 = "697372b7c264f10a6383c91922e628418fbc8fd9678638796051bc573f1e3877";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "bond_core-release";
+    rev = "87b512bb58c76c3fcab9c47ff1f47b523dbef110";
+    owner = "ros2-gbp";
+    sha256 = "sha256-S94l1Vd0Pj6OOGmPjS4p9nlQ3nERZiMLWmIDXVFZ8wM=";
   };
 
   buildType = "ament_cmake";

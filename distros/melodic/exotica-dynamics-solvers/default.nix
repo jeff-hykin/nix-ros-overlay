@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-exotica-dynamics-solvers";
   version = "6.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipab-slmc/exotica-release/archive/release/melodic/exotica_dynamics_solvers/6.2.0-1.tar.gz";
-    name = "6.2.0-1.tar.gz";
-    sha256 = "bb7f1c96594f7789b8cac978571a23a8b28e629f2a14554e891a4cea90db7ab9";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "exotica-release";
+    rev = "0937020e1d276aecbbd8ea248d8fc1e2fc72b7ef";
+    owner = "ipab-slmc";
+    sha256 = "sha256-GokAu3SM9Iwel7j6NTm90HArXxpFUU2dPG7QhEy8t30=";
   };
 
   buildType = "catkin";

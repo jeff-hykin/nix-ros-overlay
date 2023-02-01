@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-avt-vimba-camera";
   version = "1.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/astuff/avt_vimba_camera-release/archive/release/melodic/avt_vimba_camera/1.2.0-1.tar.gz";
-    name = "1.2.0-1.tar.gz";
-    sha256 = "74b42283532f9c9c2b19646b0d4138cbd1aa95a2755191027fb72923070be070";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "avt_vimba_camera-release";
+    rev = "a3f1913ae16349f4646067ad737a92ac6cef1518";
+    owner = "astuff";
+    sha256 = "sha256-Ykrkl50T1YM/nw8eIdpcqvFcdKnNh828nL+np0TlbEA=";
   };
 
   buildType = "catkin";

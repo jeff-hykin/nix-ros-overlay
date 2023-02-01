@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-phidgets-msgs";
   version = "2.2.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/phidgets_drivers-release/archive/release/galactic/phidgets_msgs/2.2.3-1.tar.gz";
-    name = "2.2.3-1.tar.gz";
-    sha256 = "5951f7b5d06ef7595615dfa673c952ba8ac4e93e8f833e10115d1642346e09fc";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "phidgets_drivers-release";
+    rev = "c21238c56dd8c41072df5172d8e170b87c1679d1";
+    owner = "ros2-gbp";
+    sha256 = "sha256-winaRYVn1yp7zErXRCeW2sZnAQrhoQCOS5ojzmmZMls=";
   };
 
   buildType = "ament_cmake";

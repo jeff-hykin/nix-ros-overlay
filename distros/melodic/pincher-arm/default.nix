@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-pincher-arm";
   version = "0.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/fictionlab-gbp/pincher_arm-release/archive/release/melodic/pincher_arm/0.2.0-1.tar.gz";
-    name = "0.2.0-1.tar.gz";
-    sha256 = "7ba2563e83f8fb00c6071aa005888c7746fb5a23bf73b488178e3c6cb71a56d3";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pincher_arm-release";
+    rev = "3752743575cd2150c0c4fa905fb432d0f344afb1";
+    owner = "fictionlab-gbp";
+    sha256 = "sha256-M13EHfXPoBG75tR50Toawzt+D7tWgtHGc6BVES08HFU=";
   };
 
   buildType = "catkin";

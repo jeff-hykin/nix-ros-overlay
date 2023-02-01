@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-pilz-industrial-motion-testutils";
   version = "0.7.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/PilzDE/pilz_common-release/archive/release/noetic/pilz_industrial_motion_testutils/0.7.2-1.tar.gz";
-    name = "0.7.2-1.tar.gz";
-    sha256 = "fd2e4a3f4c386eec28fe42fe92f53b64bbeef13b013d3dcf6f79cbf106a572ec";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pilz_common-release";
+    rev = "34e165a8aeb865b12c9e5aa37dd1dd7b34f90685";
+    owner = "PilzDE";
+    sha256 = "sha256-Y405fmpCVAC8NRxhy2BIhI6tYpVkK+LAwKnAPz1haL8=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-diagnostic-common-diagnostics";
   version = "1.11.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/diagnostics-release/archive/release/noetic/diagnostic_common_diagnostics/1.11.0-1.tar.gz";
-    name = "1.11.0-1.tar.gz";
-    sha256 = "de4cad66e278b9be6736a81ae202d16515a5094989ee4b870dfdc1ad9624bc8e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "diagnostics-release";
+    rev = "121bad0ba4eb9fb7cf47ecff11ee8a4157b880f8";
+    owner = "ros-gbp";
+    sha256 = "sha256-9WN6Hxj2HoIRSLa9CsX9cdiTY39MuWlxy+o7CdzmazI=";
   };
 
   buildType = "catkin";

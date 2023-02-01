@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-sophus";
   version = "1.3.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/yujinrobot-release/sophus-release/archive/release/humble/sophus/1.3.1-1.tar.gz";
-    name = "1.3.1-1.tar.gz";
-    sha256 = "be643cba4f75f64999979f3af952e7187925b671a46aeabeafabdeb3478ea17c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "sophus-release";
+    rev = "1f5f87bfdbe83da08a6331fc6e85fddb55e3e358";
+    owner = "yujinrobot-release";
+    sha256 = "sha256-sU6bD+gx60Z2gmHijXI86GiPbz64jCt6tMrNfxUwAHM=";
   };
 
   buildType = "cmake";

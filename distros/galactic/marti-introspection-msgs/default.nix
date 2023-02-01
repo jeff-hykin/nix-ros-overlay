@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-marti-introspection-msgs";
   version = "1.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/marti_messages-release/archive/release/galactic/marti_introspection_msgs/1.3.0-1.tar.gz";
-    name = "1.3.0-1.tar.gz";
-    sha256 = "e1cf624950cfab6c14ec3c3e1806ad095332e06a59f87d6d8acdbbaa4d967c54";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "marti_messages-release";
+    rev = "03690e519f27fa56f2d0c06f6c2fa38dc1e3d7f8";
+    owner = "ros2-gbp";
+    sha256 = "sha256-M9aqF73htqTcDPNFuBk7A+6LzLZBBwXWc5LPOxf9X3g=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-sdformat-test-files";
   version = "0.1.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/sdformat_urdf-release/archive/release/galactic/sdformat_test_files/0.1.0-2.tar.gz";
-    name = "0.1.0-2.tar.gz";
-    sha256 = "fcbaeb5ab543a73a6393247cffb800c834ef53220062bde9dd17a24d94855ce4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "sdformat_urdf-release";
+    rev = "bd123f0c92dee6dd2192cc6f96a8cf54e6eb06e7";
+    owner = "ros2-gbp";
+    sha256 = "sha256-eIhtRJaRjdCWcBui872EgW5j2zOYpcIzsVTl7OtUz1s=";
   };
 
   buildType = "cmake";

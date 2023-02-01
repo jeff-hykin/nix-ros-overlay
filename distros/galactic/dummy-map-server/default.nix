@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-dummy-map-server";
   version = "0.14.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/demos-release/archive/release/galactic/dummy_map_server/0.14.4-1.tar.gz";
-    name = "0.14.4-1.tar.gz";
-    sha256 = "03cf57c7d92555c1a40ecca5941c70ca8cb8e9cef1d67bdb885c716b60b11cb2";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "demos-release";
+    rev = "a13faeba6ac3225db9e7bab636b0c5b689253c85";
+    owner = "ros2-gbp";
+    sha256 = "sha256-a0rqm9Zk/9DInpZVk46ih8zP+Effyu2tPNaGA7T0uRg=";
   };
 
   buildType = "ament_cmake";

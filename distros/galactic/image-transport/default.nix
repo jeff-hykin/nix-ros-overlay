@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-image-transport";
   version = "2.5.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/image_common-release/archive/release/galactic/image_transport/2.5.1-1.tar.gz";
-    name = "2.5.1-1.tar.gz";
-    sha256 = "b933298f9e1b642fa4bde039f62312836f4a4e72c504204a854971fd7fe1a5c1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "image_common-release";
+    rev = "70ed9920120d256e9f434b247b2c3ba13ea919f6";
+    owner = "ros2-gbp";
+    sha256 = "sha256-aL+Xf7Ro2mS60jL6Rc9ojNeWw6VlFMCgegQi7/mezMY=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-scenario-test-tools";
   version = "0.6.30-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_command_tools-release/archive/release/noetic/scenario_test_tools/0.6.30-2.tar.gz";
-    name = "0.6.30-2.tar.gz";
-    sha256 = "42aa31678a2331204cb7c62f41c5ed7530a07a942cbe96f97fae790c271655be";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_command_tools-release";
+    rev = "a62a3063e152d114b264c3f5dc84f76fa3701341";
+    owner = "ipa320";
+    sha256 = "sha256-rvJZ9CDLk/di7xSaB8WLbvQy6V/nz9dqq5x6Hti5Ep8=";
   };
 
   buildType = "catkin";

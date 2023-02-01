@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-trajectory-msgs";
   version = "4.2.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/common_interfaces-release/archive/release/humble/trajectory_msgs/4.2.2-1.tar.gz";
-    name = "4.2.2-1.tar.gz";
-    sha256 = "9f22be694225674ad211d4a21e6adb936c80a5a347493e58ea4065bbe941f145";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "common_interfaces-release";
+    rev = "29f88cba37b73e802283aa67d617b79e7dad4575";
+    owner = "ros2-gbp";
+    sha256 = "sha256-yaHmcH1WD0TzVFcFiDr6Lm+tZ74SE8lzcLJO6INQjNY=";
   };
 
   buildType = "ament_cmake";

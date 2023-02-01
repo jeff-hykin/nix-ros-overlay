@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-depthai-ros-msgs";
   version = "2.5.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/luxonis/depthai-ros-release/archive/release/galactic/depthai_ros_msgs/2.5.3-1.tar.gz";
-    name = "2.5.3-1.tar.gz";
-    sha256 = "af060ae0e740562582cd76c2c6953cbcd0df4f74fbb1fcfb7efa2f6a380cc5bd";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "depthai-ros-release";
+    rev = "c3d87c0e17fb06442e07daf6af7cd992cedd3da0";
+    owner = "luxonis";
+    sha256 = "sha256-l8V7kaXNFQtgazo6zWSHDa62NrxTB1aKfKpR21pIgrU=";
   };
 
   buildType = "ament_cmake";

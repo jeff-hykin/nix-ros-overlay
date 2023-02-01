@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-phidgets-digital-outputs";
   version = "2.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/phidgets_drivers-release/archive/release/rolling/phidgets_digital_outputs/2.3.0-1.tar.gz";
-    name = "2.3.0-1.tar.gz";
-    sha256 = "3d4b56dedc67747a9e88b32a9adfca56dae0ad0187f529a74a2509413dad0e7b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "phidgets_drivers-release";
+    rev = "09c0578a13dd5fbc1925d0c8572d81745a0f4a0a";
+    owner = "ros2-gbp";
+    sha256 = "sha256-zOFyZkgcW26GCITyhA5OlHtMEp2iOOtVV3tVFdq6fNg=";
   };
 
   buildType = "ament_cmake";

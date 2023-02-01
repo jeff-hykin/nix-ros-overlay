@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-rqt-reconfigure";
   version = "1.0.8-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rqt_reconfigure-release/archive/release/foxy/rqt_reconfigure/1.0.8-1.tar.gz";
-    name = "1.0.8-1.tar.gz";
-    sha256 = "6b6c856a869f815c573da23e0f9bba96efc65d1a7f92153afd75f6afef8c69f2";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt_reconfigure-release";
+    rev = "7f5cd6d6e41561e6c0feb248701ea7bd2660cf57";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Gs4D7boTF9pL2P0QK4kjX2CXjnfzken4zxeZjUSmh1U=";
   };
 
   buildType = "ament_python";

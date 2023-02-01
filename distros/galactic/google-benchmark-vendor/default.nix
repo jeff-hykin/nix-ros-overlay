@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-google-benchmark-vendor";
   version = "0.0.6-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/google_benchmark_vendor-release/archive/release/galactic/google_benchmark_vendor/0.0.6-2.tar.gz";
-    name = "0.0.6-2.tar.gz";
-    sha256 = "0b3488efddcc715e30e03a526a51e0a1f3900cdfd7c54f992f4dd4d8041537ee";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "google_benchmark_vendor-release";
+    rev = "0c87df40b89f2566bb91891bbf26f74f79e1f21b";
+    owner = "ros2-gbp";
+    sha256 = "sha256-kZWrDt+rkrmLS1POdh5Ye0xYuzDkCGOOdyFJb6Nn/U4=";
   };
 
   buildType = "cmake";

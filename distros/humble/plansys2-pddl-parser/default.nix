@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-plansys2-pddl-parser";
   version = "2.0.9-r1";
 
-  src = fetchurl {
-    url = "https://github.com/IntelligentRoboticsLabs/ros2_planning_system-release/archive/release/humble/plansys2_pddl_parser/2.0.9-1.tar.gz";
-    name = "2.0.9-1.tar.gz";
-    sha256 = "1267fa667dae732ae36a8ffbae96a94fad768143a2f650f049dc34ae601dde32";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_planning_system-release";
+    rev = "e9d5dbb3a43f07dc0c8a3ee3bef897fd2af1e732";
+    owner = "IntelligentRoboticsLabs";
+    sha256 = "sha256-WSbBpX07RJIpUVgHbCi2stYDooxVmNKDmt2qHg3LBaQ=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-bond-core";
   version = "4.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/bond_core-release/archive/release/rolling/bond_core/4.0.0-1.tar.gz";
-    name = "4.0.0-1.tar.gz";
-    sha256 = "99d9d6abd3a509854421b8274b295e79594373c5d3f63fe61bd91efda541488b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "bond_core-release";
+    rev = "8fd9b75106e8723ad9ed0f81787f31e7d6afde34";
+    owner = "ros2-gbp";
+    sha256 = "sha256-EA4f2CqUNq+ZLOettwEaG01DA+oOf6FFtQqVi7RDQOI=";
   };
 
   buildType = "ament_cmake";

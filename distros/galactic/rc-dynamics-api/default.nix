@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rc-dynamics-api";
   version = "0.10.3-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rc_dynamics_api-release/archive/release/galactic/rc_dynamics_api/0.10.3-2.tar.gz";
-    name = "0.10.3-2.tar.gz";
-    sha256 = "7bcd6b5320fdf4e9ddf907c65343b610c960a0c0c296f4319f544a164bf1eda8";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rc_dynamics_api-release";
+    rev = "3cd9863a126446aa5f9a5b1c7762775ae6e1e0fe";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Q+zKUMZzx64cpjuiKG8bJOqmaBys1FlMixU8pXCBmvM=";
   };
 
   buildType = "cmake";

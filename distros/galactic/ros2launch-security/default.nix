@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ros2launch-security";
   version = "1.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2launch_security-release/archive/release/galactic/ros2launch_security/1.0.0-1.tar.gz";
-    name = "1.0.0-1.tar.gz";
-    sha256 = "067974698798a01296e64d48b3069f39438a197d873524c9919f1329274d71aa";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2launch_security-release";
+    rev = "7a719ee235453fee22f112991f3942a0a887551e";
+    owner = "ros2-gbp";
+    sha256 = "sha256-MM1mvGLVBpSePXEUKQScahRPpulucGxMTaTp+jSKbNo=";
   };
 
   buildType = "ament_python";

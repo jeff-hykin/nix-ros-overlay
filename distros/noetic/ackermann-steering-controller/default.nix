@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-ackermann-steering-controller";
   version = "0.21.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/ros_controllers-release/archive/release/noetic/ackermann_steering_controller/0.21.0-1.tar.gz";
-    name = "0.21.0-1.tar.gz";
-    sha256 = "f48ecda6c297da3a8a25179219ddb619790598d50a89871804fca0610f56c2fd";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_controllers-release";
+    rev = "4feae3104f2f9f67ddddd9fcad4144d7260bbed9";
+    owner = "ros-gbp";
+    sha256 = "sha256-PqgklkXkTOU4SjLOAtkn+xy3JgATfXjE77HgVKduOQo=";
   };
 
   buildType = "catkin";

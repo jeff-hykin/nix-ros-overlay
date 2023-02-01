@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-nao-button-sim";
   version = "0.1.1-r6";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/nao_button_sim-release/archive/release/galactic/nao_button_sim/0.1.1-6.tar.gz";
-    name = "0.1.1-6.tar.gz";
-    sha256 = "89e678c5e1146563cea24f525019eccd886a853f3498b3c3986366d031b1f3a8";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "nao_button_sim-release";
+    rev = "5c1b2590f4ffd7bf2557e7c217c0a17d606f85c2";
+    owner = "ros2-gbp";
+    sha256 = "sha256-kSAZ/BDlwmj/kpJek7GBfiEO1RBUa8Lmld+ZbxmlAX0=";
   };
 
   buildType = "ament_python";

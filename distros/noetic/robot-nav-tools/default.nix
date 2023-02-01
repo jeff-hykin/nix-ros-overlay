@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-robot-nav-tools";
   version = "0.3.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/DLu/robot_navigation-release/archive/release/noetic/robot_nav_tools/0.3.0-2.tar.gz";
-    name = "0.3.0-2.tar.gz";
-    sha256 = "fed2061296698ab2690bf54463010d6e6aa6d6f8f18282100eea75bc8957c9b9";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "robot_navigation-release";
+    rev = "48e3df6787af86a3f9eeb8a0618b7976939e6786";
+    owner = "DLu";
+    sha256 = "sha256-o7tUo1g/alr7qtzlh5Ep0sTrbP/zy8ah3EUaeSPGTCo=";
   };
 
   buildType = "catkin";

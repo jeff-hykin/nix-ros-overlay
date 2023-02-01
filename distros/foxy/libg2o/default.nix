@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-libg2o";
   version = "2020.5.29-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/libg2o-release/archive/release/foxy/libg2o/2020.5.29-1.tar.gz";
-    name = "2020.5.29-1.tar.gz";
-    sha256 = "a7e42da8c6c3cff4fe286b74e86101a27ef037a6cd1f935a6070473213dcb5b9";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "libg2o-release";
+    rev = "d84a9c614c7e1dac3949ad51fb85a642462f0a1e";
+    owner = "ros2-gbp";
+    sha256 = "sha256-fABwvelYG0x4eq6Hx1wRF9y4AuAqqAMBNM18QId/wkk=";
   };
 
   buildType = "ament_cmake";

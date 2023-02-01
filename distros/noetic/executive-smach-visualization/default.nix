@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-executive-smach-visualization";
   version = "4.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/jbohren/executive_smach_visualization-release/archive/release/noetic/executive_smach_visualization/4.0.1-1.tar.gz";
-    name = "4.0.1-1.tar.gz";
-    sha256 = "937ce2d673fa25af3af7ef9f7200827bedbefac86e3e347519e4c405c408ebff";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "executive_smach_visualization-release";
+    rev = "0ff6c1ba2f2c915fda1f25d6245b41b9be9c9666";
+    owner = "jbohren";
+    sha256 = "sha256-+AYysjmP/ZwZNvlVe2q+B8ObyGXp1JlyZbwGo3ccswY=";
   };
 
   buildType = "catkin";

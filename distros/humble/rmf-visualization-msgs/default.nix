@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-rmf-visualization-msgs";
   version = "1.2.0-r4";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_visualization_msgs-release/archive/release/humble/rmf_visualization_msgs/1.2.0-4.tar.gz";
-    name = "1.2.0-4.tar.gz";
-    sha256 = "cee1982bfa7d3df73fe7cd38432ae792aac94ee1ba07f2de07040755e93fdce7";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_visualization_msgs-release";
+    rev = "ef778927029d76036ff884833b956d2d467e12d9";
+    owner = "ros2-gbp";
+    sha256 = "sha256-f0qmm88R8ojtHtOAJxyMJRQyfj2ycFGIOQVZfRMWkyE=";
   };
 
   buildType = "ament_cmake";

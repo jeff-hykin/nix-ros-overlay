@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-ign-ros2-control-demos";
   version = "0.1.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ign_ros2_control-release/archive/release/foxy/ign_ros2_control_demos/0.1.5-1.tar.gz";
-    name = "0.1.5-1.tar.gz";
-    sha256 = "2ff34e5ea67b8997c3dadb65841ddb6858472da004388016ad33227568a1d79b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ign_ros2_control-release";
+    rev = "7d9780aaf1847b29d3d3e6474b372af889139da5";
+    owner = "ros2-gbp";
+    sha256 = "sha256-PkL+YmeU8+HCFV7YsWEadMovuAeb3ZdBrsh2hwNe+WM=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-rclcpp-components";
   version = "16.0.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rclcpp-release/archive/release/humble/rclcpp_components/16.0.2-1.tar.gz";
-    name = "16.0.2-1.tar.gz";
-    sha256 = "d93e21e2c20a2fb3dedb92fcb09aac0fd6c0c08e1d21b3ed7004472f2c573f47";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rclcpp-release";
+    rev = "bc59df951a6908073bf031bdf6075991e9329847";
+    owner = "ros2-gbp";
+    sha256 = "sha256-GUM+UiFEWdYtjZlQTcAje/MQO+UbH00OLjBp6RF/Q5o=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-ur5-moveit-config";
   version = "1.3.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-industrial-release/universal_robot-release/archive/release/noetic/ur5_moveit_config/1.3.1-1.tar.gz";
-    name = "1.3.1-1.tar.gz";
-    sha256 = "e177072d4e44ccaf806b14d64266ee9250cf28adbc09e9bd3167c399252a14bf";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "universal_robot-release";
+    rev = "7f5e904e179e45858c2c7f9146536d68b36bc9bd";
+    owner = "ros-industrial-release";
+    sha256 = "sha256-bWM9jAE0cjwfFEgOkiG2ibkd/ThaSI1fE3Fr37cUOXI=";
   };
 
   buildType = "catkin";

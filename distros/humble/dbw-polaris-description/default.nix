@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-dbw-polaris-description";
   version = "2.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/DataspeedInc-release/dbw_ros-release/archive/release/humble/dbw_polaris_description/2.1.0-1.tar.gz";
-    name = "2.1.0-1.tar.gz";
-    sha256 = "ce07bc24d948a5164e445affd87eae8d39fed6ab3a8bec834ce61bd6a4b2d941";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "dbw_ros-release";
+    rev = "87186ca318b2ddb8715860502c7389aa617c472d";
+    owner = "DataspeedInc-release";
+    sha256 = "sha256-6/lRyqpH1Yp87CK6Y7yvKBJSa4phy53+b3RjmC5xbK4=";
   };
 
   buildType = "ament_cmake";

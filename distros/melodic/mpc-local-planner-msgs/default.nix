@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-mpc-local-planner-msgs";
   version = "0.0.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/rst-tu-dortmund/mpc_local_planner-release/archive/release/melodic/mpc_local_planner_msgs/0.0.3-1.tar.gz";
-    name = "0.0.3-1.tar.gz";
-    sha256 = "802a95c12ab6588105f018277842d85b4325d5ef06bf0fda584beb319126a4b8";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mpc_local_planner-release";
+    rev = "f0d0807b3b5bfd86308c4a42db34a2a1227e7ef4";
+    owner = "rst-tu-dortmund";
+    sha256 = "sha256-6FOcckDTHzwh756Pq/lfuT0de+nfgGD8Y+MA+VqEoDk=";
   };
 
   buildType = "catkin";

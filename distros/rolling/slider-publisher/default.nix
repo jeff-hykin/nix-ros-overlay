@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-slider-publisher";
   version = "2.2.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/slider_publisher-release/archive/release/rolling/slider_publisher/2.2.1-1.tar.gz";
-    name = "2.2.1-1.tar.gz";
-    sha256 = "0dae9e59bd57384a57e417ff17611136c3eae01ff3d2f104a86f684f0e9ac6cd";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "slider_publisher-release";
+    rev = "ae9ad1296cc68fd15878cf3dc46d8fe757fe87fc";
+    owner = "ros2-gbp";
+    sha256 = "sha256-szAUkWe0eQFk40CMBvoSKEw/Ut9x17ULIwx90BhW/TY=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-rmf-site-map-msgs";
   version = "3.0.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_internal_msgs-release/archive/release/rolling/rmf_site_map_msgs/3.0.2-1.tar.gz";
-    name = "3.0.2-1.tar.gz";
-    sha256 = "8a9e8fed5fdd8cc05c7f28c9638df23c100fc471d3c7bd6abf9984fc26f5403c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_internal_msgs-release";
+    rev = "ede1e1586830d162b8e1acc03c653b7f5a3213e4";
+    owner = "ros2-gbp";
+    sha256 = "sha256-1XFEKfUJX0WX7J2hgLsCBAGNmLr8rGxCv2No62KeDjg=";
   };
 
   buildType = "ament_cmake";

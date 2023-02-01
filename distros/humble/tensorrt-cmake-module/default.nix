@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-tensorrt-cmake-module";
   version = "0.0.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/tensorrt_cmake_module-release/archive/release/humble/tensorrt_cmake_module/0.0.3-1.tar.gz";
-    name = "0.0.3-1.tar.gz";
-    sha256 = "88f160087413626acfae816787221f5e9f5afe5b11fb478808645c5892d7f838";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "tensorrt_cmake_module-release";
+    rev = "7df338a9cbe3eebd8f3f8df109f149f70cefe54d";
+    owner = "ros2-gbp";
+    sha256 = "sha256-S620gK89qsxhq1mo2yFSZCD1LP45mJBLXJbCTiT5VZk=";
   };
 
   buildType = "ament_cmake";

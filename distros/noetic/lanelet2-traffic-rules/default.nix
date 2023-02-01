@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-lanelet2-traffic-rules";
   version = "1.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/fzi-forschungszentrum-informatik/lanelet2-release/archive/release/noetic/lanelet2_traffic_rules/1.1.1-1.tar.gz";
-    name = "1.1.1-1.tar.gz";
-    sha256 = "85f85ce06f1e71e26bd5c8bea1fa08cbc32300547fa4d417cccec8b8231e970a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "lanelet2-release";
+    rev = "5e27993c71d29f481a40b2123b370954912e52c7";
+    owner = "fzi-forschungszentrum-informatik";
+    sha256 = "sha256-f8lvg45yjWovjMCmp3Pdmr6KFejBnczY67qkvP5uFWw=";
   };
 
   buildType = "catkin";

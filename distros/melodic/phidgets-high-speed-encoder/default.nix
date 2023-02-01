@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-phidgets-high-speed-encoder";
   version = "0.7.11-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-drivers-gbp/phidgets_drivers-release/archive/release/melodic/phidgets_high_speed_encoder/0.7.11-1.tar.gz";
-    name = "0.7.11-1.tar.gz";
-    sha256 = "c80996cd598e2d92710bfc0a78436e790f682495072557be049b80d418054da5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "phidgets_drivers-release";
+    rev = "ac2b7f699ee0501e9ab75a501906016b7acbb452";
+    owner = "ros-drivers-gbp";
+    sha256 = "sha256-hfp3k2csPUcX8p6bIQCndvgGdp2VU7hJGcyIlL3HEAU=";
   };
 
   buildType = "catkin";

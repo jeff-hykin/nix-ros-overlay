@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-tensorrt-cmake-module";
   version = "0.0.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/tensorrt_cmake_module-release/archive/release/galactic/tensorrt_cmake_module/0.0.3-1.tar.gz";
-    name = "0.0.3-1.tar.gz";
-    sha256 = "df27e5c5fd88a1ee3c38b767e61f8c73bc7332432cfd2aad87f93be1b593c39d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "tensorrt_cmake_module-release";
+    rev = "85314ab03552677fe44786db4bfd6b2782a6d45d";
+    owner = "ros2-gbp";
+    sha256 = "sha256-S620gK89qsxhq1mo2yFSZCD1LP45mJBLXJbCTiT5VZk=";
   };
 
   buildType = "ament_cmake";

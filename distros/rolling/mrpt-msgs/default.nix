@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-mrpt-msgs";
   version = "0.4.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/mrpt_msgs-release/archive/release/rolling/mrpt_msgs/0.4.4-1.tar.gz";
-    name = "0.4.4-1.tar.gz";
-    sha256 = "8100451b8d74488f296c023894b9273250cc9e77b29b0e50673eb7d6856064a6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mrpt_msgs-release";
+    rev = "a561efa124a488599e83ba9fc58442f74728a3d4";
+    owner = "ros2-gbp";
+    sha256 = "sha256-FSw//54G9jpJoibViHkmDUI+/IqcjDC67ZxH4JOk4qk=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-ament-flake8";
   version = "0.12.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ament_lint-release/archive/release/humble/ament_flake8/0.12.4-1.tar.gz";
-    name = "0.12.4-1.tar.gz";
-    sha256 = "ad87e95387c9ae963988260851ec4cfcb2a0a2efbabb5bb4a06f2c3e9ce98754";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ament_lint-release";
+    rev = "31f38cb1b220022bb68412eaff1403e66ed2efd2";
+    owner = "ros2-gbp";
+    sha256 = "sha256-70TzxwCH5anINk7+03jnL8eE3R7j4icrPOfIP365SZQ=";
   };
 
   buildType = "ament_python";

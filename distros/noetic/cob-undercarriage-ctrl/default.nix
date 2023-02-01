@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-cob-undercarriage-ctrl";
   version = "0.7.14-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_driver-release/archive/release/noetic/cob_undercarriage_ctrl/0.7.14-1.tar.gz";
-    name = "0.7.14-1.tar.gz";
-    sha256 = "444d361b2320f23d6544b8eb45ed949b320e8e6f00bf5d516c920ae4ad061309";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_driver-release";
+    rev = "7d807ce907793891e1b2fca6bf6da1a29460c415";
+    owner = "ipa320";
+    sha256 = "sha256-22g3lqhiPO6y47RPDWGrOVm8ffM/6Ntm6K3hO2VPGJ0=";
   };
 
   buildType = "catkin";

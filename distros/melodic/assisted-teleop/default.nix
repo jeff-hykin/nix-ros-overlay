@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-assisted-teleop";
   version = "0.3.6-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/navigation_experimental-release/archive/release/melodic/assisted_teleop/0.3.6-1.tar.gz";
-    name = "0.3.6-1.tar.gz";
-    sha256 = "8c14bee07b65c46e88f2d955a18d3b116db10f02f4266963072950077b8aab2c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation_experimental-release";
+    rev = "90d14595d417e134c0b4c174201a4e3eb054efda";
+    owner = "ros-gbp";
+    sha256 = "sha256-BeFG5HMTx2dpSiXgDVRRJEK20Yd3/pITRUoWnPMmsms=";
   };
 
   buildType = "catkin";

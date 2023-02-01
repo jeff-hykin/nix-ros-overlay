@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ros2cli-common-extensions";
   version = "0.1.1-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2cli_common_extensions-release/archive/release/galactic/ros2cli_common_extensions/0.1.1-2.tar.gz";
-    name = "0.1.1-2.tar.gz";
-    sha256 = "e170578bdfadd3f7b2883981f8fdac93cb994154211c64c69e2dbbb4a1f6ff0c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2cli_common_extensions-release";
+    rev = "63f1ab13e19746d3a60c4a5e9b139b865845d025";
+    owner = "ros2-gbp";
+    sha256 = "sha256-32uWObO3hDPv9L3mLpl5Vm3mz4eGpui9idqtKeQmQH0=";
   };
 
   buildType = "ament_cmake";

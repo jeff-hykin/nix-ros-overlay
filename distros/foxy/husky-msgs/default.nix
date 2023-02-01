@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-husky-msgs";
   version = "1.0.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/clearpath-gbp/husky-release/archive/release/foxy/husky_msgs/1.0.7-1.tar.gz";
-    name = "1.0.7-1.tar.gz";
-    sha256 = "cf1c9adc08628160bd622271b3a89e37f7ae2e9ab011e86bc46be108317cd787";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "husky-release";
+    rev = "127d267022f97e2ae0fc43723d80f579b7cfe7ef";
+    owner = "clearpath-gbp";
+    sha256 = "sha256-8QOoMxTXv0tZN0j3z9t7O9XLmpEKcaUX7FrUA9mAgiM=";
   };
 
   buildType = "ament_cmake";

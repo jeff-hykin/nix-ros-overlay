@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-libcreate";
   version = "3.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/AutonomyLab/libcreate-release/archive/release/noetic/libcreate/3.0.0-1.tar.gz";
-    name = "3.0.0-1.tar.gz";
-    sha256 = "8bc46366b2db0f0cdcf37790f74d2dde46bb3e552f4a42d6701a41f82dcd14c7";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "libcreate-release";
+    rev = "e9b7fb57c3c2a252557c113e54b21779b45156c1";
+    owner = "AutonomyLab";
+    sha256 = "sha256-N4LES05+bOdNbL4UiPVhWx8Hfa/1JO/zpsh8wiiH7Tk=";
   };
 
   buildType = "cmake";

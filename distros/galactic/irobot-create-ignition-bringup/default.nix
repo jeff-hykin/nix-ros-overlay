@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-irobot-create-ignition-bringup";
   version = "1.0.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/create3_sim-release/archive/release/galactic/irobot_create_ignition_bringup/1.0.3-1.tar.gz";
-    name = "1.0.3-1.tar.gz";
-    sha256 = "ddf45e22944919d3cd9dc4d19b9ba25ca5c1978ed547db0ceb207fdfbb73eaeb";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "create3_sim-release";
+    rev = "4b848814571c995afe5b3be27a80a2d27b9a2b43";
+    owner = "ros2-gbp";
+    sha256 = "sha256-9JfhYSGABWIzscyX718My5EnNHgJR6rmolUIzSxJb9E=";
   };
 
   buildType = "ament_cmake";

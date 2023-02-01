@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-novatel-gps-msgs";
   version = "4.1.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/novatel_gps_driver-release/archive/release/rolling/novatel_gps_msgs/4.1.0-2.tar.gz";
-    name = "4.1.0-2.tar.gz";
-    sha256 = "3f02f9755885768c8e891dc358867c69f63d7129f5305df22aa14a0c6d701016";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "novatel_gps_driver-release";
+    rev = "aaf6f059e293f2c8b131b11a3a9be5ff2c245c30";
+    owner = "ros2-gbp";
+    sha256 = "sha256-elfNxlJFo9e8ju38PBf3lPgK556DR5KyNBIPcvS7VMc=";
   };
 
   buildType = "ament_cmake";

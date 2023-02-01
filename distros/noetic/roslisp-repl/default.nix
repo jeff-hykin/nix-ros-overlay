@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-roslisp-repl";
   version = "0.4.17-r1";
 
-  src = fetchurl {
-    url = "https://github.com/code-iai-release/ros_emacs_utils-release/archive/release/noetic/roslisp_repl/0.4.17-1.tar.gz";
-    name = "0.4.17-1.tar.gz";
-    sha256 = "53a135a265136bbda3ff95f351383138781e1e76f61f6fe0701c09312ec6ed09";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_emacs_utils-release";
+    rev = "68f16d6d904d519d82b9a81f29b81234d000e7ef";
+    owner = "code-iai-release";
+    sha256 = "sha256-jM7Q1ERvc5aCPUqrrkOOgqtc4RCJk9Rr/OwaxjCeHek=";
   };
 
   buildType = "catkin";

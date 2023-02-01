@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-driver-base";
   version = "1.6.9-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/driver_common-release/archive/release/noetic/driver_base/1.6.9-1.tar.gz";
-    name = "1.6.9-1.tar.gz";
-    sha256 = "9d65303877d39e80ed925f26cafd86198c0e3c3c047229d2788e87be22c3205c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "driver_common-release";
+    rev = "66b5fefe7113c0142fbdf83aaa7b41533e6325eb";
+    owner = "ros-gbp";
+    sha256 = "sha256-lGb9f9ZY6WbT3ZmQD5je0LtN7nmxQSONRsEUdNoiaF0=";
   };
 
   buildType = "catkin";

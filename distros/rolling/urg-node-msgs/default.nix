@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-urg-node-msgs";
   version = "1.0.1-r5";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/urg_node_msgs-release/archive/release/rolling/urg_node_msgs/1.0.1-5.tar.gz";
-    name = "1.0.1-5.tar.gz";
-    sha256 = "c10689c2c42d31bd1ac27118547230246b73a4c3d5597d0462dd1019a7ca9071";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "urg_node_msgs-release";
+    rev = "61d51c6b44236b81659e4ce800b5e43420725d3e";
+    owner = "ros2-gbp";
+    sha256 = "sha256-IBl7J8akPgn5ni5/8kPGDOh4Fklto+RggWCIxGald/w=";
   };
 
   buildType = "ament_cmake";

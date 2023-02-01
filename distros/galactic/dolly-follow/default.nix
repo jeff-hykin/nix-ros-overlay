@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-dolly-follow";
   version = "0.4.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/chapulina/dolly-release/archive/release/galactic/dolly_follow/0.4.0-1.tar.gz";
-    name = "0.4.0-1.tar.gz";
-    sha256 = "0224d85d222d6225530f3c15671accd9bd853744bea7e7e10bb8fd3b368051d1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "dolly-release";
+    rev = "4770fc2440748ccba541f5a07b81cd447c4fe281";
+    owner = "chapulina";
+    sha256 = "sha256-Udj2U+dWE5+JIz9GOSB6X4C9y3g/g30Jp3+BTuiiRX0=";
   };
 
   buildType = "ament_cmake";

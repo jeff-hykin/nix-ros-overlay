@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-cob-perception-msgs";
   version = "0.6.19-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_perception_common-release/archive/release/noetic/cob_perception_msgs/0.6.19-1.tar.gz";
-    name = "0.6.19-1.tar.gz";
-    sha256 = "c46c5760c1ea6f9494679c6673872abac8b25e4ea6b4f698263eacf2106cabaa";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_perception_common-release";
+    rev = "389f78f5f62b4afd9922e930a16420409e960449";
+    owner = "ipa320";
+    sha256 = "sha256-pAqqIVt6Gc51+KAomUZwV7oiDRv7BNrQ0YtYQe9uit4=";
   };
 
   buildType = "catkin";

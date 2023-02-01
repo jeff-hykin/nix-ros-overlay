@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-random-numbers";
   version = "2.0.1-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/random_numbers-release/archive/release/rolling/random_numbers/2.0.1-2.tar.gz";
-    name = "2.0.1-2.tar.gz";
-    sha256 = "6e7fe0f9a3209f2f2d199a7b751330296350aa3e9c33ff6c2a16ecf45ec30888";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "random_numbers-release";
+    rev = "9f10af35ba21c433ba46e1995d329507a9687c2e";
+    owner = "ros2-gbp";
+    sha256 = "sha256-hQN9n+tLK1rKA+wXOXW/TfT4RzrXxvaIfDlzgV+LJnU=";
   };
 
   buildType = "ament_cmake";

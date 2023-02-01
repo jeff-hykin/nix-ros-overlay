@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-swri-profiler-tools";
   version = "0.2.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/swri-robotics-gbp/swri_profiler-release/archive/release/melodic/swri_profiler_tools/0.2.2-1.tar.gz";
-    name = "0.2.2-1.tar.gz";
-    sha256 = "e3a2a60bb840c74380dbed0c880033551237c4440ef2768d825bf983e41ea6e2";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "swri_profiler-release";
+    rev = "2fa3f28b774cffd6983212da85578c777a127b95";
+    owner = "swri-robotics-gbp";
+    sha256 = "sha256-sz4KZc9NYkFu55vuBmgV0ee6zqCb6Tu1X1iqT+FLNOw=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-mikrotik-swos-tools";
   version = "1.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/peci1/mikrotik_swos_tools-release/archive/release/melodic/mikrotik_swos_tools/1.0.1-1.tar.gz";
-    name = "1.0.1-1.tar.gz";
-    sha256 = "59c6ba7bda87a782a15c2513cd298bfd84cc6ad3ca8d2f7c88e2d139d5171087";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mikrotik_swos_tools-release";
+    rev = "0918810392a97d5ed28fb4a1e4efeed148d942e7";
+    owner = "peci1";
+    sha256 = "sha256-k/lA5/hor8SxSqtOawHzETppbCvMBEHDLZkAt3+3014=";
   };
 
   buildType = "catkin";

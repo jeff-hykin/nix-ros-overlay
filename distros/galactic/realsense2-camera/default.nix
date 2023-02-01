@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-realsense2-camera";
   version = "4.51.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/IntelRealSense/realsense-ros-release/archive/release/galactic/realsense2_camera/4.51.1-1.tar.gz";
-    name = "4.51.1-1.tar.gz";
-    sha256 = "88ff5e7611bb9b191000c9b87a349fd121a8ae8149b07ada8025419b01c65258";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "realsense-ros-release";
+    rev = "9c169d2b7b62b64747c7ec7374c95238a8e87f90";
+    owner = "IntelRealSense";
+    sha256 = "sha256-O/ta/1y9TxZ4fnhsBw20dq7eCrtG+nuRaN35kbJx2dc=";
   };
 
   buildType = "ament_cmake";

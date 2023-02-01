@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-swri-route-util";
   version = "3.5.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/marti_common-release/archive/release/humble/swri_route_util/3.5.0-1.tar.gz";
-    name = "3.5.0-1.tar.gz";
-    sha256 = "64d8597fc4b67b81a8aa4cadfa2b0555998756c5f519d9e36aab6d742590c492";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "marti_common-release";
+    rev = "6af0a29661006c184f18241a59e47ced50b515e0";
+    owner = "ros2-gbp";
+    sha256 = "sha256-WnSzpqSIo5T1gBQEoQnK4M5AS/BIdjR9P+EN7S82TkU=";
   };
 
   buildType = "ament_cmake";

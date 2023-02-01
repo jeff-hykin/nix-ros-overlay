@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-multisense-cal-check";
   version = "4.0.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/carnegieroboticsllc/multisense_ros-release/archive/release/noetic/multisense_cal_check/4.0.5-1.tar.gz";
-    name = "4.0.5-1.tar.gz";
-    sha256 = "c7104fe9adc7061663442052ade41c5d83f0583a208bca3f996631c7212b324a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "multisense_ros-release";
+    rev = "c884c68c31dc102f5842000837fd3dd9ef907bd2";
+    owner = "carnegieroboticsllc";
+    sha256 = "sha256-upOl7SEFRQKvS+QLg65hyyAJAt7SYAkQSe8RdwNexLw=";
   };
 
   buildType = "catkin";

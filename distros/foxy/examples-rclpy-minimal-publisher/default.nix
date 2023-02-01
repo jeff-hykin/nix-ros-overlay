@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-examples-rclpy-minimal-publisher";
   version = "0.9.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/examples-release/archive/release/foxy/examples_rclpy_minimal_publisher/0.9.4-1.tar.gz";
-    name = "0.9.4-1.tar.gz";
-    sha256 = "fe44fdf51d22084dda499edda2b173c6347d3a647457bd79aaa09fa3cfffcc23";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "examples-release";
+    rev = "3aad452b215903b51697f9b49a194482d921e0f9";
+    owner = "ros2-gbp";
+    sha256 = "sha256-0pejZ5eGnZJ1GWg+BfF4QRz5sv5aJjaZPwOTHzVVNjA=";
   };
 
   buildType = "ament_python";

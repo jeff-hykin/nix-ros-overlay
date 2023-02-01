@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-kdl-parser";
   version = "2.6.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/kdl_parser-release/archive/release/humble/kdl_parser/2.6.3-1.tar.gz";
-    name = "2.6.3-1.tar.gz";
-    sha256 = "d87acdd7d4ad38d2525bfec1f7e0a91f558e8a97d7f4aa915899e46e47ae23ba";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "kdl_parser-release";
+    rev = "574997053df38c7b14108b4cb39e76a32fb40471";
+    owner = "ros2-gbp";
+    sha256 = "sha256-AthazjQ90LQZyhYRGOlmk3IUJNrHud5XthIz4XKWPKY=";
   };
 
   buildType = "ament_cmake";

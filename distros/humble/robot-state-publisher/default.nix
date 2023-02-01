@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-robot-state-publisher";
   version = "3.0.2-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/robot_state_publisher-release/archive/release/humble/robot_state_publisher/3.0.2-2.tar.gz";
-    name = "3.0.2-2.tar.gz";
-    sha256 = "bba04ccb6962f707d1aa277ec0c1f0e94a3fd4094b64b7b391c35330ffd1ff26";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "robot_state_publisher-release";
+    rev = "5fa15e3005dc0c6f176d99d91c42dbc643e9a06c";
+    owner = "ros2-gbp";
+    sha256 = "sha256-cu6CiIT7/Um5OgupHa0HTNWrdeuRxFtKkfRUBuNWqAY=";
   };
 
   buildType = "ament_cmake";

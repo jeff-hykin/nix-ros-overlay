@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-gripper-controllers";
   version = "0.8.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_controllers-release/archive/release/foxy/gripper_controllers/0.8.2-1.tar.gz";
-    name = "0.8.2-1.tar.gz";
-    sha256 = "9597cbf68eb73f7a985c1acfa6ec8d51e49f03a500e70bcbd2711f4cc48644cf";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_controllers-release";
+    rev = "f99dd16e8467fec813c919196216e0a9eeb1aa55";
+    owner = "ros2-gbp";
+    sha256 = "sha256-WhY+vkHVER6xgV420L820o1FrllmGeg8dM5BZeKvTpk=";
   };
 
   buildType = "ament_cmake";

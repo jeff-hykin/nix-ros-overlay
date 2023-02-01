@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-dbw-fca-joystick-demo";
   version = "2.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/DataspeedInc-release/dbw_ros-release/archive/release/foxy/dbw_fca_joystick_demo/2.1.0-1.tar.gz";
-    name = "2.1.0-1.tar.gz";
-    sha256 = "85ec226b5265ed54b946369aa7c4651ebc81701c2155728834d99e92eb9ea940";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "dbw_ros-release";
+    rev = "2278a9fdf7b5a80351bc468f7dca44ef761b6820";
+    owner = "DataspeedInc-release";
+    sha256 = "sha256-VhkMsvDpL3FpH9P1oOP2xsz8NM4fJioysMY1uO76BOE=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-nmea-msgs";
   version = "2.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/nmea_msgs-release/archive/release/foxy/nmea_msgs/2.0.0-1.tar.gz";
-    name = "2.0.0-1.tar.gz";
-    sha256 = "5e2380f862e14ee32f7df168bc8d35c3d874db82e77d34444669a751ca6a7dfa";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "nmea_msgs-release";
+    rev = "814063d3122ff6442f9d9e48fef0d605d9a98366";
+    owner = "ros2-gbp";
+    sha256 = "sha256-bswqgESVo01rxSNhUMSl4dZwBC88WoKlS55Dn0U5CQc=";
   };
 
   buildType = "ament_cmake";

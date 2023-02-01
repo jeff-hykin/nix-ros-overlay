@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-eca-a9-description";
   version = "0.1.6";
 
-  src = fetchurl {
-    url = "https://github.com/uuvsimulator/eca_a9-release/archive/release/melodic/eca_a9_description/0.1.6-0.tar.gz";
-    name = "0.1.6-0.tar.gz";
-    sha256 = "755c4708260a898bf6311271a70f9f48379327eb3c5721727afba6dc94fb035f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "eca_a9-release";
+    rev = "3bf44b5bb3650aef190026d45a964d4d118f09a3";
+    owner = "uuvsimulator";
+    sha256 = "sha256-Ea37u8SoRGH2LJAJhVOcdN5+bT65Kihka6Bq1MMG6To=";
   };
 
   buildType = "catkin";

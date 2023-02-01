@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rc-reason-msgs";
   version = "0.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/roboception-gbp/rc_reason_clients-release/archive/release/galactic/rc_reason_msgs/0.3.0-1.tar.gz";
-    name = "0.3.0-1.tar.gz";
-    sha256 = "8377b453dc88baf021f4dd6871e7993ff9c05ad7f6de786a3f46be32f4d93be2";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rc_reason_clients-release";
+    rev = "2e1a15bd3b814b61c645faa176a407b19fe7057a";
+    owner = "roboception-gbp";
+    sha256 = "sha256-FWe29dAS+fY/9FC6pRN7WNPRX8h4+F9C5240ZxrL1Fo=";
   };
 
   buildType = "ament_cmake";

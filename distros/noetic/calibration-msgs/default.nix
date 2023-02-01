@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-calibration-msgs";
   version = "0.10.15-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/calibration-release/archive/release/noetic/calibration_msgs/0.10.15-1.tar.gz";
-    name = "0.10.15-1.tar.gz";
-    sha256 = "03ddbddde4c22035d93800b77a4cd89fe22a3774f96ac5e0112d074fea455e66";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "calibration-release";
+    rev = "77dd3f2d274849d2f09a78f54018c7fec4b0440f";
+    owner = "ros-gbp";
+    sha256 = "sha256-TJJfCZYOI84eDQWd3zHkeTouPRbozw2MN+ahDRVcvtc=";
   };
 
   buildType = "catkin";

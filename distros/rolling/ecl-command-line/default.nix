@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-ecl-command-line";
   version = "1.2.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/yujinrobot-release/ecl_core-release/archive/release/rolling/ecl_command_line/1.2.1-1.tar.gz";
-    name = "1.2.1-1.tar.gz";
-    sha256 = "3ec2dbd86d439dd86721cac9332f64eaf951a6ad9af2fad8da7177665d62c0e2";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ecl_core-release";
+    rev = "4f32e4222e9d45374e53f353af68b920634297fd";
+    owner = "yujinrobot-release";
+    sha256 = "sha256-0rOoPXNkY6U26dMB39t2IjB44typZqO4T5rW2jrEOl8=";
   };
 
   buildType = "ament_cmake";

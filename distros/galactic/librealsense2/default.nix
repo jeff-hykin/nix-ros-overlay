@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-librealsense2";
   version = "2.51.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/IntelRealSense/librealsense2-release/archive/release/galactic/librealsense2/2.51.1-1.tar.gz";
-    name = "2.51.1-1.tar.gz";
-    sha256 = "193ba7249bf435148c0b9d1d036c3d3d4edb287a4261ccdf3db4833bb08ea208";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "librealsense2-release";
+    rev = "91a0969f674ba61537cb91ebedb331dba17a559c";
+    owner = "IntelRealSense";
+    sha256 = "sha256-1q/cJ0vbRTJeBQ9gctXmS0gNh1tqrzLyUfy8yTgh6BM=";
   };
 
   buildType = "ament_cmake";

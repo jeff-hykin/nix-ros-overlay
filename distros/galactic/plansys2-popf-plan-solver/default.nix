@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-plansys2-popf-plan-solver";
   version = "2.0.8-r1";
 
-  src = fetchurl {
-    url = "https://github.com/IntelligentRoboticsLabs/ros2_planning_system-release/archive/release/galactic/plansys2_popf_plan_solver/2.0.8-1.tar.gz";
-    name = "2.0.8-1.tar.gz";
-    sha256 = "597da949475b4e76a1ac75cd939d7401d341af58ee7be1eefe2c14c12232f4f8";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_planning_system-release";
+    rev = "b1752853b5ddcc59d477d617cc8a0b5e2303cfdf";
+    owner = "IntelligentRoboticsLabs";
+    sha256 = "sha256-SZ3KZK1MLU61ISXayUXGg6nGVV5OAtnul7PlcXpxXeQ=";
   };
 
   buildType = "ament_cmake";

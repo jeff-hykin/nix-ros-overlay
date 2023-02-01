@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-ira-laser-tools";
   version = "1.0.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/iralabdisco/ira_laser_tools-release/archive/release/noetic/ira_laser_tools/1.0.7-1.tar.gz";
-    name = "1.0.7-1.tar.gz";
-    sha256 = "34d9452ea7b8c7e04c9792f76d8dcd0aa77c5e51191dfec18732d8510d6aa96b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ira_laser_tools-release";
+    rev = "1cc47163845166df57d5794d33e1cf03fb1bdee7";
+    owner = "iralabdisco";
+    sha256 = "sha256-gCrYhlVL1oo/v9DpUW25s+TllnpFFbWZoNCMpLE58lQ=";
   };
 
   buildType = "catkin";

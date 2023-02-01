@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-backward-ros";
   version = "1.0.1-r2";
 
-  src = fetchurl {
-    url = "https://github.com/pal-gbp/backward_ros-release/archive/release/galactic/backward_ros/1.0.1-2.tar.gz";
-    name = "1.0.1-2.tar.gz";
-    sha256 = "0471b6be0d5e661af0b0e943c576d8ae9cfef99c8b69ebc28d376b4080a6ff8c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "backward_ros-release";
+    rev = "0fd12e7f11ca11803fd5f0b2a6da0e39315171fe";
+    owner = "pal-gbp";
+    sha256 = "sha256-9ZYtzzb6VGZ16+gvRK9sQ03A9wQG7LznEVdeUTg+t4w=";
   };
 
   buildType = "ament_cmake";

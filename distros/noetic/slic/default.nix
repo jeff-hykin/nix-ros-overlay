@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-slic";
   version = "2.1.21-r2";
 
-  src = fetchurl {
-    url = "https://github.com/tork-a/jsk_3rdparty-release/archive/release/noetic/slic/2.1.21-2.tar.gz";
-    name = "2.1.21-2.tar.gz";
-    sha256 = "8e168ce461db9a27d3c703ba4559602761db0e4ea423454f890a1234719a2cdf";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "jsk_3rdparty-release";
+    rev = "eaf1f04cb1e6a47c05d599f057688e9d655993bc";
+    owner = "tork-a";
+    sha256 = "sha256-dpLmpMrnH5aTuLH1zyaX5GxQ1yZwMP62D3K4iN0DyaM=";
   };
 
   buildType = "cmake";

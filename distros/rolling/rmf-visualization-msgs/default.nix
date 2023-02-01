@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-rmf-visualization-msgs";
   version = "1.2.0-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_visualization_msgs-release/archive/release/rolling/rmf_visualization_msgs/1.2.0-3.tar.gz";
-    name = "1.2.0-3.tar.gz";
-    sha256 = "21a43ace052f2fc1e0bcf3c649f1416aa30bcf764bc03be62be8a3641ef2b815";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_visualization_msgs-release";
+    rev = "54e63199bb2f0733bc0e5c4ba66a5140a055230c";
+    owner = "ros2-gbp";
+    sha256 = "sha256-f0qmm88R8ojtHtOAJxyMJRQyfj2ycFGIOQVZfRMWkyE=";
   };
 
   buildType = "ament_cmake";

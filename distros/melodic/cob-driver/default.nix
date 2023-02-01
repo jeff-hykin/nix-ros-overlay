@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-cob-driver";
   version = "0.7.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_driver-release/archive/release/melodic/cob_driver/0.7.4-1.tar.gz";
-    name = "0.7.4-1.tar.gz";
-    sha256 = "51fc2e657fdcb160cd7472c37a090b0e8e8e3bf5c161a2416a3e3d60841d9f6b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_driver-release";
+    rev = "94f3baad52ba3c71df069a34ecbfa6d0c74b5ffd";
+    owner = "ipa320";
+    sha256 = "sha256-kknWe/3bKOzR9E3cQ8RyAxM+oMPLD4qEjc0sh5SG7hE=";
   };
 
   buildType = "catkin";

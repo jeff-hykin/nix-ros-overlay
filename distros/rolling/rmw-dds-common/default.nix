@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-rmw-dds-common";
   version = "1.7.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmw_dds_common-release/archive/release/rolling/rmw_dds_common/1.7.1-1.tar.gz";
-    name = "1.7.1-1.tar.gz";
-    sha256 = "3309768025e0d8934e089f41c9d20379e202879d8f2fd0c20dd246adac6ddbf3";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmw_dds_common-release";
+    rev = "7d378821b8c899c39f35aabf4b274c9e1b8ae346";
+    owner = "ros2-gbp";
+    sha256 = "sha256-oLNl+r1xe16XEwUqRU2JgCbasANUL1IAAXRYHwssLAY=";
   };
 
   buildType = "ament_cmake";

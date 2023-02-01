@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-rqt-py-common";
   version = "0.5.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/rqt-release/archive/release/noetic/rqt_py_common/0.5.3-1.tar.gz";
-    name = "0.5.3-1.tar.gz";
-    sha256 = "021bd4579dd2ebf73b589a08345ba476ec96bc042466d345e41f760ca6eae06a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt-release";
+    rev = "b12a420bce7794b9e8aa58feca1f0d4c2cb6c8f1";
+    owner = "ros-gbp";
+    sha256 = "sha256-8VsM0C1qh8bIekBZ2gF0gKD3CEHSbvKN31JXUPoRnqo=";
   };
 
   buildType = "catkin";

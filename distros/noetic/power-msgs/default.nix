@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-power-msgs";
   version = "0.4.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/fetchrobotics-gbp/power_msgs-release/archive/release/noetic/power_msgs/0.4.2-1.tar.gz";
-    name = "0.4.2-1.tar.gz";
-    sha256 = "696eff7295d1352040e3223f176fa488815f14ef05066ee6ab43e479791d4120";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "power_msgs-release";
+    rev = "4c0ef1643b3d3385186205f055d25f44e4d70164";
+    owner = "fetchrobotics-gbp";
+    sha256 = "sha256-QvZ5QmO3r+aHuScvApVtJBeMy9z8HwfEc0jhtBR40PY=";
   };
 
   buildType = "catkin";

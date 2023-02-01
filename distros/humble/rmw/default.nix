@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-rmw";
   version = "6.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmw-release/archive/release/humble/rmw/6.1.1-1.tar.gz";
-    name = "6.1.1-1.tar.gz";
-    sha256 = "381bfc803424f0bc543c16725074d339190a9f2e5e5964bc59a79506b0c7959d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmw-release";
+    rev = "e87acef47c9858fd6bdec5093ec2fdf1e679907c";
+    owner = "ros2-gbp";
+    sha256 = "sha256-PjoOwMzIsqX9Z9CaVKwZj2HsOm4GSt5njONdsPvMbOk=";
   };
 
   buildType = "ament_cmake";

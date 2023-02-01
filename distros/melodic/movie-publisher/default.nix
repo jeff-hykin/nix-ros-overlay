@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-movie-publisher";
   version = "1.3.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/peci1/movie_publisher-release/archive/release/melodic/movie_publisher/1.3.1-1.tar.gz";
-    name = "1.3.1-1.tar.gz";
-    sha256 = "917662a10f791fb87c5a3e7d42433f0c0a83365c5e9eba6aa3c05642e6df1f71";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "movie_publisher-release";
+    rev = "a828c9848e0d3025e498a6a43fb2df949a127ae2";
+    owner = "peci1";
+    sha256 = "sha256-0Zcu+GmIrUNRq0ot+uGJ4Hdr3zw10Keyj0pdIAAwue4=";
   };
 
   buildType = "catkin";

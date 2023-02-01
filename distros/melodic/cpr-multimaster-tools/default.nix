@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-cpr-multimaster-tools";
   version = "0.0.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/clearpath-gbp/cpr_multimaster_tools-release/archive/release/melodic/cpr_multimaster_tools/0.0.2-1.tar.gz";
-    name = "0.0.2-1.tar.gz";
-    sha256 = "4146b715489ee0a3271fe50e568ad19197b7f30c51bb7539cdee47cc0b8c5d32";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cpr_multimaster_tools-release";
+    rev = "8a464a750587bfac009d5a16b2e08328dd32a249";
+    owner = "clearpath-gbp";
+    sha256 = "sha256-tqoHmf226UwnOMlPnqGGn9wLMFN19TcuY9zS7nvM5CQ=";
   };
 
   buildType = "catkin";

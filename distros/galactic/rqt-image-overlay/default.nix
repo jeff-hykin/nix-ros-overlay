@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rqt-image-overlay";
   version = "0.0.9-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rqt_image_overlay-release/archive/release/galactic/rqt_image_overlay/0.0.9-1.tar.gz";
-    name = "0.0.9-1.tar.gz";
-    sha256 = "22af165ec77ec3c33f9340560ac8092d20889c08ef13b277a2cc07ec5cafcddc";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt_image_overlay-release";
+    rev = "affe324660dff4803b2ad0a58c4e6977573297db";
+    owner = "ros2-gbp";
+    sha256 = "sha256-S4MKMjpDX9TyBYzehf/W3UteJfyQ/ZMO8/IC63tQUrw=";
   };
 
   buildType = "ament_cmake";

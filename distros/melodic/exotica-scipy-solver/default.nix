@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-exotica-scipy-solver";
   version = "6.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipab-slmc/exotica-release/archive/release/melodic/exotica_scipy_solver/6.2.0-1.tar.gz";
-    name = "6.2.0-1.tar.gz";
-    sha256 = "e8ab625926e85331b7926c49e3849f636b7d39a95e6a6662eec83c16ee5664b4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "exotica-release";
+    rev = "b6e9a47d5ebdd0ff30a7fb3b6bb5c0585ab2e1ef";
+    owner = "ipab-slmc";
+    sha256 = "sha256-CggoxRV9IGNIxfQ7XQw7mz91JtbthH40E0SfUQ0XDOs=";
   };
 
   buildType = "catkin";

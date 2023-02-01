@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-hebi-cpp-api";
   version = "3.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/HebiRobotics/hebi_cpp_api_ros-release/archive/release/noetic/hebi_cpp_api/3.2.0-1.tar.gz";
-    name = "3.2.0-1.tar.gz";
-    sha256 = "2979c3467c126931c36aa7a0a662ccddc15447159eed6e568a4cbf446e2f1d55";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "hebi_cpp_api_ros-release";
+    rev = "abea941730ec4b2981736cb90dee5ada3e09db57";
+    owner = "HebiRobotics";
+    sha256 = "sha256-QSAEabtAQlkrQTpDECGciMGUtGZzgFgFzK5D+IHf/O8=";
   };
 
   buildType = "catkin";

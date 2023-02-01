@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-rqt-runtime-monitor";
   version = "1.0.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rqt_runtime_monitor-release/archive/release/rolling/rqt_runtime_monitor/1.0.0-2.tar.gz";
-    name = "1.0.0-2.tar.gz";
-    sha256 = "2e95fdc0c55146999c591f3353c9e85780f6c539346c4d83f0d2fe50fc5aaee7";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt_runtime_monitor-release";
+    rev = "e768c1ebdb16de608309c72011510732aea3e518";
+    owner = "ros2-gbp";
+    sha256 = "sha256-7LyebmhKcj1ltMsj4LbDUxXX5v9ejuW4g4lIKitP28Q=";
   };
 
   buildType = "ament_python";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-swri-console";
   version = "2.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/swri_console-release/archive/release/galactic/swri_console/2.0.1-1.tar.gz";
-    name = "2.0.1-1.tar.gz";
-    sha256 = "6b5da71e23f7297b7933628c5c9726af9e4dba14a095968ba9e994071b53e1b8";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "swri_console-release";
+    rev = "fab93628860f56e60c58249710810c17df449aea";
+    owner = "ros2-gbp";
+    sha256 = "sha256-81wUEyKnQ8TVzIf9anWaDGhd2cYqDlFpAF+sJ7FgluQ=";
   };
 
   buildType = "ament_cmake";

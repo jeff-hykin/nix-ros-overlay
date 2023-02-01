@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-phidgets-high-speed-encoder";
   version = "2.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/phidgets_drivers-release/archive/release/rolling/phidgets_high_speed_encoder/2.3.0-1.tar.gz";
-    name = "2.3.0-1.tar.gz";
-    sha256 = "3db493a6dd2360fe54f80b8438efbc8d6796dfeef3a2c1bace7f93909644854f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "phidgets_drivers-release";
+    rev = "a3f1d4d159993648a1a4e58cbaa82ad945eb6846";
+    owner = "ros2-gbp";
+    sha256 = "sha256-dsxanJZdDiTWtlSUgDzXZWvzc6uCFf/qVV7s5zyF+ys=";
   };
 
   buildType = "ament_cmake";

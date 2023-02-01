@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-statistics-msgs";
   version = "0.15.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-drivers-gbp/pointgrey_camera_driver-release/archive/release/noetic/statistics_msgs/0.15.1-1.tar.gz";
-    name = "0.15.1-1.tar.gz";
-    sha256 = "60160deb991195902301215019f99958f7132c20abea524d794edba6efad78f8";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pointgrey_camera_driver-release";
+    rev = "bad0838a4a7e0384bc0582c987a6981050fb7596";
+    owner = "ros-drivers-gbp";
+    sha256 = "sha256-VdNo4JuO12qSvH5sLJy0Qbr6RMTNr8e9Uztaka3Nf+4=";
   };
 
   buildType = "catkin";

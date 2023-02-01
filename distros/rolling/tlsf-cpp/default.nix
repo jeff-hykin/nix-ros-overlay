@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-tlsf-cpp";
   version = "0.14.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/realtime_support-release/archive/release/rolling/tlsf_cpp/0.14.1-1.tar.gz";
-    name = "0.14.1-1.tar.gz";
-    sha256 = "a08a84c1b4591b68588fd2c3bd00026ff47b04d658e888d11863d78c37102b45";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "realtime_support-release";
+    rev = "0fd2f00d32239336036345af571209049c95b8e7";
+    owner = "ros2-gbp";
+    sha256 = "sha256-DaWV684+Cm/krMM9DsgjeESgnjez55kDXWUaa6tgG1E=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-cmd-vel-smoother";
   version = "0.1.16-r1";
 
-  src = fetchurl {
-    url = "https://github.com/tork-a/jsk_control-release/archive/release/melodic/cmd_vel_smoother/0.1.16-1.tar.gz";
-    name = "0.1.16-1.tar.gz";
-    sha256 = "46de3de6015c0e6c57d48e631bcae846dbce6b01f5cd8d2770c56220ae66206f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "jsk_control-release";
+    rev = "bacd691ce07969ed9accccc7779e38912133d64f";
+    owner = "tork-a";
+    sha256 = "sha256-raT83xBHWrvsxU4lGvHZTWOzLgTTlOzSanrfyPD+VcQ=";
   };
 
   buildType = "catkin";

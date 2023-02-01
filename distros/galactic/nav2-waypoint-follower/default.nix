@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-nav2-waypoint-follower";
   version = "1.0.12-r1";
 
-  src = fetchurl {
-    url = "https://github.com/SteveMacenski/navigation2-release/archive/release/galactic/nav2_waypoint_follower/1.0.12-1.tar.gz";
-    name = "1.0.12-1.tar.gz";
-    sha256 = "ed5ac03b406b8a45e501ee909266e72b325c5c1aaf11175c8e8f3480b0783089";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation2-release";
+    rev = "3a58e47d543e462f156c016d1a4ce228c3a7665b";
+    owner = "SteveMacenski";
+    sha256 = "sha256-Oqg3xAmeoFRaqU6MkWKfuI9Th0idV+bAWQZwl0y8fgg=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-dynamixel-workbench";
   version = "2.2.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/dynamixel_workbench-release/archive/release/rolling/dynamixel_workbench/2.2.3-1.tar.gz";
-    name = "2.2.3-1.tar.gz";
-    sha256 = "8628f95997d1f049d7c6ad47d3be39c3035c55c1d76eb83e54e5c49ed5bea38b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "dynamixel_workbench-release";
+    rev = "20f880d37d1070d80ea909065fd5997d5751ea34";
+    owner = "ros2-gbp";
+    sha256 = "sha256-iA1/c6eRcHNi0wnJhwog1K7jH1fKwsqIvSfgCZivKrc=";
   };
 
   buildType = "ament_cmake";

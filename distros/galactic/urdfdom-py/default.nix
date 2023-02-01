@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-urdfdom-py";
   version = "1.1.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/urdfdom_py-release/archive/release/galactic/urdfdom_py/1.1.0-2.tar.gz";
-    name = "1.1.0-2.tar.gz";
-    sha256 = "2041ad52eb1deeac7ae8bd975544c908661f77dda0fd66ff4a0c58f0a53b6089";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "urdfdom_py-release";
+    rev = "ed5c5237cfa87e73b05965d8c824fe9dd3f35c6d";
+    owner = "ros2-gbp";
+    sha256 = "sha256-l84X7O4A14LHl4rdEY2smHRZIBJX84YkoDJdnZ2IOFw=";
   };
 
   buildType = "ament_python";

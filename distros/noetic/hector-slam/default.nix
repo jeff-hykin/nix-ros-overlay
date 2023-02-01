@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-hector-slam";
   version = "0.5.2-r4";
 
-  src = fetchurl {
-    url = "https://github.com/tu-darmstadt-ros-pkg-gbp/hector_slam-release/archive/release/noetic/hector_slam/0.5.2-4.tar.gz";
-    name = "0.5.2-4.tar.gz";
-    sha256 = "d2d894897f630824f2ea1638608e99badafff6aa0a4b1940c1fc59b6b0e5eb64";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "hector_slam-release";
+    rev = "ce8289c61167b15888767fd871dab9f97906c624";
+    owner = "tu-darmstadt-ros-pkg-gbp";
+    sha256 = "sha256-2swqvyx4/AmmzdAbLPfLXHtmBTvSfpMddjerK+y+1NE=";
   };
 
   buildType = "catkin";

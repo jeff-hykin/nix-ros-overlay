@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-rosidl-generator-py";
   version = "0.16.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rosidl_python-release/archive/release/rolling/rosidl_generator_py/0.16.1-1.tar.gz";
-    name = "0.16.1-1.tar.gz";
-    sha256 = "9a9cef86511d8e30d8def2bc04b0ff40850435bbb9a7970932eba9a47cb000e1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosidl_python-release";
+    rev = "22aba8115e91d1bc1c10a3b963fe39faf1125a0f";
+    owner = "ros2-gbp";
+    sha256 = "sha256-nGGIQqTJCnseOlsr4VOQ6wS0ePraozHy7DOauIEpuv8=";
   };
 
   buildType = "ament_cmake";

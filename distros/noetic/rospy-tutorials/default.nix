@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-rospy-tutorials";
   version = "0.10.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/ros_tutorials-release/archive/release/noetic/rospy_tutorials/0.10.2-1.tar.gz";
-    name = "0.10.2-1.tar.gz";
-    sha256 = "2f1bd789def2a6591abe28b2497304681f1ccba3748b2044cf724e6552fcd11b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_tutorials-release";
+    rev = "9b5bfdf68161a965067af7cab98394ad4c849a6a";
+    owner = "ros-gbp";
+    sha256 = "sha256-nBZP15B97SjRN0fHOIIppi2ZofOwPSABs12RSnLPaV0=";
   };
 
   buildType = "catkin";

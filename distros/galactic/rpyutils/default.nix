@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rpyutils";
   version = "0.2.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rpyutils-release/archive/release/galactic/rpyutils/0.2.0-2.tar.gz";
-    name = "0.2.0-2.tar.gz";
-    sha256 = "e68f96f4718e6900071200d730ffaf41fe727667af35de61c2544a5018509b8e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rpyutils-release";
+    rev = "8e9d7f90d19011d9d57a1b1d00874595cdcd3fbd";
+    owner = "ros2-gbp";
+    sha256 = "sha256-6A+zh2W0g6LS2wofdkzqkK4w7QVApxz+yj3GYOV/55o=";
   };
 
   buildType = "ament_python";

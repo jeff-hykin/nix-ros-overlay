@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-move-slow-and-clear";
   version = "1.17.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/navigation-release/archive/release/noetic/move_slow_and_clear/1.17.2-1.tar.gz";
-    name = "1.17.2-1.tar.gz";
-    sha256 = "40d597dddc79fa8f15830ade5bbee6f1f72cb748bde6795eb987a1073cbb353c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation-release";
+    rev = "0faff2b40eb102361af44136355b07d334eea1e6";
+    owner = "ros-gbp";
+    sha256 = "sha256-Zdb9Q9GvKVgwhvQ/Pb/Y5C8hEtOOU8OuCLZHiiVYMvE=";
   };
 
   buildType = "catkin";

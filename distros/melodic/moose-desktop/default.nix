@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-moose-desktop";
   version = "0.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/clearpath-gbp/moose_desktop-release/archive/release/melodic/moose_desktop/0.1.1-1.tar.gz";
-    name = "0.1.1-1.tar.gz";
-    sha256 = "eee8c52478443ca5259632b918c854241382a04fd8a15836f707442d4c629d30";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "moose_desktop-release";
+    rev = "e1d0fb9ebc1352b1c7ee2ad01fa0c1c6fc04b6a3";
+    owner = "clearpath-gbp";
+    sha256 = "sha256-MBiVEFMpDrFpcCEdvYVDrUEGsAZu2jG+YVbvAjWf9rg=";
   };
 
   buildType = "catkin";

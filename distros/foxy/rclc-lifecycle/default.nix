@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-rclc-lifecycle";
   version = "1.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rclc-release/archive/release/foxy/rclc_lifecycle/1.1.1-1.tar.gz";
-    name = "1.1.1-1.tar.gz";
-    sha256 = "015a9e3b82d73480998a876155a537e68a01ece2e22182231c61c4c9ba127250";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rclc-release";
+    rev = "42ad9d8bdb968362645d8213f43677405b47c124";
+    owner = "ros2-gbp";
+    sha256 = "sha256-24g4xvaaXSH8h9dbDCsKTUQE7/y2HBO8C9TMHvPn2WU=";
   };
 
   buildType = "ament_cmake";

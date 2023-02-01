@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-pilz-industrial-motion-planner-testutils";
   version = "2.6.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/moveit/moveit2-release/archive/release/rolling/pilz_industrial_motion_planner_testutils/2.6.0-1.tar.gz";
-    name = "2.6.0-1.tar.gz";
-    sha256 = "ec8160d4695885f91df0d3f831c367bfd7cbeebd221697d3ceadcaa68c47079f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "moveit2-release";
+    rev = "5414c518e3eff42281718ddc52174b27f8cef3a2";
+    owner = "moveit";
+    sha256 = "sha256-bCEQx826CMflWlJ73u6PbmZfnHzygx8tSATgir9d880=";
   };
 
   buildType = "ament_cmake";

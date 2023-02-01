@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-system-modes-msgs";
   version = "0.9.0-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/system_modes-release/archive/release/rolling/system_modes_msgs/0.9.0-3.tar.gz";
-    name = "0.9.0-3.tar.gz";
-    sha256 = "4566e1cc4c0230373e60ad564de466dc696a6e5edd4b1e872abf33aaaf289721";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "system_modes-release";
+    rev = "548d51552c8cf81c251fd91bbfb299bae4634542";
+    owner = "ros2-gbp";
+    sha256 = "sha256-UcVnvMWo1lcz8PljlXg4m53YoUKsphq4TbfgB7Z3dgw=";
   };
 
   buildType = "ament_cmake";

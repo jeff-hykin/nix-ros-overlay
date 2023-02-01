@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-ompl";
   version = "1.4.2-r5";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/ompl-release/archive/release/melodic/ompl/1.4.2-5.tar.gz";
-    name = "1.4.2-5.tar.gz";
-    sha256 = "9d948c9a1b3172665a402240eaa980066db8ce1ca27a5d1646d1798d083c518f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ompl-release";
+    rev = "bbd79eb27ecbfec4fbf9a80c7c13b3a4610e4ad2";
+    owner = "ros-gbp";
+    sha256 = "sha256-KQ8OmlflFYAPBwJaeDwEdE5Gco/c/KJsPteM3ZKnbMk=";
   };
 
   buildType = "cmake";

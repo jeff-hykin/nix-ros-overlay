@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-dolly-ignition";
   version = "0.4.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/chapulina/dolly-release/archive/release/galactic/dolly_ignition/0.4.0-1.tar.gz";
-    name = "0.4.0-1.tar.gz";
-    sha256 = "a1e54f1fa28af34717e210b375edbd8f300806949251f9858875255c297aca7d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "dolly-release";
+    rev = "76ab7c60042b39f4bebb8ed467a754081204c43f";
+    owner = "chapulina";
+    sha256 = "sha256-BGdsjbemIWS94BjSHjDClK1ui6sM17J0lJlrhfhj/Vg=";
   };
 
   buildType = "ament_cmake";

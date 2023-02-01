@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-gazebo-ros-pkgs";
   version = "3.5.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/gazebo_ros_pkgs-release/archive/release/foxy/gazebo_ros_pkgs/3.5.3-1.tar.gz";
-    name = "3.5.3-1.tar.gz";
-    sha256 = "8083ac447d2182c6b51ddae54b56a039d525bb0c067bcf7b5f6aa2f710494ebf";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "gazebo_ros_pkgs-release";
+    rev = "08e328045c521cdde66ca1edb4fac65e7066c52a";
+    owner = "ros2-gbp";
+    sha256 = "sha256-lUe95Eka1dcUWEvYTY6uP191IWzNL1UhzWcl3kLSb1g=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-moveit";
   version = "1.1.11-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/moveit-release/archive/release/noetic/moveit/1.1.11-1.tar.gz";
-    name = "1.1.11-1.tar.gz";
-    sha256 = "504073ca1c20a5b4c63a5288c1dd5dcd9f797aa551c9918a282d4c50e5148f8a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "moveit-release";
+    rev = "6cc0f5e456dfa603119b834582c6167dc47e2cba";
+    owner = "ros-gbp";
+    sha256 = "sha256-s0OTIVLqAj3s0aGWT1wb+UH/iA4ijJSgbH5eP44v77A=";
   };
 
   buildType = "catkin";

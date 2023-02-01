@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-marvelmind-nav";
   version = "1.0.11-r1";
 
-  src = fetchurl {
-    url = "https://github.com/MarvelmindRobotics/marvelmind_nav-release/archive/release/melodic/marvelmind_nav/1.0.11-1.tar.gz";
-    name = "1.0.11-1.tar.gz";
-    sha256 = "abc7758576fda1b1cf6f3b49d084bd6f9c9e8333f4e622bd3683fa4fa0e843db";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "marvelmind_nav-release";
+    rev = "a6a5316b00e6512e0b6144257b6ed4bca61b579c";
+    owner = "MarvelmindRobotics";
+    sha256 = "sha256-zQ7Z2t6wcbrB7ghdCv5vS++LqYAvPpwgtPJFsprPGNs=";
   };
 
   buildType = "catkin";

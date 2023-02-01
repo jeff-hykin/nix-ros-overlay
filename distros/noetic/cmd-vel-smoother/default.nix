@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-cmd-vel-smoother";
   version = "0.1.16-r1";
 
-  src = fetchurl {
-    url = "https://github.com/tork-a/jsk_control-release/archive/release/noetic/cmd_vel_smoother/0.1.16-1.tar.gz";
-    name = "0.1.16-1.tar.gz";
-    sha256 = "3651226a9405b8293669bdacdb001fc175bb871e759c073b6173696768953c65";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "jsk_control-release";
+    rev = "447327c27d7a298d40f15ade28bda033cd669b7a";
+    owner = "tork-a";
+    sha256 = "sha256-raT83xBHWrvsxU4lGvHZTWOzLgTTlOzSanrfyPD+VcQ=";
   };
 
   buildType = "catkin";

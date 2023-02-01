@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-power-monitor";
   version = "1.1.7";
 
-  src = fetchurl {
-    url = "https://github.com/pr2-gbp/pr2_power_drivers-release/archive/release/melodic/power_monitor/1.1.7-0.tar.gz";
-    name = "1.1.7-0.tar.gz";
-    sha256 = "f77e8657675508e110c8e9d34d404a6f786b46fb91ccbec84ca6b8e2cd7ff444";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pr2_power_drivers-release";
+    rev = "6cb1923c18d59fadc5aaba1fffb1503e84188738";
+    owner = "pr2-gbp";
+    sha256 = "sha256-MzmSvODkWm+b4JxRXo/UoyDL2HfUeajpHZRDh6DKCo8=";
   };
 
   buildType = "catkin";

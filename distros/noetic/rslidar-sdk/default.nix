@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-rslidar-sdk";
   version = "1.3.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/nobleo/rslidar_sdk-release/archive/release/noetic/rslidar_sdk/1.3.2-1.tar.gz";
-    name = "1.3.2-1.tar.gz";
-    sha256 = "a3612756dc300bd8ee422b1d99dc46bc317814c568d5491fc987c72ce65f8d09";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rslidar_sdk-release";
+    rev = "2a7ee8e3944d65d388bc45cca01c76d55e4ecca7";
+    owner = "nobleo";
+    sha256 = "sha256-yGHvc+4i7wsj0xeGZogVgtx8WabkvbAba8FP36REx4s=";
   };
 
   buildType = "catkin";

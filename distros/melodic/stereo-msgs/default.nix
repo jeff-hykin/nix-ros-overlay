@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-stereo-msgs";
   version = "1.12.8-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/common_msgs-release/archive/release/melodic/stereo_msgs/1.12.8-1.tar.gz";
-    name = "1.12.8-1.tar.gz";
-    sha256 = "2b4e582d515c307c9416f19881898bcc23c45b356f55bfae0d51d112f04aa1c9";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "common_msgs-release";
+    rev = "b53bde7c1bac8f1a8c894cff0a36483d9a97ec16";
+    owner = "ros-gbp";
+    sha256 = "sha256-xGMwx0RFfWIK8+4abKcU3wYkWf51EKywLVGzDxWJkHs=";
   };
 
   buildType = "catkin";

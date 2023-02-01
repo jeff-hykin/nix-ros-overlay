@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-nav2-common";
   version = "1.1.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/SteveMacenski/navigation2-release/archive/release/humble/nav2_common/1.1.5-1.tar.gz";
-    name = "1.1.5-1.tar.gz";
-    sha256 = "83d3eabb3a74097a00e4e941ced6b3f675aa9941d16b327dc99e17055f865eda";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation2-release";
+    rev = "9d2528b168c35c4b12e5e62e5f50776438dc16ce";
+    owner = "SteveMacenski";
+    sha256 = "sha256-s+0a12rLxZcfZrmMZ92naReCoPaU1BbDQK8IeFeqJzA=";
   };
 
   buildType = "ament_cmake";

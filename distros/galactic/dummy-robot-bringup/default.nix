@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-dummy-robot-bringup";
   version = "0.14.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/demos-release/archive/release/galactic/dummy_robot_bringup/0.14.4-1.tar.gz";
-    name = "0.14.4-1.tar.gz";
-    sha256 = "e3df30e6050be6cf596a2f2f3c56ac30d25c5f831a4e477549bac50409787a07";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "demos-release";
+    rev = "98389b4a064699e96c059ec95bd31231cfb01ecb";
+    owner = "ros2-gbp";
+    sha256 = "sha256-/Gikh2JZ/IqBVUN1ZCF9BgY5v2nfvTYrEwxAY4+gERU=";
   };
 
   buildType = "ament_cmake";

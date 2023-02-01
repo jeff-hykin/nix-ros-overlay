@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-eml";
   version = "1.8.15-r7";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/eml-release/archive/release/noetic/eml/1.8.15-7.tar.gz";
-    name = "1.8.15-7.tar.gz";
-    sha256 = "6144c6c41ee52929ac4063e0c79e33bae44f2ba3ea823299b8e383b0bc3b6f68";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "eml-release";
+    rev = "beadfc0a01d1994dfab7b9215133ca71ffc574eb";
+    owner = "ros-gbp";
+    sha256 = "sha256-HP3KESy54+mdSgrqcRtVaj7lqSUhMVVa9YB4ILizFwo=";
   };
 
   buildType = "cmake";

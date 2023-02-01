@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-dummy-sensors";
   version = "0.23.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/demos-release/archive/release/rolling/dummy_sensors/0.23.0-1.tar.gz";
-    name = "0.23.0-1.tar.gz";
-    sha256 = "721ed2372f45b62058a189d7a180ba0444822c5241e9d24cd351416bf8a7f23f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "demos-release";
+    rev = "65761dff5585525eb028248d61043d3dc463947d";
+    owner = "ros2-gbp";
+    sha256 = "sha256-a4WyvZJLOMEQw86bK6nobRMw08s9skGJRnwRwVLXFlE=";
   };
 
   buildType = "ament_cmake";

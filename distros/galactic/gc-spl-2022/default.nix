@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-gc-spl-2022";
   version = "1.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/gc_spl-release/archive/release/galactic/gc_spl_2022/1.0.0-1.tar.gz";
-    name = "1.0.0-1.tar.gz";
-    sha256 = "2dc6f5216ca0b559ef267113b07c6667c06276149f9512bc509d8c4ebf972a03";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "gc_spl-release";
+    rev = "15da18d228c62ba40e2a690e7b7a6d808c2d12f4";
+    owner = "ros2-gbp";
+    sha256 = "sha256-NmUqK3jHH4GKLCdpuJSZZYNgXduWSH+nSr4+pzNZgDI=";
   };
 
   buildType = "ament_python";

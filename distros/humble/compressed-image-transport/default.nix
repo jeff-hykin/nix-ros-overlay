@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-compressed-image-transport";
   version = "2.5.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/image_transport_plugins-release/archive/release/humble/compressed_image_transport/2.5.0-2.tar.gz";
-    name = "2.5.0-2.tar.gz";
-    sha256 = "a857e46669a9e2ad3fe4212d20ddf50d01e310cc318b99143714c6aa288fc4a3";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "image_transport_plugins-release";
+    rev = "9f951640f8b880ec34d2e191a93968bcaacd4a28";
+    owner = "ros2-gbp";
+    sha256 = "sha256-2j2/3iqdjXqqBW3ImAxqPt/62aJvEdUbSXvhp0T5nw8=";
   };
 
   buildType = "ament_cmake";

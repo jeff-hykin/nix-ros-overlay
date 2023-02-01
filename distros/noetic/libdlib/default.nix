@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-libdlib";
   version = "0.6.18-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_extern-release/archive/release/noetic/libdlib/0.6.18-1.tar.gz";
-    name = "0.6.18-1.tar.gz";
-    sha256 = "217bb8d8c749b3c2d3235183c0ee685a1bb0310ab92391a8b2a4b1e37a748f7c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_extern-release";
+    rev = "2e1f3e31dee1575b657d339b74971d56990278e3";
+    owner = "ipa320";
+    sha256 = "sha256-/12G3kgE+IpmwRKbX5LCM8lT9Akc9+tHWUJVU3NGK+o=";
   };
 
   buildType = "catkin";

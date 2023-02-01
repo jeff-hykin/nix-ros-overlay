@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-rmw-implementation-cmake";
   version = "6.4.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmw-release/archive/release/rolling/rmw_implementation_cmake/6.4.0-1.tar.gz";
-    name = "6.4.0-1.tar.gz";
-    sha256 = "896f1b8d37525e769bf7b47559ec65100581e73520c2393cfa5972f1fb900002";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmw-release";
+    rev = "63d637d00248239eb52bcacbe0acb29b91375915";
+    owner = "ros2-gbp";
+    sha256 = "sha256-V7Pc+SOrZMkAZJyPXrxAz6Yfx6/ixOhubG1v6WDrdzs=";
   };
 
   buildType = "ament_cmake";

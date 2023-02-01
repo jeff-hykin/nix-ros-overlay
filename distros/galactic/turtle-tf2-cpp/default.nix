@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-turtle-tf2-cpp";
   version = "0.3.6-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/geometry_tutorials-release/archive/release/galactic/turtle_tf2_cpp/0.3.6-1.tar.gz";
-    name = "0.3.6-1.tar.gz";
-    sha256 = "6bbb779ef5eefa219a6051b843c6bcd0bdb65cdb211a15b329b734459141373f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "geometry_tutorials-release";
+    rev = "03dcfff58abd145cebeda2198219f84cdebfd582";
+    owner = "ros2-gbp";
+    sha256 = "sha256-/+vZZp6tpMuKd5xAZHma9sMN5Q0aWVwbu5ZnKW6t2nQ=";
   };
 
   buildType = "ament_cmake";

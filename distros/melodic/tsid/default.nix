@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-tsid";
   version = "1.6.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/stack-of-tasks/tsid-ros-release/archive/release/melodic/tsid/1.6.2-1.tar.gz";
-    name = "1.6.2-1.tar.gz";
-    sha256 = "8f8b3c24e70436228693c32976bab700a2876676c12c3b661237f379d723b138";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "tsid-ros-release";
+    rev = "f3eafbbb2f0506ed0c8ad6b9db1e1b8450204edf";
+    owner = "stack-of-tasks";
+    sha256 = "sha256-OItC0M0+JnOACPGfrmYGjsEUu6OI+J/5tZGReB0sNmo=";
   };
 
   buildType = "cmake";

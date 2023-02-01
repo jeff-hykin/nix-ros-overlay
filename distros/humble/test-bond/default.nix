@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-test-bond";
   version = "3.0.2-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/bond_core-release/archive/release/humble/test_bond/3.0.2-2.tar.gz";
-    name = "3.0.2-2.tar.gz";
-    sha256 = "92ae408ca2d0f49c954eeacc7af1024efce24c869ba2a536bc7c509739c9405d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "bond_core-release";
+    rev = "3a2071192369ca9f2edd288d2c3d0f2af6e3b808";
+    owner = "ros2-gbp";
+    sha256 = "sha256-8ZUGG8M0IzJ2IQLIhNeufIghzYFXyN/jjsAF82eZmY4=";
   };
 
   buildType = "ament_cmake";

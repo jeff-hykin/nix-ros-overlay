@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-camera-info-manager";
   version = "1.11.13";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/image_common-release/archive/release/melodic/camera_info_manager/1.11.13-0.tar.gz";
-    name = "1.11.13-0.tar.gz";
-    sha256 = "c24f43db36b8922346fb722119850fdd6a0fafe87fa38521edba5c8c6ed4e98d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "image_common-release";
+    rev = "6562e5d5108410f2098934169b7d8a5fce3adeeb";
+    owner = "ros-gbp";
+    sha256 = "sha256-UkvCqoIGF7wJsR9axRmvCf7IqiPhDF3BbhNXzNC57Ww=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rplidar-ros";
   version = "2.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rplidar_ros-release/archive/release/galactic/rplidar_ros/2.1.0-1.tar.gz";
-    name = "2.1.0-1.tar.gz";
-    sha256 = "a83f7de32de30d21483e7fb12f51404c7bfaf5ab54c32e4c11a9be47bec6e323";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rplidar_ros-release";
+    rev = "1197253552c0036fea79f60d87fafd4aedadbde0";
+    owner = "ros2-gbp";
+    sha256 = "sha256-lOiYrTggsDiQb9sCYtWAup4+kVoMnpSYqKqWGtnb2AU=";
   };
 
   buildType = "ament_cmake";

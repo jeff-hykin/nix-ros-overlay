@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-aws-robomaker-small-warehouse-world";
   version = "1.0.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/aws-gbp/aws_robomaker_small_warehouse_world-release/archive/release/foxy/aws_robomaker_small_warehouse_world/1.0.5-1.tar.gz";
-    name = "1.0.5-1.tar.gz";
-    sha256 = "2ced24d4335b91ca12fbc470b240e21971d86d18fcd6886ac334a43d7cee7642";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "aws_robomaker_small_warehouse_world-release";
+    rev = "65b7706fd5d1563554e96d1955748f3281955e87";
+    owner = "aws-gbp";
+    sha256 = "sha256-bMYgLcTRb5UvNDZS4HmtCbd1SRpRfQypQmT4SJPbONY=";
   };
 
   buildType = "ament_cmake";

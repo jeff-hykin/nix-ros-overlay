@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-gripper-action-controller";
   version = "0.21.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/ros_controllers-release/archive/release/noetic/gripper_action_controller/0.21.0-1.tar.gz";
-    name = "0.21.0-1.tar.gz";
-    sha256 = "873785fdc6e4508817f5c0714825e0be2a10d09d76fb0c3f49e39dcc78978f8d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_controllers-release";
+    rev = "83ef281c11f2d8518aeba597d0833b072f328eba";
+    owner = "ros-gbp";
+    sha256 = "sha256-RVeZiYn6YIATJ4oGUR8BNYfYFHTt1hGpo4ZWk3eprro=";
   };
 
   buildType = "catkin";

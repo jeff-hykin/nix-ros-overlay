@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-fuse-publishers";
   version = "0.4.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/locusrobotics/fuse-release/archive/release/noetic/fuse_publishers/0.4.2-1.tar.gz";
-    name = "0.4.2-1.tar.gz";
-    sha256 = "1939abba76b170966680595857a504b304f86b0ed514fa8416f1b920b9366b8b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "fuse-release";
+    rev = "e133c0ba473ad4caae041915646f5e89833ce72c";
+    owner = "locusrobotics";
+    sha256 = "sha256-VXMzYTYgXUqhkAVxkw5tmV8Zvfp38oZxyLfEAmmFj+Q=";
   };
 
   buildType = "catkin";

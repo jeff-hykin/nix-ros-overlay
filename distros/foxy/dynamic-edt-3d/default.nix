@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-dynamic-edt-3d";
   version = "1.9.8-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/octomap-release/archive/release/foxy/dynamic_edt_3d/1.9.8-1.tar.gz";
-    name = "1.9.8-1.tar.gz";
-    sha256 = "836454d9a8fae684a72f309cafcc841ff7d5c4615c9d732d9030c4070fbd1864";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "octomap-release";
+    rev = "55ac46c88b692bb23e020b27b3d79b2c2cf22723";
+    owner = "ros-gbp";
+    sha256 = "sha256-p28ass6agSiGQV14tRJGr41aVOpOe1vDp5HCLwOyx7A=";
   };
 
   buildType = "cmake";

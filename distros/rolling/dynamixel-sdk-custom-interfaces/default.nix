@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-dynamixel-sdk-custom-interfaces";
   version = "3.7.40-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/dynamixel_sdk-release/archive/release/rolling/dynamixel_sdk_custom_interfaces/3.7.40-2.tar.gz";
-    name = "3.7.40-2.tar.gz";
-    sha256 = "3adcb56a70f709d0190c914bc1c661a90209e10c7575edc4b70ce9604c848b5e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "dynamixel_sdk-release";
+    rev = "c0ee124570a52a0e2980d23216f630a43d2061c5";
+    owner = "ros2-gbp";
+    sha256 = "sha256-pWGzlnONW1lXGAui57EHtKsqI3VguxYMeL+ytq6dgec=";
   };
 
   buildType = "ament_cmake";

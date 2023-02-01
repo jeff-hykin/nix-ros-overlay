@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-cob-phidget-em-state";
   version = "0.7.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_driver-release/archive/release/melodic/cob_phidget_em_state/0.7.4-1.tar.gz";
-    name = "0.7.4-1.tar.gz";
-    sha256 = "e04e78b1130e6b2a25a905a94ee78719b4b3a37acc22763df165de4f9b842bc4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_driver-release";
+    rev = "5818fc590c30410356ded8522254ea08141d896e";
+    owner = "ipa320";
+    sha256 = "sha256-sP1VcDkrOjLjlnCdFw22rmhIAmrZTeu+mbWaGLZw808=";
   };
 
   buildType = "catkin";

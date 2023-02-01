@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-laser-filters";
   version = "2.0.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/laser_filters-release/archive/release/humble/laser_filters/2.0.5-1.tar.gz";
-    name = "2.0.5-1.tar.gz";
-    sha256 = "b677f72e44342dced3edfe486eacacb56af7c111037bc5e9327135c67ebf25d3";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "laser_filters-release";
+    rev = "94437e01b301a980ecff273cfb22fffaf5ee6f80";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Ce8KbDAKhfJUqoSJZczGprJMyAeUW6KMPE3XrtaevoE=";
   };
 
   buildType = "ament_cmake";

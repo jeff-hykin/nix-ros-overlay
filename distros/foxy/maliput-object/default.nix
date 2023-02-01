@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-maliput-object";
   version = "0.1.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/maliput_object-release/archive/release/foxy/maliput_object/0.1.2-1.tar.gz";
-    name = "0.1.2-1.tar.gz";
-    sha256 = "f45fa4db39dd785b45e8676924007534472e63590d1cc2ba5c2ef2c67ffd5e48";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "maliput_object-release";
+    rev = "4213f8745a9eb090c0aa3ad561ecd585078f25f4";
+    owner = "ros2-gbp";
+    sha256 = "sha256-v9xYVckxp/e3BoBssmGNzMvkiGc0yzqug7/sGXn7CjM=";
   };
 
   buildType = "ament_cmake";

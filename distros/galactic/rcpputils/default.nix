@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rcpputils";
   version = "2.2.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rcpputils-release/archive/release/galactic/rcpputils/2.2.2-1.tar.gz";
-    name = "2.2.2-1.tar.gz";
-    sha256 = "14d981495628ded58fff0d91039fb22e94dfa555a5db42bccd134eb640fd2160";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rcpputils-release";
+    rev = "00a619a3dee2fa491f3455d6ebcafbe880cf6c27";
+    owner = "ros2-gbp";
+    sha256 = "sha256-KV0gvGb61PivNhovRMACTVDdrBIoI9ERX2bYkFt7j78=";
   };
 
   buildType = "ament_cmake";

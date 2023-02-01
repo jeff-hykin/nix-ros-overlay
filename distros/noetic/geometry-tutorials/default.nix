@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-geometry-tutorials";
   version = "0.2.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/geometry_tutorials-release/archive/release/noetic/geometry_tutorials/0.2.3-1.tar.gz";
-    name = "0.2.3-1.tar.gz";
-    sha256 = "58b0ecb64acf567e9bc62efb6252452443c399d98701edc9bbbb295d9999ecb4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "geometry_tutorials-release";
+    rev = "192bd37d10d87764242942973028e830ceea0be1";
+    owner = "ros-gbp";
+    sha256 = "sha256-Md8QxkwXqo4SDF8pHOfVGXLe+6MbjaINZvcBMs8AEJ8=";
   };
 
   buildType = "catkin";

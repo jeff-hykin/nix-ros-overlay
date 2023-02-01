@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-rm-referee";
   version = "0.1.16-r1";
 
-  src = fetchurl {
-    url = "https://github.com/rm-controls/rm_control-release/archive/release/noetic/rm_referee/0.1.16-1.tar.gz";
-    name = "0.1.16-1.tar.gz";
-    sha256 = "d1ed13b18a52ae96012a31b953ee93164f67abdf6b5ad2ec69c9b79ae8b909a5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rm_control-release";
+    rev = "d84b46e9471b471b06008ff9460a1f2b94301365";
+    owner = "rm-controls";
+    sha256 = "sha256-WlP3nFLFbpTRRcef/sizITLZMXwiHi/Zi48MhYAiByU=";
   };
 
   buildType = "catkin";

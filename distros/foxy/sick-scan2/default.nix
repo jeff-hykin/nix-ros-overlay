@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-sick-scan2";
   version = "0.1.9-r1";
 
-  src = fetchurl {
-    url = "https://github.com/SICKAG/sick_scan2-release/archive/release/foxy/sick_scan2/0.1.9-1.tar.gz";
-    name = "0.1.9-1.tar.gz";
-    sha256 = "1fbaf2a4944f195661ef778c79448d0d51a16ac3ac24b73a94b0e6bf436a7e3d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "sick_scan2-release";
+    rev = "e6d4ad6e5bf55454354dfe3b01dfd13af0e8e39f";
+    owner = "SICKAG";
+    sha256 = "sha256-IuPHbFlxT99wp4zJktcKuRRVLgZXmBXzGCQBleJmiZs=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-pendulum-msgs";
   version = "0.20.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/demos-release/archive/release/humble/pendulum_msgs/0.20.2-1.tar.gz";
-    name = "0.20.2-1.tar.gz";
-    sha256 = "e3d60c0ca93463b6adbb6187ad11c9fea51f6b88a07846a3c73ed2fddbbdc193";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "demos-release";
+    rev = "ecc3295c0c81e2de66da4782a50e43faea616b45";
+    owner = "ros2-gbp";
+    sha256 = "sha256-TFZrgrAWaQjeO5UkgJQXwVhMeYvRUm8zmEM1OxsJWUI=";
   };
 
   buildType = "ament_cmake";

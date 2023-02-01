@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-hri-msgs";
   version = "0.8.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros4hri/hri_msgs-release/archive/release/noetic/hri_msgs/0.8.0-1.tar.gz";
-    name = "0.8.0-1.tar.gz";
-    sha256 = "fb8abe9538673adf4cb4cd01ef5e85e3403a6dbfbc6104987aef0c3c1ce5eb2a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "hri_msgs-release";
+    rev = "22de7d1df5550f64faa6a12dfc3e5c0e4f4e3798";
+    owner = "ros4hri";
+    sha256 = "sha256-M3qb+B/8NzY3NHEaMj8YBAdBO4tkog1j4m1brr5eMc4=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-hls-lfcd-lds-driver";
   version = "1.1.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ROBOTIS-GIT-release/hls-lfcd-lds-driver-release/archive/release/noetic/hls_lfcd_lds_driver/1.1.2-1.tar.gz";
-    name = "1.1.2-1.tar.gz";
-    sha256 = "220169c149322ff80704155057c73c31d36bd80a9ffc98a75040061c1c4e5b1c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "hls-lfcd-lds-driver-release";
+    rev = "2e332d7490be13585cc62476dcce00472bb48e36";
+    owner = "ROBOTIS-GIT-release";
+    sha256 = "sha256-qFZn3c0vWo+U036jfgy8NlQFsGt1Vbf2dD8o5ke22uE=";
   };
 
   buildType = "catkin";

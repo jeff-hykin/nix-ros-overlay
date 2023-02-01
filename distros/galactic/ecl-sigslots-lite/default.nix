@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ecl-sigslots-lite";
   version = "1.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/yujinrobot-release/ecl_lite-release/archive/release/galactic/ecl_sigslots_lite/1.1.0-1.tar.gz";
-    name = "1.1.0-1.tar.gz";
-    sha256 = "d84c6ad6fe798bdb45918889a12b8e8f4fb9657898e27c74b724a6010390d9ee";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ecl_lite-release";
+    rev = "09a713d0271448694a5653d208f197fd3ec87c49";
+    owner = "yujinrobot-release";
+    sha256 = "sha256-elwZkpMp4eUcXfApXChktl6PRIE0WF0419Hx9VEiWWE=";
   };
 
   buildType = "ament_cmake";

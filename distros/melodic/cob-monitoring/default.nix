@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-cob-monitoring";
   version = "0.6.19-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_command_tools-release/archive/release/melodic/cob_monitoring/0.6.19-1.tar.gz";
-    name = "0.6.19-1.tar.gz";
-    sha256 = "18bbc3984c4a485a6e2d723bc0c6202d1afd71437928b6b5d3941f8c956cab0c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_command_tools-release";
+    rev = "7aab3516725aedae3f7f04c5352da1fea045099f";
+    owner = "ipa320";
+    sha256 = "sha256-sgOkXbApupVeKjnYvCMDc7IeJ4Qeo0CsidM+ok5gboA=";
   };
 
   buildType = "catkin";

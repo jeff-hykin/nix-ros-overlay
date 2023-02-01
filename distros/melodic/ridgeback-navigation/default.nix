@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-ridgeback-navigation";
   version = "0.3.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/clearpath-gbp/ridgeback-release/archive/release/melodic/ridgeback_navigation/0.3.2-1.tar.gz";
-    name = "0.3.2-1.tar.gz";
-    sha256 = "638bc9dc6920e842218860fdb839489729c727d1bafc7f5b1c73b55713fe525c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ridgeback-release";
+    rev = "d856b0dd08cc1bacbd093a4aa29f2ecb01c07ace";
+    owner = "clearpath-gbp";
+    sha256 = "sha256-HPEAtJhVxV4qmSiOQAAsD/JbwE/TK9UhUEvvnFfgw0E=";
   };
 
   buildType = "catkin";

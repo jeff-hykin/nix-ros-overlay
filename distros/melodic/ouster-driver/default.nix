@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-ouster-driver";
   version = "0.1.7";
 
-  src = fetchurl {
-    url = "https://github.com/CPFL/ouster-release/archive/release/melodic/ouster_driver/0.1.7-0.tar.gz";
-    name = "0.1.7-0.tar.gz";
-    sha256 = "7f68cc7f16bf51c84ddf73d6db82c8352089ee1da21d2e6b1da177ce3697a950";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ouster-release";
+    rev = "df938779e7b4ed0b26573ea3433e551b3e49db31";
+    owner = "CPFL";
+    sha256 = "sha256-sEN74pGThYheFj5kg2lCdPHDAjuAYKdScgZi6Le6oa8=";
   };
 
   buildType = "catkin";

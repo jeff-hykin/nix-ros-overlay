@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-cob-collision-monitor";
   version = "0.7.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_manipulation-release/archive/release/noetic/cob_collision_monitor/0.7.7-1.tar.gz";
-    name = "0.7.7-1.tar.gz";
-    sha256 = "4c80e266153a19cb2b424355a6cd5b825a4a53bf1300f82389ef149e4d2517f0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_manipulation-release";
+    rev = "ff6abb37b83d79db0c126e99a9d80ed2f30184a3";
+    owner = "ipa320";
+    sha256 = "sha256-xb/l7/EHC8M2h671Rj66eFWYuXpEco35IuVc2G2xVC8=";
   };
 
   buildType = "catkin";

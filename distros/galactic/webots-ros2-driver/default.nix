@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-webots-ros2-driver";
   version = "2022.1.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/webots_ros2-release/archive/release/galactic/webots_ros2_driver/2022.1.4-1.tar.gz";
-    name = "2022.1.4-1.tar.gz";
-    sha256 = "99e5f47fc78b02de9d168d9869b011739a30bcb0db7ec066b73652bb8cfa5248";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "webots_ros2-release";
+    rev = "18e73941e92710cb681d71b48c7e432f07d06fce";
+    owner = "ros2-gbp";
+    sha256 = "sha256-CWQbCSYqo5huUT4h3jRL99/CVAPtBRsJAJgraeFR/ok=";
   };
 
   buildType = "ament_cmake";

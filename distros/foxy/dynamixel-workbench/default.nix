@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-dynamixel-workbench";
   version = "2.2.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/dynamixel_workbench-release/archive/release/foxy/dynamixel_workbench/2.2.3-1.tar.gz";
-    name = "2.2.3-1.tar.gz";
-    sha256 = "6a1a975f3636db3227405fdbd35040b01dad3fc4d6ee2f631aaee3f20a5efeb6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "dynamixel_workbench-release";
+    rev = "3ce549100c5547c03d1ba80e2ffe247a45d26f3e";
+    owner = "ros2-gbp";
+    sha256 = "sha256-iA1/c6eRcHNi0wnJhwog1K7jH1fKwsqIvSfgCZivKrc=";
   };
 
   buildType = "ament_cmake";

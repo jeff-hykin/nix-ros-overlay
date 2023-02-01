@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-velodyne-pointcloud";
   version = "2.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/velodyne-release/archive/release/rolling/velodyne_pointcloud/2.3.0-1.tar.gz";
-    name = "2.3.0-1.tar.gz";
-    sha256 = "d010b8bd6a056984bc45d8e37633ba882c74ad8b9b69d733d051d8728bcc3883";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "velodyne-release";
+    rev = "e0e5e3ff5128a741266e86f43bda7c182f61cce2";
+    owner = "ros2-gbp";
+    sha256 = "sha256-hkvzuZw8cF8+XSVnSmlVOPLOTlg7vhtPoqd1gNK0mo8=";
   };
 
   buildType = "ament_cmake";

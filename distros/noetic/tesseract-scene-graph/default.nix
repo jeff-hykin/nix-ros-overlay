@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-tesseract-scene-graph";
   version = "0.13.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-industrial-release/tesseract-release/archive/release/noetic/tesseract_scene_graph/0.13.1-1.tar.gz";
-    name = "0.13.1-1.tar.gz";
-    sha256 = "de5d652a6b5f6dda855da0a8507b7424127f1e89630835ddef8fbc88329ef0db";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "tesseract-release";
+    rev = "d76486950bb230b6a466ea088f846eca9daac765";
+    owner = "ros-industrial-release";
+    sha256 = "sha256-FR9NzbUEzjbg+BAJw3xR/yMk3odgZQ1p7LnXIsR+H2w=";
   };
 
   buildType = "cmake";

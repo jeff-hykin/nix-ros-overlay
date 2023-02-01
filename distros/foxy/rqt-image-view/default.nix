@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-rqt-image-view";
   version = "1.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rqt_image_view-release/archive/release/foxy/rqt_image_view/1.1.1-1.tar.gz";
-    name = "1.1.1-1.tar.gz";
-    sha256 = "3e89cdf8e7f901fc8bd16970ab61d66656cccbe6c6e892bf4ab08f9992510e55";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt_image_view-release";
+    rev = "ab29c46b62f0707a1fe954f7f5b847042ed091f0";
+    owner = "ros2-gbp";
+    sha256 = "sha256-nnGCQz6FV1THxiOZknWHh0BMYkEK4FR2uh+hi2pPhCs=";
   };
 
   buildType = "ament_cmake";

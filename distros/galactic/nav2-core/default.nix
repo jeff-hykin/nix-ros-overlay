@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-nav2-core";
   version = "1.0.12-r1";
 
-  src = fetchurl {
-    url = "https://github.com/SteveMacenski/navigation2-release/archive/release/galactic/nav2_core/1.0.12-1.tar.gz";
-    name = "1.0.12-1.tar.gz";
-    sha256 = "bca1ef2ee4db9e1e68276b572906b9dfa1383c6cf9b62535e63e0acaae7b974b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation2-release";
+    rev = "0832c7c6deb90d68f574ac5d09ad555901509f9d";
+    owner = "SteveMacenski";
+    sha256 = "sha256-dhWoujMSFZWc+BfwGFW4RQUNAz3QjEZ/KH/9kirPjwA=";
   };
 
   buildType = "ament_cmake";

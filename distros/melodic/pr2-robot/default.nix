@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-pr2-robot";
   version = "1.6.31-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pr2-gbp/pr2_robot-release/archive/release/melodic/pr2_robot/1.6.31-1.tar.gz";
-    name = "1.6.31-1.tar.gz";
-    sha256 = "9b7ce00c9c77872f1a8a4231af6debcba86564af37509f0dcae56e0c76953ae6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pr2_robot-release";
+    rev = "6e085b12b3388712a0b3ef9affceabdd52a5492c";
+    owner = "pr2-gbp";
+    sha256 = "sha256-hRPCGGt39pXr9GF/3UCteAZD7ifaq8nai+Nw7MpFegI=";
   };
 
   buildType = "catkin";

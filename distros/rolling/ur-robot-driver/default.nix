@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-ur-robot-driver";
   version = "2.2.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/Universal_Robots_ROS2_Driver-release/archive/release/rolling/ur_robot_driver/2.2.4-1.tar.gz";
-    name = "2.2.4-1.tar.gz";
-    sha256 = "8f2b7ac77a13c822d8b3a829562f8588fce6fec2e20c6e49f6670c7e25813634";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "Universal_Robots_ROS2_Driver-release";
+    rev = "69a029cf5f6537d22e6339ee7efd6b89aa43a624";
+    owner = "ros2-gbp";
+    sha256 = "sha256-0/y7LlSJm1bOAHDcrO/Z72GEo5WyM4QXa742ZUM0/cc=";
   };
 
   buildType = "ament_cmake";

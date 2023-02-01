@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-jsk-rviz-plugins";
   version = "2.1.7-r4";
 
-  src = fetchurl {
-    url = "https://github.com/tork-a/jsk_visualization-release/archive/release/noetic/jsk_rviz_plugins/2.1.7-4.tar.gz";
-    name = "2.1.7-4.tar.gz";
-    sha256 = "51e88e5884f1598d961db12396a4cc1716d4214852c6d17786bd7d56f517487e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "jsk_visualization-release";
+    rev = "0591be938d0854419fff4ef8d621d05d481d4286";
+    owner = "tork-a";
+    sha256 = "sha256-+UORHbiTU4LRWXAENANecpw39PAGBrQQbMe2PJYcxKs=";
   };
 
   buildType = "catkin";

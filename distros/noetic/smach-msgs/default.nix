@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-smach-msgs";
   version = "2.5.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/executive_smach-release/archive/release/noetic/smach_msgs/2.5.0-1.tar.gz";
-    name = "2.5.0-1.tar.gz";
-    sha256 = "d1c9f8fe63b55bc6eae336803b302e2fe633207190ae0acbe9dad7937f06ee09";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "executive_smach-release";
+    rev = "343d17c6b2eec4ee372d47a86c77dd3d78f6876d";
+    owner = "ros-gbp";
+    sha256 = "sha256-k16JWCPU8G+MdgOyOW9SlvZqhHLN1IYfELl+aIvVkR0=";
   };
 
   buildType = "catkin";

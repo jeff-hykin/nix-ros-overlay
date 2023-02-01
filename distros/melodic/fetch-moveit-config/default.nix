@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-fetch-moveit-config";
   version = "0.8.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/fetchrobotics-gbp/fetch_ros-release/archive/release/melodic/fetch_moveit_config/0.8.3-1.tar.gz";
-    name = "0.8.3-1.tar.gz";
-    sha256 = "310f13774d6806737101b5f8a11d6dd03df7f6f3858592b43e8b2d20900b7a62";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "fetch_ros-release";
+    rev = "e0da232e718ea29ccaa06b3bb5144a7277c9902b";
+    owner = "fetchrobotics-gbp";
+    sha256 = "sha256-EEcOEWRfwJRab1Rb4jHbPzaaaUymj4HpVgqRHCySmX4=";
   };
 
   buildType = "catkin";

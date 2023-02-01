@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-husky-simulator";
   version = "0.6.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/clearpath-gbp/husky-release/archive/release/noetic/husky_simulator/0.6.5-1.tar.gz";
-    name = "0.6.5-1.tar.gz";
-    sha256 = "d7c6497b13a945d59087f3fdc4827e31ab96e302df3482f160b336d1bfae5983";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "husky-release";
+    rev = "411a5bcae73eff7dfc81147adaa2e3887ef302b3";
+    owner = "clearpath-gbp";
+    sha256 = "sha256-BYWqb/DIb7UCk723+YbUk+slHZt0u3Gwq3xEiI7lksc=";
   };
 
   buildType = "catkin";

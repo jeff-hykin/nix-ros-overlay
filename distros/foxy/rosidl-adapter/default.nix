@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-rosidl-adapter";
   version = "1.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rosidl-release/archive/release/foxy/rosidl_adapter/1.3.0-1.tar.gz";
-    name = "1.3.0-1.tar.gz";
-    sha256 = "71d40ff1ab72b18a1579e5593fb8ff8aab64881be96538c507be652248b97d2b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosidl-release";
+    rev = "0116878458ef3d179d041f52b2449e6547c53960";
+    owner = "ros2-gbp";
+    sha256 = "sha256-03UAQZmfds7u4qweGSd0NobdJ4xclUqwnuM+ek2ibRc=";
   };
 
   buildType = "ament_cmake";

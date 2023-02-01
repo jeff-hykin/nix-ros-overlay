@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-irobot-create-common-bringup";
   version = "1.0.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/create3_sim-release/archive/release/galactic/irobot_create_common_bringup/1.0.3-1.tar.gz";
-    name = "1.0.3-1.tar.gz";
-    sha256 = "47e3739e655fce791271407bbe0ca3c32a8ecde4ff2fd81bd6198e44af95ce8a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "create3_sim-release";
+    rev = "dc40091654c7e48666dea4ef2168aad6b121f259";
+    owner = "ros2-gbp";
+    sha256 = "sha256-QU8a4NUgSVcprzx5pslzjo8bazol73w1PZ0dp7nvRsA=";
   };
 
   buildType = "ament_cmake";

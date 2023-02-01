@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-laser-filters-jsk-patch";
   version = "2.1.24-r1";
 
-  src = fetchurl {
-    url = "https://github.com/tork-a/jsk_3rdparty-release/archive/release/melodic/laser_filters_jsk_patch/2.1.24-1.tar.gz";
-    name = "2.1.24-1.tar.gz";
-    sha256 = "3efd3a7b0b31928f8ee41e047b5a212c766bf2ad3bd8c1d7607fd13d5cfb2a28";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "jsk_3rdparty-release";
+    rev = "1af1f0b568dfa048df3729d3fd3c8e36b0b2fbfe";
+    owner = "tork-a";
+    sha256 = "sha256-Di2n98tNnlvTbRpzrQuJaj0gCFk/4F1iQHE18mdOVlo=";
   };
 
   buildType = "catkin";

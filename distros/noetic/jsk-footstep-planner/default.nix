@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-jsk-footstep-planner";
   version = "0.1.16-r1";
 
-  src = fetchurl {
-    url = "https://github.com/tork-a/jsk_control-release/archive/release/noetic/jsk_footstep_planner/0.1.16-1.tar.gz";
-    name = "0.1.16-1.tar.gz";
-    sha256 = "c9e606876741ca11315de87743e58c85ad0930af4a279564348713d67f02c869";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "jsk_control-release";
+    rev = "42ed91cc666486b6895227e0be75b000ee7116fc";
+    owner = "tork-a";
+    sha256 = "sha256-d22ielC/PDHwo6NqeoocfX8Ak27TsRPnqs2tZcKlY7w=";
   };
 
   buildType = "catkin";

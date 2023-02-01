@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-bno055";
   version = "0.2.0-r4";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/bno055-release/archive/release/humble/bno055/0.2.0-4.tar.gz";
-    name = "0.2.0-4.tar.gz";
-    sha256 = "49ac9b669bbbde29f2b80d3a75eaedc36adbe62ac31d954c984e682044f6edb3";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "bno055-release";
+    rev = "8678e5b4d0411ca84221282614fba658ac2f07f8";
+    owner = "ros2-gbp";
+    sha256 = "sha256-a7x2xgB4U8YtHr/0GJeBL39op8ADWG9M3cvS7mWz4aY=";
   };
 
   buildType = "ament_python";

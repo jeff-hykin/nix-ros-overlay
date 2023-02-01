@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-geodesy";
   version = "1.0.4-r6";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/geographic_info-release/archive/release/humble/geodesy/1.0.4-6.tar.gz";
-    name = "1.0.4-6.tar.gz";
-    sha256 = "0027a5288b902da09cf9354cc9464bc27c8f1c350568adbe122b2ff92b275eec";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "geographic_info-release";
+    rev = "11acab53f22ee85bbc9edc4cae9ace445088a6de";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Mzm8AWuKEp7IOCpF3+LvcThDlbjh5/5D9ftJVe7R1AA=";
   };
 
   buildType = "ament_cmake";

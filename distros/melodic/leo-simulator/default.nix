@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-leo-simulator";
   version = "0.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/fictionlab-gbp/leo_simulator-release/archive/release/melodic/leo_simulator/0.2.0-1.tar.gz";
-    name = "0.2.0-1.tar.gz";
-    sha256 = "f6b09ed754080419085051822f8111afe129042eec015ae70d7f85dc5810a93e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "leo_simulator-release";
+    rev = "fd274a1e3bff9ef3c27ddd3aaf0e20219b49ba4e";
+    owner = "fictionlab-gbp";
+    sha256 = "sha256-+2kj9GrqfZLE9qAC8yohtxbojuDPSFAzJg6IwW2TUvs=";
   };
 
   buildType = "catkin";

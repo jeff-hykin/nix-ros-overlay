@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-image-proc";
   version = "1.15.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/image_pipeline-release/archive/release/melodic/image_proc/1.15.2-1.tar.gz";
-    name = "1.15.2-1.tar.gz";
-    sha256 = "e93866f644228cb471e156021c77dd987a92015937ca917048616898b1d6f778";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "image_pipeline-release";
+    rev = "032965dde1327c8827a74d3ece9152835e0fa958";
+    owner = "ros-gbp";
+    sha256 = "sha256-B6j9UdOZ3DTeGuJn8RQR4liR7FH/k46Y9hM6DdPeGNQ=";
   };
 
   buildType = "catkin";

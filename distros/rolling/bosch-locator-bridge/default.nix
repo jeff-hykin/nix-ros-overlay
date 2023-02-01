@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-bosch-locator-bridge";
   version = "2.1.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/locator_ros_bridge-release/archive/release/rolling/bosch_locator_bridge/2.1.7-1.tar.gz";
-    name = "2.1.7-1.tar.gz";
-    sha256 = "9c91c42bd558533bb4b4b26dd50a7343c469096c04e12c3756deeb1226cdf2ac";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "locator_ros_bridge-release";
+    rev = "5738707b2d860eb004ea8669ffbeb8fe20ba1e26";
+    owner = "ros2-gbp";
+    sha256 = "sha256-bFJaogVUtmzsJvOF9ueN5FbWMZJyVh04/IuJ4Gh6LLw=";
   };
 
   buildType = "ament_cmake";

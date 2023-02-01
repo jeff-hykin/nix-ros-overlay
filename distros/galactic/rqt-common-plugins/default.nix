@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rqt-common-plugins";
   version = "1.1.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rqt_common_plugins-release/archive/release/galactic/rqt_common_plugins/1.1.0-2.tar.gz";
-    name = "1.1.0-2.tar.gz";
-    sha256 = "424c67f7c83f2e47a4286f516f2f05b048d4773a18291f9eef5dd8cc9829eec1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt_common_plugins-release";
+    rev = "cf72b5faa276cd9623032eba3ec3a151c86d04b5";
+    owner = "ros2-gbp";
+    sha256 = "sha256-1omjrKyTFM0P337VZzZLA6Btmiahh206jLZGfLFrxF0=";
   };
 
   buildType = "ament_cmake";

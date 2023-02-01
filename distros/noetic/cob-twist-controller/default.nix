@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-cob-twist-controller";
   version = "0.8.20-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_control-release/archive/release/noetic/cob_twist_controller/0.8.20-1.tar.gz";
-    name = "0.8.20-1.tar.gz";
-    sha256 = "38df65df8dac9718eee9ce5125b5ea6dc7e24c9faace938a0f84a67679e7e9b5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_control-release";
+    rev = "20084d3b08b7c46c2247041fb58246d3313247e3";
+    owner = "ipa320";
+    sha256 = "sha256-gE2QbTN45LOV2DT7snhUvw074OQLt55ycp/HVrjTQB4=";
   };
 
   buildType = "catkin";

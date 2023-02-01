@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-ament-pycodestyle";
   version = "0.9.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ament_lint-release/archive/release/foxy/ament_pycodestyle/0.9.7-1.tar.gz";
-    name = "0.9.7-1.tar.gz";
-    sha256 = "8a2865bbc9e4eae39bc94672f5dba534235c67d705dec948ea1d544098cf4a2e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ament_lint-release";
+    rev = "8b55f244d0532559828bf9afb5e491402c50846e";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Wj7mCJr7ruQqWfQdJ/QWx1ZYj2G0cm5+365LgZC+xNw=";
   };
 
   buildType = "ament_python";

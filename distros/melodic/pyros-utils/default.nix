@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-pyros-utils";
   version = "0.1.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pyros-dev/pyros-utils-release/archive/release/melodic/pyros_utils/0.1.4-1.tar.gz";
-    name = "0.1.4-1.tar.gz";
-    sha256 = "a8d91138eef528f426627138f6b29c409bf7638a66c0939d9a0e4ad0c8e94900";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pyros-utils-release";
+    rev = "7aef0cdffe3c0d78eabe094a45ace8e8d9492d61";
+    owner = "pyros-dev";
+    sha256 = "sha256-yrigwBpDmPZaDEQ17k3/Z0BeA/UhLPs0Q5yKn/wCdeo=";
   };
 
   buildType = "catkin";

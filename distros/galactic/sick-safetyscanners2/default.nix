@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-sick-safetyscanners2";
   version = "1.0.3-r2";
 
-  src = fetchurl {
-    url = "https://github.com/SICKAG/sick_safetyscanners2-release/archive/release/galactic/sick_safetyscanners2/1.0.3-2.tar.gz";
-    name = "1.0.3-2.tar.gz";
-    sha256 = "ff786c38ed256f8d35bb40c93eee1badb70aad97525d98948f6583e50b3c955b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "sick_safetyscanners2-release";
+    rev = "e2e1bf54e88f250950affedd4cbb320d1e4310f6";
+    owner = "SICKAG";
+    sha256 = "sha256-i4ny7pd9nYqJwSKfiQE8KX/oMcPBPmXtcxUGiw3cx6g=";
   };
 
   buildType = "ament_cmake";

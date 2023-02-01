@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-eigen-stl-containers";
   version = "1.0.0-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/eigen_stl_containers-release/archive/release/galactic/eigen_stl_containers/1.0.0-3.tar.gz";
-    name = "1.0.0-3.tar.gz";
-    sha256 = "a3e968bfce49088ed3a92563034532a35f65b0bb0a379c6cf44ef4da54cfb359";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "eigen_stl_containers-release";
+    rev = "1d3fb85eacd488c4bb9a3c188328a2131961162c";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Zjjaom5lCGLMKC33kq6er1Ji54XUj/3hkSIWcBnXI+E=";
   };
 
   buildType = "ament_cmake";

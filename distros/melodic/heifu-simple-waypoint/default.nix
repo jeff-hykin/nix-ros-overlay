@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-heifu-simple-waypoint";
   version = "0.7.7-r2";
 
-  src = fetchurl {
-    url = "https://github.com/BV-OpenSource/heifu-release/archive/release/melodic/heifu_simple_waypoint/0.7.7-2.tar.gz";
-    name = "0.7.7-2.tar.gz";
-    sha256 = "66e237afdc740d1ba4b427441fd178cd501c3374094631a81e66362445759127";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "heifu-release";
+    rev = "27eb0f7882672a93b39dc515adeb0b634f3957b0";
+    owner = "BV-OpenSource";
+    sha256 = "sha256-IpZKslOkJ4NvAc7PAkfB00G1YnfrtHySzZH93KQ/cPM=";
   };
 
   buildType = "catkin";

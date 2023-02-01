@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-rqt-reconfigure";
   version = "0.5.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/rqt_reconfigure-release/archive/release/melodic/rqt_reconfigure/0.5.4-1.tar.gz";
-    name = "0.5.4-1.tar.gz";
-    sha256 = "2df7a0cf5fbaa895845208b22828c01dd85b6a749624b9f320e61f4133690544";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt_reconfigure-release";
+    rev = "2f93459f0c2ea5180851eb8ee3e694e149c161c2";
+    owner = "ros-gbp";
+    sha256 = "sha256-OP6+bqt1lLlqgT+/VHMnXZmBRLoJctg+ksDGiVeQ2YE=";
   };
 
   buildType = "catkin";

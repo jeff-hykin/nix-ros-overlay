@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-micro-ros-diagnostic-msgs";
   version = "0.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/micro_ros_diagnostics-release/archive/release/galactic/micro_ros_diagnostic_msgs/0.3.0-1.tar.gz";
-    name = "0.3.0-1.tar.gz";
-    sha256 = "815fc35ca5439e2bb508bd5f16b3ebefa07b64c65a89b27184aa7224c6f136e4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "micro_ros_diagnostics-release";
+    rev = "291e212195213b14e3995a0dacfe6b6d121a5e56";
+    owner = "ros2-gbp";
+    sha256 = "sha256-SzsjLMKb42ISN6YTe6pUsmSDS9aBoczr3ayWBkrJAgU=";
   };
 
   buildType = "ament_cmake";

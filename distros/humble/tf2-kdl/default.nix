@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-tf2-kdl";
   version = "0.25.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/geometry2-release/archive/release/humble/tf2_kdl/0.25.1-1.tar.gz";
-    name = "0.25.1-1.tar.gz";
-    sha256 = "3e691886bb095d4b7b1d4740a3de1d32a3cad3b1b04c8c0dae19332e9f2ed5bc";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "geometry2-release";
+    rev = "ee040d98c07d7fc0c59ecad2bbb7cf9873376c36";
+    owner = "ros2-gbp";
+    sha256 = "sha256-lts44m2Ge03waKbl6LzvORtt/A/PiYn+y4XBGZOMBjw=";
   };
 
   buildType = "ament_cmake";

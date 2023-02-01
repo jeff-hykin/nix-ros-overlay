@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-abb-rapid-msgs";
   version = "0.5.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-industrial-release/abb_robot_driver_interfaces-release/archive/release/melodic/abb_rapid_msgs/0.5.2-1.tar.gz";
-    name = "0.5.2-1.tar.gz";
-    sha256 = "23f94a15cb051b38585e1c097ce8d2645704a21ebf333f63b185dff936ee2497";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "abb_robot_driver_interfaces-release";
+    rev = "f538237b6ee436406ad891b6cd46f124ea843275";
+    owner = "ros-industrial-release";
+    sha256 = "sha256-JEaaBwJgjTm8YdevLdMx5hnzOEVUO5IhemIKHW6eeh4=";
   };
 
   buildType = "catkin";

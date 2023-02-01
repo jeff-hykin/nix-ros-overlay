@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ament-cmake-flake8";
   version = "0.10.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ament_lint-release/archive/release/galactic/ament_cmake_flake8/0.10.7-1.tar.gz";
-    name = "0.10.7-1.tar.gz";
-    sha256 = "bbc01e21f4cc66803b310b1906bfcdf26f3fff5d8b54e9073c9b3f226cf56f2c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ament_lint-release";
+    rev = "2d80d39fd916a0f9c09549b2e2a0d086fe9f055d";
+    owner = "ros2-gbp";
+    sha256 = "sha256-HaFjrQ/uedc0dQEGXmdhjevRGLsfbqLVdmLPde2Viaw=";
   };
 
   buildType = "ament_cmake";

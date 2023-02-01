@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-rmf-robot-sim-ignition-plugins";
   version = "1.2.0-r4";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_simulation-release/archive/release/humble/rmf_robot_sim_ignition_plugins/1.2.0-4.tar.gz";
-    name = "1.2.0-4.tar.gz";
-    sha256 = "21ea9c63838111f8d53ce0c8b376a5214d33e52995a6b33b206abd4f73d0282e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_simulation-release";
+    rev = "f13d3ce5afed0a6124199481a4746da0566a2ed1";
+    owner = "ros2-gbp";
+    sha256 = "sha256-G5qLK+X05TJQgBdqc5x9zS6GS4IiN5/6QPoGzim+pb0=";
   };
 
   buildType = "ament_cmake";

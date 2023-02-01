@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-cob-collision-monitor";
   version = "0.7.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_manipulation-release/archive/release/melodic/cob_collision_monitor/0.7.5-1.tar.gz";
-    name = "0.7.5-1.tar.gz";
-    sha256 = "1095a9e4d8b1e2b577ab94190e85df65888a9d96878263ebe64ac5097cf022d6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_manipulation-release";
+    rev = "80606c93ad0444f1f490d39ae7101c23ab9d4ddc";
+    owner = "ipa320";
+    sha256 = "sha256-9vtDarYDuVQn0vcwJYaqOvR1qPuURr6enzLhxlINR5A=";
   };
 
   buildType = "catkin";

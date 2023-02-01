@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-turtlebot3-autorace";
   version = "1.2.0";
 
-  src = fetchurl {
-    url = "https://github.com/ROBOTIS-GIT-release/turtlebot3_autorace-release/archive/release/melodic/turtlebot3_autorace/1.2.0-0.tar.gz";
-    name = "1.2.0-0.tar.gz";
-    sha256 = "1e9063e4da91e347177fe176cdcdea7510bd47e555bada4446679354de1b53ff";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "turtlebot3_autorace-release";
+    rev = "8fa8b81476b5e1a33a583ca302f5ba2536fa2c6e";
+    owner = "ROBOTIS-GIT-release";
+    sha256 = "sha256-YhCPwXVjUAz5o8zlgSRwZ169j+mqgbWk4bCPm2o4xlo=";
   };
 
   buildType = "catkin";

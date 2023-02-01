@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-rc-genicam-api";
   version = "2.5.12-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rc_genicam_api-release/archive/release/foxy/rc_genicam_api/2.5.12-1.tar.gz";
-    name = "2.5.12-1.tar.gz";
-    sha256 = "703174f821ddb554ad13dbb567e4f8f0f58072f6f2e09171b248d18425be06b9";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rc_genicam_api-release";
+    rev = "f087d840d614fd8f8cd81a30cf981d34de4710fa";
+    owner = "ros2-gbp";
+    sha256 = "sha256-YkKXiMMUXT+aUMsQJFQ3PcRm8kWdFZTFd4NM5JLRheA=";
   };
 
   buildType = "cmake";

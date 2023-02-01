@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-rcl-lifecycle";
   version = "5.6.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rcl-release/archive/release/rolling/rcl_lifecycle/5.6.0-1.tar.gz";
-    name = "5.6.0-1.tar.gz";
-    sha256 = "e5d48fcd14a60d311f81aea7b35d1d8bffb1030fe6770fd3831a88b7f3be920b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rcl-release";
+    rev = "a001171fca60897785697f10132ee8a6ac4fe151";
+    owner = "ros2-gbp";
+    sha256 = "sha256-spbBjRyxurcsbSclZDbsHzp4w0fFtcdmURK+xwjOCdI=";
   };
 
   buildType = "ament_cmake";

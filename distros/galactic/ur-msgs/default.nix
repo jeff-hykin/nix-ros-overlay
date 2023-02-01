@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ur-msgs";
   version = "2.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ur_msgs-release/archive/release/galactic/ur_msgs/2.0.0-1.tar.gz";
-    name = "2.0.0-1.tar.gz";
-    sha256 = "851593ad9412aa2d6ba7a1d6e752fe024ba59b342de9e6da5aab7dcdbebab6db";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ur_msgs-release";
+    rev = "651597bd8988342b8e653b21a85235a7ed0eaf92";
+    owner = "ros2-gbp";
+    sha256 = "sha256-JsglE/PolObyk2tuC9viw8JYmRlBJ8Ym7pjb5k+2EyQ=";
   };
 
   buildType = "ament_cmake";

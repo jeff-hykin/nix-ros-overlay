@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-openni2-launch";
   version = "1.6.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/openni2_camera-release/archive/release/melodic/openni2_launch/1.6.0-2.tar.gz";
-    name = "1.6.0-2.tar.gz";
-    sha256 = "f2b0d6a8e6264bd8c4b9b5f74695949a6c846b6fb497e0bb4f6a75cb4508280a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "openni2_camera-release";
+    rev = "145fb6b56b794cbf98fb9031e3a541c9fa5cfbfe";
+    owner = "ros-gbp";
+    sha256 = "sha256-0gRqRIEKsWnQYDaZwSeylZSgW+znkMgGV7q/PL6jsaI=";
   };
 
   buildType = "catkin";

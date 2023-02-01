@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-end-effector";
   version = "0.0.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ADVRHumanoids/ROSEndEffector2-release/archive/release/foxy/end_effector/0.0.3-1.tar.gz";
-    name = "0.0.3-1.tar.gz";
-    sha256 = "6bca16099516adc976ece34a9d22593f355f43a3ad8f63601bc89db299555658";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ROSEndEffector2-release";
+    rev = "83b0cb985177593da62486f20f142cbe578a8656";
+    owner = "ADVRHumanoids";
+    sha256 = "sha256-ekknhPMZLfKfZOxgAogAE544TJGKzLpaqEWgMr/NZ30=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-dummy-robot-bringup";
   version = "0.9.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/demos-release/archive/release/foxy/dummy_robot_bringup/0.9.4-1.tar.gz";
-    name = "0.9.4-1.tar.gz";
-    sha256 = "20f2b4cb814f001a2be132d668c6e8bea8dbdb518b8eb829b31386c68c19b18c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "demos-release";
+    rev = "083808c789bb1239e8ce20ec25359fff2f3eb60c";
+    owner = "ros2-gbp";
+    sha256 = "sha256-UzJtg18FBdFnZ1Qd+KvrT3FQpvG3CIKU/M5X/OP3KSA=";
   };
 
   buildType = "ament_cmake";

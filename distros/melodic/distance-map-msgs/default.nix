@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-distance-map-msgs";
   version = "0.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/artivis/distance_map-release/archive/release/melodic/distance_map_msgs/0.1.0-1.tar.gz";
-    name = "0.1.0-1.tar.gz";
-    sha256 = "6e42332f75de13d580826ac98f1d6ccead3ea761d88f09c0ced6047494abbf39";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "distance_map-release";
+    rev = "7dcf126dd5a8c8408eeb1b7a100ee0831bcc7c28";
+    owner = "artivis";
+    sha256 = "sha256-8shkyXvuEQ06HU5otmpVOjvWBQWPlyq9Y/bEDhlsABM=";
   };
 
   buildType = "catkin";

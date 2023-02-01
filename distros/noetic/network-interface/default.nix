@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-network-interface";
   version = "3.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/astuff/network_interface-release/archive/release/noetic/network_interface/3.1.0-1.tar.gz";
-    name = "3.1.0-1.tar.gz";
-    sha256 = "b55512f9cb6c73bfe0ba29cde2a3d47a4e9a8e14e339440a57ccd8a5a1cefaf5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "network_interface-release";
+    rev = "07ec3968536d0a15fb01f32b85408548030bfa91";
+    owner = "astuff";
+    sha256 = "sha256-KWNRsjmSr4lN9As7byjzyzFFa8UKhv8y3pmGCd5y014=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-pr2-se-calibration-launch";
   version = "1.0.11-r3";
 
-  src = fetchurl {
-    url = "https://github.com/UNR-RoboticsResearchLab/pr2_calibration-release/archive/release/melodic/pr2_se_calibration_launch/1.0.11-3.tar.gz";
-    name = "1.0.11-3.tar.gz";
-    sha256 = "c76aa428bb37415f4c538c72ee1e6cc5b16a1c18eb24dca7bb4be53b4d7c81b5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pr2_calibration-release";
+    rev = "2f1738c0594221b5630d493c3cc955c3be1d0c60";
+    owner = "UNR-RoboticsResearchLab";
+    sha256 = "sha256-5sCZFW0EeBGrDlLZbdwzGXKeHtphroYaC4kLRRJM6t8=";
   };
 
   buildType = "catkin";

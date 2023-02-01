@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-rosserial-arduino";
   version = "0.9.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/rosserial-release/archive/release/noetic/rosserial_arduino/0.9.2-1.tar.gz";
-    name = "0.9.2-1.tar.gz";
-    sha256 = "46d416adced28af57c50359dc91b2115b3facfea382bd5ec4da291685c565739";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosserial-release";
+    rev = "b9728c6c8c2d47643587564e9cac20f07b0b8a78";
+    owner = "ros-gbp";
+    sha256 = "sha256-KDvLcbgd9EH2Zt/DPrnRebku83lNInWA+lqpmWLHffs=";
   };
 
   buildType = "catkin";

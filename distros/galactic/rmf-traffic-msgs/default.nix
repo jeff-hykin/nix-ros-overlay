@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rmf-traffic-msgs";
   version = "1.4.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_internal_msgs-release/archive/release/galactic/rmf_traffic_msgs/1.4.0-1.tar.gz";
-    name = "1.4.0-1.tar.gz";
-    sha256 = "d7b5c9472d2ee121421c0c794cbd24655212a236044857f0579d649ac806bfd8";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_internal_msgs-release";
+    rev = "a2af269b5a92ca480c8ad74f1e03af149f366696";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Mv9su5WqnC+8E6S3zo9RVB3xFLreOZ+I7jStDiw9dd4=";
   };
 
   buildType = "ament_cmake";

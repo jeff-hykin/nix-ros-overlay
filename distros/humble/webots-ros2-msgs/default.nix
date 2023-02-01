@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-webots-ros2-msgs";
   version = "2023.0.0-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/webots_ros2-release/archive/release/humble/webots_ros2_msgs/2023.0.0-3.tar.gz";
-    name = "2023.0.0-3.tar.gz";
-    sha256 = "a4682e2637540f6d4f030f6ba943873f9aa6a104a6793282046692028eaa8f9a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "webots_ros2-release";
+    rev = "ca51e6b315e80d698f72becebbafe046d04373f8";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Q6cwcDzWxkHH5TAhJv5d8P651ZwEmuADI29mV4+aF1w=";
   };
 
   buildType = "ament_cmake";

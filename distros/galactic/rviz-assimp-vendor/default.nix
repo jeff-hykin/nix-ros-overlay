@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rviz-assimp-vendor";
   version = "8.5.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rviz-release/archive/release/galactic/rviz_assimp_vendor/8.5.2-1.tar.gz";
-    name = "8.5.2-1.tar.gz";
-    sha256 = "2e655f68f126339939b6ca232be4d653be75d1887540357ee9d4f647739a283e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rviz-release";
+    rev = "bc0cbf969b02f81f07b7b075af5690643fe668a8";
+    owner = "ros2-gbp";
+    sha256 = "sha256-oYUR8R5SEGF7v8ajza4tTU/0U/oSHRce1geZvLpT/HM=";
   };
 
   buildType = "ament_cmake";

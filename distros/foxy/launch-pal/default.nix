@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-launch-pal";
   version = "0.0.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pal-gbp/launch_pal-release/archive/release/foxy/launch_pal/0.0.5-1.tar.gz";
-    name = "0.0.5-1.tar.gz";
-    sha256 = "425e307d49e8f8b032337755dcf081970bc2172884dd811adea7f76f0d0cd594";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "launch_pal-release";
+    rev = "55fbcbb719b314a1cf9895060d3f53463bf0e186";
+    owner = "pal-gbp";
+    sha256 = "sha256-RprUKQSvMyiR7XK61Ni6pvbgqOxri91+KK7wVg2GDUY=";
   };
 
   buildType = "ament_python";

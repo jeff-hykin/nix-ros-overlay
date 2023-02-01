@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-vision-msgs";
   version = "3.0.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/vision_msgs-release/archive/release/galactic/vision_msgs/3.0.2-1.tar.gz";
-    name = "3.0.2-1.tar.gz";
-    sha256 = "ca40e7eb3a726fb8f7a0b2bbe40a6b85f75afb70a9393106c9a9b80599aca6ea";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "vision_msgs-release";
+    rev = "fbd64e56333d0c2698adb6d58c9516d079c9891b";
+    owner = "ros2-gbp";
+    sha256 = "sha256-VparKXUYF8jviEARtiK5W+4l9A+BwTR+lhDSWxYNIJA=";
   };
 
   buildType = "ament_cmake";

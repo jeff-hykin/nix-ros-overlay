@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-nao-sensor-msgs";
   version = "0.0.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ijnek/nao_interfaces-release/archive/release/galactic/nao_sensor_msgs/0.0.4-1.tar.gz";
-    name = "0.0.4-1.tar.gz";
-    sha256 = "b17e1f6eafb5252efb614b4219ff50229d7c45b969a05046fc47aef4f0750825";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "nao_interfaces-release";
+    rev = "a91119c98bbdad37987114ca1e273236e042dd41";
+    owner = "ijnek";
+    sha256 = "sha256-ZUHpXdRXtKXTlh+vFBMwE8bIfT9g/5YI9Z/XDh7MvS0=";
   };
 
   buildType = "ament_cmake";

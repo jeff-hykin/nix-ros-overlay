@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-fmilibrary-vendor";
   version = "1.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/fmilibrary_vendor-release/archive/release/foxy/fmilibrary_vendor/1.0.1-1.tar.gz";
-    name = "1.0.1-1.tar.gz";
-    sha256 = "6522a9a7a98611615614fad9b50809a6275079c2ae0a3c8bbc2fff1221086cfa";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "fmilibrary_vendor-release";
+    rev = "f0f9315ddaea36b407b65d3350560df3712b0eeb";
+    owner = "ros2-gbp";
+    sha256 = "sha256-RwFS1j6Bue1ac96cXWL4i1A+KcMFWctqGRc0ZGeTR70=";
   };
 
   buildType = "ament_cmake";

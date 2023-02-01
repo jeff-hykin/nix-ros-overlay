@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-cob-navigation-config";
   version = "0.6.13-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_navigation-release/archive/release/noetic/cob_navigation_config/0.6.13-1.tar.gz";
-    name = "0.6.13-1.tar.gz";
-    sha256 = "7bd8380ec54e08b901b93eac51e96993f667abe16229df31593fd71cbc34fb21";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_navigation-release";
+    rev = "3bb4850ac519bfde76f07c1da2ebb9d7b34c9bf3";
+    owner = "ipa320";
+    sha256 = "sha256-DsokjhAzxXRvKPqwFptLrI6MgzX3wpPkEJzv0WZwtus=";
   };
 
   buildType = "catkin";

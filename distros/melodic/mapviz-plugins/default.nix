@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-mapviz-plugins";
   version = "1.4.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/swri-robotics-gbp/mapviz-release/archive/release/melodic/mapviz_plugins/1.4.2-1.tar.gz";
-    name = "1.4.2-1.tar.gz";
-    sha256 = "2afe3c84ce13234d9940c410214ba6f6ca4e260d422141c9f476d94c3b64025a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mapviz-release";
+    rev = "d4fd892648fb61700932dfaccda8350f2fd91998";
+    owner = "swri-robotics-gbp";
+    sha256 = "sha256-yMfiAoI1u2L5wdxkm25ZI9zoNwhOmOt0M+xrDq7c57w=";
   };
 
   buildType = "catkin";

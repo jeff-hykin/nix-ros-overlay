@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-console-bridge-vendor";
   version = "1.2.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/console_bridge_vendor-release/archive/release/foxy/console_bridge_vendor/1.2.4-1.tar.gz";
-    name = "1.2.4-1.tar.gz";
-    sha256 = "5a391dd9a9b92bb9777ae5d6ce9533e0ed9d637ff18f80ce205d677427f9ee8e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "console_bridge_vendor-release";
+    rev = "b9cc84dbb657f49d6273d7aac21087fd77395c74";
+    owner = "ros2-gbp";
+    sha256 = "sha256-14TJooLHg4e4u0/AfumJHVIsgHPvntyiLMAG+Nu8/V8=";
   };
 
   buildType = "ament_cmake";

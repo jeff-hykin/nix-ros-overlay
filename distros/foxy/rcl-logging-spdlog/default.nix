@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-rcl-logging-spdlog";
   version = "1.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rcl_logging-release/archive/release/foxy/rcl_logging_spdlog/1.1.0-1.tar.gz";
-    name = "1.1.0-1.tar.gz";
-    sha256 = "cd2d87435ef1c30ab82e5ef29d52b20f840efb3978baf1dccfc92dc68aeaa5f6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rcl_logging-release";
+    rev = "20f807606bcfea64746b9d11bd4009d631671a2b";
+    owner = "ros2-gbp";
+    sha256 = "sha256-AMmX8rSGKj06T3hnO+7i02ghxPrz+THk/9XP48Yf7U0=";
   };
 
   buildType = "ament_cmake";

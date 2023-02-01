@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-swri-system-util";
   version = "3.5.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/marti_common-release/archive/release/humble/swri_system_util/3.5.0-1.tar.gz";
-    name = "3.5.0-1.tar.gz";
-    sha256 = "d6bbd6c32d85ac4aa6ea8c940114ea7bf2523680b33adc6bd52d6e5584cfb999";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "marti_common-release";
+    rev = "c51cba59e7415c84c8a6040a6614f104446db7f4";
+    owner = "ros2-gbp";
+    sha256 = "sha256-zXMGodXgwqZkchA0JzvsMY78XdSv5vA0dolw+ihWJlw=";
   };
 
   buildType = "ament_cmake";

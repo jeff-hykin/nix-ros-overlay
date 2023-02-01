@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-sdformat-urdf";
   version = "0.1.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/sdformat_urdf-release/archive/release/galactic/sdformat_urdf/0.1.0-2.tar.gz";
-    name = "0.1.0-2.tar.gz";
-    sha256 = "52bf193eea3dc223c27f29517b61afb1c894764c5a6dd0e173bfd935cb1eef04";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "sdformat_urdf-release";
+    rev = "072766dd1d50307bc580203a402ceda91bfa73b5";
+    owner = "ros2-gbp";
+    sha256 = "sha256-lFZ1OuosM5YTmbHBLt+jRurzFbFxoBlolNTqLy+SLAw=";
   };
 
   buildType = "ament_cmake";

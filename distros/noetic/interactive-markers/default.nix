@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-interactive-markers";
   version = "1.12.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/interactive_markers-release/archive/release/noetic/interactive_markers/1.12.0-1.tar.gz";
-    name = "1.12.0-1.tar.gz";
-    sha256 = "d4a8ca9eb762c228712bd9479147db3a73b0cafcf526c926fb406a2bc523ce87";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "interactive_markers-release";
+    rev = "03f3485bf28cc1ce10e36e31fd1154465394123a";
+    owner = "ros-gbp";
+    sha256 = "sha256-fwvDx9PFYDGMirWTtn0GR+M0bTOdLjikirUO04KFza4=";
   };
 
   buildType = "catkin";

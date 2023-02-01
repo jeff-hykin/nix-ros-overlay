@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-pilz-status-indicator-rqt";
   version = "0.6.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/PilzDE/pilz_robots-release/archive/release/noetic/pilz_status_indicator_rqt/0.6.0-1.tar.gz";
-    name = "0.6.0-1.tar.gz";
-    sha256 = "6a3b1821bf4b38214ed38d73e69d379432f322554df9cb79de991023c0848f90";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pilz_robots-release";
+    rev = "d4918cd02f123b3f01866bd88a3ec919937d8b9a";
+    owner = "PilzDE";
+    sha256 = "sha256-pEHVzWFdc1ktbaOUGyuzIQLQ8U7E8261CTPPQuRg8jE=";
   };
 
   buildType = "catkin";

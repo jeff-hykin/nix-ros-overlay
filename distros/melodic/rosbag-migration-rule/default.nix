@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-rosbag-migration-rule";
   version = "1.0.0";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/rosbag_migration_rule-release/archive/release/melodic/rosbag_migration_rule/1.0.0-0.tar.gz";
-    name = "1.0.0-0.tar.gz";
-    sha256 = "985744e58043e42585c195d72c7f8c0a265b646ca9dbfdf7d67d4488ed2a2a11";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosbag_migration_rule-release";
+    rev = "724c171cac784b4a313f0330b70b60cfaa5cbd3a";
+    owner = "ros-gbp";
+    sha256 = "sha256-dk1tz86FGMa1XwsdqrDMvURDEifzY9dK7Kanr6VZTXA=";
   };
 
   buildType = "catkin";

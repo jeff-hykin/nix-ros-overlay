@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-rqt-action";
   version = "0.4.9-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/rqt_action-release/archive/release/noetic/rqt_action/0.4.9-1.tar.gz";
-    name = "0.4.9-1.tar.gz";
-    sha256 = "86d32021ce58ab1d2624157c728e664bcb7345bb055b1388f0d2f4b9045af03b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt_action-release";
+    rev = "451e61cc0868ac7b74e73cee052f662e494989f7";
+    owner = "ros-gbp";
+    sha256 = "sha256-N5GFkG2yNzCE4tWc23uFMGwFk8D7TEUoLddfyC3UxmQ=";
   };
 
   buildType = "catkin";

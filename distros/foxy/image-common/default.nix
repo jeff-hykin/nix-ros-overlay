@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-image-common";
   version = "2.4.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/image_common-release/archive/release/foxy/image_common/2.4.0-1.tar.gz";
-    name = "2.4.0-1.tar.gz";
-    sha256 = "869d51bb9e5a490d6f22ea6355ea4db8a96e29c3a8caedbf4183222759963d38";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "image_common-release";
+    rev = "eb939f8fd8d7f798b7595a512c4bbf608a9fa03b";
+    owner = "ros2-gbp";
+    sha256 = "sha256-jFlExb8GKnSkEALAGW/9Fn5Mp8TEcUMLxlD9QcMcMGA=";
   };
 
   buildType = "ament_cmake";

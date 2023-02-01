@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-apex-test-tools";
   version = "0.0.2-r5";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/apex_test_tools-release/archive/release/galactic/apex_test_tools/0.0.2-5.tar.gz";
-    name = "0.0.2-5.tar.gz";
-    sha256 = "c10a947169b9eba775e8b86608817db1837ee0a9c6c51a7c98549de04e03a267";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "apex_test_tools-release";
+    rev = "348891491341213005281ccaaafc20d01afd85f8";
+    owner = "ros2-gbp";
+    sha256 = "sha256-vrX5LngYVt0Fxd0td4idUCVPg+j96W7S07zUG/lM8W4=";
   };
 
   buildType = "ament_cmake";

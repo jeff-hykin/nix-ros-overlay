@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-four-wheel-steering-msgs";
   version = "2.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-drivers-gbp/four_wheel_steering_msgs-release/archive/release/galactic/four_wheel_steering_msgs/2.0.1-1.tar.gz";
-    name = "2.0.1-1.tar.gz";
-    sha256 = "d9ba5c5eb9c12d18fab4b8a043dda5f32eb8505e7ac43868b9496e1ff44e92d0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "four_wheel_steering_msgs-release";
+    rev = "90480d011d3b5964e15cde0dd04808ef0550bfdf";
+    owner = "ros-drivers-gbp";
+    sha256 = "sha256-lESkZ6d2jUSfCCCB5KsV8gJwBTO0EG7O4/LInYggSzc=";
   };
 
   buildType = "ament_cmake";

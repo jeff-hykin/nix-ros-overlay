@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-visualization-marker-tutorials";
   version = "0.10.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/visualization_tutorials-release/archive/release/melodic/visualization_marker_tutorials/0.10.5-1.tar.gz";
-    name = "0.10.5-1.tar.gz";
-    sha256 = "8ca12243a96785409c4d590d8eadc711d6b0ac0fe94cef2fb188ed8d36e10eec";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "visualization_tutorials-release";
+    rev = "35a5a4fe72d3ff922aa107d02d86991293f9912c";
+    owner = "ros-gbp";
+    sha256 = "sha256-yqAYU3k+t8Wjs58xm0DLyWn4rnZSW7MtDPzPrYX2leY=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-test-interface-files";
   version = "0.10.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/test_interface_files-release/archive/release/rolling/test_interface_files/0.10.1-1.tar.gz";
-    name = "0.10.1-1.tar.gz";
-    sha256 = "1381fdfdce8f744677e61f53033037dc350097d13f134465e18ef427420db44d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "test_interface_files-release";
+    rev = "74a5bff6e1388ba3055530bc7a902e6ca8898faa";
+    owner = "ros2-gbp";
+    sha256 = "sha256-3AU/i9QT2B3zKuYX9lWB57Dl5S8yvThPmGZtZnV0oSY=";
   };
 
   buildType = "ament_cmake";

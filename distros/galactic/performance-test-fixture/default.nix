@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-performance-test-fixture";
   version = "0.0.9-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/performance_test_fixture-release/archive/release/galactic/performance_test_fixture/0.0.9-1.tar.gz";
-    name = "0.0.9-1.tar.gz";
-    sha256 = "d6cf56a5901d8425fe70d3a201ade32ae33dbe92315a49cb92631a6b50d30fe1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "performance_test_fixture-release";
+    rev = "13c9b2e2468e9728ce8bf09a30909b8ae3ced077";
+    owner = "ros2-gbp";
+    sha256 = "sha256-AGkyb6QjietsUExtcqvwhnGy5Sd2EFBT8JkBAd4rb4o=";
   };
 
   buildType = "ament_cmake";

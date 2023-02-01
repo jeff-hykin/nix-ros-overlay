@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-webots-ros2-universal-robot";
   version = "2022.1.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/webots_ros2-release/archive/release/galactic/webots_ros2_universal_robot/2022.1.4-1.tar.gz";
-    name = "2022.1.4-1.tar.gz";
-    sha256 = "40946fdb7000c6e4bb9663f4a944619c3ce3ed51f44baef256bd05548e247cde";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "webots_ros2-release";
+    rev = "3c7319280d28f6bb42bba688421fa7eda15b10b1";
+    owner = "ros2-gbp";
+    sha256 = "sha256-kbOI+Xfyye27B9VIuU76847dBq0PCY6thB8iF1zZ+m4=";
   };
 
   buildType = "ament_python";

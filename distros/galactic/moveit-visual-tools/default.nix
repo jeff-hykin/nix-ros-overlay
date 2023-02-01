@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-moveit-visual-tools";
   version = "4.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/moveit/moveit_visual_tools-release/archive/release/galactic/moveit_visual_tools/4.0.0-1.tar.gz";
-    name = "4.0.0-1.tar.gz";
-    sha256 = "9c1b9b19df75dfff79dcdd6e4140f9728f94e027038d13e6db319b1328970dc9";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "moveit_visual_tools-release";
+    rev = "84e23b51ff9beee43de7e026d7ce65ccecc7b366";
+    owner = "moveit";
+    sha256 = "sha256-d7g5RYJQrY6hKNax+XQHoJ8Mm1PpFRvcXKCQr/hGO5w=";
   };
 
   buildType = "ament_cmake";

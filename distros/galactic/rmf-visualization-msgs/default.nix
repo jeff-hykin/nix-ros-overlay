@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rmf-visualization-msgs";
   version = "1.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_visualization_msgs-release/archive/release/galactic/rmf_visualization_msgs/1.2.0-1.tar.gz";
-    name = "1.2.0-1.tar.gz";
-    sha256 = "de8cf2549c54fef9a38e9ba49965bd764b065d695569b63f129c4be78c0a6518";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_visualization_msgs-release";
+    rev = "771d3030a892e80862aff72db6ba52812b32c43a";
+    owner = "ros2-gbp";
+    sha256 = "sha256-f0qmm88R8ojtHtOAJxyMJRQyfj2ycFGIOQVZfRMWkyE=";
   };
 
   buildType = "ament_cmake";

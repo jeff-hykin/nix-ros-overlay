@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-pr2-motor-diagnostic-tool";
   version = "1.0.15-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pr2-gbp/pr2_self_test-release/archive/release/noetic/pr2_motor_diagnostic_tool/1.0.15-1.tar.gz";
-    name = "1.0.15-1.tar.gz";
-    sha256 = "b0e0b0abde21ceeda34af122c65c952245a9bc99ecbff3477579504163828801";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pr2_self_test-release";
+    rev = "a79598f5bf609bc2f0be367eeec179b51cd9e97d";
+    owner = "pr2-gbp";
+    sha256 = "sha256-5/DmXkwkphIODg+r/GVnWBBFwgrf+oZMOZpX6JZK1UE=";
   };
 
   buildType = "catkin";

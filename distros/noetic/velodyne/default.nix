@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-velodyne";
   version = "1.7.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-drivers-gbp/velodyne-release/archive/release/noetic/velodyne/1.7.0-1.tar.gz";
-    name = "1.7.0-1.tar.gz";
-    sha256 = "3bee8e89bc6438c14fa690e18dd43db01a78ab2a5e445252700579f220b3cefc";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "velodyne-release";
+    rev = "5a8e971d2c6ae21f3a81df71dd8f60daf34bd788";
+    owner = "ros-drivers-gbp";
+    sha256 = "sha256-FZbD57R0o7nR2xCxtN5z2KjXu5QsJEBRULA6ban0EI0=";
   };
 
   buildType = "catkin";

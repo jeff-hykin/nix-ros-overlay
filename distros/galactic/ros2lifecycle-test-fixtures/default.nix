@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ros2lifecycle-test-fixtures";
   version = "0.13.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2cli-release/archive/release/galactic/ros2lifecycle_test_fixtures/0.13.5-1.tar.gz";
-    name = "0.13.5-1.tar.gz";
-    sha256 = "3fcbfe32a6ee1169f13e6b004c03780867845536fd923b56a9fb866833d4c845";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2cli-release";
+    rev = "2c36bb04bc949339cda856d3ff3bd1fdf862ad05";
+    owner = "ros2-gbp";
+    sha256 = "sha256-YeFoOVCoQhLL1/0YlDK4SAqKez13QSI03eRLwyDlKd0=";
   };
 
   buildType = "ament_cmake";

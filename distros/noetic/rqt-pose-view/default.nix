@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-rqt-pose-view";
   version = "0.5.11-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/rqt_pose_view-release/archive/release/noetic/rqt_pose_view/0.5.11-1.tar.gz";
-    name = "0.5.11-1.tar.gz";
-    sha256 = "cf7dbeba319b1a3b934ea9e89457dbe292d07e7fb7a01946adb802eb232acb61";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt_pose_view-release";
+    rev = "0c55f3c299cd5e481ea7e7371bfb42f75985efea";
+    owner = "ros-gbp";
+    sha256 = "sha256-+peOXjaIt02xZwc8iHNQY7Ur4XIhOIJJiPPZqSvWvVU=";
   };
 
   buildType = "catkin";

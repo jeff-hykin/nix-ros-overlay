@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-sesame-ros";
   version = "2.1.24-r2";
 
-  src = fetchurl {
-    url = "https://github.com/tork-a/jsk_3rdparty-release/archive/release/melodic/sesame_ros/2.1.24-2.tar.gz";
-    name = "2.1.24-2.tar.gz";
-    sha256 = "50245aa61649961bd2fd9ebd7b9c8a71548b362ad1d35a9e80cec7641b9b298b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "jsk_3rdparty-release";
+    rev = "356f43fb51ca48ee6308af8fa96ac36b178f8035";
+    owner = "tork-a";
+    sha256 = "sha256-x/FgElH7i2DD5V7CvTGpY1BUZd0Yw+pkg9NgnuAETh4=";
   };
 
   buildType = "catkin";

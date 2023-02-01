@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-neonavigation";
   version = "0.11.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/at-wat/neonavigation-release/archive/release/noetic/neonavigation/0.11.7-1.tar.gz";
-    name = "0.11.7-1.tar.gz";
-    sha256 = "6e8eaf5e14bb76e6a6fbeeed53226d37c861b8a292c433e875970dd5fad7d06e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "neonavigation-release";
+    rev = "4993a08df63d81b518ad505486df3eee03f02fb7";
+    owner = "at-wat";
+    sha256 = "sha256-xSj74/cvvrPbNpLLNK1aoPfsyEMigodiZC0gx0CUDKs=";
   };
 
   buildType = "catkin";

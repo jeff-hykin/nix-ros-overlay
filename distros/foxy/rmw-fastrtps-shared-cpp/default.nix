@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-rmw-fastrtps-shared-cpp";
   version = "1.3.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmw_fastrtps-release/archive/release/foxy/rmw_fastrtps_shared_cpp/1.3.1-1.tar.gz";
-    name = "1.3.1-1.tar.gz";
-    sha256 = "cbf19d45e787728d546c1d8be12133a5b7e01d8aac7ff8012b23e030209204e4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmw_fastrtps-release";
+    rev = "409e248b2e7d59fa544a773cf10b225d44c88ad1";
+    owner = "ros2-gbp";
+    sha256 = "sha256-GbdVohz39/KwgP1rG/g63FprPfnDSMWAq3Z6soj+s2M=";
   };
 
   buildType = "ament_cmake";

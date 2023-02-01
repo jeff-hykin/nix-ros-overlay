@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-raptor-dbw-joystick";
   version = "1.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/NewEagleRaptor/raptor-dbw-ros2-release/archive/release/foxy/raptor_dbw_joystick/1.2.0-1.tar.gz";
-    name = "1.2.0-1.tar.gz";
-    sha256 = "21b40c3fcb94b0cfb96587d36c26c87e89bb8aa04a9d665c3e216bd6d3187137";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "raptor-dbw-ros2-release";
+    rev = "cb6a67527624fafa2df1d0600cad93b9f8965a65";
+    owner = "NewEagleRaptor";
+    sha256 = "sha256-Z4qG9YMj5kwVWPXJhFJskz/vJpZcAVN0u3Hp+mW4KOE=";
   };
 
   buildType = "ament_cmake";

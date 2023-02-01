@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-velodyne-laserscan";
   version = "2.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/velodyne-release/archive/release/foxy/velodyne_laserscan/2.1.1-1.tar.gz";
-    name = "2.1.1-1.tar.gz";
-    sha256 = "6c8e5434b0d44c53c2239ec6d48f612e526e073d4ce925189c75036ba50290af";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "velodyne-release";
+    rev = "9fa2b267f9d37c3cde0ee0567d4fb8b5c7a29a84";
+    owner = "ros2-gbp";
+    sha256 = "sha256-/k0UhjrOgpneZONc0GF0jNT9JAlfjQ1aRQXDcT3to2Y=";
   };
 
   buildType = "ament_cmake";

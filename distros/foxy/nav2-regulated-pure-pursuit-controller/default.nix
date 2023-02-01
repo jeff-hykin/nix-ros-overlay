@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-nav2-regulated-pure-pursuit-controller";
   version = "0.4.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/SteveMacenski/navigation2-release/archive/release/foxy/nav2_regulated_pure_pursuit_controller/0.4.7-1.tar.gz";
-    name = "0.4.7-1.tar.gz";
-    sha256 = "e152990904c4c4ca95a962997d6d6d78904efd9b8067d122d19fc6911479db38";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation2-release";
+    rev = "0f1ba7c46d8015bf4fcd22b24bc0257b6eace184";
+    owner = "SteveMacenski";
+    sha256 = "sha256-3/AllSYU/z+/UGCukeaFzSe0UisHpkTt1PaBnQxKSms=";
   };
 
   buildType = "ament_cmake";

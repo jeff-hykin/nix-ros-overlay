@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-srdfdom";
   version = "2.0.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/moveit/srdfdom-release/archive/release/galactic/srdfdom/2.0.3-1.tar.gz";
-    name = "2.0.3-1.tar.gz";
-    sha256 = "d26208cbfe91d59104d357d18e53a55275f31d8208684688b22a271066334dcb";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "srdfdom-release";
+    rev = "fe2038e03325271ff261c27f3f8d1e5e59401a3e";
+    owner = "moveit";
+    sha256 = "sha256-oHkNJ1FR/H6OgW0AVPA1kUZeA2x1EuQEjWniLpkIjdk=";
   };
 
   buildType = "ament_cmake";

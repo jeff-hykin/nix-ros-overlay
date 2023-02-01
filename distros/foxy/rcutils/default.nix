@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-rcutils";
   version = "1.1.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rcutils-release/archive/release/foxy/rcutils/1.1.4-1.tar.gz";
-    name = "1.1.4-1.tar.gz";
-    sha256 = "d946a8ab99a8abce8f229b10321a3fa4987a37cecd8b9ebd707cd29d951c5290";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rcutils-release";
+    rev = "fee0418883baa2c70a7090098fdf69d2c6f57b4f";
+    owner = "ros2-gbp";
+    sha256 = "sha256-5bwJwuceUAJZg+PZyNfilagZOMAxz/BL0Vi4J1WBznY=";
   };
 
   buildType = "ament_cmake";

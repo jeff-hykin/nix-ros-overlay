@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-ros-environment";
   version = "3.2.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros_environment-release/archive/release/humble/ros_environment/3.2.2-1.tar.gz";
-    name = "3.2.2-1.tar.gz";
-    sha256 = "1f7e699fa551b7b281613eaeb585ad53a2c51772fedaf0d7f5c0badd274e2ee1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_environment-release";
+    rev = "4ef83fcfe71d33e27fcdc4d2dbc7fbd692121b15";
+    owner = "ros2-gbp";
+    sha256 = "sha256-XtonGZlyFRb0OxhZIDY7WYOKJsVQrXFb74koRHjhkdg=";
   };
 
   buildType = "ament_cmake";

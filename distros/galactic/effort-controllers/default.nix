@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-effort-controllers";
   version = "1.5.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_controllers-release/archive/release/galactic/effort_controllers/1.5.1-1.tar.gz";
-    name = "1.5.1-1.tar.gz";
-    sha256 = "5f7f770ccf10be19018b334a8a8085aa97428d69b86c52558bbab4cd501de807";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_controllers-release";
+    rev = "bf5f76d55f9149639fc1ee1732375ba5c52a36cc";
+    owner = "ros2-gbp";
+    sha256 = "sha256-BR4eeJMmTW8jrIvCetGVzXEsszQWotOnqyhcZbK3WXY=";
   };
 
   buildType = "ament_cmake";

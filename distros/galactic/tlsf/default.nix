@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-tlsf";
   version = "0.5.2-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/tlsf-release/archive/release/galactic/tlsf/0.5.2-2.tar.gz";
-    name = "0.5.2-2.tar.gz";
-    sha256 = "78c9aead456dd337f7870009cc6604e5db0d9e02374b33c142a3de4bf65a3bca";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "tlsf-release";
+    rev = "e9a38582af9e1f73580814949e1c0eac72eab865";
+    owner = "ros2-gbp";
+    sha256 = "sha256-7E5CqCnRvY2P1T2WkNfBboUy7F3NtbSz914L1d3RYDc=";
   };
 
   buildType = "ament_cmake";

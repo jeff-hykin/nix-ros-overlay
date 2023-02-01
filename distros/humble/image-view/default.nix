@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-image-view";
   version = "3.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/image_pipeline-release/archive/release/humble/image_view/3.0.0-1.tar.gz";
-    name = "3.0.0-1.tar.gz";
-    sha256 = "4bbbe7dc4b7f79f04a6b2587dce463870d059857b26069e1122a6b8178ec4c00";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "image_pipeline-release";
+    rev = "784f025d8504106d0d84e584b73b00fb436d2897";
+    owner = "ros2-gbp";
+    sha256 = "sha256-LVHPH4fwaY9eTa8cHc2upu5lApSBaueFWKMEKf1nick=";
   };
 
   buildType = "ament_cmake";

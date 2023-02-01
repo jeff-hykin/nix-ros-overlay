@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-heifu-tools";
   version = "0.7.7-r2";
 
-  src = fetchurl {
-    url = "https://github.com/BV-OpenSource/heifu-release/archive/release/melodic/heifu_tools/0.7.7-2.tar.gz";
-    name = "0.7.7-2.tar.gz";
-    sha256 = "20f3cbb6ee95a822f7f7ffadac6f9f8dadc2d22ab2e8350fa87658ff7f9bcab9";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "heifu-release";
+    rev = "c56a7494b0f56423c0743877a595d3bf84e99671";
+    owner = "BV-OpenSource";
+    sha256 = "sha256-NT+bWJWSXY+joLmKLhTQCOGsOCCyO77p219b7/N3oQ8=";
   };
 
   buildType = "catkin";

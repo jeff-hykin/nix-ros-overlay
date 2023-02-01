@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-smacc2-msgs";
   version = "0.2.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/robosoft-ai/SMACC2-release/archive/release/foxy/smacc2_msgs/0.2.0-2.tar.gz";
-    name = "0.2.0-2.tar.gz";
-    sha256 = "93c70d854e29debfed1a295b312af1d737a213e7eb4f212bf9a17e0e6689fe89";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "SMACC2-release";
+    rev = "3cb4ea1f7251e16da8c1f87d2d6363b757f4cd30";
+    owner = "robosoft-ai";
+    sha256 = "sha256-N2jeIJlvMhk9X0HYTEHUhX8c39AbRDOns77ijLEmMxg=";
   };
 
   buildType = "ament_cmake";

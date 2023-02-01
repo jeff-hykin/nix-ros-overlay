@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-rc-genicam-driver";
   version = "0.2.1-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rc_genicam_driver_ros2-release/archive/release/humble/rc_genicam_driver/0.2.1-3.tar.gz";
-    name = "0.2.1-3.tar.gz";
-    sha256 = "5e17998fb1000e00dfa334bb1648def11d768cc8af72ddac0caaa70584ae4067";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rc_genicam_driver_ros2-release";
+    rev = "51e42a27058c12d1edad83ec66d15fd31d3e2261";
+    owner = "ros2-gbp";
+    sha256 = "sha256-nRYR4RZ3PnqDi707KxIuq4SODUBru+GdMF+Ex296hEw=";
   };
 
   buildType = "ament_cmake";

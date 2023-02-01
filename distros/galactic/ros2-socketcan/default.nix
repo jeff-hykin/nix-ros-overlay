@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ros2-socketcan";
   version = "1.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_socketcan-release/archive/release/galactic/ros2_socketcan/1.1.0-1.tar.gz";
-    name = "1.1.0-1.tar.gz";
-    sha256 = "edce29fa94d22e4a69d10986c4a70773a8aaad4c3adb3985444ccc3843ecb271";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_socketcan-release";
+    rev = "ac0da03ddfe9189768e8e16ab82fb0bbdcd1d05e";
+    owner = "ros2-gbp";
+    sha256 = "sha256-5X1Zt8nQDN5Bp9dZgz8CzQW6gMNhDsjMt0D6P1X/JSg=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-imu-tools";
   version = "2.1.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/imu_tools-release/archive/release/humble/imu_tools/2.1.3-1.tar.gz";
-    name = "2.1.3-1.tar.gz";
-    sha256 = "171fcbc9363e5fc4c5299cdecd0902344cf886a8c4e674199cb7261c2d3fe2a6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "imu_tools-release";
+    rev = "fddcdf19063a860a63f746cf6b21baa5c5c45fcd";
+    owner = "ros2-gbp";
+    sha256 = "sha256-+i6Cvdit5GQDlcCdOUAFdg6ESROTgWjJQ1IqxGC94Ug=";
   };
 
   buildType = "ament_cmake";

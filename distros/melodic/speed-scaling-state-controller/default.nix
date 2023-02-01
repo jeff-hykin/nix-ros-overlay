@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-speed-scaling-state-controller";
   version = "0.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/UniversalRobots/Universal_Robots_ROS_scaled_controllers-release/archive/release/melodic/speed_scaling_state_controller/0.1.0-1.tar.gz";
-    name = "0.1.0-1.tar.gz";
-    sha256 = "22689826e020b2ad87e2e312836e84c175d291b97d6f782eafdba5c166de4690";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "Universal_Robots_ROS_scaled_controllers-release";
+    rev = "293cda0e8a911f27077338bf3198b2d247d8f5e7";
+    owner = "UniversalRobots";
+    sha256 = "sha256-LQzmbPK2YP+cx6MepxteuUjH1xBKImkgbuWvZVWOG5g=";
   };
 
   buildType = "catkin";

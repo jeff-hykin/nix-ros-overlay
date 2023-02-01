@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-sros2";
   version = "0.10.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/sros2-release/archive/release/galactic/sros2/0.10.3-1.tar.gz";
-    name = "0.10.3-1.tar.gz";
-    sha256 = "602dfec0a3a9a51251d5f316e702ff4bfc6fa9faffad789917e954d970055881";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "sros2-release";
+    rev = "efb10e708cd87123a2787bb16b03f7cb53897b62";
+    owner = "ros2-gbp";
+    sha256 = "sha256-/Xqm97UkqNJTZaxkg331TVt5f/C1GVoj7Cb97X3jQy8=";
   };
 
   buildType = "ament_python";

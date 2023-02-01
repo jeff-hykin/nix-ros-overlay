@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-rwt-moveit";
   version = "0.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/tork-a/visualization_rwt-release/archive/release/melodic/rwt_moveit/0.1.1-1.tar.gz";
-    name = "0.1.1-1.tar.gz";
-    sha256 = "4cc126eb4bb0bd7be316e06cc2a2421ae8aa3d17089f5dbc759b8d2d3cd57204";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "visualization_rwt-release";
+    rev = "014a1ac1706257166e121f444c6264c5f83a4597";
+    owner = "tork-a";
+    sha256 = "sha256-Y+U2pDOCVC0WD30S/VHpkcrvx/7VW7dxzLSyweZOudM=";
   };
 
   buildType = "catkin";

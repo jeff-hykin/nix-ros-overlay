@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-mir-dwb-critics";
   version = "1.1.6-r1";
 
-  src = fetchurl {
-    url = "https://github.com/uos-gbp/mir_robot-release/archive/release/noetic/mir_dwb_critics/1.1.6-1.tar.gz";
-    name = "1.1.6-1.tar.gz";
-    sha256 = "7188f6b4f55ab4bb434e38a4f6f714166fda8229783a0d9b4003449447473c39";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mir_robot-release";
+    rev = "ba84d8b30d8da5b3b3476939003899f5d097487a";
+    owner = "uos-gbp";
+    sha256 = "sha256-NNho0Ezrq97HU2o+UGErl7LDwrZsCzrw3hgconlLeyU=";
   };
 
   buildType = "catkin";

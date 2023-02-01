@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-fuse-constraints";
   version = "0.4.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/locusrobotics/fuse-release/archive/release/noetic/fuse_constraints/0.4.2-1.tar.gz";
-    name = "0.4.2-1.tar.gz";
-    sha256 = "d4af66202bd652c3d3bfc0366d6dd3610b080dfc4618e6a68a8469395d0d947e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "fuse-release";
+    rev = "8e430b410de737ff62f38f12c685ec297455a117";
+    owner = "locusrobotics";
+    sha256 = "sha256-HSYCPaQbLzg/fB/PQJ0qnN03lQIP0NKF9kdM78d+blU=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-examples-rclcpp-minimal-timer";
   version = "0.11.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/examples-release/archive/release/galactic/examples_rclcpp_minimal_timer/0.11.2-1.tar.gz";
-    name = "0.11.2-1.tar.gz";
-    sha256 = "92d30b54da6d979c72c8a8fa524a2a7ffa66783d1d659fb830d77a41355241d8";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "examples-release";
+    rev = "b417e911a9d04288a6f90220d381f77c6037c4b0";
+    owner = "ros2-gbp";
+    sha256 = "sha256-JDOHNMc00u4YGotmpel9/c/UoS33bL3hZ77fblWVzok=";
   };
 
   buildType = "ament_cmake";

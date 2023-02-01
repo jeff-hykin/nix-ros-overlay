@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-nav2-waypoint-follower";
   version = "1.1.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/SteveMacenski/navigation2-release/archive/release/humble/nav2_waypoint_follower/1.1.5-1.tar.gz";
-    name = "1.1.5-1.tar.gz";
-    sha256 = "43bd3b77aee0a33e74b8cd1c89ab45a2068e5f8cfc7a93285f653374a01e3e48";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation2-release";
+    rev = "213716844e9db596b52b9f15c4841791db747783";
+    owner = "SteveMacenski";
+    sha256 = "sha256-xBFG1tzWTFgMJotMeUHiKQeCQhRWFOfXbd2LIbx0Gs4=";
   };
 
   buildType = "ament_cmake";

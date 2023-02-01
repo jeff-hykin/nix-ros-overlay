@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-theora-image-transport";
   version = "1.9.5";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/image_transport_plugins-release/archive/release/melodic/theora_image_transport/1.9.5-0.tar.gz";
-    name = "1.9.5-0.tar.gz";
-    sha256 = "03701fa45f64b4642eb8b7720662363bb10c4f20e32da2783c595258fc3eaced";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "image_transport_plugins-release";
+    rev = "ce1aaacf91a717ea76bf875cf27bd2486227b4ee";
+    owner = "ros-gbp";
+    sha256 = "sha256-NRn5uF86fC3K9ld3QhqpIg810rvbYVQCs0TCuBSA7g0=";
   };
 
   buildType = "catkin";

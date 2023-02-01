@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-tuw-airskin-msgs";
   version = "0.0.13";
 
-  src = fetchurl {
-    url = "https://github.com/tuw-robotics/tuw_msgs-release/archive/release/melodic/tuw_airskin_msgs/0.0.13-0.tar.gz";
-    name = "0.0.13-0.tar.gz";
-    sha256 = "86882acd5c73168422e7ed6be2d10f89d9c5f1bd07951be9479eaf10fa9a082d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "tuw_msgs-release";
+    rev = "50e8f981c71219d162ddaf98b35c04f7a620ed48";
+    owner = "tuw-robotics";
+    sha256 = "sha256-DQsdPLEkserEpEc67wUGQGHtvIjGgaqoMLe5swh4StA=";
   };
 
   buildType = "catkin";

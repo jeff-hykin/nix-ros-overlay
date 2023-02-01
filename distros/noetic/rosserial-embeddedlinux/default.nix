@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-rosserial-embeddedlinux";
   version = "0.9.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/rosserial-release/archive/release/noetic/rosserial_embeddedlinux/0.9.2-1.tar.gz";
-    name = "0.9.2-1.tar.gz";
-    sha256 = "9284acfda80db76bf60c1726c9d6b0508b32d227c12ab0d9826eeb5873827072";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosserial-release";
+    rev = "2c03804aac1c023ebed4f9dc8228d8cd64a166aa";
+    owner = "ros-gbp";
+    sha256 = "sha256-RLmjKBVsJWrF8zZBEF6EhkNqODtvUEaXPe7UNpl4Njc=";
   };
 
   buildType = "catkin";

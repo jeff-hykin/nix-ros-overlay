@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-er-public-msgs";
   version = "1.4.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/enabled-robotics/er_public_msgs-release/archive/release/noetic/er_public_msgs/1.4.0-1.tar.gz";
-    name = "1.4.0-1.tar.gz";
-    sha256 = "8b3a5ea6bd66d117c64698d536344509f4c399541dc22f7b55d967a407ad2c4a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "er_public_msgs-release";
+    rev = "49df11755c22b71dfea1a6def28d0520eeb67129";
+    owner = "enabled-robotics";
+    sha256 = "sha256-i5RtfMdO7CyQSySWTit9z+oBmDbEHNTxst/L0qiVoDM=";
   };
 
   buildType = "catkin";

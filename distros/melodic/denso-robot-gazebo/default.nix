@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-denso-robot-gazebo";
   version = "3.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/DENSORobot/denso_robot_ros-release/archive/release/melodic/denso_robot_gazebo/3.2.0-1.tar.gz";
-    name = "3.2.0-1.tar.gz";
-    sha256 = "c7442f7cd0ba21a4ced665b742ba53c22d36ff9a03fa546d1415c969499aa65e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "denso_robot_ros-release";
+    rev = "143dcba7b68cc3ffe568126a2849038b08235d24";
+    owner = "DENSORobot";
+    sha256 = "sha256-3Uc+hjqGn7XtwvGhgWWTb5m/33dJg7VCo2ZJ8NGkwsM=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-nav2d-localizer";
   version = "0.4.2";
 
-  src = fetchurl {
-    url = "https://github.com/skasperski/navigation_2d-release/archive/release/melodic/nav2d_localizer/0.4.2-0.tar.gz";
-    name = "0.4.2-0.tar.gz";
-    sha256 = "208e7b94f3e9a0f384f7de704056d90747e8df288e7dd48650fd1ec1b3125b98";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation_2d-release";
+    rev = "e732397b5a31e5d3aff19d949e0d103603ebdff5";
+    owner = "skasperski";
+    sha256 = "sha256-09z+xKbF8x7FGsyidxsJsx2brjXmfx/FaG4B6Hc7Vgw=";
   };
 
   buildType = "catkin";

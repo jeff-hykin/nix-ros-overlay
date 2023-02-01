@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-swri-math-util";
   version = "3.5.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/marti_common-release/archive/release/foxy/swri_math_util/3.5.1-1.tar.gz";
-    name = "3.5.1-1.tar.gz";
-    sha256 = "71ed8ef8ed49519653b8ab38aa0fd6de019770ebf3176b39dc8373bafe2c11c8";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "marti_common-release";
+    rev = "d7ad799a6c716b66906b37c54d7561ac75bc69be";
+    owner = "ros2-gbp";
+    sha256 = "sha256-zBi0f77in3vfPFmWjJEMhlwAAiLj2B+9GCJfKKLHFuQ=";
   };
 
   buildType = "ament_cmake";

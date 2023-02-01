@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-resource-retriever";
   version = "2.5.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/resource_retriever-release/archive/release/galactic/resource_retriever/2.5.0-2.tar.gz";
-    name = "2.5.0-2.tar.gz";
-    sha256 = "6c59b18469eb950d51da95f5c4cbe8c39e299da5dc6c6b26ecd1400067c8a067";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "resource_retriever-release";
+    rev = "09a2b1597523d267b5e27f3985c9b746fa0842fd";
+    owner = "ros2-gbp";
+    sha256 = "sha256-slwQNVOI334Oks/dvVJfol/33jicHfn/gbmKhdyJo7E=";
   };
 
   buildType = "ament_cmake";

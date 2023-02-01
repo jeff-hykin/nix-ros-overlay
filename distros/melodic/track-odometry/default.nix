@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-track-odometry";
   version = "0.11.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/at-wat/neonavigation-release/archive/release/melodic/track_odometry/0.11.7-1.tar.gz";
-    name = "0.11.7-1.tar.gz";
-    sha256 = "76ef5d19cd6f6a48073d3e091df23b61801208f36bc810e74eeff49da77b92ea";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "neonavigation-release";
+    rev = "1bedd127f481669c3b867beae0bc7f3b73c5f5b0";
+    owner = "at-wat";
+    sha256 = "sha256-QhmPSo6VpDbvOvrsbW6JcAu3EwcWEOb3FU6ZZWUXhs0=";
   };
 
   buildType = "catkin";

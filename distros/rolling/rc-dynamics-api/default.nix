@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-rc-dynamics-api";
   version = "0.10.3-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rc_dynamics_api-release/archive/release/rolling/rc_dynamics_api/0.10.3-2.tar.gz";
-    name = "0.10.3-2.tar.gz";
-    sha256 = "d6563e18d95431da14f080cf914b45531e24766526cdfe16711091699e64dba1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rc_dynamics_api-release";
+    rev = "0fed7d39e94653d5928d0a11e3813caf7476c3c3";
+    owner = "ros2-gbp";
+    sha256 = "sha256-2Xz3z1UUmRUzeuFyIjo/9HstRwhjRSMaWpjMGwR4e2w=";
   };
 
   buildType = "cmake";

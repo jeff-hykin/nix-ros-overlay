@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rqt-moveit";
   version = "1.0.1-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rqt_moveit-release/archive/release/galactic/rqt_moveit/1.0.1-2.tar.gz";
-    name = "1.0.1-2.tar.gz";
-    sha256 = "d47661116a34bb80ab45497a7bd762a7541bd1fcdb3f806c78a4bd30803cd560";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt_moveit-release";
+    rev = "f7942af3d298d64d934e72fe4ca8a461e3e6f250";
+    owner = "ros2-gbp";
+    sha256 = "sha256-A4bGoHfpokKaYjSrBzvtYgzyf6sJGECfPJCIM0iZgYU=";
   };
 
   buildType = "ament_python";

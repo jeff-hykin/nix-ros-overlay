@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-sros2-cmake";
   version = "0.10.4-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/sros2-release/archive/release/humble/sros2_cmake/0.10.4-2.tar.gz";
-    name = "0.10.4-2.tar.gz";
-    sha256 = "1086b9d3967c8f3d71412756a57bf0eac8ec9ea8686e8b03ae8f9dba410da35c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "sros2-release";
+    rev = "c1c0bc34bf2dbf1fc440c5b75108261a5588d0fb";
+    owner = "ros2-gbp";
+    sha256 = "sha256-4+i2h+TEo1LgB7XcUVRHjzMsc9WgO34zdaVyevJ37dg=";
   };
 
   buildType = "ament_cmake";

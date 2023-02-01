@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-webrtc-ros";
   version = "59.0.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/RobotWebTools-release/webrtc_ros-release/archive/release/melodic/webrtc_ros/59.0.4-1.tar.gz";
-    name = "59.0.4-1.tar.gz";
-    sha256 = "134243c7a0ebad22eec7f32cad62908716de537fce354fe1b8853478b58e862c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "webrtc_ros-release";
+    rev = "f77c6fc2ea8563c0bbe8626cc3f6ddd12e477a9a";
+    owner = "RobotWebTools-release";
+    sha256 = "sha256-8uk6R26iOfjloslllhLgQXyPKZ81VYQZlWsuWUllb0c=";
   };
 
   buildType = "catkin";

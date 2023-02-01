@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-velodyne-msgs";
   version = "2.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/velodyne-release/archive/release/galactic/velodyne_msgs/2.3.0-1.tar.gz";
-    name = "2.3.0-1.tar.gz";
-    sha256 = "68de3c5fd4cb13ea6b6cff164a2044635eefc02984bedd5ed464d301de4d1840";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "velodyne-release";
+    rev = "4c73f6d825742c85464b11652f9b2f696c3aee25";
+    owner = "ros2-gbp";
+    sha256 = "sha256-5Ak6A/tW8O/xY1B8LoKlY6GJfvga1cnajGYEKb7eKFo=";
   };
 
   buildType = "ament_cmake";

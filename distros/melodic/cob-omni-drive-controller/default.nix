@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-cob-omni-drive-controller";
   version = "0.8.12-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_control-release/archive/release/melodic/cob_omni_drive_controller/0.8.12-1.tar.gz";
-    name = "0.8.12-1.tar.gz";
-    sha256 = "1a967d7535858271000c108996885f45a62ecdbe5d48437310ca6406f817ffa0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_control-release";
+    rev = "e3dcaf6921483fee76c90895c4f590d80d8de1b6";
+    owner = "ipa320";
+    sha256 = "sha256-eBwdKXe07zKH6/QA3Dm0FgLds7EB+3QGoHJGIF5USz0=";
   };
 
   buildType = "catkin";

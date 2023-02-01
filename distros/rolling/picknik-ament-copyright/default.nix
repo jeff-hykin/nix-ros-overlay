@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-picknik-ament-copyright";
   version = "0.0.2-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/picknik_ament_copyright-release/archive/release/rolling/picknik_ament_copyright/0.0.2-2.tar.gz";
-    name = "0.0.2-2.tar.gz";
-    sha256 = "48f7a7ad8667dfa7077ae7c3e87a13604a3780e469ea77c968254c96cf85d5f8";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "picknik_ament_copyright-release";
+    rev = "da74dbcb71d7403b0f0fd1e2ccb1eb501a3e0aed";
+    owner = "ros2-gbp";
+    sha256 = "sha256-zw0URrOQbcL7fo+BgOUHgI0yqf0DDRVGnOOxbJmog48=";
   };
 
   buildType = "ament_python";

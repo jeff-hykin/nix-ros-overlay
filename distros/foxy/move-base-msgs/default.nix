@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-move-base-msgs";
   version = "2.0.2-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/navigation_msgs-release/archive/release/foxy/move_base_msgs/2.0.2-2.tar.gz";
-    name = "2.0.2-2.tar.gz";
-    sha256 = "0140d46a94a1a9c26cbeba8fbf4e512f461ad3fc8c193c56f24348f8b9fd5edb";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation_msgs-release";
+    rev = "308ec23b62ca3f281bb60df76a91a180a72eac22";
+    owner = "ros2-gbp";
+    sha256 = "sha256-VC8BYd5e4BCHoLg80ftpJjEbyBPaN5dJUhDpTMEU9qE=";
   };
 
   buildType = "ament_cmake";

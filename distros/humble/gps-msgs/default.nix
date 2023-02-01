@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-gps-msgs";
   version = "1.0.4-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/gps_umd-release/archive/release/humble/gps_msgs/1.0.4-3.tar.gz";
-    name = "1.0.4-3.tar.gz";
-    sha256 = "bcce01651a30418e7f437ae36a93d0f6347424b6999f4e2d51e7fa3db4054971";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "gps_umd-release";
+    rev = "3c7518e5a45108748e7a5510937b47f9199825c1";
+    owner = "ros2-gbp";
+    sha256 = "sha256-iltmQJlA5iAtRPGIepzY6Z6F2X/oCZDgMJGqGC1NNDQ=";
   };
 
   buildType = "ament_cmake";

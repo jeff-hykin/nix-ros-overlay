@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-moveit-planners-chomp";
   version = "2.3.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/moveit/moveit2-release/archive/release/galactic/moveit_planners_chomp/2.3.4-1.tar.gz";
-    name = "2.3.4-1.tar.gz";
-    sha256 = "946ce1da6061975d25633f082418a9af0bbd7ca2cf0bc8d987aa118558a0a739";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "moveit2-release";
+    rev = "5451c8a76f3589a4b3bf94025c2e0e54698b2ff7";
+    owner = "moveit";
+    sha256 = "sha256-ZLwLY9rsbS0WF5wfHt6lt4V2TVi3NUN/wrjczXoc38E=";
   };
 
   buildType = "ament_cmake";

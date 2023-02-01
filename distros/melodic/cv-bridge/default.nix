@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-cv-bridge";
   version = "1.13.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/vision_opencv-release/archive/release/melodic/cv_bridge/1.13.1-1.tar.gz";
-    name = "1.13.1-1.tar.gz";
-    sha256 = "091604696d5f953a6ca0a1dab57d6762e24281378a64b4665a9b8c41e5f2b3d0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "vision_opencv-release";
+    rev = "acb9dc2a951d5e54495f8fdc246a77b6a094549d";
+    owner = "ros-gbp";
+    sha256 = "sha256-b4OAdu9KXs5cynJt8w7pOyDs1JYI1P3UphcKGRoakfU=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-action-tutorials-interfaces";
   version = "0.14.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/demos-release/archive/release/galactic/action_tutorials_interfaces/0.14.4-1.tar.gz";
-    name = "0.14.4-1.tar.gz";
-    sha256 = "7c12759769fff1c1c5edf5289fff353488c9ca2564b3445dfd7d198fe8bc7490";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "demos-release";
+    rev = "d16d0ff60de2d92f8a68489842734973154864c0";
+    owner = "ros2-gbp";
+    sha256 = "sha256-M/a9DegJ5nLTla7HcwT72JDK5wERcUuPXcp4vhHAuxw=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-uuv-gazebo-worlds";
   version = "0.6.13";
 
-  src = fetchurl {
-    url = "https://github.com/uuvsimulator/uuv_simulator-release/archive/release/melodic/uuv_gazebo_worlds/0.6.13-0.tar.gz";
-    name = "0.6.13-0.tar.gz";
-    sha256 = "c1b93c1bb6574a54a18765928e6d640b4484fb3cd982698ff97936083af57166";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "uuv_simulator-release";
+    rev = "083ebac6f32b49d7fa143d7ebb8efb6ce5ad1577";
+    owner = "uuvsimulator";
+    sha256 = "sha256-52+094dAtxg/qic0bmX7yvMqOzWcKra+DXmnlDAEyEE=";
   };
 
   buildType = "catkin";

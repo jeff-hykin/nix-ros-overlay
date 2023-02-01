@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-health-metric-collector";
   version = "2.0.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/aws-gbp/health_metric_collector-release/archive/release/melodic/health_metric_collector/2.0.2-1.tar.gz";
-    name = "2.0.2-1.tar.gz";
-    sha256 = "de3cceb8580f9dea5b9dc921ff1364c6486c89e217ae42ebf5349d67f8668c0c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "health_metric_collector-release";
+    rev = "35a315f1a076ecbdb47ccc7a97fb777bbc5a3468";
+    owner = "aws-gbp";
+    sha256 = "sha256-KDzA3rJq7tkzu4iVbr3mwJuUfo0pNeh/5CP+hJh/XpA=";
   };
 
   buildType = "catkin";

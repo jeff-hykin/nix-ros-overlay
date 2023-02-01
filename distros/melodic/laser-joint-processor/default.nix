@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-laser-joint-processor";
   version = "1.0.11-r3";
 
-  src = fetchurl {
-    url = "https://github.com/UNR-RoboticsResearchLab/pr2_calibration-release/archive/release/melodic/laser_joint_processor/1.0.11-3.tar.gz";
-    name = "1.0.11-3.tar.gz";
-    sha256 = "cb7af2be6d05571d0e970c0f7a965ca1b5009f2b278cacc8e2ddcdfec33b8375";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pr2_calibration-release";
+    rev = "142c316474cd0b034758aa9161616b2054ee1386";
+    owner = "UNR-RoboticsResearchLab";
+    sha256 = "sha256-VE3Niv4LcZUXCkWjAdGsDTw2YqAnoCsbOICOkvtXC0Y=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-warehouse-ros-sqlite";
   version = "0.9.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/warehouse_ros_sqlite-release/archive/release/melodic/warehouse_ros_sqlite/0.9.0-1.tar.gz";
-    name = "0.9.0-1.tar.gz";
-    sha256 = "dcdad8deebb3ee56669b1e27bbde2bb3d923937108b0a590ede4b69eab89e181";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "warehouse_ros_sqlite-release";
+    rev = "a40190ee45bf85f2a8b67d2dc6963e059f43314b";
+    owner = "ros-gbp";
+    sha256 = "sha256-z5/KIpwAXQ1Jg6wVi1hiN+SivA/IgdCfbeK4Bl1EcfY=";
   };
 
   buildType = "catkin";

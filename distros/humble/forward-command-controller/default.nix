@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-forward-command-controller";
   version = "2.15.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_controllers-release/archive/release/humble/forward_command_controller/2.15.0-1.tar.gz";
-    name = "2.15.0-1.tar.gz";
-    sha256 = "a64e8f1bec33f22945ca2a65e438389c694b194fca782fcd5e4a21150f44b611";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_controllers-release";
+    rev = "0b3efb91fd79f085f653dc8ab3f8a83a5bac0d11";
+    owner = "ros2-gbp";
+    sha256 = "sha256-5zdl3X1mGFc6TlRKcUUlWpZbF/gCAQZLqm8X9VBNKTo=";
   };
 
   buildType = "ament_cmake";

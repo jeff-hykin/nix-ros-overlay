@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-smacc2-msgs";
   version = "0.4.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/SMACC2-release/archive/release/humble/smacc2_msgs/0.4.0-2.tar.gz";
-    name = "0.4.0-2.tar.gz";
-    sha256 = "1fd514408f13d7816cd6362a3dac350c494b5858e919d9fce7d02d4e0718a11c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "SMACC2-release";
+    rev = "3331174146edac27982c9e957b8c505142cc73e0";
+    owner = "ros2-gbp";
+    sha256 = "sha256-tY/UoVoVSZ2FyHW7T+eKrXBqfK1KVQiZatRamEO/K6M=";
   };
 
   buildType = "ament_cmake";

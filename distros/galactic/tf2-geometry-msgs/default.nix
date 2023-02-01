@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-tf2-geometry-msgs";
   version = "0.17.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/geometry2-release/archive/release/galactic/tf2_geometry_msgs/0.17.5-1.tar.gz";
-    name = "0.17.5-1.tar.gz";
-    sha256 = "79a173ea833c0f0aedb1d19114928167ba2c9dbaf1212cd284a74ca30368a74f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "geometry2-release";
+    rev = "8552171979f5d975504efa50ce675485f48aa52a";
+    owner = "ros2-gbp";
+    sha256 = "sha256-ZNlGQXPjSFjvPMkmCLeguNtMVzJGIjc6nf7VYBbJ1S4=";
   };
 
   buildType = "ament_cmake";

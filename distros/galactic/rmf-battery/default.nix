@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rmf-battery";
   version = "0.1.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_battery-release/archive/release/galactic/rmf_battery/0.1.2-1.tar.gz";
-    name = "0.1.2-1.tar.gz";
-    sha256 = "c53f818160791b7c78b6890fe2fceabaa5e6273d0d13132ab6d61188187c7c72";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_battery-release";
+    rev = "fd14d37106c728dc4e23cb783b345e501a688a3b";
+    owner = "ros2-gbp";
+    sha256 = "sha256-5PRiWzMAosMqe5ulTjecwrXDo5iHzpsnSTG2NQVKrVU=";
   };
 
   buildType = "cmake";

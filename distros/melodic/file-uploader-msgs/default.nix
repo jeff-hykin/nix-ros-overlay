@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-file-uploader-msgs";
   version = "1.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/aws-gbp/rosbag_uploader-release/archive/release/melodic/file_uploader_msgs/1.0.1-1.tar.gz";
-    name = "1.0.1-1.tar.gz";
-    sha256 = "09cb1bb3bd826bc012b149ae435bf76f4d1b9f9dc6efda04fbb57baf476ae2c7";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosbag_uploader-release";
+    rev = "06b2fa17c03aefef27acc4904dc62d0c3664d868";
+    owner = "aws-gbp";
+    sha256 = "sha256-HjtUjfkwpWAwo3wI/6oGALUtmaoQQla8En9nK0xAiiE=";
   };
 
   buildType = "catkin";

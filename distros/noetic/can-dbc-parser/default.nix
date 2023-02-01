@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-can-dbc-parser";
   version = "1.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/nobleo/raptor-dbw-ros-release/archive/release/noetic/can_dbc_parser/1.0.0-1.tar.gz";
-    name = "1.0.0-1.tar.gz";
-    sha256 = "aaa9ba0d987a7a2ac39f8c714346a4dc0cce310ca3748b78a013ddb34bc54eff";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "raptor-dbw-ros-release";
+    rev = "9e87a007c9189d3843f59b3cebc0ed06a2676866";
+    owner = "nobleo";
+    sha256 = "sha256-6BAZH71AnTRtkkW03VDGUQaGXXk2jKPOPTWzjr4DeJI=";
   };
 
   buildType = "catkin";

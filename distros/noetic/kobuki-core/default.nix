@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-kobuki-core";
   version = "0.7.12-r1";
 
-  src = fetchurl {
-    url = "https://github.com/yujinrobot-release/kobuki_core-release/archive/release/noetic/kobuki_core/0.7.12-1.tar.gz";
-    name = "0.7.12-1.tar.gz";
-    sha256 = "e9c04dfff9fa404901b01cd7cce253bed12a00385b76a24da99f5e96158d869e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "kobuki_core-release";
+    rev = "94ae5e4724119e00a963608f2d43713896109471";
+    owner = "yujinrobot-release";
+    sha256 = "sha256-FJ6sT/26Sul/nwI17KnFDkFKz7eoZIwu1pA/RbbhmbE=";
   };
 
   buildType = "catkin";

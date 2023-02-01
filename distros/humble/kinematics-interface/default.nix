@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-kinematics-interface";
   version = "0.0.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/kinematics_interface-release/archive/release/humble/kinematics_interface/0.0.2-1.tar.gz";
-    name = "0.0.2-1.tar.gz";
-    sha256 = "deed39ef1f407630336ace5f361a6ccdea49de31986c0852b28a93da3f556f14";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "kinematics_interface-release";
+    rev = "58d1c9c450296174e4df819c17ba7213df8de60b";
+    owner = "ros2-gbp";
+    sha256 = "sha256-bbGn4QSsa7ZQTvu/HrQb8efTgVxyT+67xs3NLTCKjZ8=";
   };
 
   buildType = "ament_cmake";

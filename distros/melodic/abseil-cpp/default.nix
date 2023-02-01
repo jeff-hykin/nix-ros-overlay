@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-abseil-cpp";
   version = "0.4.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/Eurecat/abseil_cpp-release/archive/release/melodic/abseil_cpp/0.4.2-1.tar.gz";
-    name = "0.4.2-1.tar.gz";
-    sha256 = "828ee69c9a7e77d6b31d4cdf1b12e02960ec26f2a79571bf25d4f7f060177b4f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "abseil_cpp-release";
+    rev = "21b7b81962058ed7f6cc584478898d23cc5f01be";
+    owner = "Eurecat";
+    sha256 = "sha256-UE4G+28s6BGpOJD3QiTA1uY2nfl+hm5/ql5+kYLM8mY=";
   };
 
   buildType = "catkin";

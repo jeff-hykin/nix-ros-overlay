@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-turtlebot4-simulator";
   version = "0.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/turtlebot4_simulator-release/archive/release/galactic/turtlebot4_simulator/0.1.1-1.tar.gz";
-    name = "0.1.1-1.tar.gz";
-    sha256 = "2721b40c617b6a564a7b36ba9312e37a6fff3870806eda9991c5c80ceced0e7b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "turtlebot4_simulator-release";
+    rev = "7924db0a0835db0e64500c9a8b1e569b2dd1f265";
+    owner = "ros2-gbp";
+    sha256 = "sha256-tKC4YR+CHRptWNa8AYVX2SatMQPW+9MP+YneG/PlXUg=";
   };
 
   buildType = "ament_cmake";

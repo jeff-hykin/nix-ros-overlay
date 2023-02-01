@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-rosbridge-suite";
   version = "0.11.16-r2";
 
-  src = fetchurl {
-    url = "https://github.com/RobotWebTools-release/rosbridge_suite-release/archive/release/noetic/rosbridge_suite/0.11.16-2.tar.gz";
-    name = "0.11.16-2.tar.gz";
-    sha256 = "34365bcf7dd624e5f6ad9d7faf4b98c125f623b663e088388b1d4d7154e73205";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosbridge_suite-release";
+    rev = "ac0b86a8490c084f656183ad534bf217bfb17097";
+    owner = "RobotWebTools-release";
+    sha256 = "sha256-5I+jCJEjUkoxuERAkSfsm30eQqxPmxsfwuyLd6ltXRE=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-cob-gazebo-tools";
   version = "0.7.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_simulation-release/archive/release/melodic/cob_gazebo_tools/0.7.5-1.tar.gz";
-    name = "0.7.5-1.tar.gz";
-    sha256 = "aafbd2b79973119b34e683196ae40bb5b41a6cbb1ff74a8816e892fa868f24fc";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_simulation-release";
+    rev = "44887c2e1f8d014107b0a709d9e9618cb4e17c79";
+    owner = "ipa320";
+    sha256 = "sha256-OVriUzBqz78F09rLJ3tCZrFOjRaIspOw9gCp0ElUasQ=";
   };
 
   buildType = "catkin";

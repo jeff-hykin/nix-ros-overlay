@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-diagnostic-common-diagnostics";
   version = "1.9.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/diagnostics-release/archive/release/melodic/diagnostic_common_diagnostics/1.9.7-1.tar.gz";
-    name = "1.9.7-1.tar.gz";
-    sha256 = "40fa72958c582a7ac95fdcae430f79354d4308c847cdb4c59d1dfd837152c99d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "diagnostics-release";
+    rev = "38c8f49381b5a5ac3d42781489dc47317b674752";
+    owner = "ros-gbp";
+    sha256 = "sha256-n7XzgIBBedz1nCC5tjiZd2W80jeUT0+9eTr/sEhIEB4=";
   };
 
   buildType = "catkin";

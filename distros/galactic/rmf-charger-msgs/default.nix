@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rmf-charger-msgs";
   version = "1.4.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_internal_msgs-release/archive/release/galactic/rmf_charger_msgs/1.4.0-1.tar.gz";
-    name = "1.4.0-1.tar.gz";
-    sha256 = "0b30a0f35ab95c793465602cf1ce290e4ed9ff75911f46807b8d7347a5bb86a7";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_internal_msgs-release";
+    rev = "34fe66f6d28818c5f9764e433955f6f511412ddd";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Rp0ddy46iLVFboZH/62cfXKt70ETYqErTy0PCh/+rzc=";
   };
 
   buildType = "ament_cmake";

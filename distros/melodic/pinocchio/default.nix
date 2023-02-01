@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-pinocchio";
   version = "2.6.12-r1";
 
-  src = fetchurl {
-    url = "https://github.com/stack-of-tasks/pinocchio-ros-release/archive/release/melodic/pinocchio/2.6.12-1.tar.gz";
-    name = "2.6.12-1.tar.gz";
-    sha256 = "f6cd3591215a961e7c96fcac7cb801d56d21d395393c1fd5c79f84b8eb30356a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pinocchio-ros-release";
+    rev = "b7c45abc919ec20e16362f1b3714303035cbb5c7";
+    owner = "stack-of-tasks";
+    sha256 = "sha256-FjBcta/wBq6RTiPCV1ExECQF0q4qWF949mcl1wtcgzc=";
   };
 
   buildType = "cmake";

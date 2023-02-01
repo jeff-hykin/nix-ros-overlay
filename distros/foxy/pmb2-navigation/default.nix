@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-pmb2-navigation";
   version = "3.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pal-gbp/pmb2_navigation-gbp/archive/release/foxy/pmb2_navigation/3.0.1-1.tar.gz";
-    name = "3.0.1-1.tar.gz";
-    sha256 = "ab57897df43f10b028519c2e844bf1a03f947be813f42d205cb459d9b24735c9";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pmb2_navigation-gbp";
+    rev = "70314cbb15ff5a26d91751858bbeef5b774b856b";
+    owner = "pal-gbp";
+    sha256 = "sha256-9C8PR/s9El5Gss14s/vxW0RhmcnDbcmudih5p22EYG8=";
   };
 
   buildType = "ament_cmake";

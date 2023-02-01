@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-pmb2-2dnav";
   version = "4.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pal-gbp/pmb2_navigation-gbp/archive/release/humble/pmb2_2dnav/4.0.0-1.tar.gz";
-    name = "4.0.0-1.tar.gz";
-    sha256 = "f6d8beefed00991c12a63493632a060ac1e5f201f4eb4ea3f6ac9cf21407518d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pmb2_navigation-gbp";
+    rev = "6ebb75cd91dc61c2d2e2567564ce5a13a49f515e";
+    owner = "pal-gbp";
+    sha256 = "sha256-kfzme4BoieQLGNG+sya/uB9ApnxGlehICLE6c6tFMVI=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-webots-ros2-driver";
   version = "2023.0.0-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/webots_ros2-release/archive/release/humble/webots_ros2_driver/2023.0.0-3.tar.gz";
-    name = "2023.0.0-3.tar.gz";
-    sha256 = "0b21f2daeceef04e005877f58875809b93a5f0ae3776775f7fb1894cd87efc89";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "webots_ros2-release";
+    rev = "163534b25b51f087c82c9e2827f4d97f465dc587";
+    owner = "ros2-gbp";
+    sha256 = "sha256-8n5rlYvq+bRcDX7aZjuzYksYxx5BTJPHbAlTf1H8/nk=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-std-srvs";
   version = "4.2.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/common_interfaces-release/archive/release/humble/std_srvs/4.2.2-1.tar.gz";
-    name = "4.2.2-1.tar.gz";
-    sha256 = "91a48ad9a453e4d35c6815d92d4415dfee237bec5dfe97a7e357eeee1e35ea23";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "common_interfaces-release";
+    rev = "6323417c2bdf615137a29dda05bdc0fbde4fc8e7";
+    owner = "ros2-gbp";
+    sha256 = "sha256-nD6a9S4hcrRuW1VzyRGrktk2wTunJBTLBPn4mN4j6nk=";
   };
 
   buildType = "ament_cmake";

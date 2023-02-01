@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-franka-control";
   version = "0.10.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/frankaemika/franka_ros-release/archive/release/noetic/franka_control/0.10.1-1.tar.gz";
-    name = "0.10.1-1.tar.gz";
-    sha256 = "4954c523191d8507e67f2957ac8e77b51bba3ed3ebea34bc78afe864befcd3d0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "franka_ros-release";
+    rev = "232bad074eb038b26a96e86aa7d3ee0dc1681020";
+    owner = "frankaemika";
+    sha256 = "sha256-AyswjHrlwGomK37rSJ96UTA+WqlzjA2X52i+/UPSl4A=";
   };
 
   buildType = "catkin";

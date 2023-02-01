@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-phidgets-digital-inputs";
   version = "1.0.6-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-drivers-gbp/phidgets_drivers-release/archive/release/noetic/phidgets_digital_inputs/1.0.6-1.tar.gz";
-    name = "1.0.6-1.tar.gz";
-    sha256 = "206f6a633bb8df3d975796d8be18e952e7070494a10c2122e5c87a9172369d65";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "phidgets_drivers-release";
+    rev = "c543f20a42d81151d35d8425172bac4898d3817b";
+    owner = "ros-drivers-gbp";
+    sha256 = "sha256-++6n9B8DeMM76OWDie+CPWL5sWhiazq0dRdg3VVEKhQ=";
   };
 
   buildType = "catkin";

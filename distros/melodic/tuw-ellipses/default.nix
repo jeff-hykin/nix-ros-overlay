@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-tuw-ellipses";
   version = "0.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/tuw-robotics/tuw_marker_detection-release/archive/release/melodic/tuw_ellipses/0.1.1-1.tar.gz";
-    name = "0.1.1-1.tar.gz";
-    sha256 = "6f40eb7c0d83f05f8dac8ce03ca8fd2c6a30876e06174e16d80d8909b84d8749";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "tuw_marker_detection-release";
+    rev = "366475740e774206b386776564a056d018172e9e";
+    owner = "tuw-robotics";
+    sha256 = "sha256-ZhJXJoaT4bG7f0MKMsqhNIVIAXwiyzggRmLqxij867c=";
   };
 
   buildType = "catkin";

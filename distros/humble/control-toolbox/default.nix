@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-control-toolbox";
   version = "2.1.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/control_toolbox-release/archive/release/humble/control_toolbox/2.1.2-1.tar.gz";
-    name = "2.1.2-1.tar.gz";
-    sha256 = "91ca62115f3aa74e27e4ca88b7d4883d5dacad517e13800c8b21f6a25cbcc136";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "control_toolbox-release";
+    rev = "e321a95b30f9c6e5c90d3615914c1c1d7d1b08f7";
+    owner = "ros2-gbp";
+    sha256 = "sha256-e4FTDWkjuTT971m6bkwPhXRtUGbRETznWjX+DtmLPw8=";
   };
 
   buildType = "ament_cmake";

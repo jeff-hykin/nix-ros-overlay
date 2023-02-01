@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-planner-cspace-msgs";
   version = "0.8.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/at-wat/neonavigation_msgs-release/archive/release/noetic/planner_cspace_msgs/0.8.0-1.tar.gz";
-    name = "0.8.0-1.tar.gz";
-    sha256 = "1dcaa56a3324805c727d96ec0769155b9921b96fe183a7e359928514be125718";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "neonavigation_msgs-release";
+    rev = "5f8883cd7f807bbf4a28eada4637c16e1913c6f8";
+    owner = "at-wat";
+    sha256 = "sha256-kuD/BCIgSeSXxiDAhQqYxUHoewDA+EyMJzJd5VqbqYQ=";
   };
 
   buildType = "catkin";

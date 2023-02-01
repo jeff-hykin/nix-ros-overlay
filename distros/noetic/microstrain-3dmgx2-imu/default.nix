@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-microstrain-3dmgx2-imu";
   version = "1.5.13-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/microstrain_3dmgx2_imu-release/archive/release/noetic/microstrain_3dmgx2_imu/1.5.13-1.tar.gz";
-    name = "1.5.13-1.tar.gz";
-    sha256 = "d4c264bcc54eedddc778acdb0679cd9feae75ed9014b03a4e3f61038e6e23c98";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "microstrain_3dmgx2_imu-release";
+    rev = "81ebb8c5ae3f5da68625bb57787fb0dc190a6913";
+    owner = "ros-gbp";
+    sha256 = "sha256-7MKmlZuU6NLA+ZUDKedUhkyc8Xek4d9LKGqDHO2PNno=";
   };
 
   buildType = "catkin";

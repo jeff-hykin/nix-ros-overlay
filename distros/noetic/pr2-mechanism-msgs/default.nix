@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-pr2-mechanism-msgs";
   version = "1.8.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/pr2_mechanism_msgs-release/archive/release/noetic/pr2_mechanism_msgs/1.8.2-1.tar.gz";
-    name = "1.8.2-1.tar.gz";
-    sha256 = "5d3f5843590f3d0989a3def505112dbbcbd474766cfa2621f90082f6914cc8c9";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pr2_mechanism_msgs-release";
+    rev = "b9ac68214d05bacbb8fe55ca2c82f52fc578b6ae";
+    owner = "ros-gbp";
+    sha256 = "sha256-eKaRMpfyKkOAMpTlbgQIZFfrLdgbFGwnpWQxLqruhjY=";
   };
 
   buildType = "catkin";

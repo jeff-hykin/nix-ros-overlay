@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-rqt-msg";
   version = "0.4.8";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/rqt_msg-release/archive/release/melodic/rqt_msg/0.4.8-0.tar.gz";
-    name = "0.4.8-0.tar.gz";
-    sha256 = "ec3e88d3c822856ace98a11ab03950fb0e9390829122b7abfabc863180611630";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt_msg-release";
+    rev = "daad4110d1cae7f5494739c2e72490795da1d62f";
+    owner = "ros-gbp";
+    sha256 = "sha256-dCkrkaDMlD7UxQFDKOXmlr7CjBqsh0ii1u/nra5+XoI=";
   };
 
   buildType = "catkin";

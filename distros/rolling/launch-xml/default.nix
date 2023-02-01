@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-launch-xml";
   version = "1.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/launch-release/archive/release/rolling/launch_xml/1.3.0-1.tar.gz";
-    name = "1.3.0-1.tar.gz";
-    sha256 = "0bfc9a0606cb7dcc0666584f8f229cdc1eadf1a5846cb5021ae60a2445f9da94";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "launch-release";
+    rev = "c7b6c3228f3bfd821454cee5bc7cbccfb9769140";
+    owner = "ros2-gbp";
+    sha256 = "sha256-f5aaLTdkUUam+i2bvcjfhJpFseY9r4JkpWo5GH1V2/A=";
   };
 
   buildType = "ament_python";

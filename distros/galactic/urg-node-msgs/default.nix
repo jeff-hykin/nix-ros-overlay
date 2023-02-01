@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-urg-node-msgs";
   version = "1.0.1-r5";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/urg_node_msgs-release/archive/release/galactic/urg_node_msgs/1.0.1-5.tar.gz";
-    name = "1.0.1-5.tar.gz";
-    sha256 = "ceda704b39a4be56dc8b56a62bcd73369dc2d920abcf3828e4b81b2e9a5fc6ec";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "urg_node_msgs-release";
+    rev = "2db5cd7f7734bb75a5ce5c6a2e4481290b02bc56";
+    owner = "ros2-gbp";
+    sha256 = "sha256-IBl7J8akPgn5ni5/8kPGDOh4Fklto+RggWCIxGald/w=";
   };
 
   buildType = "ament_cmake";

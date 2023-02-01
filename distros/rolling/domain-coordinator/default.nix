@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-domain-coordinator";
   version = "0.11.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ament_cmake_ros-release/archive/release/rolling/domain_coordinator/0.11.1-1.tar.gz";
-    name = "0.11.1-1.tar.gz";
-    sha256 = "9504ae93fc144cb0a688f3696c08705d869d4169e920a6dfa46baed8ca1ee184";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ament_cmake_ros-release";
+    rev = "6e488879d66d717e5310b16466345dca2fd6af7c";
+    owner = "ros2-gbp";
+    sha256 = "sha256-U6BAOuEyQxvGMWEL2xXxsbI4fkSy3GLZ2Lag8pVXqD8=";
   };
 
   buildType = "ament_python";

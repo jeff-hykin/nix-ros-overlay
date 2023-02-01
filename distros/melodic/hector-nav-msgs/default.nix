@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-hector-nav-msgs";
   version = "0.4.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/tu-darmstadt-ros-pkg-gbp/hector_slam-release/archive/release/melodic/hector_nav_msgs/0.4.1-1.tar.gz";
-    name = "0.4.1-1.tar.gz";
-    sha256 = "d13b74403ab5af03a0c127c92549a0aacc23d69fa968f69557dab5e4d99bc875";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "hector_slam-release";
+    rev = "fe2a480c28144930f4d31802bc4688ced5b2f12a";
+    owner = "tu-darmstadt-ros-pkg-gbp";
+    sha256 = "sha256-hxPP5WMPdWLato971Pq12uU9FZdF2LHWQrvqYcQXe+U=";
   };
 
   buildType = "catkin";

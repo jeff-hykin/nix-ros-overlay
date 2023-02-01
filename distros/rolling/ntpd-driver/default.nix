@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-ntpd-driver";
   version = "2.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ntpd_driver-release/archive/release/rolling/ntpd_driver/2.2.0-1.tar.gz";
-    name = "2.2.0-1.tar.gz";
-    sha256 = "59cd40e8116ec8ac2e081a7266dbcbe2bfc97844b136f487c013f6b47840c260";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ntpd_driver-release";
+    rev = "afc61a0999dac2429be22b02f0eb71ffcd832461";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Y3hISLK0EHzcJD4MrfgxDdmYH+cpgQTjbH3DCmbd0VE=";
   };
 
   buildType = "ament_cmake";

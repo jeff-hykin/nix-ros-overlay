@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-phidgets-temperature";
   version = "2.1.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/phidgets_drivers-release/archive/release/foxy/phidgets_temperature/2.1.2-1.tar.gz";
-    name = "2.1.2-1.tar.gz";
-    sha256 = "0dc8d261431a54e04b3a2f9b4c1df8b6a962dd2d06c90e270e7e1d2733523db2";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "phidgets_drivers-release";
+    rev = "2262d87944069d7f84a9f9bbd9ddf693fa703bad";
+    owner = "ros2-gbp";
+    sha256 = "sha256-ujssbf0djG/e72D79bnUHXCRCr+Q0cZGO0lwGtsyZrc=";
   };
 
   buildType = "ament_cmake";

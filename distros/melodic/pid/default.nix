@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-pid";
   version = "0.0.27";
 
-  src = fetchurl {
-    url = "https://github.com/AndyZe/pid-release/archive/release/melodic/pid/0.0.27-0.tar.gz";
-    name = "0.0.27-0.tar.gz";
-    sha256 = "6066703ba3197ee904f55d7e6b1fc054e1901b5ad4d826753061715945a57d62";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pid-release";
+    rev = "40289c0730376c36a5a0068ff8a3a94954d09fb2";
+    owner = "AndyZe";
+    sha256 = "sha256-n34m7FnDDQVMIjCqwoSFlbYvq9nl5WPO5XMZ+pnxpNY=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ackermann-msgs";
   version = "2.0.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-drivers-gbp/ackermann_msgs-release/archive/release/galactic/ackermann_msgs/2.0.2-1.tar.gz";
-    name = "2.0.2-1.tar.gz";
-    sha256 = "1ca419db4958f61417579aaf5761bfc5d0f6b668eff119673e2efaedca35d396";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ackermann_msgs-release";
+    rev = "654d6a96fc7223edd4d0fdba570d2d05505706ea";
+    owner = "ros-drivers-gbp";
+    sha256 = "sha256-zn0jbHQ6PrAlpzAwpr3Tu01dOE8TVcs0XYlTXL0x8wg=";
   };
 
   buildType = "ament_cmake";

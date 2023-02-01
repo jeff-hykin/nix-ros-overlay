@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-rviz-common";
   version = "12.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rviz-release/archive/release/rolling/rviz_common/12.2.0-1.tar.gz";
-    name = "12.2.0-1.tar.gz";
-    sha256 = "5cebc630accd8f897f41ab02fe01ff80371a437e709a12c128901817a061086a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rviz-release";
+    rev = "b676618cae8cfe0aadbdc2c5dd20c9de735edec9";
+    owner = "ros2-gbp";
+    sha256 = "sha256-NFRRPYlBK7/QP/BLPV0MTvPrdN/sgLk7XvCV9c5U5IA=";
   };
 
   buildType = "ament_cmake";

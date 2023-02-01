@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-compressed-depth-image-transport";
   version = "2.3.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/image_transport_plugins-release/archive/release/foxy/compressed_depth_image_transport/2.3.3-1.tar.gz";
-    name = "2.3.3-1.tar.gz";
-    sha256 = "e1bf6334b75ef1ecbfdd8e386ac7b2b9e48ba135ce101c8fc4a0c66d09e4acb1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "image_transport_plugins-release";
+    rev = "0bf6a5db002f75db2e4603fb6eb40f6fa3bb9044";
+    owner = "ros2-gbp";
+    sha256 = "sha256-IjWycEeMBouVfgW71CViiilTyNexLK0Ob313AzUCICM=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-micro-ros-diagnostic-bridge";
   version = "0.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/micro_ros_diagnostics-release/archive/release/galactic/micro_ros_diagnostic_bridge/0.3.0-1.tar.gz";
-    name = "0.3.0-1.tar.gz";
-    sha256 = "3b08de9b4e85c55984fd2c919826eef8e2c7442a251f39dd182f6e656f6ec545";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "micro_ros_diagnostics-release";
+    rev = "9f4a536cdb0f0e664357d5cdf4d8a8dc2226fbda";
+    owner = "ros2-gbp";
+    sha256 = "sha256-mBsQdSKOPVQJVBc/FxvaxH5NOtAJy3M+bYciq7eHg+c=";
   };
 
   buildType = "ament_cmake";

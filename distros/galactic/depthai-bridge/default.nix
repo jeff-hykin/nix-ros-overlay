@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-depthai-bridge";
   version = "2.5.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/luxonis/depthai-ros-release/archive/release/galactic/depthai_bridge/2.5.3-1.tar.gz";
-    name = "2.5.3-1.tar.gz";
-    sha256 = "1efc2fadbc204ba51ce3a1727b2008e45c94737d3a2de592474554c31f406496";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "depthai-ros-release";
+    rev = "d4bd0dc68efec6a3b73f5fc6ad5ab6eaaa598109";
+    owner = "luxonis";
+    sha256 = "sha256-XrIGeRQUvCJEfBsQxcRwfkbocEEesqLGwDZ8LBkH0WY=";
   };
 
   buildType = "ament_cmake";

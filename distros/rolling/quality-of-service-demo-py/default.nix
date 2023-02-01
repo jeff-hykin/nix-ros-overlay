@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-quality-of-service-demo-py";
   version = "0.23.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/demos-release/archive/release/rolling/quality_of_service_demo_py/0.23.0-1.tar.gz";
-    name = "0.23.0-1.tar.gz";
-    sha256 = "9ccf89cab7094c2327d9e42a055faf9c2ea31c031e49159f6a469fc06faa54f7";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "demos-release";
+    rev = "edba9998c7a292f9d7a527ffa1cc1b271f7b9d55";
+    owner = "ros2-gbp";
+    sha256 = "sha256-89OdylPUlmk8QCcvsWjwR80LKROCB3z7kAxH9kqzBAU=";
   };
 
   buildType = "ament_python";

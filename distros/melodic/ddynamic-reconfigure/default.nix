@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-ddynamic-reconfigure";
   version = "0.3.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pal-gbp/ddynamic_reconfigure/archive/release/melodic/ddynamic_reconfigure/0.3.2-1.tar.gz";
-    name = "0.3.2-1.tar.gz";
-    sha256 = "a8780576fba89c6bca7aa268f718041ab724d3f24ff44823b7dabee3f4b3315d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ddynamic_reconfigure";
+    rev = "d9825f6c393f6c1f5aaba08ed3a151e2b38146a8";
+    owner = "pal-gbp";
+    sha256 = "sha256-7wU8+pg/natOlu90zvVV2vjRO1Gv7TBEiKiPXcpxOuM=";
   };
 
   buildType = "catkin";

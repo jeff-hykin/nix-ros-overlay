@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-cob-interactive-teleop";
   version = "0.6.30-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_command_tools-release/archive/release/noetic/cob_interactive_teleop/0.6.30-2.tar.gz";
-    name = "0.6.30-2.tar.gz";
-    sha256 = "f80632f75245f67acd7ddd4c530e0e7e0cd8ec54b9c1231a7d0be1141e2820a4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_command_tools-release";
+    rev = "c223d2922eecab144b40882ea40a69c8a5ac84be";
+    owner = "ipa320";
+    sha256 = "sha256-/2DaljOc3sIAdvcXEQ78nymB+uMrKhbxSNEps7YZ0E0=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-phidgets-high-speed-encoder";
   version = "2.3.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/phidgets_drivers-release/archive/release/humble/phidgets_high_speed_encoder/2.3.0-2.tar.gz";
-    name = "2.3.0-2.tar.gz";
-    sha256 = "cda8a49048dd23efc99de0bbeb33919268f154e267288404698c33c03045827e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "phidgets_drivers-release";
+    rev = "415ba531a3bfb8c077442514af0bcf13ed6ebedf";
+    owner = "ros2-gbp";
+    sha256 = "sha256-dsxanJZdDiTWtlSUgDzXZWvzc6uCFf/qVV7s5zyF+ys=";
   };
 
   buildType = "ament_cmake";

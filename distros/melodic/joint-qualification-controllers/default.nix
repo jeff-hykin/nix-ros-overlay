@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-joint-qualification-controllers";
   version = "1.0.15-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pr2-gbp/pr2_self_test-release/archive/release/melodic/joint_qualification_controllers/1.0.15-1.tar.gz";
-    name = "1.0.15-1.tar.gz";
-    sha256 = "479200ec0c009cee31a2eaf0bb794dd9b97ad57d3b8929ac8a2cc851e9b3a6bb";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pr2_self_test-release";
+    rev = "bfbcefe19633aa490bc2dbd4501abba1bb74135d";
+    owner = "pr2-gbp";
+    sha256 = "sha256-uvnfL4x18yI+1gH0HhMnbgPmwqrkBPF9Pl+eB8WCKOE=";
   };
 
   buildType = "catkin";

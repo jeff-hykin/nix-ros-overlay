@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-launch-pytest";
   version = "1.0.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/launch-release/archive/release/humble/launch_pytest/1.0.3-1.tar.gz";
-    name = "1.0.3-1.tar.gz";
-    sha256 = "b9388a634611f8a8f48d42479e828d193d2ebf4b80cac9a2f7de0a41465dbd88";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "launch-release";
+    rev = "bb02da60590e41ae25bb5824ae174a275052e661";
+    owner = "ros2-gbp";
+    sha256 = "sha256-0o0y4fMAQ39RmVTwULdNJGBY1Qp0i9qf7utbyhxcBzw=";
   };
 
   buildType = "ament_python";

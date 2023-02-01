@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-pr2-navigation-teleop";
   version = "0.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pr2-gbp/pr2_navigation-release/archive/release/noetic/pr2_navigation_teleop/0.2.0-1.tar.gz";
-    name = "0.2.0-1.tar.gz";
-    sha256 = "c00e9f1cec35b615a2bf681214efbbd39d7983a9a3fae4f435ff130ef732d887";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pr2_navigation-release";
+    rev = "0c0ea5d5b5742f54fb8bde6214adf112014c7344";
+    owner = "pr2-gbp";
+    sha256 = "sha256-ik+8wgg6lEt1zfWGcmpehHGsnn+PiX4CUrJIU0F7iWk=";
   };
 
   buildType = "catkin";

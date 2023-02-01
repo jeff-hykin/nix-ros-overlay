@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-sensor-msgs";
   version = "1.12.8-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/common_msgs-release/archive/release/melodic/sensor_msgs/1.12.8-1.tar.gz";
-    name = "1.12.8-1.tar.gz";
-    sha256 = "b5f8b54c44bdabb59caf4d67240eace2f50c0278a191558122893cb7322d8d81";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "common_msgs-release";
+    rev = "2cdaa5a77c8caa4874b8f31cf344e9f6fb9e1345";
+    owner = "ros-gbp";
+    sha256 = "sha256-BqeHou1Rffh4doC/5JDTc3ZIy3B0XbbD2SKU+94THgg=";
   };
 
   buildType = "catkin";

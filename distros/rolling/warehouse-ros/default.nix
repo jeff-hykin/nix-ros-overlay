@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-warehouse-ros";
   version = "2.0.4-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/warehouse_ros-release/archive/release/rolling/warehouse_ros/2.0.4-2.tar.gz";
-    name = "2.0.4-2.tar.gz";
-    sha256 = "6ae86a7e2b555e0834061b9613f22c6bc90d5c45940f46ddefa0dded49c6d9e7";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "warehouse_ros-release";
+    rev = "273a73be13981711dbeac1c9c1fa0b9507d1142a";
+    owner = "ros2-gbp";
+    sha256 = "sha256-89Ku8Zth68EgdS2DXIeyBjbm75ZItsbMZ0ZbKGlw6Fw=";
   };
 
   buildType = "ament_cmake";

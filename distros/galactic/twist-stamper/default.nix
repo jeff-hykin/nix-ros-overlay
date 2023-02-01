@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-twist-stamper";
   version = "0.0.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/twist_stamper-release/archive/release/galactic/twist_stamper/0.0.3-1.tar.gz";
-    name = "0.0.3-1.tar.gz";
-    sha256 = "51ec6b0d145275fcfe72e396033ba4834ddb44d69daf8d7ce0e724ad9bf4ca6e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "twist_stamper-release";
+    rev = "a11ff636926d4e2e48414e4f1d3fc9891d68c0b9";
+    owner = "ros2-gbp";
+    sha256 = "sha256-AE3PKMNhcFfc7nbMllXSYBoKhQmRVHLCirRpDAEknEQ=";
   };
 
   buildType = "ament_python";

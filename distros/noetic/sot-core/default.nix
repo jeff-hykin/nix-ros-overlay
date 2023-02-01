@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-sot-core";
   version = "4.11.8-r2";
 
-  src = fetchurl {
-    url = "https://github.com/stack-of-tasks/sot-core-ros-release/archive/release/noetic/sot-core/4.11.8-2.tar.gz";
-    name = "4.11.8-2.tar.gz";
-    sha256 = "25755415739bccf0aef6a54f3d3debe086c678a3d0279d994410ba7c30941560";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "sot-core-ros-release";
+    rev = "7e8868ec1af9c66350e15be94eb1e1045047a163";
+    owner = "stack-of-tasks";
+    sha256 = "sha256-DMVG7sapODq31159tBAp1lF3XCFXHuHvid4zM6S/dn0=";
   };
 
   buildType = "cmake";

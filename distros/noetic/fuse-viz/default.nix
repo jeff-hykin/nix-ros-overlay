@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-fuse-viz";
   version = "0.4.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/locusrobotics/fuse-release/archive/release/noetic/fuse_viz/0.4.2-1.tar.gz";
-    name = "0.4.2-1.tar.gz";
-    sha256 = "579487efe209c56eb45f26119de0668e07254377b28bca28cae46660decba942";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "fuse-release";
+    rev = "3a5f1d07b01d4ef0eff9ce823c08fd88a4e7cec1";
+    owner = "locusrobotics";
+    sha256 = "sha256-xEwnt5HUd7AakfWEBitDW41HU5Dr6pxp2juUzfoyPiw=";
   };
 
   buildType = "catkin";

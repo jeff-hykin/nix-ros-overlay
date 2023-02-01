@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-nmea-msgs";
   version = "2.0.0-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/nmea_msgs-release/archive/release/rolling/nmea_msgs/2.0.0-3.tar.gz";
-    name = "2.0.0-3.tar.gz";
-    sha256 = "54bf07000b5703417a4e721ef7a53e8297e7e881902add9c053b7535cbca3884";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "nmea_msgs-release";
+    rev = "79fcc75a49a7926bc6d32190fe0237de40d82972";
+    owner = "ros2-gbp";
+    sha256 = "sha256-bswqgESVo01rxSNhUMSl4dZwBC88WoKlS55Dn0U5CQc=";
   };
 
   buildType = "ament_cmake";

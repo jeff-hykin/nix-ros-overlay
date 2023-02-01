@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-phidgets-drivers";
   version = "2.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/phidgets_drivers-release/archive/release/rolling/phidgets_drivers/2.3.0-1.tar.gz";
-    name = "2.3.0-1.tar.gz";
-    sha256 = "a3a3c48658a4f7c3d1e0b1418dae48c51ef9dd60d7bdd622bbc26681d6c42c48";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "phidgets_drivers-release";
+    rev = "278d1bc72d43b1c1550920d466a0d8f760fd2f87";
+    owner = "ros2-gbp";
+    sha256 = "sha256-e7a4VL3O/iO56J1ltHQdTNbdIM7PUNt7vA8k8mrxb/M=";
   };
 
   buildType = "ament_cmake";

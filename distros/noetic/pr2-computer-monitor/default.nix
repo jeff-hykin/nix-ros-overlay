@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-pr2-computer-monitor";
   version = "1.6.32-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pr2-gbp/pr2_robot-release/archive/release/noetic/pr2_computer_monitor/1.6.32-1.tar.gz";
-    name = "1.6.32-1.tar.gz";
-    sha256 = "30b52ef1b9ae7056eeff1be2b99e27b1d069252d3a8d56d1e9e93bb9ead05377";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pr2_robot-release";
+    rev = "23158ca46fa8481709bf11d477996421e198b888";
+    owner = "pr2-gbp";
+    sha256 = "sha256-KPpfeNoL1FaYJS2I2CpxIrqCqULQlC0/6qoSB1bT4Ag=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-diagnostic-updater";
   version = "3.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/diagnostics-release/archive/release/humble/diagnostic_updater/3.0.0-1.tar.gz";
-    name = "3.0.0-1.tar.gz";
-    sha256 = "5d2f40a7d3119f3f4b645e8f51e3c499d3931dafdb5bac3dd19db43f69d7bacf";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "diagnostics-release";
+    rev = "79def573a8299c1ba7f7998ba6271501aa8d85d6";
+    owner = "ros2-gbp";
+    sha256 = "sha256-AW6zEvv2ePk8JMarkjUM4F9DwemHTR8QqQKDEu1Coms=";
   };
 
   buildType = "ament_cmake";

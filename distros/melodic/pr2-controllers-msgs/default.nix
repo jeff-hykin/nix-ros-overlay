@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-pr2-controllers-msgs";
   version = "1.10.17-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pr2-gbp/pr2_controllers-release/archive/release/melodic/pr2_controllers_msgs/1.10.17-1.tar.gz";
-    name = "1.10.17-1.tar.gz";
-    sha256 = "82561cde4b79968a9d87697c9a87487b9252480f072ae084497f383be300167f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pr2_controllers-release";
+    rev = "67c0fff51a0ee8a194257ba0121cf43c24d8e8c6";
+    owner = "pr2-gbp";
+    sha256 = "sha256-zK4WORRCQHg0/z5qa/djiEN5OzmT2dSNZAa5Iuo36Ek=";
   };
 
   buildType = "catkin";

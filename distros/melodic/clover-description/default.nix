@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-clover-description";
   version = "0.21.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/CopterExpress/clover-release/archive/release/melodic/clover_description/0.21.2-1.tar.gz";
-    name = "0.21.2-1.tar.gz";
-    sha256 = "343e10bb269be05deb36111a2ca4bbdb6adde31de38df4ff7d660bd35a2fa77e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "clover-release";
+    rev = "1fe35d75fdaf25812a00efcd9e6a4edbb89fb6a9";
+    owner = "CopterExpress";
+    sha256 = "sha256-XRyIMMjkm2gtJ/Tpz2mGCz5opDHBzHmTUIJRWRJOF4g=";
   };
 
   buildType = "catkin";

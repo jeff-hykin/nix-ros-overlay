@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-ur-msgs";
   version = "1.3.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-industrial-release/ur_msgs-release/archive/release/noetic/ur_msgs/1.3.4-1.tar.gz";
-    name = "1.3.4-1.tar.gz";
-    sha256 = "7cc9a63f7604f5bf88f11a0b1fad291ad18714070b9a3bb5f272833523ed6761";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ur_msgs-release";
+    rev = "1b5ababa008ef55bc800f5f30414fa7cc78b89a4";
+    owner = "ros-industrial-release";
+    sha256 = "sha256-pO62WDlSmq6jTyravoCaS4ZXGrP+9blXSh3buP4yT/g=";
   };
 
   buildType = "catkin";

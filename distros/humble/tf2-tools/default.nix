@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-tf2-tools";
   version = "0.25.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/geometry2-release/archive/release/humble/tf2_tools/0.25.1-1.tar.gz";
-    name = "0.25.1-1.tar.gz";
-    sha256 = "e78b6d8bc7892588e864fe1deedf38a550bb67867a1d82583da3c4f93d164168";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "geometry2-release";
+    rev = "cf4bc39818a612181005345a799e64e93a4a8055";
+    owner = "ros2-gbp";
+    sha256 = "sha256-c7nJ8sThe3+3f7ZhdrQ8jG6mDfXeA7d022Za6gD6VLk=";
   };
 
   buildType = "ament_python";

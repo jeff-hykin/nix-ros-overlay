@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-jackal-gazebo";
   version = "1.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/clearpath-gbp/jackal_simulator-release/archive/release/foxy/jackal_gazebo/1.0.0-1.tar.gz";
-    name = "1.0.0-1.tar.gz";
-    sha256 = "8f0be6d00d40427a8c25228aa86c5f557cec01bd1928efe37c25eaf884a3eeca";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "jackal_simulator-release";
+    rev = "2e5c6a5ebe67184d69ad4daece652c1d9bcbf97f";
+    owner = "clearpath-gbp";
+    sha256 = "sha256-6t0sjVrpho2nHGtehW1JRpDi4ZWxlOLiIeOPwdT1DQ8=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rcdiscover";
   version = "1.1.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/roboception-gbp/rcdiscover-release/archive/release/galactic/rcdiscover/1.1.4-1.tar.gz";
-    name = "1.1.4-1.tar.gz";
-    sha256 = "8141f60a4d3709f63556e0328676effc7355fe9a93093e62d16f706476dc15c1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rcdiscover-release";
+    rev = "683b4ddca9d2e7cf37d7bfc5b7c646ddc04002dd";
+    owner = "roboception-gbp";
+    sha256 = "sha256-IzHfwuLyT18CS/9Qj/yMlO3ghLUflM1FesXkbpqXruE=";
   };
 
   buildType = "cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-robot-upstart";
   version = "0.4.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/clearpath-gbp/robot_upstart-release/archive/release/noetic/robot_upstart/0.4.2-1.tar.gz";
-    name = "0.4.2-1.tar.gz";
-    sha256 = "3c22f90aa2a8fb62bfb8826fe47b3a3f10a58f3afa5012825e33272d21d5edb3";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "robot_upstart-release";
+    rev = "f831ec05f793289015567df9db7af6d7e487c2c6";
+    owner = "clearpath-gbp";
+    sha256 = "sha256-lF+yPJnhr7pjaxwLb7afvr5IlV7qoBidNHEGDJLteQg=";
   };
 
   buildType = "catkin";

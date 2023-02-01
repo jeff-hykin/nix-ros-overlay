@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-tf2";
   version = "0.13.13-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/geometry2-release/archive/release/foxy/tf2/0.13.13-1.tar.gz";
-    name = "0.13.13-1.tar.gz";
-    sha256 = "237081a5449c090c93028aebea2454dc1578faefe49f17f786040190033a05ba";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "geometry2-release";
+    rev = "81cdbb5f4e340d8d86deb17e0b8efa6aea9ca9af";
+    owner = "ros2-gbp";
+    sha256 = "sha256-p8GzwFZWDci3kH3bL84O+lHNJbdZ5Ze10tEvJKrJdao=";
   };
 
   buildType = "ament_cmake";

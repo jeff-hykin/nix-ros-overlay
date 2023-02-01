@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-rclc";
   version = "4.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rclc-release/archive/release/humble/rclc/4.0.1-1.tar.gz";
-    name = "4.0.1-1.tar.gz";
-    sha256 = "7440f465d2b9d7dbea651dc3885b852728aea8f38e33ff36852493683a84730c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rclc-release";
+    rev = "9a1fb0dfb6b09a3754ed4b129b5a153191f380cb";
+    owner = "ros2-gbp";
+    sha256 = "sha256-AbP7ZYS+48Gzk98QkNbXqYLbrH27igFwkVSDVZ2/+sk=";
   };
 
   buildType = "ament_cmake";

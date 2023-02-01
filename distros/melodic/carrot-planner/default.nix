@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-carrot-planner";
   version = "1.16.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/navigation-release/archive/release/melodic/carrot_planner/1.16.7-1.tar.gz";
-    name = "1.16.7-1.tar.gz";
-    sha256 = "ae0f4723d870c16faa721ef984db47a514932f2e26b054b63eea6ff0ea204582";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation-release";
+    rev = "e900703bdde8d44682898da2c2334e265d183778";
+    owner = "ros-gbp";
+    sha256 = "sha256-7Czrg0nEkMGVPamuH7QtKzwf8vdjIf8XQgBZeG73Ugc=";
   };
 
   buildType = "catkin";

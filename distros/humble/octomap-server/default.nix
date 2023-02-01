@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-octomap-server";
   version = "2.0.0-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/octomap_mapping-release/archive/release/humble/octomap_server/2.0.0-3.tar.gz";
-    name = "2.0.0-3.tar.gz";
-    sha256 = "37a7c28805bc15eabedf1ee47035d83080c65f108d6f5f61afd152356013409b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "octomap_mapping-release";
+    rev = "d6202772a965d91d6c98f947f51001cf617c3d96";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Uh6hgimLc8sgK2A6cuJWe0IPqZeR6ljm1xQoNRwe9ck=";
   };
 
   buildType = "ament_cmake";

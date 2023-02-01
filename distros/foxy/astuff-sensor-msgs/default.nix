@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-astuff-sensor-msgs";
   version = "3.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/astuff/astuff_sensor_msgs-release/archive/release/foxy/astuff_sensor_msgs/3.1.0-1.tar.gz";
-    name = "3.1.0-1.tar.gz";
-    sha256 = "258c5f14af862f6c85ca8573cfcbcd9edfa67b502f94ce97f84cd6fa28d4ab3a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "astuff_sensor_msgs-release";
+    rev = "5afc895cd7f30f56b312ec5f036a054f01cc074b";
+    owner = "astuff";
+    sha256 = "sha256-odqJYeCkqQvLsWn92R03kIJM+SKcyztwqWmuvWi10YY=";
   };
 
   buildType = "ament_cmake";

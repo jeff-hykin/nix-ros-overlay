@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-cartographer-ros-msgs";
   version = "2.0.9000-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/cartographer_ros-release/archive/release/rolling/cartographer_ros_msgs/2.0.9000-1.tar.gz";
-    name = "2.0.9000-1.tar.gz";
-    sha256 = "be0676680d4d15ef0db1a998318b6966e532418b91e2e14e011fda267f9c9b99";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cartographer_ros-release";
+    rev = "e6caa22938f8c991820991c715ab6e536e97a5a6";
+    owner = "ros2-gbp";
+    sha256 = "sha256-ANRPJtqGaSasA10po2gdln9H83q4kgEUHIEVJALNgEk=";
   };
 
   buildType = "ament_cmake";

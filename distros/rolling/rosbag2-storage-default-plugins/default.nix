@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-rosbag2-storage-default-plugins";
   version = "0.18.0-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rosbag2-release/archive/release/rolling/rosbag2_storage_default_plugins/0.18.0-3.tar.gz";
-    name = "0.18.0-3.tar.gz";
-    sha256 = "d19c69c578eba935f707b11b682a03ec19627bf21fc4b0429071fd5f01216776";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosbag2-release";
+    rev = "61071d9937e21f0e4a595617b9d4d496f03d601d";
+    owner = "ros2-gbp";
+    sha256 = "sha256-CTscRgtK5ccQG/Kl+TfPdSuq1oZAhNTCkxiaRRTjFR8=";
   };
 
   buildType = "ament_cmake";

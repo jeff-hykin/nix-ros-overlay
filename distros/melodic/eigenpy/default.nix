@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-eigenpy";
   version = "2.8.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/stack-of-tasks/eigenpy-ros-release/archive/release/melodic/eigenpy/2.8.1-1.tar.gz";
-    name = "2.8.1-1.tar.gz";
-    sha256 = "6e938acf9718a2950569b6a181f8305bd335988034094d6e57f1bb0d58bf32de";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "eigenpy-ros-release";
+    rev = "1770125ac34b7f48e4569047f11df4c321fc952c";
+    owner = "stack-of-tasks";
+    sha256 = "sha256-qCHQGoCemtSeH/HBDHhepcRBp7Nyaq02P0unSzQXc5o=";
   };
 
   buildType = "cmake";

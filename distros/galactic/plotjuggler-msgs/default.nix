@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-plotjuggler-msgs";
   version = "0.2.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/facontidavide/plotjuggler_msgs-release/archive/release/galactic/plotjuggler_msgs/0.2.3-1.tar.gz";
-    name = "0.2.3-1.tar.gz";
-    sha256 = "34ed10630b4a9d8f9b4158f1feab145091b0267ce283ec37281639fe9b5351a0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "plotjuggler_msgs-release";
+    rev = "d28a6e7bb4dbebd48628fc81077456a6b140b74c";
+    owner = "facontidavide";
+    sha256 = "sha256-Lu4ZRsDpvbS2QzbjWOL23H8lsKRSTPGe6MgiCaUedO4=";
   };
 
   buildType = "ament_cmake";

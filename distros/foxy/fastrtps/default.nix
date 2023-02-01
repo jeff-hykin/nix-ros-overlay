@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-fastrtps";
   version = "2.1.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/fastrtps-release/archive/release/foxy/fastrtps/2.1.2-1.tar.gz";
-    name = "2.1.2-1.tar.gz";
-    sha256 = "16b983d6018e778aa240cc2430f17561c5415b7466cf067faea850065b5a716f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "fastrtps-release";
+    rev = "f44c6116833b557b5b6bf13c7cbd71dc35b90505";
+    owner = "ros2-gbp";
+    sha256 = "sha256-nba29Qa0+6Bhd8DH+WwtgfDGoJ7+Om9YsjzoJCNMGi4=";
   };
 
   buildType = "cmake";

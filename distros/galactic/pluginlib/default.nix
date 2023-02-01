@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-pluginlib";
   version = "5.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/pluginlib-release/archive/release/galactic/pluginlib/5.0.1-1.tar.gz";
-    name = "5.0.1-1.tar.gz";
-    sha256 = "4b6f8c8662d1cd8922442459b4ba050cf2a06275c43e3a1b6c11ffe82cf3628f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pluginlib-release";
+    rev = "cc7efe0e092df45727781d9289be5c75aae4b5ef";
+    owner = "ros2-gbp";
+    sha256 = "sha256-3DFhQWUt5LdkdyZwYkPZ2+4zdxvTxEkrgPUymcU/+Ro=";
   };
 
   buildType = "ament_cmake";

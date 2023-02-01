@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-marti-common-msgs";
   version = "1.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/marti_messages-release/archive/release/foxy/marti_common_msgs/1.3.0-1.tar.gz";
-    name = "1.3.0-1.tar.gz";
-    sha256 = "0b08252c37bcaf8a68d2327c9fb0fea091c659bb3ff1e6aa208570cf24414982";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "marti_messages-release";
+    rev = "2ef55751cfcda2f73e07a96c8066acc11111a1fc";
+    owner = "ros2-gbp";
+    sha256 = "sha256-uBRx3r5MOxI2BqfwFj8QAnaQ19Nc0WMh5bBklhTU1BI=";
   };
 
   buildType = "ament_cmake";

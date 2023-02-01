@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-slam-toolbox";
   version = "2.6.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/SteveMacenski/slam_toolbox-release/archive/release/humble/slam_toolbox/2.6.4-1.tar.gz";
-    name = "2.6.4-1.tar.gz";
-    sha256 = "347a14b83e8e5c073f244ba0daf4b3d0d9927e2d964310e49040da53a1213df9";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "slam_toolbox-release";
+    rev = "cf0a4ec1a10794c9124bacdaa8507e6ab0236f17";
+    owner = "SteveMacenski";
+    sha256 = "sha256-BwXIT8gE53+KjJdipL7KTwqHtW6Q0gCpIRFNVmi+W5E=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-fetch-driver-msgs";
   version = "1.1.1";
 
-  src = fetchurl {
-    url = "https://github.com/fetchrobotics-gbp/fetch_msgs-release/archive/release/melodic/fetch_driver_msgs/1.1.1-0.tar.gz";
-    name = "1.1.1-0.tar.gz";
-    sha256 = "aa88a178c8b721288077bbbb32c4bd4ca3b36e3b2cbda1535320326140d82ec5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "fetch_msgs-release";
+    rev = "d516a8c18903e6b73ca705b0dd05d0440746604c";
+    owner = "fetchrobotics-gbp";
+    sha256 = "sha256-3f226jvP42xD5gudw04daHpLqTMUlxppyjviOc2RFpM=";
   };
 
   buildType = "catkin";

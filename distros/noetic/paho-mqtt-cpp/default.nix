@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-paho-mqtt-cpp";
   version = "1.2.0-r4";
 
-  src = fetchurl {
-    url = "https://github.com/nobleo/paho.mqtt.cpp-release/archive/release/noetic/paho-mqtt-cpp/1.2.0-4.tar.gz";
-    name = "1.2.0-4.tar.gz";
-    sha256 = "08cfe92bbf29546b435398dc32db9c53974f2d14151d188dc59113aa595af360";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "paho.mqtt.cpp-release";
+    rev = "ecd62b342d4c2824e1bfb5713cb9e3e0eb8b11c8";
+    owner = "nobleo";
+    sha256 = "sha256-7nKBYIUbhjZPof8iUxwD3XR2CfbAvREGpcdhb1m47eM=";
   };
 
   buildType = "cmake";

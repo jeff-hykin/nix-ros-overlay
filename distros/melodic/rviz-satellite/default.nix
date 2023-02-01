@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-rviz-satellite";
   version = "3.0.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/nobleo/rviz_satellite-release/archive/release/melodic/rviz_satellite/3.0.3-1.tar.gz";
-    name = "3.0.3-1.tar.gz";
-    sha256 = "4fd1277f66deb468cddf432aef90edc9d53e65ee2e2a9eacd5a29ea4414db215";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rviz_satellite-release";
+    rev = "740438082a24b14964f09a132ffe6ec4fa422461";
+    owner = "nobleo";
+    sha256 = "sha256-AbKv0N1s6yyvavo96nAiT0AwSX84iN8hU8hg9/2DsIM=";
   };
 
   buildType = "catkin";

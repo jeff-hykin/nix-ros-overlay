@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-xacro-live";
   version = "0.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/orise-robotics/xacro_live-release/archive/release/foxy/xacro_live/0.1.1-1.tar.gz";
-    name = "0.1.1-1.tar.gz";
-    sha256 = "6780833008e35d68270a5d75473fcc42544523af01b319ae26c1888770e2afcf";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "xacro_live-release";
+    rev = "70933989cbcccaa84a8e41b4f134630ca5e674d4";
+    owner = "orise-robotics";
+    sha256 = "sha256-Xya3CJV7MhAmejc/1ccN3xlagZhoSO6VGY2QIy3juDg=";
   };
 
   buildType = "ament_python";

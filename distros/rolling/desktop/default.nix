@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-desktop";
   version = "0.10.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/variants-release/archive/release/rolling/desktop/0.10.0-1.tar.gz";
-    name = "0.10.0-1.tar.gz";
-    sha256 = "97113dc7a109b9b97eb6f16f4fb0df81c27b14cdedf03e6d92e17647d695cdc4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "variants-release";
+    rev = "d072bb5f7b7568f658aa26187d4d5bf8cbd23162";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Oe0Gi0EAbvTGmyy7KyrLQqqS5ZVrp2Tdkdx4F82uVqw=";
   };
 
   buildType = "ament_cmake";

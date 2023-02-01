@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-mrpt1";
   version = "1.5.9-r1";
 
-  src = fetchurl {
-    url = "https://github.com/mrpt-ros-pkg-release/mrpt1-release/archive/release/melodic/mrpt1/1.5.9-1.tar.gz";
-    name = "1.5.9-1.tar.gz";
-    sha256 = "3b46d8c2174663f750de2c3c6533f2284fdd117b1e9f3b238f986f7363f0fe26";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mrpt1-release";
+    rev = "1b5665da63d6654687ca95b371158b3d1847235b";
+    owner = "mrpt-ros-pkg-release";
+    sha256 = "sha256-0aPmClQk3GUqao+WQQIWznV19VMHtmrsUJ0J+GYEhpY=";
   };
 
   buildType = "cmake";

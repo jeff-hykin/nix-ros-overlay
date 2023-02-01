@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-mocap-optitrack";
   version = "0.1.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-drivers-gbp/mocap_optitrack-release/archive/release/noetic/mocap_optitrack/0.1.4-1.tar.gz";
-    name = "0.1.4-1.tar.gz";
-    sha256 = "da97430ade87f439925a50f94cf6b2e2df0617396fb058c8d732c0b2dee8eab0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mocap_optitrack-release";
+    rev = "ee33d134a5ad5c9b31bbb1919891af6f1422b845";
+    owner = "ros-drivers-gbp";
+    sha256 = "sha256-IsRKzaxlPl8k1LmQ6TLQ742SWX1J/ZpiUrWWFxwYSQ0=";
   };
 
   buildType = "catkin";

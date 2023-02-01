@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-self-test";
   version = "2.1.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/diagnostics-release/archive/release/galactic/self_test/2.1.3-1.tar.gz";
-    name = "2.1.3-1.tar.gz";
-    sha256 = "a196cb520454949b043a71882dec129b447274c5073d7f7ea14a3180546e2807";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "diagnostics-release";
+    rev = "eb7f8c97b01addc43df5127b960f33c37c39ef5c";
+    owner = "ros2-gbp";
+    sha256 = "sha256-kxiRk3bFUoZ7ihZNTVk8n5miRbNuSgh+eVCcLKPlSk0=";
   };
 
   buildType = "ament_cmake";

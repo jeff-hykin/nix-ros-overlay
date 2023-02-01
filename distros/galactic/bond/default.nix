@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-bond";
   version = "3.0.1-r4";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/bond_core-release/archive/release/galactic/bond/3.0.1-4.tar.gz";
-    name = "3.0.1-4.tar.gz";
-    sha256 = "def0564393a53d7f3c734e8829aad5179710c27a8008e3c1bdb37e830b22a42f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "bond_core-release";
+    rev = "d91760995a212adb731081ade1cad2c2019a1360";
+    owner = "ros2-gbp";
+    sha256 = "sha256-CPWb2G1Q2oMKTA78I8chq8QdZV6gnn+XQE1gM6FreIg=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-joystick-drivers";
   version = "1.14.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/joystick_drivers-release/archive/release/melodic/joystick_drivers/1.14.0-1.tar.gz";
-    name = "1.14.0-1.tar.gz";
-    sha256 = "f0454955c9262422916a88ff9e2751d21c26c631ccd08b6224a57c83c6909550";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "joystick_drivers-release";
+    rev = "adb4d07ab8466427e2ac292ddb5c8d6c7a144d82";
+    owner = "ros-gbp";
+    sha256 = "sha256-FYOvseNSUJ1GZi5EahtTT6k3UDanI3kcPx52ldLqJnU=";
   };
 
   buildType = "catkin";

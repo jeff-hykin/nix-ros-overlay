@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-cob-moveit-bringup";
   version = "0.7.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_manipulation-release/archive/release/noetic/cob_moveit_bringup/0.7.7-1.tar.gz";
-    name = "0.7.7-1.tar.gz";
-    sha256 = "3661f3fac58130b8c00172d3be7c1be4292e46d1cee7d775bf36b2fcee974e1f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_manipulation-release";
+    rev = "702af833d3a6a322c0b72b67a5b50622a6f546bc";
+    owner = "ipa320";
+    sha256 = "sha256-lgTo0w5JLCVIelWFfS1oj/9Pg8dsn96DOzri0TzVsw4=";
   };
 
   buildType = "catkin";

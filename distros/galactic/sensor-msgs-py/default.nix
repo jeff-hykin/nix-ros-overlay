@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-sensor-msgs-py";
   version = "2.2.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/common_interfaces-release/archive/release/galactic/sensor_msgs_py/2.2.4-1.tar.gz";
-    name = "2.2.4-1.tar.gz";
-    sha256 = "c1f07b5394f0633204b3fe67b43287b591add664bd8486f2ed67c7a2734752d1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "common_interfaces-release";
+    rev = "6778a5f335a14142af7092ffde53b6971c24cf94";
+    owner = "ros2-gbp";
+    sha256 = "sha256-sRxKH19az98M/6sc0E5bNUa5s/MtyT66TR655UUgoRk=";
   };
 
   buildType = "ament_python";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-ueye-cam";
   version = "1.0.19-r1";
 
-  src = fetchurl {
-    url = "https://github.com/anqixu/ueye_cam-release/archive/release/noetic/ueye_cam/1.0.19-1.tar.gz";
-    name = "1.0.19-1.tar.gz";
-    sha256 = "b4123e716d5d400cbbd6b76e33b70fc469246e2fc77602926b07841b915e1dd3";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ueye_cam-release";
+    rev = "aad6d2980c635a63788c35f7a91d8759cb7e9a62";
+    owner = "anqixu";
+    sha256 = "sha256-cEbjJuENEhshE+PEvSS1fCP4+B/EKYIr5xm9WImUVC4=";
   };
 
   buildType = "catkin";

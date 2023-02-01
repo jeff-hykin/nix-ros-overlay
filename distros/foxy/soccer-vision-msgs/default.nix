@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-soccer-vision-msgs";
   version = "1.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ijnek/soccer_interfaces-release/archive/release/foxy/soccer_vision_msgs/1.0.0-1.tar.gz";
-    name = "1.0.0-1.tar.gz";
-    sha256 = "d59a2ec88425566e1e3dc7bae897041e4c1bd89f167ffdda324d8bc0fb68db47";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "soccer_interfaces-release";
+    rev = "88ff5d6165bc8a7a2459f5a3588465f0ef36c23d";
+    owner = "ijnek";
+    sha256 = "sha256-dmZqyN1OQyubI8KCSZ2rqbPCEP59M3BzB1eca4GJlFI=";
   };
 
   buildType = "ament_cmake";

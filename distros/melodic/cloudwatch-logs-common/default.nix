@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-cloudwatch-logs-common";
   version = "1.1.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/aws-gbp/cloudwatch_common-release/archive/release/melodic/cloudwatch_logs_common/1.1.5-1.tar.gz";
-    name = "1.1.5-1.tar.gz";
-    sha256 = "34f60d17cd9747fc6f691ab0da37a5ae48f19d60e03e21fdf9e30582f625199c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cloudwatch_common-release";
+    rev = "5e7288ba4ea6004c3966f52723a2376a4ecfd121";
+    owner = "aws-gbp";
+    sha256 = "sha256-mgQ2ayxQj1yo0qlyptd6vdJFAiUpC5Qxi6/N/Uue/Gc=";
   };
 
   buildType = "cmake";

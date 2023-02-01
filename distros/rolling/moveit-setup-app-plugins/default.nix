@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-moveit-setup-app-plugins";
   version = "2.6.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/moveit/moveit2-release/archive/release/rolling/moveit_setup_app_plugins/2.6.0-1.tar.gz";
-    name = "2.6.0-1.tar.gz";
-    sha256 = "da2ba5690ae954a0825e4abde76f29f3a606fe4bb2e2b1946f576aa38220ccb9";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "moveit2-release";
+    rev = "548b8a79966be939c3796152545e9c55736afe6e";
+    owner = "moveit";
+    sha256 = "sha256-RzU5tbkUlFT0v+K+8GkuyMZlWPCfkXfSOYMgFIcvwLw=";
   };
 
   buildType = "ament_cmake";

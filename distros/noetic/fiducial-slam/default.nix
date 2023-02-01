@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-fiducial-slam";
   version = "0.12.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/UbiquityRobotics-release/fiducials-release/archive/release/noetic/fiducial_slam/0.12.0-1.tar.gz";
-    name = "0.12.0-1.tar.gz";
-    sha256 = "347a536eff2ea1deff50491ee500368aebc70783148a2c3204a43da6e1ce0986";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "fiducials-release";
+    rev = "6b3266e98693aee90d7fa54a4f01a29225b1452d";
+    owner = "UbiquityRobotics-release";
+    sha256 = "sha256-9C4ICtV18Xo9cHmud2Bq1k+2GmL1EjIArJtva1fH1ss=";
   };
 
   buildType = "catkin";

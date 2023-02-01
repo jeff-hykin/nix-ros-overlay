@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-libuvc-ros";
   version = "0.0.10-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-drivers-gbp/libuvc_ros-release/archive/release/melodic/libuvc_ros/0.0.10-1.tar.gz";
-    name = "0.0.10-1.tar.gz";
-    sha256 = "bcf16c5e63589493b35241bb6b6a8826db8b816d5966cc696e3c85f111339a0f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "libuvc_ros-release";
+    rev = "578da9b1d1712839a96982faadfa57c7b13d43a2";
+    owner = "ros-drivers-gbp";
+    sha256 = "sha256-UknGzSVluNiH9n9nYYQVofJabpIhGJLU4i7VCgqZ6QU=";
   };
 
   buildType = "catkin";

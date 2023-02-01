@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-leo-example-line-follower";
   version = "0.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/fictionlab-gbp/leo_examples-release/archive/release/noetic/leo_example_line_follower/0.1.1-1.tar.gz";
-    name = "0.1.1-1.tar.gz";
-    sha256 = "a7f28d6e6d9ae99c4e3a572de169874f79094fd275d6f92f647c4e684932e545";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "leo_examples-release";
+    rev = "98d6617abe65d2abce21b0234d1c35841af670d8";
+    owner = "fictionlab-gbp";
+    sha256 = "sha256-ui4ZY8Qw4EsglilTTGEYb8PWIabqPkoWwU3EloMbSBs=";
   };
 
   buildType = "catkin";

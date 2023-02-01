@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-rqt-shell";
   version = "0.4.11-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/rqt_shell-release/archive/release/noetic/rqt_shell/0.4.11-1.tar.gz";
-    name = "0.4.11-1.tar.gz";
-    sha256 = "b61beef13cb61b57d09f257d91316a884927a9fba44ac4c8b156f54d91e280c4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt_shell-release";
+    rev = "af5681e9be5d89ac4dd065479fbd626e770f9a90";
+    owner = "ros-gbp";
+    sha256 = "sha256-LsaTq+q79TACj9xLoxhdQ4lVtMdpWG6SJILUvfIxDB0=";
   };
 
   buildType = "catkin";

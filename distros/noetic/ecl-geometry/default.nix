@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-ecl-geometry";
   version = "0.62.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/yujinrobot-release/ecl_core-release/archive/release/noetic/ecl_geometry/0.62.3-1.tar.gz";
-    name = "0.62.3-1.tar.gz";
-    sha256 = "3e788ecb243ac6521fd266f8178b9207d0b7ce13dfc9fe7bc2311a1f6e17e63b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ecl_core-release";
+    rev = "f093f75be7aebeab971b98ef51bcc320262bdd54";
+    owner = "yujinrobot-release";
+    sha256 = "sha256-EeJaMJb6R1FMXRHMIXEpnwLCLoBrNp2egWZYmtZTf2w=";
   };
 
   buildType = "catkin";

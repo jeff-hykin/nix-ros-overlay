@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-dbw-fca-joystick-demo";
   version = "1.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/DataspeedInc-release/dbw_fca_ros-release/archive/release/noetic/dbw_fca_joystick_demo/1.3.0-1.tar.gz";
-    name = "1.3.0-1.tar.gz";
-    sha256 = "4fe787498a1794d237365d13aeb5cf9c02ddae44aa7968704f82f0742d7279c6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "dbw_fca_ros-release";
+    rev = "3e9136da220b86a3bfde7928c3b786b86688dcc4";
+    owner = "DataspeedInc-release";
+    sha256 = "sha256-Fn8+InBX58ewDJm9AyqUOEIDpxZ7KuOgK9en71GBakU=";
   };
 
   buildType = "catkin";

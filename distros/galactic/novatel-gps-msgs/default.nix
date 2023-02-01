@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-novatel-gps-msgs";
   version = "4.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/swri-robotics-gbp/novatel_gps_driver-release/archive/release/galactic/novatel_gps_msgs/4.1.0-1.tar.gz";
-    name = "4.1.0-1.tar.gz";
-    sha256 = "29a8c0727f0c3e65f6b24bc415772300829d320848530195051fca27c37b86cf";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "novatel_gps_driver-release";
+    rev = "58392b09e28857b989f15c9e34601ef29b63f527";
+    owner = "swri-robotics-gbp";
+    sha256 = "sha256-elfNxlJFo9e8ju38PBf3lPgK556DR5KyNBIPcvS7VMc=";
   };
 
   buildType = "ament_cmake";

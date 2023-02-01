@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-aruco-opencv-msgs";
   version = "4.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/aruco_opencv-release/archive/release/rolling/aruco_opencv_msgs/4.0.1-1.tar.gz";
-    name = "4.0.1-1.tar.gz";
-    sha256 = "8c0c68f242ed89c595abbb0180dd32febcf9ac61675a4bac4d87c23dac75996f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "aruco_opencv-release";
+    rev = "8e4a047fc8584325117ac136b3c17548bff0f6bf";
+    owner = "ros2-gbp";
+    sha256 = "sha256-AZ/WLG09qSoBuXrtU5iF8ynaQNDOlOgYjh7R2/Mi4cE=";
   };
 
   buildType = "ament_cmake";

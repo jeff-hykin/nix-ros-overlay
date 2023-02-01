@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-pmb2-2dnav-gazebo";
   version = "3.0.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pal-gbp/pmb2_simulation-gbp/archive/release/humble/pmb2_2dnav_gazebo/3.0.3-1.tar.gz";
-    name = "3.0.3-1.tar.gz";
-    sha256 = "8b45c571f1b7ae8af09a2e6df358b9e8ee67a7063c1b95ee1f4d7a3e8175e1a9";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pmb2_simulation-gbp";
+    rev = "de1c8864b3da482a53ab94f44f916e56e22ca6b9";
+    owner = "pal-gbp";
+    sha256 = "sha256-3bn9FyAOiHS6/atwys3FVwYaURK53vdgrK/idI+5c7s=";
   };
 
   buildType = "ament_cmake";

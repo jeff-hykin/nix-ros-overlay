@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-launch";
   version = "0.17.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/launch-release/archive/release/galactic/launch/0.17.2-1.tar.gz";
-    name = "0.17.2-1.tar.gz";
-    sha256 = "9a594458889c72625fc3aed96373cb09babb71891d0b02b639769f467b5447da";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "launch-release";
+    rev = "b57fc8fe0ba61c3760280f73388b3e1274ba04cc";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Ou3bAC79Nm+rbyHsjvF8PaMeqf0DwvtJXJ456Ti3PgY=";
   };
 
   buildType = "ament_python";

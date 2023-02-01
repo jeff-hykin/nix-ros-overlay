@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-ros2-controllers-test-nodes";
   version = "2.15.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_controllers-release/archive/release/rolling/ros2_controllers_test_nodes/2.15.0-1.tar.gz";
-    name = "2.15.0-1.tar.gz";
-    sha256 = "71d89b2bab0a45dc70eb2c8d79f935e351be076c40c380839d131d7f234ead6b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_controllers-release";
+    rev = "bec65e8841c21bef4c64f1c90814fb5c79eee1a5";
+    owner = "ros2-gbp";
+    sha256 = "sha256-ls//eJuEytepy9saVL4Q2yDRLxMg83Rcqbzf/GKEw5g=";
   };
 
   buildType = "ament_python";

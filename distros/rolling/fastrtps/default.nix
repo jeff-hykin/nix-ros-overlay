@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-fastrtps";
   version = "2.8.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/fastrtps-release/archive/release/rolling/fastrtps/2.8.1-1.tar.gz";
-    name = "2.8.1-1.tar.gz";
-    sha256 = "ebce9ce9badb2b94dff408ad83fab286d69f41f173ef01dd0a90af87d90581a6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "fastrtps-release";
+    rev = "11defd1eb5f9ca474e2f8f51ea9814c1de72e8ef";
+    owner = "ros2-gbp";
+    sha256 = "sha256-UmEMGXcGuHQa+EeM8fXnQYw9CtE9t1pjEPIqJLesLMI=";
   };
 
   buildType = "cmake";

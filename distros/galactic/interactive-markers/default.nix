@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-interactive-markers";
   version = "2.2.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/interactive_markers-release/archive/release/galactic/interactive_markers/2.2.0-2.tar.gz";
-    name = "2.2.0-2.tar.gz";
-    sha256 = "96f556a0cab07ddce300f261bb24322a49338e19f1276666fad8eb8d2a6212f1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "interactive_markers-release";
+    rev = "60b135934c0566d4830bd282ffaf3cb36d1829bc";
+    owner = "ros2-gbp";
+    sha256 = "sha256-gH9FNTVTM5rnB0g8ngakKkqO6DMzCdnVGKO32oiG75E=";
   };
 
   buildType = "ament_cmake";

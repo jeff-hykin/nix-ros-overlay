@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rcl-interfaces";
   version = "1.0.3-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rcl_interfaces-release/archive/release/galactic/rcl_interfaces/1.0.3-2.tar.gz";
-    name = "1.0.3-2.tar.gz";
-    sha256 = "77083fd00aec9b769f3365b8daf8308f4ef66cc5b88db39137f7180df101d6d5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rcl_interfaces-release";
+    rev = "77bb6508f3d646ffa75aae2cde425a3160813acc";
+    owner = "ros2-gbp";
+    sha256 = "sha256-hAvLsGuYWQt+CbXjc9R1c0eUomP7L5bZTvtJ852tfP8=";
   };
 
   buildType = "ament_cmake";

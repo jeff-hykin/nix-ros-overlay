@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-examples-rclcpp-minimal-composition";
   version = "0.15.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/examples-release/archive/release/humble/examples_rclcpp_minimal_composition/0.15.1-1.tar.gz";
-    name = "0.15.1-1.tar.gz";
-    sha256 = "4f06a2a1726484437fab7188605870ae3213bab37ec75df60906f0430f927f30";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "examples-release";
+    rev = "81822d959b802946d76cb82268e8dcebf9afe15e";
+    owner = "ros2-gbp";
+    sha256 = "sha256-o1SCBTEeYRtlsT5aEyGFFkZ7ayk85DxSWTNjjRUJ0mI=";
   };
 
   buildType = "ament_cmake";

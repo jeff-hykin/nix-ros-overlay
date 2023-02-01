@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-tuw-checkerboard";
   version = "0.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/tuw-robotics/tuw_marker_detection-release/archive/release/melodic/tuw_checkerboard/0.1.1-1.tar.gz";
-    name = "0.1.1-1.tar.gz";
-    sha256 = "e7d76c6bb8a14e31094674fc33504b7cca4335d4d0c2362ceda6811633fc483c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "tuw_marker_detection-release";
+    rev = "a1be669b67c1f64c8192ff356dc04762e16458d2";
+    owner = "tuw-robotics";
+    sha256 = "sha256-HPz21moK3O9n3ixudFErqZC5mkP/kniy4fi728qtZbw=";
   };
 
   buildType = "catkin";

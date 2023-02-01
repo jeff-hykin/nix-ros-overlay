@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-pr2-computer-monitor";
   version = "1.6.31-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pr2-gbp/pr2_robot-release/archive/release/melodic/pr2_computer_monitor/1.6.31-1.tar.gz";
-    name = "1.6.31-1.tar.gz";
-    sha256 = "d20f5a31e78189fbb94c72d1dac29332944a7e157a59401530cbce29aba6ff8b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pr2_robot-release";
+    rev = "93b62620aabbbd0589786bf1a5365da6c8c4f9c8";
+    owner = "pr2-gbp";
+    sha256 = "sha256-b/54nLSoxCwv7i5IXJYx1mykga9ViC1BCVO7aMUbyjk=";
   };
 
   buildType = "catkin";

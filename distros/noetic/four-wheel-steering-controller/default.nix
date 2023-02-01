@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-four-wheel-steering-controller";
   version = "0.21.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/ros_controllers-release/archive/release/noetic/four_wheel_steering_controller/0.21.0-1.tar.gz";
-    name = "0.21.0-1.tar.gz";
-    sha256 = "381358d31a514ee95b0aca60a51ec7f9a4bd0cf6900281448aa29895846bf4b4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_controllers-release";
+    rev = "7bba0a5bdfdcb818567069c9b3f3615b7e186d75";
+    owner = "ros-gbp";
+    sha256 = "sha256-rjtEQ9dAFQq4UYVfpLwNu6c/y29N4M2fiALhMU1YrLk=";
   };
 
   buildType = "catkin";

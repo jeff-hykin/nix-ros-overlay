@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-canopen-motor-node";
   version = "0.8.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-industrial-release/ros_canopen-release/archive/release/noetic/canopen_motor_node/0.8.5-1.tar.gz";
-    name = "0.8.5-1.tar.gz";
-    sha256 = "7c87557f7149e32db48ae6d11db31f03a1de517c03942e9253d6e3884314c9ad";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_canopen-release";
+    rev = "af15376f3f463b26df16869f83d3cb326f5642f7";
+    owner = "ros-industrial-release";
+    sha256 = "sha256-Ixrnh1WkXt2VF0R2Ffc4IMemiq+eMXCE+x6z8OwEIWg=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-visp-bridge";
   version = "0.13.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/lagadic/vision_visp-release/archive/release/noetic/visp_bridge/0.13.1-1.tar.gz";
-    name = "0.13.1-1.tar.gz";
-    sha256 = "aa9ff1c9a82b8fb3f8fbcd27a43ffb4acafdf563da02fbe20c81b1d06605e3f5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "vision_visp-release";
+    rev = "00a5b5694f71b83dba5fd1f367d4bda13c354b01";
+    owner = "lagadic";
+    sha256 = "sha256-ilGOn5lEKk+au6RUDrlJE6dWIvZCgwvzQlhuSfTY8kA=";
   };
 
   buildType = "catkin";

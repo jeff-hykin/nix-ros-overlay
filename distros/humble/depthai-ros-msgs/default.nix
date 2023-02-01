@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-depthai-ros-msgs";
   version = "2.5.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/luxonis/depthai-ros-release/archive/release/humble/depthai_ros_msgs/2.5.3-1.tar.gz";
-    name = "2.5.3-1.tar.gz";
-    sha256 = "34ac0f32360dd9d1e135c77bca00e6f4925dad9debf71dc474968eb371df3803";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "depthai-ros-release";
+    rev = "24d302157a98309ef42d09d3abdd68888c81b615";
+    owner = "luxonis";
+    sha256 = "sha256-l8V7kaXNFQtgazo6zWSHDa62NrxTB1aKfKpR21pIgrU=";
   };
 
   buildType = "ament_cmake";

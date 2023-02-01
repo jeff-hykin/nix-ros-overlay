@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-smacc2";
   version = "0.4.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/SMACC2-release/archive/release/rolling/smacc2/0.4.0-1.tar.gz";
-    name = "0.4.0-1.tar.gz";
-    sha256 = "4fe8371092104b0e61840ed60d99b5c0a21fbd77b1c75543f7471679470ea895";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "SMACC2-release";
+    rev = "043bc22875e9cb4b0435b65f28e8903e688207ec";
+    owner = "ros2-gbp";
+    sha256 = "sha256-yI0OXFGrQ42OcS1v1pv7VdeoqmflWYkFqHfGbacMe+Q=";
   };
 
   buildType = "ament_cmake";

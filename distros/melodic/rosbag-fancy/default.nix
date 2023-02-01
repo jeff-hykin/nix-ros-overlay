@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-rosbag-fancy";
   version = "0.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/xqms/rosbag_fancy-release/archive/release/melodic/rosbag_fancy/0.2.0-1.tar.gz";
-    name = "0.2.0-1.tar.gz";
-    sha256 = "839e4c131c6da7f0ea872b61667ce56b81e6db21a3aa5e0c3145ed9e9097eb40";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosbag_fancy-release";
+    rev = "ccecd65a647d3df17821accb2228e56cae5b2a35";
+    owner = "xqms";
+    sha256 = "sha256-AJtL3UrlTzffPR5wZErOiecGR2K4cKqctovCyQTlhH0=";
   };
 
   buildType = "catkin";

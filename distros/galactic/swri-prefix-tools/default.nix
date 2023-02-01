@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-swri-prefix-tools";
   version = "3.5.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/marti_common-release/archive/release/galactic/swri_prefix_tools/3.5.1-1.tar.gz";
-    name = "3.5.1-1.tar.gz";
-    sha256 = "afde85a189d559f2ad98270508c0068a095126a5a2cfda666e3e4786c3a0572f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "marti_common-release";
+    rev = "30ea178e19dc72b64be79dc6d98a6e3ea6ac45a2";
+    owner = "ros2-gbp";
+    sha256 = "sha256-dH5HNyJE9/48qkrSmDe1cN1n5Px9NWzhrfB76O47Uuc=";
   };
 
   buildType = "ament_cmake";

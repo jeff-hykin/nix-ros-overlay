@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-explore-lite";
   version = "2.1.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/hrnr/m-explore-release/archive/release/melodic/explore_lite/2.1.4-1.tar.gz";
-    name = "2.1.4-1.tar.gz";
-    sha256 = "54bba0170bf05baafe92894a693c3417ce791866035b2e6b7de408796f955ae1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "m-explore-release";
+    rev = "df43409c857682c89930e24099797997a533654d";
+    owner = "hrnr";
+    sha256 = "sha256-G6WSRw39XxIsShtpEh9Bvu52YIuixuqNW4MFvpc+xAY=";
   };
 
   buildType = "catkin";

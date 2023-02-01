@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-rosgraph";
   version = "1.15.15-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/ros_comm-release/archive/release/noetic/rosgraph/1.15.15-1.tar.gz";
-    name = "1.15.15-1.tar.gz";
-    sha256 = "5cb5109782461519afa1f17e52071c3ff2fe7598d9d68b567bc003144501e0cf";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_comm-release";
+    rev = "acc57bf52025a173166fa113b14c2d4d8d4940c0";
+    owner = "ros-gbp";
+    sha256 = "sha256-jq4MIInm8uKGXWZ2FiIpc/LXoZFB5giV5YemnFBNE1I=";
   };
 
   buildType = "catkin";

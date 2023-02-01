@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-sr-hand-detector";
   version = "0.0.9-r1";
 
-  src = fetchurl {
-    url = "https://github.com/shadow-robot/sr_hand_detector-release/archive/release/noetic/sr_hand_detector/0.0.9-1.tar.gz";
-    name = "0.0.9-1.tar.gz";
-    sha256 = "354b8355e441f1149d5dc9ede3ec74a32a1120d3289c6d3d6dbe1ff5449954bb";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "sr_hand_detector-release";
+    rev = "b62ea67d7cb755dea72b57744660538d897b65bf";
+    owner = "shadow-robot";
+    sha256 = "sha256-swRXG+amquySclSFyf41oEp+AUfPCqvKFX2/tGWcuck=";
   };
 
   buildType = "catkin";

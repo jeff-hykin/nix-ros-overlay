@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-nav2-navfn-planner";
   version = "1.1.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/SteveMacenski/navigation2-release/archive/release/humble/nav2_navfn_planner/1.1.5-1.tar.gz";
-    name = "1.1.5-1.tar.gz";
-    sha256 = "236f623671f916ba5e775ead8cffc0905db1d2f88f6ba46c8a3f4c244434a911";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation2-release";
+    rev = "cbfa4f05d1d7122ef8eb34e2496803ac45b36ebf";
+    owner = "SteveMacenski";
+    sha256 = "sha256-uwvpZ+/WlziHn1CUXY3mGLO/gp1BelHZ/djo1liIyZg=";
   };
 
   buildType = "ament_cmake";

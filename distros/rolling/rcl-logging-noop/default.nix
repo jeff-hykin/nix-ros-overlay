@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-rcl-logging-noop";
   version = "2.4.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rcl_logging-release/archive/release/rolling/rcl_logging_noop/2.4.3-1.tar.gz";
-    name = "2.4.3-1.tar.gz";
-    sha256 = "9ae991e2cb2bee25366e923fa56a6a754abfb06debf2e50a75975423625d0322";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rcl_logging-release";
+    rev = "a278a6b4b806c4f08e3159bd0326bfa820a9585d";
+    owner = "ros2-gbp";
+    sha256 = "sha256-gxZ/ZnBZ0hezKqXHk93K0i1t/NYcrysmiBqGPba7fTk=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-copernicus-localization";
   version = "1.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/botsync-gbp/copernicus-release/archive/release/melodic/copernicus_localization/1.1.0-1.tar.gz";
-    name = "1.1.0-1.tar.gz";
-    sha256 = "cfc491a7c55762b8ebd73ef2a3161ca650e1b49771e2f97548fe0ef5ab54e539";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "copernicus-release";
+    rev = "6f9be0118f8c836d7c4ede612e35d2aaf11a017e";
+    owner = "botsync-gbp";
+    sha256 = "sha256-pwzZbBlC0DHyvRhpO0cDz4sUv3GYc7lLovgiOwbEu/s=";
   };
 
   buildType = "catkin";

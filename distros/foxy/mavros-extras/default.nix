@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-mavros-extras";
   version = "2.4.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/mavlink/mavros-release/archive/release/foxy/mavros_extras/2.4.0-1.tar.gz";
-    name = "2.4.0-1.tar.gz";
-    sha256 = "a0e304f117b7412559efd3f38f3bada24a665e2a8f51bd269c92fd057c06227e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mavros-release";
+    rev = "d10fcb32d2b1aa310b889f619f8f85ddb6c0f9e2";
+    owner = "mavlink";
+    sha256 = "sha256-PtIYTIYjcVKAIS0pP0hq1LdX+rB++3XRmqDHaZif8jM=";
   };
 
   buildType = "ament_cmake";

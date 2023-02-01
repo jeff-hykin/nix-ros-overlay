@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-velodyne-pointcloud";
   version = "2.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/velodyne-release/archive/release/foxy/velodyne_pointcloud/2.1.1-1.tar.gz";
-    name = "2.1.1-1.tar.gz";
-    sha256 = "c50a8b5c5affd431ec85665ce710532bf81a0d0f85d8fc4548d8c9c9e726c879";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "velodyne-release";
+    rev = "94d3f63d70012d224058752492c522c50658a8b6";
+    owner = "ros2-gbp";
+    sha256 = "sha256-MCmAaChpnpcdK+9qrgT7UkexwTngyYaYxz1eZgDMlg4=";
   };
 
   buildType = "ament_cmake";

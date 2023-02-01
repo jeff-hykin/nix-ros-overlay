@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-zbar-ros";
   version = "0.4.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/zbar_ros-release/archive/release/rolling/zbar_ros/0.4.0-1.tar.gz";
-    name = "0.4.0-1.tar.gz";
-    sha256 = "c57f69f1e06ea8ecdae50b7c23775df7c92911170ec2cf23b798c47d350126ff";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "zbar_ros-release";
+    rev = "febe42f6b4fb3e2c3ca89034eeea3f05a7690b77";
+    owner = "ros2-gbp";
+    sha256 = "sha256-VbtkI6w674F8iQfEUF7oqkRf33wX0JYpbeoKk3vGQpQ=";
   };
 
   buildType = "ament_cmake";

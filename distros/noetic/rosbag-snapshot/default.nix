@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-rosbag-snapshot";
   version = "1.0.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/rosbag_snapshot-release/archive/release/noetic/rosbag_snapshot/1.0.4-1.tar.gz";
-    name = "1.0.4-1.tar.gz";
-    sha256 = "6faa6bf1c0a94506e8911affaf60852ce7a73c13d3431c94d449a1f895c04fe9";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosbag_snapshot-release";
+    rev = "043df7ebd87ba00b6457d45c55da0d822b7a09e7";
+    owner = "ros-gbp";
+    sha256 = "sha256-edqGPY5C+67t9+vfvrkVCx87Porq5nIAGIlU2aihRRM=";
   };
 
   buildType = "catkin";

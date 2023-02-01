@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-unique-identifier-msgs";
   version = "2.2.1-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/unique_identifier_msgs-release/archive/release/galactic/unique_identifier_msgs/2.2.1-2.tar.gz";
-    name = "2.2.1-2.tar.gz";
-    sha256 = "0a6d9e22e4502cbc8ff6bc92df9fbfdf62a26fa268ced0dbda45074b7c11a6d2";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "unique_identifier_msgs-release";
+    rev = "e54f37c29d8def7a7abfaf034e4e0aa17db02f69";
+    owner = "ros2-gbp";
+    sha256 = "sha256-bC/ZqwXMkI4Fgqlw4fDPwVAl9QkWnU5BOc2oQ9oa+Ac=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-cob-manipulation-msgs";
   version = "0.7.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_manipulation-release/archive/release/noetic/cob_manipulation_msgs/0.7.7-1.tar.gz";
-    name = "0.7.7-1.tar.gz";
-    sha256 = "abacddc3016ee4a538ffcb6f6e86a13cd6937428f6aed1fa8c3eaa676b1869b2";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_manipulation-release";
+    rev = "3ff8ea7670d316e336790aa4380c2928edcc80d8";
+    owner = "ipa320";
+    sha256 = "sha256-4wztVDOsm4pyxgq3Q76yCmrdTjRdceO+6vwFW0FLks4=";
   };
 
   buildType = "catkin";

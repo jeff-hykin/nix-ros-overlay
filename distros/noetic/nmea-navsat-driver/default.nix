@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-nmea-navsat-driver";
   version = "0.6.1-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros-drivers-gbp/nmea_navsat_driver-release/archive/release/noetic/nmea_navsat_driver/0.6.1-2.tar.gz";
-    name = "0.6.1-2.tar.gz";
-    sha256 = "333a1a0c8f0ca93a91e6badeddc32c569ddae5f6a362679e67e0fcfb1e747d40";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "nmea_navsat_driver-release";
+    rev = "bb80302498b0420b23630c5bf591b12beb2caf04";
+    owner = "ros-drivers-gbp";
+    sha256 = "sha256-/li7w2Z1iEkcxRjcFUw+vUuUIsoWdC0kRnhRTyNk31Y=";
   };
 
   buildType = "catkin";

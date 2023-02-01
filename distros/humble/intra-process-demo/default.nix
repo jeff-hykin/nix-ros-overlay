@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-intra-process-demo";
   version = "0.20.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/demos-release/archive/release/humble/intra_process_demo/0.20.2-1.tar.gz";
-    name = "0.20.2-1.tar.gz";
-    sha256 = "3eea4b23f644cfdddd35b0a7753e1f54216256635a2cd72dc34442fc0370df8d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "demos-release";
+    rev = "f6bfa7df0a28e5c364649be657200ef86b61d3a7";
+    owner = "ros2-gbp";
+    sha256 = "sha256-87eTPZMJzi0xIi1Y3dE9aAi1S9XMbvectYXr8jxXbdU=";
   };
 
   buildType = "ament_cmake";

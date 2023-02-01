@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-khi-robot-msgs";
   version = "1.3.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/Kawasaki-Robotics/khi_robot-release/archive/release/noetic/khi_robot_msgs/1.3.0-2.tar.gz";
-    name = "1.3.0-2.tar.gz";
-    sha256 = "aecc5dda3fef55a0d6f319fef0eb0e928359af996bf18d38e2286bf5047fc99b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "khi_robot-release";
+    rev = "763b85946dcccef5cf0b93dc3f2c80482eac5858";
+    owner = "Kawasaki-Robotics";
+    sha256 = "sha256-9IoEYS7oAV78YOhN5bHWMFhl3KFZQM5auMTuMZJ0R84=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-apex-test-tools";
   version = "0.0.2-r5";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/apex_test_tools-release/archive/release/rolling/apex_test_tools/0.0.2-5.tar.gz";
-    name = "0.0.2-5.tar.gz";
-    sha256 = "4f0cdb7f82288de707a0bb521f4a6f368860ab106722b5611aa78244ee9a8bc9";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "apex_test_tools-release";
+    rev = "dc187b75d20a556ae3642afd45d6c15b898da423";
+    owner = "ros2-gbp";
+    sha256 = "sha256-vrX5LngYVt0Fxd0td4idUCVPg+j96W7S07zUG/lM8W4=";
   };
 
   buildType = "ament_cmake";

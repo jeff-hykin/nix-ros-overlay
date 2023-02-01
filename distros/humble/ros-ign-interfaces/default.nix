@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-ros-ign-interfaces";
   version = "0.244.9-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros_ign-release/archive/release/humble/ros_ign_interfaces/0.244.9-1.tar.gz";
-    name = "0.244.9-1.tar.gz";
-    sha256 = "e91a8e335924a9e13166908c3bd2c5c94d21025bf02ecaf9d5ce7f81919e2732";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_ign-release";
+    rev = "d2f7d41136f5e697bd38dcc0f70f91dc073ca08e";
+    owner = "ros2-gbp";
+    sha256 = "sha256-TxDaMepYD5Gk9207IBvu8SbELeDmpyjTxSliNd3J+4k=";
   };
 
   buildType = "ament_cmake";

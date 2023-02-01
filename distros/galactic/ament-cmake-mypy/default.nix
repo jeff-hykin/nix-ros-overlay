@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ament-cmake-mypy";
   version = "0.10.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ament_lint-release/archive/release/galactic/ament_cmake_mypy/0.10.7-1.tar.gz";
-    name = "0.10.7-1.tar.gz";
-    sha256 = "1590afba2fb639f99993a442fb3aa5bfb899ec2c633ea58a11991e300d05bba4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ament_lint-release";
+    rev = "98f644ab84309477ffd5df0396e3670c174f77f1";
+    owner = "ros2-gbp";
+    sha256 = "sha256-pWm8+U8yEdzOX496+A6lMrnNLNAi3ty6p4eImm5/K/s=";
   };
 
   buildType = "ament_cmake";

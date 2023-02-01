@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-nav2-theta-star-planner";
   version = "1.0.12-r1";
 
-  src = fetchurl {
-    url = "https://github.com/SteveMacenski/navigation2-release/archive/release/galactic/nav2_theta_star_planner/1.0.12-1.tar.gz";
-    name = "1.0.12-1.tar.gz";
-    sha256 = "f5c78bf161d62ea9ae300f3327dcb1c3565df948c378bf6e0f5ce2495853fb09";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation2-release";
+    rev = "22c211c687ef01ff70e837fae33c823f9024ba23";
+    owner = "SteveMacenski";
+    sha256 = "sha256-5yocBr1ieQM+Ut5adijSfke2KpbMI2y0vl29cccQ1rk=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-s3-common";
   version = "1.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/aws-gbp/rosbag_uploader-release/archive/release/melodic/s3_common/1.0.1-1.tar.gz";
-    name = "1.0.1-1.tar.gz";
-    sha256 = "020e7dcb88eb4b7c3efc63814fd190051ca4769345fc180807b576ee018e9bbb";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosbag_uploader-release";
+    rev = "1a22efd70cdb184e2ca531eedf55dfb98f7e4c9c";
+    owner = "aws-gbp";
+    sha256 = "sha256-gXFna7MZ2Hy5i15mlFnYZTE1oysVww2hdHWm3KwYi5I=";
   };
 
   buildType = "cmake";

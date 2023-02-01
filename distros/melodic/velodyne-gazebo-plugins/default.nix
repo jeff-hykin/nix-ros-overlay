@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-velodyne-gazebo-plugins";
   version = "1.0.13-r1";
 
-  src = fetchurl {
-    url = "https://github.com/DataspeedInc-release/velodyne_simulator-release/archive/release/melodic/velodyne_gazebo_plugins/1.0.13-1.tar.gz";
-    name = "1.0.13-1.tar.gz";
-    sha256 = "191487afff2cca5a03f11d85cb6f4f3af3c95e846a344d68ecfbb8eceeddb3b8";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "velodyne_simulator-release";
+    rev = "1a09d58333620d9dbbc79d5fa002d8fd7502bcd9";
+    owner = "DataspeedInc-release";
+    sha256 = "sha256-L5IN+BvQ38y1lX91dD7v8We1MonA9i21PQRAj+zv7C8=";
   };
 
   buildType = "catkin";

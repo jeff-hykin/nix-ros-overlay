@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-husky-control";
   version = "0.6.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/clearpath-gbp/husky-release/archive/release/noetic/husky_control/0.6.5-1.tar.gz";
-    name = "0.6.5-1.tar.gz";
-    sha256 = "c50dc9187426bf482b9116939ebd3164615eacd56a236ef74fb6031a72c92924";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "husky-release";
+    rev = "39e7c160c6769400bc49aeb435ddcfbc61e5aa46";
+    owner = "clearpath-gbp";
+    sha256 = "sha256-DVLuOyMwitNVz+SZzPZf8xNoLZqcTQx73tuVIR15mMI=";
   };
 
   buildType = "catkin";

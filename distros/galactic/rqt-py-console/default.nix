@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rqt-py-console";
   version = "1.0.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rqt_py_console-release/archive/release/galactic/rqt_py_console/1.0.2-1.tar.gz";
-    name = "1.0.2-1.tar.gz";
-    sha256 = "6e22796eee3f5319604be1b1231f89a3c43a503414141cb25b04d76a5c673f2f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt_py_console-release";
+    rev = "6112e43b628cc3d85c9034cf6df9c04412f8a08e";
+    owner = "ros2-gbp";
+    sha256 = "sha256-yLjOc2LoQeh7Yx+T6GKB+Xbdm3NG47pMTU2gIzn+uZY=";
   };
 
   buildType = "ament_python";

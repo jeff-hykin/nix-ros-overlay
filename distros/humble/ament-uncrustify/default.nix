@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-ament-uncrustify";
   version = "0.12.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ament_lint-release/archive/release/humble/ament_uncrustify/0.12.4-1.tar.gz";
-    name = "0.12.4-1.tar.gz";
-    sha256 = "5e1900ba0de9fc763aa1bfe8f92a80e51093b0c85a4db26bde57108009b1eebd";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ament_lint-release";
+    rev = "6e62b92962124797f03fd595b0f3a673e7402efe";
+    owner = "ros2-gbp";
+    sha256 = "sha256-wcyzgxSlXAR9ioGEmmdbKAfc0SnFcnZzg6PP2+Sg9DU=";
   };
 
   buildType = "ament_python";

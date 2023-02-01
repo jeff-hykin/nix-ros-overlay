@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-mcl-3dl";
   version = "0.6.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/at-wat/mcl_3dl-release/archive/release/noetic/mcl_3dl/0.6.0-1.tar.gz";
-    name = "0.6.0-1.tar.gz";
-    sha256 = "307271fe5886008f3a09991dbd62142b090ff93f57eb627001baf45bbf453741";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mcl_3dl-release";
+    rev = "89cd09cdfe13c40f1f04ce8f6b44d23e54787fea";
+    owner = "at-wat";
+    sha256 = "sha256-psDg0bRBaqqs3vUnli8jZ07DEqlyOhpHZWDgT1eOUj4=";
   };
 
   buildType = "catkin";

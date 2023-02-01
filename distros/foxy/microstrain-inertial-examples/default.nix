@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-microstrain-inertial-examples";
   version = "2.7.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/microstrain_inertial-release/archive/release/foxy/microstrain_inertial_examples/2.7.1-1.tar.gz";
-    name = "2.7.1-1.tar.gz";
-    sha256 = "f8db51b40d7c44097cb9ce70bd385946255d556273c4d50064008e94984041fd";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "microstrain_inertial-release";
+    rev = "5e8de5f963485aa2cf2db99e5015e2bdb11d2bc9";
+    owner = "ros2-gbp";
+    sha256 = "sha256-WUQQFvIzQCZgeOx4CmNySFe+lkftMAbcXEJ0AEJkQGQ=";
   };
 
   buildType = "ament_cmake";

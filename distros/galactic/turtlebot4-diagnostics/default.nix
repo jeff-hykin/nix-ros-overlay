@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-turtlebot4-diagnostics";
   version = "0.1.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/turtlebot4_robot-release/archive/release/galactic/turtlebot4_diagnostics/0.1.3-1.tar.gz";
-    name = "0.1.3-1.tar.gz";
-    sha256 = "a7769fc4c156a9debccea3ba2df94e9fe562f53cb3794e4be0e239aa004a1337";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "turtlebot4_robot-release";
+    rev = "764bc0a719f0f573e82b1d47fc2569f4e1027f02";
+    owner = "ros2-gbp";
+    sha256 = "sha256-igiyLyV6mR/VQZHxnMID6r1MyPo8O+sLgqPI6iTXWbs=";
   };
 
   buildType = "ament_python";

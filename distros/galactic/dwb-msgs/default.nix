@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-dwb-msgs";
   version = "1.0.12-r1";
 
-  src = fetchurl {
-    url = "https://github.com/SteveMacenski/navigation2-release/archive/release/galactic/dwb_msgs/1.0.12-1.tar.gz";
-    name = "1.0.12-1.tar.gz";
-    sha256 = "f4700ca459805066a26d4c388b33f62be0a4678681c6604d8e261e2c56d88354";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation2-release";
+    rev = "1ba0df5c45cbb8d2d29728a58882978ff538a03a";
+    owner = "SteveMacenski";
+    sha256 = "sha256-EHfU3WONP1e+w9FerGw7B9zFZEN6F8ujleyvRKpBnA0=";
   };
 
   buildType = "ament_cmake";

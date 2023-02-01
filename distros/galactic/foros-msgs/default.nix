@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-foros-msgs";
   version = "0.4.1-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/foros-release/archive/release/galactic/foros_msgs/0.4.1-2.tar.gz";
-    name = "0.4.1-2.tar.gz";
-    sha256 = "4cc2a7d10277119bc4b23b706ec331d6109567bfe3b9a0a20a715bb90773afa6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "foros-release";
+    rev = "6902ee448118b3a0dfa93f0b50b48bb1753a8883";
+    owner = "ros2-gbp";
+    sha256 = "sha256-2BfM+m3iK91wzWpNIBa4jXvgTI/2J8uCslc7wc8omzs=";
   };
 
   buildType = "ament_cmake";

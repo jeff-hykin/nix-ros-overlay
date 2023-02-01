@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-diff-drive-controller";
   version = "2.15.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_controllers-release/archive/release/humble/diff_drive_controller/2.15.0-1.tar.gz";
-    name = "2.15.0-1.tar.gz";
-    sha256 = "a36d4a5f3a1a731d42c4312edcf4f00bee5d6b3c7630b73d2eb3c263bc7d56e3";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_controllers-release";
+    rev = "e1357dcd0d1153ab5c41511724cc5bb67a3a3102";
+    owner = "ros2-gbp";
+    sha256 = "sha256-gPJxm+ha2fDLAeMOaM26CtbR5jkI2qtl52svMiVMUOU=";
   };
 
   buildType = "ament_cmake";

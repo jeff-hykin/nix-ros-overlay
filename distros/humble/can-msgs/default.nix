@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-can-msgs";
   version = "2.0.0-r4";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros_canopen-release/archive/release/humble/can_msgs/2.0.0-4.tar.gz";
-    name = "2.0.0-4.tar.gz";
-    sha256 = "9adbfa5ad2598b31797cc6c9a12054af037c7099dfa75735476cfccf41dec849";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_canopen-release";
+    rev = "adb949a615149279383edf8631eff0ad472fdf92";
+    owner = "ros2-gbp";
+    sha256 = "sha256-9K7mCEEppzWP9ITzFZlJje6JHNIFoBxJ/FXPs+NoX4M=";
   };
 
   buildType = "ament_cmake";

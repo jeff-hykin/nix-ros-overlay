@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-irobot-create-toolbox";
   version = "1.0.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/create3_sim-release/archive/release/galactic/irobot_create_toolbox/1.0.3-1.tar.gz";
-    name = "1.0.3-1.tar.gz";
-    sha256 = "9c33925f0bbbf2e800375664aca44d2e7e13490d50f9683d771ef6fc458f9169";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "create3_sim-release";
+    rev = "5a66c95b5e9771feb45d24b2cea74c95db61004b";
+    owner = "ros2-gbp";
+    sha256 = "sha256-9k9tlEpEPBC2/F9znQwCyzhGgAgRxWySumDy/Wc7vds=";
   };
 
   buildType = "ament_cmake";

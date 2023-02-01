@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-hrpsys-tools";
   version = "1.4.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/tork-a/rtmros_common-release/archive/release/melodic/hrpsys_tools/1.4.3-1.tar.gz";
-    name = "1.4.3-1.tar.gz";
-    sha256 = "022b471d0ff125eb3e55e527a04b71984645c5fcf74185e834f640356461a8fc";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rtmros_common-release";
+    rev = "3dd536e761d6c09c99b17342c31cb26424186863";
+    owner = "tork-a";
+    sha256 = "sha256-xgcxzSSUTFCdqhpWoriEwEyhiKTMUOTfJsz3QC+poew=";
   };
 
   buildType = "catkin";

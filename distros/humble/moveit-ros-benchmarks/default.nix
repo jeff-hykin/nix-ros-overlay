@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-moveit-ros-benchmarks";
   version = "2.5.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/moveit/moveit2-release/archive/release/humble/moveit_ros_benchmarks/2.5.4-1.tar.gz";
-    name = "2.5.4-1.tar.gz";
-    sha256 = "09625f3e5817569b1cd85917196652be91ff98621ed34bac205291a82d9a24f2";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "moveit2-release";
+    rev = "6abbd3dc2191adef46e717e97380371d965f455b";
+    owner = "moveit";
+    sha256 = "sha256-euBDQpmGkrtWrfn+9uvwEPnkR+NSu19KVY9WWteeaU0=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-moveit-ros-perception";
   version = "2.3.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/moveit/moveit2-release/archive/release/galactic/moveit_ros_perception/2.3.4-1.tar.gz";
-    name = "2.3.4-1.tar.gz";
-    sha256 = "d03f2f4927e255f98084b8f843a10e01b9253739fc9e5f3031fa4ec9d478acfa";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "moveit2-release";
+    rev = "e0c806d025d193879ba4d00cba40dc3106c34955";
+    owner = "moveit";
+    sha256 = "sha256-ajmrQr0FCBFBkQj/nFidt5Tbg+HKdNwdUXnupyUHepE=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-bno055";
   version = "0.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/bno055-release/archive/release/galactic/bno055/0.2.0-1.tar.gz";
-    name = "0.2.0-1.tar.gz";
-    sha256 = "27e2b582a198a75cdf0c5189881d47222e74527e2cac0391a2f4def78f1489c5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "bno055-release";
+    rev = "7a8741f735cce050a595e1c29cab341dac636590";
+    owner = "ros2-gbp";
+    sha256 = "sha256-a7x2xgB4U8YtHr/0GJeBL39op8ADWG9M3cvS7mWz4aY=";
   };
 
   buildType = "ament_python";

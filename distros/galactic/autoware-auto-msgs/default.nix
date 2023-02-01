@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-autoware-auto-msgs";
   version = "1.0.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/autoware_auto_msgs-release/archive/release/galactic/autoware_auto_msgs/1.0.0-2.tar.gz";
-    name = "1.0.0-2.tar.gz";
-    sha256 = "81e08fc84242dc10c54b335d3ea9b17b6db6da71ea74f1b8a86220bf734f7f05";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "autoware_auto_msgs-release";
+    rev = "73ba4caec9851271151472433e06f37c44fd1e0e";
+    owner = "ros2-gbp";
+    sha256 = "sha256-sPwNe2uGjV3WHz+htqZrzm5dUO1JvGJC9xQcn2d+LU0=";
   };
 
   buildType = "ament_cmake";

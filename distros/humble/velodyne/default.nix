@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-velodyne";
   version = "2.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/velodyne-release/archive/release/humble/velodyne/2.3.0-1.tar.gz";
-    name = "2.3.0-1.tar.gz";
-    sha256 = "e30613ff99d96ec03c47047920fda2473a0b73e8ebcb805a005584b09fa30956";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "velodyne-release";
+    rev = "f98fbd2057d5099595e19ce972d5556a6bfd4a2a";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Wr9qH+muZay+hoPYPI7pJRs11jWr4I26LKKsmaWL/4A=";
   };
 
   buildType = "ament_cmake";

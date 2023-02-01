@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-fogros2";
   version = "0.1.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/fogros2-release/archive/release/humble/fogros2/0.1.7-1.tar.gz";
-    name = "0.1.7-1.tar.gz";
-    sha256 = "c6f46647d20ce31a0745eb585811fc3cc5b04df97ad94554d63f2498f2994789";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "fogros2-release";
+    rev = "191da6cc078839f53ac2ee050d0f0aacd8880462";
+    owner = "ros2-gbp";
+    sha256 = "sha256-8WRsRqu8vU//YKjO6e6Rp8jC8DfGUddnsr4Gj8wAqeA=";
   };
 
   buildType = "ament_python";

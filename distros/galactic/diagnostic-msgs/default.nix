@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-diagnostic-msgs";
   version = "2.2.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/common_interfaces-release/archive/release/galactic/diagnostic_msgs/2.2.4-1.tar.gz";
-    name = "2.2.4-1.tar.gz";
-    sha256 = "d6bee82d8153a12645daffd44f85f624e143dc4d2ef343798f21f29ed651a7d8";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "common_interfaces-release";
+    rev = "33d5c04a37cc663576f1745bfa155772283c6614";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Vw81ffqORf1ekykT2CsZwjT1XP4XebrLOoDPJTMR1F4=";
   };
 
   buildType = "ament_cmake";

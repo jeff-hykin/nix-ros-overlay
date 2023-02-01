@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-velocity-controllers";
   version = "0.21.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/ros_controllers-release/archive/release/noetic/velocity_controllers/0.21.0-1.tar.gz";
-    name = "0.21.0-1.tar.gz";
-    sha256 = "5b88737c78dae005d51d4cd2fd9260d4cf8518bc8ee34d5169e1b139d1063be5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_controllers-release";
+    rev = "57d152304f7f47733a46e07c85f152113e69482b";
+    owner = "ros-gbp";
+    sha256 = "sha256-+x1rlh03lxJ4UEjIvk86y+YHPZYGg7BNJuz3MftH1Sw=";
   };
 
   buildType = "catkin";

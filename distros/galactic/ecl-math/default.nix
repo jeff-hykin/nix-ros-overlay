@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ecl-math";
   version = "1.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/yujinrobot-release/ecl_core-release/archive/release/galactic/ecl_math/1.2.0-1.tar.gz";
-    name = "1.2.0-1.tar.gz";
-    sha256 = "d1bf0a99b7e422f698e700924bea1cca4bcefab37df955e60df8a92869e76759";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ecl_core-release";
+    rev = "83a16f387b392eb14f9d1b64a3e809efaa6308d9";
+    owner = "yujinrobot-release";
+    sha256 = "sha256-NeevQ8lIx9k/BjzaS+pXu0qanSmP8jDhWZea+Irdp40=";
   };
 
   buildType = "ament_cmake";

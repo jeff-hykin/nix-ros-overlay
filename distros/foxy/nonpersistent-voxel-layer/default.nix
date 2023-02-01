@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-nonpersistent-voxel-layer";
   version = "2.2.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/SteveMacenski/nonpersistent_voxel_layer-release/archive/release/foxy/nonpersistent_voxel_layer/2.2.1-1.tar.gz";
-    name = "2.2.1-1.tar.gz";
-    sha256 = "e189c07f0f785bd3324cd9d28f25acf8a9baec967e79225cdf1a69ed5cd70d93";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "nonpersistent_voxel_layer-release";
+    rev = "8b2f1682f5426509d915ed9ea4ab6063cfd124e6";
+    owner = "SteveMacenski";
+    sha256 = "sha256-63ioQw5Ul5R5DuOFJoyahPFZRRClQJbp1NLmSdjDUy4=";
   };
 
   buildType = "ament_cmake";

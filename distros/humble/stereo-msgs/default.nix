@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-stereo-msgs";
   version = "4.2.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/common_interfaces-release/archive/release/humble/stereo_msgs/4.2.2-1.tar.gz";
-    name = "4.2.2-1.tar.gz";
-    sha256 = "e0388dfd7f1758d9225868c6154c4cf85084725151b1f85588d0c34190285944";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "common_interfaces-release";
+    rev = "0b26210e108520765f20de0a32ed92046f02e926";
+    owner = "ros2-gbp";
+    sha256 = "sha256-F0WQyEH6jDqtnvui1hjtQ3kuQo3cZ2G+bLvegHVmGV0=";
   };
 
   buildType = "ament_cmake";

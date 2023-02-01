@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-ecl-concepts";
   version = "1.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/yujinrobot-release/ecl_core-release/archive/release/foxy/ecl_concepts/1.2.0-1.tar.gz";
-    name = "1.2.0-1.tar.gz";
-    sha256 = "b23edb39040867a533991f17463db8095f0861a83bf9b9fe1203f18fdf3947b7";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ecl_core-release";
+    rev = "35ee1eef280ea973bdf6753c21ed654695f30fe4";
+    owner = "yujinrobot-release";
+    sha256 = "sha256-DfYT5npWvWcaxyVeawEI8hgE9zN6p3lftYU/1LCooWU=";
   };
 
   buildType = "ament_cmake";

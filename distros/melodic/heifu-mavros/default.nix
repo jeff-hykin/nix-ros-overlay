@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-heifu-mavros";
   version = "0.7.7-r2";
 
-  src = fetchurl {
-    url = "https://github.com/BV-OpenSource/heifu-release/archive/release/melodic/heifu_mavros/0.7.7-2.tar.gz";
-    name = "0.7.7-2.tar.gz";
-    sha256 = "7fef13c5fe3fd3fb9e7068d82f9a0268b1d6a250900c46982f0b1d732840b0e8";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "heifu-release";
+    rev = "79c49307e54c950846eb70dcb33735486f41ce10";
+    owner = "BV-OpenSource";
+    sha256 = "sha256-0rU4VuOcGfe8dLcGbUn6QSikyaDavZ3wTML9YDhyb5Q=";
   };
 
   buildType = "catkin";

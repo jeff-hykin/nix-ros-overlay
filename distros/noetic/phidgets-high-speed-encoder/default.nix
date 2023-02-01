@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-phidgets-high-speed-encoder";
   version = "1.0.6-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-drivers-gbp/phidgets_drivers-release/archive/release/noetic/phidgets_high_speed_encoder/1.0.6-1.tar.gz";
-    name = "1.0.6-1.tar.gz";
-    sha256 = "584f77adb2631e5126bca4a4cde5e59d1b8a7190e1b3df9d14638c0424d0cdf7";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "phidgets_drivers-release";
+    rev = "829753a2d69df080a8637f7692257d4c8eab36a9";
+    owner = "ros-drivers-gbp";
+    sha256 = "sha256-s7CL7CQG+Y51iwdWo1n8rdh0J2vGBgvVqmEee9c8e1M=";
   };
 
   buildType = "catkin";

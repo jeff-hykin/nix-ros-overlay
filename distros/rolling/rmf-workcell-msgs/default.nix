@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-rmf-workcell-msgs";
   version = "3.0.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_internal_msgs-release/archive/release/rolling/rmf_workcell_msgs/3.0.2-1.tar.gz";
-    name = "3.0.2-1.tar.gz";
-    sha256 = "f313c10a25b91ad74e8364dd985399ab86e5b4b624f5da238d3bc07a176285ad";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_internal_msgs-release";
+    rev = "7843389e748183e25ffe0f916093c57fc73ce83c";
+    owner = "ros2-gbp";
+    sha256 = "sha256-xbcYhUVF2L0w6qNqAGKdGVjr2jWldgyA5ob23ZmS+yU=";
   };
 
   buildType = "ament_cmake";

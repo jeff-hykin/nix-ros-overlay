@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-hri";
   version = "0.5.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros4hri/libhri-release/archive/release/noetic/hri/0.5.3-1.tar.gz";
-    name = "0.5.3-1.tar.gz";
-    sha256 = "ccef099e06f279a1db1b99e535aa00bfafaa5dc5f444e8c999a41ff38c6c4ba2";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "libhri-release";
+    rev = "f54211ef4e4f504d4fef8237b1c2aefaae90e148";
+    owner = "ros4hri";
+    sha256 = "sha256-kizk6G3Z8HOZAugXX9krHLO3BM73emBJNIe4HnfM5tE=";
   };
 
   buildType = "catkin";

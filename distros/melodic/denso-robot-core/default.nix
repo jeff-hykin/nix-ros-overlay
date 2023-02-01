@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-denso-robot-core";
   version = "3.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/DENSORobot/denso_robot_ros-release/archive/release/melodic/denso_robot_core/3.2.0-1.tar.gz";
-    name = "3.2.0-1.tar.gz";
-    sha256 = "c2823db29c7191e68ed73cd9e44f134dd0bed78fcbe2e5f0ad5a47ded3292b1d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "denso_robot_ros-release";
+    rev = "ba3a5205e2fc5228404ac06202ca9c071b711feb";
+    owner = "DENSORobot";
+    sha256 = "sha256-DmKLgvuGgu+y3/nL2XJioUK9qmugv5JdMnek9TwYt2s=";
   };
 
   buildType = "catkin";

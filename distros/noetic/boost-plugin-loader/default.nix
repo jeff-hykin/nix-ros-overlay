@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-boost-plugin-loader";
   version = "0.2.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/tesseract-robotics-release/boost_plugin_loader-release/archive/release/noetic/boost_plugin_loader/0.2.1-1.tar.gz";
-    name = "0.2.1-1.tar.gz";
-    sha256 = "5b25d104c423656c625823667d299ab922c345f0aacdd9de0f1c4e16381e3951";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "boost_plugin_loader-release";
+    rev = "9e7e5c0676e2544a607ff7d9081263482a71e28f";
+    owner = "tesseract-robotics-release";
+    sha256 = "sha256-ZjoSvWcFE3AzAO8UquQff8huxjOm3V5FJ6XZ07XyYDs=";
   };
 
   buildType = "cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-key-teleop";
   version = "1.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/teleop_tools-release/archive/release/galactic/key_teleop/1.3.0-1.tar.gz";
-    name = "1.3.0-1.tar.gz";
-    sha256 = "bda57bc39ba604027a1fd39eb47393aaa495facfc8098fa80e2c47be1ea6145e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "teleop_tools-release";
+    rev = "5ecfb7c21103054183d8ecb737485a1fd9b59925";
+    owner = "ros2-gbp";
+    sha256 = "sha256-87yL4CShLr4rcnlMktKgwgbI5fQEz2pKnQ2f50LTssY=";
   };
 
   buildType = "ament_python";

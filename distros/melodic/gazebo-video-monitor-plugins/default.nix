@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-gazebo-video-monitor-plugins";
   version = "0.6.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/nlamprian/gazebo_video_monitors-release/archive/release/melodic/gazebo_video_monitor_plugins/0.6.0-2.tar.gz";
-    name = "0.6.0-2.tar.gz";
-    sha256 = "b33909506f81e443d5246da568e8465b808bb82192a9b21d9e141c41a06e2d73";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "gazebo_video_monitors-release";
+    rev = "d44495bbab7b75dd054e0175ad8b298c5a444304";
+    owner = "nlamprian";
+    sha256 = "sha256-35jkVTv6rle0U5HB9s9FZdDKkDgS3p1qMN4Hi/19bps=";
   };
 
   buildType = "catkin";

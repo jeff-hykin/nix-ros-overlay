@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-rttest";
   version = "0.9.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/realtime_support-release/archive/release/foxy/rttest/0.9.0-1.tar.gz";
-    name = "0.9.0-1.tar.gz";
-    sha256 = "5fe31ede66049996ed3ebcecc4e9b11d02e8adf8a633f6d50504a3f4911f434b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "realtime_support-release";
+    rev = "f1f58ba2cd26c538dc9f1111d61e5fd157c76deb";
+    owner = "ros2-gbp";
+    sha256 = "sha256-ki2E8kUbSjrijdmtuRZnChwzcxY+567BSsjNs23EltM=";
   };
 
   buildType = "ament_cmake";

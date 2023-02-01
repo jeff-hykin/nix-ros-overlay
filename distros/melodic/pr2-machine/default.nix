@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-pr2-machine";
   version = "1.13.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pr2-gbp/pr2_common-release/archive/release/melodic/pr2_machine/1.13.1-1.tar.gz";
-    name = "1.13.1-1.tar.gz";
-    sha256 = "9833870b936c19b4a17be04b1220e7106f5f81463737c5d68690ed0b3e05471f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pr2_common-release";
+    rev = "a76c827494e1ee67d32f43aaff6c0657b9bd71f4";
+    owner = "pr2-gbp";
+    sha256 = "sha256-17o10Esp/xkazOyDsAvJ/HwHHZ3MAL3nahc6QGNjLNA=";
   };
 
   buildType = "catkin";

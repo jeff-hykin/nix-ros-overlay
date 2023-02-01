@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-nav2-rviz-plugins";
   version = "1.0.12-r1";
 
-  src = fetchurl {
-    url = "https://github.com/SteveMacenski/navigation2-release/archive/release/galactic/nav2_rviz_plugins/1.0.12-1.tar.gz";
-    name = "1.0.12-1.tar.gz";
-    sha256 = "d33f957539bbdec66081ce8df83487bf7d89b700583696a1ae22d7e8fe4c4cee";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation2-release";
+    rev = "6f32f459faa165242e7a137f6aa12d135f628f83";
+    owner = "SteveMacenski";
+    sha256 = "sha256-efccfuQaZAGbcCZRjI7INIK5rtzITam1LGrxywpRgvw=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-audio-play";
   version = "0.3.16-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/audio_common-release/archive/release/melodic/audio_play/0.3.16-1.tar.gz";
-    name = "0.3.16-1.tar.gz";
-    sha256 = "282a8b82c28a44d3c6b753097c945fdba98f656edad5ce86f4fce41e89ffdda9";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "audio_common-release";
+    rev = "a1a005b8bd129b03259190f0a95486d4f4b05a4f";
+    owner = "ros-gbp";
+    sha256 = "sha256-KGvZAZzm90e0WEboyJcRVI4XaGeJ6yg8BxrCsvxBhzM=";
   };
 
   buildType = "catkin";

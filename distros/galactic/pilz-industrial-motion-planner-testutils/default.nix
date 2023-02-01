@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-pilz-industrial-motion-planner-testutils";
   version = "2.3.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/moveit/moveit2-release/archive/release/galactic/pilz_industrial_motion_planner_testutils/2.3.4-1.tar.gz";
-    name = "2.3.4-1.tar.gz";
-    sha256 = "d1527fe7bd867725e8c0a301e42278e4f6e166416ab96d48cf65d2781fa2ca04";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "moveit2-release";
+    rev = "a1f994c8b4a760b31c4a46e8f5f7ab4f06d4d5bf";
+    owner = "moveit";
+    sha256 = "sha256-bm1z73CXaBiINQWMvUoQUpEYGusFp3XGUxFuqhkqIKQ=";
   };
 
   buildType = "ament_cmake";

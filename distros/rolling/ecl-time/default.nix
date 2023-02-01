@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-ecl-time";
   version = "1.2.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/yujinrobot-release/ecl_core-release/archive/release/rolling/ecl_time/1.2.1-1.tar.gz";
-    name = "1.2.1-1.tar.gz";
-    sha256 = "d2d95f96576dceee6dca19a6f386dfa9249d72e6c4926bbd7544633a101d92b4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ecl_core-release";
+    rev = "c362bbdef05f376705b0bc49cf3641e3c6a65606";
+    owner = "yujinrobot-release";
+    sha256 = "sha256-SC1B6uuNMjWdHD10L5nXdVvgkguZSiwRc1i/zONxu5E=";
   };
 
   buildType = "ament_cmake";

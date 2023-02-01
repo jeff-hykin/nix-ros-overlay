@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-rclcpp-cascade-lifecycle";
   version = "0.0.8-r1";
 
-  src = fetchurl {
-    url = "https://github.com/fmrico/cascade_lifecycle-release/archive/release/foxy/rclcpp_cascade_lifecycle/0.0.8-1.tar.gz";
-    name = "0.0.8-1.tar.gz";
-    sha256 = "9cbd26130896e20268e8257b232fc9ea9d39b7978445f27d9746aa2fb7dd4aa5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cascade_lifecycle-release";
+    rev = "29176dcafdde78768e6e0d73f2f56badb525190a";
+    owner = "fmrico";
+    sha256 = "sha256-j7aUrL9nHcaWCsnd9G3x7JRGNQK0hdMZQX6baYZ5rUQ=";
   };
 
   buildType = "ament_cmake";

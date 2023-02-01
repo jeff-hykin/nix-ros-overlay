@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-prbt-grippers";
   version = "0.0.5-r2";
 
-  src = fetchurl {
-    url = "https://github.com/PilzDE/prbt_grippers-release/archive/release/noetic/prbt_grippers/0.0.5-2.tar.gz";
-    name = "0.0.5-2.tar.gz";
-    sha256 = "247d2f120856a583416b03754784fae60810ad9855c85b7681db9364547a44e7";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "prbt_grippers-release";
+    rev = "0d81ab3422b586554250de1c2c0806d29a98056f";
+    owner = "PilzDE";
+    sha256 = "sha256-fLyHAnipXvJrwYHBE8HPkAkyi/It9eLmqujUnrGU4X4=";
   };
 
   buildType = "catkin";

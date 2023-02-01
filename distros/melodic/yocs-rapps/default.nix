@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-yocs-rapps";
   version = "0.8.2";
 
-  src = fetchurl {
-    url = "https://github.com/yujinrobot-release/yujin_ocs-release/archive/release/melodic/yocs_rapps/0.8.2-0.tar.gz";
-    name = "0.8.2-0.tar.gz";
-    sha256 = "2767288fa43f309509dcd227d01f558b8c28ab860a65f63e92a2456abff0b1ea";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "yujin_ocs-release";
+    rev = "4adcc15dad5e8638c51019de9bac2b0afb3a15af";
+    owner = "yujinrobot-release";
+    sha256 = "sha256-swwMl1T9AsrnWwZr7Z//1cpQXmq3CydJeiDUl6GOKyM=";
   };
 
   buildType = "catkin";

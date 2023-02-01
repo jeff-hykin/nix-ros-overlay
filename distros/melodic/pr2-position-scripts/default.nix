@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-pr2-position-scripts";
   version = "0.6.1";
 
-  src = fetchurl {
-    url = "https://github.com/pr2-gbp/pr2_apps-release/archive/release/melodic/pr2_position_scripts/0.6.1-0.tar.gz";
-    name = "0.6.1-0.tar.gz";
-    sha256 = "8a6dddf6474456caf8bc7efdec66febbabfc1c4f5c4ca533a0520dcc5b6b660c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pr2_apps-release";
+    rev = "0dda182e0893200544d08fb48dfe5037229b8c66";
+    owner = "pr2-gbp";
+    sha256 = "sha256-1sj067bxjkBIlqr/tXm8VojtTxurpGM8Raf+qSLOf64=";
   };
 
   buildType = "catkin";

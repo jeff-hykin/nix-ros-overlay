@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-s3-file-uploader";
   version = "1.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/aws-gbp/rosbag_uploader-release/archive/release/melodic/s3_file_uploader/1.0.1-1.tar.gz";
-    name = "1.0.1-1.tar.gz";
-    sha256 = "c0dcc4dbd3ec1ee24590acc7b770caef82b6b4a4434517b277754f5738d6836a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosbag_uploader-release";
+    rev = "e286bff657db6ab34f04fc4ac6bf6d003fea1bfb";
+    owner = "aws-gbp";
+    sha256 = "sha256-iztGqlNyI8jbUNEEgyBo/wlaiAvV/aRTwgL5oSyzBWc=";
   };
 
   buildType = "catkin";

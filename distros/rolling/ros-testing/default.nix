@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-ros-testing";
   version = "0.5.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros_testing-release/archive/release/rolling/ros_testing/0.5.1-1.tar.gz";
-    name = "0.5.1-1.tar.gz";
-    sha256 = "1d7520271a26c66ce74e5c47e102b648abf61513e6bf1f98e1a4c7cc34f4cd40";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_testing-release";
+    rev = "5c6e948fa89f8ef218d86bbace25bb79ebf63bf6";
+    owner = "ros2-gbp";
+    sha256 = "sha256-wcx4E4Cli5Vd8Z9FxBz85aara7OcxPWxFM1ALrQ9u/E=";
   };
 
   buildType = "ament_cmake";

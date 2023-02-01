@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-diagnostic-updater";
   version = "2.0.8-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/diagnostics-release/archive/release/foxy/diagnostic_updater/2.0.8-2.tar.gz";
-    name = "2.0.8-2.tar.gz";
-    sha256 = "08abc22cf49ec9740af6ee857e2491213aeb78ffac9f589e14ab1faaa9b0c3ee";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "diagnostics-release";
+    rev = "cfb21edfdaed3323b14869b54f7e4f5b959e85a1";
+    owner = "ros2-gbp";
+    sha256 = "sha256-4Wh+u1Ii9tfrIRax+Ok57Jjv8krIv/LL+Iox9TBzg8o=";
   };
 
   buildType = "ament_cmake";

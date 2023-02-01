@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-rospack";
   version = "2.6.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/rospack-release/archive/release/noetic/rospack/2.6.2-1.tar.gz";
-    name = "2.6.2-1.tar.gz";
-    sha256 = "1d74ca071fa02049d6f9739aa0e2624afbeef4100c2f8ca76db4fc1c9e13c390";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rospack-release";
+    rev = "3e2c78c3fc0953cf0f6b8b62473d9a08a3007f7c";
+    owner = "ros-gbp";
+    sha256 = "sha256-Lb/4oAU4T1B11g/PWlp/Mr/+LlheL7tUDKEMOuKjnAY=";
   };
 
   buildType = "catkin";

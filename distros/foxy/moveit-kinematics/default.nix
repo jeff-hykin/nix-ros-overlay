@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-moveit-kinematics";
   version = "2.2.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/moveit/moveit2-release/archive/release/foxy/moveit_kinematics/2.2.3-1.tar.gz";
-    name = "2.2.3-1.tar.gz";
-    sha256 = "945a1aba5e751d6f7c6f9eb1f9845eaa5cd7e372ecd31c57e7625cfc644e78b6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "moveit2-release";
+    rev = "1a65d808df0fb1f8c5c91097287f200c5d794918";
+    owner = "moveit";
+    sha256 = "sha256-odcSyU3wwZ17xxv+LDFugiwVQyvZHHZNN72S8UT3/Kc=";
   };
 
   buildType = "ament_cmake";

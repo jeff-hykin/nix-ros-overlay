@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-gazebo-msgs";
   version = "3.7.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/gazebo_ros_pkgs-release/archive/release/rolling/gazebo_msgs/3.7.0-1.tar.gz";
-    name = "3.7.0-1.tar.gz";
-    sha256 = "d83c91f1f1034132a90d3bbfdee33b029090f23eb368cebf328c45ff6d8f949d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "gazebo_ros_pkgs-release";
+    rev = "ce9dd75a4289747a9ff7e2330096c081b9e2cb04";
+    owner = "ros2-gbp";
+    sha256 = "sha256-UEKtnD23be8+FhZoXcZ5WNX/ki81mNNmoreVf2LEcHM=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-fastrtps";
   version = "2.3.6-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/fastrtps-release/archive/release/galactic/fastrtps/2.3.6-1.tar.gz";
-    name = "2.3.6-1.tar.gz";
-    sha256 = "1f935f4c37920d6106a93c05f1d0f46b7596711a91be93fb90e0fddde55ad707";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "fastrtps-release";
+    rev = "5a569621accd610947324d772ba2a5af17a57c81";
+    owner = "ros2-gbp";
+    sha256 = "sha256-UN539N/C9cvc9PaqJl1gf5wI1gQwOuM9jWZLKTJsQks=";
   };
 
   buildType = "cmake";

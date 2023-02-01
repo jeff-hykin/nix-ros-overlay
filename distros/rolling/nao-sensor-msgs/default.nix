@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-nao-sensor-msgs";
   version = "0.0.4-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/nao_interfaces-release/archive/release/rolling/nao_sensor_msgs/0.0.4-2.tar.gz";
-    name = "0.0.4-2.tar.gz";
-    sha256 = "f973e97107df5ce3cb6d9b279a1eef8ace30484cb3006ecdfd4b3815fe20b010";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "nao_interfaces-release";
+    rev = "99872e5ef6a2608a2d624f0b5aaa45365d259acf";
+    owner = "ros2-gbp";
+    sha256 = "sha256-ZUHpXdRXtKXTlh+vFBMwE8bIfT9g/5YI9Z/XDh7MvS0=";
   };
 
   buildType = "ament_cmake";

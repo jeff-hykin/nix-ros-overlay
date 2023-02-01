@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-marker-msgs";
   version = "0.0.6-r7";
 
-  src = fetchurl {
-    url = "https://github.com/tuw-robotics/marker_msgs-release/archive/release/noetic/marker_msgs/0.0.6-7.tar.gz";
-    name = "0.0.6-7.tar.gz";
-    sha256 = "5e6d538a7981661af4e75752a3a3d254b8f6f9afb79a7f3c5b6a55f1f38b2bce";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "marker_msgs-release";
+    rev = "1592d816c74bbfea7d771965eb8634b1b061a561";
+    owner = "tuw-robotics";
+    sha256 = "sha256-KFmVAhnAs7l2wJqmM4VODUrE8DpKORIt9npqoLYCApo=";
   };
 
   buildType = "catkin";

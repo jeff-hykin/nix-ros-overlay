@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-spdlog-vendor";
   version = "1.3.0-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/spdlog_vendor-release/archive/release/humble/spdlog_vendor/1.3.0-3.tar.gz";
-    name = "1.3.0-3.tar.gz";
-    sha256 = "73e5d2f61ec5607e7904cd2407fa016971e0d5658d062e636e65b43ff7023696";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "spdlog_vendor-release";
+    rev = "1f04b84447c234643777ef97e4ff2f11926ed1f7";
+    owner = "ros2-gbp";
+    sha256 = "sha256-/I9nrqudZ02hCj0xn75WJ6J1NtiiGui/3AD8lsFmM80=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-ur-description";
   version = "2.0.2-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/Universal_Robots_ROS2_Driver-release/archive/release/foxy/ur_description/2.0.2-2.tar.gz";
-    name = "2.0.2-2.tar.gz";
-    sha256 = "01f4db0ef0116f3f60d0c41ded738da68b3625cbb8859628b581442497c2d0c5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "Universal_Robots_ROS2_Driver-release";
+    rev = "8bd938a4ce33ce6019b89c3d6f03e6e29bf68ba5";
+    owner = "ros2-gbp";
+    sha256 = "sha256-sJMo89gXMtIqD0D3Q7xeJ45vX96t5zhmgGZ/zm0c4NA=";
   };
 
   buildType = "ament_cmake";

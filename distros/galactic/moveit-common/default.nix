@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-moveit-common";
   version = "2.3.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/moveit/moveit2-release/archive/release/galactic/moveit_common/2.3.4-1.tar.gz";
-    name = "2.3.4-1.tar.gz";
-    sha256 = "363e76c772e53e51e5ac1efe079fffbdd021f4ab65c09880ca52fae03af1b818";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "moveit2-release";
+    rev = "3a0b5e3669e157d4144d5f8c16efd0daecc64536";
+    owner = "moveit";
+    sha256 = "sha256-o+iiOEN/wRXspdo7bnw5cFtp8FIGCGjED6tIbHgxQJY=";
   };
 
   buildType = "ament_cmake";

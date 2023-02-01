@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-marti-can-msgs";
   version = "0.11.0-r3";
 
-  src = fetchurl {
-    url = "https://github.com/swri-robotics-gbp/marti_messages-release/archive/release/melodic/marti_can_msgs/0.11.0-3.tar.gz";
-    name = "0.11.0-3.tar.gz";
-    sha256 = "5b41c4e23ab23c3321ad449fe70467c468b311876780d1af1baa6f51095f58f1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "marti_messages-release";
+    rev = "cd4bbd27edb3f9f23904f62d7790bc0aab2ec5c8";
+    owner = "swri-robotics-gbp";
+    sha256 = "sha256-2fTU3MddM9ASjVcv6Fwatjjebv28DYhBkCJ9UOhX5Cs=";
   };
 
   buildType = "catkin";

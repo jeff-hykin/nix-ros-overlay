@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-rostime";
   version = "0.6.14-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/roscpp_core-release/archive/release/melodic/rostime/0.6.14-1.tar.gz";
-    name = "0.6.14-1.tar.gz";
-    sha256 = "f6f308e9a4fdd5823498141e265bbe03b46f5a2233eab8ede343c3dc6eb2aee8";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "roscpp_core-release";
+    rev = "afc7bb77ed0147e9f29309f78699c83b159f2a3d";
+    owner = "ros-gbp";
+    sha256 = "sha256-qeH828b+c4uuHXk/roIoqkUzVBVt3j3BAbfT5gfXYS4=";
   };
 
   buildType = "catkin";

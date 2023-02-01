@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-nerian-stereo";
   version = "3.10.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/nerian-vision/nerian_stereo-release/archive/release/noetic/nerian_stereo/3.10.0-1.tar.gz";
-    name = "3.10.0-1.tar.gz";
-    sha256 = "f5772a719bfa7ac6aaad47c7f2af549a1b572c32f7ee09d803b490d589d68e77";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "nerian_stereo-release";
+    rev = "9d0fa6945a75375d56f119fa5c2f46ada9de6ef3";
+    owner = "nerian-vision";
+    sha256 = "sha256-EsAcFCJt7289el3nHlUx6lPXeTvfeNJVnTlGgHs8XKw=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-moveit-hybrid-planning";
   version = "2.3.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/moveit/moveit2-release/archive/release/galactic/moveit_hybrid_planning/2.3.4-1.tar.gz";
-    name = "2.3.4-1.tar.gz";
-    sha256 = "706da66907af5351fc015130d026c7e24da72d64698971f3f6592d592507d371";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "moveit2-release";
+    rev = "ad4804f3afb7dd521faefe7b9ac56443293ab7db";
+    owner = "moveit";
+    sha256 = "sha256-jIJTSYfjK5anNiY7i3CnRfQjPdbjYa6/urSMmhXO5XA=";
   };
 
   buildType = "ament_cmake";

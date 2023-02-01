@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-velodyne-description";
   version = "2.0.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/velodyne_simulator-release/archive/release/foxy/velodyne_description/2.0.3-1.tar.gz";
-    name = "2.0.3-1.tar.gz";
-    sha256 = "b556f0123b64775f17cd15fa4360df89a02bac01b3505d47c46c0538ec14a47e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "velodyne_simulator-release";
+    rev = "38ff9adf4756a675d606f591dc2ae5b649d52a3e";
+    owner = "ros2-gbp";
+    sha256 = "sha256-vYig3j3DqPeSuEmGlDfvaH64IGdK8x/Yxx40R/Sv5j4=";
   };
 
   buildType = "ament_cmake";

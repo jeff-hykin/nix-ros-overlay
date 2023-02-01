@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-dataspeed-dbw-msgs";
   version = "2.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/DataspeedInc-release/dbw_ros-release/archive/release/foxy/dataspeed_dbw_msgs/2.1.0-1.tar.gz";
-    name = "2.1.0-1.tar.gz";
-    sha256 = "b2df61a8a99619432486052b4932e4e87f9dba6faded76ba47c0bdd6df52ba68";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "dbw_ros-release";
+    rev = "6c6cf1343344d6bdb47f86fe805034a72a907768";
+    owner = "DataspeedInc-release";
+    sha256 = "sha256-EiO2VpYHpq1T9ICbgxtFZPNmiCPrt7KK9jYrr20iqZM=";
   };
 
   buildType = "ament_cmake";

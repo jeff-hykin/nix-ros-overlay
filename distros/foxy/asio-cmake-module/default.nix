@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-asio-cmake-module";
   version = "1.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-drivers-gbp/transport_drivers-release/archive/release/foxy/asio_cmake_module/1.0.0-1.tar.gz";
-    name = "1.0.0-1.tar.gz";
-    sha256 = "22d371d6006055b3c7d56dacc1c33be3760ab1cee55d6c8b932d3a28d7094020";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "transport_drivers-release";
+    rev = "917b07d09b39cc802cbf697091a2e3a52d58c67b";
+    owner = "ros-drivers-gbp";
+    sha256 = "sha256-L1UfSBsJEKevgELwvF5P8B3qHHLd+EG004UZSpNNtJ4=";
   };
 
   buildType = "ament_cmake";

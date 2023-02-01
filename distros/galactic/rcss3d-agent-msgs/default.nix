@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rcss3d-agent-msgs";
   version = "0.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rcss3d_agent-release/archive/release/galactic/rcss3d_agent_msgs/0.1.1-1.tar.gz";
-    name = "0.1.1-1.tar.gz";
-    sha256 = "1f97978b886ab5c50becadbc04781e17604fbbd46eda5b241486ad6404f95d6b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rcss3d_agent-release";
+    rev = "193b281adc51a4e239507fe7b1c60a50dcb9ceac";
+    owner = "ros2-gbp";
+    sha256 = "sha256-zSSnadkgHzHLsL0muUJMpooY8deOLiNJkvOBi4YE/Ro=";
   };
 
   buildType = "ament_cmake";

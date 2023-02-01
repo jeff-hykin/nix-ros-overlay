@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-ur-calibration";
   version = "2.0.2-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/Universal_Robots_ROS2_Driver-release/archive/release/foxy/ur_calibration/2.0.2-2.tar.gz";
-    name = "2.0.2-2.tar.gz";
-    sha256 = "45d2918cd9139d2b3271fc07c31529a6f84ae2d82bf84c05436615f6dc5ca538";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "Universal_Robots_ROS2_Driver-release";
+    rev = "5c326d2ee5461af6899f5c3e3527f1dc3195f52f";
+    owner = "ros2-gbp";
+    sha256 = "sha256-j9rVdit9VIx/5aRfLGEhAGaQGUFQIvDRyYr+HB6uUGQ=";
   };
 
   buildType = "ament_cmake";

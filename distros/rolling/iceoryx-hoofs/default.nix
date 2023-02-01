@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-iceoryx-hoofs";
   version = "2.0.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/iceoryx-release/archive/release/rolling/iceoryx_hoofs/2.0.2-1.tar.gz";
-    name = "2.0.2-1.tar.gz";
-    sha256 = "619364471b6b461c1b3edf8d507f9b5332b7b166c9f7b6660aca9f68e4ded00c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "iceoryx-release";
+    rev = "011cc0b59f4c1387f2325563507e7da2549096d2";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Rp1PfAjOoTn1F97oI/pkwePNPqZ2GOmbh/M5RwIgHvU=";
   };
 
   buildType = "cmake";

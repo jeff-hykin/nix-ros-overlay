@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-ament-download";
   version = "0.0.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/samsung-ros/ament_download-release/archive/release/humble/ament_download/0.0.5-1.tar.gz";
-    name = "0.0.5-1.tar.gz";
-    sha256 = "531c9b9a5ec77687257edfc3bf46cbc17458c596eda66f434974c38f9a4945e1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ament_download-release";
+    rev = "5ba55f0a786b9a53b508396ccc70c417df56b665";
+    owner = "samsung-ros";
+    sha256 = "sha256-6V9DhJraMIbNz3xeSeczpOFyaWgBqKsz2vQV4jFl6qk=";
   };
 
   buildType = "ament_cmake";

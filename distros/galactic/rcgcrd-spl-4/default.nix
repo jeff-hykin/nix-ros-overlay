@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rcgcrd-spl-4";
   version = "1.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/gc_spl-release/archive/release/galactic/rcgcrd_spl_4/1.0.0-1.tar.gz";
-    name = "1.0.0-1.tar.gz";
-    sha256 = "1f5c1eaf4ad83f06423c047ba37a45964c2ba53f4ba6d60c06efac5ded32d406";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "gc_spl-release";
+    rev = "8d5f9a67f6ac7e293fad8f043bc30b15027baf93";
+    owner = "ros2-gbp";
+    sha256 = "sha256-7kgeI+rmizZR+q7+uYx2E9TeaCbgX05FCqMamtvouBU=";
   };
 
   buildType = "ament_cmake";

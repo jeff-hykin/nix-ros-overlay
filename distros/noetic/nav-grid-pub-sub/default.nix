@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-nav-grid-pub-sub";
   version = "0.3.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/DLu/robot_navigation-release/archive/release/noetic/nav_grid_pub_sub/0.3.0-2.tar.gz";
-    name = "0.3.0-2.tar.gz";
-    sha256 = "558ae8160b38f4e7d4f3896f071de517215b4ea65c3f0b22e43108e8314a1e5a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "robot_navigation-release";
+    rev = "0360dc10e2b940d98f70262f7cce026c4f3f6b01";
+    owner = "DLu";
+    sha256 = "sha256-hCGpOEFTLJFyH2qek/Jb3NVnYRR7C8/XKMBU7RzpXXo=";
   };
 
   buildType = "catkin";

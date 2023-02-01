@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-ros2action";
   version = "0.21.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2cli-release/archive/release/rolling/ros2action/0.21.0-1.tar.gz";
-    name = "0.21.0-1.tar.gz";
-    sha256 = "f3ac5abaf1006bef743a6566be2793d9e869cd3dc57c6e17a66b0c0e454b3526";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2cli-release";
+    rev = "8e19f4134d5d925eeb95d146e6029869a59e6f6d";
+    owner = "ros2-gbp";
+    sha256 = "sha256-RFekj2+hBPcJdCcxgqyife+PPT4hLgfn9GyFYsi2Kjs=";
   };
 
   buildType = "ament_python";

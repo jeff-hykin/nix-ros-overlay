@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-r2r-spl-7";
   version = "3.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/r2r_spl-release/archive/release/rolling/r2r_spl_7/3.0.1-1.tar.gz";
-    name = "3.0.1-1.tar.gz";
-    sha256 = "d05563c4dd026b1a3681575e10982cb8bfe5fe9deb7a1db162cc4b21d6e0046e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "r2r_spl-release";
+    rev = "38a48717587e7e1a9804f3832df87480809cf6d7";
+    owner = "ros2-gbp";
+    sha256 = "sha256-KqN+JK6GIZritk8/5cBigl1cu2sdMFz9nP3mrSQOsro=";
   };
 
   buildType = "ament_python";

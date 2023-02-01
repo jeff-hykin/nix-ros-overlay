@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-rmf-demos-panel";
   version = "1.3.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_demos-release/archive/release/foxy/rmf_demos_panel/1.3.2-1.tar.gz";
-    name = "1.3.2-1.tar.gz";
-    sha256 = "2c39f52031668251c0825b27164b83d0014879019788c5fc5114c88e6eca4e98";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_demos-release";
+    rev = "185444d63110bcb65d94deb7b004ae215310b0dd";
+    owner = "ros2-gbp";
+    sha256 = "sha256-faMjYyBhbikgtOXeBgiS5War0yzf9guVNDP6O+xn/Vk=";
   };
 
   buildType = "ament_python";

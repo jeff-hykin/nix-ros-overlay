@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-mir-description";
   version = "1.1.6-r1";
 
-  src = fetchurl {
-    url = "https://github.com/uos-gbp/mir_robot-release/archive/release/noetic/mir_description/1.1.6-1.tar.gz";
-    name = "1.1.6-1.tar.gz";
-    sha256 = "b6206ed02b24e22354bc239fafa903d9cf6618251656d81b8e6093e89c9105f2";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mir_robot-release";
+    rev = "4fcf28db1d644bf911171ee6f56218e232092092";
+    owner = "uos-gbp";
+    sha256 = "sha256-2hjKBIwpVYdT2VfBYHOOlrxTOgdc+WIYxVBI/4o4aZs=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-cob-gazebo-ros-control";
   version = "0.7.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_gazebo_plugins-release/archive/release/melodic/cob_gazebo_ros_control/0.7.5-1.tar.gz";
-    name = "0.7.5-1.tar.gz";
-    sha256 = "5687adf479333067e28462c6d0de6df49a1542e58cb2fbc18cf5d094b20a3747";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_gazebo_plugins-release";
+    rev = "abb3d243665b9fe35a32405a899056b5f4662d76";
+    owner = "ipa320";
+    sha256 = "sha256-M6n2CL5kQz9BXrqlo31/lzjegdKP/W1Jdt3uBMZEsbY=";
   };
 
   buildType = "catkin";

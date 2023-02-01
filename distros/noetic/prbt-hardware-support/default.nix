@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-prbt-hardware-support";
   version = "0.6.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/PilzDE/pilz_robots-release/archive/release/noetic/prbt_hardware_support/0.6.0-1.tar.gz";
-    name = "0.6.0-1.tar.gz";
-    sha256 = "e52a0dd1a3c31542f3c232f31b7daff8a3edb0073b690d72cd1f0494daad37e2";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pilz_robots-release";
+    rev = "5255690c87bca5d4daad6a1157cc33e2196d5646";
+    owner = "PilzDE";
+    sha256 = "sha256-w3OZdXBw+WGya20pRJFKmBmpSwVJ7YIvD7LhfkN12VI=";
   };
 
   buildType = "catkin";

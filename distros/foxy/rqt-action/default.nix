@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-rqt-action";
   version = "1.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rqt_action-release/archive/release/foxy/rqt_action/1.0.1-1.tar.gz";
-    name = "1.0.1-1.tar.gz";
-    sha256 = "ebfdef186a9446d7789f7d202e8fd74ac85a206b7c9e7494a80813256b0c3ad1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt_action-release";
+    rev = "a5234e49c6cfa4119ae02c0c74831c01377e8d31";
+    owner = "ros2-gbp";
+    sha256 = "sha256-S090Lwzztp6BSY0LHvzwzaxaXlXHdjLTPUNq8Jb+Aok=";
   };
 
   buildType = "ament_python";

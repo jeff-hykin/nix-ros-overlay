@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-rmf-task";
   version = "2.1.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_task-release/archive/release/rolling/rmf_task/2.1.2-1.tar.gz";
-    name = "2.1.2-1.tar.gz";
-    sha256 = "549c84e258be38c2fb6522bd0803e9085bc470cd3772d4a91421fc4949c2a9f7";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_task-release";
+    rev = "bd9059fc4044759e3515aad5279a4813cc37e93c";
+    owner = "ros2-gbp";
+    sha256 = "sha256-KZmivQBJGc0UXlZQv4dPk3Gbpg983+dv57HXcuLPJZM=";
   };
 
   buildType = "cmake";

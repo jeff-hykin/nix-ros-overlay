@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-depthimage-to-laserscan";
   version = "2.3.1-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/depthimage_to_laserscan-release/archive/release/galactic/depthimage_to_laserscan/2.3.1-2.tar.gz";
-    name = "2.3.1-2.tar.gz";
-    sha256 = "a4e7698375510915b96cfa156a9ce79f939a724d47d0f62a3c0df31715a759dd";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "depthimage_to_laserscan-release";
+    rev = "a5e99244062e836559f2dbc99ad25cf3ef4b7db8";
+    owner = "ros2-gbp";
+    sha256 = "sha256-MEwcfPJWOQKOdasLQvBqRKJxQwC6F4fwlQMLoxKdNr8=";
   };
 
   buildType = "ament_cmake";

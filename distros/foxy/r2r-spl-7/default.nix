@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-r2r-spl-7";
   version = "0.0.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/r2r_spl-release/archive/release/foxy/r2r_spl_7/0.0.2-1.tar.gz";
-    name = "0.0.2-1.tar.gz";
-    sha256 = "5c6bcfdea32ca4f932d3368007c266a821538565faf6d1f79e1e4ff7790ee0a4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "r2r_spl-release";
+    rev = "20dd100af6d006a6694b977ad2753651244bfce6";
+    owner = "ros2-gbp";
+    sha256 = "sha256-0CstGz4gBmDuk8yvG4smIDj7nLkIqZmrzTylrn8Xzyw=";
   };
 
   buildType = "ament_python";

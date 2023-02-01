@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-collada-urdf";
   version = "1.12.13-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/collada_urdf-release/archive/release/melodic/collada_urdf/1.12.13-1.tar.gz";
-    name = "1.12.13-1.tar.gz";
-    sha256 = "f7d6164dbb2c9a92a9e9c80887c9b78b0cb9160d18273f8a4eba3c0d56eed363";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "collada_urdf-release";
+    rev = "14659f91875c02c60397a9d8894458068c3cc1c8";
+    owner = "ros-gbp";
+    sha256 = "sha256-wCc+mgNvgIJrdphObUrPAAyUhSO2eGhpUNVD0vT9DdU=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-marti-perception-msgs";
   version = "0.11.0-r3";
 
-  src = fetchurl {
-    url = "https://github.com/swri-robotics-gbp/marti_messages-release/archive/release/melodic/marti_perception_msgs/0.11.0-3.tar.gz";
-    name = "0.11.0-3.tar.gz";
-    sha256 = "9066c41d34b4fb442ac19c2f73f9f5d69872893ab11297acce4b43c72c4dd8eb";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "marti_messages-release";
+    rev = "ace15fc43e04e861bcf5dc9a145bc0ce4040aa77";
+    owner = "swri-robotics-gbp";
+    sha256 = "sha256-FRJDo+QsX1dQsncDtoCqByBOfhQUTXOnqSnReh5icJk=";
   };
 
   buildType = "catkin";

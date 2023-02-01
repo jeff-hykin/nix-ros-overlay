@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-hardware-interface";
   version = "2.18.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_control-release/archive/release/humble/hardware_interface/2.18.0-1.tar.gz";
-    name = "2.18.0-1.tar.gz";
-    sha256 = "58d1e81966c4630472e9a5fc7ea16ec408536ff810f57c1b7664ddb7c90c21a0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_control-release";
+    rev = "cbb2f705ded0e5d68380f544043a18df18d6cbb7";
+    owner = "ros2-gbp";
+    sha256 = "sha256-8yJTW+0dfRMFYJAaSPqGeX6kl/HIQm46MJgoyDT0FTA=";
   };
 
   buildType = "ament_cmake";

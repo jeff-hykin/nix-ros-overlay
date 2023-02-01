@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-sbg-driver";
   version = "3.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/SBG-Systems/sbg_ros2-release/archive/release/galactic/sbg_driver/3.1.0-1.tar.gz";
-    name = "3.1.0-1.tar.gz";
-    sha256 = "47a6675c2ade91d0bd6367ba292223874da95535f44abca55cc2d3caf60e101a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "sbg_ros2-release";
+    rev = "64a49b7eede4dc85818fd74d6dde976d84121b59";
+    owner = "SBG-Systems";
+    sha256 = "sha256-2ns+L7OIDiL7Rq3VTLjV5lb9lVDzPFXslxHjNM564Wg=";
   };
 
   buildType = "ament_cmake";

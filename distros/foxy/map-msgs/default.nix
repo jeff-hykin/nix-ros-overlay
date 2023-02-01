@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-map-msgs";
   version = "2.0.2-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/navigation_msgs-release/archive/release/foxy/map_msgs/2.0.2-2.tar.gz";
-    name = "2.0.2-2.tar.gz";
-    sha256 = "073a5dc040167eef7c3e3c38069da4c2b4167656dec561d07600cb535b97cd8b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation_msgs-release";
+    rev = "6607b8f5174eefb23e3a0eaf7a80b91fbfb45884";
+    owner = "ros2-gbp";
+    sha256 = "sha256-vemOHvf1vmu6J7+MsTv7Gf4Go7Cxqc2m5ORmv54ABJw=";
   };
 
   buildType = "ament_cmake";

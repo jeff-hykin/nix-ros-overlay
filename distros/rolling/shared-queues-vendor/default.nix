@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-shared-queues-vendor";
   version = "0.18.0-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rosbag2-release/archive/release/rolling/shared_queues_vendor/0.18.0-3.tar.gz";
-    name = "0.18.0-3.tar.gz";
-    sha256 = "4a319e8dbb45728015076e433d3863ffb5db88f2e9e46ac370c420aef6941779";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosbag2-release";
+    rev = "4eccef81ede9395eff6485a5a4ca59617737e3e6";
+    owner = "ros2-gbp";
+    sha256 = "sha256-HF2Y00UIgP6sjpAK6AGX93hazom7TMFOjqhMr0TTrxk=";
   };
 
   buildType = "ament_cmake";

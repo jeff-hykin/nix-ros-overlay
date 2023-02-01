@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-clober-msgs";
   version = "1.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/CLOBOT-Co-Ltd-release/clober_msgs-release/archive/release/noetic/clober_msgs/1.0.1-1.tar.gz";
-    name = "1.0.1-1.tar.gz";
-    sha256 = "f48c9dc40117870ac70ce005760f86554406dec4969b975f5d7f115b7af1669a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "clober_msgs-release";
+    rev = "2b1e31afef7208eb6f561995538cc15d19ace0c8";
+    owner = "CLOBOT-Co-Ltd-release";
+    sha256 = "sha256-6Ezg+uD3chy/MysednpP5PKOvzUD2/ddXijOaxerKSo=";
   };
 
   buildType = "catkin";

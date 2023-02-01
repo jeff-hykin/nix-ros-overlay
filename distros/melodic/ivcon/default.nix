@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-ivcon";
   version = "0.1.7";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/ivcon-release/archive/release/melodic/ivcon/0.1.7-0.tar.gz";
-    name = "0.1.7-0.tar.gz";
-    sha256 = "cbf6855c3a967f5e124a3ea7c6c954bbb57345030d77b22e2f76a77a17bcd3f3";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ivcon-release";
+    rev = "56b4843fd8879918050d5d539edc9d1eb07e8763";
+    owner = "ros-gbp";
+    sha256 = "sha256-/AREyVRZcOgZ6unXhnDRXXjgs270+ZhbsaVnzE7IBtQ=";
   };
 
   buildType = "catkin";

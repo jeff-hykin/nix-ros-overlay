@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-tof-sensor-controller";
   version = "0.1.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/rm-controls/rm_controllers-release/archive/release/noetic/tof_sensor_controller/0.1.5-1.tar.gz";
-    name = "0.1.5-1.tar.gz";
-    sha256 = "f661879fbed2c87d9d3a8320b8179bb0f164cfc6f5c05f041d56d3f69a171cbf";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rm_controllers-release";
+    rev = "8cbe4a19e562b04a70d0068602821506ca5f01f3";
+    owner = "rm-controls";
+    sha256 = "sha256-avbx5vZVEWuKJ9dZDC6yEwpVyckGb8wSMOEL/H70v2I=";
   };
 
   buildType = "catkin";

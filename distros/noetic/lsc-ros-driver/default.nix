@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-lsc-ros-driver";
   version = "1.0.2-r2";
 
-  src = fetchurl {
-    url = "https://github.com/AutonicsLiDAR-release/lsc_ros_driver-release/archive/release/noetic/lsc_ros_driver/1.0.2-2.tar.gz";
-    name = "1.0.2-2.tar.gz";
-    sha256 = "42c98d9245a7adf469b21dba3a12a2be6a8d91567cb37ece7f285d394f1e78c9";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "lsc_ros_driver-release";
+    rev = "ddfb812eebdc6511e144fa0cff8db0573616a1fd";
+    owner = "AutonicsLiDAR-release";
+    sha256 = "sha256-xYpSqVbtrXn/3u/Xxe7aYYJnOGgMohZ2Chgf/aTFFZo=";
   };
 
   buildType = "catkin";

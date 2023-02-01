@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-swri-dbw-interface";
   version = "3.5.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/marti_common-release/archive/release/rolling/swri_dbw_interface/3.5.0-1.tar.gz";
-    name = "3.5.0-1.tar.gz";
-    sha256 = "53410ff7371208fc0773a29e1a554be8aea5bf5df635bd5343ad0f498dc75a05";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "marti_common-release";
+    rev = "a24c8d0b899273f61b8dc63b8ddb71ff97c9b166";
+    owner = "ros2-gbp";
+    sha256 = "sha256-35WnQWZ5aKJ69dL8Bg4iySWFqeGjdjZhts5rmuyn+SU=";
   };
 
   buildType = "ament_cmake";

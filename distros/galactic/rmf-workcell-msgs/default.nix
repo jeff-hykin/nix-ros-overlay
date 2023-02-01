@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rmf-workcell-msgs";
   version = "1.4.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_internal_msgs-release/archive/release/galactic/rmf_workcell_msgs/1.4.0-1.tar.gz";
-    name = "1.4.0-1.tar.gz";
-    sha256 = "7ce462419bde3e139bab05b675091251f09a204a4c1cb44907d5fc024c62d47c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_internal_msgs-release";
+    rev = "54f1a882636706a50d1dedc93d6acc94553341ce";
+    owner = "ros2-gbp";
+    sha256 = "sha256-7ceVkXdVeIlNXF8DxmxSVAMdCARgDbbT1HtRXg5EP24=";
   };
 
   buildType = "ament_cmake";

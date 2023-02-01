@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-khi-rs080n-moveit-config";
   version = "1.3.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/Kawasaki-Robotics/khi_robot-release/archive/release/noetic/khi_rs080n_moveit_config/1.3.0-2.tar.gz";
-    name = "1.3.0-2.tar.gz";
-    sha256 = "0d2d13e6379d9cb141f147a1ab4be91180059db4c5bb15aecd26ecc7d9cb7158";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "khi_robot-release";
+    rev = "561ea2c631ded3c890169bbba6c00fbc6cfcca51";
+    owner = "Kawasaki-Robotics";
+    sha256 = "sha256-KCNEO9DoyLGMR1bFVqwEu6HxIKCciXcUE9DJUZTEA6M=";
   };
 
   buildType = "catkin";

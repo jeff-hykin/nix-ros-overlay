@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-statistics-msgs";
   version = "1.0.3-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rcl_interfaces-release/archive/release/galactic/statistics_msgs/1.0.3-2.tar.gz";
-    name = "1.0.3-2.tar.gz";
-    sha256 = "8aa7f0e9aeb5c4fbda1337817f6db8fcedfb9ae2e5bfc86168877057efae9a95";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rcl_interfaces-release";
+    rev = "92b3eeb8c5f3e88ea7a536504d5b58bce5e3bb15";
+    owner = "ros2-gbp";
+    sha256 = "sha256-PYjeCoRR7b3SN5u5sgQ/wZHA2n5Sgur6O8zKaLWjC3g=";
   };
 
   buildType = "ament_cmake";

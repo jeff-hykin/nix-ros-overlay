@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-thunder-line-follower-pmr3100";
   version = "0.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ThundeRatz/thunder_line_follower_pmr3100-release/archive/release/noetic/thunder_line_follower_pmr3100/0.1.1-1.tar.gz";
-    name = "0.1.1-1.tar.gz";
-    sha256 = "56789b16ded81ee822de841792ecb2d3271008642660ad77580d8de9d088760a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "thunder_line_follower_pmr3100-release";
+    rev = "665529bf5011f916613e4c2f27b61c7514f00997";
+    owner = "ThundeRatz";
+    sha256 = "sha256-du66a7yIEOjyY0h/T5t9rMsUZ9GtYx+uy82/qf2vCbE=";
   };
 
   buildType = "catkin";

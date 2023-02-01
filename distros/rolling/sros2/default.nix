@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-sros2";
   version = "0.11.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/sros2-release/archive/release/rolling/sros2/0.11.1-1.tar.gz";
-    name = "0.11.1-1.tar.gz";
-    sha256 = "3736cfea1007877fd433fe6320fab0d3457a55b703a3f507019a1960e830e953";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "sros2-release";
+    rev = "cac9398f1bebce0c870f6daf9185b4149e32b538";
+    owner = "ros2-gbp";
+    sha256 = "sha256-iIP4FpLm9H8ZzL4NurKCQZszYHwFsSGj5vyog19gmpk=";
   };
 
   buildType = "ament_python";

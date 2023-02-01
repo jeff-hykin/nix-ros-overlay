@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ecl-exceptions";
   version = "1.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/yujinrobot-release/ecl_core-release/archive/release/galactic/ecl_exceptions/1.2.0-1.tar.gz";
-    name = "1.2.0-1.tar.gz";
-    sha256 = "924a0b7b7bba234be34e9a4319d8cf841cd9db7972c83d73ec4aca6097297414";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ecl_core-release";
+    rev = "dbfa314beb40ad4e16c4dcb98c66c39778266e41";
+    owner = "yujinrobot-release";
+    sha256 = "sha256-PgIwDamNdHeRes26KpP+0Uvh/u8K+QTzsGg7qakI4hk=";
   };
 
   buildType = "ament_cmake";

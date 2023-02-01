@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-marti-data-structures";
   version = "2.15.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/swri-robotics-gbp/marti_common-release/archive/release/noetic/marti_data_structures/2.15.2-1.tar.gz";
-    name = "2.15.2-1.tar.gz";
-    sha256 = "a67b17e049c3821463e666259f06639b15a73ee12e6a5e9aa1c477b9dfad4333";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "marti_common-release";
+    rev = "b9d99808e09c823eb8228781298042ef31b91124";
+    owner = "swri-robotics-gbp";
+    sha256 = "sha256-QYtsHGdpf2JqsadQrM9lHT8XP8Bs+MkWkQMQlGJARWY=";
   };
 
   buildType = "catkin";

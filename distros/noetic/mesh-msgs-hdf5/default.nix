@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-mesh-msgs-hdf5";
   version = "1.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/uos-gbp/mesh-tools/archive/release/noetic/mesh_msgs_hdf5/1.1.0-1.tar.gz";
-    name = "1.1.0-1.tar.gz";
-    sha256 = "7279fa88fdb99d73322b17b85ba620afa1957bc3ff85ffda44fbef68b30d7ca3";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mesh-tools";
+    rev = "13a2db247a5110638060042bcb94ff6938f104dd";
+    owner = "uos-gbp";
+    sha256 = "sha256-Kf9SeFfh5uU41UM+re99mUAJyr+edzyE8/KCkuYqR/U=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-nodl-python";
   version = "0.3.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/nodl-release/archive/release/foxy/nodl_python/0.3.1-1.tar.gz";
-    name = "0.3.1-1.tar.gz";
-    sha256 = "e0877d94c8a263f37fc70675cbef35906d0618793334bf725d02bb76db9ebe2d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "nodl-release";
+    rev = "3dc360ddfc5ca59048eb25cc34ca7ced632dc998";
+    owner = "ros2-gbp";
+    sha256 = "sha256-rHEAtKnNTsXSB1UGfZYRfy3DQXrnGFWNntTfJyxEymc=";
   };
 
   buildType = "ament_python";

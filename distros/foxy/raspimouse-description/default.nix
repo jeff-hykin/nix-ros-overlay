@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-raspimouse-description";
   version = "1.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/raspimouse_description-release/archive/release/foxy/raspimouse_description/1.0.0-1.tar.gz";
-    name = "1.0.0-1.tar.gz";
-    sha256 = "4c14a50a79d663917064832aebf8d44ff60ad26c0d52faaebe53153977566c81";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "raspimouse_description-release";
+    rev = "2c5533dc437198a2c66df1e9420fdca80dc60916";
+    owner = "ros2-gbp";
+    sha256 = "sha256-yXilY0HdMKyAiNne7q6hEfsWFb/PDX0tlAl3aR3B6I0=";
   };
 
   buildType = "ament_cmake";

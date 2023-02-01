@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-controller-manager-msgs";
   version = "0.19.6-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/ros_control-release/archive/release/noetic/controller_manager_msgs/0.19.6-1.tar.gz";
-    name = "0.19.6-1.tar.gz";
-    sha256 = "d2dffc22d89e2c629a4f48688f175c6744058d749b8cf22db703edea21c558e4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_control-release";
+    rev = "391cf46332adc4ad1f072b0ca9ab7c8bbf49c967";
+    owner = "ros-gbp";
+    sha256 = "sha256-c2s6AkZIPdPp/BIDm1khivzFrGqAbacl2X/sCJgaAGo=";
   };
 
   buildType = "catkin";

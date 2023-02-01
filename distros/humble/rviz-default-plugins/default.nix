@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-rviz-default-plugins";
   version = "11.2.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rviz-release/archive/release/humble/rviz_default_plugins/11.2.4-1.tar.gz";
-    name = "11.2.4-1.tar.gz";
-    sha256 = "b4e914c28dd263b4c7bedeb1d85bb896190cf2b7155344a6f9839d0fe3d312b3";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rviz-release";
+    rev = "f61da9c4ac3b15c5674cc842b0ff66188a527349";
+    owner = "ros2-gbp";
+    sha256 = "sha256-jOoysOLFdtS3ehkzz2LkDyASqw/qHel9hDJrMkcesB8=";
   };
 
   buildType = "ament_cmake";

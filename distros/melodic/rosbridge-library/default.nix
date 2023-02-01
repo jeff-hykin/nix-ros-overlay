@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-rosbridge-library";
   version = "0.11.16-r2";
 
-  src = fetchurl {
-    url = "https://github.com/RobotWebTools-release/rosbridge_suite-release/archive/release/melodic/rosbridge_library/0.11.16-2.tar.gz";
-    name = "0.11.16-2.tar.gz";
-    sha256 = "a707fa37febd58803c65498b56779a6ff38a62cc3e10c44e1d0ff2289f152bf3";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosbridge_suite-release";
+    rev = "fe5299dc54e741314de37516b5719aa3f2efe86f";
+    owner = "RobotWebTools-release";
+    sha256 = "sha256-LZdHa91uSZCI4xCobrhmbbSktDrXCWJRg+eKwYhWmIo=";
   };
 
   buildType = "catkin";

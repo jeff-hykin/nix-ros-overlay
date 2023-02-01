@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-concert-workflow-engine-msgs";
   version = "0.9.0";
 
-  src = fetchurl {
-    url = "https://github.com/yujinrobot-release/rocon_msgs-release/archive/release/melodic/concert_workflow_engine_msgs/0.9.0-0.tar.gz";
-    name = "0.9.0-0.tar.gz";
-    sha256 = "2911128ce6bda4648b1264133cbcd10cb6be12c413bd50523089ff9e93699a0a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rocon_msgs-release";
+    rev = "1ded2cb2a56014a008d3aef37ce19790e8edcc15";
+    owner = "yujinrobot-release";
+    sha256 = "sha256-kiKrF8IJOwf1EoKLT0QJGi4iLAjV64Pf6S3iz3Jnmro=";
   };
 
   buildType = "catkin";

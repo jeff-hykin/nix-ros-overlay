@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rmf-traffic-ros2";
   version = "1.4.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_ros2-release/archive/release/galactic/rmf_traffic_ros2/1.4.0-1.tar.gz";
-    name = "1.4.0-1.tar.gz";
-    sha256 = "77d8d1380ad54a1913fd9ed6e03731a46a7b7cc6732f9012b13729ce2bb4cdbb";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_ros2-release";
+    rev = "675dd1c277f8b51eb59908c084afcdef9bb68d7e";
+    owner = "ros2-gbp";
+    sha256 = "sha256-GvSLH+ay7D8Ml4Zr6PqFTB2XF4YIaIRsYXGFSDYSUhk=";
   };
 
   buildType = "ament_cmake";

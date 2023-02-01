@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-willow-maps";
   version = "1.0.3";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/willow_maps-release/archive/release/melodic/willow_maps/1.0.3-0.tar.gz";
-    name = "1.0.3-0.tar.gz";
-    sha256 = "8c9dbbaeabb4464c98637228bddfd69f2b0e8692e40d9a0f0921b4b910e0dfe9";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "willow_maps-release";
+    rev = "23b71b52c3d3573df7f86257bf5cb99cca7e1020";
+    owner = "ros-gbp";
+    sha256 = "sha256-IIn8UQEUNVNd+OCgqtSbqflAXMrQItZZjwiSGzuJKd4=";
   };
 
   buildType = "catkin";

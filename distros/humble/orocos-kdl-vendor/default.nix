@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-orocos-kdl-vendor";
   version = "0.2.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/orocos_kdl_vendor-release/archive/release/humble/orocos_kdl_vendor/0.2.4-1.tar.gz";
-    name = "0.2.4-1.tar.gz";
-    sha256 = "b6f80dd7f0b4e02e878b171c1316b74676d3f6a3be9366c448ad9ba87e81d86f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "orocos_kdl_vendor-release";
+    rev = "8585c279200c15d0030b69bf8178a39912c8e3b1";
+    owner = "ros2-gbp";
+    sha256 = "sha256-UeynhsBaXswb/ZzScaCXgkhQJXYxJG+vOfzDFZJmHmo=";
   };
 
   buildType = "ament_cmake";

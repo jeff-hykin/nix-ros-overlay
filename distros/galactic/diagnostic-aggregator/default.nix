@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-diagnostic-aggregator";
   version = "2.1.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/diagnostics-release/archive/release/galactic/diagnostic_aggregator/2.1.3-1.tar.gz";
-    name = "2.1.3-1.tar.gz";
-    sha256 = "d22fc5fb0cc86d4279d1b44af1d7975fb15003fa8dd81e39b1a314390ab1e6b4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "diagnostics-release";
+    rev = "b717bbc9221282246ac259674b1555f8d4c82f5f";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Z8BWCqwGd9+GP2UM42gTgOqfSPSuRJQ8H1IoH0qDKs8=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-map-organizer-msgs";
   version = "0.8.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/at-wat/neonavigation_msgs-release/archive/release/noetic/map_organizer_msgs/0.8.0-1.tar.gz";
-    name = "0.8.0-1.tar.gz";
-    sha256 = "1434e36726307ee6ed9b2a58934b286802700a685e8382c35af4b4aa200060ef";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "neonavigation_msgs-release";
+    rev = "ffa6206d1683a7a9d7739691b144b3d02c3ff943";
+    owner = "at-wat";
+    sha256 = "sha256-rZpSv0ZSf/+NVBEbH0TEr0ruQ199Ysw2i9KX4EmRoBA=";
   };
 
   buildType = "catkin";

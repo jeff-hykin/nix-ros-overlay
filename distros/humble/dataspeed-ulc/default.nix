@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-dataspeed-ulc";
   version = "2.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/DataspeedInc-release/dbw_ros-release/archive/release/humble/dataspeed_ulc/2.1.0-1.tar.gz";
-    name = "2.1.0-1.tar.gz";
-    sha256 = "f4999de01e59802740826963a4dcbbf40260e83a67ef997ca99b25ae9433ed54";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "dbw_ros-release";
+    rev = "e122c908539b54e10150cbdeaa97a1867d21aa23";
+    owner = "DataspeedInc-release";
+    sha256 = "sha256-ZX+1t6NMshgUlsPUMx7ORSzFingeQBXSui5xepG7Zss=";
   };
 
   buildType = "ament_cmake";

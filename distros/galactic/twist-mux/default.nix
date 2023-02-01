@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-twist-mux";
   version = "4.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/twist_mux-release/archive/release/galactic/twist_mux/4.1.0-1.tar.gz";
-    name = "4.1.0-1.tar.gz";
-    sha256 = "0d0216eaf197e326ba6e804126646761f009d3a0d83bf3aaad1509a3374ab770";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "twist_mux-release";
+    rev = "93f4c7e5a176b1157cfe654ba0d4c0a31f36c785";
+    owner = "ros-gbp";
+    sha256 = "sha256-BoZjLes6uwKLIV+Tt84oPmHntg1LPbq87iB0fQUKtm8=";
   };
 
   buildType = "ament_cmake";

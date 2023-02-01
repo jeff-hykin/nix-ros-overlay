@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-sdl2-vendor";
   version = "3.1.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/joystick_drivers-release/archive/release/rolling/sdl2_vendor/3.1.0-2.tar.gz";
-    name = "3.1.0-2.tar.gz";
-    sha256 = "4e5bd6daf4379fc80635f4ff2fb491250d3b8136fad6a6cce8e1aa89222a12fe";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "joystick_drivers-release";
+    rev = "2dd1de446355c629304bb8f6b7d20b2ea6ddeff6";
+    owner = "ros2-gbp";
+    sha256 = "sha256-yK9/I8H81uj13ica+FzxQlDpD4xNsbe3+OtP4FWAv1M=";
   };
 
   buildType = "ament_cmake";

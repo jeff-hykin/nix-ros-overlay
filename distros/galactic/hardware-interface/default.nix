@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-hardware-interface";
   version = "1.6.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_control-release/archive/release/galactic/hardware_interface/1.6.0-1.tar.gz";
-    name = "1.6.0-1.tar.gz";
-    sha256 = "e9a6e0f570d7e5b22f94fecaf7cf3851866771c69de53c3f7070a9f84e37a476";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_control-release";
+    rev = "4961fdadca5b2b7a59e92f22dbb3f52858653eb5";
+    owner = "ros2-gbp";
+    sha256 = "sha256-EmPatm5gXG6viDLIp3MorNQtiGdPr5WIrgtm9upUZTg=";
   };
 
   buildType = "ament_cmake";

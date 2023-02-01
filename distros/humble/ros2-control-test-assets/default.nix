@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-ros2-control-test-assets";
   version = "2.18.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_control-release/archive/release/humble/ros2_control_test_assets/2.18.0-1.tar.gz";
-    name = "2.18.0-1.tar.gz";
-    sha256 = "f0105ec2eb47daeffb3580c71b44bee3e15275e9bfb408e07dace7752c6eb87e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_control-release";
+    rev = "e310e00f196abc8ced6c997100f2c1fe3c1e5c7b";
+    owner = "ros2-gbp";
+    sha256 = "sha256-jxXlVu9jl0rh46TUnUdt11qqYZY4oJ/XSB6r7dLb0EI=";
   };
 
   buildType = "ament_cmake";

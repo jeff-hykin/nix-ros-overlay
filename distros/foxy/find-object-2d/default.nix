@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-find-object-2d";
   version = "0.7.0-r3";
 
-  src = fetchurl {
-    url = "https://github.com/introlab/find_object_2d-release/archive/release/foxy/find_object_2d/0.7.0-3.tar.gz";
-    name = "0.7.0-3.tar.gz";
-    sha256 = "4d0ccbadb0b7d4240396631c5ba7c808d3f0f7e5b08a6c05ad5bb1a5e811f973";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "find_object_2d-release";
+    rev = "8727f95c08c81543931571726098a30e4afbf91b";
+    owner = "introlab";
+    sha256 = "sha256-KtLe1v52K9gb/p4t0Yqdkc99Hgi67wNcFpmguOilOnA=";
   };
 
   buildType = "ament_cmake";

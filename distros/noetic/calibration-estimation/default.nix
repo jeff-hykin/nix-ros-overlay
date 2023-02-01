@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-calibration-estimation";
   version = "0.10.15-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/calibration-release/archive/release/noetic/calibration_estimation/0.10.15-1.tar.gz";
-    name = "0.10.15-1.tar.gz";
-    sha256 = "d48efed94ad8e717abd4e2b2ee34ef8de8085b6b1a12b9dc6e451b5485073ce6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "calibration-release";
+    rev = "905bc1ff95a02deea0c21defa8cd0ca4eb7f8f21";
+    owner = "ros-gbp";
+    sha256 = "sha256-zA++EMqqTySSrx2yPtv1cQUiUjqe7nk5G/9wkuxw5OQ=";
   };
 
   buildType = "catkin";

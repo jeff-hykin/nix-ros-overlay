@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-simple-grasping";
   version = "0.4.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/simple_grasping-release/archive/release/noetic/simple_grasping/0.4.0-1.tar.gz";
-    name = "0.4.0-1.tar.gz";
-    sha256 = "57d79f160a4eff3aa4cfb842248b85c9dcc8c5ff2a28154348133f7ca54ac2cc";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "simple_grasping-release";
+    rev = "73aff7554abc9709ff00282359271807896152dc";
+    owner = "ros-gbp";
+    sha256 = "sha256-EGllvPx8vCsQJEPfg73wA1grw7WDAOkILY2T3nf1F6w=";
   };
 
   buildType = "catkin";

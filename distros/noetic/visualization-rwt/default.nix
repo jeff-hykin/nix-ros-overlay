@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-visualization-rwt";
   version = "0.1.1-r2";
 
-  src = fetchurl {
-    url = "https://github.com/tork-a/visualization_rwt-release/archive/release/noetic/visualization_rwt/0.1.1-2.tar.gz";
-    name = "0.1.1-2.tar.gz";
-    sha256 = "9f7696b756cb58f68b4bef7f5c615a2e152b0f94b351c4bd82997faec77afa02";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "visualization_rwt-release";
+    rev = "13d9d6a7a14fdb57916fa607c70048c88e1f65e1";
+    owner = "tork-a";
+    sha256 = "sha256-qDGh7WzFmQYV/+UuebOZU5C7cNH3xxDvxmem7/aJ2Mg=";
   };
 
   buildType = "catkin";

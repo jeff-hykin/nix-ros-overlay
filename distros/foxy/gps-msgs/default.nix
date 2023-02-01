@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-gps-msgs";
   version = "1.0.6-r1";
 
-  src = fetchurl {
-    url = "https://github.com/swri-robotics-gbp/gps_umd-release/archive/release/foxy/gps_msgs/1.0.6-1.tar.gz";
-    name = "1.0.6-1.tar.gz";
-    sha256 = "4c700cee631e72df22f3e4312f1213da730f7c938e52715ea37bd9cddd55fb57";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "gps_umd-release";
+    rev = "74e73d5bc18d56c044948e37f23e62fc9ed65230";
+    owner = "swri-robotics-gbp";
+    sha256 = "sha256-8GNuRYbpbk3rXhWYJY2RzwRhEYIqyjoSVU2aJuZsle8=";
   };
 
   buildType = "ament_cmake";

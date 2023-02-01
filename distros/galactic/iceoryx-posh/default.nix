@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-iceoryx-posh";
   version = "1.0.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/iceoryx-release/archive/release/galactic/iceoryx_posh/1.0.0-2.tar.gz";
-    name = "1.0.0-2.tar.gz";
-    sha256 = "5ed2f4c96dd99f40f24bceb0fadcc5052791722d16b6811b309a12988d6ce492";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "iceoryx-release";
+    rev = "d17617220ea6cc0df6a4f9360fe6deb844a4ba31";
+    owner = "ros2-gbp";
+    sha256 = "sha256-lwb18jEN4K/ybPwnqjwo9Ym/NaWiGtUwRlGI8sOHH58=";
   };
 
   buildType = "cmake";

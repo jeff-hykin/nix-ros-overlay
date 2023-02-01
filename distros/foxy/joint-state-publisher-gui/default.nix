@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-joint-state-publisher-gui";
   version = "2.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/joint_state_publisher-release/archive/release/foxy/joint_state_publisher_gui/2.2.0-1.tar.gz";
-    name = "2.2.0-1.tar.gz";
-    sha256 = "59eb7392cf4604b0c3fcbe680ebbe42dd0b77d8a6ecdae83c721227880c6d040";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "joint_state_publisher-release";
+    rev = "cfdaa83ed76856f5d498c2474e894c5f54ae2973";
+    owner = "ros2-gbp";
+    sha256 = "sha256-W84l+lUNxOu7eBudWo5WPyXP4jAsdvyzkj/dsUKb63M=";
   };
 
   buildType = "ament_python";

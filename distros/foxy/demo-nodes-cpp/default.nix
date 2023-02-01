@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-demo-nodes-cpp";
   version = "0.9.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/demos-release/archive/release/foxy/demo_nodes_cpp/0.9.4-1.tar.gz";
-    name = "0.9.4-1.tar.gz";
-    sha256 = "2e58144a7f22097a27776c01c378c0406aa47a924850819ed9081e9ed2ff232b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "demos-release";
+    rev = "192be008adc1cc3e95dd2b492ffd1cd04ab5831f";
+    owner = "ros2-gbp";
+    sha256 = "sha256-X5psSNzAPywqutJi+uau2P05aFoh8jyph1wf2Ic7aKs=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-ign-ros2-control-demos";
   version = "0.5.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ign_ros2_control-release/archive/release/rolling/ign_ros2_control_demos/0.5.0-1.tar.gz";
-    name = "0.5.0-1.tar.gz";
-    sha256 = "d9a2dd78c4069b28092f64e7cf23bc40211ff92ca2fc1dc0082102bf5d3a64b6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ign_ros2_control-release";
+    rev = "3ac38129188b26cd7f465deebceb3c8e5be29366";
+    owner = "ros2-gbp";
+    sha256 = "sha256-6/EjGd1DCnftyUnlIiB7/NoTb2ClLcBTJm0cp82S6d4=";
   };
 
   buildType = "ament_cmake";

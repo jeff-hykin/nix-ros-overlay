@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-locomotor";
   version = "0.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/DLu/robot_navigation-release/archive/release/melodic/locomotor/0.3.0-1.tar.gz";
-    name = "0.3.0-1.tar.gz";
-    sha256 = "2d6254e21d33eb956ed0457e845767e0bc9eddcc5fc2852977945986b3414b03";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "robot_navigation-release";
+    rev = "069390f43cf3a385d5620a59715c87d3e032f2c5";
+    owner = "DLu";
+    sha256 = "sha256-X95rZ03lKDh/jkzbkae//lqHkf2Ue+rMuCCNC2ssir0=";
   };
 
   buildType = "catkin";

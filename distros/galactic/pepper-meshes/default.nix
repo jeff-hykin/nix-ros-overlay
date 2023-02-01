@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-pepper-meshes";
   version = "2.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-naoqi/pepper_meshes2-release/archive/release/galactic/pepper_meshes/2.0.1-1.tar.gz";
-    name = "2.0.1-1.tar.gz";
-    sha256 = "df76a47d531b2487ff290d67f5fb7057fa4b3434b4e8e43cd24aac587785fca3";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pepper_meshes2-release";
+    rev = "06aec5c5269e77699c20c79d73178533418254fe";
+    owner = "ros-naoqi";
+    sha256 = "sha256-x7TfmyylvHyBpFrOUKQGtaZikgDGcbMTBbtX4knsxeE=";
   };
 
   buildType = "ament_cmake";

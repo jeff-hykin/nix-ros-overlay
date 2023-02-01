@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-kalman-filter";
   version = "0.2.6-r1";
 
-  src = fetchurl {
-    url = "https://github.com/wu-robotics/wu_ros_tools/archive/release/melodic/kalman_filter/0.2.6-1.tar.gz";
-    name = "0.2.6-1.tar.gz";
-    sha256 = "475f257f7956a310bf68174451cc299d57b40d0933c72a6d2ec878c9deef76fb";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "wu_ros_tools";
+    rev = "9f2b77c00b2ebda7f8d83bb2c57bd95cf643adea";
+    owner = "wu-robotics";
+    sha256 = "sha256-/a/1udT+YzGVg8uWGfsGWTOmSG17q+uRCYvws7QJv6Y=";
   };
 
   buildType = "catkin";

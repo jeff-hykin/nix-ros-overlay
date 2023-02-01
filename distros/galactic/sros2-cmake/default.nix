@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-sros2-cmake";
   version = "0.10.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/sros2-release/archive/release/galactic/sros2_cmake/0.10.3-1.tar.gz";
-    name = "0.10.3-1.tar.gz";
-    sha256 = "3c46164870aa9209546438c151ddfef2f1109bc49b58ea667c053bded8e407b0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "sros2-release";
+    rev = "a63085836245465929d0b53835dd5528fa3d72a9";
+    owner = "ros2-gbp";
+    sha256 = "sha256-gOSRCMzjEoJBxE+/SVT7ekb9w2FOGmpXyrHkWdPjGyI=";
   };
 
   buildType = "ament_cmake";

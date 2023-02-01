@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-moveit-kinematics";
   version = "2.3.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/moveit/moveit2-release/archive/release/galactic/moveit_kinematics/2.3.4-1.tar.gz";
-    name = "2.3.4-1.tar.gz";
-    sha256 = "83872949a43e86655d7c377f1f06b0480e8c2b54fa242efa76b0ec85d5133886";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "moveit2-release";
+    rev = "819c3dabdb7b7986609e6195d8449b9f1806565c";
+    owner = "moveit";
+    sha256 = "sha256-vIOGPxcX8UthyNPWadWJuwiHsNSh4Ppp7xNE8Y0unzk=";
   };
 
   buildType = "ament_cmake";

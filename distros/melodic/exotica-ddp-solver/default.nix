@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-exotica-ddp-solver";
   version = "6.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipab-slmc/exotica-release/archive/release/melodic/exotica_ddp_solver/6.2.0-1.tar.gz";
-    name = "6.2.0-1.tar.gz";
-    sha256 = "778875f473020668f70d8fd46ccd6b3438dce9ff3ab747a0929232b0ae07d963";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "exotica-release";
+    rev = "380ccaa2d64cf1d25c3734ad67807923c30a59e8";
+    owner = "ipab-slmc";
+    sha256 = "sha256-BkUusXl/YxioP2YDdwN4gPBjfpcpAcnQSn7CrsurawQ=";
   };
 
   buildType = "catkin";

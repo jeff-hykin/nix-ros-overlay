@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-septentrio-gnss-driver";
   version = "1.2.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/septentrio-users/septentrio_gnss_driver_ros2-release/archive/release/galactic/septentrio_gnss_driver/1.2.3-1.tar.gz";
-    name = "1.2.3-1.tar.gz";
-    sha256 = "5995ab056a09ff127db3addbb23d9dfaa9ddd6bcfbd2b4d3310288d1148c4558";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "septentrio_gnss_driver_ros2-release";
+    rev = "6941a88b514ef5456aa7a10a45f765c873502713";
+    owner = "septentrio-users";
+    sha256 = "sha256-kCTbqq1KzuGhmwyJcXz5kKbZ7+9maCG6AATdtFnvZ8Y=";
   };
 
   buildType = "ament_cmake";

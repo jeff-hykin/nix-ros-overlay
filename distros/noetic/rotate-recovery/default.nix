@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-rotate-recovery";
   version = "1.17.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/navigation-release/archive/release/noetic/rotate_recovery/1.17.2-1.tar.gz";
-    name = "1.17.2-1.tar.gz";
-    sha256 = "87a081850938a83f23315d8a610537e35a6d45aa0278ca5d502e3b11bc3dba41";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation-release";
+    rev = "387b9fbead5d9bf0e492043debcf3c72f9952aea";
+    owner = "ros-gbp";
+    sha256 = "sha256-m5Vrkv9fa0X5Z8h72LNu+M2f075YCzHaYNccIIxJR1E=";
   };
 
   buildType = "catkin";

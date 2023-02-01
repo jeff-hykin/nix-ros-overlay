@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-microstrain-inertial-msgs";
   version = "2.7.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/microstrain_inertial-release/archive/release/rolling/microstrain_inertial_msgs/2.7.1-1.tar.gz";
-    name = "2.7.1-1.tar.gz";
-    sha256 = "b3e78b2e33c64ce428c90ebde395bf7b2a50cf6fbf983531ee2a15f6e77e07e6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "microstrain_inertial-release";
+    rev = "9e1350ffc66cd7b0568310ce12456924cd31dde9";
+    owner = "ros2-gbp";
+    sha256 = "sha256-cusMqWXcgQlqr1iExAHgu3mVjavKq6C0lsetLQ1txqU=";
   };
 
   buildType = "ament_cmake";

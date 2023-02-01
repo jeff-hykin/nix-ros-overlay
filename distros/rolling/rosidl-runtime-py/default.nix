@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-rosidl-runtime-py";
   version = "0.11.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rosidl_runtime_py-release/archive/release/rolling/rosidl_runtime_py/0.11.0-1.tar.gz";
-    name = "0.11.0-1.tar.gz";
-    sha256 = "c1ee13beb5bf5678494babe51785f5198593a502f16db54a22d3a5999a6d8238";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosidl_runtime_py-release";
+    rev = "54237d6319567fee1daab18c145f3d08d4d5f6c6";
+    owner = "ros2-gbp";
+    sha256 = "sha256-LIYbGekAqz1nY7Xs4k8Bo9/+LeLhQPZPJRHpulhq8yw=";
   };
 
   buildType = "ament_python";

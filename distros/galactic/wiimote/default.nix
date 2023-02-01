@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-wiimote";
   version = "3.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/joystick_drivers-release/archive/release/galactic/wiimote/3.0.1-1.tar.gz";
-    name = "3.0.1-1.tar.gz";
-    sha256 = "be48f544d7890782c858aa68c8ef39ecdb1f6fefc4b0ebef1b96f8226e7e67f5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "joystick_drivers-release";
+    rev = "989662b5d352f424e7a09df972094bd34b745485";
+    owner = "ros2-gbp";
+    sha256 = "sha256-i/WGBYOoL0AbC0vUuodbMQTAcRjJiYDuD2mli7QFcWk=";
   };
 
   buildType = "ament_cmake";

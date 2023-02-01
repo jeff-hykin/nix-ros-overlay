@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-joy-teleop";
   version = "1.3.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/teleop_tools-release/archive/release/rolling/joy_teleop/1.3.0-2.tar.gz";
-    name = "1.3.0-2.tar.gz";
-    sha256 = "9c8eb136a4a3bce477c30e76484d3966570591a274383716dbc0d9d3aed13692";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "teleop_tools-release";
+    rev = "3566c6a1cf3d65073c5e91870dd50827294690ae";
+    owner = "ros2-gbp";
+    sha256 = "sha256-pOO81abXuYpWTZZ3XcPdFNVRBA04FYijCK3alScPZJ8=";
   };
 
   buildType = "ament_python";

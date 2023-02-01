@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-depth-image-proc";
   version = "1.15.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/image_pipeline-release/archive/release/melodic/depth_image_proc/1.15.2-1.tar.gz";
-    name = "1.15.2-1.tar.gz";
-    sha256 = "1a96a4b0043043f126f78236f49b335d69c163137c2a2b4af38db5e157e82289";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "image_pipeline-release";
+    rev = "fe3028f57bea17679c496e3cdb86b12a91d6f716";
+    owner = "ros-gbp";
+    sha256 = "sha256-kH6/mD8/ttC4mIR//pNObdt2OzpbKWaIIJOzQ7QWMGM=";
   };
 
   buildType = "catkin";

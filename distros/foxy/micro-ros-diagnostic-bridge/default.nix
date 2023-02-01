@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-micro-ros-diagnostic-bridge";
   version = "0.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/micro_ros_diagnostics-release/archive/release/foxy/micro_ros_diagnostic_bridge/0.3.0-1.tar.gz";
-    name = "0.3.0-1.tar.gz";
-    sha256 = "df65b98f82eb8169cec46d2c57132954f172e7b27e97e4b4fa800ab888b8c94e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "micro_ros_diagnostics-release";
+    rev = "27bfb25245546527d73697311a6feae6c5b9e5ed";
+    owner = "ros2-gbp";
+    sha256 = "sha256-mBsQdSKOPVQJVBc/FxvaxH5NOtAJy3M+bYciq7eHg+c=";
   };
 
   buildType = "ament_cmake";

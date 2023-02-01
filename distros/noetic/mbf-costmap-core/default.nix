@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-mbf-costmap-core";
   version = "0.4.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/uos-gbp/move_base_flex-release/archive/release/noetic/mbf_costmap_core/0.4.0-1.tar.gz";
-    name = "0.4.0-1.tar.gz";
-    sha256 = "9942ff1299b2b7714ff6276b0b42e87c2fefb00e01f758dc65e7d322204538ba";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "move_base_flex-release";
+    rev = "c856450a51919790583e9f869522a7bb7868d136";
+    owner = "uos-gbp";
+    sha256 = "sha256-CJUL9Kmo1Uv4oA86nWfb+BkR7lEop0acl5CPCyfb4Ws=";
   };
 
   buildType = "catkin";

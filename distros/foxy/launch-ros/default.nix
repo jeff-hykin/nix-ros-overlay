@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-launch-ros";
   version = "0.11.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/launch_ros-release/archive/release/foxy/launch_ros/0.11.7-1.tar.gz";
-    name = "0.11.7-1.tar.gz";
-    sha256 = "0e975c2ab68d4e6a7871120e27f757f27869c3f034c7e62b2cec6b79a52b459c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "launch_ros-release";
+    rev = "8ea471f94a2254f0a1f3c72ed88b492d18914508";
+    owner = "ros2-gbp";
+    sha256 = "sha256-9wtX7FSoXNx6kp9l/3ozs2kjnCrStIl1H+/aNTK88o8=";
   };
 
   buildType = "ament_python";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-lockfree";
   version = "1.0.25-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/ros_realtime-release/archive/release/noetic/lockfree/1.0.25-1.tar.gz";
-    name = "1.0.25-1.tar.gz";
-    sha256 = "b72d3a14bcf278cd607e730ad2f0d988f4f03c8d116fdf401fbc75440269a8d5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_realtime-release";
+    rev = "1fc8d5d7e74122b7d636db95bc9d6fb86b22a7b4";
+    owner = "ros-gbp";
+    sha256 = "sha256-/CwUQED0MsIv35TlfO0WPspHfG0BOg1NMCOoC+HKSH0=";
   };
 
   buildType = "catkin";

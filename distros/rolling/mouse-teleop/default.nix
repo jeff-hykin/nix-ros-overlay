@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-mouse-teleop";
   version = "1.3.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/teleop_tools-release/archive/release/rolling/mouse_teleop/1.3.0-2.tar.gz";
-    name = "1.3.0-2.tar.gz";
-    sha256 = "57bbdc5b57c0bc3a674f6ef490b3d8a779499b7a037043b15cc0bd546c19b7e9";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "teleop_tools-release";
+    rev = "74b453e73e3344a625f3da72dc96b25c38597634";
+    owner = "ros2-gbp";
+    sha256 = "sha256-e7Z2ycDQ6c5iskftouMX5osIQ17YJ6aS1Jn6tEPTs3w=";
   };
 
   buildType = "ament_python";

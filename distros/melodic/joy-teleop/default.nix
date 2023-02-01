@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-joy-teleop";
   version = "0.3.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/teleop_tools-release/archive/release/melodic/joy_teleop/0.3.1-1.tar.gz";
-    name = "0.3.1-1.tar.gz";
-    sha256 = "9b40cbf56d2384f70de1281d1e6269131dab98a92f7c84036212e5f216c08ea0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "teleop_tools-release";
+    rev = "1ffae8b017eb33801e9023432e485030fb93b0ef";
+    owner = "ros-gbp";
+    sha256 = "sha256-LK0hIHlQ1kN1zT+CvATCf0rCDdDhs0GW2ZveiuF9KGA=";
   };
 
   buildType = "catkin";

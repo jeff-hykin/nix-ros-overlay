@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-pinocchio";
   version = "2.6.12-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/pinocchio-release/archive/release/foxy/pinocchio/2.6.12-1.tar.gz";
-    name = "2.6.12-1.tar.gz";
-    sha256 = "899f34b0aab5a35918a85eb1c5319db991ad4b0939241dc6873157126f0dee92";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pinocchio-release";
+    rev = "893a3be60c42e77d2b7b25eb551a2582f531ac4a";
+    owner = "ros2-gbp";
+    sha256 = "sha256-SpkiWgT3k92ZwwgSryunq4dVPF3rUvkl36Z5bQRB9P8=";
   };
 
   buildType = "cmake";

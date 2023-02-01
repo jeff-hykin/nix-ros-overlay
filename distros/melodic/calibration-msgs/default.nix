@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-calibration-msgs";
   version = "0.10.14";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/calibration-release/archive/release/melodic/calibration_msgs/0.10.14-0.tar.gz";
-    name = "0.10.14-0.tar.gz";
-    sha256 = "f85ef3c769ab6d3c7dd2b91cd681c2364657302db08d2107b5d3eb1f29ac1bdf";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "calibration-release";
+    rev = "78d5c36e4dcd86df75a31fc19877132a7efff0f1";
+    owner = "ros-gbp";
+    sha256 = "sha256-rNAQwYMeKi1BRA3p2yQGNjDSfhWx7z+buiNnChIoYLs=";
   };
 
   buildType = "catkin";

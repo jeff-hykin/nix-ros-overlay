@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-roverrobotics-ros2";
   version = "0.1.1-r2";
 
-  src = fetchurl {
-    url = "https://github.com/RoverRobotics-release/roverrobotics_ros2-release/archive/release/foxy/roverrobotics_ros2/0.1.1-2.tar.gz";
-    name = "0.1.1-2.tar.gz";
-    sha256 = "f023f5877ac477b58450fbdd5743150d656f3e83a82f5bdefd628d0ad3b53888";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "roverrobotics_ros2-release";
+    rev = "c61399ade0222c21097cccf37ccb1d5694cb3056";
+    owner = "RoverRobotics-release";
+    sha256 = "sha256-3Si9TWZpxKDRzuNUXNPg9dlFzEi0tfEVjJW1meif51o=";
   };
 
   buildType = "ament_cmake";

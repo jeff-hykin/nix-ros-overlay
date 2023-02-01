@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-webots-ros2-universal-robot";
   version = "2023.0.0-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/webots_ros2-release/archive/release/rolling/webots_ros2_universal_robot/2023.0.0-3.tar.gz";
-    name = "2023.0.0-3.tar.gz";
-    sha256 = "92bf3d3a0d578903b125cd429149f60eb5798d24d8f6129e41e32eb5fe34e254";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "webots_ros2-release";
+    rev = "a896fb5bb83120f44e6c1d53eee4862045be678d";
+    owner = "ros2-gbp";
+    sha256 = "sha256-+Dmlw1td8CWRnlwK9y1HzRr8vEvbE/UkrfW03ZNKnEs=";
   };
 
   buildType = "ament_python";

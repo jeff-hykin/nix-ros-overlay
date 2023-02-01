@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-ncd-parser";
   version = "0.3.3-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/scan_tools-release/archive/release/melodic/ncd_parser/0.3.3-2.tar.gz";
-    name = "0.3.3-2.tar.gz";
-    sha256 = "d9450f71b29650cdf242e1a50b4489d5dc6cb66bd1b01f6798e6eee82d0829d8";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "scan_tools-release";
+    rev = "fad73363620c70409469a73345442561f8f832c3";
+    owner = "ros-gbp";
+    sha256 = "sha256-rOvQtd9gUVqOGi10cNgMqfMDTWJp/ZomgJe0ldLjp1c=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-rtabmap-ros";
   version = "0.20.22-r1";
 
-  src = fetchurl {
-    url = "https://github.com/introlab/rtabmap_ros-release/archive/release/foxy/rtabmap_ros/0.20.22-1.tar.gz";
-    name = "0.20.22-1.tar.gz";
-    sha256 = "2d10f8270356d9768f39d97a3e48438bd79e83a86f93aa4f78ebf4a336e816f2";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rtabmap_ros-release";
+    rev = "7265b3aba9fd3388f5a47188f12f60b3625477c5";
+    owner = "introlab";
+    sha256 = "sha256-ASf2TsLhTW+nWZfOMxsgZ0mGwkJbxrPhb3aguTbu28c=";
   };
 
   buildType = "ament_cmake";

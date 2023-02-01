@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-force-torque-sensor-broadcaster";
   version = "1.5.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_controllers-release/archive/release/galactic/force_torque_sensor_broadcaster/1.5.1-1.tar.gz";
-    name = "1.5.1-1.tar.gz";
-    sha256 = "bb1190b6ff283c10bc2bd4c6175889de90a9eeb921453c200cc76af1dc88d7a3";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_controllers-release";
+    rev = "d5d2ba88f78b497e5a5896bbf914e3db34c00640";
+    owner = "ros2-gbp";
+    sha256 = "sha256-nx2xaHg/CgKOo3rU0YLCWnlrrHJxKsAhYSov5KS7AdM=";
   };
 
   buildType = "ament_cmake";

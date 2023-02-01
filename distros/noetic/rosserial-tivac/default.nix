@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-rosserial-tivac";
   version = "0.9.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/rosserial-release/archive/release/noetic/rosserial_tivac/0.9.2-1.tar.gz";
-    name = "0.9.2-1.tar.gz";
-    sha256 = "b124e1b25c3ca19bd0120d06a5a27240648de4be1b7261bcc8403fa034af2f28";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosserial-release";
+    rev = "2e534db0512c4a716a515d48b9ee1a2961c5bc85";
+    owner = "ros-gbp";
+    sha256 = "sha256-Fu0x2Bc6qPrTy2m3UdLq3iEOZigcMCPOynR6OWkKq8g=";
   };
 
   buildType = "catkin";

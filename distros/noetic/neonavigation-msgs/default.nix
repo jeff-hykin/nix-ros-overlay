@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-neonavigation-msgs";
   version = "0.8.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/at-wat/neonavigation_msgs-release/archive/release/noetic/neonavigation_msgs/0.8.0-1.tar.gz";
-    name = "0.8.0-1.tar.gz";
-    sha256 = "22b11f09239459dfa5972250c5fb0d15d0df4ef5c97bd8c418a9eb2eb542627c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "neonavigation_msgs-release";
+    rev = "394a07447dcb1d8b88d395da9a7d32f807b7cc22";
+    owner = "at-wat";
+    sha256 = "sha256-IzhmRsAv+M3UuUv6r85eGECpJzIhbm9bZQ4vV5U6gl4=";
   };
 
   buildType = "catkin";

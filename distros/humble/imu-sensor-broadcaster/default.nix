@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-imu-sensor-broadcaster";
   version = "2.15.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_controllers-release/archive/release/humble/imu_sensor_broadcaster/2.15.0-1.tar.gz";
-    name = "2.15.0-1.tar.gz";
-    sha256 = "ba4edd8aa4be7b2a1cc4b96ca8e9b038741f9c034e13217145392e92d240ef3a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_controllers-release";
+    rev = "8ccc00bee42e5db64fe77f2ac6e9667e18631641";
+    owner = "ros2-gbp";
+    sha256 = "sha256-z8kafdyCJLqIv3fyMAZ0yhEBuUqc5BDblSV66iIIvo4=";
   };
 
   buildType = "ament_cmake";

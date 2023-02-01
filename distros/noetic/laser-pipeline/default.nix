@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-laser-pipeline";
   version = "1.6.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/laser_pipeline-release/archive/release/noetic/laser_pipeline/1.6.4-1.tar.gz";
-    name = "1.6.4-1.tar.gz";
-    sha256 = "82a30e8eb4352285020531334f0167e76b46d5d4ea47f89570029f7f56d5e9fd";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "laser_pipeline-release";
+    rev = "a48cc668e88f8b812f1ecc7d7dfffee85c2e684c";
+    owner = "ros-gbp";
+    sha256 = "sha256-n5HqCNf5d7ifjCxKCGTjJzbO6qjdyH+GFzAPGpT3MHo=";
   };
 
   buildType = "catkin";

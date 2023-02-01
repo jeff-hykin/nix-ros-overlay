@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-pilz-industrial-motion-planner-testutils";
   version = "1.0.11-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/moveit-release/archive/release/melodic/pilz_industrial_motion_planner_testutils/1.0.11-1.tar.gz";
-    name = "1.0.11-1.tar.gz";
-    sha256 = "516466ee10be9ac92fdf8807a5b81788c0f0c68cfa451206f6bf15c4de1bbe8f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "moveit-release";
+    rev = "b2ddc3ad0a508a18e1a01dfd575ddc796d573d2e";
+    owner = "ros-gbp";
+    sha256 = "sha256-fb/daq8tBk5TJdYKk6jH4dbi2Lx7Rim++/ADztAsfgg=";
   };
 
   buildType = "catkin";

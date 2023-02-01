@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-rtcm-msgs";
   version = "1.1.6-r1";
 
-  src = fetchurl {
-    url = "https://github.com/nobleo/rtcm_msgs-release/archive/release/humble/rtcm_msgs/1.1.6-1.tar.gz";
-    name = "1.1.6-1.tar.gz";
-    sha256 = "60b96f5d72593b069caf9d273b191c69baa7bc25d43cde8d63d5615d769d3ccf";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rtcm_msgs-release";
+    rev = "374308a1b55da4e7c8f8e93a64b52349680ed7e4";
+    owner = "nobleo";
+    sha256 = "sha256-5yTtIdGostlOwChSlKKL4JivCyK284g0KYZxB6GBtBY=";
   };
 
   buildType = "ament_cmake";

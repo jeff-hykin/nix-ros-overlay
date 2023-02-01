@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-vrpn";
   version = "7.34.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros-drivers-gbp/vrpn-release/archive/release/noetic/vrpn/7.34.0-2.tar.gz";
-    name = "7.34.0-2.tar.gz";
-    sha256 = "babe397ffaa7b299d71ef36febe6389d952b280e24b64e82b775bfe4dd945bdd";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "vrpn-release";
+    rev = "95a6a5232a64559152df35581ea5c0581adad844";
+    owner = "ros-drivers-gbp";
+    sha256 = "sha256-IGs3hSZDF+0jG0TXBDQPEcvVS/6UU7eG2hqu53BxFPg=";
   };
 
   buildType = "cmake";

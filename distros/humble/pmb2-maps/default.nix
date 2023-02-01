@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-pmb2-maps";
   version = "4.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pal-gbp/pmb2_navigation-gbp/archive/release/humble/pmb2_maps/4.0.0-1.tar.gz";
-    name = "4.0.0-1.tar.gz";
-    sha256 = "5283001e4b86d5c4301c5605284b8456dbdea6e8b6bee5ebbe1e5be76e112b0e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pmb2_navigation-gbp";
+    rev = "add41ad51f0826aa8caaba50bdb633af4ef32879";
+    owner = "pal-gbp";
+    sha256 = "sha256-vqf86xYhKcKU0h/74UhP6cS1UYmQZLUezAxIZLKEAHw=";
   };
 
   buildType = "ament_cmake";

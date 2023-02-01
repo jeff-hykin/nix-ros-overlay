@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-arbotix-msgs";
   version = "0.10.0";
 
-  src = fetchurl {
-    url = "https://github.com/vanadiumlabs/arbotix_ros-release/archive/release/melodic/arbotix_msgs/0.10.0-0.tar.gz";
-    name = "0.10.0-0.tar.gz";
-    sha256 = "4c30092a42cad55c7ed008b877d72fa55f90fd899352daa35e4e1bf64797c092";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "arbotix_ros-release";
+    rev = "7d3fd77161409ffd733fd3268548cb0b4688102f";
+    owner = "vanadiumlabs";
+    sha256 = "sha256-bfIXo20LMggGb/xutXREtyw6hUDGuefDBjk2LTWAmi4=";
   };
 
   buildType = "catkin";

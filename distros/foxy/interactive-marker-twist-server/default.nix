@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-interactive-marker-twist-server";
   version = "2.0.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/interactive_marker_twist_server-release/archive/release/foxy/interactive_marker_twist_server/2.0.0-2.tar.gz";
-    name = "2.0.0-2.tar.gz";
-    sha256 = "e0958a2f57438f75d0a35eb85f910ed51fb617129b5d922b33196d0ff8eec78a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "interactive_marker_twist_server-release";
+    rev = "229cf6ac6c8e63226ade70719ec0c5ffedf65fbe";
+    owner = "ros-gbp";
+    sha256 = "sha256-rxLa/Tx6cz4cVvZagmSZOnYQU3sTVFLcdLh5ZnEmxRw=";
   };
 
   buildType = "ament_cmake";

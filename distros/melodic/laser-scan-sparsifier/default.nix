@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-laser-scan-sparsifier";
   version = "0.3.3-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/scan_tools-release/archive/release/melodic/laser_scan_sparsifier/0.3.3-2.tar.gz";
-    name = "0.3.3-2.tar.gz";
-    sha256 = "43fa615c88414d204c326f4bb56f75fd887dcba367211d0b00ebbd17ff2cdab9";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "scan_tools-release";
+    rev = "079a429ad1c37ee5a08394aad3950b0c11665971";
+    owner = "ros-gbp";
+    sha256 = "sha256-ZlPQsfW2+9xFA9xEaak6OSQnAAz57RTyKezMjVL/UN0=";
   };
 
   buildType = "catkin";

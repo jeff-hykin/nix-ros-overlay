@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-mbf-recovery-behaviors";
   version = "0.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/uos-gbp/mbf_recovery_behaviors/archive/release/melodic/mbf_recovery_behaviors/0.1.0-1.tar.gz";
-    name = "0.1.0-1.tar.gz";
-    sha256 = "d46c033ea04bf57baed8c42ac931e8c18d2ee24158d6fb4f66e4e195f6ddab5e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mbf_recovery_behaviors";
+    rev = "b57a5631f84586cd0d34133cb48ef51d28ffaed3";
+    owner = "uos-gbp";
+    sha256 = "sha256-taQWQgl6bn4VR0X2KEWAa9NIyqF5du2MzB//d5730Zo=";
   };
 
   buildType = "catkin";

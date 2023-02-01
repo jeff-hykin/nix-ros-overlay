@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-ros-ethercat-eml";
   version = "0.3.2-r5";
 
-  src = fetchurl {
-    url = "https://github.com/shadow-robot/ros_ethercat_eml-release/archive/release/melodic/ros_ethercat_eml/0.3.2-5.tar.gz";
-    name = "0.3.2-5.tar.gz";
-    sha256 = "8c65cc97f3af73cbf143fce894efe44f3206f68a7bf93393c9db04e214d86fd2";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_ethercat_eml-release";
+    rev = "2a7c783516f5fe1f40918bf04c0ef4a6dee5b581";
+    owner = "shadow-robot";
+    sha256 = "sha256-XC9f8fOo4jNEjuH388PHLku3cC7y6vCuIC74PEn56+0=";
   };
 
   buildType = "catkin";

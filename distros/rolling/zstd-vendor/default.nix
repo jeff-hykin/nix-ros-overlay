@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-zstd-vendor";
   version = "0.18.0-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rosbag2-release/archive/release/rolling/zstd_vendor/0.18.0-3.tar.gz";
-    name = "0.18.0-3.tar.gz";
-    sha256 = "5ddf92e8d5ac2e432eef58290915ec4900985e02700b64303f534bd29ea33cdc";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosbag2-release";
+    rev = "f13260b9b5c0832067f5373b06dbfe3325fe0738";
+    owner = "ros2-gbp";
+    sha256 = "sha256-eDQ/N48tYkBTgIZlRRgScg7sWsho4tWAcJtEUkYnS00=";
   };
 
   buildType = "ament_cmake";

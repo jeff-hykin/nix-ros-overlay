@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-filters";
   version = "1.9.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/filters-release/archive/release/noetic/filters/1.9.2-1.tar.gz";
-    name = "1.9.2-1.tar.gz";
-    sha256 = "7cfca50e56f78921bf185fd6dd7d3fe614b2daee6e326a96307776ad3aad8fe6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "filters-release";
+    rev = "b585f51c9219e36f1f741a1ab86e00e7dc02f3d6";
+    owner = "ros-gbp";
+    sha256 = "sha256-VeBzKH1IEMI7HcnoThJV7w/WZgJ91vwdSF3JP3HLrBI=";
   };
 
   buildType = "catkin";

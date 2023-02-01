@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-nav2-gazebo-spawner";
   version = "0.4.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/SteveMacenski/navigation2-release/archive/release/foxy/nav2_gazebo_spawner/0.4.7-1.tar.gz";
-    name = "0.4.7-1.tar.gz";
-    sha256 = "ec30455d4b3f44ff31669cafac1e188b61dc2db5046523f8c6c816687e594950";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation2-release";
+    rev = "daec0dc3a47b7885ec80add2791168d2710a2f33";
+    owner = "SteveMacenski";
+    sha256 = "sha256-t5ArmBw0wkO3kCpP+PmnXkVN4MpRX9GPphepWHxFhUw=";
   };
 
   buildType = "ament_python";

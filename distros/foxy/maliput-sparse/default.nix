@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-maliput-sparse";
   version = "0.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/maliput_sparse-release/archive/release/foxy/maliput_sparse/0.2.0-1.tar.gz";
-    name = "0.2.0-1.tar.gz";
-    sha256 = "dc5726126f02af283be9ac58cfe10a4810a2b9cf9a30de783a20ef4bf75cac5a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "maliput_sparse-release";
+    rev = "2073ed3fe09f18f29a07fecf118effc8a7408f67";
+    owner = "ros2-gbp";
+    sha256 = "sha256-FBExfeb0THYPuW4z+jdc+ptbDw3TZL3ZoNH3uzzLvgs=";
   };
 
   buildType = "ament_cmake";

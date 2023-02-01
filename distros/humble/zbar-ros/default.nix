@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-zbar-ros";
   version = "0.4.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/zbar_ros-release/archive/release/humble/zbar_ros/0.4.0-2.tar.gz";
-    name = "0.4.0-2.tar.gz";
-    sha256 = "b3ce37987801cb34086090f304b8b111991460f46ee22cb06348c61b7deb26b5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "zbar_ros-release";
+    rev = "421047f6655726702e882af3e0983fd1c22f09ea";
+    owner = "ros2-gbp";
+    sha256 = "sha256-JmBj10Hz3ZE/INAmcLBzMSkGG9axl7gNDMBMFvZr3sw=";
   };
 
   buildType = "ament_cmake";

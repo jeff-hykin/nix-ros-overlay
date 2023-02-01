@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-turtlebot3-teleop";
   version = "2.1.2-r2";
 
-  src = fetchurl {
-    url = "https://github.com/robotis-ros2-release/turtlebot3-release/archive/release/galactic/turtlebot3_teleop/2.1.2-2.tar.gz";
-    name = "2.1.2-2.tar.gz";
-    sha256 = "613126ecf1d29785355ee138fe3ce55efb6af8057f921404d53dc0ba906c775c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "turtlebot3-release";
+    rev = "88f410fbe53c76a453c4c2f1c6586df07d7bbdc8";
+    owner = "robotis-ros2-release";
+    sha256 = "sha256-69p7HahetE6oKrcYGVs0pipb7RrNRCHKD6I6/WPcdsc=";
   };
 
   buildType = "ament_python";

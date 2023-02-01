@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-opencv-apps";
   version = "2.0.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-perception/opencv_apps-release/archive/release/noetic/opencv_apps/2.0.2-1.tar.gz";
-    name = "2.0.2-1.tar.gz";
-    sha256 = "d6684f71808af4791903d10967d1783f7577512b9d5ccb1b64dfeb3065bf7a5c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "opencv_apps-release";
+    rev = "46d848d2a609fb8836a7dcab10c3c65d58ef019b";
+    owner = "ros-perception";
+    sha256 = "sha256-lfwwOz8v849SujkM2RVUSV4VCoGLpW5K/q3d4sId6Us=";
   };
 
   buildType = "catkin";

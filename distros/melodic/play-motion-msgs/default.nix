@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-play-motion-msgs";
   version = "0.4.8-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pal-gbp/play_motion-release2/archive/release/melodic/play_motion_msgs/0.4.8-1.tar.gz";
-    name = "0.4.8-1.tar.gz";
-    sha256 = "7e6f882bf2331299faacfb24f7b1c8fab04dc7588e3226421daac237382d3a0c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "play_motion-release2";
+    rev = "6112aebf0597c256810496d12cd9617cee667e8b";
+    owner = "pal-gbp";
+    sha256 = "sha256-go4elR910BzISgWRy3r5mOhleLWfnt+DivRao8iL5LE=";
   };
 
   buildType = "catkin";

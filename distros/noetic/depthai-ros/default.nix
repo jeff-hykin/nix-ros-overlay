@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-depthai-ros";
   version = "2.5.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/luxonis/depthai-ros-release/archive/release/noetic/depthai-ros/2.5.3-1.tar.gz";
-    name = "2.5.3-1.tar.gz";
-    sha256 = "178efffc5af6e70fbe9387e1fc664ab280c6ec8e4318677b94042e32a39021b5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "depthai-ros-release";
+    rev = "c1a84bc3c00809a6c549215b57ed9ed6f242cda9";
+    owner = "luxonis";
+    sha256 = "sha256-Qmzfjn+hrhEjSkq14ihEZ0G7eryux541cOw9wl+dKRE=";
   };
 
   buildType = "catkin";

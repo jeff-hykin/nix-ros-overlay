@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-cob-footprint-observer";
   version = "0.8.20-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_control-release/archive/release/noetic/cob_footprint_observer/0.8.20-1.tar.gz";
-    name = "0.8.20-1.tar.gz";
-    sha256 = "b011b7686dedd14aa2b7ae48f67035729f4c450bc107accb1e263d74d5bced19";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_control-release";
+    rev = "6ad581653ed3acb0302c64f05cde82225a58ed2c";
+    owner = "ipa320";
+    sha256 = "sha256-GR5/as3HPY/HXstDC2yV3ZOeW8q/JkLJRGU/DAg1RpE=";
   };
 
   buildType = "catkin";

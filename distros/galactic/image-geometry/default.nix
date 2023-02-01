@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-image-geometry";
   version = "3.1.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/vision_opencv-release/archive/release/galactic/image_geometry/3.1.3-1.tar.gz";
-    name = "3.1.3-1.tar.gz";
-    sha256 = "90364b6de59a1624208d4f775a09c86b11711f717f9eac86265a8bbe98133798";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "vision_opencv-release";
+    rev = "d906f5bccea209e94958840f751b9469682cc57b";
+    owner = "ros2-gbp";
+    sha256 = "sha256-gdPwd522d846Lw12y8J6OTSX6sv+lRUMnaOV8TpTUCU=";
   };
 
   buildType = "ament_cmake";

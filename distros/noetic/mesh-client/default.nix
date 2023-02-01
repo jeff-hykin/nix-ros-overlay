@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-mesh-client";
   version = "1.0.1-r2";
 
-  src = fetchurl {
-    url = "https://github.com/uos-gbp/mesh_navigation-release/archive/release/noetic/mesh_client/1.0.1-2.tar.gz";
-    name = "1.0.1-2.tar.gz";
-    sha256 = "2e48408be7af93a21f425580e2b528bf61f4e4563f2cb9c089acc717f5e4acfa";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mesh_navigation-release";
+    rev = "c643417f2b4defbf6b333b999c7bc22da56e7a23";
+    owner = "uos-gbp";
+    sha256 = "sha256-ivpJEfNTKMdvaeUo5BALd3xWgS0VqU91/yt6q924w3U=";
   };
 
   buildType = "catkin";

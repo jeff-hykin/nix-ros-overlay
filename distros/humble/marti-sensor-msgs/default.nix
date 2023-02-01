@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-marti-sensor-msgs";
   version = "1.3.0-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/marti_messages-release/archive/release/humble/marti_sensor_msgs/1.3.0-3.tar.gz";
-    name = "1.3.0-3.tar.gz";
-    sha256 = "8b75ceaa48d147e3b464d6fb95463b6ba08d580d8eb4322d0c23bb6cfeef5a82";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "marti_messages-release";
+    rev = "b2d1fe86f7457f4496333d499282f76fe04f46c6";
+    owner = "ros2-gbp";
+    sha256 = "sha256-hGNz/a7qOnf12cPokEyjxe+Xp1zESqFYCzYxTa7Fg4g=";
   };
 
   buildType = "ament_cmake";

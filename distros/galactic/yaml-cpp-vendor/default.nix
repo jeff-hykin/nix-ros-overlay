@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-yaml-cpp-vendor";
   version = "7.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/yaml_cpp_vendor-release/archive/release/galactic/yaml_cpp_vendor/7.1.1-1.tar.gz";
-    name = "7.1.1-1.tar.gz";
-    sha256 = "33afe34c829a9a54ad20728236ca09e692490b2935880f95d4509833fd376545";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "yaml_cpp_vendor-release";
+    rev = "76dabdb4f2070a96ddd5cadf3c1067caba19f0fd";
+    owner = "ros2-gbp";
+    sha256 = "sha256-sD3bIV1daaO+NLCBhf0Q2ZNNf73cYwqOiDI+Pq8Xey8=";
   };
 
   buildType = "ament_cmake";

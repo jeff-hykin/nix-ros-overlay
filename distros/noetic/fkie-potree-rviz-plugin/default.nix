@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-fkie-potree-rviz-plugin";
   version = "1.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/fkie-release/potree_rviz_plugin-release/archive/release/noetic/fkie_potree_rviz_plugin/1.0.1-1.tar.gz";
-    name = "1.0.1-1.tar.gz";
-    sha256 = "446350f7037502f71f106f41efddacce350a3841b6db11b773ec2d520c2b7a8a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "potree_rviz_plugin-release";
+    rev = "eea4262d40d93cb1622b3f0bfbf8f03aab5856a0";
+    owner = "fkie-release";
+    sha256 = "sha256-4G64ETXGSge+XUxK5Nd3gs36N0c3skLgmiuXLuPJMgM=";
   };
 
   buildType = "catkin";

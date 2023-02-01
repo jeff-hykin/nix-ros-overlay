@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-wfov-camera-msgs";
   version = "0.14.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-drivers-gbp/pointgrey_camera_driver-release/archive/release/melodic/wfov_camera_msgs/0.14.2-1.tar.gz";
-    name = "0.14.2-1.tar.gz";
-    sha256 = "6082f10c40e6051afe2fd9e75d062bc0246e99d57d607959a016d95e9a0ad22c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pointgrey_camera_driver-release";
+    rev = "499e728adfb53a0edff67652d4ff0a418a2d7854";
+    owner = "ros-drivers-gbp";
+    sha256 = "sha256-jk5AVd7LOurjCjYndKsst+OLd9nfDvlsw2eITANcHMc=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-dataspeed-can-usb";
   version = "1.0.16-r1";
 
-  src = fetchurl {
-    url = "https://github.com/DataspeedInc-release/dataspeed_can-release/archive/release/melodic/dataspeed_can_usb/1.0.16-1.tar.gz";
-    name = "1.0.16-1.tar.gz";
-    sha256 = "0e43215ea8a06c3f802321632f33e104c659b521f91b4f18a8067e2085aa887c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "dataspeed_can-release";
+    rev = "4c79737a376297fc21fb4cb89f661a3b0ae1a1b4";
+    owner = "DataspeedInc-release";
+    sha256 = "sha256-qDYokEGVgyvE1BoMRu80KFyjkZniJCpOysGOzLnaosk=";
   };
 
   buildType = "catkin";

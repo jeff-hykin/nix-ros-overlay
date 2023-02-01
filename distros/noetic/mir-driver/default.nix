@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-mir-driver";
   version = "1.1.6-r1";
 
-  src = fetchurl {
-    url = "https://github.com/uos-gbp/mir_robot-release/archive/release/noetic/mir_driver/1.1.6-1.tar.gz";
-    name = "1.1.6-1.tar.gz";
-    sha256 = "95c399f07a2aaf0c334a812d346df500d565c49a4bd424d1b57b0d3fa74a9675";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mir_robot-release";
+    rev = "9be8dcaa47d79ce6bc49f026254b0cb5fef07812";
+    owner = "uos-gbp";
+    sha256 = "sha256-703WtDVwz8IW7iQkxWxe27eagbsoMBftB9OP/5C8ZEM=";
   };
 
   buildType = "catkin";

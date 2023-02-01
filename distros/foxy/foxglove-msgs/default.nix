@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-foxglove-msgs";
   version = "2.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros_foxglove_msgs-release/archive/release/foxy/foxglove_msgs/2.1.1-1.tar.gz";
-    name = "2.1.1-1.tar.gz";
-    sha256 = "570352f30b9381f996e4ccae627517bf7eefc26c52df3f122001da8005e5a5c9";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_foxglove_msgs-release";
+    rev = "4169d7ad6229d1c74c9cb9df71b554b59d2fdd7d";
+    owner = "ros2-gbp";
+    sha256 = "sha256-WVd87BSDwF+o7s/HMSXhpwvIBHYpp6J263sCn635ILE=";
   };
 
   buildType = "ament_cmake";

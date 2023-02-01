@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-forward-command-controller";
   version = "0.8.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_controllers-release/archive/release/foxy/forward_command_controller/0.8.2-1.tar.gz";
-    name = "0.8.2-1.tar.gz";
-    sha256 = "15082cccfff06d3f79723d8cc48065ae4124301dc1648f4483ed822dd9ddb08e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_controllers-release";
+    rev = "3108e44c600f8894c5d81252295f283f3597f0f1";
+    owner = "ros2-gbp";
+    sha256 = "sha256-sQdk6PyhWDQ5VvtJxVHw9ox1j/AF2sszQ+l/8zTfv3U=";
   };
 
   buildType = "ament_cmake";

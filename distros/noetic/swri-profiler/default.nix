@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-swri-profiler";
   version = "0.2.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/swri-robotics-gbp/swri_profiler-release/archive/release/noetic/swri_profiler/0.2.2-1.tar.gz";
-    name = "0.2.2-1.tar.gz";
-    sha256 = "ed7a03d7ad37030a214da68b742c54dbc0830dd1c022d878066ab3785c636c08";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "swri_profiler-release";
+    rev = "71b6647df3194b9519cef7d81fc623109c003f0b";
+    owner = "swri-robotics-gbp";
+    sha256 = "sha256-qOoJ03sjU2FSyX6zdrg6vEvMcnN0mZvpcf32l4w02PQ=";
   };
 
   buildType = "catkin";

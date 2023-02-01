@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-diagnostic-msgs";
   version = "2.0.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/common_interfaces-release/archive/release/foxy/diagnostic_msgs/2.0.5-1.tar.gz";
-    name = "2.0.5-1.tar.gz";
-    sha256 = "0157e7866b3367dc441c1456f31c56cec2f169e2b461c77fc1578d2ae6420170";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "common_interfaces-release";
+    rev = "b80ba81568b2731546f11d9f5dd60aa18da1ab4f";
+    owner = "ros2-gbp";
+    sha256 = "sha256-0ZyDKpYDQEQSc6A5zy5oybKSNHHTp8MqzwNoWVX+F8g=";
   };
 
   buildType = "ament_cmake";

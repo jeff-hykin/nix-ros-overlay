@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-rqt-bag-plugins";
   version = "1.2.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rqt_bag-release/archive/release/rolling/rqt_bag_plugins/1.2.1-1.tar.gz";
-    name = "1.2.1-1.tar.gz";
-    sha256 = "0563fa19a6cbcb78fdb6b6886227ae8d90deeb1a58620ff959fab2b98745b1e3";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt_bag-release";
+    rev = "37e58eca7008ee018af15fdb47a7ea39dedba663";
+    owner = "ros2-gbp";
+    sha256 = "sha256-tmG2lu4DWSrcFlD0AUPbB+kxcVFt5j5aaTIIBsxVEE4=";
   };
 
   buildType = "ament_python";

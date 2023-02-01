@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-ros2cli-common-extensions";
   version = "0.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2cli_common_extensions-release/archive/release/foxy/ros2cli_common_extensions/0.1.1-1.tar.gz";
-    name = "0.1.1-1.tar.gz";
-    sha256 = "a4084d90a9eb5802668306ea9c563eb6e882015707e21f3a9c6ec6ef58927c0a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2cli_common_extensions-release";
+    rev = "e181d235af73d673180ae9bbb4c8faee2a4ca2e4";
+    owner = "ros2-gbp";
+    sha256 = "sha256-32uWObO3hDPv9L3mLpl5Vm3mz4eGpui9idqtKeQmQH0=";
   };
 
   buildType = "ament_cmake";

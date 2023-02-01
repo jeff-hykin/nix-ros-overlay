@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-cudnn-cmake-module";
   version = "0.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/cudnn_cmake_module-release/archive/release/galactic/cudnn_cmake_module/0.0.1-1.tar.gz";
-    name = "0.0.1-1.tar.gz";
-    sha256 = "91f960c81e0d44427c7e6d6ed0f5981ac1db12c9df51d3aee14a14dcdc584bbb";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cudnn_cmake_module-release";
+    rev = "70604e78172c8f5c7e880a133e148432c9d36926";
+    owner = "ros2-gbp";
+    sha256 = "sha256-J6BqQzZzZMC0MVQ5oJCXgXu5fzoPlV+JErISeIuss6I=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-rmf-traffic-editor-test-maps";
   version = "1.6.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_traffic_editor-release/archive/release/humble/rmf_traffic_editor_test_maps/1.6.0-1.tar.gz";
-    name = "1.6.0-1.tar.gz";
-    sha256 = "e7f8051b463fdf347396295b3503a7621aac40794237295439f8c8e0b3745a30";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_traffic_editor-release";
+    rev = "498cc0a5c97d066d3cf0167d2e9bec7b588ba165";
+    owner = "ros2-gbp";
+    sha256 = "sha256-YEuFPXau+4A9aHgXCPVNxOoqSM5s77RXplHkMwe+XJo=";
   };
 
   buildType = "ament_cmake";

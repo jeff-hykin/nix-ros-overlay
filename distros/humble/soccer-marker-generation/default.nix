@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-soccer-marker-generation";
   version = "0.0.2-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/soccer_visualization-release/archive/release/humble/soccer_marker_generation/0.0.2-3.tar.gz";
-    name = "0.0.2-3.tar.gz";
-    sha256 = "8adeb8ff078beabdf8c53b381dbf919ff8beabaf591e414745b6b22905b52382";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "soccer_visualization-release";
+    rev = "01da0b4dbb28210916847d97feab66618ec23347";
+    owner = "ros2-gbp";
+    sha256 = "sha256-3P3fmHnpeTlaI9ykWoLBv5F8HGk9vEReSDRKIvZum+Q=";
   };
 
   buildType = "ament_cmake";

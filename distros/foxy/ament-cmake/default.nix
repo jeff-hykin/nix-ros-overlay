@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-ament-cmake";
   version = "0.9.11-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ament_cmake-release/archive/release/foxy/ament_cmake/0.9.11-1.tar.gz";
-    name = "0.9.11-1.tar.gz";
-    sha256 = "971ce41bb7b2380f12e3a8212d68129ed802760e2054ca629bc7721ea59dddc0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ament_cmake-release";
+    rev = "7349cbf413cc8d0e45f9dd7dfda22c1d497fb27c";
+    owner = "ros2-gbp";
+    sha256 = "sha256-RIp9l+7X2EKNQ4uMZKJHHsEveMsvAA2unKkKrtUCecM=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-qt-dotgraph";
   version = "2.3.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/qt_gui_core-release/archive/release/rolling/qt_dotgraph/2.3.2-1.tar.gz";
-    name = "2.3.2-1.tar.gz";
-    sha256 = "1539b9d3b2e4127160525a2db352b309a1fe69a80cebed7cd9d938cbb47fc0bd";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "qt_gui_core-release";
+    rev = "02ac9c7b3cb84ebdbb4d346a0454b6d93c01cdb2";
+    owner = "ros2-gbp";
+    sha256 = "sha256-iyzVzqaGa8aQ8zCCgA7e/w7YmodpUcB87g0//JMpCA4=";
   };
 
   buildType = "ament_cmake";

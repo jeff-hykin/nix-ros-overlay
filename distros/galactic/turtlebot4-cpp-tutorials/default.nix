@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-turtlebot4-cpp-tutorials";
   version = "0.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/turtlebot4_tutorials-release/archive/release/galactic/turtlebot4_cpp_tutorials/0.1.0-1.tar.gz";
-    name = "0.1.0-1.tar.gz";
-    sha256 = "572803c0a28a8eb86a857995dd7fbce8c13c37ebecfeb94e823c8e97ecba9796";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "turtlebot4_tutorials-release";
+    rev = "b3fe693865094c8acc80b99498840991a4e76fdb";
+    owner = "ros2-gbp";
+    sha256 = "sha256-w0P2tbMIboOxkU7I8ETVOqmBA7md1MQGe+bgV2ck4fw=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-rr-control-input-manager";
   version = "1.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/RoverRobotics-release/rr_openrover_stack-release/archive/release/melodic/rr_control_input_manager/1.1.1-1.tar.gz";
-    name = "1.1.1-1.tar.gz";
-    sha256 = "db25b07273b106b589148f80502cb9e31e015c44c1038da30701e59c05665366";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rr_openrover_stack-release";
+    rev = "323e8919825fa6ba600230bde0ce6604e5d5b63f";
+    owner = "RoverRobotics-release";
+    sha256 = "sha256-N1eAXLT8McUKwIshcogkg1MPGmhOqo27zUgLXGZsR4M=";
   };
 
   buildType = "catkin";

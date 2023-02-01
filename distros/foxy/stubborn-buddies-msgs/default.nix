@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-stubborn-buddies-msgs";
   version = "1.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/stubborn_buddies-release/archive/release/foxy/stubborn_buddies_msgs/1.0.0-1.tar.gz";
-    name = "1.0.0-1.tar.gz";
-    sha256 = "de34d205fa9836959a978197400c8566906156f2fcf6353ee62ba6ba3e918617";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "stubborn_buddies-release";
+    rev = "3114566b6d18133a045f97a6d06e9c166ae6e12a";
+    owner = "ros2-gbp";
+    sha256 = "sha256-ca+tBYzurY7xkoSry24RR8HaTLuuHAEKuBOxT57QSXY=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-roseus";
   version = "1.7.5-r2";
 
-  src = fetchurl {
-    url = "https://github.com/tork-a/jsk_roseus-release/archive/release/noetic/roseus/1.7.5-2.tar.gz";
-    name = "1.7.5-2.tar.gz";
-    sha256 = "1d8a329f3b78ab84993338c9516cd1a326b50503e3fac2ca4938ed1664e0dc95";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "jsk_roseus-release";
+    rev = "b8ac37310b30590552221309f08220ee35900df1";
+    owner = "tork-a";
+    sha256 = "sha256-KKP4LyhjEflR0TpEvt+GIrQ5ZsCY4nxIXR1duskYMLM=";
   };
 
   buildType = "catkin";

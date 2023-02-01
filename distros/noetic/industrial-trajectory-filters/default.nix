@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-industrial-trajectory-filters";
   version = "0.7.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-industrial-release/industrial_core-release/archive/release/noetic/industrial_trajectory_filters/0.7.3-1.tar.gz";
-    name = "0.7.3-1.tar.gz";
-    sha256 = "d467861e4366fab2ca889080d9d33a88f28ea204efad5f4d20b19f523df92c11";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "industrial_core-release";
+    rev = "8bc815149b43d7299d54a938806efe69ca989eee";
+    owner = "ros-industrial-release";
+    sha256 = "sha256-mYFmwuST9s4knzmD3KiLBzZ+Y6yRtozbXtsDY0NqcSU=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-warthog-msgs";
   version = "0.1.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/clearpath-gbp/warthog-release/archive/release/noetic/warthog_msgs/0.1.5-1.tar.gz";
-    name = "0.1.5-1.tar.gz";
-    sha256 = "01b26477c554dcdd53815449008cbea17ee04597760ac1ffe26ef589c6998c06";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "warthog-release";
+    rev = "141304bd8647a29402de3e02b5e23adfe3c5eb2e";
+    owner = "clearpath-gbp";
+    sha256 = "sha256-lNdo260uBHWNJ+ZsqxuknESJmrKVSjdo4AEBrhrQeMA=";
   };
 
   buildType = "catkin";

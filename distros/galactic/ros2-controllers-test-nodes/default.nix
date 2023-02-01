@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ros2-controllers-test-nodes";
   version = "1.5.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_controllers-release/archive/release/galactic/ros2_controllers_test_nodes/1.5.1-1.tar.gz";
-    name = "1.5.1-1.tar.gz";
-    sha256 = "a395676099448436ca3f149198da8450d81e26c9fd799e90591d105207613510";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_controllers-release";
+    rev = "c74dbe721cc7bc98767f5a2b20ddcba75578496d";
+    owner = "ros2-gbp";
+    sha256 = "sha256-DN3scq1Y+tqlW3nwOMwX2nl+5eBBahOUzdBUaVEBtO0=";
   };
 
   buildType = "ament_python";

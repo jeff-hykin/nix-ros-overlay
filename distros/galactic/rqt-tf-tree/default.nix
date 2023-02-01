@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rqt-tf-tree";
   version = "1.0.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rqt_tf_tree-release/archive/release/galactic/rqt_tf_tree/1.0.3-1.tar.gz";
-    name = "1.0.3-1.tar.gz";
-    sha256 = "205ee5f0d4ef4a8969238995ab35d20dc0a1d72a444ea5999b844116fbfc4d72";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt_tf_tree-release";
+    rev = "b6a5c295b0b06d2433dfdf5654a76a76f21574c0";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Iem5taVGzW7fx5/Jhe0p8NW94l/fccrko/HIhAf+/QA=";
   };
 
   buildType = "ament_python";

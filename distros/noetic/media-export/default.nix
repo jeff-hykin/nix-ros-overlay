@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-media-export";
   version = "0.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/media_export-release/archive/release/noetic/media_export/0.3.0-1.tar.gz";
-    name = "0.3.0-1.tar.gz";
-    sha256 = "52d1af6155ad5b84dac185f7a738cacfcfd4073f47cd634a04b506c6d2a346e2";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "media_export-release";
+    rev = "971665f50168c0e4f9ddd6f6ac9a933bd4c3024c";
+    owner = "ros-gbp";
+    sha256 = "sha256-cPOCGxFzZIs6T1ybAgpQp5lbJeYkBhTwmJTRL7dWRGI=";
   };
 
   buildType = "catkin";

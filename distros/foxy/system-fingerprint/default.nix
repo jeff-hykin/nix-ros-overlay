@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-system-fingerprint";
   version = "0.7.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/MetroRobots/ros_system_fingerprint-release/archive/release/foxy/system_fingerprint/0.7.0-1.tar.gz";
-    name = "0.7.0-1.tar.gz";
-    sha256 = "4c3b33e39880c21d910421393cc972b3848e8a5d7912026788aab5e69c85a5f9";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_system_fingerprint-release";
+    rev = "0f68d8314b19662ef7d472118732d1318648813e";
+    owner = "MetroRobots";
+    sha256 = "sha256-swG8fwjiFc0LXSlbA6Lml0jlh/VyNS//insRqM01fr0=";
   };
 
   buildType = "ament_python";

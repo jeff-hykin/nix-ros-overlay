@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-tuw-marker-detection";
   version = "0.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/tuw-robotics/tuw_marker_detection-release/archive/release/melodic/tuw_marker_detection/0.1.1-1.tar.gz";
-    name = "0.1.1-1.tar.gz";
-    sha256 = "4b831ec3d6f8678dad02b5e96201e7944af7210da72b19a90d72d48ed4628ec9";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "tuw_marker_detection-release";
+    rev = "d8c57966772de4813c95a3d767647aaef924e336";
+    owner = "tuw-robotics";
+    sha256 = "sha256-nTdbRMybKoHGWdmluoH+dgaLyy/3InE7c3sb1icb0WU=";
   };
 
   buildType = "catkin";

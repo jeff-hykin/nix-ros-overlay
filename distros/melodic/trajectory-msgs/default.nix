@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-trajectory-msgs";
   version = "1.12.8-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/common_msgs-release/archive/release/melodic/trajectory_msgs/1.12.8-1.tar.gz";
-    name = "1.12.8-1.tar.gz";
-    sha256 = "8aebff2d175c8079754d4739b14947bc5b0391158ddb047d71567b4e5b0882c7";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "common_msgs-release";
+    rev = "010efb04e4b9935a872b497892cc4b8c366fb844";
+    owner = "ros-gbp";
+    sha256 = "sha256-xjsHut39Ol1XqV40vF6iWKPpjONuaNinoH5TxW0tS9g=";
   };
 
   buildType = "catkin";

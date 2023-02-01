@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-launch-pytest";
   version = "1.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/launch-release/archive/release/rolling/launch_pytest/1.3.0-1.tar.gz";
-    name = "1.3.0-1.tar.gz";
-    sha256 = "f5c38da07d4bb2b526ad42735a37ffea1ff2d64d7eb2003a51577de7a6642c90";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "launch-release";
+    rev = "2fdb3e813ead03571fa9cbcf24f955916a6ef024";
+    owner = "ros2-gbp";
+    sha256 = "sha256-dIBgct0wFQtysqy8O3qZoDJ/ZEaocsIAvRiIHhW0DgM=";
   };
 
   buildType = "ament_python";

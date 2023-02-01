@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-qt-gui";
   version = "2.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/qt_gui_core-release/archive/release/galactic/qt_gui/2.0.1-1.tar.gz";
-    name = "2.0.1-1.tar.gz";
-    sha256 = "2a62d274523a0e4e9cd64476fdb7614dc289729901f3939c155a05f0009d1ad3";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "qt_gui_core-release";
+    rev = "95390316f75de32b305c37d62a752556739af249";
+    owner = "ros2-gbp";
+    sha256 = "sha256-vzm18SCQ54v56tUbc+oCdD0xfKDRv6CBHD3xryv1/pM=";
   };
 
   buildType = "ament_cmake";

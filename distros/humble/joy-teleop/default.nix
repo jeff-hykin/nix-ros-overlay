@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-joy-teleop";
   version = "1.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/teleop_tools-release/archive/release/humble/joy_teleop/1.3.0-1.tar.gz";
-    name = "1.3.0-1.tar.gz";
-    sha256 = "b9233987ea2b9fa1bdfb2f589f8d56899000981e1dbc9d20e8e45d8ec4490bb0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "teleop_tools-release";
+    rev = "bc20317d2cfcf461995a6d666b58c9b103d8203e";
+    owner = "ros2-gbp";
+    sha256 = "sha256-pOO81abXuYpWTZZ3XcPdFNVRBA04FYijCK3alScPZJ8=";
   };
 
   buildType = "ament_python";

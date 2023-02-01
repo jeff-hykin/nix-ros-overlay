@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-warehouse-ros-sqlite";
   version = "1.0.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/warehouse_ros_sqlite-release/archive/release/rolling/warehouse_ros_sqlite/1.0.3-1.tar.gz";
-    name = "1.0.3-1.tar.gz";
-    sha256 = "26885ba506f88fc802d26132322855b21eee8b20c7a29b8549df363b585f7f4c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "warehouse_ros_sqlite-release";
+    rev = "497bc2f83ef4457b2f2740c12a519e944cfecc68";
+    owner = "ros2-gbp";
+    sha256 = "sha256-JavUpzsS5NkJHqZj/lSXLsAOzHX5D/KrEHOhGM/AgLc=";
   };
 
   buildType = "ament_cmake";

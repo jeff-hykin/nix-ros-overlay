@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-rosserial-chibios";
   version = "0.9.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/rosserial-release/archive/release/noetic/rosserial_chibios/0.9.2-1.tar.gz";
-    name = "0.9.2-1.tar.gz";
-    sha256 = "d2ded99ec728d90b3bb3d22d5938c8d8e2769c001544c0aef5ea914c69a9c967";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosserial-release";
+    rev = "ab403a484e8bbf3ecf6ebf65c94153814cce1fba";
+    owner = "ros-gbp";
+    sha256 = "sha256-PrVyJCSdt5hLQEjvi+M1rUT4/qXG3BTi7CnBMWZBhDE=";
   };
 
   buildType = "catkin";

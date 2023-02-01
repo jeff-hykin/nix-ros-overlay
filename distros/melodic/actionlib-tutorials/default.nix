@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-actionlib-tutorials";
   version = "0.1.11";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/common_tutorials-release/archive/release/melodic/actionlib_tutorials/0.1.11-0.tar.gz";
-    name = "0.1.11-0.tar.gz";
-    sha256 = "202b1bd5a2d7cde96dcd20fa54fb6fc017ec6e1252575b5413618310c536163e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "common_tutorials-release";
+    rev = "0005da991a515a07257c37e9f2f204827fa9aa88";
+    owner = "ros-gbp";
+    sha256 = "sha256-E5m1k0SYBt45HseD9/JZ56DVnxDIB4ROcsdL/vcsfeU=";
   };
 
   buildType = "catkin";

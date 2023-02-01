@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-ament-index-python";
   version = "1.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ament_index-release/archive/release/foxy/ament_index_python/1.1.0-1.tar.gz";
-    name = "1.1.0-1.tar.gz";
-    sha256 = "0836dc79b482dfb39e8683d61e8f1027a1765e06874fcd16781fb20198deddef";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ament_index-release";
+    rev = "07f1f8604a4db602936029c1887bf488b6a7e08e";
+    owner = "ros2-gbp";
+    sha256 = "sha256-u+F49HnjA+cuX8FFygDFMeFiAUKuQkAlSVPWd2jQYK4=";
   };
 
   buildType = "ament_python";

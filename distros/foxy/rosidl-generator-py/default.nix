@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-rosidl-generator-py";
   version = "0.9.6-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rosidl_python-release/archive/release/foxy/rosidl_generator_py/0.9.6-1.tar.gz";
-    name = "0.9.6-1.tar.gz";
-    sha256 = "ac70640eefea88a701766979f4afa8ae63cefcab6fd898edb993332c81c68eb1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosidl_python-release";
+    rev = "91ed579e4fd160fc3001b9091a65e72d71974a2e";
+    owner = "ros2-gbp";
+    sha256 = "sha256-OrnUm0tWjseHJIHOI+bkQ0iyGZJSNX33Ksjt8K5LwiE=";
   };
 
   buildType = "ament_cmake";

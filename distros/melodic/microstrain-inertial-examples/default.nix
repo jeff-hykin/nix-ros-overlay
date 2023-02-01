@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-microstrain-inertial-examples";
   version = "2.7.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/LORD-MicroStrain/microstrain_inertial-release/archive/release/melodic/microstrain_inertial_examples/2.7.1-1.tar.gz";
-    name = "2.7.1-1.tar.gz";
-    sha256 = "b844e931662692fde2e286e5c6398061db2b6b5e12086a4e0ade248d235caba6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "microstrain_inertial-release";
+    rev = "c9698a212497c2e0284e6d6e73c09e126c0b6ee4";
+    owner = "LORD-MicroStrain";
+    sha256 = "sha256-D0WVPWD0UMpGV87wQOiRWHHX9i98FfWI3ZPj/WUqYjQ=";
   };
 
   buildType = "catkin";

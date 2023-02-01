@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-trajectory-tracker";
   version = "0.11.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/at-wat/neonavigation-release/archive/release/noetic/trajectory_tracker/0.11.7-1.tar.gz";
-    name = "0.11.7-1.tar.gz";
-    sha256 = "d437cb6ea37f6d72214cb14bd9479801cbda4fbb584f2b0125f17e158fde6e6f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "neonavigation-release";
+    rev = "444f0ab2ee2236afe7c73633b9b8d32e3453da38";
+    owner = "at-wat";
+    sha256 = "sha256-6TOviyV0EAjcjYAKzUAwqeGyOjMEKFcOz6t5yTqMjxo=";
   };
 
   buildType = "catkin";

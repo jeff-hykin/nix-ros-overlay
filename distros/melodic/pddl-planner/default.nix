@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-pddl-planner";
   version = "0.1.12-r1";
 
-  src = fetchurl {
-    url = "https://github.com/tork-a/jsk_planning-release/archive/release/melodic/pddl_planner/0.1.12-1.tar.gz";
-    name = "0.1.12-1.tar.gz";
-    sha256 = "e686d7ea6ca73282c5a3166e1a2628f43a1e52da107fadb97fc5fcc06a27e2ba";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "jsk_planning-release";
+    rev = "4336e282179a249f6e1a0168fedcaea6a15bac43";
+    owner = "tork-a";
+    sha256 = "sha256-4XFBn1mSv5v0xJRy3bRYRi6IT0J0ho9dnnEB+14Scus=";
   };
 
   buildType = "catkin";

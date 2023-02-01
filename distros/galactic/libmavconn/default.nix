@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-libmavconn";
   version = "2.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/mavlink/mavros-release/archive/release/galactic/libmavconn/2.3.0-1.tar.gz";
-    name = "2.3.0-1.tar.gz";
-    sha256 = "9b36825a5fb6e2e26b878858ef636bb3f90607c0197b84fa35a15ca6a2377678";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mavros-release";
+    rev = "59a1152bc6b2310a8bf10f78f2e8d0d8272bd585";
+    owner = "mavlink";
+    sha256 = "sha256-DnVAvMZWWWVV6/y4KjN4Kv9730jJeIUsXTdLTwx0m2o=";
   };
 
   buildType = "ament_cmake";

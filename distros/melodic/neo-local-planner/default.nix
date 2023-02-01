@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-neo-local-planner";
   version = "1.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/neobotix/neo_local_planner-release/archive/release/melodic/neo_local_planner/1.0.0-1.tar.gz";
-    name = "1.0.0-1.tar.gz";
-    sha256 = "9ddcb53aceee36a8d5c6a9831fcf15dc096b01975f96059d7a7574211072d250";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "neo_local_planner-release";
+    rev = "7ce6654fdc632c10c1dec60ab3ddd878305f6032";
+    owner = "neobotix";
+    sha256 = "sha256-Ebug2jnX5SarTigvOmNR1XDqpPQhZJOlWySSgdexRoc=";
   };
 
   buildType = "catkin";

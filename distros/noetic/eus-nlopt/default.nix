@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-eus-nlopt";
   version = "0.1.16-r1";
 
-  src = fetchurl {
-    url = "https://github.com/tork-a/jsk_control-release/archive/release/noetic/eus_nlopt/0.1.16-1.tar.gz";
-    name = "0.1.16-1.tar.gz";
-    sha256 = "5186b178134bff35d8064f7552afe8432908468bd21fb4183d9f87ba7d95a3dc";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "jsk_control-release";
+    rev = "32f77d1173893737c43280d58b36d2a4945c1fa0";
+    owner = "tork-a";
+    sha256 = "sha256-Jz08rmBtorxg68B90T8vak4XpnL2izQOYuf4/Pe+MWY=";
   };
 
   buildType = "catkin";

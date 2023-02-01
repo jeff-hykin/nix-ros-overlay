@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-jsk-rviz-plugins";
   version = "2.1.7-r2";
 
-  src = fetchurl {
-    url = "https://github.com/tork-a/jsk_visualization-release/archive/release/melodic/jsk_rviz_plugins/2.1.7-2.tar.gz";
-    name = "2.1.7-2.tar.gz";
-    sha256 = "40f58f1576fdeb6f212575c3550aa657ef4c3ffb384825af157a7145c43f5a88";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "jsk_visualization-release";
+    rev = "6e74b01819e06e4ae8b0c42953e74a7e25a38635";
+    owner = "tork-a";
+    sha256 = "sha256-+UORHbiTU4LRWXAENANecpw39PAGBrQQbMe2PJYcxKs=";
   };
 
   buildType = "catkin";

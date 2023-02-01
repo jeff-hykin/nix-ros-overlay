@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-nav-grid-iterators";
   version = "0.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/DLu/robot_navigation-release/archive/release/melodic/nav_grid_iterators/0.3.0-1.tar.gz";
-    name = "0.3.0-1.tar.gz";
-    sha256 = "e533852555ad4b53d77ea75fe175970fcaa4ab4007154fdfe19b97c9f998db7f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "robot_navigation-release";
+    rev = "50308c03ecf8016c52ff2f5f3f2507d9c42906e5";
+    owner = "DLu";
+    sha256 = "sha256-mELqssytlBYsC7quosL5IaCw2Fc8LNmqIRYTQCS/nDc=";
   };
 
   buildType = "catkin";

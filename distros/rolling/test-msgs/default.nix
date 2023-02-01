@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-test-msgs";
   version = "1.3.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rcl_interfaces-release/archive/release/rolling/test_msgs/1.3.1-1.tar.gz";
-    name = "1.3.1-1.tar.gz";
-    sha256 = "e290ba8105408143570cf0b7ac2fadfc71b3ed58160610789e025c46bd0526dc";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rcl_interfaces-release";
+    rev = "5e8c84f2cc35e5c2fd610217957dd8249890a4a8";
+    owner = "ros2-gbp";
+    sha256 = "sha256-IwaV4hm/GwEqM8hkXCGMoJy6lh9Mcij+8hiLUfMGUXs=";
   };
 
   buildType = "ament_cmake";

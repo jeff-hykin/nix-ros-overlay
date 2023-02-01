@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-turtlebot3-msgs";
   version = "2.2.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/robotis-ros2-release/turtlebot3_msgs-release/archive/release/foxy/turtlebot3_msgs/2.2.1-1.tar.gz";
-    name = "2.2.1-1.tar.gz";
-    sha256 = "c719eb9258d4c141b716b01c4755071b43b79eeb4008033db5dda574e0cf5e2a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "turtlebot3_msgs-release";
+    rev = "39b30efb58a29874bbb8538990969bafeb997005";
+    owner = "robotis-ros2-release";
+    sha256 = "sha256-AfTC3VY2EzfPdav7DvNaPrB+NM5laHjJRrpSaWfb2Cw=";
   };
 
   buildType = "ament_cmake";

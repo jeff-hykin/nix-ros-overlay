@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-control-toolbox";
   version = "2.1.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/control_toolbox-release/archive/release/galactic/control_toolbox/2.1.2-1.tar.gz";
-    name = "2.1.2-1.tar.gz";
-    sha256 = "a5eae1a47f54fcc31251ec309746cd2b084bf7bfcc7fec94671b953c2bf067aa";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "control_toolbox-release";
+    rev = "7afc08e36d76e7dbd828f2ea01979a8d68fa0263";
+    owner = "ros-gbp";
+    sha256 = "sha256-e4FTDWkjuTT971m6bkwPhXRtUGbRETznWjX+DtmLPw8=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-microstrain-inertial-examples";
   version = "2.7.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/microstrain_inertial-release/archive/release/galactic/microstrain_inertial_examples/2.7.1-1.tar.gz";
-    name = "2.7.1-1.tar.gz";
-    sha256 = "d73fcc0ea76b5b3055f4d1b921f3115632efbb29e7059405a6013471917438f1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "microstrain_inertial-release";
+    rev = "e0177562ad640cf89dd2471fcbbba58e41cb2f48";
+    owner = "ros2-gbp";
+    sha256 = "sha256-WUQQFvIzQCZgeOx4CmNySFe+lkftMAbcXEJ0AEJkQGQ=";
   };
 
   buildType = "ament_cmake";

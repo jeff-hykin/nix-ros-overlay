@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-rwt-steer";
   version = "0.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/tork-a/visualization_rwt-release/archive/release/melodic/rwt_steer/0.1.1-1.tar.gz";
-    name = "0.1.1-1.tar.gz";
-    sha256 = "db2abd4a820bfb28b5bfa98bfaee23a0ac800040288ccd66049e21b75fd38871";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "visualization_rwt-release";
+    rev = "455cfc87a35fcbcdefbaa7b4ff9ae8478a5cfc26";
+    owner = "tork-a";
+    sha256 = "sha256-ZBqPWxC1EzA1fHOJQwAn5/WWVxjVHYWqeuIiAul0iKg=";
   };
 
   buildType = "catkin";

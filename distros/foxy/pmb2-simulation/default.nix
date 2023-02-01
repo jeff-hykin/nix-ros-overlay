@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-pmb2-simulation";
   version = "3.0.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pal-gbp/pmb2_simulation-gbp/archive/release/foxy/pmb2_simulation/3.0.2-1.tar.gz";
-    name = "3.0.2-1.tar.gz";
-    sha256 = "c27c8f87c8118b62dcd47150f7030cffa6d4b00d76029f945699dae19fb55e2d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pmb2_simulation-gbp";
+    rev = "80163e81d15f7ceef2bb9e084e2f9b4933658320";
+    owner = "pal-gbp";
+    sha256 = "sha256-ffQb7ef2ZeSm9EwmvvG8jnyfFSefbr4PpbrKk9vd3Eg=";
   };
 
   buildType = "ament_cmake";

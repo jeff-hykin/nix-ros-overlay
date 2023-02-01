@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-ament-copyright";
   version = "0.13.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ament_lint-release/archive/release/rolling/ament_copyright/0.13.2-1.tar.gz";
-    name = "0.13.2-1.tar.gz";
-    sha256 = "6bf576f3e700d635a7825e874fb688cf0bcc4e56d21dc2f4821a227ef45c6963";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ament_lint-release";
+    rev = "e6cc570c9430eb1d4407b2924f9cf2d1d0086651";
+    owner = "ros2-gbp";
+    sha256 = "sha256-wEHVuQjZfQipR7Sp+ekSKJnkujQnWMFiU4EyB+eEVP0=";
   };
 
   buildType = "ament_python";

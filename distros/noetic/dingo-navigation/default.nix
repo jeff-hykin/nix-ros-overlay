@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-dingo-navigation";
   version = "0.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/clearpath-gbp/dingo-release/archive/release/noetic/dingo_navigation/0.2.0-1.tar.gz";
-    name = "0.2.0-1.tar.gz";
-    sha256 = "d5f5fa1a4c0e80e5945812a144fea859417545878af2e2dc6b3f35751fafc692";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "dingo-release";
+    rev = "57f4d8790ebc9774e2f2471d36f8e427d476ac51";
+    owner = "clearpath-gbp";
+    sha256 = "sha256-6o1bSY/CGoxm4V+GObOYCAzmHag1T8KPszmfWZNVuoI=";
   };
 
   buildType = "catkin";

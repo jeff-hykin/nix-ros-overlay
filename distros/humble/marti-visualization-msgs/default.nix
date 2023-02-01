@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-marti-visualization-msgs";
   version = "1.3.0-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/marti_messages-release/archive/release/humble/marti_visualization_msgs/1.3.0-3.tar.gz";
-    name = "1.3.0-3.tar.gz";
-    sha256 = "b11084c9d151f9533bc87ed4c765d92dbae49192898930cc5ea9f3ea2f94cad9";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "marti_messages-release";
+    rev = "b791a6268731f518b451eebec204dd1c5f108f81";
+    owner = "ros2-gbp";
+    sha256 = "sha256-ln8TB7XB3itqW2qSG4noDxLwjdTJMrccgDELU/7sm+A=";
   };
 
   buildType = "ament_cmake";

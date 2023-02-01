@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-kartech-linear-actuator-msgs";
   version = "3.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/astuff/astuff_sensor_msgs-release/archive/release/noetic/kartech_linear_actuator_msgs/3.3.0-1.tar.gz";
-    name = "3.3.0-1.tar.gz";
-    sha256 = "3e6cd3bac9e7693fd27ffd3318a85d9537fdb749e15626d1e920b1084b6de628";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "astuff_sensor_msgs-release";
+    rev = "47a6cfc08f3b536aeb4f2657411ebf4d248e649e";
+    owner = "astuff";
+    sha256 = "sha256-uh/ORW9mcX0klEqpFsiLSbVtvE0AjuGpi9VMZBY1qB8=";
   };
 
   buildType = "catkin";

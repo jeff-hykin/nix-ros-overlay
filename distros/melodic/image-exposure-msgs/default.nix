@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-image-exposure-msgs";
   version = "0.14.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-drivers-gbp/pointgrey_camera_driver-release/archive/release/melodic/image_exposure_msgs/0.14.2-1.tar.gz";
-    name = "0.14.2-1.tar.gz";
-    sha256 = "c6ba39025b456f77a855837ff900d4fa5a327054fcda320f2d2e94c219ef8ac5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pointgrey_camera_driver-release";
+    rev = "b9772015c66803add2bfb37fa4edb186a970f67f";
+    owner = "ros-drivers-gbp";
+    sha256 = "sha256-reyeVa18EedWwKIk7ef6Cq/6YQif+lkcBcueS7m11bM=";
   };
 
   buildType = "catkin";

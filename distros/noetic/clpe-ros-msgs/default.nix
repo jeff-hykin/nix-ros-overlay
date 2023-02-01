@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-clpe-ros-msgs";
   version = "0.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/canlab-co/clpe_ros_msgs-ros-release/archive/release/noetic/clpe_ros_msgs/0.1.0-1.tar.gz";
-    name = "0.1.0-1.tar.gz";
-    sha256 = "e76ba2f0efdcbb49aaa82369fd564216d6410ce5c0477f71ba27a12fe7307e60";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "clpe_ros_msgs-ros-release";
+    rev = "2cc731d306784ea8814675b77136eff13f5c0126";
+    owner = "canlab-co";
+    sha256 = "sha256-agDzkIxGixmIEr5fojkmhNNu9riIN6PC6bewWCty08U=";
   };
 
   buildType = "catkin";

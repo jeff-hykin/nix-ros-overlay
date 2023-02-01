@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-simulators";
   version = "1.5.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/metapackages-release/archive/release/noetic/simulators/1.5.0-1.tar.gz";
-    name = "1.5.0-1.tar.gz";
-    sha256 = "d8c22690d65b57f67296923ab30e2ef65dad64627905247d52533c920285ee17";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "metapackages-release";
+    rev = "eb92bb93e7b41f21d8b5222b97eef4091dd309d8";
+    owner = "ros-gbp";
+    sha256 = "sha256-XPf536ZAVXqHAxJUQ7dCj3fbnYhJB4+Z9S3snxwqt8I=";
   };
 
   buildType = "catkin";

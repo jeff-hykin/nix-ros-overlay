@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-cartographer-rviz";
   version = "2.0.9000-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/cartographer_ros-release/archive/release/rolling/cartographer_rviz/2.0.9000-1.tar.gz";
-    name = "2.0.9000-1.tar.gz";
-    sha256 = "d474bb8e6ad826871f040917614ff731cbd4535604dd46204fd776bc3a62e3dc";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cartographer_ros-release";
+    rev = "e55778a59a024b4b70d6e0406e79e0dfdf38fba2";
+    owner = "ros2-gbp";
+    sha256 = "sha256-3RT9v1v/g5rj/7vGiqQI52l/LprLAdj/jH2mYk/ifQc=";
   };
 
   buildType = "ament_cmake";

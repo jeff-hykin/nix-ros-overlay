@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rqt-msg";
   version = "1.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rqt_msg-release/archive/release/galactic/rqt_msg/1.1.0-1.tar.gz";
-    name = "1.1.0-1.tar.gz";
-    sha256 = "30247626de271eaeb5bb5269eff0cfa3b652738ea9a41adb2310eb8532a14e51";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt_msg-release";
+    rev = "7f059bd414f2030609d94293f4d69665c579002d";
+    owner = "ros2-gbp";
+    sha256 = "sha256-NrmS5VKjFPGnj5/dG+PM4ATcsyFEyHYQBcgQ8TQhuS8=";
   };
 
   buildType = "ament_python";

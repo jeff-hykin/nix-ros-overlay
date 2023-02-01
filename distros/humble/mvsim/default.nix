@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-mvsim";
   version = "0.4.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/mvsim-release/archive/release/humble/mvsim/0.4.3-1.tar.gz";
-    name = "0.4.3-1.tar.gz";
-    sha256 = "4b5b4fab39f43a2643cb24779c5a15d5a1994b7ed53e3f2d0df1906054f06a74";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mvsim-release";
+    rev = "84c18eea5e51f811e60c0a0241206e672ef9578c";
+    owner = "ros2-gbp";
+    sha256 = "sha256-UsYz5EnFEfqiGCOAZAkr2ZcOhc/+OVX7JTk/H43DS2g=";
   };
 
   buildType = "ament_cmake";

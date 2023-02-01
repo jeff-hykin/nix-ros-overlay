@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-ur-moveit-config";
   version = "2.0.2-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/Universal_Robots_ROS2_Driver-release/archive/release/foxy/ur_moveit_config/2.0.2-2.tar.gz";
-    name = "2.0.2-2.tar.gz";
-    sha256 = "8ab9b671f0e3eebc811e21f8924417313dfab467bbf60861d6eab6a293c14eb2";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "Universal_Robots_ROS2_Driver-release";
+    rev = "44baafab00c3607e73b37c353a33577a2d69714d";
+    owner = "ros2-gbp";
+    sha256 = "sha256-YtEPp8eTlCzLNm5Xsx6wJkcJrMB4PBjQUwUumhfryfw=";
   };
 
   buildType = "ament_cmake";

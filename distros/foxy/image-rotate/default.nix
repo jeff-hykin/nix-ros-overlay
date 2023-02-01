@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-image-rotate";
   version = "2.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/image_pipeline-release/archive/release/foxy/image_rotate/2.3.0-1.tar.gz";
-    name = "2.3.0-1.tar.gz";
-    sha256 = "820b7792e1659c53e9f079848f8bd3009701796419e4aeffe3fc792a0797737c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "image_pipeline-release";
+    rev = "c94e1d2f4ebaf76f0fa88445f6590571cfa4f338";
+    owner = "ros2-gbp";
+    sha256 = "sha256-2lzESCYFdryaO+RGM8QFs/yKaDvr1AVfLqSJZ+8Pe4c=";
   };
 
   buildType = "ament_cmake";

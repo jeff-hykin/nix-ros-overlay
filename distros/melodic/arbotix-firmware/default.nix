@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-arbotix-firmware";
   version = "0.10.0";
 
-  src = fetchurl {
-    url = "https://github.com/vanadiumlabs/arbotix_ros-release/archive/release/melodic/arbotix_firmware/0.10.0-0.tar.gz";
-    name = "0.10.0-0.tar.gz";
-    sha256 = "c588a11ade8ae7118deec36d4619c9328a748439456671b39bb41fce43a8d382";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "arbotix_ros-release";
+    rev = "613ef2db85b11139c71f6ac07c509bab993df7b5";
+    owner = "vanadiumlabs";
+    sha256 = "sha256-hL6qjnmws9fWzuCeQM/SLHuBXmF9RdfDgl6JlKVq2/4=";
   };
 
   buildType = "catkin";

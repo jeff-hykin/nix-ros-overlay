@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-rm-common";
   version = "0.1.15-r1";
 
-  src = fetchurl {
-    url = "https://github.com/rm-controls/rm_control-release/archive/release/noetic/rm_common/0.1.15-1.tar.gz";
-    name = "0.1.15-1.tar.gz";
-    sha256 = "e336ecf26b5ee997849217f27680fd0787359ebf1d7c67110ca0513864632019";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rm_control-release";
+    rev = "42bf9742b06bee74712f0bc9a1cac5ec99366d67";
+    owner = "rm-controls";
+    sha256 = "sha256-XC3GuL6pHX7EFBW7cMRNdndsweWVlItND9Jp92JQ924=";
   };
 
   buildType = "catkin";

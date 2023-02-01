@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rmf-visualization-building-systems";
   version = "1.2.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_visualization-release/archive/release/galactic/rmf_visualization_building_systems/1.2.1-1.tar.gz";
-    name = "1.2.1-1.tar.gz";
-    sha256 = "804490fae8f04bd0279784a57209e5173fbc3998e82f64cae1e93a9db990b9a7";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_visualization-release";
+    rev = "9c4d550adccb3b64a16b81a31fd8372be31d93db";
+    owner = "ros2-gbp";
+    sha256 = "sha256-HLTNa3Y61eJkV1uqUUfiTQh9DJ5ZmrpsvIM0+0rHyVI=";
   };
 
   buildType = "ament_python";

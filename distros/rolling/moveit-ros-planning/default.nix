@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-moveit-ros-planning";
   version = "2.6.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/moveit/moveit2-release/archive/release/rolling/moveit_ros_planning/2.6.0-1.tar.gz";
-    name = "2.6.0-1.tar.gz";
-    sha256 = "bf3de0b90e949102a90bc6b213c77fe23d9a3f42b98d1c1787cffd510feedefe";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "moveit2-release";
+    rev = "2a2ba60482402918c3370e7e07b55dffce704bcb";
+    owner = "moveit";
+    sha256 = "sha256-LS/w3WwcA277qC5d4GW4GvAyHRCRDq3t6ah1PUW7DzE=";
   };
 
   buildType = "ament_cmake";

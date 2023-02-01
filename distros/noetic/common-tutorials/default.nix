@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-common-tutorials";
   version = "0.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/common_tutorials-release/archive/release/noetic/common_tutorials/0.2.0-1.tar.gz";
-    name = "0.2.0-1.tar.gz";
-    sha256 = "85949cb65616ef22c9134fddb9d0e3a8c0242bb4077061aa4d0112288bf02315";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "common_tutorials-release";
+    rev = "c4c960bca3af3d203bafb8c663350b9802dca0c8";
+    owner = "ros-gbp";
+    sha256 = "sha256-EGtOI7YlE5OYkierPInUtwz9XeuxNzbI8d+SVJumA4k=";
   };
 
   buildType = "catkin";

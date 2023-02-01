@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-moveit-ros-robot-interaction";
   version = "2.5.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/moveit/moveit2-release/archive/release/humble/moveit_ros_robot_interaction/2.5.4-1.tar.gz";
-    name = "2.5.4-1.tar.gz";
-    sha256 = "51c690f15b2b0ea9d1623fc3e8c49bdffe348f233abae5e6667717f3f43098a4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "moveit2-release";
+    rev = "0e2dcde64b8a98ca5c66c8d305905702eaab0606";
+    owner = "moveit";
+    sha256 = "sha256-z1cWLDOCm0WSywwNuucvePPhVljioDtPUynV2b3lSpk=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-ackermann-msgs";
   version = "2.0.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-drivers-gbp/ackermann_msgs-release/archive/release/foxy/ackermann_msgs/2.0.2-1.tar.gz";
-    name = "2.0.2-1.tar.gz";
-    sha256 = "8e8d92f2ef625abec378de4425b4da8421a28287feb6727610104e1e8902501f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ackermann_msgs-release";
+    rev = "5bb2b83da16e56fa747fdcf6b9e3218ce7d00545";
+    owner = "ros-drivers-gbp";
+    sha256 = "sha256-zn0jbHQ6PrAlpzAwpr3Tu01dOE8TVcs0XYlTXL0x8wg=";
   };
 
   buildType = "ament_cmake";

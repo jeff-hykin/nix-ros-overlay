@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-lsc-ros2-driver";
   version = "1.0.0-r10";
 
-  src = fetchurl {
-    url = "https://github.com/AutonicsLiDAR-release/lsc_ros2_driver-release/archive/release/foxy/lsc_ros2_driver/1.0.0-10.tar.gz";
-    name = "1.0.0-10.tar.gz";
-    sha256 = "886f88cbea772cbf6b794b944b00676d2ef24c0a0e2cf76c022002c9628b9358";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "lsc_ros2_driver-release";
+    rev = "1116b457974070bb90413380aea9b3d098f6d8a6";
+    owner = "AutonicsLiDAR-release";
+    sha256 = "sha256-YhMew+QHLeT6uE6uwB1IcCwYfF0l0eFXUw5PDso0JtY=";
   };
 
   buildType = "ament_cmake";

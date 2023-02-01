@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-turtlebot3-example";
   version = "2.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/robotis-ros2-release/turtlebot3-release/archive/release/foxy/turtlebot3_example/2.1.1-1.tar.gz";
-    name = "2.1.1-1.tar.gz";
-    sha256 = "5a4ef658d6bc1465b9f8966ae8972a979e3218188e63694c71b38ac2a2cafdd6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "turtlebot3-release";
+    rev = "49ec193191ab77a9cf71ee866f44896751b9c729";
+    owner = "robotis-ros2-release";
+    sha256 = "sha256-nh4qbKsh4JRJIpUyOIsHHns3mc5AQWKGGKosimiiCvo=";
   };
 
   buildType = "ament_python";

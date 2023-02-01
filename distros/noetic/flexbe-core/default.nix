@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-flexbe-core";
   version = "1.3.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/FlexBE/flexbe_behavior_engine-release/archive/release/noetic/flexbe_core/1.3.1-1.tar.gz";
-    name = "1.3.1-1.tar.gz";
-    sha256 = "fd81ffb82d0c0a081fea09281311c9ac8a2dc48b9200b300e488f7b5cf26ee56";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "flexbe_behavior_engine-release";
+    rev = "1a5f8f7009bb1a1b079347ef70f0a0e22512a597";
+    owner = "FlexBE";
+    sha256 = "sha256-Cxkk2YQBvPPc8vhIT69WDR92xMlMbdz1OTW0nzMHisg=";
   };
 
   buildType = "catkin";

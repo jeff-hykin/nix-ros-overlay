@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-launch-testing-examples";
   version = "0.15.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/examples-release/archive/release/humble/launch_testing_examples/0.15.1-1.tar.gz";
-    name = "0.15.1-1.tar.gz";
-    sha256 = "76ec4b6913e2080b9adde1497f8ec286edc8b0bb9272d303553d8be93a32337d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "examples-release";
+    rev = "795d1bafa4b9d55cbb339bacf64881d1e6db7225";
+    owner = "ros2-gbp";
+    sha256 = "sha256-p3vlS69VFPZsIW9Vr5LxkDfjQsnNjdxp4r+C/dgpj0c=";
   };
 
   buildType = "ament_python";

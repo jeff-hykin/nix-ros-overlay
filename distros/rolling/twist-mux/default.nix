@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-twist-mux";
   version = "4.1.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/twist_mux-release/archive/release/rolling/twist_mux/4.1.0-2.tar.gz";
-    name = "4.1.0-2.tar.gz";
-    sha256 = "48124c254756d8363be450559ebba526cdb2213c8dff400d3052835694663a3d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "twist_mux-release";
+    rev = "96907fa13c5942a17e5fa09b8b468dcce5f4aec3";
+    owner = "ros2-gbp";
+    sha256 = "sha256-BoZjLes6uwKLIV+Tt84oPmHntg1LPbq87iB0fQUKtm8=";
   };
 
   buildType = "ament_cmake";

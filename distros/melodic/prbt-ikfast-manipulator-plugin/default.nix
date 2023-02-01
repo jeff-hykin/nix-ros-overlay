@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-prbt-ikfast-manipulator-plugin";
   version = "0.5.23-r1";
 
-  src = fetchurl {
-    url = "https://github.com/PilzDE/pilz_robots-release/archive/release/melodic/prbt_ikfast_manipulator_plugin/0.5.23-1.tar.gz";
-    name = "0.5.23-1.tar.gz";
-    sha256 = "aab1ab20938b11048170850f082682fef0fd4fb6e7895712a9875080cbbb7bb6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pilz_robots-release";
+    rev = "da2ebce780be377e5a364be13a997fe10713c0ee";
+    owner = "PilzDE";
+    sha256 = "sha256-jnBUvkchJ16IMLF/ThDo/3UZxj97MCZJIFbyRFNGU1Q=";
   };
 
   buildType = "catkin";

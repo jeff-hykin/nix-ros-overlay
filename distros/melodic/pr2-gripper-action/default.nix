@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-pr2-gripper-action";
   version = "1.10.17-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pr2-gbp/pr2_controllers-release/archive/release/melodic/pr2_gripper_action/1.10.17-1.tar.gz";
-    name = "1.10.17-1.tar.gz";
-    sha256 = "98833a8e129e9fc682976c109d577841fb18d99d50acafe8c898e85337443ed8";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pr2_controllers-release";
+    rev = "554f8ca500daac097e244e2fb23f58d79d692343";
+    owner = "pr2-gbp";
+    sha256 = "sha256-pUgxOaxh6w0BLa8ILfE6kcaE31G98qvpzbj/WII1kac=";
   };
 
   buildType = "catkin";

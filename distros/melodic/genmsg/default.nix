@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-genmsg";
   version = "0.5.17-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/genmsg-release/archive/release/melodic/genmsg/0.5.17-1.tar.gz";
-    name = "0.5.17-1.tar.gz";
-    sha256 = "cd554bd374a82c88486fed47a82330e40b6046097bde80e9ff02e15d796a3b45";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "genmsg-release";
+    rev = "dfc5b8ae3f75d5a9033b88761d4c673c664c0018";
+    owner = "ros-gbp";
+    sha256 = "sha256-4659So/0dJGGdMB2Ee/qre/KHOS3t6fQZ5s8Gr0pU/o=";
   };
 
   buildType = "catkin";

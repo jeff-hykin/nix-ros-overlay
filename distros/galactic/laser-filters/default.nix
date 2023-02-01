@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-laser-filters";
   version = "2.0.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/laser_filters-release/archive/release/galactic/laser_filters/2.0.3-1.tar.gz";
-    name = "2.0.3-1.tar.gz";
-    sha256 = "0c6d30bec2b450434b58cd09edf1084b2f0d2ab732012f6163821604126dac4f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "laser_filters-release";
+    rev = "18066d8029dd47fdf5736a8f73570ee585be6998";
+    owner = "ros2-gbp";
+    sha256 = "sha256-81+dXADiq9zhPJJsIl4Qz9L+RiN1X/+KR+vvZ+z2oXA=";
   };
 
   buildType = "ament_cmake";

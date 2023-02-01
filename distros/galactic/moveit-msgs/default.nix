@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-moveit-msgs";
   version = "2.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/moveit/moveit_msgs-release/archive/release/galactic/moveit_msgs/2.2.0-1.tar.gz";
-    name = "2.2.0-1.tar.gz";
-    sha256 = "ae41282d136ee8870d601e95f2e1a6eb88214777ceb4825f8203aa7f5e52482a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "moveit_msgs-release";
+    rev = "222fccc50de80ac8d0e40d38c967561d5420a969";
+    owner = "moveit";
+    sha256 = "sha256-O/8smwfVDsmUestyl7skPTY/LvayziieXNKhtxcnz90=";
   };
 
   buildType = "ament_cmake";

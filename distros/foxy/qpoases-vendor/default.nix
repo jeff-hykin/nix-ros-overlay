@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-qpoases-vendor";
   version = "3.2.3-r2";
 
-  src = fetchurl {
-    url = "https://github.com/Autoware-AI/qpoases_vendor-release/archive/release/foxy/qpoases_vendor/3.2.3-2.tar.gz";
-    name = "3.2.3-2.tar.gz";
-    sha256 = "5dd8deecfed630f13b4b913df8b17fad61ebb1f6976dde219b1f02df66050ba7";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "qpoases_vendor-release";
+    rev = "a80a18111d8dd988ebb46968c560d5d9881efbfa";
+    owner = "Autoware-AI";
+    sha256 = "sha256-jUSNiB8b0P8JHYXdXeKMs5Ucxjk+fhbPqxcJnD2GIQ4=";
   };
 
   buildType = "ament_cmake";

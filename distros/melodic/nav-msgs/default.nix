@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-nav-msgs";
   version = "1.12.8-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/common_msgs-release/archive/release/melodic/nav_msgs/1.12.8-1.tar.gz";
-    name = "1.12.8-1.tar.gz";
-    sha256 = "3b71ca4cc31b61365ffac5472d6fafcc3daa6959b38dee02981ab60acd5f0205";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "common_msgs-release";
+    rev = "d6f49184844b03a8cd11b793a850be331a97a7ed";
+    owner = "ros-gbp";
+    sha256 = "sha256-HGuKV7dV0UvB0eitwFHccqfZT5W6Xq/Yb8in5trjC48=";
   };
 
   buildType = "catkin";

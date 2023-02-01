@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rosidl-runtime-py";
   version = "0.9.1-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rosidl_runtime_py-release/archive/release/galactic/rosidl_runtime_py/0.9.1-2.tar.gz";
-    name = "0.9.1-2.tar.gz";
-    sha256 = "40bf1333068f7ad88ebd118115a9956a0dd9a94baf3418218db9d459365d6a2e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosidl_runtime_py-release";
+    rev = "2778a790524a26b4dedad4e1a2b78f1cf022c1fc";
+    owner = "ros2-gbp";
+    sha256 = "sha256-QRwfvqs4bhzxzzonAanNbul+LzaxAUrhKPsU7LeR2UQ=";
   };
 
   buildType = "ament_python";

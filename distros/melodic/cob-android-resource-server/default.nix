@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-cob-android-resource-server";
   version = "0.1.8-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_android-release/archive/release/melodic/cob_android_resource_server/0.1.8-1.tar.gz";
-    name = "0.1.8-1.tar.gz";
-    sha256 = "1a772d4b0a80badcc4482cb321e4be9ff680ec6ba1caa56997df8a2d335b5dcf";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_android-release";
+    rev = "f57e4f5d2c32ad9b2831f22c26d8be2405481833";
+    owner = "ipa320";
+    sha256 = "sha256-c8wx5s9f/niMpzcf3vQwAAweHgu48gQqryfc+fpiX1I=";
   };
 
   buildType = "catkin";

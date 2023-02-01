@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rmf-demos-maps";
   version = "1.3.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_demos-release/archive/release/galactic/rmf_demos_maps/1.3.2-1.tar.gz";
-    name = "1.3.2-1.tar.gz";
-    sha256 = "a39631343c4d211903d615afd7a7e5de349924e779d372e523fd37e81d1a2e86";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_demos-release";
+    rev = "c40e10b36d9602ca81d3811f4eb0a0bef4826ca9";
+    owner = "ros2-gbp";
+    sha256 = "sha256-823ZU+iONSYdP0ZIu+xUHU1o3qynjuJqEklbLNtjXNg=";
   };
 
   buildType = "ament_cmake";

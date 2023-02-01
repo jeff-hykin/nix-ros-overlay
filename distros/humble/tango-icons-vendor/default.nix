@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-tango-icons-vendor";
   version = "0.1.1-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/tango_icons_vendor-release/archive/release/humble/tango_icons_vendor/0.1.1-3.tar.gz";
-    name = "0.1.1-3.tar.gz";
-    sha256 = "4b7c65a3e74f2f8bc3cfeea5a129b83e94da7440ef3bca1898d32348f97f7d02";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "tango_icons_vendor-release";
+    rev = "a391cbcb71fcf8f5811d814e8f87c947f2fb1e8e";
+    owner = "ros2-gbp";
+    sha256 = "sha256-W3FsRXSDdse1uyGMIWSNAcAyiWYLQ6heM2+2/WTta4s=";
   };
 
   buildType = "ament_cmake";

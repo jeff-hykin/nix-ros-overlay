@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-cob-control";
   version = "0.8.12-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_control-release/archive/release/melodic/cob_control/0.8.12-1.tar.gz";
-    name = "0.8.12-1.tar.gz";
-    sha256 = "7d5f6592c6d284fd0d57ec5a0842a7b1cedd2a3a4b915328f4ec0da27f147828";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_control-release";
+    rev = "6e223b00833e10a9f7bc8db8f67757c145a267fe";
+    owner = "ipa320";
+    sha256 = "sha256-uFrVfGb1CdBKkniGJcZugt6EZip+5cD5oyZqbIdCvxg=";
   };
 
   buildType = "catkin";

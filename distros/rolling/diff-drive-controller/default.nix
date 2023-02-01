@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-diff-drive-controller";
   version = "2.15.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_controllers-release/archive/release/rolling/diff_drive_controller/2.15.0-1.tar.gz";
-    name = "2.15.0-1.tar.gz";
-    sha256 = "8888f28511a4de5649d7dad34029d0e9dcb3c2d93f02bb25bd7669fd6e95a4a5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_controllers-release";
+    rev = "74e382744e69b885a730c4b9587403b810377f07";
+    owner = "ros2-gbp";
+    sha256 = "sha256-gPJxm+ha2fDLAeMOaM26CtbR5jkI2qtl52svMiVMUOU=";
   };
 
   buildType = "ament_cmake";

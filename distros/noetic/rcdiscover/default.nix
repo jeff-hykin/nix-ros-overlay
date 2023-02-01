@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-rcdiscover";
   version = "1.1.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/roboception-gbp/rcdiscover-release/archive/release/noetic/rcdiscover/1.1.4-1.tar.gz";
-    name = "1.1.4-1.tar.gz";
-    sha256 = "77c6f9fdff80705af1ad973d107c1ae7e1ec6e2920687c26e2e2a7f1161c1266";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rcdiscover-release";
+    rev = "14a9908b226379d79b7a50fbe72281463f69490c";
+    owner = "roboception-gbp";
+    sha256 = "sha256-IzHfwuLyT18CS/9Qj/yMlO3ghLUflM1FesXkbpqXruE=";
   };
 
   buildType = "cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-leo-teleop";
   version = "1.2.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/fictionlab-gbp/leo_common-release/archive/release/melodic/leo_teleop/1.2.2-1.tar.gz";
-    name = "1.2.2-1.tar.gz";
-    sha256 = "038736af60665c2bcd0b9caf4b0c219ffebd1b8ad2ef1b14a3a0b65a72f0eff1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "leo_common-release";
+    rev = "0ae62b72322fa3f8f587f0e1ef9463069845df56";
+    owner = "fictionlab-gbp";
+    sha256 = "sha256-khyJwvaA7arc1UyTFYHj1Cn1xnXTPel1BbIn1CGmd0E=";
   };
 
   buildType = "catkin";

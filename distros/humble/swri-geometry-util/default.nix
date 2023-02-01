@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-swri-geometry-util";
   version = "3.5.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/marti_common-release/archive/release/humble/swri_geometry_util/3.5.0-1.tar.gz";
-    name = "3.5.0-1.tar.gz";
-    sha256 = "08c59429d911dd2180756b50cf3bb98bcf00db72b6bea3b90d8b12a4140fba84";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "marti_common-release";
+    rev = "580e128e037370970e079d2e867c34ffee7b6df1";
+    owner = "ros2-gbp";
+    sha256 = "sha256-JAuTqdp0R5i+LbVJwPthq4mwI5kIBabdggi5d8IHS+g=";
   };
 
   buildType = "ament_cmake";

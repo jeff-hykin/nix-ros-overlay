@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-ros-core";
   version = "0.10.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/variants-release/archive/release/rolling/ros_core/0.10.0-1.tar.gz";
-    name = "0.10.0-1.tar.gz";
-    sha256 = "b27b376def41f69dabf4db06dab3df7e66155b6e40d5b9ec856554c8f2bcb275";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "variants-release";
+    rev = "48db3a8969547b665819575f897e8401a03fd315";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Oq1qKMDCrNKnoDWlaZtBuCMhiDEWEaPoyvkumjxWuFg=";
   };
 
   buildType = "ament_cmake";

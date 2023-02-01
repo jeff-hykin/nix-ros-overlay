@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-jackal-gazebo";
   version = "0.4.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/clearpath-gbp/jackal_simulator-release/archive/release/melodic/jackal_gazebo/0.4.0-1.tar.gz";
-    name = "0.4.0-1.tar.gz";
-    sha256 = "202c29adfd750e5043f10171294ca27c0a310aa44a99ea46afebbc269ec9bbef";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "jackal_simulator-release";
+    rev = "a475b49b1d0156a136d6ca90da8f0a05bab89068";
+    owner = "clearpath-gbp";
+    sha256 = "sha256-Q2AGmvi2h5fUsGMYzhQVAgW62umb6gPdpixVBMDOvyk=";
   };
 
   buildType = "catkin";

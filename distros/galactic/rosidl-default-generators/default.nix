@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rosidl-default-generators";
   version = "1.1.1-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rosidl_defaults-release/archive/release/galactic/rosidl_default_generators/1.1.1-2.tar.gz";
-    name = "1.1.1-2.tar.gz";
-    sha256 = "7026582bd5c3e9273a3dc3cd6665df34d927d24c8eb77b3726b7c5b666523f6d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosidl_defaults-release";
+    rev = "1c0032291eec98523034d8210fd775a090137187";
+    owner = "ros2-gbp";
+    sha256 = "sha256-rE00YSxI3lspkd1JM3e5zdHEmzodgsPKzhcV4vDJ8TM=";
   };
 
   buildType = "ament_cmake";

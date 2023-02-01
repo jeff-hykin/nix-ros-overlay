@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-lanelet2-validation";
   version = "1.1.1-r2";
 
-  src = fetchurl {
-    url = "https://github.com/fzi-forschungszentrum-informatik/lanelet2-release/archive/release/galactic/lanelet2_validation/1.1.1-2.tar.gz";
-    name = "1.1.1-2.tar.gz";
-    sha256 = "af1131fe9253eea5b6b8f41aeefc1d4ba7aa3ac5930f46f106659d8ae5584bdf";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "lanelet2-release";
+    rev = "64b735ee4b69bebe48bbdf89a9d3558a526d1b2f";
+    owner = "fzi-forschungszentrum-informatik";
+    sha256 = "sha256-BjMp2DLjsi33ViCZSemJ1kXsu/o4W8xgoAIgna6cX5A=";
   };
 
   buildType = "ament_cmake";

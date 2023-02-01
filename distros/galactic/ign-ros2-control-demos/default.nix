@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ign-ros2-control-demos";
   version = "0.4.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ign_ros2_control-release/archive/release/galactic/ign_ros2_control_demos/0.4.2-1.tar.gz";
-    name = "0.4.2-1.tar.gz";
-    sha256 = "c6012e857d96af897670953e4d3a75d03a00772ed010446377155ea358b09f82";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ign_ros2_control-release";
+    rev = "462ad62aa5c3adc47a51a0c3f95107009d670eec";
+    owner = "ros2-gbp";
+    sha256 = "sha256-/Zjlaj6cieeSORBQLGrayaEyhsI706t/fTRrMyIwqK4=";
   };
 
   buildType = "ament_cmake";

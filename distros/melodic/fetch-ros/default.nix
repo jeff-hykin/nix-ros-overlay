@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-fetch-ros";
   version = "0.8.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/fetchrobotics-gbp/fetch_ros-release/archive/release/melodic/fetch_ros/0.8.3-1.tar.gz";
-    name = "0.8.3-1.tar.gz";
-    sha256 = "0352c66a6b59ab197e607345b2fe5c6f68de8600eaa6dc0b241e7e47b9984888";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "fetch_ros-release";
+    rev = "3c1c3d2d8a4f739e0a008b2a6b6362dd27667276";
+    owner = "fetchrobotics-gbp";
+    sha256 = "sha256-/HzzOfAbTeqItj/2xN/IPLO3TdWsyWvdLwia6rz1I8Q=";
   };
 
   buildType = "catkin";

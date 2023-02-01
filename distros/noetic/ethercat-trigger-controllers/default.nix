@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-ethercat-trigger-controllers";
   version = "1.10.18-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pr2-gbp/pr2_controllers-release/archive/release/noetic/ethercat_trigger_controllers/1.10.18-1.tar.gz";
-    name = "1.10.18-1.tar.gz";
-    sha256 = "76eadb510379a0887d67d78299cadf476fd5f4c91465b696b132a551d06ff51d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pr2_controllers-release";
+    rev = "aa38f4476a9858f17be21e0b5c7194a888cb9b0f";
+    owner = "pr2-gbp";
+    sha256 = "sha256-YJMLlFQI+Ao5BlXb0czCy7Wb0S1tRsRbisEImyrvIHg=";
   };
 
   buildType = "catkin";

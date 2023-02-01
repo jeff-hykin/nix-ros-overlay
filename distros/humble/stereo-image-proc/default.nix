@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-stereo-image-proc";
   version = "3.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/image_pipeline-release/archive/release/humble/stereo_image_proc/3.0.0-1.tar.gz";
-    name = "3.0.0-1.tar.gz";
-    sha256 = "a9b8c23e154eaa697438210fec2b793b1e9610c8f2c7b8a6e234495f3e5d4d5b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "image_pipeline-release";
+    rev = "2332eb400be3fb266bf5773bf0f53deb535b39f3";
+    owner = "ros2-gbp";
+    sha256 = "sha256-hVQdkXB9/m2USOEjXdr2wx0EnikNYjo6RLttnCBfMD8=";
   };
 
   buildType = "ament_cmake";

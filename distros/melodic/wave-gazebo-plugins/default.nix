@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-wave-gazebo-plugins";
   version = "1.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/vrx-release/archive/release/melodic/wave_gazebo_plugins/1.3.0-1.tar.gz";
-    name = "1.3.0-1.tar.gz";
-    sha256 = "2e377ffb712c23f3e9f3a3affbd5d43bc4663197e358327fbf54822ffb00983a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "vrx-release";
+    rev = "67e57233307bd9cf705647a19c19ebc89d37f1d7";
+    owner = "ros-gbp";
+    sha256 = "sha256-eFdfocU6jv7OhvoOgYakU95Gw9gpIb/L3oSWSQ2sVaA=";
   };
 
   buildType = "catkin";

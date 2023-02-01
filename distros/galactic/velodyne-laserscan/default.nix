@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-velodyne-laserscan";
   version = "2.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/velodyne-release/archive/release/galactic/velodyne_laserscan/2.3.0-1.tar.gz";
-    name = "2.3.0-1.tar.gz";
-    sha256 = "879837e0ef4588822d03f9229afcf2ab8b88017cf89b7a6a663f57c4c575b36c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "velodyne-release";
+    rev = "aaa563c08763033a8e37bb1bfccece429179bb3c";
+    owner = "ros2-gbp";
+    sha256 = "sha256-rSKlfJVrsBMOdfguEVxqRmL3bNJiRLJsyy6iTcxdfKY=";
   };
 
   buildType = "ament_cmake";

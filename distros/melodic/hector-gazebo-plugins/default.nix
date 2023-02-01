@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-hector-gazebo-plugins";
   version = "0.5.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/tu-darmstadt-ros-pkg-gbp/hector_gazebo-release/archive/release/melodic/hector_gazebo_plugins/0.5.4-1.tar.gz";
-    name = "0.5.4-1.tar.gz";
-    sha256 = "a215cd06c58b2ab21a634c69f5debcfff0f189c92faf6e6371fe1392610a511a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "hector_gazebo-release";
+    rev = "00f88d45bbc89f8088af919fd86fec7f5a14793e";
+    owner = "tu-darmstadt-ros-pkg-gbp";
+    sha256 = "sha256-4c+jJP00hi1Xmns+loZX4THAkQ48w1x2ZanWxd22pIE=";
   };
 
   buildType = "catkin";

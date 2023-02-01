@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-pcl-conversions";
   version = "1.7.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/perception_pcl-release/archive/release/melodic/pcl_conversions/1.7.4-1.tar.gz";
-    name = "1.7.4-1.tar.gz";
-    sha256 = "802d6bc106aac351f44e40da87ccab4e8c48c710c80123181e3f3399fbc93a5c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "perception_pcl-release";
+    rev = "1a426b6701ccdec021de2abb490087111d6160f6";
+    owner = "ros-gbp";
+    sha256 = "sha256-wwRfvN7cyB0FR39F82KzNiWwUlEdLgJjEpTE1KgE6cY=";
   };
 
   buildType = "catkin";

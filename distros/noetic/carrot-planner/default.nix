@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-carrot-planner";
   version = "1.17.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/navigation-release/archive/release/noetic/carrot_planner/1.17.2-1.tar.gz";
-    name = "1.17.2-1.tar.gz";
-    sha256 = "4b97d1b64c80686f5e27d0bc312f2cdc1cc158bc6cf25b15c4d8489fdb7b7f73";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation-release";
+    rev = "c1925a85d170b13ed55bc257d5d84e93870b813a";
+    owner = "ros-gbp";
+    sha256 = "sha256-ficgY/Rm8pH+TJoBYAFUgj2b6NCEsGA6WTOmZw0gHY0=";
   };
 
   buildType = "catkin";

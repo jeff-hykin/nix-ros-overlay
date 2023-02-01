@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-urg-node";
   version = "1.0.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/urg_node-release/archive/release/foxy/urg_node/1.0.3-1.tar.gz";
-    name = "1.0.3-1.tar.gz";
-    sha256 = "8314b58a1ca008d6409201b53dd7f093654953e025f3515a0de4dbcb862f5af0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "urg_node-release";
+    rev = "69a58224a301a6ef366b4da0e377db81ce049f17";
+    owner = "ros2-gbp";
+    sha256 = "sha256-27MQJNEmYFBOySwwtuc7gyBw4vo6A+rKbd6QaII5i9k=";
   };
 
   buildType = "ament_cmake";

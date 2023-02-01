@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-imu-sensor-broadcaster";
   version = "2.15.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_controllers-release/archive/release/rolling/imu_sensor_broadcaster/2.15.0-1.tar.gz";
-    name = "2.15.0-1.tar.gz";
-    sha256 = "000d513f723db6387e84c8d42b2f4064fdfc3800ad9f05a0f5cf6c64718b7db6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_controllers-release";
+    rev = "ccd37eda16aef2caa7e84393a19c7306f1b39275";
+    owner = "ros2-gbp";
+    sha256 = "sha256-z8kafdyCJLqIv3fyMAZ0yhEBuUqc5BDblSV66iIIvo4=";
   };
 
   buildType = "ament_cmake";

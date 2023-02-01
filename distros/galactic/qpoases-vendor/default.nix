@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-qpoases-vendor";
   version = "3.2.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/Autoware-AI/qpoases_vendor-release/archive/release/galactic/qpoases_vendor/3.2.3-1.tar.gz";
-    name = "3.2.3-1.tar.gz";
-    sha256 = "ccfecd402a919e2d21c675029594e75d87ab07cd9416983af070ededd2f792c5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "qpoases_vendor-release";
+    rev = "52555bd7cf44596bc119bbf9c3413f1a1254a031";
+    owner = "Autoware-AI";
+    sha256 = "sha256-jUSNiB8b0P8JHYXdXeKMs5Ucxjk+fhbPqxcJnD2GIQ4=";
   };
 
   buildType = "ament_cmake";

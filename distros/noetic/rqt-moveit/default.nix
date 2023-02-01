@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-rqt-moveit";
   version = "0.5.10-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/rqt_moveit-release/archive/release/noetic/rqt_moveit/0.5.10-1.tar.gz";
-    name = "0.5.10-1.tar.gz";
-    sha256 = "6c481788f1737b83c47f4696dbaf2202b1305cdb206c9b73778028c3199c4a94";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt_moveit-release";
+    rev = "6868fed45952ca039e92d320fc9968acdfbe4fb8";
+    owner = "ros-gbp";
+    sha256 = "sha256-zv684ywE1qfK6bcCDcHiNNkC1u18EpLfbC+LxBp2T8Q=";
   };
 
   buildType = "catkin";

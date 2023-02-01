@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-mir-navigation";
   version = "1.0.8-r1";
 
-  src = fetchurl {
-    url = "https://github.com/uos-gbp/mir_robot-release/archive/release/melodic/mir_navigation/1.0.8-1.tar.gz";
-    name = "1.0.8-1.tar.gz";
-    sha256 = "71f147dada6957cc290b35ee2852714e41e6a6e0ea6655fd172732ea256fe071";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mir_robot-release";
+    rev = "20199c0f4d169350647f740ad5196b0d41778ace";
+    owner = "uos-gbp";
+    sha256 = "sha256-e0nshEmhL+V1pl++F9qVXZTNiMO4MGCN0xfkwN6OkLY=";
   };
 
   buildType = "catkin";

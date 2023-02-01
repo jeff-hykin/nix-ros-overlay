@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-tf2-msgs";
   version = "0.29.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/geometry2-release/archive/release/rolling/tf2_msgs/0.29.0-1.tar.gz";
-    name = "0.29.0-1.tar.gz";
-    sha256 = "ef3895772ac6312f16db23322f020bf1953dbcd0bd9df969359e2feef953c701";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "geometry2-release";
+    rev = "b6ebb62accb590f6735ff0bf19c8d82640f457c7";
+    owner = "ros2-gbp";
+    sha256 = "sha256-woppNm12UxJ9sMq1IFIWk2xiqmyOz17WEQFwexRQQi4=";
   };
 
   buildType = "ament_cmake";

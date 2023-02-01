@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-compressed-image-transport";
   version = "2.3.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/image_transport_plugins-release/archive/release/foxy/compressed_image_transport/2.3.3-1.tar.gz";
-    name = "2.3.3-1.tar.gz";
-    sha256 = "844a5cd20dbb449b9f00468a1af049091b0ab7c7c13d3171bb9e0427cfe9a537";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "image_transport_plugins-release";
+    rev = "5e085225750421a1af86cb3a2841bf5a564ca677";
+    owner = "ros2-gbp";
+    sha256 = "sha256-6ryHWZSzl8915dbOeIZSo/6nUKUi2e2krKoUtIgCNRk=";
   };
 
   buildType = "ament_cmake";

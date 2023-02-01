@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-std-msgs";
   version = "2.0.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/common_interfaces-release/archive/release/foxy/std_msgs/2.0.5-1.tar.gz";
-    name = "2.0.5-1.tar.gz";
-    sha256 = "bb8026fdafc7fa5c6b5e7e30f53e024b26723e18951318d94c7161f8f2955070";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "common_interfaces-release";
+    rev = "110d4fa029cf2f714e726c372943e720523650c8";
+    owner = "ros2-gbp";
+    sha256 = "sha256-T7Z8DdcvzMmdz94nE13hJozDPOsNLm5gfaxRqxkIJ9I=";
   };
 
   buildType = "ament_cmake";

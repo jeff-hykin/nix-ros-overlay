@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-plotjuggler";
   version = "3.6.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/facontidavide/plotjuggler-release/archive/release/galactic/plotjuggler/3.6.0-1.tar.gz";
-    name = "3.6.0-1.tar.gz";
-    sha256 = "d350c06f58ccd070148bc5b5bc74fc5d7f2a99f307385055ddac4f41e508e271";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "plotjuggler-release";
+    rev = "115f075059a89a7863ff3d68fee4ba88d7386926";
+    owner = "facontidavide";
+    sha256 = "sha256-nHSTE9bbmkR6byd/ACSbE16oscBg2pMgQIEUMdXFpg0=";
   };
 
   buildType = "ament_cmake";

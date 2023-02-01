@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-diffbot-base";
   version = "1.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-mobile-robots-release/diffbot-release/archive/release/noetic/diffbot_base/1.1.0-1.tar.gz";
-    name = "1.1.0-1.tar.gz";
-    sha256 = "5793ae3fa559221f08b2ea983cd5178aa65c91c2bb4b76eb62ddb2cfc4369553";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "diffbot-release";
+    rev = "36b12b29d3258f7ac21099f2e5208e677a5f6b2c";
+    owner = "ros-mobile-robots-release";
+    sha256 = "sha256-Ua3MnwRHUdFP0emVcj6bV7JhgXspnaJXcGw46ugvhBA=";
   };
 
   buildType = "catkin";

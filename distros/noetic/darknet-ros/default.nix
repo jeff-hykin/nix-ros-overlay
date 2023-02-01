@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-darknet-ros";
   version = "1.1.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/leggedrobotics/darknet_ros-release/archive/release/noetic/darknet_ros/1.1.5-1.tar.gz";
-    name = "1.1.5-1.tar.gz";
-    sha256 = "1ab3b50195ea9537bf73b5c9e756bece85da94e0f77792314699e8ed9c607bd1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "darknet_ros-release";
+    rev = "9f448396ffa31cb6e4383de6205ac4025436fdf3";
+    owner = "leggedrobotics";
+    sha256 = "sha256-4i//MgNTTmJGAF1kDNmm+byM31xK4gtzkNZwpcYYph4=";
   };
 
   buildType = "catkin";

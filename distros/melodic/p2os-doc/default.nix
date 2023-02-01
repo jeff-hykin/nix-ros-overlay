@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-p2os-doc";
   version = "2.1.1-r3";
 
-  src = fetchurl {
-    url = "https://github.com/allenh1/p2os-release/archive/release/melodic/p2os_doc/2.1.1-3.tar.gz";
-    name = "2.1.1-3.tar.gz";
-    sha256 = "227edf1f84b669f969f96db7c374ba1985c0ae65383edeccbae293321d80ab86";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "p2os-release";
+    rev = "3270dc2038c0bc38211514b6c43bde0582012a08";
+    owner = "allenh1";
+    sha256 = "sha256-Ue0+fXcE67rZdtFmkn4tWg6dPEn1a2Qq0lJUklkt9EU=";
   };
 
   buildType = "catkin";

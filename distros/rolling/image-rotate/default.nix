@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-image-rotate";
   version = "3.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/image_pipeline-release/archive/release/rolling/image_rotate/3.0.1-1.tar.gz";
-    name = "3.0.1-1.tar.gz";
-    sha256 = "438fc0aa24d6003daeea37da398380c52d6a9bda29c44d0c89127f9c271ccdf5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "image_pipeline-release";
+    rev = "d17335c49a0c696e016b5b62cf30c2dec6c8e702";
+    owner = "ros2-gbp";
+    sha256 = "sha256-LBsnSxfsqXa7ZzNWvETRMXeJgY9UdyXXUjPBf8lvVQI=";
   };
 
   buildType = "ament_cmake";

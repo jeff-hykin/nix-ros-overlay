@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-rosbridge-library";
   version = "1.3.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rosbridge_suite-release/archive/release/humble/rosbridge_library/1.3.1-1.tar.gz";
-    name = "1.3.1-1.tar.gz";
-    sha256 = "3d9730d50cca9b68f47f1eff36f2a61fe7671fc6d37ba3da4db29aa2d1f65999";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosbridge_suite-release";
+    rev = "edbb4419b9e085815ce9a881db1eee5f5d65bd68";
+    owner = "ros2-gbp";
+    sha256 = "sha256-N/PN8jn57yPt/8PpynUAVchkFfftkKbyDD0SUeiNDRA=";
   };
 
   buildType = "ament_cmake";

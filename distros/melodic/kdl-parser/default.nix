@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-kdl-parser";
   version = "1.13.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/kdl_parser-release/archive/release/melodic/kdl_parser/1.13.3-1.tar.gz";
-    name = "1.13.3-1.tar.gz";
-    sha256 = "3330b28612c51a321bfa0ab45e542b774ad69f8d73acb2f1377c20b65c90f50a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "kdl_parser-release";
+    rev = "ea504b05f34457fdeb3726d9ecf77f8f7e788eb9";
+    owner = "ros-gbp";
+    sha256 = "sha256-1T9TC1HeOGAK+pNgNwOLjNmaAASsBCIquIt3DMdsl6w=";
   };
 
   buildType = "catkin";

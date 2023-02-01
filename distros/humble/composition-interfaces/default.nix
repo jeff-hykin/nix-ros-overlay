@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-composition-interfaces";
   version = "1.2.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rcl_interfaces-release/archive/release/humble/composition_interfaces/1.2.1-1.tar.gz";
-    name = "1.2.1-1.tar.gz";
-    sha256 = "53962a2cb15076eb4f4131e02ad0a69d66d13f8f425d956385aad51760c0ad11";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rcl_interfaces-release";
+    rev = "4279d2abaec587bd4e631b6216997783e01aee9a";
+    owner = "ros2-gbp";
+    sha256 = "sha256-8OX9nEURTaMKAvWSBcVsg+nrOIVqJlIha4FT+YODnJg=";
   };
 
   buildType = "ament_cmake";

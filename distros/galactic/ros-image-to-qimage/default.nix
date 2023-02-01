@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ros-image-to-qimage";
   version = "0.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros_image_to_qimage-release/archive/release/galactic/ros_image_to_qimage/0.1.1-1.tar.gz";
-    name = "0.1.1-1.tar.gz";
-    sha256 = "3fb3c0549f954b1438de980fa1edd4eab93c3dbb966b0b5bdde4a750550ba940";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_image_to_qimage-release";
+    rev = "583860b95bb4fb41f9633bb0f440118f494e1ce3";
+    owner = "ros2-gbp";
+    sha256 = "sha256-m/0/fIC34tGe3fSdXlnuZlGEZ1sg3IUfDakDDxoHRA8=";
   };
 
   buildType = "ament_cmake";

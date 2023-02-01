@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-dingo-navigation";
   version = "0.1.12-r2";
 
-  src = fetchurl {
-    url = "https://github.com/clearpath-gbp/dingo-release/archive/release/melodic/dingo_navigation/0.1.12-2.tar.gz";
-    name = "0.1.12-2.tar.gz";
-    sha256 = "350629950a4bae0680de0d049ab76c51dea5f60f341e515250c7eec7ff6eef94";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "dingo-release";
+    rev = "670e0d466eef82708910326aa9467dd372f0b7d9";
+    owner = "clearpath-gbp";
+    sha256 = "sha256-F7TE56jltwuLRT7b6gaAbQvEOCiedIEMk2hrQLlvwWI=";
   };
 
   buildType = "catkin";

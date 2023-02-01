@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-gazebo-ros-control-select-joints";
   version = "2.5.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/tu-darmstadt-ros-pkg-gbp/gazebo_ros_control_select_joints-release/archive/release/noetic/gazebo_ros_control_select_joints/2.5.7-1.tar.gz";
-    name = "2.5.7-1.tar.gz";
-    sha256 = "49ee976c4565b47588ca0ac9acabd261902629be396bf77020a26bb5b0572a00";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "gazebo_ros_control_select_joints-release";
+    rev = "dbaf2662440b709f0257e1f128726ff15d694c92";
+    owner = "tu-darmstadt-ros-pkg-gbp";
+    sha256 = "sha256-xthWwWVwN+s8gxV1J1wk6eQVQ2OQZ+dZNoWLarqgm5M=";
   };
 
   buildType = "catkin";

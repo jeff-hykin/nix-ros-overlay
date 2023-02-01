@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-imu-from-ios-sensorlog";
   version = "0.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pietrocolombo/imu_from_ios_sensorlog-release/archive/release/noetic/imu_from_ios_sensorlog/0.0.1-1.tar.gz";
-    name = "0.0.1-1.tar.gz";
-    sha256 = "de580184eeb098f142326b78523af1340057916f3989a42a7c05a607674ae44d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "imu_from_ios_sensorlog-release";
+    rev = "d8fc2b36dfb7a910a3b155b73df5d79c7c121bba";
+    owner = "pietrocolombo";
+    sha256 = "sha256-9+0XLcQgSlBt1EnH4uVwbj9+ytuYkKqxjAsgWgWXTQg=";
   };
 
   buildType = "catkin";

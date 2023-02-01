@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-stereo-image-proc";
   version = "2.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/image_pipeline-release/archive/release/foxy/stereo_image_proc/2.3.0-1.tar.gz";
-    name = "2.3.0-1.tar.gz";
-    sha256 = "08fc992a1a3e613f75227fc7edb2a05578c7bc70d5a4207c088ad187311ae422";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "image_pipeline-release";
+    rev = "fc777bfa2c93276735e361f9d7c26e33a5b54cbd";
+    owner = "ros2-gbp";
+    sha256 = "sha256-7UBAcCNQ7qg4RYLBs2h+Is5JTkZvAJCkVU7GNDXP4G0=";
   };
 
   buildType = "ament_cmake";

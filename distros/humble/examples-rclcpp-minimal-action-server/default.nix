@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-examples-rclcpp-minimal-action-server";
   version = "0.15.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/examples-release/archive/release/humble/examples_rclcpp_minimal_action_server/0.15.1-1.tar.gz";
-    name = "0.15.1-1.tar.gz";
-    sha256 = "2c8fa1fec9b36c6d53cbf35f3462f590c28143270bc8387b5565e61fb0d5b3f8";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "examples-release";
+    rev = "e93d1cd5847d8d41b1663f9d84e03727acc0fc28";
+    owner = "ros2-gbp";
+    sha256 = "sha256-2N9WleFHlPS+0Bv2+5lMpEtlT47mhE3HsIEUgSnKuyE=";
   };
 
   buildType = "ament_cmake";

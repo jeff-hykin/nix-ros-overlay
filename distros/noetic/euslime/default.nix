@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-euslime";
   version = "1.1.4-r4";
 
-  src = fetchurl {
-    url = "https://github.com/jsk-ros-pkg/euslime-release/archive/release/noetic/euslime/1.1.4-4.tar.gz";
-    name = "1.1.4-4.tar.gz";
-    sha256 = "9871d29d0c142d3923cd48c5a01919aebb2dfa7acf8b0c01192becde7f34bfee";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "euslime-release";
+    rev = "4530be1a9ed654e0e51a63f710321b202b0d15bb";
+    owner = "jsk-ros-pkg";
+    sha256 = "sha256-THE3p1Yz+wOa5fYMaN+S4CZpjQFV/JtFrjXeX7A6jZk=";
   };
 
   buildType = "catkin";

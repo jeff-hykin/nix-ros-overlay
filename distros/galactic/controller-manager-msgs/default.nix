@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-controller-manager-msgs";
   version = "1.6.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_control-release/archive/release/galactic/controller_manager_msgs/1.6.0-1.tar.gz";
-    name = "1.6.0-1.tar.gz";
-    sha256 = "25e23e15eccd25cbcd0278bc9c39fa244a78c87d1ee428927531439a4923044f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_control-release";
+    rev = "0d8798a747ff00d2b2c05e01dd1a5599d1a6f0d4";
+    owner = "ros2-gbp";
+    sha256 = "sha256-NA4tWdLAFiOyKiCbzjleTo5PCKc0kioGeeFiCBJJwJs=";
   };
 
   buildType = "ament_cmake";

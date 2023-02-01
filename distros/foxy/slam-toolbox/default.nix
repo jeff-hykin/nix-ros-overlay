@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-slam-toolbox";
   version = "2.4.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/SteveMacenski/slam_toolbox-release/archive/release/foxy/slam_toolbox/2.4.1-1.tar.gz";
-    name = "2.4.1-1.tar.gz";
-    sha256 = "2a747bea1e8fc99915296541eacbdbbbb007116181b64a9f369967b7935a969a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "slam_toolbox-release";
+    rev = "e85196617e6858876a56bd39e49ebb2c8c1a494b";
+    owner = "SteveMacenski";
+    sha256 = "sha256-jpAZCuupwhudknuOm38a+h8qU7HUdOl9z/Nd75E2I98=";
   };
 
   buildType = "ament_cmake";

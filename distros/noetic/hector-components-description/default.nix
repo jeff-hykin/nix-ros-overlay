@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-hector-components-description";
   version = "0.5.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/tu-darmstadt-ros-pkg-gbp/hector_models-release/archive/release/noetic/hector_components_description/0.5.2-1.tar.gz";
-    name = "0.5.2-1.tar.gz";
-    sha256 = "c836e041158b1bac298c05bc1d4de83dfe722c2c7fa20daf6dec282e2a336db8";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "hector_models-release";
+    rev = "a6538a1c9be21deb0268b99d6e01e9654789aa8a";
+    owner = "tu-darmstadt-ros-pkg-gbp";
+    sha256 = "sha256-J7E5/f4NXbZum/tO5MIptiAECBdHVW1sWFONLjzI/NM=";
   };
 
   buildType = "catkin";

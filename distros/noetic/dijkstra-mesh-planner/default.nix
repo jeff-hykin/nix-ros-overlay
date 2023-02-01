@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-dijkstra-mesh-planner";
   version = "1.0.1-r2";
 
-  src = fetchurl {
-    url = "https://github.com/uos-gbp/mesh_navigation-release/archive/release/noetic/dijkstra_mesh_planner/1.0.1-2.tar.gz";
-    name = "1.0.1-2.tar.gz";
-    sha256 = "d010e737088b5c84fba9bb1926f574ac3a18138414963d84520bb3d0963507b8";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mesh_navigation-release";
+    rev = "f15f2ca374b022ee906fd0aa98aa83bdc0168e9e";
+    owner = "uos-gbp";
+    sha256 = "sha256-0jcTvJztBd30A7Qi+8EC432y/Kq2LavgyO4SVDU+nCY=";
   };
 
   buildType = "catkin";

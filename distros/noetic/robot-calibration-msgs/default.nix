@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-robot-calibration-msgs";
   version = "0.7.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/robot_calibration-release/archive/release/noetic/robot_calibration_msgs/0.7.2-1.tar.gz";
-    name = "0.7.2-1.tar.gz";
-    sha256 = "b90bf5c93a7c5b955b589a4bd5052b9a2c84741a97090d04dd23623c30cc4120";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "robot_calibration-release";
+    rev = "bf7fceea7799b8d6e8be06c611dab7a8d4644610";
+    owner = "ros-gbp";
+    sha256 = "sha256-TcMd42tEe9LOT+m4e9F0iC+SoNpLt+YYrfn3fj//p04=";
   };
 
   buildType = "catkin";

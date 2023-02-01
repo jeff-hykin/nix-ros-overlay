@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-actionlib-msgs";
   version = "2.2.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/common_interfaces-release/archive/release/galactic/actionlib_msgs/2.2.4-1.tar.gz";
-    name = "2.2.4-1.tar.gz";
-    sha256 = "5d2ce4cb8dd390e77e86ce2424071d6714ba8a743f9e50179479a683316407be";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "common_interfaces-release";
+    rev = "5f5c466ee02e03d9e0c53b729fc66ecb5e5bf135";
+    owner = "ros2-gbp";
+    sha256 = "sha256-dTeLi5H+ZVR1DZIF3NWGYaAGYNinbr8h2YaignFtvZw=";
   };
 
   buildType = "ament_cmake";

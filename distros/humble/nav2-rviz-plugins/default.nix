@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-nav2-rviz-plugins";
   version = "1.1.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/SteveMacenski/navigation2-release/archive/release/humble/nav2_rviz_plugins/1.1.5-1.tar.gz";
-    name = "1.1.5-1.tar.gz";
-    sha256 = "4222c3b016c2850235a5d4f5dcdac8ef54ff5211902786c6f88d900af3b0592b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation2-release";
+    rev = "35156223b0b5b380732cd117e61f53c07a9f7072";
+    owner = "SteveMacenski";
+    sha256 = "sha256-hAK2H1a+Exj4L0Z+HCZk1zwkWur2BBqkJDEGCpHtG0c=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-neonavigation-launch";
   version = "0.11.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/at-wat/neonavigation-release/archive/release/melodic/neonavigation_launch/0.11.7-1.tar.gz";
-    name = "0.11.7-1.tar.gz";
-    sha256 = "38543bce0951edb4404e41ea512521aa37d116cb45aacbf721eed2889d077a68";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "neonavigation-release";
+    rev = "7c9482a891f8b25a5045057dd6c5083ddfa5ef9d";
+    owner = "at-wat";
+    sha256 = "sha256-OCRjH4hG3QIGPDcj9jZnPu0YBZ8fE2vFJ+rKhIIpX0Y=";
   };
 
   buildType = "catkin";

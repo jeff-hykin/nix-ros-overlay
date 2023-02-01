@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-octomap-server";
   version = "2.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/octomap_mapping-release/archive/release/galactic/octomap_server/2.0.0-1.tar.gz";
-    name = "2.0.0-1.tar.gz";
-    sha256 = "dd1c83055153b33978a8db781f2b09cbd0ba94db9e6e650bc9aea0dc73ec82d4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "octomap_mapping-release";
+    rev = "249e18a903b3ff9c7d04c0558032b2929ca07a00";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Uh6hgimLc8sgK2A6cuJWe0IPqZeR6ljm1xQoNRwe9ck=";
   };
 
   buildType = "ament_cmake";

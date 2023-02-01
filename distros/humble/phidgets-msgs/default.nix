@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-phidgets-msgs";
   version = "2.3.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/phidgets_drivers-release/archive/release/humble/phidgets_msgs/2.3.0-2.tar.gz";
-    name = "2.3.0-2.tar.gz";
-    sha256 = "4960322e69279dd84d25873bc580c08e202c8bd6948bc10e4dfdb2a178afd8e6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "phidgets_drivers-release";
+    rev = "6ca04f2f85636a8d81569c6d599ca6c3593e310b";
+    owner = "ros2-gbp";
+    sha256 = "sha256-KdyLUx65wdwbkUEqtpBamPz4Si2mVRADGNH0G8756dg=";
   };
 
   buildType = "ament_cmake";

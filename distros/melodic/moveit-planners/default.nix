@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-moveit-planners";
   version = "1.0.11-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit_planners/1.0.11-1.tar.gz";
-    name = "1.0.11-1.tar.gz";
-    sha256 = "faf90009cf325c99f90660a738b2f349ba8ad79b3305330864795d75de48c189";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "moveit-release";
+    rev = "55f220aaff4576640fdbc7c9b9307a832dd2c867";
+    owner = "ros-gbp";
+    sha256 = "sha256-KKOAPXmV3IVljKlHSvlzLVPuCOeSSYHZU0bJBNsQHXM=";
   };
 
   buildType = "catkin";

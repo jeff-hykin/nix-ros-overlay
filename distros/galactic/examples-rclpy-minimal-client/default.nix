@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-examples-rclpy-minimal-client";
   version = "0.11.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/examples-release/archive/release/galactic/examples_rclpy_minimal_client/0.11.2-1.tar.gz";
-    name = "0.11.2-1.tar.gz";
-    sha256 = "6e515959ff783140c79af44690353f3c4a6180317a2eb77723f9b753555a11c4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "examples-release";
+    rev = "31a82a9fc26908fd98292e759f54a6f52b61cfaa";
+    owner = "ros2-gbp";
+    sha256 = "sha256-7oUya9qtZbe91s7eHeyxHxUkHs+nd05rj11C5IKBn64=";
   };
 
   buildType = "ament_python";

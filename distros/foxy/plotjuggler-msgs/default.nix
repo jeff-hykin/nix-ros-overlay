@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-plotjuggler-msgs";
   version = "0.2.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/facontidavide/plotjuggler_msgs-release/archive/release/foxy/plotjuggler_msgs/0.2.1-1.tar.gz";
-    name = "0.2.1-1.tar.gz";
-    sha256 = "8eaaa4edd0769369814358e7d4efd264bfd86a604f731ca288b8510df2278a33";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "plotjuggler_msgs-release";
+    rev = "190e24347640a92a2b3f83a51f4461a3b8b0c68d";
+    owner = "facontidavide";
+    sha256 = "sha256-LOj/zO/kVp+PLBNkVl/UyunkoA3npudzqmvzwcH5E9Q=";
   };
 
   buildType = "ament_cmake";

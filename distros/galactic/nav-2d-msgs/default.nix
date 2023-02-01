@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-nav-2d-msgs";
   version = "1.0.12-r1";
 
-  src = fetchurl {
-    url = "https://github.com/SteveMacenski/navigation2-release/archive/release/galactic/nav_2d_msgs/1.0.12-1.tar.gz";
-    name = "1.0.12-1.tar.gz";
-    sha256 = "b34381dd3f3098bc343cd51202075b98f996109eb1dfcd61224322d7454fea4b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation2-release";
+    rev = "eea0d23508451188c3cad54409122f6b6a2dd2e5";
+    owner = "SteveMacenski";
+    sha256 = "sha256-MeNR/xHPAKbDXH6SkfB9EfJdNK7BareQVzj1xMwfPeI=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-effort-controllers";
   version = "0.17.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/ros_controllers-release/archive/release/melodic/effort_controllers/0.17.2-1.tar.gz";
-    name = "0.17.2-1.tar.gz";
-    sha256 = "87ac8f3079b57ca3c35361d3005d85c09170b21cf0b01fc2ac078fddf05c4ec1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_controllers-release";
+    rev = "ea83c7ad05e24f3977ba81f3dd3787ff8d939f44";
+    owner = "ros-gbp";
+    sha256 = "sha256-rJHgWsvDLkuZA85ZuM84K9vA552i2hxUI7crKztYJ8A=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-tf2-server";
   version = "1.1.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/peci1/tf2_server-release/archive/release/noetic/tf2_server/1.1.2-1.tar.gz";
-    name = "1.1.2-1.tar.gz";
-    sha256 = "0ec115bae4a412ef6d2ffb78be3ac3eaf93d84afba296b398c3253447f5c120d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "tf2_server-release";
+    rev = "b30494227127739c1111ba7802fd80963e8a2ec5";
+    owner = "peci1";
+    sha256 = "sha256-Bk1jD2C+gN84sGwA8PxNNfJ1COrPn1nqfYtl8DAVzxc=";
   };
 
   buildType = "catkin";

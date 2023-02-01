@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-grasping-msgs";
   version = "0.4.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/mikeferguson/grasping_msgs-ros2-gbp/archive/release/humble/grasping_msgs/0.4.0-1.tar.gz";
-    name = "0.4.0-1.tar.gz";
-    sha256 = "d1782b7c1cd993b36a2a6615c9b79db45608f80c017deabdc313cdfeb9d8da14";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "grasping_msgs-ros2-gbp";
+    rev = "36f13b1f1fd1c4f918a77131231b48fcb956e8a9";
+    owner = "mikeferguson";
+    sha256 = "sha256-7jkZuQAfwrBxZtca5lsT7W9diA/c+snR1FHkf4JjZoM=";
   };
 
   buildType = "ament_cmake";

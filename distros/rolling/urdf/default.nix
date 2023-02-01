@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-urdf";
   version = "2.8.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/urdf-release/archive/release/rolling/urdf/2.8.1-1.tar.gz";
-    name = "2.8.1-1.tar.gz";
-    sha256 = "8602aec4cca0c0f6b1871070dd02cf53807d223871ff86a6b548bb4a77e7c3d3";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "urdf-release";
+    rev = "f25d01fdf268bac7852426eb91172987c7f81025";
+    owner = "ros2-gbp";
+    sha256 = "sha256-/gqAr+laRZ0eq2iMxE1YCoKqwoFcDWZmBjPxhqL9/k0=";
   };
 
   buildType = "ament_cmake";

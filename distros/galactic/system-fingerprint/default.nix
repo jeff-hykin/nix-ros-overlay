@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-system-fingerprint";
   version = "0.7.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/MetroRobots/ros_system_fingerprint-release/archive/release/galactic/system_fingerprint/0.7.0-1.tar.gz";
-    name = "0.7.0-1.tar.gz";
-    sha256 = "7b33bab142cfa3124b30ff9a09fb768e5794d4d90ef6dc5de7385d138155fc90";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_system_fingerprint-release";
+    rev = "f923b655b109037b2ad801eedbb6e7de86c2827a";
+    owner = "MetroRobots";
+    sha256 = "sha256-swG8fwjiFc0LXSlbA6Lml0jlh/VyNS//insRqM01fr0=";
   };
 
   buildType = "ament_python";

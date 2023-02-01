@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-ros-core";
   version = "0.10.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/variants-release/archive/release/humble/ros_core/0.10.0-1.tar.gz";
-    name = "0.10.0-1.tar.gz";
-    sha256 = "ac39d23b2bc3c3053c7ab98bb5fbb86038593a9bbda19300715970643612f0b4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "variants-release";
+    rev = "695dfbd84d7dc8cf8e9a20c7e520331b6efffed2";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Oq1qKMDCrNKnoDWlaZtBuCMhiDEWEaPoyvkumjxWuFg=";
   };
 
   buildType = "ament_cmake";

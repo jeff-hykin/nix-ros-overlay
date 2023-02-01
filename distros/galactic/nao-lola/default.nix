@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-nao-lola";
   version = "0.0.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/nao_lola-release/archive/release/galactic/nao_lola/0.0.5-1.tar.gz";
-    name = "0.0.5-1.tar.gz";
-    sha256 = "7698764e64152cd55248ed644c71d2f0cb174303033cbf1a6a762ba7edb3375a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "nao_lola-release";
+    rev = "db877480eeb3818991b9b4f56df0c27dee09bde8";
+    owner = "ros2-gbp";
+    sha256 = "sha256-XuWLsTTqrX3kgFvTJ2ZqaxQ6SBSUvbnEFBQl40MAVTQ=";
   };
 
   buildType = "ament_cmake";

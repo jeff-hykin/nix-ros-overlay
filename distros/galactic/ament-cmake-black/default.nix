@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ament-cmake-black";
   version = "0.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/Timple/ament_black-release/archive/release/galactic/ament_cmake_black/0.1.0-1.tar.gz";
-    name = "0.1.0-1.tar.gz";
-    sha256 = "97ae76fac80bcc2c074d1524f651317c026cd97f68903e898aeab5107305e8f0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ament_black-release";
+    rev = "b20c11bd37fc88cf6c17acaecb65a3c1173eddc1";
+    owner = "Timple";
+    sha256 = "sha256-f4tdwPGgaZc8y9LbvCtbzmPELhuoePYuST3foQHfhDs=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-rosparam-handler";
   version = "0.1.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/cbandera/rosparam_handler-release/archive/release/melodic/rosparam_handler/0.1.4-1.tar.gz";
-    name = "0.1.4-1.tar.gz";
-    sha256 = "b11ba2d257e5c7fc2c50f3e9eea117867178ed67a74906e21ebfad9f222f3fba";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosparam_handler-release";
+    rev = "48c5efdfbeee34edd6c1362cb4c6ea293eb7e6df";
+    owner = "cbandera";
+    sha256 = "sha256-DNpRsk38hZoPSCa8YLGYJcEakWVUIsmzOgBY6w6qxnw=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-system-modes-msgs";
   version = "0.9.0-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/system_modes-release/archive/release/galactic/system_modes_msgs/0.9.0-3.tar.gz";
-    name = "0.9.0-3.tar.gz";
-    sha256 = "b812fe18a7cab9f679a6a4864bc4936230b34c0fbcf9e207cf363cc5a6e4fd18";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "system_modes-release";
+    rev = "ed4798197ead2ef6c104e70c9f735a8d4b9e856c";
+    owner = "ros2-gbp";
+    sha256 = "sha256-UcVnvMWo1lcz8PljlXg4m53YoUKsphq4TbfgB7Z3dgw=";
   };
 
   buildType = "ament_cmake";

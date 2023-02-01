@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ecl-threads";
   version = "1.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/yujinrobot-release/ecl_core-release/archive/release/galactic/ecl_threads/1.2.0-1.tar.gz";
-    name = "1.2.0-1.tar.gz";
-    sha256 = "2ebe732c738306e85bd74553898288eccd7d585eae1330ca57f9699fe7b70469";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ecl_core-release";
+    rev = "b7e4f88f0d7e070681f7d168b9f5a15415746ae5";
+    owner = "yujinrobot-release";
+    sha256 = "sha256-pFiYWcD064pU2dT6zvJzItS0u/CVSy9fL54r2Tzahs8=";
   };
 
   buildType = "ament_cmake";

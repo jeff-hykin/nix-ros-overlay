@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-udp-driver";
   version = "1.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/transport_drivers-release/archive/release/rolling/udp_driver/1.2.0-1.tar.gz";
-    name = "1.2.0-1.tar.gz";
-    sha256 = "b7018168c2b9e6696d90c05872bc4d3abcfcb47b79161a1bda9927d13a8efe7b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "transport_drivers-release";
+    rev = "def9d2089d635159d721c0edfff5ab377fd699a1";
+    owner = "ros2-gbp";
+    sha256 = "sha256-ufshq3ku5f0OLD1L+CJhsfg8tSqLiOzmXueZGXDO9+4=";
   };
 
   buildType = "ament_cmake";

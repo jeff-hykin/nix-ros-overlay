@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-rqt-plot";
   version = "0.4.13-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/rqt_plot-release/archive/release/melodic/rqt_plot/0.4.13-1.tar.gz";
-    name = "0.4.13-1.tar.gz";
-    sha256 = "8ad543629315c87c8694d9efe79df4026582cea73d9183774b523e6fcb8a089a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt_plot-release";
+    rev = "969c303747492830c1e8f689b400b9043a4bacf4";
+    owner = "ros-gbp";
+    sha256 = "sha256-xIn09V9PwNShI6KR00H6ZDx7hdH+sXys0gzs1Y4WSnc=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-plotjuggler-ros";
   version = "1.7.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/PlotJuggler/plotjuggler-ros-plugins-release/archive/release/foxy/plotjuggler_ros/1.7.2-1.tar.gz";
-    name = "1.7.2-1.tar.gz";
-    sha256 = "b9ccd0527820889123388af70c416c86717b779845ff11a7c486e3280f85974f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "plotjuggler-ros-plugins-release";
+    rev = "f96d84919fa3622aa915333d4458cd20024b98ea";
+    owner = "PlotJuggler";
+    sha256 = "sha256-GGyDHndK+hq+SWnTI8ksLmZwq/VKn+DRVKm0tn5uAgU=";
   };
 
   buildType = "ament_cmake";

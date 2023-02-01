@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-cyclonedds";
   version = "0.7.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/cyclonedds-release/archive/release/foxy/cyclonedds/0.7.0-1.tar.gz";
-    name = "0.7.0-1.tar.gz";
-    sha256 = "36b41936eec3ba0d2dd36650da408d4ab9728d377b099d34b113a0a608b675e6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cyclonedds-release";
+    rev = "b9fef2ed9f63ce9ac7f3a6b69aad815a9886b186";
+    owner = "ros2-gbp";
+    sha256 = "sha256-MBYwEwzsAkh0K3NQcVWimEY8BpBsduqqT4x5jnNZLyg=";
   };
 
   buildType = "cmake";

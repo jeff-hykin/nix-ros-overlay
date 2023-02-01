@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-rosapi";
   version = "0.11.16-r2";
 
-  src = fetchurl {
-    url = "https://github.com/RobotWebTools-release/rosbridge_suite-release/archive/release/melodic/rosapi/0.11.16-2.tar.gz";
-    name = "0.11.16-2.tar.gz";
-    sha256 = "95a3e49276d45b279f078361a7cc083c08dd24162c9b87bee632efc3f9989129";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosbridge_suite-release";
+    rev = "a9a26c48691367cc77a2b54bb6bace5a72f97a05";
+    owner = "RobotWebTools-release";
+    sha256 = "sha256-cIXAIsW+W39WHva0irEy7YWxlikWPs+d7W6V+jB9KTs=";
   };
 
   buildType = "catkin";

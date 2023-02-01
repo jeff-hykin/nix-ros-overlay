@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-dbw-polaris-can";
   version = "2.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/DataspeedInc-release/dbw_ros-release/archive/release/foxy/dbw_polaris_can/2.1.0-1.tar.gz";
-    name = "2.1.0-1.tar.gz";
-    sha256 = "68e9ed24b4fb6a01b432221162cef3399ba02c6c1019d337ceba12ead76d423b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "dbw_ros-release";
+    rev = "d68cc445930f9450aa1ef1f0465ac4695f19f7c9";
+    owner = "DataspeedInc-release";
+    sha256 = "sha256-mW6VmfDqUfjETJuzum4mUtM23+TdPNUn8Sn/u3yhlcE=";
   };
 
   buildType = "ament_cmake";

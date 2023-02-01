@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-gazebo-plugins";
   version = "3.7.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/gazebo_ros_pkgs-release/archive/release/humble/gazebo_plugins/3.7.0-1.tar.gz";
-    name = "3.7.0-1.tar.gz";
-    sha256 = "726072c2dd5544400795096c4b5de8acb2bfd5c1f570a3d87bea6403032fd417";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "gazebo_ros_pkgs-release";
+    rev = "7c45be953deaa1f8119c69f5f6ff897eda7d0333";
+    owner = "ros2-gbp";
+    sha256 = "sha256-WIdWb0AYx07PFWwH/o1Du5im1crwunrAhf50PZV8cZQ=";
   };
 
   buildType = "ament_cmake";

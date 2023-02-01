@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-rqt-dep";
   version = "0.4.9";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/rqt_dep-release/archive/release/melodic/rqt_dep/0.4.9-0.tar.gz";
-    name = "0.4.9-0.tar.gz";
-    sha256 = "7fa60310716f75eb444c3f45578111826f1e2bcdc092a1a5b530bfef04b8fb7a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt_dep-release";
+    rev = "9d080666f50357aa9d98e5891eec5185de6a0161";
+    owner = "ros-gbp";
+    sha256 = "sha256-KASqCpZ0CfTB3k4XyL7b52fKUhhPYJP5LhA9B/nYeHE=";
   };
 
   buildType = "catkin";

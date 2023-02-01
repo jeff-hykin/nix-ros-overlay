@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-rqt";
   version = "1.1.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rqt-release/archive/release/humble/rqt/1.1.4-1.tar.gz";
-    name = "1.1.4-1.tar.gz";
-    sha256 = "616b8ef6a32905f9ad7e00d4d4354301a8218fd309e6fabd5d54b869a91def39";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt-release";
+    rev = "fc3a56e3a038c7d39be85bdfec6fbf2b509584bd";
+    owner = "ros2-gbp";
+    sha256 = "sha256-P4LfEfObVMPnvnhys2/w+eT0ZGOSuMl26+BGUrHSosE=";
   };
 
   buildType = "ament_python";

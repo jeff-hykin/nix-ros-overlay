@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-tf2-eigen";
   version = "0.29.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/geometry2-release/archive/release/rolling/tf2_eigen/0.29.0-1.tar.gz";
-    name = "0.29.0-1.tar.gz";
-    sha256 = "4af4ac0e9b1732cc53139c777aa3e166a1ebb6660e169c34130cf0934a734037";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "geometry2-release";
+    rev = "9d1a45a8db27383c965caa975cdb5c9b4cd7b162";
+    owner = "ros2-gbp";
+    sha256 = "sha256-v6dq93FGe3tGFom0Ft8dcylyyyIS8muA9a4aKXloqO4=";
   };
 
   buildType = "ament_cmake";

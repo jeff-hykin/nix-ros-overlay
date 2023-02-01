@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-pr2-mechanism-model";
   version = "1.8.21-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pr2-gbp/pr2_mechanism-release/archive/release/noetic/pr2_mechanism_model/1.8.21-1.tar.gz";
-    name = "1.8.21-1.tar.gz";
-    sha256 = "96f55706f4dd71093d8d87651c7856c80319051eec1fd3434b249c9547d410d0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pr2_mechanism-release";
+    rev = "eda94139b897b5e59529ff5e9e7633d1e4882185";
+    owner = "pr2-gbp";
+    sha256 = "sha256-6tOfLbR3ePlkXuPq6m1fg9oasGlrvLgUZYZ0Goj87ws=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-ros-ign-bridge";
   version = "0.244.9-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros_ign-release/archive/release/humble/ros_ign_bridge/0.244.9-1.tar.gz";
-    name = "0.244.9-1.tar.gz";
-    sha256 = "80dcd175ae473385264f59182272e585e3bef0c8169a95fc18799065ddf6030c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_ign-release";
+    rev = "e1a76fe01ef9384050d4652a24f314fd8ff74e9d";
+    owner = "ros2-gbp";
+    sha256 = "sha256-rxG0D+RJ/XSh2aC87RN47VhEuRMigDQpCaahCBdIPuk=";
   };
 
   buildType = "ament_cmake";

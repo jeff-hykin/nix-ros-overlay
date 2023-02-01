@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-ecl-converters";
   version = "1.2.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/yujinrobot-release/ecl_core-release/archive/release/rolling/ecl_converters/1.2.1-1.tar.gz";
-    name = "1.2.1-1.tar.gz";
-    sha256 = "3fe0184381e61f3e4c7629ce2ed5705eb306b6c3a8d64b2611cac095c0b25231";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ecl_core-release";
+    rev = "3f2ca930e3520c12757920d3601574307b2a27c5";
+    owner = "yujinrobot-release";
+    sha256 = "sha256-hZthKv3t/fhEc7ubch+5EneflAc54IyTtCuBW4vzaF0=";
   };
 
   buildType = "ament_cmake";

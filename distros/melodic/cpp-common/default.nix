@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-cpp-common";
   version = "0.6.14-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/roscpp_core-release/archive/release/melodic/cpp_common/0.6.14-1.tar.gz";
-    name = "0.6.14-1.tar.gz";
-    sha256 = "c09132fa1409e4fcd1d779c38ecb90c7dd8fa737801c56d8a08c4fe67f64516d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "roscpp_core-release";
+    rev = "98a3d33821a985f6a1c1aa6cb9bc1af8836e88bb";
+    owner = "ros-gbp";
+    sha256 = "sha256-0Hyc3x3N0iubnyBB0YVm6eIwT4DUtUoC95060/A2M8A=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-compressed-depth-image-transport";
   version = "2.6.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/image_transport_plugins-release/archive/release/rolling/compressed_depth_image_transport/2.6.0-1.tar.gz";
-    name = "2.6.0-1.tar.gz";
-    sha256 = "745766a75c9d45db2ec03ca6b0c34f082fa0da99132aa69e4b5ab086d922ba02";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "image_transport_plugins-release";
+    rev = "85ca4d7cb28af575e8514c6966d29539b1845810";
+    owner = "ros2-gbp";
+    sha256 = "sha256-BUszycMJ4VDcifwDGy3I9yS4tn636Eh8tuReqalMp5I=";
   };
 
   buildType = "ament_cmake";

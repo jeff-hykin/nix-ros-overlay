@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-rc-genicam-api";
   version = "2.5.12-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rc_genicam_api-release/archive/release/humble/rc_genicam_api/2.5.12-3.tar.gz";
-    name = "2.5.12-3.tar.gz";
-    sha256 = "68f98b062ee2e880b28c98cec35bbb5d3fd7ec3002ab953592341a5befd9ca6f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rc_genicam_api-release";
+    rev = "ec18bb0c0d718c26dc0455145842d832b8938c56";
+    owner = "ros2-gbp";
+    sha256 = "sha256-DAwn3Iyrqk/2Bo8ZSDjpVWoE9h4LLK4Ll+WePjX+0Gs=";
   };
 
   buildType = "cmake";

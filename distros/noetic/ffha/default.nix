@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-ffha";
   version = "2.1.21-r2";
 
-  src = fetchurl {
-    url = "https://github.com/tork-a/jsk_3rdparty-release/archive/release/noetic/ffha/2.1.21-2.tar.gz";
-    name = "2.1.21-2.tar.gz";
-    sha256 = "91b8e796e658087b953fff80f18b4391d53c7a86a4024d3b9eab3cc4e68b4c48";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "jsk_3rdparty-release";
+    rev = "3694536a9a45c4f0a274f8d65d98e48e1d84e7e1";
+    owner = "tork-a";
+    sha256 = "sha256-UjD+r090eY/WRxCqgNpAc4bgO662qpi60W1fOh6KwvI=";
   };
 
   buildType = "catkin";

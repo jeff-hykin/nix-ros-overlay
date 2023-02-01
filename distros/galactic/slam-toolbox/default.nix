@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-slam-toolbox";
   version = "2.5.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/SteveMacenski/slam_toolbox-release/archive/release/galactic/slam_toolbox/2.5.1-1.tar.gz";
-    name = "2.5.1-1.tar.gz";
-    sha256 = "0fc190905f7776334d5758e2dd31d0d40d7700808d61145005f004fb7aeaba90";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "slam_toolbox-release";
+    rev = "02ec264d93aa5f8f42d18756614c5bd733267457";
+    owner = "SteveMacenski";
+    sha256 = "sha256-zKGH1wsA4EywnuqHEvaeTbwIklRhZSBHikv1J2eYAuI=";
   };
 
   buildType = "ament_cmake";

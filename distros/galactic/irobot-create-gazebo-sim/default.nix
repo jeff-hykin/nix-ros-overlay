@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-irobot-create-gazebo-sim";
   version = "1.0.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/create3_sim-release/archive/release/galactic/irobot_create_gazebo_sim/1.0.3-1.tar.gz";
-    name = "1.0.3-1.tar.gz";
-    sha256 = "d7c55ecbf3bc0c9f71cb7e5bcbc0e07f59f73fec6f4f5584af93df28ddfd5ae5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "create3_sim-release";
+    rev = "7af534ee286035e9800561c61faca29280b27ab1";
+    owner = "ros2-gbp";
+    sha256 = "sha256-eh7VHTCRIYVAP9k6Ra/37th5pYmT0mSwhjURnDi+me0=";
   };
 
   buildType = "ament_cmake";

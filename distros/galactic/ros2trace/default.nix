@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ros2trace";
   version = "2.3.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_tracing-release/archive/release/galactic/ros2trace/2.3.0-2.tar.gz";
-    name = "2.3.0-2.tar.gz";
-    sha256 = "5b0c8771655171605a262ab53cee849d0bb5a4199dc3e1d3807c28c4f937b645";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_tracing-release";
+    rev = "c0c426e60f91a128eee37f6e732eaf9089497750";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Q/cdGKTzbiGGP34guMemQHLF7FCHVoO7spNM+Z2+wLI=";
   };
 
   buildType = "ament_python";

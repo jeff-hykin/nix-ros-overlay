@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-rmf-demos";
   version = "1.3.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_demos-release/archive/release/foxy/rmf_demos/1.3.2-1.tar.gz";
-    name = "1.3.2-1.tar.gz";
-    sha256 = "2ccccf738decc4583f70cd2754a69e64852d12a46d9458018a8be00f21e568f3";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_demos-release";
+    rev = "a31f8642d7af550031d787c6c733c8f71e59db7e";
+    owner = "ros2-gbp";
+    sha256 = "sha256-/opaDpTW4gHhMZ/gXLYCPuS8MV7zZrXYl000QUL0jxg=";
   };
 
   buildType = "ament_cmake";

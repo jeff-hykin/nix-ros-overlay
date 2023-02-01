@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-action-tutorials-cpp";
   version = "0.14.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/demos-release/archive/release/galactic/action_tutorials_cpp/0.14.4-1.tar.gz";
-    name = "0.14.4-1.tar.gz";
-    sha256 = "188f16695b5f621214cc1996c4d4486b6efe609612f1902bd2014f383eb1d316";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "demos-release";
+    rev = "049e55882ecf6839effd06f88429ad487d9e0b47";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Lxg630RG41SmEaTr8GlM3hTPVRremFuFlPL/gdH7U1s=";
   };
 
   buildType = "ament_cmake";

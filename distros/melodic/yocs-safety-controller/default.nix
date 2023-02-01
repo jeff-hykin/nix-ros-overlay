@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-yocs-safety-controller";
   version = "0.8.2";
 
-  src = fetchurl {
-    url = "https://github.com/yujinrobot-release/yujin_ocs-release/archive/release/melodic/yocs_safety_controller/0.8.2-0.tar.gz";
-    name = "0.8.2-0.tar.gz";
-    sha256 = "83f0799143de08c0f6c8aa93c665fbac01d8a7dc3e8e04752bdc59e042244557";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "yujin_ocs-release";
+    rev = "fad89417e6c8f10e01de67394a075a52d5cf0169";
+    owner = "yujinrobot-release";
+    sha256 = "sha256-8KHTvBhERq/6a7hM7znUzqdT1+8tc9ocz0awa0o/8lA=";
   };
 
   buildType = "catkin";

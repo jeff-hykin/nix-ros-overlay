@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-rqt-tf-tree";
   version = "0.6.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/rqt_tf_tree-release/archive/release/noetic/rqt_tf_tree/0.6.3-1.tar.gz";
-    name = "0.6.3-1.tar.gz";
-    sha256 = "5f07d027e135ff74636fc97216b666aa0ee16aa5f10cd631db1f2226496bb351";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt_tf_tree-release";
+    rev = "2a9de298cdfe1479c93d31bf9da381d6cff23878";
+    owner = "ros-gbp";
+    sha256 = "sha256-XNVmfDdNCiQhMUFoMSPj8yL/PZ1qV1SSkDRYbjDosSs=";
   };
 
   buildType = "catkin";

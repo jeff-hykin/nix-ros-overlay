@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ros1-bridge";
   version = "0.10.1-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros1_bridge-release/archive/release/galactic/ros1_bridge/0.10.1-2.tar.gz";
-    name = "0.10.1-2.tar.gz";
-    sha256 = "1191be2650432b5b514a3e6a0c85cfc940c7758303bbab43db592824e0d1b7a4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros1_bridge-release";
+    rev = "ef3b33ca051f988d5b25d1fa0e66abf1f2ee2763";
+    owner = "ros2-gbp";
+    sha256 = "sha256-dgIPBwNI6VA+frdbsghSfSMKqlmfRAEf+diSolke8Gw=";
   };
 
   buildType = "ament_cmake";

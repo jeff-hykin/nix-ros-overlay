@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-iceoryx-binding-c";
   version = "1.0.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/iceoryx-release/archive/release/galactic/iceoryx_binding_c/1.0.0-2.tar.gz";
-    name = "1.0.0-2.tar.gz";
-    sha256 = "a70c36142dc8d16509aec92c184790ee6e6715461719d74763b4ca1fe6f67509";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "iceoryx-release";
+    rev = "fda875fff624b3a2c43bb866fb42d17c5bb3178b";
+    owner = "ros2-gbp";
+    sha256 = "sha256-bx5uzRhkPLJGbTASPjN+jmx5dZRicAbO6BGZcbquIE4=";
   };
 
   buildType = "cmake";

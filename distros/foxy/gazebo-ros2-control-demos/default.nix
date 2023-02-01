@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-gazebo-ros2-control-demos";
   version = "0.1.1-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/gazebo_ros2_control-release/archive/release/foxy/gazebo_ros2_control_demos/0.1.1-2.tar.gz";
-    name = "0.1.1-2.tar.gz";
-    sha256 = "a334cf793368723dff3ee150f07a0529da92adc77fd5f1113ac939a6ee3191a5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "gazebo_ros2_control-release";
+    rev = "2b4f1ef370e8d11d475686d71dc5365f3b322a8c";
+    owner = "ros2-gbp";
+    sha256 = "sha256-CSl1avcsXaaljJCf86jqP9Mt7Ji2CHbEu2aWsVa4LXQ=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-uuv-control-msgs";
   version = "0.6.13";
 
-  src = fetchurl {
-    url = "https://github.com/uuvsimulator/uuv_simulator-release/archive/release/melodic/uuv_control_msgs/0.6.13-0.tar.gz";
-    name = "0.6.13-0.tar.gz";
-    sha256 = "eb58f7a2416af641a4668c72ee16804e77f3a84e4e3250c701e6395fa97a2e47";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "uuv_simulator-release";
+    rev = "f5ad20360e0d8dad191d2998803da0ea6577d5d9";
+    owner = "uuvsimulator";
+    sha256 = "0000000000000000000000000000000000000000000000000000";
   };
 
   buildType = "catkin";

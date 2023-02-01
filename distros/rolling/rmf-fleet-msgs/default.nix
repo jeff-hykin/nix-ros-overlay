@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-rmf-fleet-msgs";
   version = "3.0.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_internal_msgs-release/archive/release/rolling/rmf_fleet_msgs/3.0.2-1.tar.gz";
-    name = "3.0.2-1.tar.gz";
-    sha256 = "7a4537cf8d705d608f2416be6b4d3f6db6180033843c6ccc20da39ad730b859b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_internal_msgs-release";
+    rev = "f42db39eb9b3ac08f5dc17b03e9ef86c658f9085";
+    owner = "ros2-gbp";
+    sha256 = "sha256-CFa6/eKQMXbJdvmpAowO/8qQ/D1y5uvy9ovOQweVJt0=";
   };
 
   buildType = "ament_cmake";

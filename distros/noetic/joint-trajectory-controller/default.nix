@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-joint-trajectory-controller";
   version = "0.21.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/ros_controllers-release/archive/release/noetic/joint_trajectory_controller/0.21.0-1.tar.gz";
-    name = "0.21.0-1.tar.gz";
-    sha256 = "6c04c77fba8f34d3347a1fb997c2436c3c03cc5a92fbaf729389d355298550da";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_controllers-release";
+    rev = "97f4b4fc5e0897a51393beb14b26dc9bfbb24b57";
+    owner = "ros-gbp";
+    sha256 = "sha256-op5SNWQOTRJSJwpwq0Omknqjiljb8ljh0yK5z4iCTyU=";
   };
 
   buildType = "catkin";

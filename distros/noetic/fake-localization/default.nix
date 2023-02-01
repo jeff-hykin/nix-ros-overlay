@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-fake-localization";
   version = "1.17.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/navigation-release/archive/release/noetic/fake_localization/1.17.2-1.tar.gz";
-    name = "1.17.2-1.tar.gz";
-    sha256 = "62fbd3a17ce0c0fa5dabc97dbbef09ae8f24315544d01a76910bb5a8f06b4ad4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation-release";
+    rev = "49d4cda53cdb17f1f12173415b2b31c1736d16ce";
+    owner = "ros-gbp";
+    sha256 = "sha256-ZGvRXibtDfo84IoRs3me+kSCZF6zSNm2e+XBjcHzBCM=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-teleop-twist-keyboard";
   version = "2.3.2-r4";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/teleop_twist_keyboard-release/archive/release/humble/teleop_twist_keyboard/2.3.2-4.tar.gz";
-    name = "2.3.2-4.tar.gz";
-    sha256 = "74c1b9d9105826029bf614c66abd1414ec1f7b87697c5d97e286e0740123718a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "teleop_twist_keyboard-release";
+    rev = "cf7907fc90362f1e350ab53c0a3dbc67393b98a3";
+    owner = "ros2-gbp";
+    sha256 = "sha256-lxwiaJp3eRsvCIRQzNZmogFEOdO5fLDA35rX8PgLx4s=";
   };
 
   buildType = "ament_python";

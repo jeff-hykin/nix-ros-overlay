@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-audio-common-msgs";
   version = "0.3.16-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/audio_common-release/archive/release/melodic/audio_common_msgs/0.3.16-1.tar.gz";
-    name = "0.3.16-1.tar.gz";
-    sha256 = "2ad80a113ec7b20553936d7847940ba60b94c93ec97b2c4e16bcbd25d153255f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "audio_common-release";
+    rev = "e07fde1b881da02c54014dfa694a4feb56d51725";
+    owner = "ros-gbp";
+    sha256 = "sha256-o6EnHxlRGOHFGpg6HtNjRjrlbe6hUvRyH4Rxhv5ghmQ=";
   };
 
   buildType = "catkin";

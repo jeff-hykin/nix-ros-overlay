@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-qt-gui-py-common";
   version = "0.4.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/qt_gui_core-release/archive/release/noetic/qt_gui_py_common/0.4.2-1.tar.gz";
-    name = "0.4.2-1.tar.gz";
-    sha256 = "fa7d2b35a2513e6a10353cde91a8cbb1ad8e9eafee2f25d59b69c2f2187edd61";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "qt_gui_core-release";
+    rev = "587bb559e9ee4f780e675b1c9cb6a3c913de5208";
+    owner = "ros-gbp";
+    sha256 = "sha256-JQ5AXh8nUZ047nuylxw7S/1b+QidmSxnj/sApb9OvNM=";
   };
 
   buildType = "catkin";

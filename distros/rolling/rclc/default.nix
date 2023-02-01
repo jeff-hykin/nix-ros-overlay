@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-rclc";
   version = "3.0.8-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rclc-release/archive/release/rolling/rclc/3.0.8-1.tar.gz";
-    name = "3.0.8-1.tar.gz";
-    sha256 = "7ebaf60f4b31333e877ac740df42c6c292111af5d6fba1c9a431a1181999335a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rclc-release";
+    rev = "8e6e6df6f539048a03aa6dc3de16e634480de0e2";
+    owner = "ros2-gbp";
+    sha256 = "sha256-wNiBo9Mw3SxgEzBcTrNXo26pB9wBklEr078+GQbrQbQ=";
   };
 
   buildType = "ament_cmake";

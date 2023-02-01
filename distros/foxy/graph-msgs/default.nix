@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-graph-msgs";
   version = "0.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/PickNikRobotics/graph_msgs-release/archive/release/foxy/graph_msgs/0.2.0-1.tar.gz";
-    name = "0.2.0-1.tar.gz";
-    sha256 = "b90b8986b023301eab689d942df2592f01cb3423e64a1e880ae77df19dfc84c6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "graph_msgs-release";
+    rev = "fe352eeddb9bc0f482d7bf43237c8505ae052a62";
+    owner = "PickNikRobotics";
+    sha256 = "sha256-Zs/vEflqm3Ft6PVC5rmE7JAj2pPFja8QAhBxSsH93dg=";
   };
 
   buildType = "ament_cmake";

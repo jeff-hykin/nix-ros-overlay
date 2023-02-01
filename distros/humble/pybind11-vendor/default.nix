@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-pybind11-vendor";
   version = "2.4.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/pybind11_vendor-release/archive/release/humble/pybind11_vendor/2.4.2-1.tar.gz";
-    name = "2.4.2-1.tar.gz";
-    sha256 = "c923d9e62f43639301a6f5551f18eabe9eb09301f9d658f6e891f4b6b5ca95af";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pybind11_vendor-release";
+    rev = "dc70c591e023aaf6e9da9f193dce726004555fa4";
+    owner = "ros2-gbp";
+    sha256 = "sha256-cT3uRbcmI/lPhd01+fp3uBdAtMhNu4rZB9UMmr+g5z4=";
   };
 
   buildType = "ament_cmake";

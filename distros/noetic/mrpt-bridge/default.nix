@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-mrpt-bridge";
   version = "1.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/mrpt-ros-pkg-release/mrpt_bridge-release/archive/release/noetic/mrpt_bridge/1.0.1-1.tar.gz";
-    name = "1.0.1-1.tar.gz";
-    sha256 = "8344fa904fd7a4ba211cc9d861034f92c4494be9b857d1f64eb54550865671e5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mrpt_bridge-release";
+    rev = "8c74724f34e42f6a4f8a7537b46d82f5705f9a89";
+    owner = "mrpt-ros-pkg-release";
+    sha256 = "sha256-9geX7dVwj7I5yWR53I4DtOHTxmwzaP5X4hJ1quh0XLc=";
   };
 
   buildType = "catkin";

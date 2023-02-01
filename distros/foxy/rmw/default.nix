@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-rmw";
   version = "1.0.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmw-release/archive/release/foxy/rmw/1.0.3-1.tar.gz";
-    name = "1.0.3-1.tar.gz";
-    sha256 = "1adbf739200ea200e3a9ddb44378055f752c898a4e0579e4010948f684ee6a3e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmw-release";
+    rev = "377b72d1448db2c25f9aec78454b9849ea92b463";
+    owner = "ros2-gbp";
+    sha256 = "sha256-hFZ/jypwbC4/x4/HsPnvq53eAPGYkarV48nB7AXM8Zk=";
   };
 
   buildType = "ament_cmake";

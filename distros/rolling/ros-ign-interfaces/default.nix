@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-ros-ign-interfaces";
   version = "0.244.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros_ign-release/archive/release/rolling/ros_ign_interfaces/0.244.3-1.tar.gz";
-    name = "0.244.3-1.tar.gz";
-    sha256 = "cda4c629f59a111943cd951d95af85f0ba9458ec5efe284108903f9ca9e87dce";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_ign-release";
+    rev = "915e075491caa5e823c0995cf3858184d5ff49f1";
+    owner = "ros2-gbp";
+    sha256 = "sha256-HlS1qqso7iVK46yRxrZHa4IZdqqua/guyzhMTNidpi0=";
   };
 
   buildType = "ament_cmake";

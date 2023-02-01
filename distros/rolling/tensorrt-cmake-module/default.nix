@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-tensorrt-cmake-module";
   version = "0.0.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/tensorrt_cmake_module-release/archive/release/rolling/tensorrt_cmake_module/0.0.3-1.tar.gz";
-    name = "0.0.3-1.tar.gz";
-    sha256 = "ff0bfe4b04bb4f508926f7ed610831f120d9650a385ed3b83ff4acaf61236662";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "tensorrt_cmake_module-release";
+    rev = "01bf9b73607994d4bd0f1130afa4ae407099df1a";
+    owner = "ros2-gbp";
+    sha256 = "sha256-S620gK89qsxhq1mo2yFSZCD1LP45mJBLXJbCTiT5VZk=";
   };
 
   buildType = "ament_cmake";

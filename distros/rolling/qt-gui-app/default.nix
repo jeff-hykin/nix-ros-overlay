@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-qt-gui-app";
   version = "2.3.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/qt_gui_core-release/archive/release/rolling/qt_gui_app/2.3.2-1.tar.gz";
-    name = "2.3.2-1.tar.gz";
-    sha256 = "1e2240184ffd64ebb5ed93c7ea6e5b6ca339213f1a54692668967061c168f624";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "qt_gui_core-release";
+    rev = "f31d4eeb9abe73f4b18bdb21d39f7545af8d51ad";
+    owner = "ros2-gbp";
+    sha256 = "sha256-/f6tIL18w5Y46rUbyi3J7WcDzkt6U6URo/73eaVgHxU=";
   };
 
   buildType = "ament_cmake";

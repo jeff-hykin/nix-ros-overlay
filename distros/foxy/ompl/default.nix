@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-ompl";
   version = "1.5.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/ompl-release/archive/release/foxy/ompl/1.5.0-1.tar.gz";
-    name = "1.5.0-1.tar.gz";
-    sha256 = "d4805d21f58071855d0e835e60b2942bcdb3bc86179cb493ed2b9e8b4e5dc290";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ompl-release";
+    rev = "7c5807719f090aa213c7f5bc920a3725e4ea03a5";
+    owner = "ros-gbp";
+    sha256 = "sha256-LL8Dl1l2L4gFG/uVL+1x1HNno8IxDEbYyorYdg8KNbo=";
   };
 
   buildType = "cmake";

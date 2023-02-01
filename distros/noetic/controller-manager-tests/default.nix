@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-controller-manager-tests";
   version = "0.19.6-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/ros_control-release/archive/release/noetic/controller_manager_tests/0.19.6-1.tar.gz";
-    name = "0.19.6-1.tar.gz";
-    sha256 = "23441bb9d222eca1bc830c43f8babbc961b28517a4491f60239883bb63a8bd52";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_control-release";
+    rev = "b7c2ad2725a60ca703be4271a864b3e097385330";
+    owner = "ros-gbp";
+    sha256 = "sha256-uP7eFr03RdhJpE9GIP2tfc6BsKeJgzyFhEBEqRj1plQ=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-tf2-sensor-msgs";
   version = "0.29.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/geometry2-release/archive/release/rolling/tf2_sensor_msgs/0.29.0-1.tar.gz";
-    name = "0.29.0-1.tar.gz";
-    sha256 = "7afd19d48890fe77c1afb9a28429ad9fb3ff44d688ce56573332b889183b088c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "geometry2-release";
+    rev = "7c28b1a892bee07ed02879d9af2abd1de613b492";
+    owner = "ros2-gbp";
+    sha256 = "sha256-FC5I4DahvJX2jvPM7YWC6jxWvd8JVDgadk/xJUuY2o0=";
   };
 
   buildType = "ament_cmake";

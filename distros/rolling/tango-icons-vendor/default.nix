@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-tango-icons-vendor";
   version = "0.2.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/tango_icons_vendor-release/archive/release/rolling/tango_icons_vendor/0.2.1-1.tar.gz";
-    name = "0.2.1-1.tar.gz";
-    sha256 = "131e64ffb3a16805b2c10681ca76ce9bc7a31caa145e29c1d380138d1c6e587d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "tango_icons_vendor-release";
+    rev = "df702ce56797be85bab5f77b4de7764b4a46ccd4";
+    owner = "ros2-gbp";
+    sha256 = "sha256-jO6mYV2nlsljrlsrb3l6CZBT+7cL/PYAMIIRu8V/lxA=";
   };
 
   buildType = "ament_cmake";

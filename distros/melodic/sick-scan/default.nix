@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-sick-scan";
   version = "1.10.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/SICKAG/sick_scan-release/archive/release/melodic/sick_scan/1.10.1-1.tar.gz";
-    name = "1.10.1-1.tar.gz";
-    sha256 = "4fb58055785390aae3e9cdbf0dbb77e4f371865c63b6845ace206136ac85957f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "sick_scan-release";
+    rev = "2b84874a5f111fbda4de8d068f5e01e90810272f";
+    owner = "SICKAG";
+    sha256 = "sha256-P3F9nPsS/g2r9i3AtygCdNt+DZAxjjVPeOk33yMyRTg=";
   };
 
   buildType = "catkin";

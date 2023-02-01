@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-exotica-ik-solver";
   version = "6.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipab-slmc/exotica-release/archive/release/noetic/exotica_ik_solver/6.2.0-1.tar.gz";
-    name = "6.2.0-1.tar.gz";
-    sha256 = "c6537d5896dac76ac90cd8db8de863cb719204259d3c363b40ecc54f978569b6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "exotica-release";
+    rev = "e839db32aab4fd8b9f44e6f6c970eb8896dbd7a8";
+    owner = "ipab-slmc";
+    sha256 = "sha256-WVxw+U3AIKbxBWZqa6f6MxIArxvgHytg73F2QLsHPEA=";
   };
 
   buildType = "catkin";

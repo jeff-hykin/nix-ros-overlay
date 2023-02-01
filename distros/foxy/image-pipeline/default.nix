@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-image-pipeline";
   version = "2.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/image_pipeline-release/archive/release/foxy/image_pipeline/2.3.0-1.tar.gz";
-    name = "2.3.0-1.tar.gz";
-    sha256 = "72b65d8f093f79ce492d5c4daf5df33896eb02622fc7b6066d23d7095ce6332f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "image_pipeline-release";
+    rev = "04d7064ad6ebe7450791062975503a77bc9b61fe";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Dc4w2XCoYZxu0K01/MBactRee6X9bhyHjWPDIBd3k/g=";
   };
 
   buildType = "ament_cmake";

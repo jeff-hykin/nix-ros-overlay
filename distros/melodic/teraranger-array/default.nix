@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-teraranger-array";
   version = "2.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/Terabee/teraranger_array-release/archive/release/melodic/teraranger_array/2.0.0-1.tar.gz";
-    name = "2.0.0-1.tar.gz";
-    sha256 = "7d5ebf525e7be16d78cbeb170579970889386e503e84f571b4187450e3784233";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "teraranger_array-release";
+    rev = "33e806ab9aa523488279b3f03de2e1fd180eb4c0";
+    owner = "Terabee";
+    sha256 = "sha256-tEdVeg6oA71hYVfle/agiCDQrDUga8sjSpiPJD/nR3w=";
   };
 
   buildType = "catkin";

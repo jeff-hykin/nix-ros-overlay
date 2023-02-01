@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-gmcl";
   version = "1.0.1-r3";
 
-  src = fetchurl {
-    url = "https://github.com/adler-1994/gmcl-release/archive/release/noetic/gmcl/1.0.1-3.tar.gz";
-    name = "1.0.1-3.tar.gz";
-    sha256 = "46c797852514b8f68fdfed022818e139bc7384323891013e3fee1deb9c7428c2";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "gmcl-release";
+    rev = "c91cbd0551e78b516ee4bc3f1f81827ae4f96a05";
+    owner = "adler-1994";
+    sha256 = "sha256-0eHw0NHier7DtVx54FH6itFQQVW1/uZmWmwXU/b6/JQ=";
   };
 
   buildType = "catkin";

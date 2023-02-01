@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-microstrain-inertial-driver";
   version = "2.7.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/microstrain_inertial-release/archive/release/galactic/microstrain_inertial_driver/2.7.1-1.tar.gz";
-    name = "2.7.1-1.tar.gz";
-    sha256 = "bd05a8db4733be98901294e1b4334113f38120728a69b1b426156758946f2644";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "microstrain_inertial-release";
+    rev = "13de32e20b96ecb05ff9cc1cd2e503ae6f07e7b7";
+    owner = "ros2-gbp";
+    sha256 = "sha256-n0jUy3LuW1QIKU7FTVq1TSDS0e7867MjXhpAeH9DSVg=";
   };
 
   buildType = "ament_cmake";

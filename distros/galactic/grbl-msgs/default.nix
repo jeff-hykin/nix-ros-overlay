@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-grbl-msgs";
   version = "0.0.2-r5";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/grbl_msgs-release/archive/release/galactic/grbl_msgs/0.0.2-5.tar.gz";
-    name = "0.0.2-5.tar.gz";
-    sha256 = "7189bd5a65e5ca5db966570e1b86eaabf71896428998f1a5990fc6d474ba5536";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "grbl_msgs-release";
+    rev = "1a53ac4f537a29255ff249769a2dcfefb47432be";
+    owner = "ros2-gbp";
+    sha256 = "sha256-cjvc4arr+Z92IcwzqZryuU4FC2MY+FNpA+6JBe0dhiE=";
   };
 
   buildType = "ament_cmake";

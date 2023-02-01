@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-cob-elmo-homing";
   version = "0.7.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_driver-release/archive/release/melodic/cob_elmo_homing/0.7.4-1.tar.gz";
-    name = "0.7.4-1.tar.gz";
-    sha256 = "4b22a0fdcea4126557b430ed56076a6eafab834a22115483f983912457e7f5e3";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_driver-release";
+    rev = "986aec54fcbc39e5a232510706624396fa548dfd";
+    owner = "ipa320";
+    sha256 = "sha256-4nvfb418GL66c56bH2wM/4X6OK+iUqJjcYsSsBxkqiQ=";
   };
 
   buildType = "catkin";

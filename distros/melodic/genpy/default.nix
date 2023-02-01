@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-genpy";
   version = "0.6.16-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/genpy-release/archive/release/melodic/genpy/0.6.16-1.tar.gz";
-    name = "0.6.16-1.tar.gz";
-    sha256 = "1b1e9c10f9bc7976395bc7d966d6ec895f1a5d5d4c161a11c3f38c8a2e614f7d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "genpy-release";
+    rev = "5f50b5a8dd280a804a4b2cda218c3b05a2a7094f";
+    owner = "ros-gbp";
+    sha256 = "sha256-qukQ2jqAlARNBiF7EYehvMXTW2tZkuMAeGpt4wvGEoA=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-nav2-planner";
   version = "0.4.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/SteveMacenski/navigation2-release/archive/release/foxy/nav2_planner/0.4.7-1.tar.gz";
-    name = "0.4.7-1.tar.gz";
-    sha256 = "426725fb29e3d71efb36a407c8577d14aad007081481a1528d4fa967bb2566b9";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation2-release";
+    rev = "21bf3c412b1daf905c507c2a769e53bb8fd37fa1";
+    owner = "SteveMacenski";
+    sha256 = "sha256-Ql7iggTWiHuu4fhvW2ogavNA3NgIyi40upc+z6lX9qo=";
   };
 
   buildType = "ament_cmake";

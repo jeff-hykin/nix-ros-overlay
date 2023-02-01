@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-roscpp-serialization";
   version = "0.7.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/roscpp_core-release/archive/release/noetic/roscpp_serialization/0.7.2-1.tar.gz";
-    name = "0.7.2-1.tar.gz";
-    sha256 = "ddbc65e42b525bdb29ec8795e05470984cec6c90839d16d577e6b752017e355a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "roscpp_core-release";
+    rev = "393d8e44efc4e8b8ab7b21dfbc1cc1c4d883182d";
+    owner = "ros-gbp";
+    sha256 = "sha256-M1ZjNW+1aCPNYL94WflnMtu0THXdFmNTDTH2GmfCNbg=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-swri-roscpp";
   version = "3.5.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/marti_common-release/archive/release/humble/swri_roscpp/3.5.0-1.tar.gz";
-    name = "3.5.0-1.tar.gz";
-    sha256 = "acb2a6e33f25a5f2989ce8e2405362d025e4e80210d18f02bb440144c6280905";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "marti_common-release";
+    rev = "a990e438c00b89e1809cfb422e618b700c6a94d6";
+    owner = "ros2-gbp";
+    sha256 = "sha256-nWJX9PpGrByxGVM3yK8l5QAN6H1Kpdbny7/gkXQMuv4=";
   };
 
   buildType = "ament_cmake";

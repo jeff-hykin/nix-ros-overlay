@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-vda5050-msgs";
   version = "1.1.1-r2";
 
-  src = fetchurl {
-    url = "https://github.com/inorbit-ai/ros_amr_interop-release/archive/release/galactic/vda5050_msgs/1.1.1-2.tar.gz";
-    name = "1.1.1-2.tar.gz";
-    sha256 = "1b35da71df6e39d0a445cbf140970b572ef9d4433f981e6e4c55c659f4cb1db6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_amr_interop-release";
+    rev = "d96c54ab89ff6862c8cf2ee461817c9509a8d61d";
+    owner = "inorbit-ai";
+    sha256 = "sha256-HaA4yov3/pRO0fNM2mGxRdRRzIW28taVq8N/gN5NLNE=";
   };
 
   buildType = "ament_cmake";

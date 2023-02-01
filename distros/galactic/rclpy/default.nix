@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rclpy";
   version = "1.9.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rclpy-release/archive/release/galactic/rclpy/1.9.3-1.tar.gz";
-    name = "1.9.3-1.tar.gz";
-    sha256 = "2d920bfcc5f0796be5048f70ea304de19af4b09dbd65c96cdde104b0435a1945";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rclpy-release";
+    rev = "e30d71ff5969538a268ac0f3c2ad696fde2fcbba";
+    owner = "ros2-gbp";
+    sha256 = "sha256-F5aHJS1ZcgkCJ0kdtreb9lKVOMir0JUn2G+Wqo5ZgH0=";
   };
 
   buildType = "ament_cmake";

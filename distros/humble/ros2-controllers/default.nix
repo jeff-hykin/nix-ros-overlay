@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-ros2-controllers";
   version = "2.15.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_controllers-release/archive/release/humble/ros2_controllers/2.15.0-1.tar.gz";
-    name = "2.15.0-1.tar.gz";
-    sha256 = "6efd6998095c4b097726dccfd456d6d2721fa2292a50f0537d128f1ed7c0c17d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_controllers-release";
+    rev = "876903e5c9b7ae90f6fda80d661a977ede93b7f8";
+    owner = "ros2-gbp";
+    sha256 = "sha256-99UsDEyhHz7YZOyxWOtPvyUcK9AZ0kPgPx4gbm925eI=";
   };
 
   buildType = "ament_cmake";

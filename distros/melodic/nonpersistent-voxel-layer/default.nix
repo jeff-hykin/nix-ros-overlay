@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-nonpersistent-voxel-layer";
   version = "1.2.3-r2";
 
-  src = fetchurl {
-    url = "https://github.com/SteveMacenski/nonpersistent_voxel_layer-release/archive/release/melodic/nonpersistent_voxel_layer/1.2.3-2.tar.gz";
-    name = "1.2.3-2.tar.gz";
-    sha256 = "3c8ab56ed99d7856535320eaaedb8670bbf5115258808a22a1b6531ff9308107";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "nonpersistent_voxel_layer-release";
+    rev = "e493222514aaf248a98324aeb9860fd152bbb4b2";
+    owner = "SteveMacenski";
+    sha256 = "sha256-GVKfgrQXmKywtjL1o5ZWG5ZFCrKSz/mVz56iZnnCuk8=";
   };
 
   buildType = "catkin";

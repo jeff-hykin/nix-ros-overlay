@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-rqt-bag-plugins";
   version = "1.1.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rqt_bag-release/archive/release/humble/rqt_bag_plugins/1.1.4-1.tar.gz";
-    name = "1.1.4-1.tar.gz";
-    sha256 = "722740238f2059ba717e953dffe7628941ccc7f04346644a49e2b161fbd7cfe8";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt_bag-release";
+    rev = "ef1698573995aea876dd4fe6a75d7bb5a3eb1ef1";
+    owner = "ros2-gbp";
+    sha256 = "sha256-EjU7yehytEhkH9wZvjCav4ddHYI+FyrvtxYPOJA1ALI=";
   };
 
   buildType = "ament_python";

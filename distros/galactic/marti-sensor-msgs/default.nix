@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-marti-sensor-msgs";
   version = "1.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/marti_messages-release/archive/release/galactic/marti_sensor_msgs/1.3.0-1.tar.gz";
-    name = "1.3.0-1.tar.gz";
-    sha256 = "b63cca472a7f7c24a23e9f9860a3dcc8244e2efb8699a8df150c56510d34cecb";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "marti_messages-release";
+    rev = "a28bcaf5291c7fb6ce2ad582fe10a33c446f7565";
+    owner = "ros2-gbp";
+    sha256 = "sha256-hGNz/a7qOnf12cPokEyjxe+Xp1zESqFYCzYxTa7Fg4g=";
   };
 
   buildType = "ament_cmake";

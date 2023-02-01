@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-foxglove-bridge";
   version = "0.2.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/foxglove_bridge-release/archive/release/galactic/foxglove_bridge/0.2.1-1.tar.gz";
-    name = "0.2.1-1.tar.gz";
-    sha256 = "474c6625e5f90388d685934504f1d946e5bf80de06bf8b03179947141685bdfc";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "foxglove_bridge-release";
+    rev = "5aa266e7760fa67b0bce169d0f4c24dae0f764c9";
+    owner = "ros2-gbp";
+    sha256 = "sha256-IbPLe30ZEXAO1TZ1t6ECfWbdi0egzLlcwX0EjSlLkdg=";
   };
 
   buildType = "ament_cmake";

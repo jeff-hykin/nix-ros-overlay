@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-pmb2-controller-configuration";
   version = "4.0.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pal-gbp/pmb2_robot-gbp/archive/release/foxy/pmb2_controller_configuration/4.0.4-1.tar.gz";
-    name = "4.0.4-1.tar.gz";
-    sha256 = "c16a5f264c729b2aee71f9ce04097ca84915cbf0744e18c7f94982f286141531";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pmb2_robot-gbp";
+    rev = "15add9d7a538d0eb6ae33b1d11b26c5807693745";
+    owner = "pal-gbp";
+    sha256 = "sha256-D2oLdlssp2KpyMT4cFWmqaDF6ZIjAHnbuX0sQ6YkJfI=";
   };
 
   buildType = "ament_cmake";

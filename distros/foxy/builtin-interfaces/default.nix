@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-builtin-interfaces";
   version = "1.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rcl_interfaces-release/archive/release/foxy/builtin_interfaces/1.0.0-1.tar.gz";
-    name = "1.0.0-1.tar.gz";
-    sha256 = "cfca8040d1beb9a6cb122334cde383ff5f513d0e44ee0c8d21ce4c6a2614c0c1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rcl_interfaces-release";
+    rev = "28afc1e4c6bdb1fb88ca8aa791517761ac4549d3";
+    owner = "ros2-gbp";
+    sha256 = "sha256-oaDcfn5UDVSYLwlbBsylEmWLQCa1zSgymqzgUO80Mhs=";
   };
 
   buildType = "ament_cmake";

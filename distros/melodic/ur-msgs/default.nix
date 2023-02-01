@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-ur-msgs";
   version = "1.3.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-industrial-release/ur_msgs-release/archive/release/melodic/ur_msgs/1.3.4-1.tar.gz";
-    name = "1.3.4-1.tar.gz";
-    sha256 = "a532eae48580e45bb3a1493d46aeeed4ec80e53a21e7887c859e93be455f9262";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ur_msgs-release";
+    rev = "11ab73e95c614b9831f7f09694bd15e7976c2e38";
+    owner = "ros-industrial-release";
+    sha256 = "sha256-pO62WDlSmq6jTyravoCaS4ZXGrP+9blXSh3buP4yT/g=";
   };
 
   buildType = "catkin";

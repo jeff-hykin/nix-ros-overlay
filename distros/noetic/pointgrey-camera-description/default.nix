@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-pointgrey-camera-description";
   version = "0.15.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-drivers-gbp/pointgrey_camera_driver-release/archive/release/noetic/pointgrey_camera_description/0.15.1-1.tar.gz";
-    name = "0.15.1-1.tar.gz";
-    sha256 = "021f4da2c001e95309e83fa90edad0200b51fd80df3d886ca573760e8e9c5111";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pointgrey_camera_driver-release";
+    rev = "63660d51983d852906a7a9e7d8de63165aea46da";
+    owner = "ros-drivers-gbp";
+    sha256 = "sha256-fcfQUGR08ugHXxM27riVk8xkpynQRa15lB2JtUZQaMY=";
   };
 
   buildType = "catkin";

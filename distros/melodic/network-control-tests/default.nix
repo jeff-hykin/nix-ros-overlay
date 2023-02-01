@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-network-control-tests";
   version = "1.0.16-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pr2-gbp/linux_networking-release/archive/release/melodic/network_control_tests/1.0.16-1.tar.gz";
-    name = "1.0.16-1.tar.gz";
-    sha256 = "dee0c19262fce70a1924a6ff71c1004ed3c44e9e03a010ccf7972a9222f90034";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "linux_networking-release";
+    rev = "93a3bbe87da8e4e6886d64e1e37b86925684c72b";
+    owner = "pr2-gbp";
+    sha256 = "sha256-J3vAwINcz9MKYfAJYiZkpkgX4i3owBXWDnL9mj0Dw4M=";
   };
 
   buildType = "catkin";

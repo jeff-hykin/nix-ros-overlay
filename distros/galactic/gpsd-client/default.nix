@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-gpsd-client";
   version = "1.0.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/gps_umd-release/archive/release/galactic/gpsd_client/1.0.5-1.tar.gz";
-    name = "1.0.5-1.tar.gz";
-    sha256 = "9bc7a7251e4bc8acd849c2e56b6b82fa08ada8cecdabf253ff8342a6588fe613";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "gps_umd-release";
+    rev = "469f9cc7388423818bb1607b75f570bfb65b5ed2";
+    owner = "ros2-gbp";
+    sha256 = "sha256-X2YeB66J6EAr15KmZc8RY+6l1zGtm6tNljXfTumOJys=";
   };
 
   buildType = "ament_cmake";

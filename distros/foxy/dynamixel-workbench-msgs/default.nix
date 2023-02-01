@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-dynamixel-workbench-msgs";
   version = "2.0.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/dynamixel_workbench_msgs-release/archive/release/foxy/dynamixel_workbench_msgs/2.0.3-1.tar.gz";
-    name = "2.0.3-1.tar.gz";
-    sha256 = "0314fe20cd9e7853e2d474fe49bfdf63091daba360ab04151df98e1a70b91349";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "dynamixel_workbench_msgs-release";
+    rev = "2e22a4e732fc8b56f6cbe11f6f55803502e1dc2a";
+    owner = "ros2-gbp";
+    sha256 = "sha256-NMrVMFxbUmSDCdSRTO6gRJtKsmEeqY4Q5FqkBQCeY3I=";
   };
 
   buildType = "ament_cmake";

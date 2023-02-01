@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-ur-msgs";
   version = "2.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ur_msgs-release/archive/release/foxy/ur_msgs/2.0.0-1.tar.gz";
-    name = "2.0.0-1.tar.gz";
-    sha256 = "71ab6336239fd1082a491f9c7ff7eb2321429591e54f46a291e6c0bd8d83b406";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ur_msgs-release";
+    rev = "d948c6ec0655ecf293c0a0b87f10406a61e0d38f";
+    owner = "ros2-gbp";
+    sha256 = "sha256-JsglE/PolObyk2tuC9viw8JYmRlBJ8Ym7pjb5k+2EyQ=";
   };
 
   buildType = "ament_cmake";

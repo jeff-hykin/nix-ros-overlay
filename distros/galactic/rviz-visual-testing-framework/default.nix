@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rviz-visual-testing-framework";
   version = "8.5.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rviz-release/archive/release/galactic/rviz_visual_testing_framework/8.5.2-1.tar.gz";
-    name = "8.5.2-1.tar.gz";
-    sha256 = "e631ca6af4142d746eeb907c0f7892c996ac7854d366ae5795ac185af6c82b2e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rviz-release";
+    rev = "9f5c07cf8bddafcd641d458a34404a4133668cf2";
+    owner = "ros2-gbp";
+    sha256 = "sha256-ewhWTD+XOSBvWhTncDLxCxsZr2OqZUgwxGa4UTC4Vws=";
   };
 
   buildType = "ament_cmake";

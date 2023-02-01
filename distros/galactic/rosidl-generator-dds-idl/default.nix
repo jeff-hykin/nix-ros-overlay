@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rosidl-generator-dds-idl";
   version = "0.8.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rosidl_dds-release/archive/release/galactic/rosidl_generator_dds_idl/0.8.0-2.tar.gz";
-    name = "0.8.0-2.tar.gz";
-    sha256 = "d066297d6b9a77071ae7955d6b804a1dea21ccdcc8fd4480e8bb40deac5df781";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosidl_dds-release";
+    rev = "a948ecc9c052ecb2b5ff840a649da88e5cb5b00c";
+    owner = "ros2-gbp";
+    sha256 = "sha256-D6PWNIoALrNYMVDY4ziA+qL5yyP7BQPiUk221lpH37M=";
   };
 
   buildType = "ament_cmake";

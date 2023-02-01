@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-test-interface-files";
   version = "0.8.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/test_interface_files-release/archive/release/foxy/test_interface_files/0.8.1-1.tar.gz";
-    name = "0.8.1-1.tar.gz";
-    sha256 = "90359bb4913f6efa4a517faedbe243fff61b4824c6ec894bb96e70e75f166275";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "test_interface_files-release";
+    rev = "2d3cada59314a877c531298a85c92840ad188e0d";
+    owner = "ros2-gbp";
+    sha256 = "sha256-1LaOTUZ0PRrPCOWKAJIUsZPXslHoaCv/erPnexXKhAI=";
   };
 
   buildType = "ament_cmake";

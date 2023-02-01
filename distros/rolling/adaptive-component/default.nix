@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-adaptive-component";
   version = "0.2.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/adaptive_component-release/archive/release/rolling/adaptive_component/0.2.1-1.tar.gz";
-    name = "0.2.1-1.tar.gz";
-    sha256 = "b64cfa5f13820d57ede023be9f44179577ca83f73a2c70426de8c1480e2c8d22";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "adaptive_component-release";
+    rev = "67e38cab5143244a4d3342c2ad96136e33428094";
+    owner = "ros2-gbp";
+    sha256 = "sha256-W7/vGlSCfAW+RH7nsv4Po+MFZLDvwzuq/iSATbF9jaQ=";
   };
 
   buildType = "ament_cmake";

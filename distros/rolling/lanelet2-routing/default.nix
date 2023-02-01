@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-lanelet2-routing";
   version = "1.1.1-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/lanelet2-release/archive/release/rolling/lanelet2_routing/1.1.1-3.tar.gz";
-    name = "1.1.1-3.tar.gz";
-    sha256 = "9a49d0086eea7fce7af853ca16565dd826a6aee9eb6c5d03aa8b37179a31862f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "lanelet2-release";
+    rev = "c883d92952e7d20ede27c320e9a3fa743444b258";
+    owner = "ros2-gbp";
+    sha256 = "sha256-bcQwF0woqvqfOeIO7haHyco3dmf6CNAotcyEVFPHkGk=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-assimp-devel";
   version = "2.1.21-r2";
 
-  src = fetchurl {
-    url = "https://github.com/tork-a/jsk_3rdparty-release/archive/release/noetic/assimp_devel/2.1.21-2.tar.gz";
-    name = "2.1.21-2.tar.gz";
-    sha256 = "6263583e257e9315af21c2303407fc683187673d6a618e294385b7498bb6f2e7";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "jsk_3rdparty-release";
+    rev = "aa1535a27ee452d62ab94cc8f263f6d0f99b7aa9";
+    owner = "tork-a";
+    sha256 = "sha256-0cbf5wSJ3qoSZEzEz5Cb/PSXSF8+/PmWzn+0D/Yzzdc=";
   };
 
   buildType = "catkin";

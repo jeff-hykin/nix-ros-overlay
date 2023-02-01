@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-safety-limiter";
   version = "0.11.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/at-wat/neonavigation-release/archive/release/melodic/safety_limiter/0.11.7-1.tar.gz";
-    name = "0.11.7-1.tar.gz";
-    sha256 = "ed7d2dabb807d1554ee33c2f70d693d2ee6ff629daf997c8f3179b78bc0a06b4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "neonavigation-release";
+    rev = "a4ac6c2a396970a4469848bb65dab4bfc859b30c";
+    owner = "at-wat";
+    sha256 = "sha256-U7NB8KIUelfvdo+1j+2v3n0G3wU4D4D+6/zWS84G85M=";
   };
 
   buildType = "catkin";

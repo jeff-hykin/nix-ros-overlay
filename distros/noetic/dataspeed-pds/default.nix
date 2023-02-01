@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-dataspeed-pds";
   version = "1.0.6-r1";
 
-  src = fetchurl {
-    url = "https://github.com/DataspeedInc-release/dataspeed_pds-release/archive/release/noetic/dataspeed_pds/1.0.6-1.tar.gz";
-    name = "1.0.6-1.tar.gz";
-    sha256 = "93c905bc798c40a8342c4179e3648e58d8f267a2d684286a67fb142e85db2bc2";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "dataspeed_pds-release";
+    rev = "d0a458bd3bc87cb9136bc8e8371424eb27f34cc1";
+    owner = "DataspeedInc-release";
+    sha256 = "sha256-XOk61kLYuHHf1FM9ziU/6qigUSLORr+O3OdcjMIADfw=";
   };
 
   buildType = "catkin";

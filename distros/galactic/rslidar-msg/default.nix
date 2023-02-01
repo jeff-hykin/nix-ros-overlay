@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rslidar-msg";
   version = "1.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/nobleo/rslidar_msg-release/archive/release/galactic/rslidar_msg/1.3.0-1.tar.gz";
-    name = "1.3.0-1.tar.gz";
-    sha256 = "c52dbe82d960f0ea901e193d1db3203800225dc1c97651380d49fc454297b955";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rslidar_msg-release";
+    rev = "68ee6952ed5c093a82eb552b36dbbbb8db09883b";
+    owner = "nobleo";
+    sha256 = "sha256-fxBUXn9+1WsRwzbj7TgaSbSUp5Un2iXc3v30Fg+zaVM=";
   };
 
   buildType = "ament_cmake";

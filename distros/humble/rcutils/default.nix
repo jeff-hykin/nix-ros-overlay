@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-rcutils";
   version = "5.1.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rcutils-release/archive/release/humble/rcutils/5.1.2-1.tar.gz";
-    name = "5.1.2-1.tar.gz";
-    sha256 = "bac0449f77f38e8228c2fb3cb2e2c113d4e3f1315a5e1e76e3fa26598a1fbac7";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rcutils-release";
+    rev = "6bc183a62c072a6c91a281198dd61f8eea095aa9";
+    owner = "ros2-gbp";
+    sha256 = "sha256-CpxEQNuONTOB/w9QQGzpx34RwNE3u/TutU0wsikCsnw=";
   };
 
   buildType = "ament_cmake";

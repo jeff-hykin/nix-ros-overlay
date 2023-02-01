@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rqt-py-common";
   version = "1.1.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rqt-release/archive/release/galactic/rqt_py_common/1.1.2-1.tar.gz";
-    name = "1.1.2-1.tar.gz";
-    sha256 = "3848496d45a7ab40aa0d62556b3db7c9f3c482cb2b11897acc716c80010659d7";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt-release";
+    rev = "2eae5e03a824dae5bfe6948292590f0d3139288d";
+    owner = "ros2-gbp";
+    sha256 = "sha256-DaXn6/0dt+0i5Osr6aLb10vUCMyt7en2Qkhpl7WWARs=";
   };
 
   buildType = "ament_cmake";

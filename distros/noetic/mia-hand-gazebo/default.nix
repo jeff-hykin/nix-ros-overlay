@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-mia-hand-gazebo";
   version = "1.0.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/Prensilia-srl/mia_hand_ros_pkgs-release/archive/release/noetic/mia_hand_gazebo/1.0.2-1.tar.gz";
-    name = "1.0.2-1.tar.gz";
-    sha256 = "65a76cc981c7e7283376aef273ece732f8be91c6a9e9da27ea4be9b0d3d3ebb4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mia_hand_ros_pkgs-release";
+    rev = "7fc8c735b8db179bd5c1c57719301d3a44b70a9b";
+    owner = "Prensilia-srl";
+    sha256 = "sha256-qJ8I0Do+n0BzslFLUCMDyGTbB127tgQk/kH89atyI8E=";
   };
 
   buildType = "catkin";

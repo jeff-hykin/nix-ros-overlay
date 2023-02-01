@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-mbf-costmap-nav";
   version = "0.4.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/uos-gbp/move_base_flex-release/archive/release/melodic/mbf_costmap_nav/0.4.0-1.tar.gz";
-    name = "0.4.0-1.tar.gz";
-    sha256 = "ebad654c230672f700b44f59c75fcd19b5ecaaf2ea6fdfc914d84c7a3fe7c624";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "move_base_flex-release";
+    rev = "7a2c9dc235f2b6d38f07bef11f4e90aff7840632";
+    owner = "uos-gbp";
+    sha256 = "sha256-q5tl9sG0jps/akYCjcU3kGNOs+dLovzt0GxCAHG43ew=";
   };
 
   buildType = "catkin";

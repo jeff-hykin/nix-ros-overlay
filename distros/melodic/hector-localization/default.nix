@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-hector-localization";
   version = "0.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/tu-darmstadt-ros-pkg-gbp/hector_localization-release/archive/release/melodic/hector_localization/0.3.0-1.tar.gz";
-    name = "0.3.0-1.tar.gz";
-    sha256 = "0c27cd303cddb5ab6317dc465a2b8edeb3d08e394fdcd8be8d23cf840260b8e2";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "hector_localization-release";
+    rev = "e5991b3405acea36dec64b9b9224d0eb6c2967e6";
+    owner = "tu-darmstadt-ros-pkg-gbp";
+    sha256 = "sha256-qQ0wLzK5X4eSPjEOoCZ7Fp10MMrhu4yVUlujroVquns=";
   };
 
   buildType = "catkin";

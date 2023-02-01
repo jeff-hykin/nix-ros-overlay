@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-rqt-graph";
   version = "1.1.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rqt_graph-release/archive/release/foxy/rqt_graph/1.1.3-1.tar.gz";
-    name = "1.1.3-1.tar.gz";
-    sha256 = "e98bca25c7abffc7543313351c51203b385d5862d5faa62959f779203583e0fc";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt_graph-release";
+    rev = "3edcee7207782c356ab1c6d84d9b7888c9bf4098";
+    owner = "ros2-gbp";
+    sha256 = "sha256-+pXBsOzXnlCOjsrzZrZwMT+yIJilR1ELXFN44StbclI=";
   };
 
   buildType = "ament_python";

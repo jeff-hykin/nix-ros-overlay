@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-novatel-oem7-driver";
   version = "4.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/novatel-gbp/novatel_oem7_driver-release/archive/release/melodic/novatel_oem7_driver/4.0.0-1.tar.gz";
-    name = "4.0.0-1.tar.gz";
-    sha256 = "3dfcc86539028edf327362ff9ca52f5ee899d6f26adfed7a6b64f046c4b7d99b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "novatel_oem7_driver-release";
+    rev = "908ef442a26b569d2dbac322ebf0297a3fe7da8b";
+    owner = "novatel-gbp";
+    sha256 = "sha256-BrUlfFnQumacDophH1Itb+HJ0Bwzjk7/GReqnBWKzZs=";
   };
 
   buildType = "catkin";

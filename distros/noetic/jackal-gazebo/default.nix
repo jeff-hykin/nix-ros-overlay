@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-jackal-gazebo";
   version = "0.4.0-r4";
 
-  src = fetchurl {
-    url = "https://github.com/clearpath-gbp/jackal_simulator-release/archive/release/noetic/jackal_gazebo/0.4.0-4.tar.gz";
-    name = "0.4.0-4.tar.gz";
-    sha256 = "369ad6b2cc59e75584868ff62bfdaee8317835ae9d8629637dc65ad182ad4413";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "jackal_simulator-release";
+    rev = "63067c4dc6bacbbbaf42a4e482d8e3ce28e049ae";
+    owner = "clearpath-gbp";
+    sha256 = "sha256-Q2AGmvi2h5fUsGMYzhQVAgW62umb6gPdpixVBMDOvyk=";
   };
 
   buildType = "catkin";

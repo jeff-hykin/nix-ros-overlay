@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rosbag2-cpp";
   version = "0.9.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rosbag2-release/archive/release/galactic/rosbag2_cpp/0.9.2-1.tar.gz";
-    name = "0.9.2-1.tar.gz";
-    sha256 = "fe56822868d921b0a033db70dd25ef7ea12d89115ce778316188dfab3d5f35ac";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosbag2-release";
+    rev = "24599676b3a24c2ccb760f8028782be824be0aac";
+    owner = "ros2-gbp";
+    sha256 = "sha256-QtCBVUlSgB9DcpjvXsBA3uWncFMDijPoFbC7IdgxQY8=";
   };
 
   buildType = "ament_cmake";

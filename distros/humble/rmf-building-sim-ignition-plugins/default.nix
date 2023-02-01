@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-rmf-building-sim-ignition-plugins";
   version = "1.2.0-r4";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_simulation-release/archive/release/humble/rmf_building_sim_ignition_plugins/1.2.0-4.tar.gz";
-    name = "1.2.0-4.tar.gz";
-    sha256 = "66148f402c0c80779ac66e14faed65469092d7fa73b62a44206849452877374b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_simulation-release";
+    rev = "b2040793d9a26db75156f3508d0edc6f22cf2258";
+    owner = "ros2-gbp";
+    sha256 = "sha256-zq07Zy0WtGCpzlyz1WOqOoBJCG2LvpFaTme9hLWusxw=";
   };
 
   buildType = "ament_cmake";

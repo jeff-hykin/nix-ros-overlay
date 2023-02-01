@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-point-cloud-msg-wrapper";
   version = "1.0.7-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/point_cloud_msg_wrapper-release/archive/release/rolling/point_cloud_msg_wrapper/1.0.7-2.tar.gz";
-    name = "1.0.7-2.tar.gz";
-    sha256 = "2005089636bec115a9829eca64f8d8f625caea084295a045080ce71751d34807";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "point_cloud_msg_wrapper-release";
+    rev = "5eb8c6b840e216120c3bde91e5bb046f68d7760f";
+    owner = "ros2-gbp";
+    sha256 = "sha256-LiHXg+Jj7fMDItxqFAz8F5On1mitqVf18p4luIzXtWk=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rmf-building-map-msgs";
   version = "1.2.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_building_map_msgs-release/archive/release/galactic/rmf_building_map_msgs/1.2.0-2.tar.gz";
-    name = "1.2.0-2.tar.gz";
-    sha256 = "b6cde1e5c3ae0a65beb771fa13508e517bee36f7cac94475f6d1941c4e055a9c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_building_map_msgs-release";
+    rev = "7191374ca0d142561b521c72a0c6f29f95e36f82";
+    owner = "ros2-gbp";
+    sha256 = "sha256-snyMuXdNPfPqMZ8hpU/Lno8b23lqgRLHWYygxrKe3tQ=";
   };
 
   buildType = "ament_cmake";

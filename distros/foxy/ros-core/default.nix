@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-ros-core";
   version = "0.9.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/variants-release/archive/release/foxy/ros_core/0.9.2-1.tar.gz";
-    name = "0.9.2-1.tar.gz";
-    sha256 = "9ed6646dd29039eae6e11622bd07a88457e628f46526186b6359101752bf212c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "variants-release";
+    rev = "a3296d45ea40d39a246b61231765450fb31b1718";
+    owner = "ros2-gbp";
+    sha256 = "sha256-GgmQ3tLgBqH2puv92UqiIAciCej15wR/g7FS1kqNScA=";
   };
 
   buildType = "ament_cmake";

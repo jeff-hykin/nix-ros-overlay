@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-rocon-tools";
   version = "0.3.2";
 
-  src = fetchurl {
-    url = "https://github.com/yujinrobot-release/rocon_tools-release/archive/release/melodic/rocon_tools/0.3.2-0.tar.gz";
-    name = "0.3.2-0.tar.gz";
-    sha256 = "688fc316688135e08e1fd33312879d6059122f1fd9122c4ded28dd4177b59cce";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rocon_tools-release";
+    rev = "4be6645629657e404fefefef7fa6c60a53a58c7c";
+    owner = "yujinrobot-release";
+    sha256 = "sha256-lLBnd2BXe4Qaj0Dy6Gx3kKHt+mm1E6U1z/HwZG0owzk=";
   };
 
   buildType = "catkin";

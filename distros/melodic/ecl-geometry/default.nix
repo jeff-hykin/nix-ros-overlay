@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-ecl-geometry";
   version = "0.62.2";
 
-  src = fetchurl {
-    url = "https://github.com/yujinrobot-release/ecl_core-release/archive/release/melodic/ecl_geometry/0.62.2-0.tar.gz";
-    name = "0.62.2-0.tar.gz";
-    sha256 = "ba8a9aeaf31e8a0d1c6a0411fa1898c92894dfce06453d0882c7eeb000d88406";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ecl_core-release";
+    rev = "198463bcf19a49720235ffb4a835575abbad8947";
+    owner = "yujinrobot-release";
+    sha256 = "sha256-+chDBvvs3U5EPuPFpVHxsxJzCCMQ6FnVI8vUXuAi9jk=";
   };
 
   buildType = "catkin";

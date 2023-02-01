@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-phidgets-gyroscope";
   version = "2.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/phidgets_drivers-release/archive/release/rolling/phidgets_gyroscope/2.3.0-1.tar.gz";
-    name = "2.3.0-1.tar.gz";
-    sha256 = "b40a932f68792b56ae5bfc453cab6bc42bb6bc432942b01b3259128f0942f645";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "phidgets_drivers-release";
+    rev = "6035a535e863a3a607ad714440f66667170b4bce";
+    owner = "ros2-gbp";
+    sha256 = "sha256-+mhlfdRHl7101Ao2qYW3ogNPpHsjeInSXyYSx1915bs=";
   };
 
   buildType = "ament_cmake";

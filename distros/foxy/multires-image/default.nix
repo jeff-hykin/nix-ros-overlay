@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-multires-image";
   version = "2.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/swri-robotics-gbp/mapviz-release/archive/release/foxy/multires_image/2.1.0-1.tar.gz";
-    name = "2.1.0-1.tar.gz";
-    sha256 = "c09784b831edca1061c1db0b63b40025e7a4f6377855dcb1053c0034ec0a0773";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mapviz-release";
+    rev = "6fba73e97ad3832115cf4a2c4609ea7dd0623d1d";
+    owner = "swri-robotics-gbp";
+    sha256 = "sha256-eODML20S1hncOEJTFMGj1EUOHezuDThzQLFCT/sPsaQ=";
   };
 
   buildType = "ament_cmake";

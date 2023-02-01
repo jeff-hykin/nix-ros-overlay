@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-bag2-to-image";
   version = "0.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/bag2_to_image-release/archive/release/rolling/bag2_to_image/0.1.0-1.tar.gz";
-    name = "0.1.0-1.tar.gz";
-    sha256 = "67969bf6e5b95a1ca1389125284e9d36c78c1c65f9a95aeb95519846fc714022";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "bag2_to_image-release";
+    rev = "833bc1924c85694f4846c1f0c8812510649b83f7";
+    owner = "ros2-gbp";
+    sha256 = "sha256-D602KBwsYPh+wbNrK2y25DZk1/wPPc2PlZj4ktvPhqI=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-generic-throttle";
   version = "0.6.19-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_command_tools-release/archive/release/melodic/generic_throttle/0.6.19-1.tar.gz";
-    name = "0.6.19-1.tar.gz";
-    sha256 = "12fe78d29a029cfb0412a24e6fcd2108096c6b137493c309736f9675ad132c49";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_command_tools-release";
+    rev = "a7c3869c82c0c6f496daf705b9748a54cf1afbdf";
+    owner = "ipa320";
+    sha256 = "sha256-Su9ShqBrHYerj3xM7CswqHM2UxFSEPmlLBoyPvkv09M=";
   };
 
   buildType = "catkin";

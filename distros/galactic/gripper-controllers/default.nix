@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-gripper-controllers";
   version = "1.5.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_controllers-release/archive/release/galactic/gripper_controllers/1.5.1-1.tar.gz";
-    name = "1.5.1-1.tar.gz";
-    sha256 = "7a0b3814bcec4af9bcaec1c4aaea85f5c2f8947a42411a79f14a09d08774a3fd";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_controllers-release";
+    rev = "c42836bd54d709d2006ab112dc4d679ff1aee4be";
+    owner = "ros2-gbp";
+    sha256 = "sha256-aF19qDGDwjiwyBrTILzYiQhP1X9A/r+Jqr+N0vBEXzg=";
   };
 
   buildType = "ament_cmake";

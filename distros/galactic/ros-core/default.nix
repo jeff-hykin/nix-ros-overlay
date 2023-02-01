@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ros-core";
   version = "0.9.3-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/variants-release/archive/release/galactic/ros_core/0.9.3-2.tar.gz";
-    name = "0.9.3-2.tar.gz";
-    sha256 = "438552c09ec8c4456f9e51cdc7e61a67e35f3e084308816df87c166d45be0c55";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "variants-release";
+    rev = "bc7c49cef699a7880add337679d5f2a781e046ab";
+    owner = "ros2-gbp";
+    sha256 = "sha256-roHNz1RCrZ+NT2bIgH2fnp1jPwsDoBziArX+kYKiCrk=";
   };
 
   buildType = "ament_cmake";

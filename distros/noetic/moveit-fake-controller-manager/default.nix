@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-moveit-fake-controller-manager";
   version = "1.1.11-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/moveit-release/archive/release/noetic/moveit_fake_controller_manager/1.1.11-1.tar.gz";
-    name = "1.1.11-1.tar.gz";
-    sha256 = "9688d622e8127589c25610b60828375e49dca28f84f2ebe7ef180d4df26e151d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "moveit-release";
+    rev = "6f7b7580e5339a254ad1b679c907eb9361e4e446";
+    owner = "ros-gbp";
+    sha256 = "sha256-nQsqcP6sAwWEl+/4iyeHEUw2wNcuPIxkFv/QwgS2wwE=";
   };
 
   buildType = "catkin";

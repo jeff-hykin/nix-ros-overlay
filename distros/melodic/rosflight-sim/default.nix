@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-rosflight-sim";
   version = "1.3.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/rosflight/rosflight-release/archive/release/melodic/rosflight_sim/1.3.1-1.tar.gz";
-    name = "1.3.1-1.tar.gz";
-    sha256 = "231909a454064b5b3d1d7a37839d4b35238e308318ae9f04857a7f0b45691283";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosflight-release";
+    rev = "053ec5800befecf2adc2baee5a8d4e1b73ac9ede";
+    owner = "rosflight";
+    sha256 = "sha256-NYktbMe48QwQ56879Ukgy11JOHFGeB/es3O2v5gRjs0=";
   };
 
   buildType = "catkin";

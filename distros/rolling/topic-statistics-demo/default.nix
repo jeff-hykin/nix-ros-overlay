@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-topic-statistics-demo";
   version = "0.23.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/demos-release/archive/release/rolling/topic_statistics_demo/0.23.0-1.tar.gz";
-    name = "0.23.0-1.tar.gz";
-    sha256 = "73ffe4f6373f0ec1b2020f141a7c27ba5f847178aad6a5fbd20a876a6048f3ee";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "demos-release";
+    rev = "c3f9b01c0ffbd390025dac1dae2733de9752093b";
+    owner = "ros2-gbp";
+    sha256 = "sha256-2krbIqGwq9e8J53bMsgeYfq9FswD7VYIt/WKu7wtph4=";
   };
 
   buildType = "ament_cmake";

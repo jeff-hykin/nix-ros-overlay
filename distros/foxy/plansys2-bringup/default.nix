@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-plansys2-bringup";
   version = "1.0.10-r1";
 
-  src = fetchurl {
-    url = "https://github.com/IntelligentRoboticsLabs/ros2_planning_system-release/archive/release/foxy/plansys2_bringup/1.0.10-1.tar.gz";
-    name = "1.0.10-1.tar.gz";
-    sha256 = "c05c27d435cd3beca011e03f51702e26024cbf7d88c4797c2650617159fbece4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_planning_system-release";
+    rev = "8eb0cf26acfe9aada5eb710e52a4acf63afe610b";
+    owner = "IntelligentRoboticsLabs";
+    sha256 = "sha256-nXpAnd6MDj53LskA+mblCVjPuxUZLaadVn4eNJuE/tU=";
   };
 
   buildType = "ament_cmake";

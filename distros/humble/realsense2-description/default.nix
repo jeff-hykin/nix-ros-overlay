@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-realsense2-description";
   version = "4.51.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/IntelRealSense/realsense-ros-release/archive/release/humble/realsense2_description/4.51.1-1.tar.gz";
-    name = "4.51.1-1.tar.gz";
-    sha256 = "0c12eac0d6f965692471c1e273e9b6f376139216e21350d5d4ee0924614aec11";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "realsense-ros-release";
+    rev = "3df3a735bd5f405ad518c370a3c613cdc40a3663";
+    owner = "IntelRealSense";
+    sha256 = "sha256-7xl3PXh5S904NsGFLRSC121dwycHugAR8VcHIP0yvXE=";
   };
 
   buildType = "ament_cmake";

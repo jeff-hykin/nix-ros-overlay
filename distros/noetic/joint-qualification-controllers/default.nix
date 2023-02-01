@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-joint-qualification-controllers";
   version = "1.0.15-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pr2-gbp/pr2_self_test-release/archive/release/noetic/joint_qualification_controllers/1.0.15-1.tar.gz";
-    name = "1.0.15-1.tar.gz";
-    sha256 = "6f558ae2bd912625a0ca5f95bee94b25369793e70bcaebe6dbff1ed735349479";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pr2_self_test-release";
+    rev = "b1800487bdd09b32810f18f12a763cb0ffd20612";
+    owner = "pr2-gbp";
+    sha256 = "sha256-uvnfL4x18yI+1gH0HhMnbgPmwqrkBPF9Pl+eB8WCKOE=";
   };
 
   buildType = "catkin";

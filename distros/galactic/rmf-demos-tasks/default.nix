@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rmf-demos-tasks";
   version = "1.3.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_demos-release/archive/release/galactic/rmf_demos_tasks/1.3.2-1.tar.gz";
-    name = "1.3.2-1.tar.gz";
-    sha256 = "51af0ca6ae9dfd4bf442c2e613c82cd316856219d5c6a4880ecf86f2e2729eff";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_demos-release";
+    rev = "0f2c8a26484c5cb1ad0e22095e012283882fecac";
+    owner = "ros2-gbp";
+    sha256 = "sha256-ne9WXmXw3+hseFgkBuuHOOFTv1x8vkZOYn3Vh8IujYo=";
   };
 
   buildType = "ament_python";

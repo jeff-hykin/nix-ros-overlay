@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-pr2-power-drivers";
   version = "1.1.10-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pr2-gbp/pr2_power_drivers-release/archive/release/noetic/pr2_power_drivers/1.1.10-1.tar.gz";
-    name = "1.1.10-1.tar.gz";
-    sha256 = "49207b2ea4bf92d7ac759ae7bb42dfd4931840fd59631e754f5b2dbccaa12665";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pr2_power_drivers-release";
+    rev = "d85ec895840e29e5b2bec00c6273c98d3120b0aa";
+    owner = "pr2-gbp";
+    sha256 = "sha256-OrfaN+SDleM4BID1riMS9jyppGc8inYERba+HoZFW6Q=";
   };
 
   buildType = "catkin";

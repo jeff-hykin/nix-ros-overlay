@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-ament-xmllint";
   version = "0.9.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ament_lint-release/archive/release/foxy/ament_xmllint/0.9.7-1.tar.gz";
-    name = "0.9.7-1.tar.gz";
-    sha256 = "4a0e356141c75852cdf0471d87afda115074b544b1245cd51fe3dfde544833ac";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ament_lint-release";
+    rev = "8b2940cfc071cd949eff584381aba75b48be789b";
+    owner = "ros2-gbp";
+    sha256 = "sha256-1F1TANfolR8m46ZRVPVJfRKa+43LsKNQXCpmmCV+mow=";
   };
 
   buildType = "ament_python";

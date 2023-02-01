@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-ompl";
   version = "1.5.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/ompl-release/archive/release/noetic/ompl/1.5.2-1.tar.gz";
-    name = "1.5.2-1.tar.gz";
-    sha256 = "1f45c6363e62424015aa5efdb27a7b0412dd9018676149f23200126241b6715a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ompl-release";
+    rev = "4947c222cd20c6b78dcfe667c7b9d6739a922b9e";
+    owner = "ros-gbp";
+    sha256 = "sha256-5BOfJbZfx2T6vZS5UOpQh9XueTRPtNBGmpHauSbvUxw=";
   };
 
   buildType = "cmake";

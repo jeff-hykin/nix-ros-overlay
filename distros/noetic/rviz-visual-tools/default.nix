@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-rviz-visual-tools";
   version = "3.9.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/PickNikRobotics/rviz_visual_tools-release/archive/release/noetic/rviz_visual_tools/3.9.2-1.tar.gz";
-    name = "3.9.2-1.tar.gz";
-    sha256 = "101b764ae0c147d70ab9358db2e89412429794426dc3b8904e1e2fd18fd159db";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rviz_visual_tools-release";
+    rev = "dbd774d58061c32dd5a14797b009764c2c87a649";
+    owner = "PickNikRobotics";
+    sha256 = "sha256-aEEVxgQdADz5bTnXtGbpxR50oxvwoOvFkmYl4OxegkM=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-audibot";
   version = "0.2.2-r5";
 
-  src = fetchurl {
-    url = "https://github.com/robustify/audibot-release/archive/release/noetic/audibot/0.2.2-5.tar.gz";
-    name = "0.2.2-5.tar.gz";
-    sha256 = "fa76761120c15a251f51d1c59e27986bb85a4b85768a907a34f46f05ff13e530";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "audibot-release";
+    rev = "4d7b96da0644a35fe948d223320167104d0f08f4";
+    owner = "robustify";
+    sha256 = "sha256-yLsqwt2iM4LLdIvmxcEbaUB0qqS5FzpxGPi1qqwFT0E=";
   };
 
   buildType = "catkin";

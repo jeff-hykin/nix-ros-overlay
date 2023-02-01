@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-tvm-vendor";
   version = "0.9.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/tvm_vendor-release/archive/release/humble/tvm_vendor/0.9.0-1.tar.gz";
-    name = "0.9.0-1.tar.gz";
-    sha256 = "4cfd12e3f24597039c56e7cdedb38544b7286e2e5a204595eb0132d5dcbe7acd";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "tvm_vendor-release";
+    rev = "6bc285f4cb652a9049e57dcefe0b4499a46a05f9";
+    owner = "ros2-gbp";
+    sha256 = "sha256-2Z0zp24HFwXUiu920M3BzA5aflzV2y78RFZk5tliNCc=";
   };
 
   buildType = "ament_cmake";

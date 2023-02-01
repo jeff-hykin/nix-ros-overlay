@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-phidgets-magnetometer";
   version = "2.1.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/phidgets_drivers-release/archive/release/foxy/phidgets_magnetometer/2.1.2-1.tar.gz";
-    name = "2.1.2-1.tar.gz";
-    sha256 = "362aab68803fa18ccc0a1b586f7ddee8bdf3b46762becd2d2e9dd1d9adde0e49";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "phidgets_drivers-release";
+    rev = "be421eebad129c4ab5bb531a85a7f4ecce36f3c8";
+    owner = "ros2-gbp";
+    sha256 = "sha256-BzVeahIKRu6l3EmyeghSxwV/LOsNk/UqiejuW5Yte0s=";
   };
 
   buildType = "ament_cmake";

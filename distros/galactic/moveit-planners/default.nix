@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-moveit-planners";
   version = "2.3.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/moveit/moveit2-release/archive/release/galactic/moveit_planners/2.3.4-1.tar.gz";
-    name = "2.3.4-1.tar.gz";
-    sha256 = "3d642f85c002a86bb7305139535d8cbff0e769cb251de33355ac8c45f749a224";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "moveit2-release";
+    rev = "df200c4ac50ff09b7c6a91dd2395cce80f307fa0";
+    owner = "moveit";
+    sha256 = "sha256-dCB0ohfnxZHPK8qgkFY9HTuDHdxICFLnzyiBOga5XD4=";
   };
 
   buildType = "ament_cmake";

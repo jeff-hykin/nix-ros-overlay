@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-costmap-cspace";
   version = "0.11.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/at-wat/neonavigation-release/archive/release/noetic/costmap_cspace/0.11.7-1.tar.gz";
-    name = "0.11.7-1.tar.gz";
-    sha256 = "efec10685a4a0fcaa41f82998f83ef4d76e7e38266f681d62c2539249b2777d8";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "neonavigation-release";
+    rev = "def79302bdb133afc2619ec2ab9dd7355f694982";
+    owner = "at-wat";
+    sha256 = "sha256-VpzHxrkahOvJAccBnftLsK14u09wf6O2FmqStShhCS8=";
   };
 
   buildType = "catkin";

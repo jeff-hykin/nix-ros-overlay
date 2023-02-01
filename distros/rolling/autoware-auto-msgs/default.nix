@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-autoware-auto-msgs";
   version = "1.0.0-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/autoware_auto_msgs-release/archive/release/rolling/autoware_auto_msgs/1.0.0-3.tar.gz";
-    name = "1.0.0-3.tar.gz";
-    sha256 = "3e9af73c2979ab20911a1f83994e2f3f76df854d7a901c7f515a7859ad525334";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "autoware_auto_msgs-release";
+    rev = "a610b0d2670667ad50ece905142927740c094e01";
+    owner = "ros2-gbp";
+    sha256 = "sha256-sPwNe2uGjV3WHz+htqZrzm5dUO1JvGJC9xQcn2d+LU0=";
   };
 
   buildType = "ament_cmake";

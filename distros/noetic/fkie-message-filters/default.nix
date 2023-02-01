@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-fkie-message-filters";
   version = "1.1.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/fkie-release/message_filters-release/archive/release/noetic/fkie_message_filters/1.1.2-1.tar.gz";
-    name = "1.1.2-1.tar.gz";
-    sha256 = "f7194d5a315919732f324189314e4a52193f46b24e99a6e4c584c262a084ba33";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "message_filters-release";
+    rev = "9bf94361c163b9bfec0638637b7a5b79c2227ae7";
+    owner = "fkie-release";
+    sha256 = "sha256-QFSEVgbep32zGMY9OffccZ80J7SEc6n0wrni+Hc6/SY=";
   };
 
   buildType = "catkin";

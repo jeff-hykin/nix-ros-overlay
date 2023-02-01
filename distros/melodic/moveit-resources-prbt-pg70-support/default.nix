@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-moveit-resources-prbt-pg70-support";
   version = "0.8.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/moveit_resources-release/archive/release/melodic/moveit_resources_prbt_pg70_support/0.8.2-1.tar.gz";
-    name = "0.8.2-1.tar.gz";
-    sha256 = "bb06b8de7ca0ab018cae56af743d0c98fc824e01dc66a73d46c8b7803f4e74e4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "moveit_resources-release";
+    rev = "6b268e8d123e06179324f84ca7aae4337d7d87cf";
+    owner = "ros-gbp";
+    sha256 = "sha256-IWH45Xs5jhmDag0Uio1oJZOuBXicS+t1sWIrH0XKn+I=";
   };
 
   buildType = "catkin";

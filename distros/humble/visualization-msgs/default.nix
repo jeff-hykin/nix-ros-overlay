@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-visualization-msgs";
   version = "4.2.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/common_interfaces-release/archive/release/humble/visualization_msgs/4.2.2-1.tar.gz";
-    name = "4.2.2-1.tar.gz";
-    sha256 = "007af17748b9b3989e872a0d538ac361b7f5654f7363472b4cfdb01692db59e3";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "common_interfaces-release";
+    rev = "6ad907e4beef596800b992179fdc3ace28f5ec44";
+    owner = "ros2-gbp";
+    sha256 = "sha256-r8q02ifNFQtfNVHRMjHEtlUSma5ZcW9wByYGg9F0Y4M=";
   };
 
   buildType = "ament_cmake";

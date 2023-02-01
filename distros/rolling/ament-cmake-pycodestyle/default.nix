@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-ament-cmake-pycodestyle";
   version = "0.13.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ament_lint-release/archive/release/rolling/ament_cmake_pycodestyle/0.13.2-1.tar.gz";
-    name = "0.13.2-1.tar.gz";
-    sha256 = "4fae75e0906ff5531bf6a408fc85a1e4dbe96fffec737bdd267a554fa9a82842";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ament_lint-release";
+    rev = "91cf766424de5c54a76cdc2fd3a682919e9ceeab";
+    owner = "ros2-gbp";
+    sha256 = "sha256-b5CdQp6dbCarOuNGckAnN+/s1Nqv4xcTcrXv4e7WUis=";
   };
 
   buildType = "ament_cmake";

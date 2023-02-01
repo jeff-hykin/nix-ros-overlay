@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-roboticsgroup-upatras-gazebo-plugins";
   version = "0.2.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/roboticsgroup/roboticsgroup_upatras_gazebo_plugins-release/archive/release/melodic/roboticsgroup_upatras_gazebo_plugins/0.2.0-2.tar.gz";
-    name = "0.2.0-2.tar.gz";
-    sha256 = "e4f47fc8d72fdb832caca41aebd503cb32b4d8420fcb1f3d3a9725f98eb42fb0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "roboticsgroup_upatras_gazebo_plugins-release";
+    rev = "bb74fd5e0d53c14b281b790e82bbfbf82aec8035";
+    owner = "roboticsgroup";
+    sha256 = "sha256-9skr5rgzU90ggoYGDTBM/0AXhkgdo3EMZCt8bC8yZLA=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-mesh-msgs-hdf5";
   version = "1.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/uos-gbp/mesh-tools/archive/release/melodic/mesh_msgs_hdf5/1.1.0-1.tar.gz";
-    name = "1.1.0-1.tar.gz";
-    sha256 = "5edca85324e48bd277331b12eddf4955d9c7cddbb3364e5261d9aba2907e8502";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mesh-tools";
+    rev = "7e6f31bf83b0b11de0f84e5bf31a2f8bd7290134";
+    owner = "uos-gbp";
+    sha256 = "sha256-Kf9SeFfh5uU41UM+re99mUAJyr+edzyE8/KCkuYqR/U=";
   };
 
   buildType = "catkin";

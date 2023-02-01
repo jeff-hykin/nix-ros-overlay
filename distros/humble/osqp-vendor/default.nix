@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-osqp-vendor";
   version = "0.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/osqp_vendor-release/archive/release/humble/osqp_vendor/0.2.0-1.tar.gz";
-    name = "0.2.0-1.tar.gz";
-    sha256 = "78feb7e49d3652763bef72c686e2dc1df3f046aa21b1c23d34cd6c57ab7b8d01";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "osqp_vendor-release";
+    rev = "7c66f6cea0817fc325370b9231f1eb5d5e983ab3";
+    owner = "ros2-gbp";
+    sha256 = "sha256-I6jhthmRppj6fiDd1M+bbW8W/bsR5/0ur5UWcf4/ZGQ=";
   };
 
   buildType = "ament_cmake";

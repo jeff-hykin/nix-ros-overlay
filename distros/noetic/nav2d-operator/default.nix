@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-nav2d-operator";
   version = "0.4.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/skasperski/navigation_2d-release/archive/release/noetic/nav2d_operator/0.4.3-1.tar.gz";
-    name = "0.4.3-1.tar.gz";
-    sha256 = "ac72183e832843c469d705fbf89c16da594efe0abaa1a85002963e98240dc017";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation_2d-release";
+    rev = "65b103e5926507c4e322e709f2449431ddd110da";
+    owner = "skasperski";
+    sha256 = "sha256-hI9HTZOuyv9zCROajjUTfm+nfmXJaK3Rba4JB5/Lha8=";
   };
 
   buildType = "catkin";

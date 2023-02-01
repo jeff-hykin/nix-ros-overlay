@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-cv-bridge";
   version = "3.2.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/vision_opencv-release/archive/release/humble/cv_bridge/3.2.1-1.tar.gz";
-    name = "3.2.1-1.tar.gz";
-    sha256 = "b4ab3dc38c288684a50c67f9fabec562bc9a3df87ca8ed2b479ebd07b28b69bb";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "vision_opencv-release";
+    rev = "60cdf474334fe326efc60de14b0f150ec4844b97";
+    owner = "ros2-gbp";
+    sha256 = "sha256-hrhmEchLEAyY7EsU0zS2npW3tH7c0nkIHp6Wds1WbyM=";
   };
 
   buildType = "ament_cmake";

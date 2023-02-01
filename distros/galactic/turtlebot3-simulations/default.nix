@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-turtlebot3-simulations";
   version = "2.2.4-r2";
 
-  src = fetchurl {
-    url = "https://github.com/robotis-ros2-release/turtlebot3_simulations-release/archive/release/galactic/turtlebot3_simulations/2.2.4-2.tar.gz";
-    name = "2.2.4-2.tar.gz";
-    sha256 = "0faeea177c3ad970753b5c1dae3fdee66a2ff2a646e7eb895d33454d1a0efeb1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "turtlebot3_simulations-release";
+    rev = "e1cf8880552566435e41ba60e7145f7e6550b6bb";
+    owner = "robotis-ros2-release";
+    sha256 = "sha256-Zcc2/v/LFiOHXG21Vq9V5kUtoaP/TWbH6eqP47KMJP0=";
   };
 
   buildType = "ament_cmake";

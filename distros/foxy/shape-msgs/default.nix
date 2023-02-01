@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-shape-msgs";
   version = "2.0.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/common_interfaces-release/archive/release/foxy/shape_msgs/2.0.5-1.tar.gz";
-    name = "2.0.5-1.tar.gz";
-    sha256 = "ac6bb4f5e67d9d8784978faf4b1a9f47a0e2020ea22aec32940d6b64a0c68eb1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "common_interfaces-release";
+    rev = "a861cca7b9f068b5c4d8b635cf40d45b864045ca";
+    owner = "ros2-gbp";
+    sha256 = "sha256-65hYG+4OlCkxt/1+C9UlRACekq25H1igYT46CJQ0Wzc=";
   };
 
   buildType = "ament_cmake";

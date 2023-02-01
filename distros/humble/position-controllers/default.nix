@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-position-controllers";
   version = "2.15.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_controllers-release/archive/release/humble/position_controllers/2.15.0-1.tar.gz";
-    name = "2.15.0-1.tar.gz";
-    sha256 = "3624b66794bd247a74d1f5ae37b41811caed76ff617d8cd9ea096baa28331813";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_controllers-release";
+    rev = "73feb35bdcfade1ce49c9a02fbb25ff54ee0e910";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Kp7Fa0QOv5wLVgdOFgyCjlTgrAc2LGCSO2X53+qr7sE=";
   };
 
   buildType = "ament_cmake";

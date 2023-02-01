@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-rosserial-mbed";
   version = "0.9.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/rosserial-release/archive/release/noetic/rosserial_mbed/0.9.2-1.tar.gz";
-    name = "0.9.2-1.tar.gz";
-    sha256 = "95617f93588caeb0f2858cbb1363cbe6970510040368ecf27ed8e65e25e0a40a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosserial-release";
+    rev = "379662d21713fa3c430d1280ca826241fbdc9dcc";
+    owner = "ros-gbp";
+    sha256 = "sha256-/Xs33h+YotEig1FrRZ2EXL/ubcvDjGP5UBVpu6z3Uyk=";
   };
 
   buildType = "catkin";

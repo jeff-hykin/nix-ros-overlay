@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-zbar-ros";
   version = "0.3.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros-drivers-gbp/zbar_ros-release/archive/release/melodic/zbar_ros/0.3.0-2.tar.gz";
-    name = "0.3.0-2.tar.gz";
-    sha256 = "62350ba0852b9f2f140a2495a162190ae01ec361bebd28782115ac6d32366f87";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "zbar_ros-release";
+    rev = "4a5460aed9fec270074c549ed48b710a24549096";
+    owner = "ros-drivers-gbp";
+    sha256 = "sha256-J0VRvJf2Gp1KWe/TUJ3mZzLw/N8chmXsA3anbPO6hlQ=";
   };
 
   buildType = "catkin";

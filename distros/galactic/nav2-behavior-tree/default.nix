@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-nav2-behavior-tree";
   version = "1.0.12-r1";
 
-  src = fetchurl {
-    url = "https://github.com/SteveMacenski/navigation2-release/archive/release/galactic/nav2_behavior_tree/1.0.12-1.tar.gz";
-    name = "1.0.12-1.tar.gz";
-    sha256 = "bcb28a37c795bddb4bec5776f603bd3286af09387d4b8e457ca143beafbd7a90";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation2-release";
+    rev = "49440eae369305c6441e100a78645a36cc5b5d44";
+    owner = "SteveMacenski";
+    sha256 = "sha256-U+4AwIFA4pWB+M3FjynpsmD619+9r5ZhBNPGTXzLJYY=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-ubnt-airos-tools";
   version = "1.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/peci1/ubnt_airos_tools-release/archive/release/noetic/ubnt_airos_tools/1.1.0-1.tar.gz";
-    name = "1.1.0-1.tar.gz";
-    sha256 = "0d3c3165ab336d758910fe23f2f9706b8069bbfb00ec7ed9d1e068f3cd0929b3";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ubnt_airos_tools-release";
+    rev = "6bd7b26d0af74483f755fa7879a771ecfc7f8dbf";
+    owner = "peci1";
+    sha256 = "sha256-H+ccLukZAsvAUznsxYrEULJHVeOs5OSQp0+idv1O+v8=";
   };
 
   buildType = "catkin";

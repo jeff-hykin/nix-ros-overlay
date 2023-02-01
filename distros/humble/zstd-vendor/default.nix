@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-zstd-vendor";
   version = "0.15.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rosbag2-release/archive/release/humble/zstd_vendor/0.15.3-1.tar.gz";
-    name = "0.15.3-1.tar.gz";
-    sha256 = "f1b6c8fbdc355ad8e015ae58e0f0ebf77abdbe737fa9f22ed5374319020837ea";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosbag2-release";
+    rev = "01233b5dea00bc4279869c4146ff2299902171f5";
+    owner = "ros2-gbp";
+    sha256 = "sha256-VVxvp5A48EeRL9GehrfabX4OXMWsDmwVF3MwVfeG2NY=";
   };
 
   buildType = "ament_cmake";

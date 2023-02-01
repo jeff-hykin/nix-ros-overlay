@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-pluginlib";
   version = "1.12.1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/pluginlib-release/archive/release/melodic/pluginlib/1.12.1-0.tar.gz";
-    name = "1.12.1-0.tar.gz";
-    sha256 = "51ad8cc72b954cf0fb32b8e562eaa2f24d830ce72832320582ec2075b95958e1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pluginlib-release";
+    rev = "b0d7efcaa6a16f8948b5d8d854be072201f104c7";
+    owner = "ros-gbp";
+    sha256 = "sha256-kKxD05XoElNkNpozh1qWPKD5oPwslSccXbCfMOGZdho=";
   };
 
   buildType = "catkin";

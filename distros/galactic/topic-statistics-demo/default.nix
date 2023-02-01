@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-topic-statistics-demo";
   version = "0.14.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/demos-release/archive/release/galactic/topic_statistics_demo/0.14.4-1.tar.gz";
-    name = "0.14.4-1.tar.gz";
-    sha256 = "c941b9d85934b74dceeb7f4ba196947a49ffeb7484ab231c09b12f7027c6a203";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "demos-release";
+    rev = "43859fe20bd8a6c5732950dd8f1a946635f75e3f";
+    owner = "ros2-gbp";
+    sha256 = "sha256-bmDElICTBhyJR8//qgHdojpfAfnZAIuVRiwdgvGXW4c=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-uuv-trajectory-control";
   version = "0.6.13";
 
-  src = fetchurl {
-    url = "https://github.com/uuvsimulator/uuv_simulator-release/archive/release/melodic/uuv_trajectory_control/0.6.13-0.tar.gz";
-    name = "0.6.13-0.tar.gz";
-    sha256 = "a20414665f3403e5ba772634d148eaef5bc2d703c4d5e5ff4196f8b6557bd3cd";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "uuv_simulator-release";
+    rev = "7dc41b24349abc96578fe7f6a9e0baf3f41ee0ef";
+    owner = "uuvsimulator";
+    sha256 = "sha256-HZBLqmMi9pO1ssJS796RRJMvtTxvsjkIcvEBogue9Uc=";
   };
 
   buildType = "catkin";

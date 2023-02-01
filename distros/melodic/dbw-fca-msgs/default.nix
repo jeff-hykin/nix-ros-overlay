@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-dbw-fca-msgs";
   version = "1.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/DataspeedInc-release/dbw_fca_ros-release/archive/release/melodic/dbw_fca_msgs/1.3.0-1.tar.gz";
-    name = "1.3.0-1.tar.gz";
-    sha256 = "ad8a2865b54b855a48f7daea5d69e384b9c7e03e0b66316e610539d0fb139ccd";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "dbw_fca_ros-release";
+    rev = "af93a3e99866c97d3b0589b7ed248c14a58b92d6";
+    owner = "DataspeedInc-release";
+    sha256 = "sha256-TwMR9JWmysOOf9jSWRcaWOnfbMIKXUa0TgkPvJqiGpg=";
   };
 
   buildType = "catkin";

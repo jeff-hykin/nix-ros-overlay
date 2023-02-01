@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-urdfdom";
   version = "3.0.2-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/urdfdom-release/archive/release/humble/urdfdom/3.0.2-2.tar.gz";
-    name = "3.0.2-2.tar.gz";
-    sha256 = "1156de83e0fc73b429680ac811a2b7ec97e7405afb88bdd3c1d1a6eb5a8eca04";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "urdfdom-release";
+    rev = "f542c91673cb3fa3c8742164d1565a09de150c30";
+    owner = "ros2-gbp";
+    sha256 = "sha256-mxUV23F0tO2GutjNSB1FCaDqCRshrntM+uBBiqUZweg=";
   };
 
   buildType = "cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ur-robot-driver";
   version = "2.1.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/Universal_Robots_ROS2_Driver-release/archive/release/galactic/ur_robot_driver/2.1.2-1.tar.gz";
-    name = "2.1.2-1.tar.gz";
-    sha256 = "a9fad5ce4af1c8b72d8a2f6341937d488faf0b5d7cc0fdb01008cc69e4f78e38";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "Universal_Robots_ROS2_Driver-release";
+    rev = "efa7a0d25d55ce99a58006940f7f3293ec55cb77";
+    owner = "ros2-gbp";
+    sha256 = "sha256-IeVTHCiztXiBFth2fUeUCQmh/U7X3360JQBPYWiXYfM=";
   };
 
   buildType = "ament_cmake";

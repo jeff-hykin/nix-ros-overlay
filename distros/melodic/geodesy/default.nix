@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-geodesy";
   version = "0.5.3";
 
-  src = fetchurl {
-    url = "https://github.com/ros-geographic-info/geographic_info-release/archive/release/melodic/geodesy/0.5.3-0.tar.gz";
-    name = "0.5.3-0.tar.gz";
-    sha256 = "58e20388e22a583385b39acf097e80a508617623d484f29a30f31ee96558f58b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "geographic_info-release";
+    rev = "51e8c3cad3369f1b647eb8876f677161eb052443";
+    owner = "ros-geographic-info";
+    sha256 = "sha256-hhVKkLuDjbfnjwNkoO9Yzm76mB5ZdJsCNy5cwJmSBpU=";
   };
 
   buildType = "catkin";

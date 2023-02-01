@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-hebi-description";
   version = "0.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/HebiRobotics/hebi_description-release/archive/release/melodic/hebi_description/0.1.0-1.tar.gz";
-    name = "0.1.0-1.tar.gz";
-    sha256 = "a98ed8c034550c518fac9fe8eca1f14ae662278efcd5089abe07f90a4e6a4df0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "hebi_description-release";
+    rev = "fe1ff063f00f06c8377e0657afa796cad2111356";
+    owner = "HebiRobotics";
+    sha256 = "sha256-5Y/NYNb90T10xDCH4eMDKBFDspYQZfHW0mWzWsCBNlA=";
   };
 
   buildType = "catkin";

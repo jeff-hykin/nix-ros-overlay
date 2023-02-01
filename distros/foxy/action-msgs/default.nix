@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-action-msgs";
   version = "1.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rcl_interfaces-release/archive/release/foxy/action_msgs/1.0.0-1.tar.gz";
-    name = "1.0.0-1.tar.gz";
-    sha256 = "98f6d6a6cdce04e07d239dc50233ec4d6ab460c6caa4eb297d1138416cef1d97";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rcl_interfaces-release";
+    rev = "6a192b0f3236b547801d65962763614fc20322fe";
+    owner = "ros2-gbp";
+    sha256 = "sha256-y7F7Ih+C6Duj1u2LIiV7R4jvmCaJGg8JAOugw38YX4I=";
   };
 
   buildType = "ament_cmake";

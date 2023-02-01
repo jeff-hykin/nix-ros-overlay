@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-turtlebot3-teleop";
   version = "2.1.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/robotis-ros2-release/turtlebot3-release/archive/release/humble/turtlebot3_teleop/2.1.5-1.tar.gz";
-    name = "2.1.5-1.tar.gz";
-    sha256 = "13b92dbda7241dcaa188416f813bcb14676f8e8abc908d72903d2594a3cc2896";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "turtlebot3-release";
+    rev = "91acf743faa3ba21d1c49c5faf1ed4b1f287d5e2";
+    owner = "robotis-ros2-release";
+    sha256 = "sha256-g2o2do3Pff546eAO8T1/8RdgBrfKXVW410BtaBoAb8s=";
   };
 
   buildType = "ament_python";

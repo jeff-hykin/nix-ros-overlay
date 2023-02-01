@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-qt-gui-py-common";
   version = "2.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/qt_gui_core-release/archive/release/galactic/qt_gui_py_common/2.0.1-1.tar.gz";
-    name = "2.0.1-1.tar.gz";
-    sha256 = "b56bdebfd106ddf5a9223113c5eca4ae1e7dae65b16d26c10c80a8ff68598391";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "qt_gui_core-release";
+    rev = "0a065003ca8d961e374ef4698e9db180b3a36bb6";
+    owner = "ros2-gbp";
+    sha256 = "sha256-AGSiRjaHQR5F55UnoN4EqN/k5SEuzW157F1jU+IAVDU=";
   };
 
   buildType = "ament_cmake";

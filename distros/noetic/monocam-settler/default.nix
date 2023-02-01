@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-monocam-settler";
   version = "0.10.15-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/calibration-release/archive/release/noetic/monocam_settler/0.10.15-1.tar.gz";
-    name = "0.10.15-1.tar.gz";
-    sha256 = "3366087331b2f73cdec33ae2052a6a903bb1ff7386bb9d6f560cd04f77e6ec97";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "calibration-release";
+    rev = "8af09fc77286135c69b89abdd7f861add2c38a67";
+    owner = "ros-gbp";
+    sha256 = "sha256-lK1Obf9oB5zn6ZhAxHS9w/rRPpTF6LnQgLGhmTJzXdk=";
   };
 
   buildType = "catkin";

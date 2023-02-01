@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-dataspeed-pds-scripts";
   version = "1.0.6-r1";
 
-  src = fetchurl {
-    url = "https://github.com/DataspeedInc-release/dataspeed_pds-release/archive/release/melodic/dataspeed_pds_scripts/1.0.6-1.tar.gz";
-    name = "1.0.6-1.tar.gz";
-    sha256 = "78f2746975c73faea61d3614a764e97f8554eb00955f97014b64ba8cc5578e99";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "dataspeed_pds-release";
+    rev = "ac7e7ebfe3c260b3fd5287f71862e19b6dde6417";
+    owner = "DataspeedInc-release";
+    sha256 = "sha256-sDXfYOFnZaf7x/Re8ebwXEdzkfM0kX9+olQrlNwFqMY=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rcl-logging-noop";
   version = "2.1.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rcl_logging-release/archive/release/galactic/rcl_logging_noop/2.1.5-1.tar.gz";
-    name = "2.1.5-1.tar.gz";
-    sha256 = "f77f8fbfeaaa8ae80134e548b6f4e15b00f25f421869de4a067140d95c414912";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rcl_logging-release";
+    rev = "a167ccc38d00ff138e0332ac9795090ea7b1b56a";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Qc9tKcR2r65LbYnfh4aDcBNuPcbs7Tu3fJcTU3q6OOA=";
   };
 
   buildType = "ament_cmake";

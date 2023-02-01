@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-paho-mqtt-c";
   version = "1.3.11-r1";
 
-  src = fetchurl {
-    url = "https://github.com/nobleo/paho.mqtt.c-release/archive/release/foxy/paho-mqtt-c/1.3.11-1.tar.gz";
-    name = "1.3.11-1.tar.gz";
-    sha256 = "dfa91d1d2890fa10378f9fe24f53212b29e574d4113ad191eb91c1cbe0afb2e0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "paho.mqtt.c-release";
+    rev = "526fd4d560e854c35ea54ed26fa0b806dc70902b";
+    owner = "nobleo";
+    sha256 = "sha256-sO9rVWqyace+Kf6Csb99DmyJid1KjT7SHUY6uKHFk9M=";
   };
 
   buildType = "cmake";

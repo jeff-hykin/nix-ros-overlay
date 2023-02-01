@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-dolly-gazebo";
   version = "0.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/chapulina/dolly-release/archive/release/foxy/dolly_gazebo/0.3.0-1.tar.gz";
-    name = "0.3.0-1.tar.gz";
-    sha256 = "e08093c308744c9721f6f86dce0fb818c91ae2780cd599fcf0965103c863d698";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "dolly-release";
+    rev = "34415f4f5601e3286c2a44eaa2f842848d388f63";
+    owner = "chapulina";
+    sha256 = "sha256-mdIsQEjc10tQ9EVOj+9qNk3rF/g1p9oCBYzokTqYq4k=";
   };
 
   buildType = "ament_cmake";

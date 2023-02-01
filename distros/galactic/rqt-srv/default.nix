@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rqt-srv";
   version = "1.0.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rqt_srv-release/archive/release/galactic/rqt_srv/1.0.3-1.tar.gz";
-    name = "1.0.3-1.tar.gz";
-    sha256 = "792cad20d9d26660de5c5314e4da193069104005a0cc91aa551590b67da2cedc";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt_srv-release";
+    rev = "68f063a2a88e88bad1a034dc8acf4d6f6a072573";
+    owner = "ros2-gbp";
+    sha256 = "sha256-q6xLT+in38OgaER7EjAFQvGQIqlXCP85eR4andyqu8g=";
   };
 
   buildType = "ament_python";

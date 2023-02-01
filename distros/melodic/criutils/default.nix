@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-criutils";
   version = "0.1.3-r2";
 
-  src = fetchurl {
-    url = "https://github.com/crigroup/criutils-release/archive/release/melodic/criutils/0.1.3-2.tar.gz";
-    name = "0.1.3-2.tar.gz";
-    sha256 = "f6cd15555a09722265c91234ab0c3e46c501a052cce3979a5fde66d86f0a0c51";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "criutils-release";
+    rev = "35757fde4844090bd111403f73179518c44c1382";
+    owner = "crigroup";
+    sha256 = "sha256-/E3IBkg47jW00hoghRE6Dj/OrvasZfxAg1yfi+ojBXg=";
   };
 
   buildType = "catkin";

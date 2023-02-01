@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-warthog-desktop";
   version = "0.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/clearpath-gbp/warthog_desktop-release/archive/release/melodic/warthog_desktop/0.1.1-1.tar.gz";
-    name = "0.1.1-1.tar.gz";
-    sha256 = "67791be4dee0cd2f12e04c840c20146a589fb2bf3dcc009f6376ea2899062807";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "warthog_desktop-release";
+    rev = "7721866cd1a1bbb6d43ca65c2ba4c462a83bc483";
+    owner = "clearpath-gbp";
+    sha256 = "sha256-aajHMpN2BaXAgDcNV0Sfr5qRovXqZyZnY4wR2a9n4Nw=";
   };
 
   buildType = "catkin";

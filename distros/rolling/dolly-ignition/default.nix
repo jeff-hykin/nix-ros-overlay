@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-dolly-ignition";
   version = "0.4.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/dolly-release/archive/release/rolling/dolly_ignition/0.4.0-2.tar.gz";
-    name = "0.4.0-2.tar.gz";
-    sha256 = "5004cf823b7f1207abb652001d47b49d00aa4c3d22a3607d2defc5edb73c38ee";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "dolly-release";
+    rev = "191661fed75057a8d0a71a61d5e080b77d95ae95";
+    owner = "ros2-gbp";
+    sha256 = "sha256-BGdsjbemIWS94BjSHjDClK1ui6sM17J0lJlrhfhj/Vg=";
   };
 
   buildType = "ament_cmake";

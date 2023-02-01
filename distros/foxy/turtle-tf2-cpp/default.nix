@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-turtle-tf2-cpp";
   version = "0.3.6-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/geometry_tutorials-release/archive/release/foxy/turtle_tf2_cpp/0.3.6-1.tar.gz";
-    name = "0.3.6-1.tar.gz";
-    sha256 = "5338f78ea233a79ba969931a047b14005f9ccce95d784811a7e39210acb362ba";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "geometry_tutorials-release";
+    rev = "5221c13a724ee7a9d55f647b9ef6db0108d63d91";
+    owner = "ros2-gbp";
+    sha256 = "sha256-/+vZZp6tpMuKd5xAZHma9sMN5Q0aWVwbu5ZnKW6t2nQ=";
   };
 
   buildType = "ament_cmake";

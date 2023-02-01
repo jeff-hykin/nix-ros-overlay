@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-joint-state-broadcaster";
   version = "0.8.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_controllers-release/archive/release/foxy/joint_state_broadcaster/0.8.2-1.tar.gz";
-    name = "0.8.2-1.tar.gz";
-    sha256 = "7a5507649dae8d1efcc89dc91635f570a3372cc0fef0027034d629a0efd8ef7e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_controllers-release";
+    rev = "c2da46b193d9d3e89e1582f6f98f44acd22635b9";
+    owner = "ros2-gbp";
+    sha256 = "sha256-q/yXtIHC+FkdVhlbEm9ThVHI8L9yuwhVBVuFlJmNoa4=";
   };
 
   buildType = "ament_cmake";

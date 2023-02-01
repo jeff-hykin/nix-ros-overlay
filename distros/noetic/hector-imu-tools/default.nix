@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-hector-imu-tools";
   version = "0.5.2-r4";
 
-  src = fetchurl {
-    url = "https://github.com/tu-darmstadt-ros-pkg-gbp/hector_slam-release/archive/release/noetic/hector_imu_tools/0.5.2-4.tar.gz";
-    name = "0.5.2-4.tar.gz";
-    sha256 = "a4e67b8a5f662733075aa076acc1fc18f5eed4b34e7c87f611524207efb65326";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "hector_slam-release";
+    rev = "b49c3bede8340dd679280c19b67f206f10e4746b";
+    owner = "tu-darmstadt-ros-pkg-gbp";
+    sha256 = "sha256-IqBKZ3ufiPbJRP6p3Zg3e+7xvw+M3DYUrqsP2WgFqWk=";
   };
 
   buildType = "catkin";

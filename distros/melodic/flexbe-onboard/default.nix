@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-flexbe-onboard";
   version = "1.3.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/FlexBE/flexbe_behavior_engine-release/archive/release/melodic/flexbe_onboard/1.3.1-1.tar.gz";
-    name = "1.3.1-1.tar.gz";
-    sha256 = "c76dab2227ad0f060b157f3abfd498610edfe5174f77ff916e34ca02bf164e4a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "flexbe_behavior_engine-release";
+    rev = "99d198999e5e232b955102c6d5f3036cf5cb2ae3";
+    owner = "FlexBE";
+    sha256 = "sha256-F4Po6AOQNmweidPtk4tbz9y8fQ8XiiTZKBMtQiIacng=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-ecl-mobile-robot";
   version = "1.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/yujinrobot-release/ecl_core-release/archive/release/foxy/ecl_mobile_robot/1.2.0-1.tar.gz";
-    name = "1.2.0-1.tar.gz";
-    sha256 = "a7e9ffe36fa537cef5959d255de1ecb4299eb7f43e401723e3af9c5587357029";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ecl_core-release";
+    rev = "417581dadb06c64c80bdf53cf1d83254ab6dfe4d";
+    owner = "yujinrobot-release";
+    sha256 = "sha256-ZJpDyMOQ2S2KRu0cDW9KhWcQcX65/VPXwVdJFPgjhfI=";
   };
 
   buildType = "ament_cmake";

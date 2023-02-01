@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-ruckig";
   version = "0.6.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pantor/ruckig-release/archive/release/noetic/ruckig/0.6.3-1.tar.gz";
-    name = "0.6.3-1.tar.gz";
-    sha256 = "4a2c3b585dc2ec8d9af8c6ae46197e4344f214771c7d55c7c7fb3faca8690329";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ruckig-release";
+    rev = "0e9c72f2893c0fd02e650fd88b6aaac1795fc1c6";
+    owner = "pantor";
+    sha256 = "sha256-Rc7jKjIwuJUT7To4WUmmKX8mvICZzHMQ1RQ7R4mL3FY=";
   };
 
   buildType = "cmake";

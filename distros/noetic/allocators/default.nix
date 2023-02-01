@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-allocators";
   version = "1.0.25-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/ros_realtime-release/archive/release/noetic/allocators/1.0.25-1.tar.gz";
-    name = "1.0.25-1.tar.gz";
-    sha256 = "c633a844f59bc64c53bf03c8f5007a466b79e24d9e405b7fdea0238e727b391c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_realtime-release";
+    rev = "6d6783d453201a1a86c3f9e7d55bf1f2587a7142";
+    owner = "ros-gbp";
+    sha256 = "sha256-kh95NO/roS12CTvVD5hRxNh9+JqxX+s+LmK3hUfGHJY=";
   };
 
   buildType = "catkin";

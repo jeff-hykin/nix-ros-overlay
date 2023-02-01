@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-dbw-ford-description";
   version = "2.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/DataspeedInc-release/dbw_ros-release/archive/release/humble/dbw_ford_description/2.1.0-1.tar.gz";
-    name = "2.1.0-1.tar.gz";
-    sha256 = "7bbf59bd586b2aad4df61086b8ec6cc6982954d9f6053cdd065003ec682ac08b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "dbw_ros-release";
+    rev = "b796db24af05af9443873f9b4e33f7ce3c73a458";
+    owner = "DataspeedInc-release";
+    sha256 = "sha256-VMHbEYr7ykq1gEuSTCn8XpIqxZ47PNaK7VDuOPAqhD8=";
   };
 
   buildType = "ament_cmake";

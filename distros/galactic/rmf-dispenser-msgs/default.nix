@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rmf-dispenser-msgs";
   version = "1.4.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_internal_msgs-release/archive/release/galactic/rmf_dispenser_msgs/1.4.0-1.tar.gz";
-    name = "1.4.0-1.tar.gz";
-    sha256 = "c53fac3a314da8c6feb6b9d313618219361bc193ebcad941b782e907449de060";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_internal_msgs-release";
+    rev = "b1b39aef9a1669e4bc69eea8d9d9c6a40228ffdc";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Z4x/wbSINjGVH7zc0hkfzySdo4o/7h72pITikGrjrmo=";
   };
 
   buildType = "ament_cmake";

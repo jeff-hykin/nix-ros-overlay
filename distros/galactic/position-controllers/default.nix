@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-position-controllers";
   version = "1.5.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_controllers-release/archive/release/galactic/position_controllers/1.5.1-1.tar.gz";
-    name = "1.5.1-1.tar.gz";
-    sha256 = "166e23f873f16284ad7ce23498377b4adfde1a75fd0d93cbb5dd291f86096679";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_controllers-release";
+    rev = "307e413fe4dbfeb154637346c8d4a210626ce3b9";
+    owner = "ros2-gbp";
+    sha256 = "sha256-r3FVqPGSOVh4hVbfaEWgKYPaan/k3ZMSgErI0Ba0sRM=";
   };
 
   buildType = "ament_cmake";

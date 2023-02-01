@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-rmf-building-sim-gz-classic-plugins";
   version = "2.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_simulation-release/archive/release/humble/rmf_building_sim_gz_classic_plugins/2.0.0-1.tar.gz";
-    name = "2.0.0-1.tar.gz";
-    sha256 = "3e45c0266ca6841d64421b9ad0ee96c3ce68cdf40407f2c366abe50b38ce388e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_simulation-release";
+    rev = "e9428b43b663a497b23a98236425deda6ef96d81";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Mg2m6ogUnJjTr5g0leCh5gggCHw5ZKS/X+zhWhTyyHs=";
   };
 
   buildType = "ament_cmake";

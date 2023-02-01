@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-laser-joint-projector";
   version = "1.0.11-r3";
 
-  src = fetchurl {
-    url = "https://github.com/UNR-RoboticsResearchLab/pr2_calibration-release/archive/release/melodic/laser_joint_projector/1.0.11-3.tar.gz";
-    name = "1.0.11-3.tar.gz";
-    sha256 = "e39ed9fe09aca1b76382f081da92833adc0ca6ef95f4cdf8d3a026d89c9482d0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pr2_calibration-release";
+    rev = "1cbf2d5de5c3f6659a74efc6437d783cbf635beb";
+    owner = "UNR-RoboticsResearchLab";
+    sha256 = "sha256-EJExhTKIE7UT41dgEtVwLL9A1ZVW2ukmqa1rztvDryU=";
   };
 
   buildType = "catkin";

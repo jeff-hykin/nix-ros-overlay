@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-lifecycle-msgs";
   version = "1.2.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rcl_interfaces-release/archive/release/humble/lifecycle_msgs/1.2.1-1.tar.gz";
-    name = "1.2.1-1.tar.gz";
-    sha256 = "c351b99f0e26fb70b42457dc53b626bfbc208eb662ab497a4eb7061b82d04731";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rcl_interfaces-release";
+    rev = "6d4f4ce1a6f4ec993b6cbd8112623e81a11a8207";
+    owner = "ros2-gbp";
+    sha256 = "sha256-u7czveUlC+HRblf+Pny1l9E7tZlapOXHc4qokMqRXrc=";
   };
 
   buildType = "ament_cmake";

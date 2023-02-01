@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-tvm-vendor";
   version = "0.9.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/tvm_vendor-release/archive/release/foxy/tvm_vendor/0.9.0-1.tar.gz";
-    name = "0.9.0-1.tar.gz";
-    sha256 = "c3ab420263c5a232cf13ebb14ad9e0b2cd80791f374635764914ceb6eba195ff";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "tvm_vendor-release";
+    rev = "1ee8348e04bd8b680d3e3a5b790042f5e82e7e97";
+    owner = "ros2-gbp";
+    sha256 = "sha256-2Z0zp24HFwXUiu920M3BzA5aflzV2y78RFZk5tliNCc=";
   };
 
   buildType = "ament_cmake";

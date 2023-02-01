@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-pilz-testutils";
   version = "0.7.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/PilzDE/pilz_common-release/archive/release/noetic/pilz_testutils/0.7.2-1.tar.gz";
-    name = "0.7.2-1.tar.gz";
-    sha256 = "a26eecef74aadd16dc7c5f8f1d9c57b54e139504a61d0725276167a026231960";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pilz_common-release";
+    rev = "1410bb71b813a17297fe2a06cbaa3e38697e3bd7";
+    owner = "PilzDE";
+    sha256 = "sha256-gwY6PWuc05SFqc99zzjIKQmOotU6uKfekbuDpss2dUE=";
   };
 
   buildType = "catkin";

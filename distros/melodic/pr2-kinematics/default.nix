@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-pr2-kinematics";
   version = "1.0.10";
 
-  src = fetchurl {
-    url = "https://github.com/pr2-gbp/pr2_kinematics-release/archive/release/melodic/pr2_kinematics/1.0.10-0.tar.gz";
-    name = "1.0.10-0.tar.gz";
-    sha256 = "a1103dc191b832b2a06bb07d9eb6d4c54a948377e0796b9d1f556e7ee3635c2c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pr2_kinematics-release";
+    rev = "276360e58f41d2e80f1c8d3ecb11bac66e169cad";
+    owner = "pr2-gbp";
+    sha256 = "sha256-zBNA2O/k0++V1AEvjIlkuyKZIaMqLPhr3xfj2D/RL7g=";
   };
 
   buildType = "catkin";

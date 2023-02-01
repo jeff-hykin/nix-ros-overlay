@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-diff-drive-controller";
   version = "0.21.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/ros_controllers-release/archive/release/noetic/diff_drive_controller/0.21.0-1.tar.gz";
-    name = "0.21.0-1.tar.gz";
-    sha256 = "40464044b17732a609ab6fec86b178c5dbddb662c69425f148c70fddd6688e1e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_controllers-release";
+    rev = "e662d85b598cafaec03c9fe3cd927f482b7a295d";
+    owner = "ros-gbp";
+    sha256 = "sha256-MsWpbtfxCrltF7drQ7Etxt2xl8cHoSco0s+QNpiSTP8=";
   };
 
   buildType = "catkin";

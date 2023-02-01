@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-rqt-plot";
   version = "1.1.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rqt_plot-release/archive/release/humble/rqt_plot/1.1.2-1.tar.gz";
-    name = "1.1.2-1.tar.gz";
-    sha256 = "0b79948cc297ac24f789161fc6560de94e205ff05cb16c688adbfa7b8667621b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt_plot-release";
+    rev = "a724d0a6e599b13d2e191574c3654fde59516fe2";
+    owner = "ros2-gbp";
+    sha256 = "sha256-B58/zc1QB0LN58S+4u16C6x6cGSJgIAuy81H3YhGKp0=";
   };
 
   buildType = "ament_python";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ur-description";
   version = "2.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ur_description-release/archive/release/galactic/ur_description/2.0.0-1.tar.gz";
-    name = "2.0.0-1.tar.gz";
-    sha256 = "c6e240359dbcd83108e71d30e64f3035fedf23f6355559fcf213bb26e387b961";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ur_description-release";
+    rev = "422783fc4b8b48cdf2ecffb1b07be708b40d61c9";
+    owner = "ros2-gbp";
+    sha256 = "sha256-oAtGKVcEjAc3AHcHiMkzdoJsg64ucCRSZMVaA9/5+b0=";
   };
 
   buildType = "ament_cmake";

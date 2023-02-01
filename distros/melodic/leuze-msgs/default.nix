@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-leuze-msgs";
   version = "1.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa-led/leuze_ros_drivers-release/archive/release/melodic/leuze_msgs/1.0.1-1.tar.gz";
-    name = "1.0.1-1.tar.gz";
-    sha256 = "2c27dfd9fa3cddd7aa79dbcd21f147f0e9ad7b89aeb9431a208c67d14bc90de2";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "leuze_ros_drivers-release";
+    rev = "fb2cb047fc61b02ed6dc2ea75076b4d039815494";
+    owner = "ipa-led";
+    sha256 = "sha256-gJH6sBzddlMbtkJJMtS3qpSHjpdYzpbTir6KkzKwBm0=";
   };
 
   buildType = "catkin";

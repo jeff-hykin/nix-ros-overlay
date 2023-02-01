@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-teleop-legged-robots";
   version = "1.1.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/SoftServeSAG/teleop_legged_robots-release/archive/release/melodic/teleop_legged_robots/1.1.2-1.tar.gz";
-    name = "1.1.2-1.tar.gz";
-    sha256 = "a6f0d0e043ddf4d8b8f93bc394b341780c3439ddf09da38555b1c9a4acb62662";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "teleop_legged_robots-release";
+    rev = "ad48fd3e216843253b36bfaea4b6c76a51915976";
+    owner = "SoftServeSAG";
+    sha256 = "sha256-TTdOolQrx0eIplFQXi3BHPo56lOYXCVYFKWuThYggJY=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-joint-trajectory-controller";
   version = "1.5.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_controllers-release/archive/release/galactic/joint_trajectory_controller/1.5.1-1.tar.gz";
-    name = "1.5.1-1.tar.gz";
-    sha256 = "8cf98307d46ee242b51f861cfd5cd533ee78272c192dc6c2c139a554b96ebf32";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_controllers-release";
+    rev = "7036f2d88c431004f9b70215b7f4f4bb4daa1423";
+    owner = "ros2-gbp";
+    sha256 = "sha256-J+SNMESjfqL/l5UZ77wsHf8tRIBHtQJTb5Eer9RNCVs=";
   };
 
   buildType = "ament_cmake";

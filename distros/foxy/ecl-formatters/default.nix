@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-ecl-formatters";
   version = "1.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/yujinrobot-release/ecl_core-release/archive/release/foxy/ecl_formatters/1.2.0-1.tar.gz";
-    name = "1.2.0-1.tar.gz";
-    sha256 = "46f4b0b99c36757e076193031e5f23ea95fd5298e71a450a9e7695636c1c8ee4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ecl_core-release";
+    rev = "de248e7a5a8c259dad368c9c94be2d22b90852df";
+    owner = "yujinrobot-release";
+    sha256 = "sha256-csnK/KT7emSpanWIXw3QXNb2qWq3S4io17fniIvDyLk=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-cob-lookat-action";
   version = "0.7.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_manipulation-release/archive/release/noetic/cob_lookat_action/0.7.7-1.tar.gz";
-    name = "0.7.7-1.tar.gz";
-    sha256 = "9416d9ec5db5b45e4a9606a4cc679a6a89ca911e76ad8b6bf4d0ea6fa3724254";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_manipulation-release";
+    rev = "87aa6e3b04c62f4891e6ea72acbefb0b2304ca03";
+    owner = "ipa320";
+    sha256 = "sha256-lWRTdmSosQR2Bi+Dk0z2/LVZE4wjy2EBVwS/tVTy/KI=";
   };
 
   buildType = "catkin";

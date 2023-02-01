@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-topic-monitor";
   version = "0.23.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/demos-release/archive/release/rolling/topic_monitor/0.23.0-1.tar.gz";
-    name = "0.23.0-1.tar.gz";
-    sha256 = "76108729ebbccf3613948b001eccf56661fc6a8d00c33d98aaefeaab5d7b0211";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "demos-release";
+    rev = "8aa7dbb6571fa2d25e6c8e41f451301a0137d14e";
+    owner = "ros2-gbp";
+    sha256 = "sha256-OYeZobhVw+QaDP92iqKpZjmenG+lHGZzFuL01dn/h6g=";
   };
 
   buildType = "ament_python";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-rmf-robot-sim-common";
   version = "2.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_simulation-release/archive/release/humble/rmf_robot_sim_common/2.0.0-1.tar.gz";
-    name = "2.0.0-1.tar.gz";
-    sha256 = "53da938750b958d7338859c43a18c4b4a6ffe2af7648a9de9a833a6f293a2673";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_simulation-release";
+    rev = "e2c1a75f63e1b5e7c4a6ecb25408beea78759579";
+    owner = "ros2-gbp";
+    sha256 = "sha256-IuYKkMsVg6T/njTAoWEph65/bez/rgULyYgub6xPIVE=";
   };
 
   buildType = "ament_cmake";

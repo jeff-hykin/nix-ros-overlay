@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-radar-msgs";
   version = "0.2.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/radar_msgs-release/archive/release/rolling/radar_msgs/0.2.2-1.tar.gz";
-    name = "0.2.2-1.tar.gz";
-    sha256 = "cc91fbc52fa04881e7c6a10bf9beaa6db87c47540ec8ba2bbd6605bc76ddb65b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "radar_msgs-release";
+    rev = "82c0279f39c053a638b68b2d4aef90e870b5ef7b";
+    owner = "ros2-gbp";
+    sha256 = "sha256-HO0hAoc99su0O3J40Mywg7/qtbQJof/b5/wwBnx6xbI=";
   };
 
   buildType = "ament_cmake";

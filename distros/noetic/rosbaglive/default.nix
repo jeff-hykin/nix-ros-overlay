@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-rosbaglive";
   version = "0.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/wu-robotics/wu_ros_tools/archive/release/noetic/rosbaglive/0.3.0-1.tar.gz";
-    name = "0.3.0-1.tar.gz";
-    sha256 = "33ca1e07cc82c0bdf15f8ba6ce3789fe61a4f362223624f2f1ae4187a48f9b1e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "wu_ros_tools";
+    rev = "eb06d8240df1e8a77763877888852e16ab04e852";
+    owner = "wu-robotics";
+    sha256 = "sha256-QBKk100Ipgq516JeQSSfRvzpVlgVxmIKx5EfDHWXU5M=";
   };
 
   buildType = "catkin";

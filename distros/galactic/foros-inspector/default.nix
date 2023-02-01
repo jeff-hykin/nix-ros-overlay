@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-foros-inspector";
   version = "0.4.1-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/foros-release/archive/release/galactic/foros_inspector/0.4.1-2.tar.gz";
-    name = "0.4.1-2.tar.gz";
-    sha256 = "2f5c99f8dc0bf77471a3a250080ec21d18b4c4cc28560aa41e4133370b110b6c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "foros-release";
+    rev = "6925006f2e59617b554be78ecf3ccad958989c9a";
+    owner = "ros2-gbp";
+    sha256 = "sha256-WfePxLQcvtxpQxBIDPXuPTGMb87E/ySncvdid1KfFFk=";
   };
 
   buildType = "ament_cmake";

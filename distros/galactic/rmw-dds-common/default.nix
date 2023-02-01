@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rmw-dds-common";
   version = "1.2.1-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmw_dds_common-release/archive/release/galactic/rmw_dds_common/1.2.1-2.tar.gz";
-    name = "1.2.1-2.tar.gz";
-    sha256 = "eb06e88b4f9eeffd43e5296ced6bb214085ce8c8a43d87cc590669431a53ccf9";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmw_dds_common-release";
+    rev = "60d38467bda9d42aa10e9f203af0fb54505e12e3";
+    owner = "ros2-gbp";
+    sha256 = "sha256-jiGPKoEAHZiCgf+qVrqc1ai+/Ou9sS2HEmT0mk9upoE=";
   };
 
   buildType = "ament_cmake";

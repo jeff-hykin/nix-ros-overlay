@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-turtlesim";
   version = "0.9.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/ros_tutorials-release/archive/release/melodic/turtlesim/0.9.3-1.tar.gz";
-    name = "0.9.3-1.tar.gz";
-    sha256 = "4e997ce7969937add7184053b6b82ee104696edd0918c69ad477ce2170fdb6a2";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_tutorials-release";
+    rev = "aa8bda0859ceb1c984a9fe5c867c556a17f903b7";
+    owner = "ros-gbp";
+    sha256 = "sha256-H3gRNCiEFQnfwboM9I/ROH338EEHm6XydFQBghbY9m8=";
   };
 
   buildType = "catkin";

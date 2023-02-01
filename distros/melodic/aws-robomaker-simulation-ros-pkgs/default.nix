@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-aws-robomaker-simulation-ros-pkgs";
   version = "1.1.1-r2";
 
-  src = fetchurl {
-    url = "https://github.com/aws-gbp/aws_robomaker_simulation_ros_pkgs-release/archive/release/melodic/aws_robomaker_simulation_ros_pkgs/1.1.1-2.tar.gz";
-    name = "1.1.1-2.tar.gz";
-    sha256 = "5e0601fa00843ff7ac138fe81b6a8f97242aaaf2648aee4a870b21bc9055ae8e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "aws_robomaker_simulation_ros_pkgs-release";
+    rev = "a7dc74cf15377b47989ff346a9dd008226756585";
+    owner = "aws-gbp";
+    sha256 = "sha256-50jWSYADy5oEJIDPCbB3I79MQ/7tSiTueRonVcT5pEk=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-schunk-svh-simulation";
   version = "0.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/fzi-forschungszentrum-informatik/schunk_svh_ros_driver-release/archive/release/noetic/schunk_svh_simulation/0.1.1-1.tar.gz";
-    name = "0.1.1-1.tar.gz";
-    sha256 = "a53eedb734132bca34bce7138bc5957a52dfc9ded76b592c498e11180366731a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "schunk_svh_ros_driver-release";
+    rev = "72c5394fb1b438452cac6eb3964bc1d450cb5dcf";
+    owner = "fzi-forschungszentrum-informatik";
+    sha256 = "sha256-RJVqewQC6NHoWzRcCpMXX41X8r6pPStibig/64ECxSA=";
   };
 
   buildType = "catkin";

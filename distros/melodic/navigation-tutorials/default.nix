@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-navigation-tutorials";
   version = "0.2.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/navigation_tutorials-release/archive/release/melodic/navigation_tutorials/0.2.4-1.tar.gz";
-    name = "0.2.4-1.tar.gz";
-    sha256 = "c6c2d22bc24f5e224dbb15758e735708f490409a2318427b00d7ac673a4bf32d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation_tutorials-release";
+    rev = "2cd89488af5bee9fe65064ea8ebace1767ff46f8";
+    owner = "ros-gbp";
+    sha256 = "sha256-qMpa+ySBUOPBinNqIPg5hLVRywi8KhhzdIaw1MTQsm8=";
   };
 
   buildType = "catkin";

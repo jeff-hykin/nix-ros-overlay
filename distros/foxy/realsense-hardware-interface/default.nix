@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-realsense-hardware-interface";
   version = "0.0.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/OUXT-Polaris/realsense_hardware_interface-release/archive/release/foxy/realsense_hardware_interface/0.0.2-1.tar.gz";
-    name = "0.0.2-1.tar.gz";
-    sha256 = "0d46b3c3c50593eb21c18e552069bf067aa944d3354f783e3dd034940e5d8a21";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "realsense_hardware_interface-release";
+    rev = "0a597f2c72b0506da8fa275377f65bce06de894d";
+    owner = "OUXT-Polaris";
+    sha256 = "sha256-DLvDRyaHLGlF/T6Y4g8Wda2zVZGiUzwqOHmLQ9IdPMo=";
   };
 
   buildType = "ament_cmake";

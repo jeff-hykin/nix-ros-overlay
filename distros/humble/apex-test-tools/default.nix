@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-apex-test-tools";
   version = "0.0.2-r6";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/apex_test_tools-release/archive/release/humble/apex_test_tools/0.0.2-6.tar.gz";
-    name = "0.0.2-6.tar.gz";
-    sha256 = "78a7cde3a6e6205b4f0fbb4256c17a0b72b9693042aac6bd7d8ecb17c0b73a2a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "apex_test_tools-release";
+    rev = "425ca25bee2edc8f397a0e97ade0ebbe7df83cca";
+    owner = "ros2-gbp";
+    sha256 = "sha256-vrX5LngYVt0Fxd0td4idUCVPg+j96W7S07zUG/lM8W4=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-moveit-simple-controller-manager";
   version = "2.3.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/moveit/moveit2-release/archive/release/galactic/moveit_simple_controller_manager/2.3.4-1.tar.gz";
-    name = "2.3.4-1.tar.gz";
-    sha256 = "61d69ab608e8fbda5091e86a3c765e30a3d5ee7eefd433603139040d29edf0ab";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "moveit2-release";
+    rev = "26fc1de2a4b1074f172dcbd0ccec6791716c5589";
+    owner = "moveit";
+    sha256 = "sha256-LgatclFFnPuRkUIQErKL8l40Fpcr/5b0JGWprlGkww8=";
   };
 
   buildType = "ament_cmake";

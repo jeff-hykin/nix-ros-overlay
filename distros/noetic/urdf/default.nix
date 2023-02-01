@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-urdf";
   version = "1.13.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/urdf-release/archive/release/noetic/urdf/1.13.2-1.tar.gz";
-    name = "1.13.2-1.tar.gz";
-    sha256 = "4ea6bd9d92f2a2a0f25a41409d4b38b90d2fd137fa1fabbad4462a9af9a94588";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "urdf-release";
+    rev = "a5ea6e6b1785e81d71e41c024da68f61aade10c8";
+    owner = "ros-gbp";
+    sha256 = "sha256-IWaVoJMDw+51StqYwMxLLFa+l1d/X1CbQoHPi5crAso=";
   };
 
   buildType = "catkin";

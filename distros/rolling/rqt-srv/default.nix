@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-rqt-srv";
   version = "1.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rqt_srv-release/archive/release/rolling/rqt_srv/1.1.0-1.tar.gz";
-    name = "1.1.0-1.tar.gz";
-    sha256 = "f10e11c6b2ef7777fe995e3937f57293412426f6c34bcb5819aea520c66702e1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt_srv-release";
+    rev = "a842ea4efb11a5bc144851f04be23c4305f22568";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Jv/6lxXlyzb72XmJ4cz5XVBB4JbXfLomCvb5bPuEaHM=";
   };
 
   buildType = "ament_python";

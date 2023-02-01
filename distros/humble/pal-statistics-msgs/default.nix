@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-pal-statistics-msgs";
   version = "2.1.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pal-gbp/pal_statistics-release/archive/release/humble/pal_statistics_msgs/2.1.3-1.tar.gz";
-    name = "2.1.3-1.tar.gz";
-    sha256 = "b937f1bb1421b7398ae7ec381b667ad740196e675964e925d6c92a59ff0307c6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pal_statistics-release";
+    rev = "fe52d0ff6d494a7b6df9d6941d1671d208051859";
+    owner = "pal-gbp";
+    sha256 = "sha256-IqJpPrYKZlv1lypCXtoJgtyKlWPN9uNJBS1RRMCxBgg=";
   };
 
   buildType = "ament_cmake";

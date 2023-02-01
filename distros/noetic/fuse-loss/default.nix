@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-fuse-loss";
   version = "0.4.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/locusrobotics/fuse-release/archive/release/noetic/fuse_loss/0.4.2-1.tar.gz";
-    name = "0.4.2-1.tar.gz";
-    sha256 = "ad517f3b405c32d529e1c487d3ee77cf556386ac519de01a929b792ff227375c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "fuse-release";
+    rev = "40b1eb39343cfd69715e213b149745fbfb95010d";
+    owner = "locusrobotics";
+    sha256 = "sha256-tE+1qXZugUfiPNEUYhwJ9beyqP0ZcSc2fCHB8C3+xU0=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-hardware-interface";
   version = "3.5.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_control-release/archive/release/rolling/hardware_interface/3.5.0-1.tar.gz";
-    name = "3.5.0-1.tar.gz";
-    sha256 = "53e9397bf6e5901eafcae1ece7399393fe4d5a96394cfa0b135616b7b7efe63e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_control-release";
+    rev = "aad061ad381c7e4a9678e69315e0e66794aebc53";
+    owner = "ros2-gbp";
+    sha256 = "sha256-nc8wMEB47RbgICy8mp/XD+PvDiy+NW4ljlzh3VR1yRM=";
   };
 
   buildType = "ament_cmake";

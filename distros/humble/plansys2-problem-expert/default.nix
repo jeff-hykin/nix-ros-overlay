@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-plansys2-problem-expert";
   version = "2.0.9-r1";
 
-  src = fetchurl {
-    url = "https://github.com/IntelligentRoboticsLabs/ros2_planning_system-release/archive/release/humble/plansys2_problem_expert/2.0.9-1.tar.gz";
-    name = "2.0.9-1.tar.gz";
-    sha256 = "10a58835eb024f566955955712d8d1a8cf8e538ec6f74a1800d92d3f7ba6bda5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_planning_system-release";
+    rev = "31c3b1bf0d46de5b7988a7a1de3df1586cebf813";
+    owner = "IntelligentRoboticsLabs";
+    sha256 = "sha256-wqWvaR8zT85jowKvU6lzFURs4sSO9UUup/bePFu6/vA=";
   };
 
   buildType = "ament_cmake";

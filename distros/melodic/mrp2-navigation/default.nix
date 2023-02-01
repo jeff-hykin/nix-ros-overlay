@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-mrp2-navigation";
   version = "1.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/milvusrobotics/mrp2_common-release/archive/release/melodic/mrp2_navigation/1.0.1-1.tar.gz";
-    name = "1.0.1-1.tar.gz";
-    sha256 = "c1112b94a3dbe6edf34a3f4c7befea2e5b51ade35db801a2460e7270fff724d1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mrp2_common-release";
+    rev = "3e8c78d418f068842012dea37ceee9de4a95527a";
+    owner = "milvusrobotics";
+    sha256 = "sha256-zNTELOyqOVBxdzG1P8tRofvGqln4HwwC0KbUGzcivrs=";
   };
 
   buildType = "catkin";

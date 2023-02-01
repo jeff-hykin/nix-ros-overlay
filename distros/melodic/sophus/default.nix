@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-sophus";
   version = "1.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/yujinrobot-release/sophus-release/archive/release/melodic/sophus/1.0.1-1.tar.gz";
-    name = "1.0.1-1.tar.gz";
-    sha256 = "9e42bd34716ace8e9d2ac385a63bb85ce3c3eb6df98e1fa76d8b1dc14f6aade2";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "sophus-release";
+    rev = "d1f4143bf6277e4a96d8f057b4e216d3f57600e4";
+    owner = "yujinrobot-release";
+    sha256 = "sha256-tcXe2h1cP4Viw3WZJ1EnUx2FxRrCzMUUyuoLr3QYE/0=";
   };
 
   buildType = "cmake";

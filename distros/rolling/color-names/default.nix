@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-color-names";
   version = "0.0.3-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/color_names-release/archive/release/rolling/color_names/0.0.3-2.tar.gz";
-    name = "0.0.3-2.tar.gz";
-    sha256 = "8fcd20f46eb7a5b7e3332f4f7c060353939451fc98bcdbf7cbd352877ed42068";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "color_names-release";
+    rev = "13719b01e85d2fdc66479205b2a1220c9ea895f3";
+    owner = "ros2-gbp";
+    sha256 = "sha256-956LQvQPv4QtQBKeDL62YimdLDh1yLGsi9AYgWiBh/k=";
   };
 
   buildType = "ament_cmake";

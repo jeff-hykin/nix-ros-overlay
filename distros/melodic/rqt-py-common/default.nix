@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-rqt-py-common";
   version = "0.5.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/rqt-release/archive/release/melodic/rqt_py_common/0.5.3-1.tar.gz";
-    name = "0.5.3-1.tar.gz";
-    sha256 = "7a2326df173b225e7f9033904fad9d30b3efc55fb94cd23fcfd75c4e094d5fa0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt-release";
+    rev = "d48d85357614d30c86be3a2456f3d59813258710";
+    owner = "ros-gbp";
+    sha256 = "sha256-8VsM0C1qh8bIekBZ2gF0gKD3CEHSbvKN31JXUPoRnqo=";
   };
 
   buildType = "catkin";

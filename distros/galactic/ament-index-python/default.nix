@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ament-index-python";
   version = "1.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ament_index-release/archive/release/galactic/ament_index_python/1.2.0-1.tar.gz";
-    name = "1.2.0-1.tar.gz";
-    sha256 = "529abc3962dd0e80307be71ca3cd3946da25a988f328b2fad720abd63e02427a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ament_index-release";
+    rev = "4506382f52d093d760745a193763686d1cd0f6d1";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Akf6GvLtFAekPnoCWGTiVutJxnO1Lo34eTILk2BwEGA=";
   };
 
   buildType = "ament_python";

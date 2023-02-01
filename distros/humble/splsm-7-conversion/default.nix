@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-splsm-7-conversion";
   version = "2.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/r2r_spl-release/archive/release/humble/splsm_7_conversion/2.0.1-1.tar.gz";
-    name = "2.0.1-1.tar.gz";
-    sha256 = "97c110fa5fdae2ca301118f7fc2a8db8dd21d9f94292e8dcd509ebfb45057fb6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "r2r_spl-release";
+    rev = "83de1531f3dc645284a7d43cc2b5620897f53205";
+    owner = "ros2-gbp";
+    sha256 = "sha256-kaZSYqONLoJd0UObqw5p2emiiljwgHNLesXVvawkgJg=";
   };
 
   buildType = "ament_python";

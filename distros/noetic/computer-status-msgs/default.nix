@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-computer-status-msgs";
   version = "2.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/130s/computer_status_msgs-release/archive/release/noetic/computer_status_msgs/2.1.0-1.tar.gz";
-    name = "2.1.0-1.tar.gz";
-    sha256 = "45c5641d25d2b6021629fcc253fd5e6d093dfc8b2603c842bf1beee24fb5f8b3";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "computer_status_msgs-release";
+    rev = "ab2645d138a04808ced8416e1fddf3c29bcd0c0e";
+    owner = "130s";
+    sha256 = "sha256-FgVw4PNwtA2MUSIEBO2nWBt19mEMJ/1oGYnaf0BZfWw=";
   };
 
   buildType = "catkin";

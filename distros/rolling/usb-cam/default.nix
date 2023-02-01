@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-usb-cam";
   version = "0.4.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/usb_cam-release/archive/release/rolling/usb_cam/0.4.2-1.tar.gz";
-    name = "0.4.2-1.tar.gz";
-    sha256 = "df406713dce6db302e676d6bb15f5cef47c107b7c88e1bb003f7b9330b07e12c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "usb_cam-release";
+    rev = "46cd1771e1603c3c2998ef7b7c5be5fe538d37c9";
+    owner = "ros2-gbp";
+    sha256 = "sha256-OhTKzwQ2OsM4K3BdaW6s6nOIjMLuEw1Ui3mab948Edc=";
   };
 
   buildType = "ament_cmake";

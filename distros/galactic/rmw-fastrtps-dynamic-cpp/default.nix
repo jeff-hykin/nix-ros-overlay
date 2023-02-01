@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rmw-fastrtps-dynamic-cpp";
   version = "5.0.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmw_fastrtps-release/archive/release/galactic/rmw_fastrtps_dynamic_cpp/5.0.2-1.tar.gz";
-    name = "5.0.2-1.tar.gz";
-    sha256 = "5058daf1d884a77e569b17be3777c09d934f541c1a456378e8d581bbe5b2136b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmw_fastrtps-release";
+    rev = "00d02726421773c39a16478287476bca67fb445f";
+    owner = "ros2-gbp";
+    sha256 = "sha256-XItKiI8HXkBbf1DI6gL848s2UiviPTn3PJtGSmQwcjw=";
   };
 
   buildType = "ament_cmake";

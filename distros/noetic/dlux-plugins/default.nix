@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-dlux-plugins";
   version = "0.3.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/DLu/robot_navigation-release/archive/release/noetic/dlux_plugins/0.3.0-2.tar.gz";
-    name = "0.3.0-2.tar.gz";
-    sha256 = "29ea1f12d379a9ee2b053d1d99e07437b9a5447405b5bbfb3fb32ced2be6385b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "robot_navigation-release";
+    rev = "df88b44b438491e40b30b66dcd74f323519ca813";
+    owner = "DLu";
+    sha256 = "sha256-muR7RnF/u1GeXx03ua3MUFiD4twIJrYxHYssAVIs8lo=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-rmf-charger-msgs";
   version = "3.0.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_internal_msgs-release/archive/release/humble/rmf_charger_msgs/3.0.2-1.tar.gz";
-    name = "3.0.2-1.tar.gz";
-    sha256 = "293f6e8f625b49d80d04786ab833a000540c1ee1b8dc2212b8f0e884b0667047";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_internal_msgs-release";
+    rev = "c17e4e514f1337f10b133cd8b51c5d141a0255a8";
+    owner = "ros2-gbp";
+    sha256 = "sha256-4vGvZLfBSIo9E8ERxKDXo4TeiQAl3Cm+GgobEDOqYvU=";
   };
 
   buildType = "ament_cmake";

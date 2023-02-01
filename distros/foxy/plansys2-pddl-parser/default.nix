@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-plansys2-pddl-parser";
   version = "1.0.10-r1";
 
-  src = fetchurl {
-    url = "https://github.com/IntelligentRoboticsLabs/ros2_planning_system-release/archive/release/foxy/plansys2_pddl_parser/1.0.10-1.tar.gz";
-    name = "1.0.10-1.tar.gz";
-    sha256 = "4fc997f2e7242c21eaa1256424d0ee46227b8d41768a6d69c85586cd89cdd62f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_planning_system-release";
+    rev = "5ff8b5a5094c20ac7de87dbb2d0eea39d7b43c50";
+    owner = "IntelligentRoboticsLabs";
+    sha256 = "sha256-KkqaybxAMgQiTdNtr5Mo6AbPyRJUfEr5iMR5Tg8jDx8=";
   };
 
   buildType = "ament_cmake";

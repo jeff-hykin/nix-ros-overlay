@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-webots-ros2-turtlebot";
   version = "2022.1.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/webots_ros2-release/archive/release/galactic/webots_ros2_turtlebot/2022.1.4-1.tar.gz";
-    name = "2022.1.4-1.tar.gz";
-    sha256 = "331a511f22a8da5d196827adada5eed6def0de41f2b57bc66bdf7e6e0102c3fa";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "webots_ros2-release";
+    rev = "6d4d9fb16a0dd9609393aee72c3c2dbd99629bb1";
+    owner = "ros2-gbp";
+    sha256 = "sha256-xcAF76UAy8FTmAgma7hjn4IVx4yRvLTUR6CEejsw9Y4=";
   };
 
   buildType = "ament_python";

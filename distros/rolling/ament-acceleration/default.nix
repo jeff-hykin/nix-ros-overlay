@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-ament-acceleration";
   version = "0.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ament_acceleration-release/archive/release/rolling/ament_acceleration/0.2.0-1.tar.gz";
-    name = "0.2.0-1.tar.gz";
-    sha256 = "f2da5c28cbca53bb53d41e7f9b562fac015255b683bfcc4078b37c9038d1c502";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ament_acceleration-release";
+    rev = "478de798c017482ed511696350b109bf945e4e6c";
+    owner = "ros2-gbp";
+    sha256 = "sha256-tnkilfsTlrhC8xcFlu9E8VIt8hGsNKCcdD53KV8JRac=";
   };
 
   buildType = "ament_cmake";

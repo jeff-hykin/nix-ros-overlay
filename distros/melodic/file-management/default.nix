@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-file-management";
   version = "1.1.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/aws-gbp/cloudwatch_common-release/archive/release/melodic/file_management/1.1.5-1.tar.gz";
-    name = "1.1.5-1.tar.gz";
-    sha256 = "ba98a28f68f31e1a51a1fb3de6afc22b8797f88ddeb0416a1d85fdbbc863e51d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cloudwatch_common-release";
+    rev = "16be34a18976c4cc613b40fb128365fd673c6d63";
+    owner = "aws-gbp";
+    sha256 = "sha256-hz4/LrFCmPDGkLfyFAYxvNYxiF7CVX5f9JgLGIm6jxs=";
   };
 
   buildType = "cmake";

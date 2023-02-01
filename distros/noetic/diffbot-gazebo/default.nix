@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-diffbot-gazebo";
   version = "1.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-mobile-robots-release/diffbot-release/archive/release/noetic/diffbot_gazebo/1.1.0-1.tar.gz";
-    name = "1.1.0-1.tar.gz";
-    sha256 = "95278be8b2a56029fc0fa84e5bb39f8047a0ee7ef7f7776a5db585fdbec844ad";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "diffbot-release";
+    rev = "2ea83796a979e61cd28fb8b67d40d504121c5d27";
+    owner = "ros-mobile-robots-release";
+    sha256 = "sha256-29/WafwJSKsISjxGKytdioQistVlep6oYk2WfJCesj0=";
   };
 
   buildType = "catkin";

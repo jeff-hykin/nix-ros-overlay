@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-uuv-auv-control-allocator";
   version = "0.6.13";
 
-  src = fetchurl {
-    url = "https://github.com/uuvsimulator/uuv_simulator-release/archive/release/melodic/uuv_auv_control_allocator/0.6.13-0.tar.gz";
-    name = "0.6.13-0.tar.gz";
-    sha256 = "4db21178544a59cd19888ae887ff0bd17b75737fd0972673c4314a6db1cf3482";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "uuv_simulator-release";
+    rev = "4f2d3921ed6796c6d4c3353789564eb0e78d2454";
+    owner = "uuvsimulator";
+    sha256 = "sha256-ZjBkhgi9KUKc8XP5yuxAL83USSPLocjUBP03GSFHxX4=";
   };
 
   buildType = "catkin";

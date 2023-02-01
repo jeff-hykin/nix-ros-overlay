@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-fetch-simple-linear-controller";
   version = "0.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/gt-rail-release/fetch_simple_linear_controller-release/archive/release/melodic/fetch_simple_linear_controller/0.0.1-1.tar.gz";
-    name = "0.0.1-1.tar.gz";
-    sha256 = "d9479296511f18cc03d51eb3879bd40eb8b3d93fe77c8eb7be34b96d88959ec6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "fetch_simple_linear_controller-release";
+    rev = "9ae168a3bac8682feee0ca0ad2e04645f1f613c6";
+    owner = "gt-rail-release";
+    sha256 = "sha256-pn4eYMlb61cSiMjJcIx36n2LIpVlFHi7ICxlvTobepE=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-teleop-twist-keyboard";
   version = "1.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/teleop_twist_keyboard-release/archive/release/noetic/teleop_twist_keyboard/1.0.0-1.tar.gz";
-    name = "1.0.0-1.tar.gz";
-    sha256 = "1b2851ee341bc46c65c51b2c4063e293d03f15ea95fcd524f02dbb6fc99088de";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "teleop_twist_keyboard-release";
+    rev = "cbf2bf6acc0307e7fa7e2fc833c50e646375d874";
+    owner = "ros-gbp";
+    sha256 = "sha256-HWSbDb6AaeUM+9e6kvAiT2Uh1NxEcd/2cEQjkseYn10=";
   };
 
   buildType = "catkin";

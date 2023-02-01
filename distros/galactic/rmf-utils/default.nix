@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rmf-utils";
   version = "1.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_utils-release/archive/release/galactic/rmf_utils/1.3.0-1.tar.gz";
-    name = "1.3.0-1.tar.gz";
-    sha256 = "88ba1f6a4a78fe123faafc7674e8e80d92e55e154fe9c909bccae8c3d1b171d5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_utils-release";
+    rev = "9e79bf24f3f6c25a3927f3637ebc1cd0d090df79";
+    owner = "ros2-gbp";
+    sha256 = "sha256-RzePMaMfqYXF3kxwlmlcTmOb1EdbiLzgAXZTkOnxj1I=";
   };
 
   buildType = "cmake";

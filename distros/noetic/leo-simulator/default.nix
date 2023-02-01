@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-leo-simulator";
   version = "1.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/fictionlab-gbp/leo_simulator-release/archive/release/noetic/leo_simulator/1.1.0-1.tar.gz";
-    name = "1.1.0-1.tar.gz";
-    sha256 = "b5c7410960e5b17bf4c7747c1c21af5aa61c201c9dc7779711a2e06ef7f750fd";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "leo_simulator-release";
+    rev = "f944c28790c35c5750917dd222cf8c3ef896a1d3";
+    owner = "fictionlab-gbp";
+    sha256 = "sha256-ybKYtm1ZPTXRS1NNvFssjfu3hLxpUpurkg8BFt23SL0=";
   };
 
   buildType = "catkin";

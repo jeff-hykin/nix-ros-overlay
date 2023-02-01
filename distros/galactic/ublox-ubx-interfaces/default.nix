@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ublox-ubx-interfaces";
   version = "0.2.3-r4";
 
-  src = fetchurl {
-    url = "https://github.com/aussierobots/ublox_dgnss-release/archive/release/galactic/ublox_ubx_interfaces/0.2.3-4.tar.gz";
-    name = "0.2.3-4.tar.gz";
-    sha256 = "df6264657cba012ac0fdce496118a5eac34bbcd4738c3f5330686ae22e0c3be5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ublox_dgnss-release";
+    rev = "222f9dabaa2e89418dc4dafd0f133cc0a172274a";
+    owner = "aussierobots";
+    sha256 = "sha256-hDK1UKt6v7YNYdIWKMsDgZdMtUDdNcB5HJ3T8yfrTcA=";
   };
 
   buildType = "ament_cmake";

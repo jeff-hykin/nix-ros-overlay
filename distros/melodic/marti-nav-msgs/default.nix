@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-marti-nav-msgs";
   version = "0.11.0-r3";
 
-  src = fetchurl {
-    url = "https://github.com/swri-robotics-gbp/marti_messages-release/archive/release/melodic/marti_nav_msgs/0.11.0-3.tar.gz";
-    name = "0.11.0-3.tar.gz";
-    sha256 = "b9ed0dc9d56bcfd39415c971ffcc4e2bb782e560f2e9e2f03f4afaa93c0ed96d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "marti_messages-release";
+    rev = "88e43e20f536fb676fb2aa11050df80c4f56224e";
+    owner = "swri-robotics-gbp";
+    sha256 = "sha256-bH1lf6wdHr8UzyN8D5wvFa9kp6zcQqH0CQl6o3vndDI=";
   };
 
   buildType = "catkin";

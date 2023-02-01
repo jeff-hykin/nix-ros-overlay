@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-rmw-cyclonedds-cpp";
   version = "1.5.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmw_cyclonedds-release/archive/release/rolling/rmw_cyclonedds_cpp/1.5.0-1.tar.gz";
-    name = "1.5.0-1.tar.gz";
-    sha256 = "f52320eda92b02c8075045134e3d0897e488bf4d71346b79ca006449a4d2fb6f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmw_cyclonedds-release";
+    rev = "a89f13cc6e73b06c1f652a941a9512cbcf0decaa";
+    owner = "ros2-gbp";
+    sha256 = "sha256-3ZOEZFjxX8pWz9r5Auoonm/Js9E+BvK6W2LZplaXYDE=";
   };
 
   buildType = "ament_cmake";

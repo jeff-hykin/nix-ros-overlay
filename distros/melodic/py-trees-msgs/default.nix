@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-py-trees-msgs";
   version = "0.3.6";
 
-  src = fetchurl {
-    url = "https://github.com/stonier/py_trees_msgs-release/archive/release/melodic/py_trees_msgs/0.3.6-0.tar.gz";
-    name = "0.3.6-0.tar.gz";
-    sha256 = "71d8d3b25202546af7f8f085a532d72bf3fc35a591958d88927c6506571f3b37";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "py_trees_msgs-release";
+    rev = "5adcfdfb1db332dacc992d8f0a62b40662b1dddc";
+    owner = "stonier";
+    sha256 = "sha256-OQse0n46c5OXEjmgApcrXX4aIkZLGP/kKjEUpiL1BQk=";
   };
 
   buildType = "catkin";

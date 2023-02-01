@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-pilz-control";
   version = "0.6.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/PilzDE/pilz_robots-release/archive/release/noetic/pilz_control/0.6.0-1.tar.gz";
-    name = "0.6.0-1.tar.gz";
-    sha256 = "8b6f39bf772fff9f2a7a3335923ffb990133968611c9ced7b02f82c77fe51f88";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pilz_robots-release";
+    rev = "a38d1e98b9922fe09650e14d1b291647def8488d";
+    owner = "PilzDE";
+    sha256 = "sha256-XIynkAndMNgNasgoc9PtI4lHaMhN9frd/tToAxjL8So=";
   };
 
   buildType = "catkin";

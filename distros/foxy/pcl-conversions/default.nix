@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-pcl-conversions";
   version = "2.2.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/perception_pcl-release/archive/release/foxy/pcl_conversions/2.2.1-1.tar.gz";
-    name = "2.2.1-1.tar.gz";
-    sha256 = "ad11b9c5f72abe4f6a4990f7dba92a00ce3c87454f7dc946a6720b7f59cdf43d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "perception_pcl-release";
+    rev = "ea68b78fe76af619e41e61f3ab04cd04f2d9fee9";
+    owner = "ros2-gbp";
+    sha256 = "sha256-sQg11pbIv4ChuHqBrXNTodUsZ6J9sursATXB3FCsqNk=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-nmea-msgs";
   version = "2.0.0-r4";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/nmea_msgs-release/archive/release/humble/nmea_msgs/2.0.0-4.tar.gz";
-    name = "2.0.0-4.tar.gz";
-    sha256 = "9a8dc7fc1b0e2e132b40f9b0f38019df02666907793aa3e64273913706757965";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "nmea_msgs-release";
+    rev = "76db6bd9dc2ad52c0ad45de27871f22c64ba03b1";
+    owner = "ros2-gbp";
+    sha256 = "sha256-bswqgESVo01rxSNhUMSl4dZwBC88WoKlS55Dn0U5CQc=";
   };
 
   buildType = "ament_cmake";

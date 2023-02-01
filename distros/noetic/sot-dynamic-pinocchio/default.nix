@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-sot-dynamic-pinocchio";
   version = "3.6.5-r2";
 
-  src = fetchurl {
-    url = "https://github.com/stack-of-tasks/sot-dynamic-pinocchio-ros-release/archive/release/noetic/sot-dynamic-pinocchio/3.6.5-2.tar.gz";
-    name = "3.6.5-2.tar.gz";
-    sha256 = "63cd61e5a2137b3106754d21e12aedbe8e58a7d5f2e3df83a3a363e9b263f923";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "sot-dynamic-pinocchio-ros-release";
+    rev = "13debe6c1830bf4ba8ba20ebdda2e0b382c9e3fd";
+    owner = "stack-of-tasks";
+    sha256 = "sha256-LXK+xaNNEtJfZF7KBzh1mvwjkogRNz/5VpYS8RAdVzQ=";
   };
 
   buildType = "cmake";

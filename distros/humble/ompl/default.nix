@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-ompl";
   version = "1.5.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ompl-release/archive/release/humble/ompl/1.5.2-1.tar.gz";
-    name = "1.5.2-1.tar.gz";
-    sha256 = "d0464ab7df4d083205f181c2d7a6916a47f749bcdb962fb7b3d9ea82475845ba";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ompl-release";
+    rev = "a6c7f9162830d90eebee53fb86055e8169b2c23c";
+    owner = "ros2-gbp";
+    sha256 = "sha256-5BOfJbZfx2T6vZS5UOpQh9XueTRPtNBGmpHauSbvUxw=";
   };
 
   buildType = "cmake";

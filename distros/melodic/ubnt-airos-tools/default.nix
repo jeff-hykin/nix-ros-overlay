@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-ubnt-airos-tools";
   version = "1.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/peci1/ubnt_airos_tools-release/archive/release/melodic/ubnt_airos_tools/1.0.1-1.tar.gz";
-    name = "1.0.1-1.tar.gz";
-    sha256 = "93160bad92af03db3438a1e00b4d3bd41305408b221400eb3c2193690c249369";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ubnt_airos_tools-release";
+    rev = "5503c6d4af58b915fbeb06b90bb1edd0a291a1fe";
+    owner = "peci1";
+    sha256 = "sha256-01X2oIbDT7wd40s/FWGSF98A9a+t/evhxasiw6Dytvo=";
   };
 
   buildType = "catkin";

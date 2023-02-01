@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-tesseract-state-solver";
   version = "0.13.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-industrial-release/tesseract-release/archive/release/noetic/tesseract_state_solver/0.13.1-1.tar.gz";
-    name = "0.13.1-1.tar.gz";
-    sha256 = "aca48c45bce6b7bd112c65bd35265fd24dc5bc7fec3e2175881434e0cf089747";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "tesseract-release";
+    rev = "b4e7fe9bcc985e176a0094fc874d9bd13bd8e6fa";
+    owner = "ros-industrial-release";
+    sha256 = "sha256-epssxTH0YJJvP4Qm3aYFk3hUApCHx8bQE4IJQzl96h4=";
   };
 
   buildType = "cmake";

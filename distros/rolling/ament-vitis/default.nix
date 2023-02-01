@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-ament-vitis";
   version = "0.10.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ament_vitis-release/archive/release/rolling/ament_vitis/0.10.1-1.tar.gz";
-    name = "0.10.1-1.tar.gz";
-    sha256 = "7e4531b4c8539b2dfefef2c072500cd3c33961152037eec0a89eb9a137fd3dfd";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ament_vitis-release";
+    rev = "27250ae207400d078874631f0e6ce00def060efd";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Na2vZDmx1yo4NFMDS9mmn1De1NRtjjs953gSAHRCxtc=";
   };
 
   buildType = "ament_cmake";

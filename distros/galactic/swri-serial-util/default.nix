@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-swri-serial-util";
   version = "3.5.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/marti_common-release/archive/release/galactic/swri_serial_util/3.5.1-1.tar.gz";
-    name = "3.5.1-1.tar.gz";
-    sha256 = "e6766e573a0a6f14afd48beb5af84ae1d90a1f83a9f225b638ec3ab74e6fc0b8";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "marti_common-release";
+    rev = "21421ca1df8f4a6c21406efe4534525fefd5b735";
+    owner = "ros2-gbp";
+    sha256 = "sha256-5WYFkS8lxtzfkxt0i1LrHgDmTnBotcjfDZgOrpWLLP8=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-twist-recovery";
   version = "0.3.6-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/navigation_experimental-release/archive/release/melodic/twist_recovery/0.3.6-1.tar.gz";
-    name = "0.3.6-1.tar.gz";
-    sha256 = "490d8eb344c2c9d14ece49b3993f764cb8a659738ecc72c25697b94c9f50d401";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation_experimental-release";
+    rev = "1662afc8c14193dae11171f5e12fea200c460c8e";
+    owner = "ros-gbp";
+    sha256 = "sha256-90x+KOunqYn3LUuKgrnLc1phNsBseJd1k34qR8qidCw=";
   };
 
   buildType = "catkin";

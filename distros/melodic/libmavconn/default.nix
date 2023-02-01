@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-libmavconn";
   version = "1.15.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/mavlink/mavros-release/archive/release/melodic/libmavconn/1.15.0-1.tar.gz";
-    name = "1.15.0-1.tar.gz";
-    sha256 = "88f5ad9cabb5f6f13069f854eefc295e3d1d276204048a2a4044fe3d900bac9c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mavros-release";
+    rev = "9fe1035b98f70c430e63208c290c76343b3eb488";
+    owner = "mavlink";
+    sha256 = "sha256-lXSx4S4P5UwUq3xokxQWr1Bg+6819eEdhWJZIaJJc2A=";
   };
 
   buildType = "catkin";

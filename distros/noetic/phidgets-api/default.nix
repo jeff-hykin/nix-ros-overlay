@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-phidgets-api";
   version = "1.0.6-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-drivers-gbp/phidgets_drivers-release/archive/release/noetic/phidgets_api/1.0.6-1.tar.gz";
-    name = "1.0.6-1.tar.gz";
-    sha256 = "0f8d8aaa8266addc8757f030eead866eade47b00a3742f5fe6386388e5395e78";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "phidgets_drivers-release";
+    rev = "be23687c7c541d4b96b874985292dd045681f642";
+    owner = "ros-drivers-gbp";
+    sha256 = "sha256-6u6sEih6vsuoZeoowvf9VaVsbJ3msVeR9sGrLbw6enY=";
   };
 
   buildType = "catkin";

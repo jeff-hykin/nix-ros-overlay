@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-clober-msgs";
   version = "0.1.0-r3";
 
-  src = fetchurl {
-    url = "https://github.com/CLOBOT-Co-Ltd-release/clober_msgs_ros2-release/archive/release/foxy/clober_msgs/0.1.0-3.tar.gz";
-    name = "0.1.0-3.tar.gz";
-    sha256 = "aea55a757c4d37708d7322917dc47c52733b841d045dee262be60f713181b99a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "clober_msgs_ros2-release";
+    rev = "8dedcaecec12596cb9f2dddcbd4e6028f8afdbfa";
+    owner = "CLOBOT-Co-Ltd-release";
+    sha256 = "sha256-OxFW6Zlr+lUFj9TJAhmVbbs4H5Ka3X0A/7ohbv679N4=";
   };
 
   buildType = "ament_cmake";

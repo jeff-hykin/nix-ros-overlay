@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-message-to-tf";
   version = "0.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/tu-darmstadt-ros-pkg-gbp/hector_localization-release/archive/release/melodic/message_to_tf/0.3.0-1.tar.gz";
-    name = "0.3.0-1.tar.gz";
-    sha256 = "db1502401da98e23c47743c1e00e0f6bfa3472b953b739edb67d50c51c010ec5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "hector_localization-release";
+    rev = "b55d73292cb453ed810518132f7258724269a8b7";
+    owner = "tu-darmstadt-ros-pkg-gbp";
+    sha256 = "sha256-x+51C1xAwUg5hKcirp3Gz0427oxWgHmdrIXyg0rjhhE=";
   };
 
   buildType = "catkin";

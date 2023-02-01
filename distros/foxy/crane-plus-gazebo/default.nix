@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-crane-plus-gazebo";
   version = "1.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/crane_plus-release/archive/release/foxy/crane_plus_gazebo/1.1.0-1.tar.gz";
-    name = "1.1.0-1.tar.gz";
-    sha256 = "133cbb139c0c36997ad77064355c8775b65600f60f1ad01698a422345413eb68";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "crane_plus-release";
+    rev = "e67ff7f1ee9516962304c885c460fd5db9255f2d";
+    owner = "ros2-gbp";
+    sha256 = "sha256-6M8mT62aU283gI+45sI0aVnEcagPSn5v2KHU1wfHtsY=";
   };
 
   buildType = "ament_cmake";

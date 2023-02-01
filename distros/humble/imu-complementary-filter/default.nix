@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-imu-complementary-filter";
   version = "2.1.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/imu_tools-release/archive/release/humble/imu_complementary_filter/2.1.3-1.tar.gz";
-    name = "2.1.3-1.tar.gz";
-    sha256 = "5f4e6d1b85ea858d49a5d22aa1a0782b71776735a5cb243912032aab24a25da6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "imu_tools-release";
+    rev = "78cc97913e83719ec7374771a99a065f60f62dc2";
+    owner = "ros2-gbp";
+    sha256 = "sha256-wuAsf255PYh35JCpP4czKRL9rKu2pxO/i4NOMSETePc=";
   };
 
   buildType = "ament_cmake";

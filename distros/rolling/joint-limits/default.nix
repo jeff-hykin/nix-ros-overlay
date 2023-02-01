@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-joint-limits";
   version = "3.5.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_control-release/archive/release/rolling/joint_limits/3.5.0-1.tar.gz";
-    name = "3.5.0-1.tar.gz";
-    sha256 = "a83ebcd914684de00cae7e0a8803a602bb13c3688cfa22ff5ac4cd711acb9f0e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_control-release";
+    rev = "c6ac6f2fed4175aede435dfbeac27467848d2e3f";
+    owner = "ros2-gbp";
+    sha256 = "sha256-95EnFRffhL+ZdxMLBBt+4orbIm61Nm/qN9Mz2OCFpgs=";
   };
 
   buildType = "ament_cmake";

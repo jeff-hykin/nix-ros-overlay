@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-pilz-robot-programming";
   version = "0.4.14-r1";
 
-  src = fetchurl {
-    url = "https://github.com/PilzDE/pilz_industrial_motion-release/archive/release/melodic/pilz_robot_programming/0.4.14-1.tar.gz";
-    name = "0.4.14-1.tar.gz";
-    sha256 = "746fc5780070faca34e79c98fcf856245f241f32748529f7a7eda3474549b18c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pilz_industrial_motion-release";
+    rev = "01bb47ac1a3dfd1b67f53757255b2634c2e94aa3";
+    owner = "PilzDE";
+    sha256 = "sha256-b2vN0d36pDII6sz0ZeFVV6CSex5ZecK6/N+LyXjwWbU=";
   };
 
   buildType = "catkin";

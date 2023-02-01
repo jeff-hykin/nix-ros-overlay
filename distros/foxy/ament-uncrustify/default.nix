@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-ament-uncrustify";
   version = "0.9.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ament_lint-release/archive/release/foxy/ament_uncrustify/0.9.7-1.tar.gz";
-    name = "0.9.7-1.tar.gz";
-    sha256 = "d04a19bba75e222b756b90f8ec97332ff5765ce97d881a9b8ec38a1dbaa0c7bd";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ament_lint-release";
+    rev = "19d5d72a17255cd563da9866bf9c52e4010412cb";
+    owner = "ros2-gbp";
+    sha256 = "sha256-E+XvukiQdxZSU9HivnmUHc+dPNUrjregDWVIqu+iELA=";
   };
 
   buildType = "ament_python";

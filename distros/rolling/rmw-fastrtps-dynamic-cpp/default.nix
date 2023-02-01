@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-rmw-fastrtps-dynamic-cpp";
   version = "6.5.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmw_fastrtps-release/archive/release/rolling/rmw_fastrtps_dynamic_cpp/6.5.0-1.tar.gz";
-    name = "6.5.0-1.tar.gz";
-    sha256 = "c6ba8295a55ff21d25c2a03ce19dd0ead2ad55e8f023518dd4da62acceceae98";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmw_fastrtps-release";
+    rev = "bcfbc74336cc22dbb4afed3788deb27e3bf4ccf8";
+    owner = "ros2-gbp";
+    sha256 = "sha256-3HFvWV4CWTOnsOfkX51fjGWHN64PNk4mluv+wgy0S8M=";
   };
 
   buildType = "ament_cmake";

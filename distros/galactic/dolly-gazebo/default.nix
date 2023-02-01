@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-dolly-gazebo";
   version = "0.4.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/chapulina/dolly-release/archive/release/galactic/dolly_gazebo/0.4.0-1.tar.gz";
-    name = "0.4.0-1.tar.gz";
-    sha256 = "f62bc4a2a9713375423b01f40d3b172571c26fb37f4b587dee56890127674f71";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "dolly-release";
+    rev = "39f3881bd0e67bfa656ec44332d90b81a42b6e59";
+    owner = "chapulina";
+    sha256 = "sha256-sLCbhJjIRzZvq15SlStZjonIvhpPw57fK5vRlQ3689A=";
   };
 
   buildType = "ament_cmake";

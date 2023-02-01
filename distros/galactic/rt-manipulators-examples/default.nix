@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rt-manipulators-examples";
   version = "1.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/rt-net-gbp/rt_manipulators_cpp-release/archive/release/galactic/rt_manipulators_examples/1.0.0-1.tar.gz";
-    name = "1.0.0-1.tar.gz";
-    sha256 = "1f9114b20b8336de6c2e70152ce97c702e83bc880d1b3c6d07bb6aecdf4aeb79";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rt_manipulators_cpp-release";
+    rev = "977651168b37b26a7959854ebcf72f1ce78116a9";
+    owner = "rt-net-gbp";
+    sha256 = "sha256-dHVhmshZaD7z/hfD5tLkvXw6mehXEQSlivgKwLZ4YZM=";
   };
 
   buildType = "ament_cmake";

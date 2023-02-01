@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-fetch-maps";
   version = "0.8.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/fetchrobotics-gbp/fetch_ros-release/archive/release/melodic/fetch_maps/0.8.3-1.tar.gz";
-    name = "0.8.3-1.tar.gz";
-    sha256 = "db4c4c0bf852af0c3cb9b87e7021a2576e30fafe715edc8a4c4cdc3c36edc02f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "fetch_ros-release";
+    rev = "316518b00f99c707f080d5cf2ce6bfca14492839";
+    owner = "fetchrobotics-gbp";
+    sha256 = "sha256-ChH6Hcj5PgsTXaIF10TLj1lVjw58iBqEc07WbBpYuko=";
   };
 
   buildType = "catkin";

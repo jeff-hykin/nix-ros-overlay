@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-rosidl-typesupport-introspection-c";
   version = "3.3.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rosidl-release/archive/release/rolling/rosidl_typesupport_introspection_c/3.3.1-1.tar.gz";
-    name = "3.3.1-1.tar.gz";
-    sha256 = "22d64c681389dff0f3b363b4ff5efc2f3ce9c30a0d11c1ae1c9bdc1b13556e93";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosidl-release";
+    rev = "3c27d596d704b085fddaf78dce1d7fedb9f140d1";
+    owner = "ros2-gbp";
+    sha256 = "sha256-naLr+6d/mPOwvvK1HUnX4pZBfK3ARZqhfOGtfOu63dk=";
   };
 
   buildType = "ament_cmake";

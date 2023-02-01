@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-pmb2-controller-configuration";
   version = "4.0.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pal-gbp/pmb2_robot-gbp/archive/release/humble/pmb2_controller_configuration/4.0.5-1.tar.gz";
-    name = "4.0.5-1.tar.gz";
-    sha256 = "401859c2d2111bc79cdcb1d971b0320896d36fd5ef183f265f742246dcffa51e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pmb2_robot-gbp";
+    rev = "cd23ded266f28308e5021b631b9448b375d109f7";
+    owner = "pal-gbp";
+    sha256 = "sha256-G6VpRUTCHyxDFBNLuSojL4ItZTpm3J04yZRIWIdIF5Y=";
   };
 
   buildType = "ament_cmake";

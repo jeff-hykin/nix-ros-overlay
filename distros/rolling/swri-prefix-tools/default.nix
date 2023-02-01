@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-swri-prefix-tools";
   version = "3.5.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/marti_common-release/archive/release/rolling/swri_prefix_tools/3.5.0-1.tar.gz";
-    name = "3.5.0-1.tar.gz";
-    sha256 = "0291626f67ddc364a648103aac553d21dff885d05ec51ea7475bc757eca307e9";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "marti_common-release";
+    rev = "a16741768e91b05eb48b4e52cde82cdb6df03af8";
+    owner = "ros2-gbp";
+    sha256 = "sha256-YPzzks6tZxt8XyudUe5w3ph/ys/wbFvqRoqK54Mmnbw=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-usb-cam";
   version = "0.4.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/usb_cam-release/archive/release/humble/usb_cam/0.4.2-1.tar.gz";
-    name = "0.4.2-1.tar.gz";
-    sha256 = "d393c849c4c3d18ff61151d7a8770f5ef5420b6f582e46ad2c2c38d72314bc73";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "usb_cam-release";
+    rev = "2f436f5286a9607fd98dfcc8094aec903862f7f7";
+    owner = "ros2-gbp";
+    sha256 = "sha256-OhTKzwQ2OsM4K3BdaW6s6nOIjMLuEw1Ui3mab948Edc=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-navfn";
   version = "1.16.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/navigation-release/archive/release/melodic/navfn/1.16.7-1.tar.gz";
-    name = "1.16.7-1.tar.gz";
-    sha256 = "af100d00a80afceac698cdba903406da3c9102e9298d98cb735c0f3b42afb70e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation-release";
+    rev = "6f45f28763bdfcac819f820027cc2e88061060bc";
+    owner = "ros-gbp";
+    sha256 = "sha256-oE+kRngWePrYUnqL1ILyrH2OvJVvnR6T3MSZ+7QYksI=";
   };
 
   buildType = "catkin";

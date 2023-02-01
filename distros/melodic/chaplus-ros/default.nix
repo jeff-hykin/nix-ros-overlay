@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-chaplus-ros";
   version = "2.1.24-r2";
 
-  src = fetchurl {
-    url = "https://github.com/tork-a/jsk_3rdparty-release/archive/release/melodic/chaplus_ros/2.1.24-2.tar.gz";
-    name = "2.1.24-2.tar.gz";
-    sha256 = "d606d591bf48e7447ed61a3141dfd244bdc9c1560d81648504a05ca8de8fcfb8";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "jsk_3rdparty-release";
+    rev = "b0f16e940d73e135eb7536f5bb2f2e8a110a7373";
+    owner = "tork-a";
+    sha256 = "sha256-at7PCuV0eISV4p0rZGI2XPA9FJrEkcPKQq7LZZB0NZ8=";
   };
 
   buildType = "catkin";

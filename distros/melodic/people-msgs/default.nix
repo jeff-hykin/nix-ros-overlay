@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-people-msgs";
   version = "1.4.0-r4";
 
-  src = fetchurl {
-    url = "https://github.com/OSUrobotics/people-release/archive/release/melodic/people_msgs/1.4.0-4.tar.gz";
-    name = "1.4.0-4.tar.gz";
-    sha256 = "56ee89ae2ab0cf449cf03e4a3db22356a5dba6e71a28d818ce90167a206e2bb4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "people-release";
+    rev = "ce5385bf5dbd6c49b9801997f99a0b3255151e96";
+    owner = "OSUrobotics";
+    sha256 = "sha256-rrVjVwv65K5zjBCJYCtBxfNEK/Wua0dFLnK9s+VyZQY=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-laser-tilt-controller-filter";
   version = "0.1.28-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pr2-gbp/pr2_navigation-release/archive/release/melodic/laser_tilt_controller_filter/0.1.28-1.tar.gz";
-    name = "0.1.28-1.tar.gz";
-    sha256 = "ded7f78a4d42917ee2799ee522172f0c1c2251450f2752f88534f6a6ea2bb2a3";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pr2_navigation-release";
+    rev = "9d5432de6c475ed47794e7c8def52978f0c13897";
+    owner = "pr2-gbp";
+    sha256 = "sha256-fN78fy0XV/hAaccCPLBi9VJzAnLLRN8zLmZolbFUCgY=";
   };
 
   buildType = "catkin";

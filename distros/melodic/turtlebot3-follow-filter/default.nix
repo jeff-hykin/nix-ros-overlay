@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-turtlebot3-follow-filter";
   version = "1.1.0";
 
-  src = fetchurl {
-    url = "https://github.com/ROBOTIS-GIT-release/turtlebot3_applications-release/archive/release/melodic/turtlebot3_follow_filter/1.1.0-0.tar.gz";
-    name = "1.1.0-0.tar.gz";
-    sha256 = "a97a63ec2370bbc67e7270c6aa1d5efca85134228642ac263e9a6d2ccef39f45";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "turtlebot3_applications-release";
+    rev = "1180c2f8d00e587f64915fe1a2b276a16115d2a6";
+    owner = "ROBOTIS-GIT-release";
+    sha256 = "sha256-KiXrZZYTZ6nXosxiPUkn0CCBNJI5/1KQUwMkwwJmQS0=";
   };
 
   buildType = "catkin";

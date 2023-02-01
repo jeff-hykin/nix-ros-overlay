@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-realsense2-description";
   version = "4.51.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/IntelRealSense/realsense-ros-release/archive/release/foxy/realsense2_description/4.51.1-1.tar.gz";
-    name = "4.51.1-1.tar.gz";
-    sha256 = "2bb8b301f9ff7b89f33f8990df085702c3ffab0ed45a6fce93329ea53da392da";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "realsense-ros-release";
+    rev = "9cc78ffc3a34206b8d60fcda1dd4fb6013e9668b";
+    owner = "IntelRealSense";
+    sha256 = "sha256-7xl3PXh5S904NsGFLRSC121dwycHugAR8VcHIP0yvXE=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-uncrustify-vendor";
   version = "2.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/uncrustify_vendor-release/archive/release/rolling/uncrustify_vendor/2.1.1-1.tar.gz";
-    name = "2.1.1-1.tar.gz";
-    sha256 = "cba45b61094b592c842e31b2a257791c7b761d71a0e2e9bfa2ed58ffcd7af89f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "uncrustify_vendor-release";
+    rev = "5f15123840925732a588b7d409ea47e979b43e8c";
+    owner = "ros2-gbp";
+    sha256 = "sha256-5Icjrr7e/+P2a/LdkWD50uxr5daT5M0SG04htoqkgPg=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-tracetools-analysis";
   version = "2.0.3-r4";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/tracetools_analysis-release/archive/release/galactic/tracetools_analysis/2.0.3-4.tar.gz";
-    name = "2.0.3-4.tar.gz";
-    sha256 = "57d940923ce99db4f1c45e905811c18f3d4857fc4eb0b86e39d508e912628681";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "tracetools_analysis-release";
+    rev = "0cea4748f136010544469b1b0872775fba38f809";
+    owner = "ros2-gbp";
+    sha256 = "sha256-cLtBRc2g+Xdc6wz/45HjQadbc0ztWhIbP2Z960cyyfI=";
   };
 
   buildType = "ament_python";

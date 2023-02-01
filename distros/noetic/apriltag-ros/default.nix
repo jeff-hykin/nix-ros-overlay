@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-apriltag-ros";
   version = "3.2.1-r3";
 
-  src = fetchurl {
-    url = "https://github.com/AprilRobotics/apriltag_ros-release/archive/release/noetic/apriltag_ros/3.2.1-3.tar.gz";
-    name = "3.2.1-3.tar.gz";
-    sha256 = "831217c3c023b76328b58657ab89f70691dffbe0bf3363bd2e60408c1cea8152";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "apriltag_ros-release";
+    rev = "058166132dc1bad77954716c78aebf0c71c76def";
+    owner = "AprilRobotics";
+    sha256 = "sha256-RVlsQgytlz/UF1NgJDC+KrxYIIwmst7rX5+iuP+8DPE=";
   };
 
   buildType = "catkin";

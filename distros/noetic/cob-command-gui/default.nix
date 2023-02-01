@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-cob-command-gui";
   version = "0.6.30-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_command_tools-release/archive/release/noetic/cob_command_gui/0.6.30-2.tar.gz";
-    name = "0.6.30-2.tar.gz";
-    sha256 = "666ad7dac6c58297898a5c7993959fead393b7e7df01f33568bd35e9cc2bb892";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_command_tools-release";
+    rev = "f18893b52a98a1d349016952c83ca0aed8b3fa57";
+    owner = "ipa320";
+    sha256 = "sha256-s+StBpWMRQQ4MbJqfjOKwk+Vqi9l/opc48MtiFQGB6U=";
   };
 
   buildType = "catkin";

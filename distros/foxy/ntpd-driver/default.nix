@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-ntpd-driver";
   version = "2.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/vooon/ntpd_driver-release/archive/release/foxy/ntpd_driver/2.2.0-1.tar.gz";
-    name = "2.2.0-1.tar.gz";
-    sha256 = "dc9c3c62e48615600f094c5e555108445add91e13a27911fc402966f6b56a7f6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ntpd_driver-release";
+    rev = "9f76107ab284de83fd82751851e4b95827503902";
+    owner = "vooon";
+    sha256 = "sha256-Y3hISLK0EHzcJD4MrfgxDdmYH+cpgQTjbH3DCmbd0VE=";
   };
 
   buildType = "ament_cmake";

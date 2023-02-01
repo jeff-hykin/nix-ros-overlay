@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-wu-ros-tools";
   version = "0.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/wu-robotics/wu_ros_tools/archive/release/noetic/wu_ros_tools/0.3.0-1.tar.gz";
-    name = "0.3.0-1.tar.gz";
-    sha256 = "7040e992f4f0d0c5a52568a1d1e3792c0114a331ebbf8db9267dfe57ba07b892";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "wu_ros_tools";
+    rev = "fd0cbb80e0bd5c959b4fbe128682f42c10c0196b";
+    owner = "wu-robotics";
+    sha256 = "sha256-cNFm8HuE5hjr8cPWZqxqgC7iKMfouY2gOlF6vmuxL9o=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-fmi-adapter";
   version = "2.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/fmi_adapter-release/archive/release/humble/fmi_adapter/2.1.1-1.tar.gz";
-    name = "2.1.1-1.tar.gz";
-    sha256 = "42a48eed795ffaa2801020f0f0733d05e33ef239db917be37945136eb289fb8d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "fmi_adapter-release";
+    rev = "602e6041cfff0fddf127e4db8ed1ca9ca04c6c03";
+    owner = "ros2-gbp";
+    sha256 = "sha256-pC2a5q3fbSAGFRlotIahHSzRm+tJOBSAjho9Q70/otU=";
   };
 
   buildType = "ament_cmake";

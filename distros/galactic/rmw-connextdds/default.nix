@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rmw-connextdds";
   version = "0.6.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmw_connextdds-release/archive/release/galactic/rmw_connextdds/0.6.3-1.tar.gz";
-    name = "0.6.3-1.tar.gz";
-    sha256 = "554094b3dc648f0fc24cc69ff3c8a6814623bcf822f0c109028b7024d9c3d6d1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmw_connextdds-release";
+    rev = "8a76fdc4785e0d4f9b0b2588a524486fd6746029";
+    owner = "ros2-gbp";
+    sha256 = "sha256-fmhxty54nJYhY980xzJKVPzBPIEwYyRXVdQBcCk0fQ4=";
   };
 
   buildType = "ament_cmake";

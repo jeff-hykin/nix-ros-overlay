@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-convex-decomposition";
   version = "0.1.12-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/convex_decomposition-release/archive/release/noetic/convex_decomposition/0.1.12-1.tar.gz";
-    name = "0.1.12-1.tar.gz";
-    sha256 = "bc47b7c456b6dc779558c0819365ce50602c14ec304799195c535965f17b4507";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "convex_decomposition-release";
+    rev = "4708718846996ac70138e7d8b6fd773003f86ab1";
+    owner = "ros-gbp";
+    sha256 = "sha256-GzzlVqeAQWWsiZq7qhDDtVI8i7bh/4pomZnPYy7SWHw=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-open-manipulator-moveit";
   version = "2.0.1";
 
-  src = fetchurl {
-    url = "https://github.com/ROBOTIS-GIT-release/open_manipulator-release/archive/release/melodic/open_manipulator_moveit/2.0.1-0.tar.gz";
-    name = "2.0.1-0.tar.gz";
-    sha256 = "3c42db504d582107d35edba1019fc8764f4082573f47bfb41e53e89230d21488";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "open_manipulator-release";
+    rev = "bd45994839712e250273281406654f4542b86b4e";
+    owner = "ROBOTIS-GIT-release";
+    sha256 = "sha256-cgnuDN6waFOge2nQvN5DGT4OuyIojuRDafPZDYoEqNM=";
   };
 
   buildType = "catkin";

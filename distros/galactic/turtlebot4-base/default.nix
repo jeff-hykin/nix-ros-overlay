@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-turtlebot4-base";
   version = "0.1.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/turtlebot4_robot-release/archive/release/galactic/turtlebot4_base/0.1.3-1.tar.gz";
-    name = "0.1.3-1.tar.gz";
-    sha256 = "36497929eef3dfb10dc7c697d6845d7d4b69a3432413453fb62c5931d8aff0b1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "turtlebot4_robot-release";
+    rev = "155a4b186f1c86aff3e3be03e280c04649598455";
+    owner = "ros2-gbp";
+    sha256 = "sha256-j7joIVQ3BhFwGBkHwxgnYmL96GtB4fbBxnuWNGfQ6Pw=";
   };
 
   buildType = "ament_cmake";

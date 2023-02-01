@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-nav2-common";
   version = "0.4.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/SteveMacenski/navigation2-release/archive/release/foxy/nav2_common/0.4.7-1.tar.gz";
-    name = "0.4.7-1.tar.gz";
-    sha256 = "7e51ea2c4b218081fd12bfc123723d12239cd96171b3c45becd6cb89107acb0a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation2-release";
+    rev = "d7d553f27516bc740f6fb80cd2abe6ab64ffbf26";
+    owner = "SteveMacenski";
+    sha256 = "sha256-02oDL1U6E+ScBFAXThz5Hir8RFINAP1UWGNDEmsAR3o=";
   };
 
   buildType = "ament_cmake";

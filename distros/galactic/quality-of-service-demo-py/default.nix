@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-quality-of-service-demo-py";
   version = "0.14.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/demos-release/archive/release/galactic/quality_of_service_demo_py/0.14.4-1.tar.gz";
-    name = "0.14.4-1.tar.gz";
-    sha256 = "96f6b3a7bb9587fefbf7bade3a4e23bd82b867ca750c650cfd5e5892b2a7e053";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "demos-release";
+    rev = "832ed86883f7c6fea605ea259727625c1bd556e8";
+    owner = "ros2-gbp";
+    sha256 = "sha256-uEGalGDJrWBzBODdkrZwkOghMM9bkDNXPrH2U/oKVO4=";
   };
 
   buildType = "ament_python";

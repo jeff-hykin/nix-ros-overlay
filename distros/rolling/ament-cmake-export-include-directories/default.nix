@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-ament-cmake-export-include-directories";
   version = "1.5.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ament_cmake-release/archive/release/rolling/ament_cmake_export_include_directories/1.5.2-1.tar.gz";
-    name = "1.5.2-1.tar.gz";
-    sha256 = "1df94d449d8c3c27bd4ce476f06e634045946e64ad9d5c8500566a5992b82f97";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ament_cmake-release";
+    rev = "bd64c11c2f7032b58ed06e6725a5d8d142c00cab";
+    owner = "ros2-gbp";
+    sha256 = "sha256-8baA8y+09qVrl8r8sFpTlUyoc50MDFKpD2Gnq+Im2/4=";
   };
 
   buildType = "ament_cmake";

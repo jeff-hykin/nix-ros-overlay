@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-turtlesim";
   version = "1.2.6-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros_tutorials-release/archive/release/foxy/turtlesim/1.2.6-1.tar.gz";
-    name = "1.2.6-1.tar.gz";
-    sha256 = "4635433559f2b32c3a439ec39b6f7fbde68471c17f61540383c712492d50c1f4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_tutorials-release";
+    rev = "9080073987f556f775d2793f310847f389f678f1";
+    owner = "ros2-gbp";
+    sha256 = "sha256-DBx5nXqNBzBLG+DLHKaqA5G7nFUdVGAeDtjkZPYQ3Ek=";
   };
 
   buildType = "ament_cmake";

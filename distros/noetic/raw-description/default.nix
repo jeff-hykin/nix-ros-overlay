@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-raw-description";
   version = "0.7.8-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_common-release/archive/release/noetic/raw_description/0.7.8-1.tar.gz";
-    name = "0.7.8-1.tar.gz";
-    sha256 = "68ac3ce6ad532c9ef2b4cf20e439b1294ec71ec76db56eac92376e8661ea2e9b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_common-release";
+    rev = "18f73eefa4e3a787784ac07cb8be5eb7df509a9b";
+    owner = "ipa320";
+    sha256 = "sha256-dv77V/SigtfhQwXs8PQ7fuCUfNqJW0/M91oZ5nYwzHc=";
   };
 
   buildType = "catkin";

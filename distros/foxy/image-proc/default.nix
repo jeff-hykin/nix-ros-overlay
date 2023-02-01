@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-image-proc";
   version = "2.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/image_pipeline-release/archive/release/foxy/image_proc/2.3.0-1.tar.gz";
-    name = "2.3.0-1.tar.gz";
-    sha256 = "b0a7bb6fcd7df36b913421c5c6a13a4b9ed803af011bbcea75181b61fd79e705";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "image_pipeline-release";
+    rev = "b3a2671f1188e53c96187d739e1d46dfe7b041b9";
+    owner = "ros2-gbp";
+    sha256 = "sha256-KuAHdaG8nzXAI5tD0i2NA/ENTf4jE6Cjz1mxFlcrF08=";
   };
 
   buildType = "ament_cmake";

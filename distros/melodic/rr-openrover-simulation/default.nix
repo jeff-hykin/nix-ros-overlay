@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-rr-openrover-simulation";
   version = "1.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/RoverRobotics-release/rr_openrover_stack-release/archive/release/melodic/rr_openrover_simulation/1.1.1-1.tar.gz";
-    name = "1.1.1-1.tar.gz";
-    sha256 = "b08f5b97f14c600060f59a48f66c22f5b5233b6d11c130fea1a073184871eadf";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rr_openrover_stack-release";
+    rev = "f4ac139742f74b5e4b1ddaabaa3a96f72cf4ee57";
+    owner = "RoverRobotics-release";
+    sha256 = "sha256-4GEQ8Npq7a1dNnz7d8uUO4ogzk6UDiQtE5CxROxliYY=";
   };
 
   buildType = "catkin";

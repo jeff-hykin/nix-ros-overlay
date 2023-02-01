@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-pilz-industrial-motion-planner-testutils";
   version = "2.5.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/moveit/moveit2-release/archive/release/humble/pilz_industrial_motion_planner_testutils/2.5.4-1.tar.gz";
-    name = "2.5.4-1.tar.gz";
-    sha256 = "02539071e04afd0b8dd3e493563a6dd4553e58f35041b2c01ad1fd54ac618f01";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "moveit2-release";
+    rev = "224fd7600f2bb0973d0a8abdb298ba521c25da3d";
+    owner = "moveit";
+    sha256 = "sha256-IJf0OXhnM2CvM+WeS2vp1C30AkNVNUi+fGdEMtYqccE=";
   };
 
   buildType = "ament_cmake";

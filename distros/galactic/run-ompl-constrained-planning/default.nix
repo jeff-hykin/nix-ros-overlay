@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-run-ompl-constrained-planning";
   version = "2.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/moveit/moveit2-release/archive/release/galactic/run_ompl_constrained_planning/2.3.0-1.tar.gz";
-    name = "2.3.0-1.tar.gz";
-    sha256 = "30db95627c4a9e6f2a33c4053e3916372e498fa9f0cdec4578a05a41305f3c3a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "moveit2-release";
+    rev = "6fdd75ffc326bece53a4bf6335981739e31de628";
+    owner = "moveit";
+    sha256 = "sha256-xBN+VXEKVyMIvUfVJKW+e4kuQewbHazFMX2nGAhUfIs=";
   };
 
   buildType = "ament_cmake";

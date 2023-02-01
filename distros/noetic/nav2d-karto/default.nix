@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-nav2d-karto";
   version = "0.4.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/skasperski/navigation_2d-release/archive/release/noetic/nav2d_karto/0.4.3-1.tar.gz";
-    name = "0.4.3-1.tar.gz";
-    sha256 = "a6e7858170e9d813af27e4ec0b818d49ca0cf7c8ee5b05ff5ceee9d9e701190d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation_2d-release";
+    rev = "83068a0688cd86423816481d84f79a12cdaaa549";
+    owner = "skasperski";
+    sha256 = "sha256-VmdDvLhP+yUHcema1929O23154uOQ4HidnF+Olerr4A=";
   };
 
   buildType = "catkin";

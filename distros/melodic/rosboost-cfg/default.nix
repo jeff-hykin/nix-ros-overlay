@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-rosboost-cfg";
   version = "1.14.9-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/ros-release/archive/release/melodic/rosboost_cfg/1.14.9-1.tar.gz";
-    name = "1.14.9-1.tar.gz";
-    sha256 = "042fd5681840c37a41a7642ebdea54882c0c49dbbd71c241760f5eea71175b92";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros-release";
+    rev = "ff60042663c4cf2b6582998909dc0585e0113551";
+    owner = "ros-gbp";
+    sha256 = "sha256-KhurXf2mkFRH8dPpV8a7lGnYx4Q6PfsnSEjq3qQjuzU=";
   };
 
   buildType = "catkin";

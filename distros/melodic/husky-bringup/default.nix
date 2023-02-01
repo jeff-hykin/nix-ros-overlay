@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-husky-bringup";
   version = "0.4.13-r1";
 
-  src = fetchurl {
-    url = "https://github.com/clearpath-gbp/husky-release/archive/release/melodic/husky_bringup/0.4.13-1.tar.gz";
-    name = "0.4.13-1.tar.gz";
-    sha256 = "74b50e9cd2abc193a8087249b1d501a2fd6a0d5ef471579b2029ecbac899e81f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "husky-release";
+    rev = "813a03648f551e86ef1cb1d63aa602b51e4fe4b2";
+    owner = "clearpath-gbp";
+    sha256 = "sha256-hOFhOyRAJnA8GINo9w6msfLZwXshXEvZ5I5uAR9iYw0=";
   };
 
   buildType = "catkin";

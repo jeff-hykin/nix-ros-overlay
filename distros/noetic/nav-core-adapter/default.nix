@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-nav-core-adapter";
   version = "0.3.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/DLu/robot_navigation-release/archive/release/noetic/nav_core_adapter/0.3.0-2.tar.gz";
-    name = "0.3.0-2.tar.gz";
-    sha256 = "df35f24c4d64eb0b25f8bf4fdffe2f09a8505992678da5f5c5ff432c99e1dd8c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "robot_navigation-release";
+    rev = "63b5655989050fd723fe167c572b812bbe6bf0eb";
+    owner = "DLu";
+    sha256 = "sha256-vowLCtbmyH+JciRFH89foI2UXV7AVRfMksMhyDCwqmg=";
   };
 
   buildType = "catkin";

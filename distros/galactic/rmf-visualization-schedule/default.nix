@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rmf-visualization-schedule";
   version = "1.2.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_visualization-release/archive/release/galactic/rmf_visualization_schedule/1.2.1-1.tar.gz";
-    name = "1.2.1-1.tar.gz";
-    sha256 = "bf5919550483e14e591ae71baa81edb6f21440a68412eaaa9f5cc2dc8bc0c6a2";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_visualization-release";
+    rev = "2efc02d07ecf508892605b34867f0d2db9200ca7";
+    owner = "ros2-gbp";
+    sha256 = "sha256-A9AVM+p613Yun00wftpISftnBP5GbAOu2Zvy5BXhGb8=";
   };
 
   buildType = "ament_cmake";

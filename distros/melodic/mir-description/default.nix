@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-mir-description";
   version = "1.0.8-r1";
 
-  src = fetchurl {
-    url = "https://github.com/uos-gbp/mir_robot-release/archive/release/melodic/mir_description/1.0.8-1.tar.gz";
-    name = "1.0.8-1.tar.gz";
-    sha256 = "2f1b0aa476e8a253cd247bf99ac572300185a8176c59627f011e526474961039";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mir_robot-release";
+    rev = "c5b0c7f463a4cd81eff5e905e91caad4e1aa498a";
+    owner = "uos-gbp";
+    sha256 = "sha256-vx77q15rXM+o/vjVMUx5bvup/jGIFU9xqoMWmdG8gJA=";
   };
 
   buildType = "catkin";

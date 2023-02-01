@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-tiago-description";
   version = "4.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pal-gbp/tiago_robot-release/archive/release/humble/tiago_description/4.0.1-1.tar.gz";
-    name = "4.0.1-1.tar.gz";
-    sha256 = "6b34f0467a25c466df3502f50dcf9141ddfc171eea6e68cfe7848f7ac324270f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "tiago_robot-release";
+    rev = "02a7e33973600778ed49a1c62375212476bbfa85";
+    owner = "pal-gbp";
+    sha256 = "sha256-SW3tEIV+jvJAjV55IKH6Qg10EtESmCjU6SkT2PPn9qM=";
   };
 
   buildType = "ament_cmake";

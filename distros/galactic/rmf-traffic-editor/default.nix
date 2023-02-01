@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rmf-traffic-editor";
   version = "1.4.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_traffic_editor-release/archive/release/galactic/rmf_traffic_editor/1.4.0-1.tar.gz";
-    name = "1.4.0-1.tar.gz";
-    sha256 = "7ec2d4374b8f9db87284509e7a0f6e0c1da92a4a3c72feebce91911bf6022310";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_traffic_editor-release";
+    rev = "9d590b086b69ba84d3a817d80a6b9f73856b17e6";
+    owner = "ros2-gbp";
+    sha256 = "sha256-yaXIUvNrO2a75jn3X9IPfylvRqPElKm6NlK212o+p28=";
   };
 
   buildType = "ament_cmake";

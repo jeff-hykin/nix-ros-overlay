@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-cob-script-server";
   version = "0.6.19-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_command_tools-release/archive/release/melodic/cob_script_server/0.6.19-1.tar.gz";
-    name = "0.6.19-1.tar.gz";
-    sha256 = "1293a0a87ec7cbb6b13c720cf22ab9e44d19e0a5c1ac2da06c93ab443014a74d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_command_tools-release";
+    rev = "d44d8bc1a8efe56a8dbfce3f655c62f1ba2914f2";
+    owner = "ipa320";
+    sha256 = "sha256-tQLHWdRIk9/UpIJsYK2oPAFHbKXldLjWL6kqxPx9+pY=";
   };
 
   buildType = "catkin";

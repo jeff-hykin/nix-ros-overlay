@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-wireless-watcher";
   version = "0.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/clearpath-gbp/wireless-release/archive/release/melodic/wireless_watcher/0.1.1-1.tar.gz";
-    name = "0.1.1-1.tar.gz";
-    sha256 = "32d768d95a5b8d27ebf9dcc66110b1dfac0e042292ddfe597725f62c954f36d0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "wireless-release";
+    rev = "d3d1f79e64f91f2deb002741fcdc6f266e122269";
+    owner = "clearpath-gbp";
+    sha256 = "sha256-x+DGAY9zrogalssgS9kX41yPsZxZI46FIMN1q/eCwkk=";
   };
 
   buildType = "catkin";

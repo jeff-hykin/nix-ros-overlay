@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-boost-geometry-util";
   version = "0.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/OUXT-Polaris/boost_geometry_util-release/archive/release/galactic/boost_geometry_util/0.0.1-1.tar.gz";
-    name = "0.0.1-1.tar.gz";
-    sha256 = "e9bc02c696dd24b78bd6f12aa34645f723a421c3bc250dccd9a05d75afe2a596";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "boost_geometry_util-release";
+    rev = "6146b112582ef5d8843cf7cd38ea9b7d2257cb46";
+    owner = "OUXT-Polaris";
+    sha256 = "sha256-5P2YMX4buwUYt7NAF7FiWJguryH/I8GC2y+vIK5KI0w=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-planner-cspace";
   version = "0.11.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/at-wat/neonavigation-release/archive/release/noetic/planner_cspace/0.11.7-1.tar.gz";
-    name = "0.11.7-1.tar.gz";
-    sha256 = "0ff34c867306699822b834b25f46e17a9c102ad94469aa85d0121ee09cc1acd5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "neonavigation-release";
+    rev = "7f8746e1ba3f90f91ff72450046c0f23a469b878";
+    owner = "at-wat";
+    sha256 = "sha256-BC3o9WXxdLOkoBToCq9O7uk9TIA4QefVX5/psG5yexc=";
   };
 
   buildType = "catkin";

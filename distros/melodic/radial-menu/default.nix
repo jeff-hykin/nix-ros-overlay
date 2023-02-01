@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-radial-menu";
   version = "0.4.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/yoshito-n-students/radial_menu_ros-release/archive/release/melodic/radial_menu/0.4.1-1.tar.gz";
-    name = "0.4.1-1.tar.gz";
-    sha256 = "4df8cfccfbe84a0dfd2158c4497254f5face7eee36ad1ca80a23322ea143432f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "radial_menu_ros-release";
+    rev = "fc94569e638aebff0292580905babb88d53ebb49";
+    owner = "yoshito-n-students";
+    sha256 = "sha256-PVmA9ErC+EKSsbifjFtDQ4Q9yrz+jEOt83Rr43lgemw=";
   };
 
   buildType = "catkin";

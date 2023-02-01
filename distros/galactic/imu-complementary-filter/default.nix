@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-imu-complementary-filter";
   version = "2.0.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/imu_tools-release/archive/release/galactic/imu_complementary_filter/2.0.3-1.tar.gz";
-    name = "2.0.3-1.tar.gz";
-    sha256 = "a9805b2dcd9e9e5866d320a51216b2746b56aa8cabd0cfc0d5745ab785ae40b4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "imu_tools-release";
+    rev = "550087e57dfef7ed2e2a3fe7a6bf3600ab36030d";
+    owner = "ros2-gbp";
+    sha256 = "sha256-1u4cc/2DqGnlEleAltO4KeLEY3vykH4jdFTFqKny0YI=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-composition-interfaces";
   version = "1.0.3-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rcl_interfaces-release/archive/release/galactic/composition_interfaces/1.0.3-2.tar.gz";
-    name = "1.0.3-2.tar.gz";
-    sha256 = "06f622936a9621cfc2398c2dcc6c393d460912c1c57302528a9b0aeffe720888";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rcl_interfaces-release";
+    rev = "b895a675e06e9bf2cee3911d7b50756b72f3fea9";
+    owner = "ros2-gbp";
+    sha256 = "sha256-AX/5yNlhQk47leh/bGn84QnPuCBaF/ReSfsfjK2qPAw=";
   };
 
   buildType = "ament_cmake";

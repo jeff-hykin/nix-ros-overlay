@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-geometry-msgs";
   version = "4.2.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/common_interfaces-release/archive/release/humble/geometry_msgs/4.2.2-1.tar.gz";
-    name = "4.2.2-1.tar.gz";
-    sha256 = "f73bf0ef9d2f6e807597b672734c3721ae42a082f590327a168e4d16362cf700";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "common_interfaces-release";
+    rev = "1cf8484038e8eb62795f342751cea7db9dc384d9";
+    owner = "ros2-gbp";
+    sha256 = "sha256-PraB+PhKKkiggVCLXEDzowuOmGW1ZRltp7FS6mNTV6s=";
   };
 
   buildType = "ament_cmake";

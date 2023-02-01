@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-joint-trajectory-controller";
   version = "2.15.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_controllers-release/archive/release/rolling/joint_trajectory_controller/2.15.0-1.tar.gz";
-    name = "2.15.0-1.tar.gz";
-    sha256 = "483ab741370479d9beed37480f47c3f8204dd2c419cefd6eaab1af6aafff8b5e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_controllers-release";
+    rev = "06314a111bb55f3eb988ed1c000107c53510181d";
+    owner = "ros2-gbp";
+    sha256 = "sha256-xzNXMcd8bqOA/pbIBHKuCF1FfmpWxIn/jI1bjsM5olI=";
   };
 
   buildType = "ament_cmake";

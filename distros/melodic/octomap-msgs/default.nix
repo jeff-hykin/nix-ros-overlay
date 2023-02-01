@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-octomap-msgs";
   version = "0.3.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/octomap_msgs-release/archive/release/melodic/octomap_msgs/0.3.5-1.tar.gz";
-    name = "0.3.5-1.tar.gz";
-    sha256 = "9a17e5f2d6aa6d1e40c0e24b551b14439b03237e7913ee907d257f8bc9eedeea";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "octomap_msgs-release";
+    rev = "8646c40359312e8d1f4fcbcaa1b10f4118a33fcc";
+    owner = "ros-gbp";
+    sha256 = "sha256-XBb//PZ07P6FEL1E8wNjH94EWn/NQMoxkJyppXazT7Q=";
   };
 
   buildType = "catkin";

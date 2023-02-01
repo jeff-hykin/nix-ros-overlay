@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-can-dbc-parser";
   version = "1.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/NewEagleRaptor/raptor-dbw-ros2-release/archive/release/foxy/can_dbc_parser/1.2.0-1.tar.gz";
-    name = "1.2.0-1.tar.gz";
-    sha256 = "28b18fdf2fe15fb5c33f761f610ae929157099672439fd3c4de70e00efc9671e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "raptor-dbw-ros2-release";
+    rev = "d2ebfd715c463d6e1fc2af09d17d726626c59fa0";
+    owner = "NewEagleRaptor";
+    sha256 = "sha256-wqIFNXyAvNCo/CkxRLtmbRyH20ouy5KIAPR46KyfRRQ=";
   };
 
   buildType = "ament_cmake";

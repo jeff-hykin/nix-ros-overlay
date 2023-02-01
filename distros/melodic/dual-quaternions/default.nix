@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-dual-quaternions";
   version = "0.3.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/Achllle/dual_quaternions-release/archive/release/melodic/dual_quaternions/0.3.2-1.tar.gz";
-    name = "0.3.2-1.tar.gz";
-    sha256 = "7a453c19f652fa6d610a8ae72fc585e71458d7f382c0f7328a4c78b8e63eaadf";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "dual_quaternions-release";
+    rev = "98ece6b909477623eb38a0fc7c8528b94eedc7eb";
+    owner = "Achllle";
+    sha256 = "sha256-MqSy4w6xMyoGTBTkUhni7eHaHhByXTQ1FXJPUd3du2c=";
   };
 
   buildType = "catkin";

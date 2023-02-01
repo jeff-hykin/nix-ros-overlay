@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-rosgraph-msgs";
   version = "1.2.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rcl_interfaces-release/archive/release/humble/rosgraph_msgs/1.2.1-1.tar.gz";
-    name = "1.2.1-1.tar.gz";
-    sha256 = "53d5a5e58c1b34a079cb32208413438117de316127c67da1d1426a1715f6623a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rcl_interfaces-release";
+    rev = "a236107127dca3e4540f6d3dab11ea0fc2562e15";
+    owner = "ros2-gbp";
+    sha256 = "sha256-9WwmVQX38Kmj9mKBy3Qo68QYyt9ptuWlSUx98uW+Ejo=";
   };
 
   buildType = "ament_cmake";

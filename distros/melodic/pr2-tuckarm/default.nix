@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-pr2-tuckarm";
   version = "0.6.1";
 
-  src = fetchurl {
-    url = "https://github.com/pr2-gbp/pr2_apps-release/archive/release/melodic/pr2_tuckarm/0.6.1-0.tar.gz";
-    name = "0.6.1-0.tar.gz";
-    sha256 = "b03495a901d77fa4ed63ddd47ac3d1000dd43d7458eceeb5910f4c989397ee30";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pr2_apps-release";
+    rev = "4d28b754d3b2ec24f9cfad659efcbf0bb37e31d1";
+    owner = "pr2-gbp";
+    sha256 = "sha256-ZwsMlZxu6UILJtxORbyh7z3Xa6aOnQM53vWH3DvUI7U=";
   };
 
   buildType = "catkin";

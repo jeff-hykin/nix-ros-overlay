@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-ros2node";
   version = "0.18.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2cli-release/archive/release/humble/ros2node/0.18.4-1.tar.gz";
-    name = "0.18.4-1.tar.gz";
-    sha256 = "d8e2375d98e35fa45ce39a963edfe0c7dc976ddc98eb3b5ab2311173067ce156";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2cli-release";
+    rev = "05c5c2f950c3767955f0ccaaa9a9a5fc81fa054e";
+    owner = "ros2-gbp";
+    sha256 = "sha256-r51e4RwYQCg+ywzZhzPKfzYeWTIk50A+Bxx9e4vaTEQ=";
   };
 
   buildType = "ament_python";

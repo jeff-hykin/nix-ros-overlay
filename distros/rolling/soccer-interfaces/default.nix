@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-soccer-interfaces";
   version = "0.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/soccer_interfaces-release/archive/release/rolling/soccer_interfaces/0.2.0-1.tar.gz";
-    name = "0.2.0-1.tar.gz";
-    sha256 = "85382b377d68e765a313c183f07a9c8fbdebfa34d63941505608a495479403e9";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "soccer_interfaces-release";
+    rev = "3c677d11b98b86d3d194e5c9247f8318dde76cbb";
+    owner = "ros2-gbp";
+    sha256 = "sha256-vk/EmhgP6OQYIn59GYk85ZeW+QHa7gYOhl7TcQ9T4p4=";
   };
 
   buildType = "ament_cmake";

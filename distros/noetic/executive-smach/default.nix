@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-executive-smach";
   version = "2.5.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/executive_smach-release/archive/release/noetic/executive_smach/2.5.0-1.tar.gz";
-    name = "2.5.0-1.tar.gz";
-    sha256 = "bbdeca738f41610a184f7cab0168311cb7531661a75c9e1c5e143392a2959735";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "executive_smach-release";
+    rev = "d96420336d2403b67bce2890f95a42f58f459f51";
+    owner = "ros-gbp";
+    sha256 = "sha256-knkJaIO44Ue0XfLTUMdOHkGHk48mEn5HMd8D97wFL7E=";
   };
 
   buildType = "catkin";

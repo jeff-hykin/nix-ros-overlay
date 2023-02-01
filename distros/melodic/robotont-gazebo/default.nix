@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-robotont-gazebo";
   version = "0.0.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/robotont-release/robotont_gazebo-release/archive/release/melodic/robotont_gazebo/0.0.2-1.tar.gz";
-    name = "0.0.2-1.tar.gz";
-    sha256 = "9acf2202f009b66f50b21d81ae548fca3aa49a6f0aa3831a185eb784d1ca867c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "robotont_gazebo-release";
+    rev = "9eb85fde1a2e24ab1fa5a2640d17a287e650395d";
+    owner = "robotont-release";
+    sha256 = "sha256-LXgQ3IOlTBrylr12nOhSNdAmYD5+ENGePJ1LA79v+A0=";
   };
 
   buildType = "catkin";

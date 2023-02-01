@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-voxel-grid";
   version = "1.16.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/navigation-release/archive/release/melodic/voxel_grid/1.16.7-1.tar.gz";
-    name = "1.16.7-1.tar.gz";
-    sha256 = "48627660198a216087071f3653236191b16357a2a7b803d827e4e7051ff0d286";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation-release";
+    rev = "07767984661470ae76c5bd0edcffd7f8a8a05666";
+    owner = "ros-gbp";
+    sha256 = "sha256-VPL2BiRJBlF7plN/dE2K9mjwLsQn4O+RIUPokiLve/0=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-backward-ros";
   version = "1.0.2-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/backward_ros-release/archive/release/humble/backward_ros/1.0.2-3.tar.gz";
-    name = "1.0.2-3.tar.gz";
-    sha256 = "59886b25866e95f9f140e10c38db103046b0229d0abd60684bc67eb334376d70";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "backward_ros-release";
+    rev = "cdd74ec3fbb8505c14bfa376d35f7a08b65b8eb7";
+    owner = "ros2-gbp";
+    sha256 = "sha256-MH1nloz3Qfp5iNsqHTkmAkreWP6K+jyT3Zqn2SJySuU=";
   };
 
   buildType = "ament_cmake";

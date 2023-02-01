@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-cob-cartesian-controller";
   version = "0.8.20-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_control-release/archive/release/noetic/cob_cartesian_controller/0.8.20-1.tar.gz";
-    name = "0.8.20-1.tar.gz";
-    sha256 = "c51605793d6202f07088b484dbb759bb9547cb946eef451edd232cf1da384cff";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_control-release";
+    rev = "b58a64f78936a83e9fade6cac2323daf29220f27";
+    owner = "ipa320";
+    sha256 = "sha256-ItK7YUh82vx0U7lf2Fz3kBm4ib8vD/LqtIXvXPa/Av4=";
   };
 
   buildType = "catkin";

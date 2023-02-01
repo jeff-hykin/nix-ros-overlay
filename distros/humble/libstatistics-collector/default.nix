@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-libstatistics-collector";
   version = "1.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/libstatistics_collector-release/archive/release/humble/libstatistics_collector/1.3.0-1.tar.gz";
-    name = "1.3.0-1.tar.gz";
-    sha256 = "35a479038ae72965f42de6fbba4efca96a77521bb682cd85a373ad7f6958e09c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "libstatistics_collector-release";
+    rev = "6251b9c38c58ad972e16d8dcc33674f3d8e15581";
+    owner = "ros2-gbp";
+    sha256 = "sha256-7rsbCpc1gL9m6OOY7ZX2TWx77NS6j3IKDyoHF9zL2T8=";
   };
 
   buildType = "ament_cmake";

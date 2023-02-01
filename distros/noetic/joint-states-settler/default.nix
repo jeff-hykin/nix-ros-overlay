@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-joint-states-settler";
   version = "0.10.15-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/calibration-release/archive/release/noetic/joint_states_settler/0.10.15-1.tar.gz";
-    name = "0.10.15-1.tar.gz";
-    sha256 = "ee45d920a5f98e55c7619fe1526c0d75e6d141fee0e6e7cf3dbe4facc16ba38c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "calibration-release";
+    rev = "15ff83c59588ec9e4f1d1a51c1695b79b8949155";
+    owner = "ros-gbp";
+    sha256 = "sha256-UI31iL1SwY1U6qK6dorNCeuBkZcu2U3ZLV3srahaNsM=";
   };
 
   buildType = "catkin";

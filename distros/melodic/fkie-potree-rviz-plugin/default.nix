@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-fkie-potree-rviz-plugin";
   version = "1.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/fkie-release/potree_rviz_plugin-release/archive/release/melodic/fkie_potree_rviz_plugin/1.0.1-1.tar.gz";
-    name = "1.0.1-1.tar.gz";
-    sha256 = "c1b5661805e0eee8b57c70f305616a10753111376f3a846c4c0b0fc1486809d8";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "potree_rviz_plugin-release";
+    rev = "98f43f493310001bbeef096a08b0747187ada3ab";
+    owner = "fkie-release";
+    sha256 = "sha256-4G64ETXGSge+XUxK5Nd3gs36N0c3skLgmiuXLuPJMgM=";
   };
 
   buildType = "catkin";

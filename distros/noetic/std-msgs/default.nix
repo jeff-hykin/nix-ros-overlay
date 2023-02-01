@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-std-msgs";
   version = "0.5.13-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/std_msgs-release/archive/release/noetic/std_msgs/0.5.13-1.tar.gz";
-    name = "0.5.13-1.tar.gz";
-    sha256 = "3739ca3b5da2427b549056936fb36dddc712e910aeb2b3c5afaa61ab0df48bf3";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "std_msgs-release";
+    rev = "6455e024725ac9335e16d6eadb75cc8b3643c6fd";
+    owner = "ros-gbp";
+    sha256 = "sha256-0Cb5uqwYfYAiMzIEdnwzrIWALdQPlTOWFJFIL5GvEGI=";
   };
 
   buildType = "catkin";

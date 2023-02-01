@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-swri-transform-util";
   version = "3.5.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/marti_common-release/archive/release/humble/swri_transform_util/3.5.0-1.tar.gz";
-    name = "3.5.0-1.tar.gz";
-    sha256 = "0d4bcbb07ce015b36b0b356c880ad03c235c11c6ce7e5a08bc8d8d6d182422e4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "marti_common-release";
+    rev = "52221eb1224232420584a361d0ddab475af8eeb8";
+    owner = "ros2-gbp";
+    sha256 = "sha256-mHPtcyvnfeH8fmbssk2y7165KvtP55qdfYHwM6z173I=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-test-osm";
   version = "0.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-geographic-info/open_street_map-release/archive/release/noetic/test_osm/0.3.0-1.tar.gz";
-    name = "0.3.0-1.tar.gz";
-    sha256 = "27f71706cc1daaa3259f46375968d732e637b4b16b6147a22371670c73aee3b1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "open_street_map-release";
+    rev = "0a2fae143e9c69484c93edb17f9fa0b281cabf5d";
+    owner = "ros-geographic-info";
+    sha256 = "sha256-OghAwD6XP37Rgcw4xovzBFONLsBLg8jyV/hfJ/MDnQk=";
   };
 
   buildType = "catkin";

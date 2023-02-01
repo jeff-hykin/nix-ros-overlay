@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-microstrain-inertial-rqt";
   version = "2.7.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/microstrain_inertial-release/archive/release/foxy/microstrain_inertial_rqt/2.7.1-1.tar.gz";
-    name = "2.7.1-1.tar.gz";
-    sha256 = "46d85e5ef4fcc0886502283750e3245315f4ec72d782a3e2ee6410499ab3f026";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "microstrain_inertial-release";
+    rev = "811027670a2fb391a69dbac95049406898388afd";
+    owner = "ros2-gbp";
+    sha256 = "sha256-X+Ln2qrYa5YMXjH/lKuPt55wU6rW1792SMe6RZyi+BU=";
   };
 
   buildType = "ament_python";

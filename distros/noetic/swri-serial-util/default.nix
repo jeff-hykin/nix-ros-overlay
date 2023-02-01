@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-swri-serial-util";
   version = "2.15.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/swri-robotics-gbp/marti_common-release/archive/release/noetic/swri_serial_util/2.15.2-1.tar.gz";
-    name = "2.15.2-1.tar.gz";
-    sha256 = "dd1362d27361c7ce27bd26a51d8b44342ff55ba446db0ba309e689a926ab50d7";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "marti_common-release";
+    rev = "7be2726f3ace37b962435d9bd52deccfb4c12f5d";
+    owner = "swri-robotics-gbp";
+    sha256 = "sha256-W2FJeVbiBdrXM4VEOzQ+h/c44E/8Gf2UDMPMdDh5of4=";
   };
 
   buildType = "catkin";

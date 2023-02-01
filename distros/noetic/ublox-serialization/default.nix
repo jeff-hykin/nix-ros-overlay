@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-ublox-serialization";
   version = "1.5.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/KumarRobotics/ublox-release/archive/release/noetic/ublox_serialization/1.5.0-1.tar.gz";
-    name = "1.5.0-1.tar.gz";
-    sha256 = "20074e162992ec6207586b72344c2ab8dab07cad30d63af6e705a25a8fb01378";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ublox-release";
+    rev = "78ef15fda70d1ceb4d81c9d0569a2805d40f3dc1";
+    owner = "KumarRobotics";
+    sha256 = "sha256-5+/6oF8J4m3RAg7K0wKJoWtSuSmTqTejU22h4+n/hTM=";
   };
 
   buildType = "catkin";

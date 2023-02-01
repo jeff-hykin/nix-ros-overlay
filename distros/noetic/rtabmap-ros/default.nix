@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-rtabmap-ros";
   version = "0.20.22-r1";
 
-  src = fetchurl {
-    url = "https://github.com/introlab/rtabmap_ros-release/archive/release/noetic/rtabmap_ros/0.20.22-1.tar.gz";
-    name = "0.20.22-1.tar.gz";
-    sha256 = "1922d8de7460bdcb8a073595f28c50e3be3fae773e41061d5e03a706996751b7";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rtabmap_ros-release";
+    rev = "16a2ff8667f83859c9fa00610caf05e049b4cd1e";
+    owner = "introlab";
+    sha256 = "sha256-FGUGi8ReVWNHVjP/bf/GQvQ0Kv8jFBnMDh4SUmkg6zE=";
   };
 
   buildType = "catkin";

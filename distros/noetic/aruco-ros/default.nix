@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-aruco-ros";
   version = "3.1.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pal-gbp/aruco_ros-release/archive/release/noetic/aruco_ros/3.1.3-1.tar.gz";
-    name = "3.1.3-1.tar.gz";
-    sha256 = "a06dc78e52d1b342a5ce09c5d8ec98100fd26c4afbfc0c3c7a0a5b2efdbb3529";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "aruco_ros-release";
+    rev = "4137892afdf644752011ada1d9d846fc31a08c84";
+    owner = "pal-gbp";
+    sha256 = "sha256-56F+PLQBYLrO/s7jjbBRxisp8yE7zEbziuDr461HXNc=";
   };
 
   buildType = "catkin";

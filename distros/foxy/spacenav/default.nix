@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-spacenav";
   version = "3.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/joystick_drivers-release/archive/release/foxy/spacenav/3.0.1-1.tar.gz";
-    name = "3.0.1-1.tar.gz";
-    sha256 = "d9ce40277ae6cbf04912a3bb544482fd6e37b93c89b11a896eb45928f5cb7c90";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "joystick_drivers-release";
+    rev = "92804e296dd84391a92fbc1dca576373e3162265";
+    owner = "ros2-gbp";
+    sha256 = "sha256-p9jrKPsanoulkXsclPZlz7xYmvCQitubN4UXn8pB5xY=";
   };
 
   buildType = "ament_cmake";

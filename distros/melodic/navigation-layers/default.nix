@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-navigation-layers";
   version = "0.5.0";
 
-  src = fetchurl {
-    url = "https://github.com/wu-robotics/navigation_layers_release/archive/release/melodic/navigation_layers/0.5.0-0.tar.gz";
-    name = "0.5.0-0.tar.gz";
-    sha256 = "e51022d7bd6b2c049f58961b026a30460ce71607b1905c283e7b2626b653f359";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation_layers_release";
+    rev = "e3a933f8dac4e192362daa795250574393a0f04e";
+    owner = "wu-robotics";
+    sha256 = "sha256-l/gS4O7DnzHKS3Twql4G5KzI9z6SyH2xp3M42r+unV0=";
   };
 
   buildType = "catkin";

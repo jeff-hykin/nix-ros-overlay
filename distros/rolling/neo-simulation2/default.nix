@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-neo-simulation2";
   version = "1.0.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/neo_simulation2-release/archive/release/rolling/neo_simulation2/1.0.0-2.tar.gz";
-    name = "1.0.0-2.tar.gz";
-    sha256 = "4c42e86f728406ae0ff84bd71e64fe1c740b5f451bbf3196a227319b8fdde9c8";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "neo_simulation2-release";
+    rev = "efe236d6a9fcdfa997d702ca1b82ac0db1dfc806";
+    owner = "ros2-gbp";
+    sha256 = "sha256-z2uL/hWNQtHjZbw4Z0U4RKZYVGd2lIu1CGIvi4+s4/s=";
   };
 
   buildType = "ament_cmake";

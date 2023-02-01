@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-nmea-hardware-interface";
   version = "0.0.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/OUXT-Polaris/nmea_hardware_interface-release/archive/release/foxy/nmea_hardware_interface/0.0.2-1.tar.gz";
-    name = "0.0.2-1.tar.gz";
-    sha256 = "ffe94d9324cdca94875615be905d2efce8a43fd8943b11cb9485c7d94d647068";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "nmea_hardware_interface-release";
+    rev = "5884666bd455ff28cb82bf51265e78e62be39066";
+    owner = "OUXT-Polaris";
+    sha256 = "sha256-eZIbIzcc76gllAfqcCfYYlrIs8Tso8lkF8kx6+fabAQ=";
   };
 
   buildType = "ament_cmake";

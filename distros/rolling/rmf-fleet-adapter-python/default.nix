@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-rmf-fleet-adapter-python";
   version = "2.1.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_ros2-release/archive/release/rolling/rmf_fleet_adapter_python/2.1.2-1.tar.gz";
-    name = "2.1.2-1.tar.gz";
-    sha256 = "35bda9f2eed271d7469d255d9f464b3929a8d1c0506c741f6251d461ad9e47ae";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_ros2-release";
+    rev = "e5e4cce7d7fca432c24200e46b8512ab43def479";
+    owner = "ros2-gbp";
+    sha256 = "sha256-s3WYFs/d1Kxh3rtV7v2gAHOmTSbTtO2J+t5fAuIbP98=";
   };
 
   buildType = "ament_cmake";

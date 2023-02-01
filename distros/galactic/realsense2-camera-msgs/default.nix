@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-realsense2-camera-msgs";
   version = "4.51.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/IntelRealSense/realsense-ros-release/archive/release/galactic/realsense2_camera_msgs/4.51.1-1.tar.gz";
-    name = "4.51.1-1.tar.gz";
-    sha256 = "7a206feb5b95d59c9f3e40cbba27be40c24aa166cf93394f4908ae8091e0dca9";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "realsense-ros-release";
+    rev = "8d36dba3c001755dd9bc25cda958d531a1b7e5d9";
+    owner = "IntelRealSense";
+    sha256 = "sha256-n/1oSiCcxvKQEDde1zImo44mSgOwaFXd2GchxlVUexI=";
   };
 
   buildType = "ament_cmake";

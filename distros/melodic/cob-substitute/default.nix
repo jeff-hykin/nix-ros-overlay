@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-cob-substitute";
   version = "0.6.10-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_substitute-release/archive/release/melodic/cob_substitute/0.6.10-1.tar.gz";
-    name = "0.6.10-1.tar.gz";
-    sha256 = "c280eb7a66e9e9070755652adf36fb7e38e15bfcdc7e99fc1b2b94ae79705448";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_substitute-release";
+    rev = "c1fb9dd661df547244457d304af3fdefacf675d2";
+    owner = "ipa320";
+    sha256 = "sha256-vzopiKJx1bK+TR/4T04ZDmDuHJtxgi7Aq9upQdEbp64=";
   };
 
   buildType = "catkin";

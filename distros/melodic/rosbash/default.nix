@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-rosbash";
   version = "1.14.9-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/ros-release/archive/release/melodic/rosbash/1.14.9-1.tar.gz";
-    name = "1.14.9-1.tar.gz";
-    sha256 = "6a46f7fa9ddd7a2122e55dc4b4998650375c4814f7fb8539f7719ebb6e62a046";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros-release";
+    rev = "97ea987f7c4158335d7d177254b0dfb4269bb413";
+    owner = "ros-gbp";
+    sha256 = "sha256-LCNq3j+XFx6WWZ5zK6531+ND2qjN7zvNFMWGaPesphM=";
   };
 
   buildType = "catkin";

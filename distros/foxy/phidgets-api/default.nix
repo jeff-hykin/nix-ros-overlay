@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-phidgets-api";
   version = "2.1.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/phidgets_drivers-release/archive/release/foxy/phidgets_api/2.1.2-1.tar.gz";
-    name = "2.1.2-1.tar.gz";
-    sha256 = "ad71b362a36d03cf333d374d229011f8f4f0652b47d2eff0b78069f3a01cd147";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "phidgets_drivers-release";
+    rev = "e26c1f103aef35f648ac6e23b574d532a0431729";
+    owner = "ros2-gbp";
+    sha256 = "sha256-ErgzZdpB74bxy0YoyPNKOmZw7EvYeN3fMOpMoUcqr9E=";
   };
 
   buildType = "ament_cmake";

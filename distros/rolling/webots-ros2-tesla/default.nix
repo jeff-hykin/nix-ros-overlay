@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-webots-ros2-tesla";
   version = "2023.0.0-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/webots_ros2-release/archive/release/rolling/webots_ros2_tesla/2023.0.0-3.tar.gz";
-    name = "2023.0.0-3.tar.gz";
-    sha256 = "1d3f05900d82995ee2fb0e5ca0a7c8f78c9609833ceb48cfb1c8c055fc396692";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "webots_ros2-release";
+    rev = "124182b57db1099328e525e93cc4c683f275f20f";
+    owner = "ros2-gbp";
+    sha256 = "sha256-fOUwcMUisSV9+THPY18VM8nrqyYuwiXpW6E8TBzDdPk=";
   };
 
   buildType = "ament_python";

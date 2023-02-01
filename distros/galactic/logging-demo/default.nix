@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-logging-demo";
   version = "0.14.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/demos-release/archive/release/galactic/logging_demo/0.14.4-1.tar.gz";
-    name = "0.14.4-1.tar.gz";
-    sha256 = "d3d96db2be426e83546be0188a90a484222bfe9f4ef274f5407d13a3a014d113";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "demos-release";
+    rev = "04e292c0e1158f40d99819e1597c927ba41c5dd3";
+    owner = "ros2-gbp";
+    sha256 = "sha256-c2B7yyvWbCjPeELGIkEML2ovHlht8h7y1507U+PauFQ=";
   };
 
   buildType = "ament_cmake";

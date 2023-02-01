@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-swri-math-util";
   version = "2.15.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/swri-robotics-gbp/marti_common-release/archive/release/melodic/swri_math_util/2.15.2-1.tar.gz";
-    name = "2.15.2-1.tar.gz";
-    sha256 = "ea43a9d90e91fa64205a78903c4e40d0ccd8b2a356caa7c3013a1a0a95ac2534";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "marti_common-release";
+    rev = "2a946a8d9eb8438d62a1dbe1b9f4baeb99da9274";
+    owner = "swri-robotics-gbp";
+    sha256 = "sha256-Vz20syGZfrKA+Ib0b8BJM/nTaOfN6CxtEVArXkT8dwE=";
   };
 
   buildType = "catkin";

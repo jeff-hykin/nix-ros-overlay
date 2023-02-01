@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-kdl-parser";
   version = "2.4.1-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/kdl_parser-release/archive/release/foxy/kdl_parser/2.4.1-2.tar.gz";
-    name = "2.4.1-2.tar.gz";
-    sha256 = "0b71cd7f018ca1ff7a088d37b83ce476d87d7c17001edc8bcde023817c1fadd4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "kdl_parser-release";
+    rev = "bf837542700bdacf9f98551705cbe84b990cffad";
+    owner = "ros2-gbp";
+    sha256 = "sha256-G6nRlRfc/MemKQvc0mMCETGxSSL6OO5P7QEFYb9MxXE=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-ros2doctor";
   version = "0.21.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2cli-release/archive/release/rolling/ros2doctor/0.21.0-1.tar.gz";
-    name = "0.21.0-1.tar.gz";
-    sha256 = "fee4266baa7128d92fae4c3e42631e5266e336fe8a64052b8cc6db2c9628ff03";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2cli-release";
+    rev = "b842ae37b52ac0e59e1a0dc0727781c432ed351e";
+    owner = "ros2-gbp";
+    sha256 = "sha256-wYvRbitIvI9ZpdZjFnPtedDg7buQFbq7H9gMJcTMrjs=";
   };
 
   buildType = "ament_python";

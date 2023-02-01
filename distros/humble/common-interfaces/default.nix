@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-common-interfaces";
   version = "4.2.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/common_interfaces-release/archive/release/humble/common_interfaces/4.2.2-1.tar.gz";
-    name = "4.2.2-1.tar.gz";
-    sha256 = "c87fc42664ff55ab29602d03cfb8df968a2cb97856eb6753d3089ed48f652c9b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "common_interfaces-release";
+    rev = "47cf40c2bbd960294a58cc635d23ea1281464bf9";
+    owner = "ros2-gbp";
+    sha256 = "sha256-lRXE2l3jYXzoiCrwlJYXPPpFUp5xmf6VBIMDpmg9xn4=";
   };
 
   buildType = "ament_cmake";

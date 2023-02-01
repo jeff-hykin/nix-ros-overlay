@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rosidl-runtime-cpp";
   version = "2.2.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rosidl-release/archive/release/galactic/rosidl_runtime_cpp/2.2.3-1.tar.gz";
-    name = "2.2.3-1.tar.gz";
-    sha256 = "f015ddaa92de119d642a923e201e890682aeac975a3ebe3fb5b2c0d4952a9773";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosidl-release";
+    rev = "b4dccf7a9e610408e888cb89f3246cac5ccb1b97";
+    owner = "ros2-gbp";
+    sha256 = "sha256-H+oga57DE8THnBBrYvCpE+BLEfoftTN5zBwgwGyT5lY=";
   };
 
   buildType = "ament_cmake";

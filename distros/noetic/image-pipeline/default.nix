@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-image-pipeline";
   version = "1.17.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/image_pipeline-release/archive/release/noetic/image_pipeline/1.17.0-1.tar.gz";
-    name = "1.17.0-1.tar.gz";
-    sha256 = "b2b606f359aa7e15aec07a9fab389f5db7307f42ecbc2961e0a3a415f614bc39";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "image_pipeline-release";
+    rev = "c4520db34b3166fc12990a5b3e874bb327df4f53";
+    owner = "ros-gbp";
+    sha256 = "sha256-0Ej5ZfvjnIsSqtdLxaX1D+ft/3mhRc+qxSUo9gLOON0=";
   };
 
   buildType = "catkin";

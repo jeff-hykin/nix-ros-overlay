@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-test-bond";
   version = "4.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/bond_core-release/archive/release/rolling/test_bond/4.0.0-1.tar.gz";
-    name = "4.0.0-1.tar.gz";
-    sha256 = "2e284328b5de955acf505f9f5aab6ed59a764393912ac48ffd2fc44466e08eaf";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "bond_core-release";
+    rev = "a2bd3def0c316b7c2cc3a07e7575cca120eac66b";
+    owner = "ros2-gbp";
+    sha256 = "sha256-fHi349x6QDk41rEy2eRf220CkcMmPbS/gLmad/CmxGQ=";
   };
 
   buildType = "ament_cmake";

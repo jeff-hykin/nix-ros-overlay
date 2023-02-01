@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-libpointmatcher";
   version = "1.3.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/nobleo/libpointmatcher-release/archive/release/galactic/libpointmatcher/1.3.1-1.tar.gz";
-    name = "1.3.1-1.tar.gz";
-    sha256 = "c7c042ff46ba25ea8b16d3091c8274e2bcd5716965b89a2a210c26e0e1722094";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "libpointmatcher-release";
+    rev = "0f18bcb5e2da9cd5fd73cc3025b8d26daaee51fa";
+    owner = "nobleo";
+    sha256 = "sha256-96czxG0jg3fhdnnpfunDXT5SeulBTS0I2wHxgBhzunA=";
   };
 
   buildType = "cmake";

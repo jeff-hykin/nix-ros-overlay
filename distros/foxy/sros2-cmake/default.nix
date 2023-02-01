@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-sros2-cmake";
   version = "0.9.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/sros2-release/archive/release/foxy/sros2_cmake/0.9.5-1.tar.gz";
-    name = "0.9.5-1.tar.gz";
-    sha256 = "e4696c1064aab4a2c6c4d0941c623b2d54504f70ea69b173c5535d9a6532cee7";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "sros2-release";
+    rev = "e7156d5c6cab85caaa22465061b72f2abfcf52b4";
+    owner = "ros2-gbp";
+    sha256 = "sha256-7CdJhUpZmyJjUVioDZTwROFkuOWplZo/YB0WTn4e4eg=";
   };
 
   buildType = "ament_cmake";

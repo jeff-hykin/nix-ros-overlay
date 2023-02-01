@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-mvsim";
   version = "0.4.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/mvsim-release/archive/release/rolling/mvsim/0.4.3-1.tar.gz";
-    name = "0.4.3-1.tar.gz";
-    sha256 = "ea675887de0501c94e2a2954fa82a7a611c5696b7e82bafdec36f8389fa4047f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mvsim-release";
+    rev = "a427159757df194ac0c4ea7436f24e0f9def71ca";
+    owner = "ros2-gbp";
+    sha256 = "sha256-UsYz5EnFEfqiGCOAZAkr2ZcOhc/+OVX7JTk/H43DS2g=";
   };
 
   buildType = "ament_cmake";

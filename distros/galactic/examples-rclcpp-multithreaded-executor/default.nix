@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-examples-rclcpp-multithreaded-executor";
   version = "0.11.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/examples-release/archive/release/galactic/examples_rclcpp_multithreaded_executor/0.11.2-1.tar.gz";
-    name = "0.11.2-1.tar.gz";
-    sha256 = "ada58224a8183d2db2bca95eab3a223f62d64ecaab2cc5fb7215c8a601872370";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "examples-release";
+    rev = "aefcf7f9f47c2c58f259c0954b009e87933e487d";
+    owner = "ros2-gbp";
+    sha256 = "sha256-9Ysn+AftAIJ3PHm0O2p7i2kRN1iqhsXBEIozhQ+pQVo=";
   };
 
   buildType = "ament_cmake";

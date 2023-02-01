@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-nav2-lifecycle-manager";
   version = "1.0.12-r1";
 
-  src = fetchurl {
-    url = "https://github.com/SteveMacenski/navigation2-release/archive/release/galactic/nav2_lifecycle_manager/1.0.12-1.tar.gz";
-    name = "1.0.12-1.tar.gz";
-    sha256 = "7c7026dfd4b750518f0baa676c471f913cce3b5d549080637c131ae727673440";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation2-release";
+    rev = "e50dbfa3d655a49b63d35c830aa81b86c5f9e0bd";
+    owner = "SteveMacenski";
+    sha256 = "sha256-b4dv3lg1sFdtomor4yV+FI6m+6S+XaoHdxyCVQE1dNI=";
   };
 
   buildType = "ament_cmake";

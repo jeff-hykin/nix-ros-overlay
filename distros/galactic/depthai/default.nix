@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-depthai";
   version = "2.19.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/luxonis/depthai-core-release/archive/release/galactic/depthai/2.19.1-1.tar.gz";
-    name = "2.19.1-1.tar.gz";
-    sha256 = "b5810aadb6b6ec3bd21caa97bbf84b04880a7a1b01dfc65945addf8b22158c8c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "depthai-core-release";
+    rev = "8e6aa9e9f58947294381b6200350e1f62bad6d32";
+    owner = "luxonis";
+    sha256 = "sha256-asz+vES7vnON/Vo2RoXdbiVvHskhoX0ZYINntSXZ+EA=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-rqt-console";
   version = "0.4.9-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/rqt_console-release/archive/release/melodic/rqt_console/0.4.9-1.tar.gz";
-    name = "0.4.9-1.tar.gz";
-    sha256 = "e01cb923bec977383fddbb9ee64baf50ceb167645989b018c4fa47acf43db003";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt_console-release";
+    rev = "d54a16b1921bf8caf2ae88582baeeb8a4a1260bc";
+    owner = "ros-gbp";
+    sha256 = "sha256-h3aLcZE7BF1rMntSaFjDvz5z9p/O6j1cjqBwjy8h+9E=";
   };
 
   buildType = "catkin";

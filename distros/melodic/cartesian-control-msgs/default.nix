@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-cartesian-control-msgs";
   version = "0.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/UniversalRobots/Universal_Robots_ROS_cartesian_control_msgs-release/archive/release/melodic/cartesian_control_msgs/0.1.0-1.tar.gz";
-    name = "0.1.0-1.tar.gz";
-    sha256 = "b950b93403f3867d3b7f1dd634183deb6ebee6b25a4d5b9c87398edc17b3c46c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "Universal_Robots_ROS_cartesian_control_msgs-release";
+    rev = "fb956860d6c5b8cdcd25fe2158a5532e9519bcbf";
+    owner = "UniversalRobots";
+    sha256 = "sha256-uPW2h5O83C0HDN+7KJPJyMYjI3+bCHV9PPDf2bqI1ys=";
   };
 
   buildType = "catkin";

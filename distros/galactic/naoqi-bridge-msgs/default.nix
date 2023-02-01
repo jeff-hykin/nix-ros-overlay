@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-naoqi-bridge-msgs";
   version = "2.0.0";
 
-  src = fetchurl {
-    url = "https://github.com/ros-naoqi/naoqi_bridge_msgs2-release/archive/release/galactic/naoqi_bridge_msgs/2.0.0-0.tar.gz";
-    name = "2.0.0-0.tar.gz";
-    sha256 = "24ca670aa3c4ad46df35fdd3b328bdf8a6abf970bee8dc5e7b4b4b02123a1394";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "naoqi_bridge_msgs2-release";
+    rev = "212e773aeeaecabf92947143b642c51f4527cab9";
+    owner = "ros-naoqi";
+    sha256 = "sha256-AaG/G54fiOoMJ5eBb0/+P53U/xgguHfEhyoFfritTN0=";
   };
 
   buildType = "ament_cmake";

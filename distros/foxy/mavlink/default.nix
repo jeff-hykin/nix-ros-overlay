@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-mavlink";
   version = "2022.12.30-r1";
 
-  src = fetchurl {
-    url = "https://github.com/mavlink/mavlink-gbp-release/archive/release/foxy/mavlink/2022.12.30-1.tar.gz";
-    name = "2022.12.30-1.tar.gz";
-    sha256 = "b4c10cd2d79b4dd500558ff4af0a52aa7af2dd7d09d0f4c1b6221538a813e025";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mavlink-gbp-release";
+    rev = "22b62f8d55feb72f306d4c0147467beee490030d";
+    owner = "mavlink";
+    sha256 = "sha256-weCXfCMFBO/hfDHDLJs1Pc7lXxkWPFu9Ug1E0j4bbQI=";
   };
 
   buildType = "cmake";

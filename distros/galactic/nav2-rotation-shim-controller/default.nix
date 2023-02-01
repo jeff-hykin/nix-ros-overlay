@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-nav2-rotation-shim-controller";
   version = "1.0.12-r1";
 
-  src = fetchurl {
-    url = "https://github.com/SteveMacenski/navigation2-release/archive/release/galactic/nav2_rotation_shim_controller/1.0.12-1.tar.gz";
-    name = "1.0.12-1.tar.gz";
-    sha256 = "ceb2346ea6f6e0a4c3ff60de292d6e3269157cd3a09ea3701167de9368fad565";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation2-release";
+    rev = "11367a87b1e1b29bdc4bb1946739ccff0b01eb88";
+    owner = "SteveMacenski";
+    sha256 = "sha256-PDAlIDiBpdnJYFBDmCiFXHfVXtJZuerhSDMFn1cw8E0=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-spinnaker-camera-driver";
   version = "0.2.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-drivers-gbp/flir_camera_driver-release/archive/release/noetic/spinnaker_camera_driver/0.2.3-1.tar.gz";
-    name = "0.2.3-1.tar.gz";
-    sha256 = "2a8560cf47e4b405439333bfea119075f8a617c341056e47e5868685466b7b4c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "flir_camera_driver-release";
+    rev = "97170957682763dbe2098d33d3ed049fb23a8140";
+    owner = "ros-drivers-gbp";
+    sha256 = "sha256-YLcyvZYBC0Wk/vDT8YMIEkCwHbYSD5HAnYq6Ie4VMyo=";
   };
 
   buildType = "catkin";

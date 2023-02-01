@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-image-cb-detector";
   version = "0.10.15-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/calibration-release/archive/release/noetic/image_cb_detector/0.10.15-1.tar.gz";
-    name = "0.10.15-1.tar.gz";
-    sha256 = "ddf60b84fea198d5ef6ba102e7e5464a70ee9cb155a0ba9539b64b92d189ff10";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "calibration-release";
+    rev = "7024ad11ad29cb8f84b0d66214cf73e8bcc35b7a";
+    owner = "ros-gbp";
+    sha256 = "sha256-i4Hw5MQPvJUmDKC+Hl66pTNdFkCpXPzHGZMQPiSHcfs=";
   };
 
   buildType = "catkin";

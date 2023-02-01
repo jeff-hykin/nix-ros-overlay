@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-copernicus-base";
   version = "1.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/botsync-gbp/copernicus-release/archive/release/melodic/copernicus_base/1.1.0-1.tar.gz";
-    name = "1.1.0-1.tar.gz";
-    sha256 = "cdd488a29f262e20e249e710e488cdd3dffb8bf78055aa322520431316eeac5c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "copernicus-release";
+    rev = "744d0046ef6b7df01f492be4703301a4766e2c0d";
+    owner = "botsync-gbp";
+    sha256 = "sha256-mEhmB28IMJwzDcNUJDuKISHIeSNMIAg/88344nGzIj4=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-rosthrottle";
   version = "1.2.0-r3";
 
-  src = fetchurl {
-    url = "https://github.com/UTNuclearRoboticsPublic/rosthrottle-release/archive/release/melodic/rosthrottle/1.2.0-3.tar.gz";
-    name = "1.2.0-3.tar.gz";
-    sha256 = "b4f4384cb8098eb9adc8e27e784f30df9059b7cb9709fa6fe75cb17ddc65011c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosthrottle-release";
+    rev = "e2f318e0169c36a5f5e8f46b17c6486f31a50b9b";
+    owner = "UTNuclearRoboticsPublic";
+    sha256 = "sha256-qwfsUzASoxgCF4v1DF0cLpOWQ3MskZlUyxYoV3Ay9Rs=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-kvh-geo-fog-3d";
   version = "1.5.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/MITRE/kvh_geo_fog_3d-release/archive/release/melodic/kvh_geo_fog_3d/1.5.1-1.tar.gz";
-    name = "1.5.1-1.tar.gz";
-    sha256 = "dd37181032cc101a812e169099344c177d61c29e3942d071063bd83c90a6f0cf";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "kvh_geo_fog_3d-release";
+    rev = "a3116bc2cf616a03d297e776a8ef5db68683166d";
+    owner = "MITRE";
+    sha256 = "sha256-3jNCCKMdZNlkLZS8gWJzd1KBfOEqCUC3VLZ3P29fVMI=";
   };
 
   buildType = "catkin";

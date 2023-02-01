@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-rc-roi-manager-gui";
   version = "3.2.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/roboception-gbp/rc_visard-release/archive/release/melodic/rc_roi_manager_gui/3.2.4-1.tar.gz";
-    name = "3.2.4-1.tar.gz";
-    sha256 = "7aff5ae94d6898964c7859b230a3380a31f74c6f4af924a90b0caf64fffa8999";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rc_visard-release";
+    rev = "2f64de6c72df81c547827fedbd0e84d7e23ead10";
+    owner = "roboception-gbp";
+    sha256 = "sha256-WATj3HSW4Dc86YTfeEj6r0Il/K7Goccgx0EYBkrVqMI=";
   };
 
   buildType = "catkin";

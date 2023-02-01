@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-picknik-ament-copyright";
   version = "0.0.2-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/picknik_ament_copyright-release/archive/release/humble/picknik_ament_copyright/0.0.2-3.tar.gz";
-    name = "0.0.2-3.tar.gz";
-    sha256 = "e76e4c6abe5f1595846a406356531b74fb495e190afc16ed26742dd4600c58d4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "picknik_ament_copyright-release";
+    rev = "4194ce4ed7bb413d14d86bbda024c3e05c2273cf";
+    owner = "ros2-gbp";
+    sha256 = "sha256-zw0URrOQbcL7fo+BgOUHgI0yqf0DDRVGnOOxbJmog48=";
   };
 
   buildType = "ament_python";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-joint-trajectory-controller";
   version = "0.8.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_controllers-release/archive/release/foxy/joint_trajectory_controller/0.8.2-1.tar.gz";
-    name = "0.8.2-1.tar.gz";
-    sha256 = "e3238b3da258484d667f7709666c94e975b2d890b6a03aa219ed186a10d77f9f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_controllers-release";
+    rev = "ce5e8049b08a3fe760913faf983e3fd067aa4354";
+    owner = "ros2-gbp";
+    sha256 = "sha256-GL9oT45ZMXNXC1jx55drYbJAJCLTdvkfxILkERRgaso=";
   };
 
   buildType = "ament_cmake";

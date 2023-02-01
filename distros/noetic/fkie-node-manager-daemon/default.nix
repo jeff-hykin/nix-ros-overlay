@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-fkie-node-manager-daemon";
   version = "1.3.2-r2";
 
-  src = fetchurl {
-    url = "https://github.com/fkie-release/multimaster_fkie-release/archive/release/noetic/fkie_node_manager_daemon/1.3.2-2.tar.gz";
-    name = "1.3.2-2.tar.gz";
-    sha256 = "972ea9be6f5dc6cb600a7dc3e157b5b9b16c20160e1c1aaf38c1373597347aae";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "multimaster_fkie-release";
+    rev = "1df97850db5172ac915c52cd6fc3bc2a38b850dd";
+    owner = "fkie-release";
+    sha256 = "sha256-c6TGrwu+s3rmp40oOjGyuya1qkabmeiYRRUFvlBOQqs=";
   };
 
   buildType = "catkin";

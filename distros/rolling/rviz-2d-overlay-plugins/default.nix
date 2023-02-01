@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-rviz-2d-overlay-plugins";
   version = "1.2.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rviz_2d_overlay_plugins-release/archive/release/rolling/rviz_2d_overlay_plugins/1.2.1-1.tar.gz";
-    name = "1.2.1-1.tar.gz";
-    sha256 = "d80fe007edc7061b3f94639a305bf1300eeb53833363277ae64306675d4152e1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rviz_2d_overlay_plugins-release";
+    rev = "b249cd29c577e896bd5160eedb5214dc51d03dca";
+    owner = "ros2-gbp";
+    sha256 = "sha256-rIew6GpO1eY12AZkzSr3GYbOYianUUp0PzJeDzXQg2U=";
   };
 
   buildType = "ament_cmake";

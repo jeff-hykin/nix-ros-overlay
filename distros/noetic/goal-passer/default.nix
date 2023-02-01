@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-goal-passer";
   version = "0.4.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/navigation_experimental-release/archive/release/noetic/goal_passer/0.4.1-1.tar.gz";
-    name = "0.4.1-1.tar.gz";
-    sha256 = "3eaf495a78b86279c105d8bef4dd6af74ae3878289f2cc025762acc02444149d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation_experimental-release";
+    rev = "66cf5c221d6944bc3bc2a78ba0983768555ae4b8";
+    owner = "ros-gbp";
+    sha256 = "sha256-evibOOF6KTpqotCFoiFS98P+Bu1HrkNUJVI/CF7tEYw=";
   };
 
   buildType = "catkin";

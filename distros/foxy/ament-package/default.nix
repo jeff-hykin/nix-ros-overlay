@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-ament-package";
   version = "0.9.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ament_package-release/archive/release/foxy/ament_package/0.9.5-1.tar.gz";
-    name = "0.9.5-1.tar.gz";
-    sha256 = "7bee9d1107c1e922899d7883be41672051bf34383daca36bb53628bf26f73830";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ament_package-release";
+    rev = "45ef63905351c5a8bbb54eb09a4a055125bdeaae";
+    owner = "ros2-gbp";
+    sha256 = "sha256-KAJJNkGQokz71IHjSFzTazEOO63GxY6+W5KVeAeJH1w=";
   };
 
   buildType = "ament_python";

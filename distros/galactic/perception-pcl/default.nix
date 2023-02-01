@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-perception-pcl";
   version = "2.3.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/perception_pcl-release/archive/release/galactic/perception_pcl/2.3.2-1.tar.gz";
-    name = "2.3.2-1.tar.gz";
-    sha256 = "c428f92dc465ad203b69d78898eb1b333f1b5ac84d4acfe553b247c9d0bbe385";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "perception_pcl-release";
+    rev = "7f121690841bce5be19010061e506e778e1e904e";
+    owner = "ros2-gbp";
+    sha256 = "sha256-e0Qkh6GMkkwb9n84g34JXoHqDMViaN19PZ4mV9VhUYE=";
   };
 
   buildType = "ament_cmake";

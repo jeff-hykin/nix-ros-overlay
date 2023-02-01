@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-libfranka";
   version = "0.9.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/frankaemika/libfranka-release/archive/release/noetic/libfranka/0.9.2-1.tar.gz";
-    name = "0.9.2-1.tar.gz";
-    sha256 = "cdd15f0f3a4e032cb93c156240c122bea496a96e25a4ee434c9ca6c70da36fa3";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "libfranka-release";
+    rev = "343a45575e54c41500ce4061a937d5f19fea3fa9";
+    owner = "frankaemika";
+    sha256 = "sha256-B7Os4o7rDd5LD5owtLxHx35PuGLi9UfuOKsG4hYvGRg=";
   };
 
   buildType = "cmake";

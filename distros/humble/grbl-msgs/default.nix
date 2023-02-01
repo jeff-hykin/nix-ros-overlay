@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-grbl-msgs";
   version = "0.0.2-r6";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/grbl_msgs-release/archive/release/humble/grbl_msgs/0.0.2-6.tar.gz";
-    name = "0.0.2-6.tar.gz";
-    sha256 = "7c1fc987a65ff3e66dd2e32d122afb2ea02a91be07ab189d1a3c0baf6d7e6b10";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "grbl_msgs-release";
+    rev = "0bea5bf1f99ef5cb2d06b96332086fb970eebb6d";
+    owner = "ros2-gbp";
+    sha256 = "sha256-cjvc4arr+Z92IcwzqZryuU4FC2MY+FNpA+6JBe0dhiE=";
   };
 
   buildType = "ament_cmake";

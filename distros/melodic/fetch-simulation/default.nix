@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-fetch-simulation";
   version = "0.9.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/fetchrobotics-gbp/fetch_gazebo-release/archive/release/melodic/fetch_simulation/0.9.2-1.tar.gz";
-    name = "0.9.2-1.tar.gz";
-    sha256 = "76b37846fcf07da29ab58753137ef1f324d53e8f6ca225fe46310e6673c7d801";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "fetch_gazebo-release";
+    rev = "587f5dd0e83e82c3841070be0a546200a0b200eb";
+    owner = "fetchrobotics-gbp";
+    sha256 = "sha256-b04Y+CJhoE1a8xUtlmK+tVQg/GZQxHdX6TKKhpJGzz8=";
   };
 
   buildType = "catkin";

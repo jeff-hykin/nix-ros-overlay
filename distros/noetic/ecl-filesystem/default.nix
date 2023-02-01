@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-ecl-filesystem";
   version = "0.62.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/yujinrobot-release/ecl_core-release/archive/release/noetic/ecl_filesystem/0.62.3-1.tar.gz";
-    name = "0.62.3-1.tar.gz";
-    sha256 = "00aa5f749c876148911be2f179efc2f46bb0c8cd5c3f8c9e6417a927dc086861";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ecl_core-release";
+    rev = "4cedf4ca32bf1ef9794750b5e701d928e863f374";
+    owner = "yujinrobot-release";
+    sha256 = "sha256-fXkC9yMKUR8KTi64ig1M+liufswaRdrGZVtxWhmRn3s=";
   };
 
   buildType = "catkin";

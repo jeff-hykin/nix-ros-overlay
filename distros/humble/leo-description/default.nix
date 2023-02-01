@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-leo-description";
   version = "1.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/leo_common-release/archive/release/humble/leo_description/1.1.0-1.tar.gz";
-    name = "1.1.0-1.tar.gz";
-    sha256 = "a4b45eef10ddb7d7d1143c12fb9c3e596c52d0602e8a3e768a376a0b2c1908e6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "leo_common-release";
+    rev = "98cc57ca33c1f0f9c409df5b8f2ca905b977c120";
+    owner = "ros2-gbp";
+    sha256 = "sha256-+VNYse18mCzzr+FyLA3pGmXiLpN3DQCp+t7DwaAxkK4=";
   };
 
   buildType = "ament_cmake";

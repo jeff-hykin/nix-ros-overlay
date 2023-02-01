@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-angles";
   version = "1.16.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/angles-release/archive/release/rolling/angles/1.16.0-1.tar.gz";
-    name = "1.16.0-1.tar.gz";
-    sha256 = "561a1add1fb8bb9d6057065f7d277708dcb12875536b82e6b4047dae9809ddcb";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "angles-release";
+    rev = "1fe9136c3da2ff859be6cd0dfa5d3acc02c80705";
+    owner = "ros2-gbp";
+    sha256 = "sha256-l4xIXnIMoWmTEkIubTtt1g/NZdI+H9zvYXd0izyPAKw=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-control-msgs";
   version = "4.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/control_msgs-release/archive/release/rolling/control_msgs/4.1.0-1.tar.gz";
-    name = "4.1.0-1.tar.gz";
-    sha256 = "029dd9d89a091d2b0e22059458ad9b64affad303231df53626752a410eb5acf2";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "control_msgs-release";
+    rev = "6495eb0a81f027f9daba344634ae1b6ad75eab31";
+    owner = "ros2-gbp";
+    sha256 = "sha256-xpy8ltgcLjZfm9884tBtDHYYZjuyi7LOWdO7m3V1NCA=";
   };
 
   buildType = "ament_cmake";

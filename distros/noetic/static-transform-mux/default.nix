@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-static-transform-mux";
   version = "1.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/peci1/static_transform_mux-release/archive/release/noetic/static_transform_mux/1.1.0-1.tar.gz";
-    name = "1.1.0-1.tar.gz";
-    sha256 = "f21262353f684f756a1f1ebb9e88e7d335f767843d908267d532fab94ce7e2f1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "static_transform_mux-release";
+    rev = "f89337c8bc7c4f83cefab64dab479020785a73da";
+    owner = "peci1";
+    sha256 = "undefined";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-rmf-lift-msgs";
   version = "3.0.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_internal_msgs-release/archive/release/rolling/rmf_lift_msgs/3.0.2-1.tar.gz";
-    name = "3.0.2-1.tar.gz";
-    sha256 = "714d67c20f4cd6ee7899163b143bc3760569ab6dc8f7e9b3246b1c241310f95f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_internal_msgs-release";
+    rev = "c521dc0e903e677b3f3727fee8bf1d8e67660e71";
+    owner = "ros2-gbp";
+    sha256 = "sha256-6WzzKCLRIzQio1Ebs/w9u6lGKDRCxZHl/elHv2M/o3c=";
   };
 
   buildType = "ament_cmake";

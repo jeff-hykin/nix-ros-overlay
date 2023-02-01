@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-rmf-building-sim-gazebo-plugins";
   version = "1.2.0-r4";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_simulation-release/archive/release/humble/rmf_building_sim_gazebo_plugins/1.2.0-4.tar.gz";
-    name = "1.2.0-4.tar.gz";
-    sha256 = "cfa95dc9d8534a6b2380bbf5214d6aa26e26d23311d9e62e1767bc5075698f49";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_simulation-release";
+    rev = "f4e3c1f34d687bd0c32523a503a1284b74d07e96";
+    owner = "ros2-gbp";
+    sha256 = "sha256-eiXc4BVLddyQjX6EaIvcc7rCmp6VD429IsLLBvT1reA=";
   };
 
   buildType = "ament_cmake";

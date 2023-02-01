@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-moveit-visual-tools";
   version = "3.5.2";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/moveit_visual_tools-release/archive/release/melodic/moveit_visual_tools/3.5.2-0.tar.gz";
-    name = "3.5.2-0.tar.gz";
-    sha256 = "89188c2b6459781c14abe35014f937e5c199cd11f8fd45f943ff21e1b654ec84";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "moveit_visual_tools-release";
+    rev = "00961cfb16b113b5f40fee57c6a77ec56fe809a7";
+    owner = "ros-gbp";
+    sha256 = "sha256-a0NJYoWnc/wwIGjc0KpOtPseZJkLs6X12kPinSwmGTU=";
   };
 
   buildType = "catkin";

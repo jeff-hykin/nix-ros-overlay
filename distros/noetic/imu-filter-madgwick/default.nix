@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-imu-filter-madgwick";
   version = "1.2.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/uos-gbp/imu_tools-release/archive/release/noetic/imu_filter_madgwick/1.2.5-1.tar.gz";
-    name = "1.2.5-1.tar.gz";
-    sha256 = "86a14bd1e8b9ef044f491442f3f79eb2cc07fe7421fb1128862a9da19b2926e8";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "imu_tools-release";
+    rev = "9ef381ed4c3a136a6cc1fca4f7534141498328f8";
+    owner = "uos-gbp";
+    sha256 = "sha256-KY7fVs0auCxZHMRGsxz151p8GUzlF6SoYRuArEN9UiQ=";
   };
 
   buildType = "catkin";

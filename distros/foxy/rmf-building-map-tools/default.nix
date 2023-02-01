@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-rmf-building-map-tools";
   version = "1.4.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_traffic_editor-release/archive/release/foxy/rmf_building_map_tools/1.4.0-1.tar.gz";
-    name = "1.4.0-1.tar.gz";
-    sha256 = "d7f8ecafd032ceed132ed18da3e0828762aba6cdc3ecf6a0d2c738d265a12158";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_traffic_editor-release";
+    rev = "6569ff7b908e0591a9951a09b9054067181f74f7";
+    owner = "ros2-gbp";
+    sha256 = "sha256-EnMTdw2WSNIgyf9oWqr/RvwB2uUsLU/VeeUdNv7zXO8=";
   };
 
   buildType = "ament_python";

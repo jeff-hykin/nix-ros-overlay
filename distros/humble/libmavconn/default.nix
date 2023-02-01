@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-libmavconn";
   version = "2.4.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/mavros-release/archive/release/humble/libmavconn/2.4.0-1.tar.gz";
-    name = "2.4.0-1.tar.gz";
-    sha256 = "7afeb5ca2b226fed4c25e501dec94308d756d5508907203e838a5a18de9933ba";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mavros-release";
+    rev = "67f155a0ab835a6ab7563261d9d7ddd3206779db";
+    owner = "ros2-gbp";
+    sha256 = "sha256-zQQtWJ7KocYWlfkpJ0fdoVomUNd//KTIlPYMu2y/f00=";
   };
 
   buildType = "ament_cmake";

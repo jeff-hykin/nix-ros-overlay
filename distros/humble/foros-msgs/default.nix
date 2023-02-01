@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-foros-msgs";
   version = "0.4.1-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/foros-release/archive/release/humble/foros_msgs/0.4.1-2.tar.gz";
-    name = "0.4.1-2.tar.gz";
-    sha256 = "c24867bfbfeff57df397e773f49bf24d89f882d9f7163990bce78c7e11aa9140";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "foros-release";
+    rev = "a2621dabcd63ebb67347338b2a126b0694d198c1";
+    owner = "ros2-gbp";
+    sha256 = "sha256-2BfM+m3iK91wzWpNIBa4jXvgTI/2J8uCslc7wc8omzs=";
   };
 
   buildType = "ament_cmake";

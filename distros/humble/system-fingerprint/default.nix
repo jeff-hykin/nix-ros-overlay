@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-system-fingerprint";
   version = "0.7.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/MetroRobots/ros_system_fingerprint-release/archive/release/humble/system_fingerprint/0.7.0-1.tar.gz";
-    name = "0.7.0-1.tar.gz";
-    sha256 = "70ee7502ad02e86f9a0282425e090f693f854e4eb0c408b9f59982d7b07f3751";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_system_fingerprint-release";
+    rev = "d75b8a333edcb33d91834fb43687da70380a5850";
+    owner = "MetroRobots";
+    sha256 = "sha256-swG8fwjiFc0LXSlbA6Lml0jlh/VyNS//insRqM01fr0=";
   };
 
   buildType = "ament_python";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-pr2-mechanism-controllers";
   version = "1.10.18-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pr2-gbp/pr2_controllers-release/archive/release/noetic/pr2_mechanism_controllers/1.10.18-1.tar.gz";
-    name = "1.10.18-1.tar.gz";
-    sha256 = "5126a1cb20e26793ed2c29a3aea466c4832fdab5cd0675cc665b20c266701ce7";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pr2_controllers-release";
+    rev = "63fdf198513929bbae2c787de5c693b1a5eb84fb";
+    owner = "pr2-gbp";
+    sha256 = "sha256-nhMb7DswHy4pseVz7vSqNTsQKy1rSbrz3gDR096xxGw=";
   };
 
   buildType = "catkin";

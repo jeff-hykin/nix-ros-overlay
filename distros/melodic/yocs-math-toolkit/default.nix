@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-yocs-math-toolkit";
   version = "0.8.2";
 
-  src = fetchurl {
-    url = "https://github.com/yujinrobot-release/yujin_ocs-release/archive/release/melodic/yocs_math_toolkit/0.8.2-0.tar.gz";
-    name = "0.8.2-0.tar.gz";
-    sha256 = "53550a80b4e50074b5c5b15fe44f2d4e463ff9f768e6e662b7a7b3d65f2c32fd";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "yujin_ocs-release";
+    rev = "aa4dbb28d2d5ea4540255ea34f2c4e21ab01652d";
+    owner = "yujinrobot-release";
+    sha256 = "sha256-J9FBvfxSFaDwyWh+Fwy466gVP2VQWY9l5wMc7wZj7Zs=";
   };
 
   buildType = "catkin";

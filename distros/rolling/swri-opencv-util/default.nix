@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-swri-opencv-util";
   version = "3.5.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/marti_common-release/archive/release/rolling/swri_opencv_util/3.5.0-1.tar.gz";
-    name = "3.5.0-1.tar.gz";
-    sha256 = "f1fad766b652dc8eb02cfd161436aed34fc9d1b06cca9e8af04f0fa2c762cb78";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "marti_common-release";
+    rev = "8493ee754c5d6a18d24c1736c44ea6c59853db43";
+    owner = "ros2-gbp";
+    sha256 = "sha256-u1ykAFs+fGYbr3snUioAGivk0DYsUqDo282YqIKqaK0=";
   };
 
   buildType = "ament_cmake";

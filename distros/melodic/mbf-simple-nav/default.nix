@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-mbf-simple-nav";
   version = "0.4.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/uos-gbp/move_base_flex-release/archive/release/melodic/mbf_simple_nav/0.4.0-1.tar.gz";
-    name = "0.4.0-1.tar.gz";
-    sha256 = "12abd41fa0ccece720bd8c10ce3bd6fadf4df9e2cc9f31c18ce9bfb7b022912d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "move_base_flex-release";
+    rev = "263daee47bc1e3565f1b9c5238b3252788af17fa";
+    owner = "uos-gbp";
+    sha256 = "sha256-lkt7Z5n5X3msZDshAhOQdAcM234uCHTV/CVb7gcmphI=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-ros2trace-analysis";
   version = "3.0.0-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/tracetools_analysis-release/archive/release/rolling/ros2trace_analysis/3.0.0-3.tar.gz";
-    name = "3.0.0-3.tar.gz";
-    sha256 = "914f42ae6fbead502d3f3c911c5d57d6139b3747799ffacec6c2200224cc5f38";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "tracetools_analysis-release";
+    rev = "db60d3cde27f2576fba8933102c0821715dfeb12";
+    owner = "ros2-gbp";
+    sha256 = "sha256-88nEQ39lxqn4A5k9lH63DZqI0nV7umn2QUpbOCQyVpE=";
   };
 
   buildType = "ament_python";

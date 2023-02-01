@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-kinesis-manager";
   version = "2.0.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/aws-gbp/kinesis_manager-release/archive/release/melodic/kinesis_manager/2.0.3-1.tar.gz";
-    name = "2.0.3-1.tar.gz";
-    sha256 = "6db7c90ac6fb345ff10ec737c2f37f5cc6a0f6a6aebf038c852375afd2fb40e2";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "kinesis_manager-release";
+    rev = "54dbf90dbc962f80d5ab7ae8cb88af439123f859";
+    owner = "aws-gbp";
+    sha256 = "sha256-8Hfppg6oU0MVKr6VeDNS1HF5rhoX87kDs8SAtmFlGiU=";
   };
 
   buildType = "cmake";

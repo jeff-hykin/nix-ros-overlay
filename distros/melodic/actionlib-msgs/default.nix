@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-actionlib-msgs";
   version = "1.12.8-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/common_msgs-release/archive/release/melodic/actionlib_msgs/1.12.8-1.tar.gz";
-    name = "1.12.8-1.tar.gz";
-    sha256 = "a3f0988bbc95c105177a455c4a50864fe578210703a591eab085f7684047b636";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "common_msgs-release";
+    rev = "894e6ef0514176762c339d0f4ea547e004b0aa3f";
+    owner = "ros-gbp";
+    sha256 = "sha256-oqc/PapJAPLrWxNn+pAiadVHMJW/pFP0BvOuUp+d0Ig=";
   };
 
   buildType = "catkin";

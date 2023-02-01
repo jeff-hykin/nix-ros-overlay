@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-exotica-ik-solver";
   version = "6.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipab-slmc/exotica-release/archive/release/melodic/exotica_ik_solver/6.2.0-1.tar.gz";
-    name = "6.2.0-1.tar.gz";
-    sha256 = "7242987a28dd17b8d11486e1d1e15f65b8324c897de3e9be200213a60d875b36";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "exotica-release";
+    rev = "08b5bcb799c9f352149f22382c3c39b9bc9d04eb";
+    owner = "ipab-slmc";
+    sha256 = "sha256-WVxw+U3AIKbxBWZqa6f6MxIArxvgHytg73F2QLsHPEA=";
   };
 
   buildType = "catkin";

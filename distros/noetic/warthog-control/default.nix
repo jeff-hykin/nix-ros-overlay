@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-warthog-control";
   version = "0.1.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/clearpath-gbp/warthog-release/archive/release/noetic/warthog_control/0.1.5-1.tar.gz";
-    name = "0.1.5-1.tar.gz";
-    sha256 = "a66851ba35de067f79cb3ac0cdc0d944ea22e6eaf5cacd5169310c83ef297767";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "warthog-release";
+    rev = "c83c6d1dd8b1f56a4dc3785e768d5acd73dfb891";
+    owner = "clearpath-gbp";
+    sha256 = "sha256-H+Wg0A+1CO5K5BJHSKvwdyVvHLC6GNre3a/bfvuq8Ac=";
   };
 
   buildType = "catkin";

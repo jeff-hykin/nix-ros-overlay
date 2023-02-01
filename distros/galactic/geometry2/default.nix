@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-geometry2";
   version = "0.17.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/geometry2-release/archive/release/galactic/geometry2/0.17.5-1.tar.gz";
-    name = "0.17.5-1.tar.gz";
-    sha256 = "2ef0bf2535cceb3c73e7379a2d35f1103e3df7d4cfc6b5078d0604567cc7826c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "geometry2-release";
+    rev = "e9b29c6f90d21858f41788fc79481fbbffa601f6";
+    owner = "ros2-gbp";
+    sha256 = "sha256-kkaFkvfpz5fKBPYaJ1v4c6i8ujh6lY0REp2f9xSNoxY=";
   };
 
   buildType = "ament_cmake";

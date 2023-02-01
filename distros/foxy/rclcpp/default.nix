@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-rclcpp";
   version = "2.4.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rclcpp-release/archive/release/foxy/rclcpp/2.4.2-1.tar.gz";
-    name = "2.4.2-1.tar.gz";
-    sha256 = "0707ac6d64ba4b7b518e31044d7877b77f7560c1782aaa0d20d5c1f65b2ee6f8";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rclcpp-release";
+    rev = "b9ac00dbbaa8b41a0588834cea3e1bc1f291e767";
+    owner = "ros2-gbp";
+    sha256 = "sha256-oeZwwM5plxT8/Uv9hozzJWozf/EwW/ppwDrAFGdHAc8=";
   };
 
   buildType = "ament_cmake";

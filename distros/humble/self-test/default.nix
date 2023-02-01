@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-self-test";
   version = "3.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/diagnostics-release/archive/release/humble/self_test/3.0.0-1.tar.gz";
-    name = "3.0.0-1.tar.gz";
-    sha256 = "8acb8d00b7710ecd2f1a5e0242c132953f85934edde4f7c41ca39774fbfda3dd";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "diagnostics-release";
+    rev = "0891579845b8658221efa68eabb23a6f72d925c5";
+    owner = "ros2-gbp";
+    sha256 = "sha256-ICsORyeDVsnsK4BtKbUJtbsfV2ilP29fl5cDMeCMlDM=";
   };
 
   buildType = "ament_cmake";

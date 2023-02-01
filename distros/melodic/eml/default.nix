@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-eml";
   version = "1.8.15-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/eml-release/archive/release/melodic/eml/1.8.15-2.tar.gz";
-    name = "1.8.15-2.tar.gz";
-    sha256 = "be4a25b2632c6064f9d2567a5d1f9915aca203bebd8eda03e9cb3758d90e3c2c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "eml-release";
+    rev = "4ec7193b06f0c82c8ff271fdebd98088a85598a7";
+    owner = "ros-gbp";
+    sha256 = "sha256-3LM4rau+nhrhoeVcxUdszDkvoelRGEy1AikgMZud4fQ=";
   };
 
   buildType = "cmake";

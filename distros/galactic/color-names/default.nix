@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-color-names";
   version = "0.0.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/OUXT-Polaris/color_names-release/archive/release/galactic/color_names/0.0.3-1.tar.gz";
-    name = "0.0.3-1.tar.gz";
-    sha256 = "6e1d7f88dc431b97e80ec95d5a6a5c904e5c99f005ec79a871afa1dba6444e46";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "color_names-release";
+    rev = "044d42cf922ca0a116a19226c8be690d0a8614d0";
+    owner = "OUXT-Polaris";
+    sha256 = "sha256-956LQvQPv4QtQBKeDL62YimdLDh1yLGsi9AYgWiBh/k=";
   };
 
   buildType = "ament_cmake";

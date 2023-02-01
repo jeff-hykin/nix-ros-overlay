@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-microstrain-inertial-driver";
   version = "2.7.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/LORD-MicroStrain/microstrain_inertial-release/archive/release/noetic/microstrain_inertial_driver/2.7.1-1.tar.gz";
-    name = "2.7.1-1.tar.gz";
-    sha256 = "43d118a0c86f147809d877f06d5517f4d85394c5bd0f65876becf1dfeba2157c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "microstrain_inertial-release";
+    rev = "4268a63c134b755120ebc5e8e0fc1ec6f19bed20";
+    owner = "LORD-MicroStrain";
+    sha256 = "sha256-RvVsAivQn/sjQ6nZO5R4g36PwEcSDtVqbxm7AvzqlvM=";
   };
 
   buildType = "catkin";

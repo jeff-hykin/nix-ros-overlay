@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-obj-to-pointcloud";
   version = "0.11.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/at-wat/neonavigation-release/archive/release/noetic/obj_to_pointcloud/0.11.7-1.tar.gz";
-    name = "0.11.7-1.tar.gz";
-    sha256 = "4d6cdfd09e36a8a3e71d90576da20d46493d8958cd5818f977fada7906d9ff50";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "neonavigation-release";
+    rev = "cabef198614e1e23bed5ef26b0c6642cdddad427";
+    owner = "at-wat";
+    sha256 = "sha256-cBP2A8T7m47XKHCB70qNSoWICH63Ktow5D+EyImDm/k=";
   };
 
   buildType = "catkin";

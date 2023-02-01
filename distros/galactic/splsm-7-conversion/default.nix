@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-splsm-7-conversion";
   version = "1.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/r2r_spl-release/archive/release/galactic/splsm_7_conversion/1.0.1-1.tar.gz";
-    name = "1.0.1-1.tar.gz";
-    sha256 = "9525ea20d229485fdc38c3eb11c0b80b762007b68e3b5f9f93a67e917d3352ce";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "r2r_spl-release";
+    rev = "b54c13d5253eeda0dbe93cdc8acfd6087f9b4439";
+    owner = "ros2-gbp";
+    sha256 = "sha256-6yU8hAGA7XhwCCgLqkOvluKP5ioASSPVFqsHOLPNLmo=";
   };
 
   buildType = "ament_python";

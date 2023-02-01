@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-tracetools-test";
   version = "2.3.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_tracing-release/archive/release/galactic/tracetools_test/2.3.0-2.tar.gz";
-    name = "2.3.0-2.tar.gz";
-    sha256 = "f9b457f4e80aab5bb0e067b21df71a33d0715c3a54d9e42a861da7768245e010";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_tracing-release";
+    rev = "977bf5f57010773fcc62f2b4135c182d695b338b";
+    owner = "ros2-gbp";
+    sha256 = "sha256-49PRe+JQln/6PNJg/WgTHdCA8EfHWWGpDNBfhIigJ9s=";
   };
 
   buildType = "ament_cmake";

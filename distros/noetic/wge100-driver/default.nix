@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-wge100-driver";
   version = "1.8.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-drivers-gbp/wge100_driver-release/archive/release/noetic/wge100_driver/1.8.5-1.tar.gz";
-    name = "1.8.5-1.tar.gz";
-    sha256 = "d0cbcb4b363ae9f65e3ab5b088d1aad0258046ebd1ec3f910999fc36dc4327ee";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "wge100_driver-release";
+    rev = "f016cf4e0e17423c8c04f7e5322943e27cc4fbbd";
+    owner = "ros-drivers-gbp";
+    sha256 = "sha256-5jCJ35Sa4EqUG7sjS99rsr7MoRwXYB6rFXDpzGefuYk=";
   };
 
   buildType = "catkin";

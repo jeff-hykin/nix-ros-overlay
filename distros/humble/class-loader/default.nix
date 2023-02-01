@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-class-loader";
   version = "2.2.0-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/class_loader-release/archive/release/humble/class_loader/2.2.0-3.tar.gz";
-    name = "2.2.0-3.tar.gz";
-    sha256 = "f2eeb8c47422eb55774fa0d9d1f81450187d26f1f6e3b7a9d34aa1a45c9882fe";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "class_loader-release";
+    rev = "05674e2b1bb64a95c895ac4000b8284be949c562";
+    owner = "ros2-gbp";
+    sha256 = "sha256-0kZHPHqah+t7yQ+myAaXmOQRUjF7ctFl9iWRWtbrvyw=";
   };
 
   buildType = "ament_cmake";

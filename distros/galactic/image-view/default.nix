@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-image-view";
   version = "2.2.1-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/image_pipeline-release/archive/release/galactic/image_view/2.2.1-3.tar.gz";
-    name = "2.2.1-3.tar.gz";
-    sha256 = "52c6e2d5c4be705741f7977d69a439e63d9e01c5bb56467d099e764d36e0df87";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "image_pipeline-release";
+    rev = "d714b652f837058ab3b2228a79fc71196fe8d9bd";
+    owner = "ros2-gbp";
+    sha256 = "sha256-HNlrIWMVltFrs1O+Kmxya8/Z1E3zfoVgnbNB1BK7xSc=";
   };
 
   buildType = "ament_cmake";

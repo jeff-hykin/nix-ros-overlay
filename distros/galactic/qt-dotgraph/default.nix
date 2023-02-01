@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-qt-dotgraph";
   version = "2.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/qt_gui_core-release/archive/release/galactic/qt_dotgraph/2.0.1-1.tar.gz";
-    name = "2.0.1-1.tar.gz";
-    sha256 = "9545f40f5e00ff43b0e09a62a69b819e592a549292a7d039bc22cb7d9936e528";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "qt_gui_core-release";
+    rev = "5c7ca042b859e41624c9dad3600d7db6d00aa3f4";
+    owner = "ros2-gbp";
+    sha256 = "sha256-ChZ9GzX3W7UVcz7sF0ppqkw++8xi8AXDg7YwUc8F1aE=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-color-names";
   version = "0.0.3-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/color_names-release/archive/release/humble/color_names/0.0.3-3.tar.gz";
-    name = "0.0.3-3.tar.gz";
-    sha256 = "b64e0c4fc28edcf8ba6bfd37e7f4ba55ea37a9ed20e00b971860b99ef1153d27";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "color_names-release";
+    rev = "513ef6e01494eb6cb7d68e559f10b8f7495aa50d";
+    owner = "ros2-gbp";
+    sha256 = "sha256-956LQvQPv4QtQBKeDL62YimdLDh1yLGsi9AYgWiBh/k=";
   };
 
   buildType = "ament_cmake";

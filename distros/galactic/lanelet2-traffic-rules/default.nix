@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-lanelet2-traffic-rules";
   version = "1.1.1-r2";
 
-  src = fetchurl {
-    url = "https://github.com/fzi-forschungszentrum-informatik/lanelet2-release/archive/release/galactic/lanelet2_traffic_rules/1.1.1-2.tar.gz";
-    name = "1.1.1-2.tar.gz";
-    sha256 = "8ad0c5f333f79f1b842a5e4f5c9c4cca5e08b8c7480505f7988f435c28ea4e7f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "lanelet2-release";
+    rev = "0c978ce459d83c22d760ff0e058049e6e248e7b7";
+    owner = "fzi-forschungszentrum-informatik";
+    sha256 = "sha256-f8lvg45yjWovjMCmp3Pdmr6KFejBnczY67qkvP5uFWw=";
   };
 
   buildType = "ament_cmake";

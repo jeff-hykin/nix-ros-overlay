@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-forward-command-controller";
   version = "1.5.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_controllers-release/archive/release/galactic/forward_command_controller/1.5.1-1.tar.gz";
-    name = "1.5.1-1.tar.gz";
-    sha256 = "e7105f50ca62d1de4263a748bfc60e1506d77a3f585f8b7269bf1c01e26fc31c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_controllers-release";
+    rev = "f1beb5a833804f8d497af24a47b4dd913487b4b0";
+    owner = "ros2-gbp";
+    sha256 = "sha256-CFvJQweCptMK2P43McG3Ds4zSLNtWsB9em06Vs9f0XY=";
   };
 
   buildType = "ament_cmake";

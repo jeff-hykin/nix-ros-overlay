@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-ibeo-msgs";
   version = "3.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/astuff/astuff_sensor_msgs-release/archive/release/foxy/ibeo_msgs/3.1.0-1.tar.gz";
-    name = "3.1.0-1.tar.gz";
-    sha256 = "dabef943871667ff41ec094c08509dd58f2447c49cc7cabe69411a301d25437e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "astuff_sensor_msgs-release";
+    rev = "e6255aacd14e1df6ff8bc1bb3bc88092ae3baf45";
+    owner = "astuff";
+    sha256 = "sha256-IX8py4NZtoZNiric0XVCAQQEMsJ0jM2gVlF+wNYK7lI=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-master-discovery-fkie";
   version = "0.8.12";
 
-  src = fetchurl {
-    url = "https://github.com/fkie-release/multimaster_fkie-release/archive/release/melodic/master_discovery_fkie/0.8.12-0.tar.gz";
-    name = "0.8.12-0.tar.gz";
-    sha256 = "a126c9f12ac3c9b370068d862b423f8476fa0d81b31e8474195049ab2ec28918";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "multimaster_fkie-release";
+    rev = "f8bef9d3d716bba0f417ac0a7e91c7520fac6ff0";
+    owner = "fkie-release";
+    sha256 = "sha256-gWgRtXGsFLD9y2ZfPcAme9SbIhlFx0DE7Lu+BaqW148=";
   };
 
   buildType = "catkin";

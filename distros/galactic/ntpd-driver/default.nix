@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ntpd-driver";
   version = "2.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/vooon/ntpd_driver-release/archive/release/galactic/ntpd_driver/2.1.0-1.tar.gz";
-    name = "2.1.0-1.tar.gz";
-    sha256 = "34660d7c06415c46bbf0ea33ec4e7dcc9d60ef5f7ca5b10d272d2d52db2aad9d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ntpd_driver-release";
+    rev = "dff755d9e13b678b05c6cad8aaa2f3304c1a45b7";
+    owner = "vooon";
+    sha256 = "sha256-L7LIFteK8wUZtvBSbgNa+JCCWVM8DfITGFVWsKx4gnA=";
   };
 
   buildType = "ament_cmake";

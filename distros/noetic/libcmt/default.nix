@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-libcmt";
   version = "2.1.21-r2";
 
-  src = fetchurl {
-    url = "https://github.com/tork-a/jsk_3rdparty-release/archive/release/noetic/libcmt/2.1.21-2.tar.gz";
-    name = "2.1.21-2.tar.gz";
-    sha256 = "5460174b56e8eedb403a1f24883e4da4ba5f86e50d57cc0fa95e18084694c092";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "jsk_3rdparty-release";
+    rev = "9264913546e8541119aefc4ddb7f7b955ebe40a1";
+    owner = "tork-a";
+    sha256 = "sha256-Wm1MIZqkm/j3wEiStK0DaOvYM6snXMmG09isl8fBDiY=";
   };
 
   buildType = "cmake";

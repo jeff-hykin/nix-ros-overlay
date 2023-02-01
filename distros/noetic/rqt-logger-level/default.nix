@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-rqt-logger-level";
   version = "0.4.11-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/rqt_logger_level-release/archive/release/noetic/rqt_logger_level/0.4.11-1.tar.gz";
-    name = "0.4.11-1.tar.gz";
-    sha256 = "4048c4d54ffe875a97ad927ce8b00658a17ea685624dcd0fb6a62b4106dd8ea3";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt_logger_level-release";
+    rev = "a7e04d92c643d9feded7e2a51593805a18d1bc1b";
+    owner = "ros-gbp";
+    sha256 = "sha256-e8Fr+N0QJcC3uUE5QO2HqL8VgqgIipSH0nkAKr9hGxU=";
   };
 
   buildType = "catkin";

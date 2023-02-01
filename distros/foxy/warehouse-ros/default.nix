@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-warehouse-ros";
   version = "2.0.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/moveit/warehouse_ros-release/archive/release/foxy/warehouse_ros/2.0.3-1.tar.gz";
-    name = "2.0.3-1.tar.gz";
-    sha256 = "b6a9d43d7d0790ed9df2bffc86629c2007ed33158491da1470c595368fa74582";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "warehouse_ros-release";
+    rev = "65460443926274d07caaa872f2f1580bdfe722cf";
+    owner = "moveit";
+    sha256 = "sha256-nrZf5I7wUpqq1GQYt6hsTv4HioTsqYc1Q8O4RVT8sv8=";
   };
 
   buildType = "ament_cmake";

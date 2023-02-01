@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-moveit-msgs";
   version = "2.2.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/moveit_msgs-release/archive/release/humble/moveit_msgs/2.2.1-1.tar.gz";
-    name = "2.2.1-1.tar.gz";
-    sha256 = "21b726427c912502976eeb44a81e415a6cfba075b289cd9cbd161bb263b906a9";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "moveit_msgs-release";
+    rev = "d6dc68834f8c3058ae31143ed9e559dcb9d9e68a";
+    owner = "ros2-gbp";
+    sha256 = "sha256-j2kN0/aZXgqQgw3wkRghueiY+X/URho8qm57Ze8n1y0=";
   };
 
   buildType = "ament_cmake";

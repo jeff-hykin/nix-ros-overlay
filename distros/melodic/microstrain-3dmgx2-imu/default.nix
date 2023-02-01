@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-microstrain-3dmgx2-imu";
   version = "1.5.13-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/microstrain_3dmgx2_imu-release/archive/release/melodic/microstrain_3dmgx2_imu/1.5.13-1.tar.gz";
-    name = "1.5.13-1.tar.gz";
-    sha256 = "c0d438f4cc98005f507ce6f99dff72f69f881867b3826fbd90c356f358a9e36c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "microstrain_3dmgx2_imu-release";
+    rev = "36503b2f07adef20439d0488d5e7e7139f763a6c";
+    owner = "ros-gbp";
+    sha256 = "sha256-7MKmlZuU6NLA+ZUDKedUhkyc8Xek4d9LKGqDHO2PNno=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-prbt-hardware-support";
   version = "0.5.23-r1";
 
-  src = fetchurl {
-    url = "https://github.com/PilzDE/pilz_robots-release/archive/release/melodic/prbt_hardware_support/0.5.23-1.tar.gz";
-    name = "0.5.23-1.tar.gz";
-    sha256 = "cae651e8cca5fb59f8a85526191d845a1096a967859de5e70847eedf4892bef4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pilz_robots-release";
+    rev = "6a5ea72df96aa9ba9caaa45d44133fdee54665f6";
+    owner = "PilzDE";
+    sha256 = "sha256-Y/CLzvKXtmTVqRQPyAy7lAahASqLef1zGUFsob0qqyE=";
   };
 
   buildType = "catkin";

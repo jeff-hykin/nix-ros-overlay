@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-eigenpy";
   version = "2.8.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/eigenpy-release/archive/release/humble/eigenpy/2.8.1-1.tar.gz";
-    name = "2.8.1-1.tar.gz";
-    sha256 = "2c103c8c2cfe8e6b4686fe892cdab90041659c2efd22bd14d4f34c1230f5df7c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "eigenpy-release";
+    rev = "7e0f4335146dd6bc21b3b116869140fd414c5e1d";
+    owner = "ros2-gbp";
+    sha256 = "sha256-SVbUiGuagzd4W/inUsf+mo43l5HcfIJhQUy5GwofIgQ=";
   };
 
   buildType = "cmake";

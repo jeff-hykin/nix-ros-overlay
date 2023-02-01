@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-map-transformer";
   version = "1.0.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/map_transformer-release/archive/release/foxy/map_transformer/1.0.3-1.tar.gz";
-    name = "1.0.3-1.tar.gz";
-    sha256 = "d9f8ccf5a5879fa8965b65fa6f65b1d33503deb694b910eba3cd5ded46bff5ad";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "map_transformer-release";
+    rev = "fefb1ba4595a20d07b9cf9f6225f04fba788f607";
+    owner = "ros-gbp";
+    sha256 = "sha256-nSfWYekaZN2AK0OOrhM5iiLKNhVPTEMyNwqza2uaeOw=";
   };
 
   buildType = "ament_cmake";

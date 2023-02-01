@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-simulation";
   version = "0.10.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/variants-release/archive/release/rolling/simulation/0.10.0-1.tar.gz";
-    name = "0.10.0-1.tar.gz";
-    sha256 = "9b1c301a009af090e50841a0be676c381a237c2f391c78b9da89c546c5c0a44b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "variants-release";
+    rev = "977d993a291b37223001ed427a4a096d3588b859";
+    owner = "ros2-gbp";
+    sha256 = "sha256-bvicFtHnIqmwZPfpdtNprdkWQWqSKGs+cezebLL0sUs=";
   };
 
   buildType = "ament_cmake";

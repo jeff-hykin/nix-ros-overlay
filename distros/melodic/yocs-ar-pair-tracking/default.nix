@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-yocs-ar-pair-tracking";
   version = "0.8.2";
 
-  src = fetchurl {
-    url = "https://github.com/yujinrobot-release/yujin_ocs-release/archive/release/melodic/yocs_ar_pair_tracking/0.8.2-0.tar.gz";
-    name = "0.8.2-0.tar.gz";
-    sha256 = "60179e49a3644effdd14bf503e183c3ef7c0690f550b89e64847399f3934c7df";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "yujin_ocs-release";
+    rev = "6ccfa26e8ab127417616817664f4c1965775f00b";
+    owner = "yujinrobot-release";
+    sha256 = "sha256-+WUAc/rzW/azv8TfJFdPQNE01gjs293xF1Zmvx8Aq88=";
   };
 
   buildType = "catkin";

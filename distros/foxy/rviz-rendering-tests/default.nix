@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-rviz-rendering-tests";
   version = "8.2.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rviz-release/archive/release/foxy/rviz_rendering_tests/8.2.7-1.tar.gz";
-    name = "8.2.7-1.tar.gz";
-    sha256 = "49ed722e21c132845606de5fed8e30094aa54da5bca4f816f8e167ef2ba142dd";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rviz-release";
+    rev = "30cd0b05e81b151961edcf60248172f4bb876594";
+    owner = "ros2-gbp";
+    sha256 = "sha256-mKeTB2ke3hNqoKnq5btnoNOJG5NAZAC7Yf+M5Lk9png=";
   };
 
   buildType = "ament_cmake";

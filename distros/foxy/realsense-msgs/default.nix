@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-realsense-msgs";
   version = "2.0.8-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_intel_realsense-release/archive/release/foxy/realsense_msgs/2.0.8-2.tar.gz";
-    name = "2.0.8-2.tar.gz";
-    sha256 = "65cb51b57237afed75d0c9b198e39bc70c72952fbed8a7cbd87545add8c15523";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_intel_realsense-release";
+    rev = "9e0f711b0acb8344fda0c0257e73bcda14a44cf7";
+    owner = "ros2-gbp";
+    sha256 = "sha256-31WTJs276O9cczmX1YoxCufWxOGqiEWUeCz+DIAZImY=";
   };
 
   buildType = "ament_cmake";

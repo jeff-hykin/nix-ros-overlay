@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-schunk-svh-description";
   version = "0.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/fzi-forschungszentrum-informatik/schunk_svh_ros_driver-release/archive/release/melodic/schunk_svh_description/0.1.1-1.tar.gz";
-    name = "0.1.1-1.tar.gz";
-    sha256 = "90d06d2240e267e72a988c2499d0c25a67a1e7c039ecff4a2c5a893fa0f4bd26";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "schunk_svh_ros_driver-release";
+    rev = "02ae0a90719061442221c354a5a5d0b11bcd6e81";
+    owner = "fzi-forschungszentrum-informatik";
+    sha256 = "sha256-BCPKvBAvjy/uVEQdcmnaW1uhs2xKuwr5UCNg2GDjhBI=";
   };
 
   buildType = "catkin";

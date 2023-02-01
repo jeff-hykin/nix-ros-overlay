@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-realtime-tools";
   version = "2.4.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/realtime_tools-release/archive/release/humble/realtime_tools/2.4.0-1.tar.gz";
-    name = "2.4.0-1.tar.gz";
-    sha256 = "99c99240f1ef6acfbeda4158b6f3e0f162f71463cbdc49fddaf2e110661f3b25";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "realtime_tools-release";
+    rev = "fbe836f80a81c8f34e2dc06bcaaa021a71eabc1f";
+    owner = "ros2-gbp";
+    sha256 = "sha256-x4hpsIRPQ3clZ9n9aEo793BI+5NH9a78D+LLknga7Hc=";
   };
 
   buildType = "ament_cmake";

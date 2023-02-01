@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-serial-driver";
   version = "1.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-drivers-gbp/transport_drivers-release/archive/release/foxy/serial_driver/1.0.0-1.tar.gz";
-    name = "1.0.0-1.tar.gz";
-    sha256 = "156514da3368035e73c93ec4f3437a8adee80b7dc98fdfef6932ba4d2b819d9d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "transport_drivers-release";
+    rev = "0febf6fdb25650a9e3d64f8d895f464ce1685782";
+    owner = "ros-drivers-gbp";
+    sha256 = "sha256-JapHZwblAnYpkW5QvajYTHTXUafJZdtyjOIhxW40d8A=";
   };
 
   buildType = "ament_cmake";

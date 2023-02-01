@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-self-test";
   version = "1.11.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/diagnostics-release/archive/release/noetic/self_test/1.11.0-1.tar.gz";
-    name = "1.11.0-1.tar.gz";
-    sha256 = "4821b7e88addf297e02ff2eb431284e1fc8ddd30e4b1e54bf9f76b409e5a3e4f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "diagnostics-release";
+    rev = "fb230b9100a35510ba0d2c96ef1870aab64e437c";
+    owner = "ros-gbp";
+    sha256 = "sha256-v8ry7qWdDbT5BH+CW0LbmvSOI0/hxJJq/XkGJFrPGwc=";
   };
 
   buildType = "catkin";

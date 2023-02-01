@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-lusb";
   version = "1.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/DataspeedInc-release/lusb-release/archive/release/noetic/lusb/1.1.0-1.tar.gz";
-    name = "1.1.0-1.tar.gz";
-    sha256 = "65aeadc9a0f6e40009b2f8c5befeb581d7b83f954c40bf9bdf66847b9c9d53bc";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "lusb-release";
+    rev = "4afd608b7e74fc27ab65c52f3c337721efc8da80";
+    owner = "DataspeedInc-release";
+    sha256 = "sha256-zAbwlREDTG5YSycBEr/RFaxKOCiynL4dg1xJjDv9mJE=";
   };
 
   buildType = "catkin";

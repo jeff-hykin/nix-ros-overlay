@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-p2os-teleop";
   version = "2.2.1-r2";
 
-  src = fetchurl {
-    url = "https://github.com/allenh1/p2os-release/archive/release/noetic/p2os_teleop/2.2.1-2.tar.gz";
-    name = "2.2.1-2.tar.gz";
-    sha256 = "0ca88afa5f7a774ec39c1f793799f53267d1971a3a25da7519b7844f08ccca95";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "p2os-release";
+    rev = "450be4ee3d7f8e3214165f5ff69e6fa9665a7dbb";
+    owner = "allenh1";
+    sha256 = "sha256-KHi5WjejxtngLbEqIGARd3QHamazwK1XE/qgSQPozYs=";
   };
 
   buildType = "catkin";

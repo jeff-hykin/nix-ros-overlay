@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ament-flake8";
   version = "0.10.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ament_lint-release/archive/release/galactic/ament_flake8/0.10.7-1.tar.gz";
-    name = "0.10.7-1.tar.gz";
-    sha256 = "b012fff38ebb9d1240a141a0d6acb7a01a8f6457b69d1bb5b5079933735b824b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ament_lint-release";
+    rev = "200d98ac3b924c8ff796330b9a01f3270a8e1080";
+    owner = "ros2-gbp";
+    sha256 = "sha256-CHG5jWPKyXE8aPkqTKP69p+8pw2o3ZUQjghKOw3Qh5M=";
   };
 
   buildType = "ament_python";

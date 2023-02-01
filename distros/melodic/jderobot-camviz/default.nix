@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-jderobot-camviz";
   version = "0.1.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/JdeRobot/CamViz-release/archive/release/melodic/jderobot_camviz/0.1.0-2.tar.gz";
-    name = "0.1.0-2.tar.gz";
-    sha256 = "c7e538328be52770bd2746dac33c2665bfd4388af307577b319ea1a8b982708d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "CamViz-release";
+    rev = "7feee6534a2986497a78a9cc68da106150ed364a";
+    owner = "JdeRobot";
+    sha256 = "sha256-pIdvtnI134JcoYTbGcqu+WqILV8oUI3EFsXQr7odmy0=";
   };
 
   buildType = "catkin";

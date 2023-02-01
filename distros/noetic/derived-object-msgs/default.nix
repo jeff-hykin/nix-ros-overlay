@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-derived-object-msgs";
   version = "3.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/astuff/astuff_sensor_msgs-release/archive/release/noetic/derived_object_msgs/3.3.0-1.tar.gz";
-    name = "3.3.0-1.tar.gz";
-    sha256 = "4ea1519b31275a2df6f3ca203077fca8b5447d588c02e69898463d3c3a9a7037";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "astuff_sensor_msgs-release";
+    rev = "815da43c6f94a696fe643221bc28c53537aee692";
+    owner = "astuff";
+    sha256 = "sha256-JYHamuEPnYN6s+XfH/sxGfpPj7dX/DoXQiekYjS7r3E=";
   };
 
   buildType = "catkin";

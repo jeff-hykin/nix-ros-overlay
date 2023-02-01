@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-camera-calibration-parsers";
   version = "2.4.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/image_common-release/archive/release/foxy/camera_calibration_parsers/2.4.0-1.tar.gz";
-    name = "2.4.0-1.tar.gz";
-    sha256 = "bd0f502363620e2bddef611dcde02e001208564be1c949f1a7feb0ddf622c2d1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "image_common-release";
+    rev = "f5c2b3806efd8f69b9dee188c0df24724cece717";
+    owner = "ros2-gbp";
+    sha256 = "sha256-F658YC8KP5lhokUcXMArPhob7GGLzqIWcCdQGFB32UU=";
   };
 
   buildType = "ament_cmake";

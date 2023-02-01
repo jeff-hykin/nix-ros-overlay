@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-safety-limiter";
   version = "0.11.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/at-wat/neonavigation-release/archive/release/noetic/safety_limiter/0.11.7-1.tar.gz";
-    name = "0.11.7-1.tar.gz";
-    sha256 = "436d52843815d224364857e9c4b261a361d02ead03bc990788a9a97a431cd2a6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "neonavigation-release";
+    rev = "20099d53e4d44cc3a8bae5e8a7a62cc7f8448478";
+    owner = "at-wat";
+    sha256 = "sha256-U7NB8KIUelfvdo+1j+2v3n0G3wU4D4D+6/zWS84G85M=";
   };
 
   buildType = "catkin";

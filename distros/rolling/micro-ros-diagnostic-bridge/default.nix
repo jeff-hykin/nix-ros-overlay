@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-micro-ros-diagnostic-bridge";
   version = "0.3.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/micro_ros_diagnostics-release/archive/release/rolling/micro_ros_diagnostic_bridge/0.3.0-2.tar.gz";
-    name = "0.3.0-2.tar.gz";
-    sha256 = "1e0093a6aa52761d451a4aad5781ac0ffcbdd502e6121f591075b290cf005d6a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "micro_ros_diagnostics-release";
+    rev = "9fd60dfe63ed8f0ed906d381c61c9064b65479ac";
+    owner = "ros2-gbp";
+    sha256 = "sha256-mBsQdSKOPVQJVBc/FxvaxH5NOtAJy3M+bYciq7eHg+c=";
   };
 
   buildType = "ament_cmake";

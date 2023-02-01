@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-transmission-interface";
   version = "0.11.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_control-release/archive/release/foxy/transmission_interface/0.11.0-1.tar.gz";
-    name = "0.11.0-1.tar.gz";
-    sha256 = "67b06775276e270b5b8aca63582f05daf3a5aa7d1ebf6e4d8b84000927193931";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_control-release";
+    rev = "c56398ff6ae5bbd06e5de476562a27b41e63177d";
+    owner = "ros2-gbp";
+    sha256 = "sha256-NKouRLHd7h3gHUfX/Aq+2x942UOR6XjMGvXbvJWiO18=";
   };
 
   buildType = "ament_cmake";

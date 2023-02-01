@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-yocs-velocity-smoother";
   version = "0.8.2";
 
-  src = fetchurl {
-    url = "https://github.com/yujinrobot-release/yujin_ocs-release/archive/release/melodic/yocs_velocity_smoother/0.8.2-0.tar.gz";
-    name = "0.8.2-0.tar.gz";
-    sha256 = "9de916242e06317201e15ac26eb33949b8f7aeb84dc262ee44e82ce5ceb3328a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "yujin_ocs-release";
+    rev = "0a57806f367ebaa19e88a05e729e11077a3ec1b4";
+    owner = "yujinrobot-release";
+    sha256 = "sha256-OMA0Wrmj1syv9GHsCZ2CM6thsLlMkBNH/SuA642PtnE=";
   };
 
   buildType = "catkin";

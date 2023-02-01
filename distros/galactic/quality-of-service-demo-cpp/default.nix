@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-quality-of-service-demo-cpp";
   version = "0.14.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/demos-release/archive/release/galactic/quality_of_service_demo_cpp/0.14.4-1.tar.gz";
-    name = "0.14.4-1.tar.gz";
-    sha256 = "3b73a2e69cd20aa4779bfcf9e828c9d78c00f0c1a8fcd7a8d792572eecac7943";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "demos-release";
+    rev = "06e001d661809945c857546f1f93835bbc991f3b";
+    owner = "ros2-gbp";
+    sha256 = "sha256-+NtqYFd7zX9Evrxm4rZUYmdumgMyDDEstcGL3t2I5V0=";
   };
 
   buildType = "ament_cmake";

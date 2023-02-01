@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-smacc2";
   version = "0.2.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/robosoft-ai/SMACC2-release/archive/release/foxy/smacc2/0.2.0-2.tar.gz";
-    name = "0.2.0-2.tar.gz";
-    sha256 = "613c6185074ebd40ea2e3f853cc2ae3bb56ff1b04e56ebd28a1b599bfb2fb8b1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "SMACC2-release";
+    rev = "cfc357f27b3fa9e5fc8634a371392cc537276514";
+    owner = "robosoft-ai";
+    sha256 = "sha256-wqqgWvNMkoXuptKt/mub8IdZ858s776Jd62je98ZJeU=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rosidl-typesupport-introspection-c";
   version = "2.2.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rosidl-release/archive/release/galactic/rosidl_typesupport_introspection_c/2.2.3-1.tar.gz";
-    name = "2.2.3-1.tar.gz";
-    sha256 = "16c0999c31700274c8177d5e1a511b75dac9805797f2fdf59390f61c61eea796";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosidl-release";
+    rev = "ad503284cee1a6aac0704bd125b580fba68a7993";
+    owner = "ros2-gbp";
+    sha256 = "sha256-J4yI1Kln3ef6H5LU+NThwr2GC21yeplkpX/i3SeLsQs=";
   };
 
   buildType = "ament_cmake";

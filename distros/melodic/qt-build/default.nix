@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-qt-build";
   version = "0.2.10-r1";
 
-  src = fetchurl {
-    url = "https://github.com/yujinrobot-release/qt_ros-release/archive/release/melodic/qt_build/0.2.10-1.tar.gz";
-    name = "0.2.10-1.tar.gz";
-    sha256 = "8efbd3e986cd99b3cd997e6dc4bd94babe0885f4bcc5c4571b5558ad5273c98e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "qt_ros-release";
+    rev = "7c9982eb9898ab1f2e2f72f9376b9e28677ca50a";
+    owner = "yujinrobot-release";
+    sha256 = "sha256-r3oiMwz3b+7dlO0TPsDtgEE2mpEYkRTjVc6O3W85Uzk=";
   };
 
   buildType = "catkin";

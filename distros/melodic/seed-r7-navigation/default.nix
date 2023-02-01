@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-seed-r7-navigation";
   version = "0.3.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/seed-solutions/seed_r7_ros_pkg-release/archive/release/melodic/seed_r7_navigation/0.3.3-1.tar.gz";
-    name = "0.3.3-1.tar.gz";
-    sha256 = "4cd0a99daf7b2b78efbeffa4e986d97c6880666eafd3f2d38daf38ce56604e44";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "seed_r7_ros_pkg-release";
+    rev = "b1f346afcbdfa46447c577723c6586b4cc12be04";
+    owner = "seed-solutions";
+    sha256 = "sha256-IxaslCNF2wkKGsmixO3cB88huP5PncFce+03g0qi6eA=";
   };
 
   buildType = "catkin";

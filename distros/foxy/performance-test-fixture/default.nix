@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-performance-test-fixture";
   version = "0.0.9-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/performance_test_fixture-release/archive/release/foxy/performance_test_fixture/0.0.9-1.tar.gz";
-    name = "0.0.9-1.tar.gz";
-    sha256 = "796a5e4aca50c9a1afed499bdc3af6972e2401b100f2993f2226e760f123e33b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "performance_test_fixture-release";
+    rev = "bb0ff873c05ceeecd1c6dd124a225f712c3972c8";
+    owner = "ros2-gbp";
+    sha256 = "sha256-AGkyb6QjietsUExtcqvwhnGy5Sd2EFBT8JkBAd4rb4o=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-geos-cmake-module";
   version = "0.0.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/swri-robotics-gbp/geos_cmake_module-release/archive/release/melodic/geos_cmake_module/0.0.2-1.tar.gz";
-    name = "0.0.2-1.tar.gz";
-    sha256 = "42f6d0459dd82805452093922bdf8e7afec3119f4aa1eb205442949b5dae5b9b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "geos_cmake_module-release";
+    rev = "a9fb62afcca6ce99fc2e79ace0a214f0411c03dd";
+    owner = "swri-robotics-gbp";
+    sha256 = "sha256-FDRKdYdEgfAGl4bDOmWs08kLCyq6aLruF/ASxeJvagM=";
   };
 
   buildType = "catkin";

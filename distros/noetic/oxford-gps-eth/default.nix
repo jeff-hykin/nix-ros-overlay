@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-oxford-gps-eth";
   version = "1.2.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/DataspeedInc-release/oxford_gps_eth-release/archive/release/noetic/oxford_gps_eth/1.2.1-1.tar.gz";
-    name = "1.2.1-1.tar.gz";
-    sha256 = "c8b0e11dc06be0c20400031bde92ffa566bde872b1027a9430c935379f5b1cdc";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "oxford_gps_eth-release";
+    rev = "578e458f585345820880c2e243bc8493edca51ac";
+    owner = "DataspeedInc-release";
+    sha256 = "sha256-gIoKuH1fq8Wid1D0zTEmhCX0a4OuVaw8ji7zKsEzkjc=";
   };
 
   buildType = "catkin";

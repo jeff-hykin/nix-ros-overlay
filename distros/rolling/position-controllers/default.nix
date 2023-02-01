@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-position-controllers";
   version = "2.15.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_controllers-release/archive/release/rolling/position_controllers/2.15.0-1.tar.gz";
-    name = "2.15.0-1.tar.gz";
-    sha256 = "b1e600cefcd0eb9383e652cfe006ec4c7786c98eec05b6fdb1b621b2fed0d5dc";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_controllers-release";
+    rev = "31516b4ff01e7222a88682b883b41393a094eec2";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Kp7Fa0QOv5wLVgdOFgyCjlTgrAc2LGCSO2X53+qr7sE=";
   };
 
   buildType = "ament_cmake";

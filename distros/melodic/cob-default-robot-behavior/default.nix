@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-cob-default-robot-behavior";
   version = "0.7.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_robots-release/archive/release/melodic/cob_default_robot_behavior/0.7.5-1.tar.gz";
-    name = "0.7.5-1.tar.gz";
-    sha256 = "1c2e20933ba2952e461a7248d7495fb3bdec8e85b58d8db35d37b6e7de2e542f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_robots-release";
+    rev = "8d954b1cf2d89f684f476a468ad0c58a7afa3b04";
+    owner = "ipa320";
+    sha256 = "sha256-ZKbjFcNfRU/ETZHybU0DJICtdQ/IVoPEx9WVJtOUDvo=";
   };
 
   buildType = "catkin";

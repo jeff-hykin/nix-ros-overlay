@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-effort-controllers";
   version = "0.21.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/ros_controllers-release/archive/release/noetic/effort_controllers/0.21.0-1.tar.gz";
-    name = "0.21.0-1.tar.gz";
-    sha256 = "d8a504ae0f9a64d8143dc1752b24571f59df7ecda9465439e0e29b76e903883d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_controllers-release";
+    rev = "e62686f527a32100ec5618b95d604ac2cfb34dd3";
+    owner = "ros-gbp";
+    sha256 = "sha256-QdheB80m7o5ZeDQHLEWw24Vql/gWSBD9YhMlFIhYirU=";
   };
 
   buildType = "catkin";

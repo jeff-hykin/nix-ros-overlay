@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-common-interfaces";
   version = "2.2.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/common_interfaces-release/archive/release/galactic/common_interfaces/2.2.4-1.tar.gz";
-    name = "2.2.4-1.tar.gz";
-    sha256 = "d9cfee1b1f3e1154fef1ce3a323a061c10ac84ac5d804529d03930c76177b397";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "common_interfaces-release";
+    rev = "7b161d66c4f203adb1675f9b6b9cc711e2e6076c";
+    owner = "ros2-gbp";
+    sha256 = "sha256-0IsuZU8wfdVQLieDVMmXqlKopXmnJS4Y6gKYcTnhq7g=";
   };
 
   buildType = "ament_cmake";

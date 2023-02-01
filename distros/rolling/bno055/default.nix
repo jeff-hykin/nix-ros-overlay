@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-bno055";
   version = "0.2.0-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/bno055-release/archive/release/rolling/bno055/0.2.0-3.tar.gz";
-    name = "0.2.0-3.tar.gz";
-    sha256 = "2911bd97581529d22fae1c65be16901e9467f95c3561642ee090e8ebc9b4374e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "bno055-release";
+    rev = "30b34ab5bf9254bab339a940a0ec7630bfe60d72";
+    owner = "ros2-gbp";
+    sha256 = "sha256-E6TFzCS+qgVR28/5EhBQyPpyUOM8AcEa1caua5zNGDE=";
   };
 
   buildType = "ament_python";

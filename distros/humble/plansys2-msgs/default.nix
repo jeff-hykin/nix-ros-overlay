@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-plansys2-msgs";
   version = "2.0.9-r1";
 
-  src = fetchurl {
-    url = "https://github.com/IntelligentRoboticsLabs/ros2_planning_system-release/archive/release/humble/plansys2_msgs/2.0.9-1.tar.gz";
-    name = "2.0.9-1.tar.gz";
-    sha256 = "ef76e8857f55adc6c0a9ddd2b4fc2be364c6bd0cba7b425463db530460618a64";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_planning_system-release";
+    rev = "80bc1aac9b81db21dd8ff1f7ed0c0dba51f84fc8";
+    owner = "IntelligentRoboticsLabs";
+    sha256 = "sha256-hknUk8JuraiESL3Xgo8iGU7fJnIp64LcXoAhwW2e1IY=";
   };
 
   buildType = "ament_cmake";

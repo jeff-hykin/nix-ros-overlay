@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-nav2-navfn-planner";
   version = "1.0.12-r1";
 
-  src = fetchurl {
-    url = "https://github.com/SteveMacenski/navigation2-release/archive/release/galactic/nav2_navfn_planner/1.0.12-1.tar.gz";
-    name = "1.0.12-1.tar.gz";
-    sha256 = "e77760025dc5a91a7d3e733ff1a913c99790ec25767e92fa3e95bd07ef7ea7bb";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation2-release";
+    rev = "9ebc1338f1f1bd5743e90b28afc0c5587481d26f";
+    owner = "SteveMacenski";
+    sha256 = "sha256-ql5kxNhEO5a973IzrCL3o9+kW8Usw+4fxJQezU1yaWA=";
   };
 
   buildType = "ament_cmake";

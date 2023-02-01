@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-hls-lfcd-lds-driver";
   version = "2.0.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/robotis-ros2-release/hls_lfcd_lds_driver-release/archive/release/galactic/hls_lfcd_lds_driver/2.0.4-1.tar.gz";
-    name = "2.0.4-1.tar.gz";
-    sha256 = "87af426f16a85710b87c4bc7e179110f05d1b47c71006974479e684d61d462a5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "hls_lfcd_lds_driver-release";
+    rev = "b34826fc6cd0ab3e8923dfe4e579324c457ee0ee";
+    owner = "robotis-ros2-release";
+    sha256 = "sha256-gFslT2HGpW6SzRM8frU8D/gistcJDw02YkcZTXZcfa8=";
   };
 
   buildType = "ament_cmake";

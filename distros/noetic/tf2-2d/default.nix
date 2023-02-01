@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-tf2-2d";
   version = "0.6.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/locusrobotics/tf2_2d-release/archive/release/noetic/tf2_2d/0.6.4-1.tar.gz";
-    name = "0.6.4-1.tar.gz";
-    sha256 = "e6391d874cb244f062336064435ca13899bd50f71657ad6b3f928b0f85aa212a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "tf2_2d-release";
+    rev = "fe2af1e023fe305499485d834ef190366c62af50";
+    owner = "locusrobotics";
+    sha256 = "sha256-fzb/KTasnwpnYHrHv+LYFIZ+HiS+a+zTiZ6t1CBuUMk=";
   };
 
   buildType = "catkin";

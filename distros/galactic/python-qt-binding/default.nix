@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-python-qt-binding";
   version = "1.0.8-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/python_qt_binding-release/archive/release/galactic/python_qt_binding/1.0.8-1.tar.gz";
-    name = "1.0.8-1.tar.gz";
-    sha256 = "b65c1862a807b6c261582bbfe1388fa5dc599666a0b033cd67b23f3d3a75d1a5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "python_qt_binding-release";
+    rev = "b035ba536ae8b3666d0dfd8c0ec41002372179d3";
+    owner = "ros2-gbp";
+    sha256 = "sha256-NKZ25E/7rsT+gAyJKytZm5eSQtPRwqiEw2wwLPj9quM=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-velocity-controllers";
   version = "0.8.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_controllers-release/archive/release/foxy/velocity_controllers/0.8.2-1.tar.gz";
-    name = "0.8.2-1.tar.gz";
-    sha256 = "a23fc11b4b5905f3160d4cf9ea232d9f09594b817250ced94177685c1ac27dc1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_controllers-release";
+    rev = "c6480962e5bef7287195335fe2e5148def124957";
+    owner = "ros2-gbp";
+    sha256 = "sha256-mW0Em/IkSFN4HraNaxBvlsy6kroYnHw3D0Bc35IokJg=";
   };
 
   buildType = "ament_cmake";

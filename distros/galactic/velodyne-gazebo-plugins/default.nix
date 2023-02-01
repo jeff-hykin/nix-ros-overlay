@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-velodyne-gazebo-plugins";
   version = "2.0.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/velodyne_simulator-release/archive/release/galactic/velodyne_gazebo_plugins/2.0.3-1.tar.gz";
-    name = "2.0.3-1.tar.gz";
-    sha256 = "40f87a24f409bc3577c0bde33c53e53596a2f3f743e9fc1f04c106783759fa82";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "velodyne_simulator-release";
+    rev = "fa117005e76dba3a9eb4dc473236ef5f5fdebaf2";
+    owner = "ros2-gbp";
+    sha256 = "sha256-TFxh7d/7+m5z05amlR634rbaqZYAHs06SxUx3ZlM/NI=";
   };
 
   buildType = "ament_cmake";

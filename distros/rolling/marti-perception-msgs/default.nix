@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-marti-perception-msgs";
   version = "1.3.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/marti_messages-release/archive/release/rolling/marti_perception_msgs/1.3.0-2.tar.gz";
-    name = "1.3.0-2.tar.gz";
-    sha256 = "4c0408562bf21ec5a37f2c71412c02d9f7b16e9187d66b80ff25f5bec015fbb8";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "marti_messages-release";
+    rev = "93254357d47638d9d89dd54f636f6a96a1845c59";
+    owner = "ros2-gbp";
+    sha256 = "sha256-exDlhwOZU0vkvXPezARIXpuYzv3B5UEGHR/3Il8kmyA=";
   };
 
   buildType = "ament_cmake";

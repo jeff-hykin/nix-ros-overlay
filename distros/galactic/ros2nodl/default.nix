@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ros2nodl";
   version = "0.3.1-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/nodl-release/archive/release/galactic/ros2nodl/0.3.1-2.tar.gz";
-    name = "0.3.1-2.tar.gz";
-    sha256 = "f6deb6248123797275cfa3a1e01b99420a0dfcc2139bc26bd659b774fea9aef0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "nodl-release";
+    rev = "634a2181955f0e85271703c6e785c9d4411d513d";
+    owner = "ros2-gbp";
+    sha256 = "sha256-8JQgseO9AxfsDy2YuxQ/dojS/6MOLaCKwBGUX8hIgwk=";
   };
 
   buildType = "ament_python";

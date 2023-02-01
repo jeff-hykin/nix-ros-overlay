@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-fetch-drivers";
   version = "0.9.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/fetchrobotics-gbp/fetch_robots-release/archive/release/noetic/fetch_drivers/0.9.3-1.tar.gz";
-    name = "0.9.3-1.tar.gz";
-    sha256 = "0c76111986c9801ed8e104c00cfc952a7891b156355347ec00b86b36e0e3822c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "fetch_robots-release";
+    rev = "49912cd02a33ab92188261118f79d497f8de35e4";
+    owner = "fetchrobotics-gbp";
+    sha256 = "sha256-I1PZvdYdVACu6nBOJgDzY2jiHA4d7Q0ESClFTeR3WwM=";
   };
 
   buildType = "catkin";

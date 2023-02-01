@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-lifecycle";
   version = "0.20.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/demos-release/archive/release/humble/lifecycle/0.20.2-1.tar.gz";
-    name = "0.20.2-1.tar.gz";
-    sha256 = "f07d3a60cf616c69451eba2f3ca396d5a28327fd567a8c61531425c9e6ef6df2";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "demos-release";
+    rev = "671c849da075550f5dd34ef5d2ea4c151d4a34bb";
+    owner = "ros2-gbp";
+    sha256 = "sha256-nlFnq6tbdOC/6vVmXuRvvHuf5VIMfq9/dboF/0JsWjo=";
   };
 
   buildType = "ament_cmake";

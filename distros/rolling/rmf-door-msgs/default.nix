@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-rmf-door-msgs";
   version = "3.0.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_internal_msgs-release/archive/release/rolling/rmf_door_msgs/3.0.2-1.tar.gz";
-    name = "3.0.2-1.tar.gz";
-    sha256 = "3976d315ed428407f73e4f76cad09d33dc6177e10d459b145c6e52a6e9a33409";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_internal_msgs-release";
+    rev = "00e40e3562503c0e36be7a3aff41ccbc1fea4ca2";
+    owner = "ros2-gbp";
+    sha256 = "sha256-DZ4/GoMrs1KVn2qFqdF4rNrgsmrB8MtxXhM59DF9INo=";
   };
 
   buildType = "ament_cmake";

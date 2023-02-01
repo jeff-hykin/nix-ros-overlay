@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-system-modes-examples";
   version = "0.9.0-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/system_modes-release/archive/release/galactic/system_modes_examples/0.9.0-3.tar.gz";
-    name = "0.9.0-3.tar.gz";
-    sha256 = "8c9098871d19f548f89bc2d8c710d46fcba6227cd8e3fb6d5a90ba3462f9bced";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "system_modes-release";
+    rev = "e5d0ea72fe986897911a069130d6e276eeef8afd";
+    owner = "ros2-gbp";
+    sha256 = "sha256-0kfAi8ExAnUicuzTFtWKNQwRZP8qipcdbz4XUrg7EQM=";
   };
 
   buildType = "ament_cmake";

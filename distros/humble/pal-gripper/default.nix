@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-pal-gripper";
   version = "3.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pal-gbp/pal_gripper-release/archive/release/humble/pal_gripper/3.0.1-1.tar.gz";
-    name = "3.0.1-1.tar.gz";
-    sha256 = "d10ed88b621cc35211d5ff899de08e9678930ba82fb4f5c5a8b92a3f0be245d5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pal_gripper-release";
+    rev = "16248618703537ec5fa5eb68a2cec77181e69fb6";
+    owner = "pal-gbp";
+    sha256 = "sha256-qxn0Pwpu7Ef5ty+3nYma0i+tUYjvULkzADL7eSX4wqE=";
   };
 
   buildType = "ament_cmake";

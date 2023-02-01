@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-apriltag-ros";
   version = "3.2.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/AprilRobotics/apriltag_ros-release/archive/release/melodic/apriltag_ros/3.2.1-1.tar.gz";
-    name = "3.2.1-1.tar.gz";
-    sha256 = "f3ca9ce2dccc9169f47f78e6e591e4daad245e508ef63d1636809ab07ca72296";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "apriltag_ros-release";
+    rev = "76834d8cd835401942293e91c847f563551401ba";
+    owner = "AprilRobotics";
+    sha256 = "sha256-RVlsQgytlz/UF1NgJDC+KrxYIIwmst7rX5+iuP+8DPE=";
   };
 
   buildType = "catkin";

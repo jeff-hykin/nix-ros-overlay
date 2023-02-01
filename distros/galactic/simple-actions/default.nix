@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-simple-actions";
   version = "0.2.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/DLu/simple_actions-release/archive/release/galactic/simple_actions/0.2.1-1.tar.gz";
-    name = "0.2.1-1.tar.gz";
-    sha256 = "fdf174b66edb31ed304a4cf4c74f08f8a1abbbb02a3d7c2d1c3bfc9aa36b32b2";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "simple_actions-release";
+    rev = "0f645a3054a0733993722d13f15a1406893ad976";
+    owner = "DLu";
+    sha256 = "sha256-NwJn4jspMkn8bZdj3z4bwQmkm017B0FXkjiGFfIl+cY=";
   };
 
   buildType = "ament_cmake";

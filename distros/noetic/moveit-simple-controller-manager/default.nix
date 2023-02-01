@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-moveit-simple-controller-manager";
   version = "1.1.11-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/moveit-release/archive/release/noetic/moveit_simple_controller_manager/1.1.11-1.tar.gz";
-    name = "1.1.11-1.tar.gz";
-    sha256 = "70beeca47ddae60922a1d4b706e38201ebfcefcfb2da1311d2692ab08740260e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "moveit-release";
+    rev = "bec5d1a1c3d050c83e719e87e95aebe3b2e5a33a";
+    owner = "ros-gbp";
+    sha256 = "sha256-TX2VJjSafeO0ypumC59LakIN065DbsvhpHI7AdJiAI8=";
   };
 
   buildType = "catkin";

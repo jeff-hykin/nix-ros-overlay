@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-rm-calibration-controllers";
   version = "0.1.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/rm-controls/rm_controllers-release/archive/release/noetic/rm_calibration_controllers/0.1.7-1.tar.gz";
-    name = "0.1.7-1.tar.gz";
-    sha256 = "a2d0f9856c66c2674f610b0cc9ddbee9a764853326e9f8bcf18bf4313351723b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rm_controllers-release";
+    rev = "1e4248807ae4cf5ea5c4ca03f602ebb8204ac772";
+    owner = "rm-controls";
+    sha256 = "sha256-Om/m3MON3WpO1mdayXD+e99ypi87QKpoZwJP/H2+LXo=";
   };
 
   buildType = "catkin";

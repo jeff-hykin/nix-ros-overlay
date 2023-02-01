@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-examples-rclcpp-wait-set";
   version = "0.15.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/examples-release/archive/release/humble/examples_rclcpp_wait_set/0.15.1-1.tar.gz";
-    name = "0.15.1-1.tar.gz";
-    sha256 = "0e088de926b40717d0c2dbed352183ea3c023947146d1659f5341ba36905fb46";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "examples-release";
+    rev = "48c924c910dfd40c8966c5284426245beac6dea3";
+    owner = "ros2-gbp";
+    sha256 = "sha256-c4ualUWpbMN/geOevA3dKG3J1Goydt3xWn5lmyQptSU=";
   };
 
   buildType = "ament_cmake";

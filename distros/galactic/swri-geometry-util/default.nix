@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-swri-geometry-util";
   version = "3.5.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/marti_common-release/archive/release/galactic/swri_geometry_util/3.5.1-1.tar.gz";
-    name = "3.5.1-1.tar.gz";
-    sha256 = "217fac6f40eae7a341ce584ee77165384419a5ebaa0e0b678157eeea8dc12381";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "marti_common-release";
+    rev = "871e8e3f203bd67c45d50d7fd1dbb2a8c99b83da";
+    owner = "ros2-gbp";
+    sha256 = "sha256-dLYZDeFv9M2eOJPeM8Zn2yCDq3PZz1JCQ/ucNxMS8mc=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-wiimote";
   version = "3.1.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/joystick_drivers-release/archive/release/rolling/wiimote/3.1.0-2.tar.gz";
-    name = "3.1.0-2.tar.gz";
-    sha256 = "6b4fe2c189f4a1215c02728c2eefe9814586fb88921e6afc221f30fffb9f2a92";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "joystick_drivers-release";
+    rev = "333533e9115a2288d4a4ab184ecc48c69fa62034";
+    owner = "ros2-gbp";
+    sha256 = "sha256-tmTuJsuid0a70I48V0kdL+odWCPg4/C6sdR519Ur1LE=";
   };
 
   buildType = "ament_cmake";

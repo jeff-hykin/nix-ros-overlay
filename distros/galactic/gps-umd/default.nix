@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-gps-umd";
   version = "1.0.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/gps_umd-release/archive/release/galactic/gps_umd/1.0.5-1.tar.gz";
-    name = "1.0.5-1.tar.gz";
-    sha256 = "352c0ee472661fd1088e7c3d965609ed95db1ae0ee1273f46fbfc9ecadd278d1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "gps_umd-release";
+    rev = "568a1752c548c1b2d2b5362463c22114b931b0e1";
+    owner = "ros2-gbp";
+    sha256 = "sha256-5s+j1Gi3Ol78qKR30I45lJrosFxRzr5zFQ3KcvknUhs=";
   };
 
   buildType = "catkin";

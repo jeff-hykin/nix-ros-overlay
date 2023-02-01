@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-realtime-tools";
   version = "2.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/realtime_tools-release/archive/release/foxy/realtime_tools/2.2.0-1.tar.gz";
-    name = "2.2.0-1.tar.gz";
-    sha256 = "7ccfcdccb6f2398cbe2e563fc7b458640fa6f0efeb5a44e5161eaa232df13a28";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "realtime_tools-release";
+    rev = "230fc202db9c0f2c0e1fe388398dda96b7536a91";
+    owner = "ros-gbp";
+    sha256 = "sha256-SeYdxrdbB+dhJByGSvIlB8iirsnXdBVSA1dDnvMOEdI=";
   };
 
   buildType = "ament_cmake";

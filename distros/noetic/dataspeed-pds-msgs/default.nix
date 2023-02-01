@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-dataspeed-pds-msgs";
   version = "1.0.6-r1";
 
-  src = fetchurl {
-    url = "https://github.com/DataspeedInc-release/dataspeed_pds-release/archive/release/noetic/dataspeed_pds_msgs/1.0.6-1.tar.gz";
-    name = "1.0.6-1.tar.gz";
-    sha256 = "3fef22aba59316e7daf38726ded577eead137cd17cbcf800888b0095e0a6546b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "dataspeed_pds-release";
+    rev = "946b1df8c903118f467a1710a62f520df509866a";
+    owner = "DataspeedInc-release";
+    sha256 = "sha256-T6S2l2IuCi7rEupPJ3JZaLAqiNvD6+PRTUm+DOY3pjc=";
   };
 
   buildType = "catkin";

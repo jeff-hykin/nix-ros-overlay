@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-dummy-sensors";
   version = "0.20.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/demos-release/archive/release/humble/dummy_sensors/0.20.2-1.tar.gz";
-    name = "0.20.2-1.tar.gz";
-    sha256 = "f35c1c379e07cdacd928993c48867920a40874a87b66836644a317cd84e4d86f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "demos-release";
+    rev = "3197addee98e33e0c2cc71b8b974d1718ab6b0be";
+    owner = "ros2-gbp";
+    sha256 = "sha256-65Ub36GfKnyGMWYZPQ7uuBiyX3nYEp3W9KHlQW/qlGU=";
   };
 
   buildType = "ament_cmake";

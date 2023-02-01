@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-cob-relayboard";
   version = "0.7.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_driver-release/archive/release/melodic/cob_relayboard/0.7.4-1.tar.gz";
-    name = "0.7.4-1.tar.gz";
-    sha256 = "e235947658ce54f6c7852549a3cf64a4c6a1a02e40c51f6ecc8322f0829d6506";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_driver-release";
+    rev = "4ce363793d9733a15397ae329f52b39251c083eb";
+    owner = "ipa320";
+    sha256 = "sha256-Woz8ByVSjYpcYyITfB7N+UaBOl1iXJ902NHkYxbQeVU=";
   };
 
   buildType = "catkin";

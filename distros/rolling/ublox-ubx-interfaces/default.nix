@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-ublox-ubx-interfaces";
   version = "0.3.5-r3";
 
-  src = fetchurl {
-    url = "https://github.com/aussierobots/ublox_dgnss-release/archive/release/rolling/ublox_ubx_interfaces/0.3.5-3.tar.gz";
-    name = "0.3.5-3.tar.gz";
-    sha256 = "5d5a43710b5cdc4f64eb894e6d281c9d36f25c6775d520959c532abc0b10191f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ublox_dgnss-release";
+    rev = "dc665b21e16e0a2cb9ba50ca8b879450c5b55bee";
+    owner = "aussierobots";
+    sha256 = "sha256-LVY7sODWICiAO2EZPOmt5aTlu0ZqjHH4bIgAZfFKbpQ=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-menge-vendor";
   version = "1.0.0-r4";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/menge_vendor-release/archive/release/humble/menge_vendor/1.0.0-4.tar.gz";
-    name = "1.0.0-4.tar.gz";
-    sha256 = "95fceaf5a214d236fb7d1f46761cf4a512689e5737d4a5a85aedcf6073702220";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "menge_vendor-release";
+    rev = "b2a00aedbbbd8d068feb9b6ad081c74d14f2fb49";
+    owner = "ros2-gbp";
+    sha256 = "sha256-pwDvm+FUMHbvtumRly3aV2QEDQ0UxPN8GlgjCe8TOZE=";
   };
 
   buildType = "catkin";

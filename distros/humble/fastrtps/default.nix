@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-fastrtps";
   version = "2.6.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/fastrtps-release/archive/release/humble/fastrtps/2.6.3-1.tar.gz";
-    name = "2.6.3-1.tar.gz";
-    sha256 = "a1ac96637ddbaf1a1d6b3c0aac2e1d3058f760e5a9ec93c2cee630694ad4d527";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "fastrtps-release";
+    rev = "666548b9582c3c0bbce54b4cb4e2fa05b3835ab4";
+    owner = "ros2-gbp";
+    sha256 = "sha256-80iN7D7g2c5f+9BKJaATlDvjydHOXktvo2fLkO7tF24=";
   };
 
   buildType = "cmake";

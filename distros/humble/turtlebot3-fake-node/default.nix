@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-turtlebot3-fake-node";
   version = "2.2.5-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/turtlebot3_simulations-release/archive/release/humble/turtlebot3_fake_node/2.2.5-3.tar.gz";
-    name = "2.2.5-3.tar.gz";
-    sha256 = "24a1b429e5aa4b9a506665fa696a16cb88ba9426e6c301ada28d2ded1196561c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "turtlebot3_simulations-release";
+    rev = "6b1018fca4d2178cd3ffb49d6450ab6c7e457cd1";
+    owner = "ros2-gbp";
+    sha256 = "sha256-RC56Xh4EBNwDvXTRDOIw1kV2Q9fZB4veFuXoOZI3KZA=";
   };
 
   buildType = "ament_cmake";

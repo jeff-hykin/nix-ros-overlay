@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-ergodic-exploration";
   version = "1.0.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/bostoncleek/ergodic_exploration-release/archive/release/noetic/ergodic_exploration/1.0.0-2.tar.gz";
-    name = "1.0.0-2.tar.gz";
-    sha256 = "d2e81bb6a8707add0d3ea8178e3e770dd865fdbdec36b515e477ce27d1e40ec5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ergodic_exploration-release";
+    rev = "c2d7ffecd6c074ea3b15c043950673a7ea3e4023";
+    owner = "bostoncleek";
+    sha256 = "sha256-/cUrh8AcZZZum43UDTN7yp6ULAY271aSygjagGJGITo=";
   };
 
   buildType = "catkin";

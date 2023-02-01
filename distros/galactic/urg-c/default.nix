@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-urg-c";
   version = "1.0.4001-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/urg_c-release/archive/release/galactic/urg_c/1.0.4001-3.tar.gz";
-    name = "1.0.4001-3.tar.gz";
-    sha256 = "97c8b1e614609f50eb7997f618f69a823737f33d26cb89e7ef9aeb3c38bfe342";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "urg_c-release";
+    rev = "7e4ca6aa0ffc78f5f683901236c854cbe4064806";
+    owner = "ros2-gbp";
+    sha256 = "sha256-d1sMppxyaGt43L2i5Eplkfen4tHz1t6hkC42mCbg0EM=";
   };
 
   buildType = "ament_cmake";

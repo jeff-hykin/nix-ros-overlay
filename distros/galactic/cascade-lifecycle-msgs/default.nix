@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-cascade-lifecycle-msgs";
   version = "1.0.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/fmrico/cascade_lifecycle-release/archive/release/galactic/cascade_lifecycle_msgs/1.0.0-2.tar.gz";
-    name = "1.0.0-2.tar.gz";
-    sha256 = "7e795341e347e8d28b5af6936d4fc613717e8c34d99a90273b177b8b53f6c1c3";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cascade_lifecycle-release";
+    rev = "e8c4e3177364c0bd97b69e18c5627a306e444fdd";
+    owner = "fmrico";
+    sha256 = "sha256-7jQOyit46MQNjUxlwkLVLy00muJIc537HktOBtyOtIk=";
   };
 
   buildType = "ament_cmake";

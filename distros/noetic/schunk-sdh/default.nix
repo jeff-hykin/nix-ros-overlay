@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-schunk-sdh";
   version = "0.6.14-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/schunk_modular_robotics-release/archive/release/noetic/schunk_sdh/0.6.14-1.tar.gz";
-    name = "0.6.14-1.tar.gz";
-    sha256 = "49ae4d8f97483a7b2349425c265470e6a00b4b7ed6eb138db59de12a73ecd496";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "schunk_modular_robotics-release";
+    rev = "9001235f9af03fb3213f02c7f14fbe7b7dae5c42";
+    owner = "ipa320";
+    sha256 = "sha256-8nQDbkqJKaA7ggj7AOw/fUX/uxHwbwve34BoP5yyZdc=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-rqt-rviz";
   version = "0.7.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/rqt_rviz-release/archive/release/noetic/rqt_rviz/0.7.0-1.tar.gz";
-    name = "0.7.0-1.tar.gz";
-    sha256 = "a654c09013c36efb408a635700dbd62bf8c37da8f9a5c53aaefe790a49fc7ad7";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt_rviz-release";
+    rev = "83c58917e26a22b549d5cda1060570ebb826799d";
+    owner = "ros-gbp";
+    sha256 = "sha256-cLQ60gEfaxRNz4XGfHoKBMRaEmfD13y6zMBL7bUv84c=";
   };
 
   buildType = "catkin";

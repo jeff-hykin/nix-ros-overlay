@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-ubiquity-motor";
   version = "0.14.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/UbiquityRobotics-release/ubiquity_motor-release/archive/release/noetic/ubiquity_motor/0.14.0-1.tar.gz";
-    name = "0.14.0-1.tar.gz";
-    sha256 = "5586a39112e8b8cea95553c554d1203215d4db84e89cd1c826cd7d368b875c74";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ubiquity_motor-release";
+    rev = "db1a61d7da6d512eca05af77dd0e3818e717e8e5";
+    owner = "UbiquityRobotics-release";
+    sha256 = "sha256-gaY+2VGkoHAPeWH6fq+MzFCLaK15dXCeTe4Yv1uQzOM=";
   };
 
   buildType = "catkin";

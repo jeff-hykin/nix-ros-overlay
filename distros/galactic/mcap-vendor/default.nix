@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-mcap-vendor";
   version = "0.6.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rosbag2_storage_mcap-release/archive/release/galactic/mcap_vendor/0.6.0-1.tar.gz";
-    name = "0.6.0-1.tar.gz";
-    sha256 = "cc665c9409150a1e3cab2c861ec7882e6c27170e3e7773d9bd960822326ded65";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosbag2_storage_mcap-release";
+    rev = "c3ff291b56057ef829db540d5d58d5275a70d8e1";
+    owner = "ros2-gbp";
+    sha256 = "sha256-FwRsZV6R2hRI7MVAgRqSGR3zEaLFuCY94hgoYGUI6ug=";
   };
 
   buildType = "ament_cmake";

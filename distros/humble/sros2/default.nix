@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-sros2";
   version = "0.10.4-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/sros2-release/archive/release/humble/sros2/0.10.4-2.tar.gz";
-    name = "0.10.4-2.tar.gz";
-    sha256 = "9e16ee6f952d699f2a0607672ad98680e8ed8edd42e52e634aa728efebaa728b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "sros2-release";
+    rev = "13a414596524567cad9f7abc69fcc9bb334fa587";
+    owner = "ros2-gbp";
+    sha256 = "sha256-lJhQDaafdGq1msKefJXf5u6ayUhacRER4rfAQs7mz2E=";
   };
 
   buildType = "ament_python";

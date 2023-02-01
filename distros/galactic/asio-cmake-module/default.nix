@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-asio-cmake-module";
   version = "1.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/transport_drivers-release/archive/release/galactic/asio_cmake_module/1.1.1-1.tar.gz";
-    name = "1.1.1-1.tar.gz";
-    sha256 = "6637bf183dcfbd6c3f2e4f0900b776f3f98b8fccabb5e55ba0bce5a49c0594ff";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "transport_drivers-release";
+    rev = "cd01394d7550fc131d3df650f1b073af8d87fbf9";
+    owner = "ros2-gbp";
+    sha256 = "sha256-c+Ehdxa6Og7zvd/7AmFzsoOx6WnbOLEiHNBNzCOKEqQ=";
   };
 
   buildType = "ament_cmake";

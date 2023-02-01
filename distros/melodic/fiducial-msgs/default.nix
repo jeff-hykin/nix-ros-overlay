@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-fiducial-msgs";
   version = "0.11.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/UbiquityRobotics-release/fiducials-release/archive/release/melodic/fiducial_msgs/0.11.0-1.tar.gz";
-    name = "0.11.0-1.tar.gz";
-    sha256 = "f518a98e96490068c7b4d086801cca8b5948d274451c03e1e82221fde3101366";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "fiducials-release";
+    rev = "9ad5182a89de4514bb1d95c02fd3c418f40ac944";
+    owner = "UbiquityRobotics-release";
+    sha256 = "sha256-4bgYnfHapkrXRyXNo2SSpGuWbKPctbdVscBz7ZuxiIU=";
   };
 
   buildType = "catkin";

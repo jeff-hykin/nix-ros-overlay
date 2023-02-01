@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-gazebo-video-monitors";
   version = "0.7.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/nlamprian/gazebo_video_monitors-release/archive/release/noetic/gazebo_video_monitors/0.7.0-1.tar.gz";
-    name = "0.7.0-1.tar.gz";
-    sha256 = "3f826e78f7e83116edc3d110bd2df6ab8f2109e9447590e59d13325259a448a5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "gazebo_video_monitors-release";
+    rev = "90dc42e8f58d932b418727be5ec022da38af7bba";
+    owner = "nlamprian";
+    sha256 = "sha256-ebSD+BLz4Z/jY1K01GbpULZQ3wNwP1X4AUii7q/IH1I=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-rqt-controller-manager";
   version = "2.18.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_control-release/archive/release/humble/rqt_controller_manager/2.18.0-1.tar.gz";
-    name = "2.18.0-1.tar.gz";
-    sha256 = "a4b811bb9d61d024366d8d710af9335e4f148b10ec6266e55c8fcb72dcad4714";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_control-release";
+    rev = "e0ca3d229c89011b09fc14b9fe175be8c25e15a2";
+    owner = "ros2-gbp";
+    sha256 = "sha256-rTAGFNC1O/k2BPvBX6d2971fM5JdF9DIXpgB8fZaAeA=";
   };
 
   buildType = "ament_python";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-microstrain-inertial-msgs";
   version = "2.7.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/LORD-MicroStrain/microstrain_inertial-release/archive/release/noetic/microstrain_inertial_msgs/2.7.1-1.tar.gz";
-    name = "2.7.1-1.tar.gz";
-    sha256 = "5c7d4c41f834a79b8c6b9a25bd8bc00b378df65863a4a7a13325210fe6e1225a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "microstrain_inertial-release";
+    rev = "b353b4e8db7621c424a5c4cf1bf5fd7838db738f";
+    owner = "LORD-MicroStrain";
+    sha256 = "sha256-cexUlQwIGuel/Bx4V+5UAcvseKXD8c0P4q6dSv/OILw=";
   };
 
   buildType = "catkin";

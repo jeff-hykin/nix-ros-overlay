@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-fetch-auto-dock-msgs";
   version = "1.1.1";
 
-  src = fetchurl {
-    url = "https://github.com/fetchrobotics-gbp/fetch_msgs-release/archive/release/melodic/fetch_auto_dock_msgs/1.1.1-0.tar.gz";
-    name = "1.1.1-0.tar.gz";
-    sha256 = "34f30fe803b0fad0edc3a7983308c34404592920ce11fbdd0d96fd8ea849eb77";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "fetch_msgs-release";
+    rev = "d7c8028c8a225f21c72e999f4999f6b73856d1ad";
+    owner = "fetchrobotics-gbp";
+    sha256 = "sha256-44gElrgOCdl8HT4e/lDV1FNqnPynngNU+icXnJgXwdg=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-pendulum-control";
   version = "0.20.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/demos-release/archive/release/humble/pendulum_control/0.20.2-1.tar.gz";
-    name = "0.20.2-1.tar.gz";
-    sha256 = "3e3bc4c7d88bb666f007bb8f2f2bdc262d12c10092a7a93988ae5767ccdb3dca";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "demos-release";
+    rev = "1d1dc7c8f5cf52d7873968dc7c58974a5adf7d53";
+    owner = "ros2-gbp";
+    sha256 = "sha256-noSl91szNa2NvC0MrJm8k14Ek4jb6qeylt2ngJQipNA=";
   };
 
   buildType = "ament_cmake";

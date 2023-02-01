@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-dummy-map-server";
   version = "0.20.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/demos-release/archive/release/humble/dummy_map_server/0.20.2-1.tar.gz";
-    name = "0.20.2-1.tar.gz";
-    sha256 = "cc04b79f98b165477839d3b76ecbcfa578562301619163310794e451e41f3f50";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "demos-release";
+    rev = "97b67e398f597e82cd3c344cb7850559ac8da2b9";
+    owner = "ros2-gbp";
+    sha256 = "sha256-MPfHFeW71+VfLMODeytfqTOhdEhfyxbIgWEYLNMGKf8=";
   };
 
   buildType = "ament_cmake";

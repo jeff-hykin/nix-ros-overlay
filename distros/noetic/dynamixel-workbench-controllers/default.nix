@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-dynamixel-workbench-controllers";
   version = "2.2.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ROBOTIS-GIT-release/dynamixel-workbench-release/archive/release/noetic/dynamixel_workbench_controllers/2.2.1-1.tar.gz";
-    name = "2.2.1-1.tar.gz";
-    sha256 = "0191c29aaa977c0ec9407d4743da05968a15cc97415f24bb845cc67e237bd6ab";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "dynamixel-workbench-release";
+    rev = "b8e161cafae934ca44e96c65a4c5a32900188265";
+    owner = "ROBOTIS-GIT-release";
+    sha256 = "sha256-wvyMaEAMuAzhi7Wcbhx9ikalj8HCofwBZ5J8lYZU4Rk=";
   };
 
   buildType = "catkin";

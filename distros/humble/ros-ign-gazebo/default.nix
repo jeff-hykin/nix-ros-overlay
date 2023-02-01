@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-ros-ign-gazebo";
   version = "0.244.9-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros_ign-release/archive/release/humble/ros_ign_gazebo/0.244.9-1.tar.gz";
-    name = "0.244.9-1.tar.gz";
-    sha256 = "949d8729d310d6983da0f79ab143f1f690f41db6209bb67b4145b966c04f73cf";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_ign-release";
+    rev = "b843807c8fddde253ae4adcc7f7f69df3f234f04";
+    owner = "ros2-gbp";
+    sha256 = "sha256-SD6Nw6CZM+yrCnJ+nMryhJFuAJEsiX9Hb0oRsiV4ce4=";
   };
 
   buildType = "ament_cmake";

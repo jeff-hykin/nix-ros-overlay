@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-franka-example-controllers";
   version = "0.10.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/frankaemika/franka_ros-release/archive/release/noetic/franka_example_controllers/0.10.1-1.tar.gz";
-    name = "0.10.1-1.tar.gz";
-    sha256 = "ca63d40f8f721813885825c3f2d0942ccdd4ed1aaacb635c5e30c722f515ae51";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "franka_ros-release";
+    rev = "f0f3048759e2b2829cbbde719befbcfdd071a5c6";
+    owner = "frankaemika";
+    sha256 = "sha256-8p7Gw20DddL8YvDbOFecVs3VYEhU+2mALEOjNJY3pdA=";
   };
 
   buildType = "catkin";

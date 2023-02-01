@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-hpp-fcl";
   version = "2.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/hpp_fcl-release/archive/release/foxy/hpp-fcl/2.2.0-1.tar.gz";
-    name = "2.2.0-1.tar.gz";
-    sha256 = "b4296473da19156f008e0de41bee793a9f140b146752b1ea3167e2e822842d09";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "hpp_fcl-release";
+    rev = "40a1dcf9f7d1c2b671b1db791cf7d77b9f8ed255";
+    owner = "ros2-gbp";
+    sha256 = "sha256-qhSLoE/vV0hK4gPpF9GMI7r2l3o7uqNhQaSr+y00MiU=";
   };
 
   buildType = "cmake";

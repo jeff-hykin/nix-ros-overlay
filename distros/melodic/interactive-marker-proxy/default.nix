@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-interactive-marker-proxy";
   version = "0.1.2";
 
-  src = fetchurl {
-    url = "https://github.com/RobotWebTools-release/interactive_marker_proxy-release/archive/release/melodic/interactive_marker_proxy/0.1.2-0.tar.gz";
-    name = "0.1.2-0.tar.gz";
-    sha256 = "39123a492c42042c9566254a5342fa930f30cf26c0bc2279b83135477ef56bce";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "interactive_marker_proxy-release";
+    rev = "72303d490d54113f7957e39d7be014936eec009d";
+    owner = "RobotWebTools-release";
+    sha256 = "sha256-UqzW/6+nZOG28/fGHffdRtYKzqY9udxpcuJtOpzJbfA=";
   };
 
   buildType = "catkin";

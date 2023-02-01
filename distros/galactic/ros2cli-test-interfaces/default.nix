@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ros2cli-test-interfaces";
   version = "0.13.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2cli-release/archive/release/galactic/ros2cli_test_interfaces/0.13.5-1.tar.gz";
-    name = "0.13.5-1.tar.gz";
-    sha256 = "607a8421d9885c7f693eb8ba5a6e3c02d9d12de562b34425d6ee2b350ab21cb2";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2cli-release";
+    rev = "c7747530d58dfdd1ed968b46696439b747431b7d";
+    owner = "ros2-gbp";
+    sha256 = "sha256-6vyzNRRvC9x3eZu3+nhnNzn2B9HpAAo19Tpl9P6i96Y=";
   };
 
   buildType = "ament_cmake";

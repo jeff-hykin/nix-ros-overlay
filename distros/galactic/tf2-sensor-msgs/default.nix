@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-tf2-sensor-msgs";
   version = "0.17.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/geometry2-release/archive/release/galactic/tf2_sensor_msgs/0.17.5-1.tar.gz";
-    name = "0.17.5-1.tar.gz";
-    sha256 = "f1a45427a5fee4581aba44da85472f9179651dcbf0dd5b376571b1f915a08de9";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "geometry2-release";
+    rev = "acea7234a265c15b783934a294b4db32e6b9860c";
+    owner = "ros2-gbp";
+    sha256 = "sha256-KrwPR7xJDZcoFdHgrzMxoxObb8qcyk/4BKHE40/CrxU=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-rcdiscover";
   version = "1.1.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/roboception-gbp/rcdiscover-release/archive/release/foxy/rcdiscover/1.1.4-1.tar.gz";
-    name = "1.1.4-1.tar.gz";
-    sha256 = "a78655ab6373401ce8b964d495302eec0e23c17da882aab606bb72fc3155985a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rcdiscover-release";
+    rev = "2ec59e1d29e2beac127852955e7bb20720812575";
+    owner = "roboception-gbp";
+    sha256 = "sha256-IzHfwuLyT18CS/9Qj/yMlO3ghLUflM1FesXkbpqXruE=";
   };
 
   buildType = "cmake";

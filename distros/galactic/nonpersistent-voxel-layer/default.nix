@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-nonpersistent-voxel-layer";
   version = "2.2.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/SteveMacenski/nonpersistent_voxel_layer-release/archive/release/galactic/nonpersistent_voxel_layer/2.2.2-1.tar.gz";
-    name = "2.2.2-1.tar.gz";
-    sha256 = "dfb3454f5456d145eb59748389e30c918baf3d3401e43bdb075829c98c9b70b0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "nonpersistent_voxel_layer-release";
+    rev = "7c2863aa6d8255369dc2b7ccabaed1929b9b5995";
+    owner = "SteveMacenski";
+    sha256 = "sha256-BDfogW6rVTsO1h+Fn+jPoVWxMEwITftlVMdNcPiHrtY=";
   };
 
   buildType = "ament_cmake";

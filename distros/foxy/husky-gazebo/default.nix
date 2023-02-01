@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-husky-gazebo";
   version = "1.0.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/clearpath-gbp/husky-release/archive/release/foxy/husky_gazebo/1.0.7-1.tar.gz";
-    name = "1.0.7-1.tar.gz";
-    sha256 = "ad1860accae9114da1ed658e87dd300e18db34d585e2c8f02435d49f1d427914";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "husky-release";
+    rev = "7d731dd41aa3cb8842c482e219b041f4d96e1e50";
+    owner = "clearpath-gbp";
+    sha256 = "sha256-YjfPkbrElzx9F5iEKZ1V8bbW7GeMYyHT/bT38F4txJA=";
   };
 
   buildType = "ament_cmake";

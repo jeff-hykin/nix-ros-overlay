@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rslidar-sdk";
   version = "1.3.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/nobleo/rslidar_sdk-release/archive/release/galactic/rslidar_sdk/1.3.2-1.tar.gz";
-    name = "1.3.2-1.tar.gz";
-    sha256 = "a0299c63831f8e4a89abbc0f8cd57c0d64bbf0948aaa4570777004c138709247";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rslidar_sdk-release";
+    rev = "af7f7cf30d677319bc123a54317122e51c22dc2b";
+    owner = "nobleo";
+    sha256 = "sha256-MPofBs/szDBuSyjBp8Xu0OwEDNJb76gw5zdhvvI4sqI=";
   };
 
   buildType = "ament_cmake";

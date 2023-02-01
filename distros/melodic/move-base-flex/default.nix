@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-move-base-flex";
   version = "0.4.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/uos-gbp/move_base_flex-release/archive/release/melodic/move_base_flex/0.4.0-1.tar.gz";
-    name = "0.4.0-1.tar.gz";
-    sha256 = "d5e114c10ac44d7e47dd2b5f89a0d739cb6d7970bfbaf336a826ff5b211b899b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "move_base_flex-release";
+    rev = "434e2d828681f3daaaa9e58e739c42a23b1eb21a";
+    owner = "uos-gbp";
+    sha256 = "sha256-0iTYubCTfWaWCwoHbHiujNfqow3Z7NUxFmyKh5NLRNM=";
   };
 
   buildType = "catkin";

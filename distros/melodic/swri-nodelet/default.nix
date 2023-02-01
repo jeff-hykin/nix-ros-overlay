@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-swri-nodelet";
   version = "2.15.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/swri-robotics-gbp/marti_common-release/archive/release/melodic/swri_nodelet/2.15.2-1.tar.gz";
-    name = "2.15.2-1.tar.gz";
-    sha256 = "78927d5e6057dc60de10bdff45f4d454a026528ab9ced40af2c6e20687930aad";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "marti_common-release";
+    rev = "06bfebd8a214082876c37c3106265fbaab4df8df";
+    owner = "swri-robotics-gbp";
+    sha256 = "sha256-42wkVD2H/SaGulcMEROawfekpN0/oMKtb9AXq+nYV8s=";
   };
 
   buildType = "catkin";

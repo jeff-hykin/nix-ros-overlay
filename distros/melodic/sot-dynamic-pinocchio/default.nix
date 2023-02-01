@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-sot-dynamic-pinocchio";
   version = "3.6.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/stack-of-tasks/sot-dynamic-pinocchio-ros-release/archive/release/melodic/sot-dynamic-pinocchio/3.6.5-1.tar.gz";
-    name = "3.6.5-1.tar.gz";
-    sha256 = "70feb89ab90ebda7d34a1505aaabe1118a988a9e46619736046125bb904988c2";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "sot-dynamic-pinocchio-ros-release";
+    rev = "1fc8d9ce28d2786085deaf6ad692dd9d1686e289";
+    owner = "stack-of-tasks";
+    sha256 = "sha256-MT1NNwbg/1OuCt42vG1XWKTgox+CCMhmh8plMB1f/lY=";
   };
 
   buildType = "cmake";

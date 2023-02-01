@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-floam";
   version = "0.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/flynneva/floam-release/archive/release/melodic/floam/0.1.0-1.tar.gz";
-    name = "0.1.0-1.tar.gz";
-    sha256 = "beb288940b811899fc7dc80cc3d6b6c673c76fa6d68616179ca82660971bb097";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "floam-release";
+    rev = "3ef0e0c61fa652b044b7099bd1f5f3422ac81ca8";
+    owner = "flynneva";
+    sha256 = "sha256-SA+takXbqkSJibyAiw43/eYnsDSb2bN9Lid7Wn87OtU=";
   };
 
   buildType = "catkin";

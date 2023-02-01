@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-plansys2-problem-expert";
   version = "2.0.8-r1";
 
-  src = fetchurl {
-    url = "https://github.com/IntelligentRoboticsLabs/ros2_planning_system-release/archive/release/galactic/plansys2_problem_expert/2.0.8-1.tar.gz";
-    name = "2.0.8-1.tar.gz";
-    sha256 = "61e39df4dc7b45d01edcaaab52f8e3742235232a90fde79d44f87a390a4aa950";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_planning_system-release";
+    rev = "8d2bab5babe66314495704aef00bc77e54577bc3";
+    owner = "IntelligentRoboticsLabs";
+    sha256 = "sha256-8guTrvGrwz6DTyJDj8dTb+np191Om267qNGXrRNxXBo=";
   };
 
   buildType = "ament_cmake";

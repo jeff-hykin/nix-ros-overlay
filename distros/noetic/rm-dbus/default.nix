@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-rm-dbus";
   version = "0.1.15-r1";
 
-  src = fetchurl {
-    url = "https://github.com/rm-controls/rm_control-release/archive/release/noetic/rm_dbus/0.1.15-1.tar.gz";
-    name = "0.1.15-1.tar.gz";
-    sha256 = "6a2b0380e64504e654f4cd0cbf028adc9a02f8f88d74d4d8924b5a9ae3e8dfc1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rm_control-release";
+    rev = "d2d9cc2668b97e7ae9362b63f23c0712a27dc0bf";
+    owner = "rm-controls";
+    sha256 = "sha256-aHt0cFzAkg5bwLnSZW1Eky6/VgI20XGfWqs9Vs8OXk8=";
   };
 
   buildType = "catkin";

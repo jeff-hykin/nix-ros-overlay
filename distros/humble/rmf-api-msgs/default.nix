@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-rmf-api-msgs";
   version = "0.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_api_msgs-release/archive/release/humble/rmf_api_msgs/0.0.1-1.tar.gz";
-    name = "0.0.1-1.tar.gz";
-    sha256 = "7980b23f156fa9c8f50e3e26c292b2d2230abdac25e1ae6036973cfbfe009926";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_api_msgs-release";
+    rev = "b94726a84ae3b2b658cb4edfb153bcc7bb0a5b4f";
+    owner = "ros2-gbp";
+    sha256 = "sha256-h4F3FbFrB5lQ4zR80l3Dj3w4eoUeCzJBa5s9iUPL6fg=";
   };
 
   buildType = "ament_cmake";

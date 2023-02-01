@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-graceful-controller";
   version = "0.4.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/mikeferguson/graceful_controller-gbp/archive/release/noetic/graceful_controller/0.4.5-1.tar.gz";
-    name = "0.4.5-1.tar.gz";
-    sha256 = "053d07fcc27c9d2f24507d01336d85947c46cd87a685b886a913a11726891d75";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "graceful_controller-gbp";
+    rev = "273cbf64960c770429980c4d82b35ae4924dd2ca";
+    owner = "mikeferguson";
+    sha256 = "sha256-exxlqw+4aBd75Tp9vtNvqCs8P+97KEAMex94M8R1gzQ=";
   };
 
   buildType = "catkin";

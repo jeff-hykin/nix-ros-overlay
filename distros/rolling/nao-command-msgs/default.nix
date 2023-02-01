@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-nao-command-msgs";
   version = "0.0.4-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/nao_interfaces-release/archive/release/rolling/nao_command_msgs/0.0.4-2.tar.gz";
-    name = "0.0.4-2.tar.gz";
-    sha256 = "789354af00dc2cd75a798d44fae83d3f5cb3599a6725eaa1f0626e813402943a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "nao_interfaces-release";
+    rev = "591d41a2264d7af6a547e9ea9f43e073d882740c";
+    owner = "ros2-gbp";
+    sha256 = "sha256-c5MI9xmqIM6a6lV86cpezLUwbxtIfICdZYHA39QMhiw=";
   };
 
   buildType = "ament_cmake";

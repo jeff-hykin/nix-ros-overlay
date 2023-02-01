@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-snowbot-operating-system";
   version = "0.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/PickNikRobotics/snowbot_release/archive/release/galactic/snowbot_operating_system/0.1.1-1.tar.gz";
-    name = "0.1.1-1.tar.gz";
-    sha256 = "38887d073d7444a4e62bdbabd5ed514c3ada7e04dea0fd86814c0911cd01f7ac";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "snowbot_release";
+    rev = "8c8ddf0620f5013ed7d20765c28228de1c486776";
+    owner = "PickNikRobotics";
+    sha256 = "sha256-acnpUUk4+qvsD0gQLTQwOlR79lw8ZZAMgFkABYJys8g=";
   };
 
   buildType = "ament_cmake";

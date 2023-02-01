@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-quality-of-service-demo-cpp";
   version = "0.20.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/demos-release/archive/release/humble/quality_of_service_demo_cpp/0.20.2-1.tar.gz";
-    name = "0.20.2-1.tar.gz";
-    sha256 = "93310552ec1b97a1c44e26afdb366477163f1c1b48d3f3a085834f51190b374b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "demos-release";
+    rev = "0d6da3fded36a0a3bccbb4abe5f2695719e31082";
+    owner = "ros2-gbp";
+    sha256 = "sha256-tOTca2oocKeptecOQcEHuQWiEvjqqDTHFuSDJE+MCfU=";
   };
 
   buildType = "ament_cmake";

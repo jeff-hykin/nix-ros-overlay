@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-rosidl-typesupport-interface";
   version = "1.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rosidl-release/archive/release/foxy/rosidl_typesupport_interface/1.3.0-1.tar.gz";
-    name = "1.3.0-1.tar.gz";
-    sha256 = "37a5dbbf0e001619240e55da703d90ddf91952c79568f32cc5d29662390b1bf1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosidl-release";
+    rev = "b6ab8bef0b4be2b49f554269c3ee12ad1d4e2530";
+    owner = "ros2-gbp";
+    sha256 = "sha256-V783u2QgNlwZfz5IpsBDCCYY1AdeHBEmmDv+WR7l7ZQ=";
   };
 
   buildType = "ament_cmake";

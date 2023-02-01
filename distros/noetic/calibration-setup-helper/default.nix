@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-calibration-setup-helper";
   version = "0.10.15-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/calibration-release/archive/release/noetic/calibration_setup_helper/0.10.15-1.tar.gz";
-    name = "0.10.15-1.tar.gz";
-    sha256 = "c03aba4f47f351f5a1aca2b3ce28e19395c430f3d88f502d8339c8daa01687ae";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "calibration-release";
+    rev = "b51a21c0f1ce86e8432879cb96579f0568596938";
+    owner = "ros-gbp";
+    sha256 = "sha256-4xVtdKgRFZOCY5sMJ2kh9IRvozNNkdYBvwWF3PfwRNU=";
   };
 
   buildType = "catkin";

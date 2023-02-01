@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-rqt-py-console";
   version = "1.0.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rqt_py_console-release/archive/release/foxy/rqt_py_console/1.0.2-1.tar.gz";
-    name = "1.0.2-1.tar.gz";
-    sha256 = "232841a16cb289ef21d6f2851c0826a98ba3940e6edc89f9fb6d6db458633c88";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt_py_console-release";
+    rev = "11f5e1785acb2f3219989fc89436f43b063e04c4";
+    owner = "ros2-gbp";
+    sha256 = "sha256-yLjOc2LoQeh7Yx+T6GKB+Xbdm3NG47pMTU2gIzn+uZY=";
   };
 
   buildType = "ament_python";

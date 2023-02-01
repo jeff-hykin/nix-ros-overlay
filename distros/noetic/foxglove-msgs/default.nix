@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-foxglove-msgs";
   version = "2.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/foxglove/ros_foxglove_msgs-release/archive/release/noetic/foxglove_msgs/2.1.1-1.tar.gz";
-    name = "2.1.1-1.tar.gz";
-    sha256 = "bc1f40409bf7589dc2d894001df400ffd1d12f40e7b6df34491f711719a4eecd";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_foxglove_msgs-release";
+    rev = "6609da8c6db6d1892efe37a5b399eb981a01b500";
+    owner = "foxglove";
+    sha256 = "sha256-WVd87BSDwF+o7s/HMSXhpwvIBHYpp6J263sCn635ILE=";
   };
 
   buildType = "catkin";

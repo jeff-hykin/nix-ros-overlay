@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-libyaml-vendor";
   version = "1.4.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/libyaml_vendor-release/archive/release/rolling/libyaml_vendor/1.4.2-1.tar.gz";
-    name = "1.4.2-1.tar.gz";
-    sha256 = "27d791f3501e735b2f44336d84b83e0b3eaf31763aa32433e3c8288c69321a45";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "libyaml_vendor-release";
+    rev = "b4f854877e33626e13942faa5f4c0a46e1f0feaa";
+    owner = "ros2-gbp";
+    sha256 = "sha256-B2uqS9U3CPThw71pjdP7RBBkjyBN8DlCbibIR3rmS80=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-swri-console-util";
   version = "3.5.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/marti_common-release/archive/release/rolling/swri_console_util/3.5.0-1.tar.gz";
-    name = "3.5.0-1.tar.gz";
-    sha256 = "107290cfa09bdc7da1a20fd8e9472924e5951ff5c8f7427b35c6707acba6dead";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "marti_common-release";
+    rev = "54f2f2d5dcdbcb96170abec14c1fc88978182054";
+    owner = "ros2-gbp";
+    sha256 = "sha256-ZH32tPitHyM8QwDOEH/eFIRSWfFAjERyrUOXxIpM6LE=";
   };
 
   buildType = "ament_cmake";

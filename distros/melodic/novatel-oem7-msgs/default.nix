@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-novatel-oem7-msgs";
   version = "4.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/novatel-gbp/novatel_oem7_driver-release/archive/release/melodic/novatel_oem7_msgs/4.0.0-1.tar.gz";
-    name = "4.0.0-1.tar.gz";
-    sha256 = "b1806982b4865c8c545fa1f03fc1ca794b2c41cf9f54ea38433c2fc259b47093";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "novatel_oem7_driver-release";
+    rev = "351a59eb3c5cba9ec3adc410f2c01dd1294d5008";
+    owner = "novatel-gbp";
+    sha256 = "sha256-tGroV/CWSJ0SuA30QZx0IneLcerfyBVSbHJJAH4aceA=";
   };
 
   buildType = "catkin";

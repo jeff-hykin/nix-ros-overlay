@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-realsense2-camera-msgs";
   version = "4.51.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/IntelRealSense/realsense-ros-release/archive/release/foxy/realsense2_camera_msgs/4.51.1-1.tar.gz";
-    name = "4.51.1-1.tar.gz";
-    sha256 = "de810e982b2c49cd696b97da298451f309c6e2213a6ce3fded06a05e6c672df0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "realsense-ros-release";
+    rev = "1ca42310ad21c76fa38e26b1371fa72e511bea07";
+    owner = "IntelRealSense";
+    sha256 = "sha256-n/1oSiCcxvKQEDde1zImo44mSgOwaFXd2GchxlVUexI=";
   };
 
   buildType = "ament_cmake";

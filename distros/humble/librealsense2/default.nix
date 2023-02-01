@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-librealsense2";
   version = "2.51.1-r2";
 
-  src = fetchurl {
-    url = "https://github.com/IntelRealSense/librealsense2-release/archive/release/humble/librealsense2/2.51.1-2.tar.gz";
-    name = "2.51.1-2.tar.gz";
-    sha256 = "32dc72f786c742dd110357cda1d3fb8b60841a53fe63b3aba4d9560f025494c2";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "librealsense2-release";
+    rev = "725d3e212ac7870c8ef9c1ce54cfda156f3e5fee";
+    owner = "IntelRealSense";
+    sha256 = "sha256-wRFSEPm6tsO1aEo2W4EUHDrvtTr43mvtQNqxjsrp7CM=";
   };
 
   buildType = "ament_cmake";

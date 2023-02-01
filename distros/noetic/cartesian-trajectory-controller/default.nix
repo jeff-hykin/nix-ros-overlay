@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-cartesian-trajectory-controller";
   version = "0.1.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/UniversalRobots/Universal_Robots_ROS_controllers_cartesian-release/archive/release/noetic/cartesian_trajectory_controller/0.1.5-1.tar.gz";
-    name = "0.1.5-1.tar.gz";
-    sha256 = "a76d6faca9681d71b4d5cb2c8112ebaa045dde95182797cc95c01bb02a34133f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "Universal_Robots_ROS_controllers_cartesian-release";
+    rev = "deee347b951bc4f1e1c55e1b10bafb1b6ec16a71";
+    owner = "UniversalRobots";
+    sha256 = "sha256-KziRZFtLlZqRl2iEHIxDap2ARaDjT/HzNz7E11n4QJc=";
   };
 
   buildType = "catkin";

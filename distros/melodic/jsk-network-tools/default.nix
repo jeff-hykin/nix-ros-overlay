@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-jsk-network-tools";
   version = "2.2.12-r1";
 
-  src = fetchurl {
-    url = "https://github.com/tork-a/jsk_common-release/archive/release/melodic/jsk_network_tools/2.2.12-1.tar.gz";
-    name = "2.2.12-1.tar.gz";
-    sha256 = "e0e2baa74874bc7f6fe1b7524374a33cb6904296cc24f2c518dffb58efa6b0e6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "jsk_common-release";
+    rev = "fc46a431f00091b6168bacff047ef8e047b41e53";
+    owner = "tork-a";
+    sha256 = "sha256-5syw3GvBtwT+SoBMPN63X2RLJcMOIXKHwfVXfJxP3FM=";
   };
 
   buildType = "catkin";

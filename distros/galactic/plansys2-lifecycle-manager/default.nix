@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-plansys2-lifecycle-manager";
   version = "2.0.8-r1";
 
-  src = fetchurl {
-    url = "https://github.com/IntelligentRoboticsLabs/ros2_planning_system-release/archive/release/galactic/plansys2_lifecycle_manager/2.0.8-1.tar.gz";
-    name = "2.0.8-1.tar.gz";
-    sha256 = "92fdc2acaf21df9f0fc6b5ed5b826e524dd3073d8b8f29a30be861d15ad0e41b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_planning_system-release";
+    rev = "132113d992387248c5414c26672acba9dca311e9";
+    owner = "IntelligentRoboticsLabs";
+    sha256 = "sha256-E667kDlRlEo6e0KzLmFiV/oc9lg9LcrRUBHiLg7eelY=";
   };
 
   buildType = "ament_cmake";

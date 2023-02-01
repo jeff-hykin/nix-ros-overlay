@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-interactive-markers";
   version = "2.3.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/interactive_markers-release/archive/release/rolling/interactive_markers/2.3.2-1.tar.gz";
-    name = "2.3.2-1.tar.gz";
-    sha256 = "400c1702d152e66c5d179ff0afe222ef9cf37b961c608c8ce67775fea30c9acb";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "interactive_markers-release";
+    rev = "5640c7889d7c62ae7d0e1d802c5324605efd6a29";
+    owner = "ros2-gbp";
+    sha256 = "sha256-AOue7aI9DAZ4GHtHtOAPRcV7DJ0zvONib2v2n+DIggY=";
   };
 
   buildType = "ament_cmake";

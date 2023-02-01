@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-map-laser";
   version = "0.0.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/wu-robotics/laser_filtering_release/archive/release/noetic/map_laser/0.0.5-1.tar.gz";
-    name = "0.0.5-1.tar.gz";
-    sha256 = "9c55dec2f10d9b6710024e9af11b0a3e46a677c0e524b4d13856da9b4712d5ca";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "laser_filtering_release";
+    rev = "945853aa9da62c1badb9327e7c103f4bebc9b5e3";
+    owner = "wu-robotics";
+    sha256 = "sha256-0QY1xNgy/QF2t/q05OFhXNeajn3TY/DyNN9axd6S+nI=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-rotors-gazebo";
   version = "2.2.3";
 
-  src = fetchurl {
-    url = "https://github.com/ethz-asl/rotors_simulator-release/archive/release/melodic/rotors_gazebo/2.2.3-0.tar.gz";
-    name = "2.2.3-0.tar.gz";
-    sha256 = "98425c45ee4f84bc43c033c786ad18ea897efda6616cca43f24ad38b3cc5083b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rotors_simulator-release";
+    rev = "8d4352b09ce5e08eea68ad292a7bb3d3d251ae36";
+    owner = "ethz-asl";
+    sha256 = "sha256-EZav/Vphyxm4tgp5kBjNbpA5f/B6/BQ4Qnn9BxYWiUM=";
   };
 
   buildType = "catkin";

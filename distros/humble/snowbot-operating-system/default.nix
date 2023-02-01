@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-snowbot-operating-system";
   version = "0.1.2-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/snowbot_release/archive/release/humble/snowbot_operating_system/0.1.2-3.tar.gz";
-    name = "0.1.2-3.tar.gz";
-    sha256 = "061b695db8610f6c7470112c46772925fe29aabbda12699da78b4be879f442d0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "snowbot_release";
+    rev = "afd3d7236851374e05f4c011d12efba81c85b628";
+    owner = "ros2-gbp";
+    sha256 = "sha256-jsc6W+E4XVtTLGd+ZSn45ChfZmV6/c9nUg1FpqA6d8s=";
   };
 
   buildType = "ament_cmake";

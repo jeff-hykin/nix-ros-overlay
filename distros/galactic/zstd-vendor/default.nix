@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-zstd-vendor";
   version = "0.9.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rosbag2-release/archive/release/galactic/zstd_vendor/0.9.2-1.tar.gz";
-    name = "0.9.2-1.tar.gz";
-    sha256 = "e1a86b468abbf6ad4b948cba3859095d59e7574f01acfa026ae46e78226c5d50";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosbag2-release";
+    rev = "14c3708be84cb53accbbfce1674386125729ce9b";
+    owner = "ros2-gbp";
+    sha256 = "sha256-ejWmscx6+7IVsF//37AmFFvuVrJULy9/P0wxIa8D+HM=";
   };
 
   buildType = "ament_cmake";

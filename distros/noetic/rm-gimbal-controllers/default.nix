@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-rm-gimbal-controllers";
   version = "0.1.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/rm-controls/rm_controllers-release/archive/release/noetic/rm_gimbal_controllers/0.1.7-1.tar.gz";
-    name = "0.1.7-1.tar.gz";
-    sha256 = "f4880a42ef60e663d7a8dc33a035fe30ea83cec13a99dcaa05d2c9fb85123bcc";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rm_controllers-release";
+    rev = "988f3cfd46e4530d7cf0d555aff0944619956fd9";
+    owner = "rm-controls";
+    sha256 = "sha256-lF5Buq9N49E50nKGOlaV3dkJaKwSE+hXN+6XA2RoPS4=";
   };
 
   buildType = "catkin";

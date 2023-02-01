@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-ecl-lite";
   version = "0.61.6";
 
-  src = fetchurl {
-    url = "https://github.com/yujinrobot-release/ecl_lite-release/archive/release/melodic/ecl_lite/0.61.6-0.tar.gz";
-    name = "0.61.6-0.tar.gz";
-    sha256 = "fceacb01c4b94197a2e6f342c6a76f5a9af13273e9cda61c75c4b3702e3aea3f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ecl_lite-release";
+    rev = "f40f0a3698da48b7a446657e55ce95b5d7f76142";
+    owner = "yujinrobot-release";
+    sha256 = "sha256-+aO11JAcqDfLzHAoQ+7m7x5ponH/sAxnsV1LACmzH/E=";
   };
 
   buildType = "catkin";

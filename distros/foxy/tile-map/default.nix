@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-tile-map";
   version = "2.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/swri-robotics-gbp/mapviz-release/archive/release/foxy/tile_map/2.1.0-1.tar.gz";
-    name = "2.1.0-1.tar.gz";
-    sha256 = "4c442a1e13ffea454c4cd65053f800a59a8afc6c3239a351ebd2d68e23ac41f9";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mapviz-release";
+    rev = "2f71cdc36c366ecd096cf7ca9533530708e6f991";
+    owner = "swri-robotics-gbp";
+    sha256 = "sha256-52MRKZupwfpYu8zwL2z42K4MYUwLpMOS2Nf5FFYnVsY=";
   };
 
   buildType = "ament_cmake";

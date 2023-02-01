@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-aruco-opencv";
   version = "2.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/aruco_opencv-release/archive/release/humble/aruco_opencv/2.0.1-1.tar.gz";
-    name = "2.0.1-1.tar.gz";
-    sha256 = "3852511a4ea6852d279a54a2e4c164ead0e28a3a034f6b7ab7bda09a4e970683";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "aruco_opencv-release";
+    rev = "c0f96bcea83341e8dc145d03e7a50d49fc933d96";
+    owner = "ros2-gbp";
+    sha256 = "sha256-ca3mUsZkgnC8/oExpp5tpDqfM+nUZUkREVXHsWooY5I=";
   };
 
   buildType = "ament_cmake";

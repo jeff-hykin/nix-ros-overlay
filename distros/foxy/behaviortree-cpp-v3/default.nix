@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-behaviortree-cpp-v3";
   version = "3.8.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/BehaviorTree/behaviortree_cpp-release/archive/release/foxy/behaviortree_cpp_v3/3.8.0-1.tar.gz";
-    name = "3.8.0-1.tar.gz";
-    sha256 = "cc9f077d023e9bc01723c53ba0f50fe797e0af985e3f37620ac648ff8b9b891d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "behaviortree_cpp-release";
+    rev = "6de05493a4070560e2cbe8870724ea171c7b974d";
+    owner = "BehaviorTree";
+    sha256 = "sha256-oQken785w4AIUgMM/fUcZ5Cka1PNfrFhFxhgqMfCKqs=";
   };
 
   buildType = "ament_cmake";

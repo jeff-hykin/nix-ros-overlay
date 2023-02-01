@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-ros2lifecycle-test-fixtures";
   version = "0.21.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2cli-release/archive/release/rolling/ros2lifecycle_test_fixtures/0.21.0-1.tar.gz";
-    name = "0.21.0-1.tar.gz";
-    sha256 = "da04e82c2b24c516e41a0b05f183bf104fe768ae9bd46473ed6fbcf8502d1c3c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2cli-release";
+    rev = "de002c1d223ae1383e30ea509e0c474babb353d5";
+    owner = "ros2-gbp";
+    sha256 = "sha256-cLr0UQX/D9xw4tw4CWdQsKHdTz0HGO4lIplzXqBqSiY=";
   };
 
   buildType = "ament_cmake";

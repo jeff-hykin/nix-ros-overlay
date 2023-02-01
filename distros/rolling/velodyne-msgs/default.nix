@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-velodyne-msgs";
   version = "2.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/velodyne-release/archive/release/rolling/velodyne_msgs/2.3.0-1.tar.gz";
-    name = "2.3.0-1.tar.gz";
-    sha256 = "2551431e32dd2da22050b1cd23fb7784771e58c2e592dc72ee1732caf6489e46";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "velodyne-release";
+    rev = "929fb68183e929267a28a1e3d84d061e0a84fc7b";
+    owner = "ros2-gbp";
+    sha256 = "sha256-5Ak6A/tW8O/xY1B8LoKlY6GJfvga1cnajGYEKb7eKFo=";
   };
 
   buildType = "ament_cmake";

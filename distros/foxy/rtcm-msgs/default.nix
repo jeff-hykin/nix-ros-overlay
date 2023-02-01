@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-rtcm-msgs";
   version = "1.1.6-r1";
 
-  src = fetchurl {
-    url = "https://github.com/nobleo/rtcm_msgs-release/archive/release/foxy/rtcm_msgs/1.1.6-1.tar.gz";
-    name = "1.1.6-1.tar.gz";
-    sha256 = "b89cd731ca9e6ef114feb481caf218ba3594630da17985adc72d92735af77790";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rtcm_msgs-release";
+    rev = "d5f6b7739dbf0d4e8e0657fce18c2a1505014947";
+    owner = "nobleo";
+    sha256 = "sha256-5yTtIdGostlOwChSlKKL4JivCyK284g0KYZxB6GBtBY=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-action-msgs";
   version = "1.3.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rcl_interfaces-release/archive/release/rolling/action_msgs/1.3.1-1.tar.gz";
-    name = "1.3.1-1.tar.gz";
-    sha256 = "d76dd2eb790fb5cea37582916c4998af33f89640ba05d19d5c09678c43603c09";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rcl_interfaces-release";
+    rev = "3d8379ac9ca24ed828455c1d71a6affd0f780b3a";
+    owner = "ros2-gbp";
+    sha256 = "sha256-y9zo3GXijYh8Ph3BpEjmIjIVuS1wl/ntWlV4ueLWNrY=";
   };
 
   buildType = "ament_cmake";

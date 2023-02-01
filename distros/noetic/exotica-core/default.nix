@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-exotica-core";
   version = "6.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipab-slmc/exotica-release/archive/release/noetic/exotica_core/6.2.0-1.tar.gz";
-    name = "6.2.0-1.tar.gz";
-    sha256 = "e5a0d4c3011d40a110dacdbb595f0bc0cbfb55eab42da9d5bfdb644453aab6ab";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "exotica-release";
+    rev = "32f20cd3bd40d5247bdc5c991cc41a96c1a2b52a";
+    owner = "ipab-slmc";
+    sha256 = "sha256-bZkCdjLIfsm/yUwst5sQfNWLgUFscWWpth9oJpOMPDw=";
   };
 
   buildType = "catkin";

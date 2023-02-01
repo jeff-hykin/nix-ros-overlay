@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-automotive-navigation-msgs";
   version = "3.0.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/astuff/automotive_autonomy_msgs-release/archive/release/galactic/automotive_navigation_msgs/3.0.4-1.tar.gz";
-    name = "3.0.4-1.tar.gz";
-    sha256 = "2c8427a76cdb711fb50f86d221f03437f841e5381fff92a915e2b773a65d274c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "automotive_autonomy_msgs-release";
+    rev = "857f2bfbe4739d0be18d2af04c84274308bcc677";
+    owner = "astuff";
+    sha256 = "sha256-N+QDJUyFWyIto9hqSOYNMPTrVLJR+tIO2J4ExUZ27+0=";
   };
 
   buildType = "ament_cmake";

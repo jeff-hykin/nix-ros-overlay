@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-marti-perception-msgs";
   version = "1.3.0-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/marti_messages-release/archive/release/humble/marti_perception_msgs/1.3.0-3.tar.gz";
-    name = "1.3.0-3.tar.gz";
-    sha256 = "5cf395cdc03721bd64c2fcf724888022960f78257330b1aa96b980b9af4b81c0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "marti_messages-release";
+    rev = "581432dbe371c91f469331e3bca8efe37bd1ef89";
+    owner = "ros2-gbp";
+    sha256 = "sha256-exDlhwOZU0vkvXPezARIXpuYzv3B5UEGHR/3Il8kmyA=";
   };
 
   buildType = "ament_cmake";

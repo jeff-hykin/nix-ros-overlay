@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-jackal-msgs";
   version = "0.8.6-r1";
 
-  src = fetchurl {
-    url = "https://github.com/clearpath-gbp/jackal-release/archive/release/noetic/jackal_msgs/0.8.6-1.tar.gz";
-    name = "0.8.6-1.tar.gz";
-    sha256 = "a71cd0845aa63e7c1469c45c417ab8844439d43e7dd6b1dcb254f6a4e48c69db";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "jackal-release";
+    rev = "3b4bcc7fc5796356feb8d604ad235be3abe196eb";
+    owner = "clearpath-gbp";
+    sha256 = "sha256-ZvG+DuYyD1TkX0BMg/vg8LP3x7WAfoSuld9GN5WUE6Y=";
   };
 
   buildType = "catkin";

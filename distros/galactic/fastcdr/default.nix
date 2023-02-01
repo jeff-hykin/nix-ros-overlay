@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-fastcdr";
   version = "1.0.20-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/fastcdr-release/archive/release/galactic/fastcdr/1.0.20-3.tar.gz";
-    name = "1.0.20-3.tar.gz";
-    sha256 = "b188fd74b52365f136934848023e3818e8d392242f06fa944a4e72b956a32412";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "fastcdr-release";
+    rev = "9952e0480464099422e38f2e4185bbff58bd58f6";
+    owner = "ros2-gbp";
+    sha256 = "sha256-GL2jm+mivWknJ8qyTFYXL9XeT3/pjj8UXAk6kRiKqa0=";
   };
 
   buildType = "cmake";

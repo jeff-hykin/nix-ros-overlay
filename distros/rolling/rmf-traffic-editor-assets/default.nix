@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-rmf-traffic-editor-assets";
   version = "1.6.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_traffic_editor-release/archive/release/rolling/rmf_traffic_editor_assets/1.6.0-1.tar.gz";
-    name = "1.6.0-1.tar.gz";
-    sha256 = "cd4428fdc82203735e18f2b85f3fa2c4612f25bb4d512795fa25dcafb293904f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_traffic_editor-release";
+    rev = "597cc04930a3d40c1ee519037b66a30d03571bc0";
+    owner = "ros2-gbp";
+    sha256 = "sha256-3HVyWZy2Em7zQxEzVkXZU7O+iJdNBU0SMNuKfOPzzts=";
   };
 
   buildType = "ament_python";

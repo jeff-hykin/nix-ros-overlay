@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-ament-nodl";
   version = "0.1.0-r4";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ament_nodl-release/archive/release/humble/ament_nodl/0.1.0-4.tar.gz";
-    name = "0.1.0-4.tar.gz";
-    sha256 = "c5582c2a5856fabbe768ed8b465b35ee95fa905f422630e82454e95d01640873";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ament_nodl-release";
+    rev = "08f9af4308948b0901ee5d864a44c89360ecbc8c";
+    owner = "ros2-gbp";
+    sha256 = "sha256-9azhFZrnSaHJiIRFdPiDTiDO3j2v3eKxQBNdAEFwd5A=";
   };
 
   buildType = "ament_cmake";

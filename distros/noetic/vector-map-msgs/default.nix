@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-vector-map-msgs";
   version = "1.14.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/autoware-ai/messages-release/archive/release/noetic/vector_map_msgs/1.14.0-1.tar.gz";
-    name = "1.14.0-1.tar.gz";
-    sha256 = "870df6369942aa12d4c13eca898c481571bb2464d0333c56258e2f2498c8eded";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "messages-release";
+    rev = "09801fd0e709adaed6b8aa8a27f56d65a3b71ab3";
+    owner = "autoware-ai";
+    sha256 = "sha256-p+DObvasMzVjl44apS0+ZwczFdtdmsggTOyIDTiYhGE=";
   };
 
   buildType = "catkin";

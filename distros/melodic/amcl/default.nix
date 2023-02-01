@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-amcl";
   version = "1.16.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/navigation-release/archive/release/melodic/amcl/1.16.7-1.tar.gz";
-    name = "1.16.7-1.tar.gz";
-    sha256 = "6fd7ab1b09d32006685ea8b71d1bd8071a207ddbc8ba7aca4c150d4debf62cb8";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation-release";
+    rev = "aa696813f441d3e56b1dff8e993264cf4467d3df";
+    owner = "ros-gbp";
+    sha256 = "sha256-RDDYHchgWckv1O9U1m6d2pyLjfs+Pjqw+KdIdOntZOA=";
   };
 
   buildType = "catkin";

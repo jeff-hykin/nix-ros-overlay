@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-ps3joy";
   version = "1.14.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/joystick_drivers-release/archive/release/melodic/ps3joy/1.14.0-1.tar.gz";
-    name = "1.14.0-1.tar.gz";
-    sha256 = "2bd4850de3aeef1b9696fe5fbacab24f716c454dc5abd648ad59fb29009349be";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "joystick_drivers-release";
+    rev = "8b86921a8e0d3e0f2de5968d84a507586886816b";
+    owner = "ros-gbp";
+    sha256 = "sha256-HDAID2JtpjpEot/FAhBb73kELbbQTiNJN8vAJMET/VE=";
   };
 
   buildType = "catkin";

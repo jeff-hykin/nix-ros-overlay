@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ur-moveit-config";
   version = "2.1.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/Universal_Robots_ROS2_Driver-release/archive/release/galactic/ur_moveit_config/2.1.2-1.tar.gz";
-    name = "2.1.2-1.tar.gz";
-    sha256 = "ea68ce6b81f5cde65aa2f6839176df62a1df6da91acfa0a2fc624a2a24752386";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "Universal_Robots_ROS2_Driver-release";
+    rev = "aa0bb853ace7ea9aff062a0ba2fdff903cd6fe57";
+    owner = "ros2-gbp";
+    sha256 = "sha256-JYYqdFXdgKDxEcgbKmBzMsqtUUA+BzMtSGzbCaumrJI=";
   };
 
   buildType = "ament_cmake";

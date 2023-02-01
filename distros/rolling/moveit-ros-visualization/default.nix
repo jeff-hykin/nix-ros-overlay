@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-moveit-ros-visualization";
   version = "2.6.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/moveit/moveit2-release/archive/release/rolling/moveit_ros_visualization/2.6.0-1.tar.gz";
-    name = "2.6.0-1.tar.gz";
-    sha256 = "cb883fd31c84378135f130096187f796e836f5e6eedd188bffffca08c7100741";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "moveit2-release";
+    rev = "475be1ff55b9d00c34f8137f84b7477a2892fc44";
+    owner = "moveit";
+    sha256 = "sha256-ffY4ftNmuDt6c3w5JpzfhQcNnEot8rYOFkQMKny2T5M=";
   };
 
   buildType = "ament_cmake";

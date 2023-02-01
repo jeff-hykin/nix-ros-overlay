@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ntrip-client";
   version = "1.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ntrip_client-release/archive/release/galactic/ntrip_client/1.2.0-1.tar.gz";
-    name = "1.2.0-1.tar.gz";
-    sha256 = "b2380bd91a6c8c5efabb0bb12ad9224e72accccc3a618d9032267b26f0e5cd02";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ntrip_client-release";
+    rev = "43abe2656cf6e6092fc579e9162c20bf64dea976";
+    owner = "ros2-gbp";
+    sha256 = "sha256-D2B2lApA/XdsUVc6tMvHaZBKPMxKG+1deA3REcfJSS8=";
   };
 
   buildType = "ament_python";

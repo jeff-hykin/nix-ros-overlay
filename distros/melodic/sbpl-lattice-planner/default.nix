@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-sbpl-lattice-planner";
   version = "0.3.6-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/navigation_experimental-release/archive/release/melodic/sbpl_lattice_planner/0.3.6-1.tar.gz";
-    name = "0.3.6-1.tar.gz";
-    sha256 = "3e0c9722b80b6dabbe65028a6d9396b526294c540b59e7f4a5c49c29e3ec09d8";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation_experimental-release";
+    rev = "13cb04b7d48af2f37085ba49b40d9c8a73a1ca39";
+    owner = "ros-gbp";
+    sha256 = "sha256-OYkkH8A7tXx3uaChL1h03MdCtaGvdQlmxbMsT1EHC+M=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ament-clang-tidy";
   version = "0.10.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ament_lint-release/archive/release/galactic/ament_clang_tidy/0.10.7-1.tar.gz";
-    name = "0.10.7-1.tar.gz";
-    sha256 = "e3db2c5c8417fa5937c88461f6c8eb725885cd735efe48b5c6a69656fe7b2a9e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ament_lint-release";
+    rev = "cb71342eb41a4299739abae5eebea9c44cf78f8b";
+    owner = "ros2-gbp";
+    sha256 = "sha256-uHhGLayoHmAmFS40A39Xdg1SXRjsK1CKhfZIO0ohnF8=";
   };
 
   buildType = "ament_python";

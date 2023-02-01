@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-rpyutils";
   version = "0.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rpyutils-release/archive/release/foxy/rpyutils/0.2.0-1.tar.gz";
-    name = "0.2.0-1.tar.gz";
-    sha256 = "45f694c9502c89b53cdb1258f084f6d3c4da2bd085fbfa1e999b15c1611352dc";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rpyutils-release";
+    rev = "d8111e3daecad2c993be99f51fe4ad43335c2667";
+    owner = "ros2-gbp";
+    sha256 = "sha256-6A+zh2W0g6LS2wofdkzqkK4w7QVApxz+yj3GYOV/55o=";
   };
 
   buildType = "ament_python";

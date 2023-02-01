@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-pr2-app-manager";
   version = "0.6.1";
 
-  src = fetchurl {
-    url = "https://github.com/pr2-gbp/pr2_apps-release/archive/release/melodic/pr2_app_manager/0.6.1-0.tar.gz";
-    name = "0.6.1-0.tar.gz";
-    sha256 = "efb64b17c3475ef039056ad31ceeebc17296ff0be259a5507b0b8e6fdcffb93b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pr2_apps-release";
+    rev = "961ea5640677cf902dd47e45f2d7ab0a0f5d773e";
+    owner = "pr2-gbp";
+    sha256 = "sha256-EfQqym8J4tBRzcpbK4Jg99pwT2NwXUIHI/W0H7UblJU=";
   };
 
   buildType = "catkin";

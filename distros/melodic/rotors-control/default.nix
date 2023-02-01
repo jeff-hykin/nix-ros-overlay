@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-rotors-control";
   version = "2.2.3";
 
-  src = fetchurl {
-    url = "https://github.com/ethz-asl/rotors_simulator-release/archive/release/melodic/rotors_control/2.2.3-0.tar.gz";
-    name = "2.2.3-0.tar.gz";
-    sha256 = "360134fe15fab3cd01a1869458c0d767006f445a2124532ac6b0c2484e4cc38f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rotors_simulator-release";
+    rev = "4242b12e01c40dfcbef40417cd4a3351256cfed7";
+    owner = "ethz-asl";
+    sha256 = "sha256-8O8Ndnv440Ck7CnRukyJPKgzfgb3GOYLHrJ1hYhbGkc=";
   };
 
   buildType = "catkin";

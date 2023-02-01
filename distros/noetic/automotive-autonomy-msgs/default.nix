@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-automotive-autonomy-msgs";
   version = "3.0.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/astuff/automotive_autonomy_msgs-release/archive/release/noetic/automotive_autonomy_msgs/3.0.4-1.tar.gz";
-    name = "3.0.4-1.tar.gz";
-    sha256 = "5eee587986b5025f1686c5cfba6136629675942dd69467c2c5a81442cf8a1a0d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "automotive_autonomy_msgs-release";
+    rev = "e055034cf4dfc6a3ad12fa8af35afd6778fb3b9b";
+    owner = "astuff";
+    sha256 = "sha256-R/GduU+VD3B9INpzOpa84Bl42xFAtGthn8PEt8iYmpw=";
   };
 
   buildType = "catkin";

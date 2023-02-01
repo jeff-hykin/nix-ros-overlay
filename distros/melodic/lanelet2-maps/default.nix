@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-lanelet2-maps";
   version = "1.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/fzi-forschungszentrum-informatik/lanelet2-release/archive/release/melodic/lanelet2_maps/1.0.1-1.tar.gz";
-    name = "1.0.1-1.tar.gz";
-    sha256 = "d3a607df84c727c2c9190f5b4a50d6733637b4962819f9897a0f0063ddeb3a3f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "lanelet2-release";
+    rev = "b073af33f090ce3f2b34375f5530c766fcfff44a";
+    owner = "fzi-forschungszentrum-informatik";
+    sha256 = "sha256-QkxHdhUv3Kh0oekCFA4q++fHMHoGnWShGQsDkceNwIY=";
   };
 
   buildType = "catkin";

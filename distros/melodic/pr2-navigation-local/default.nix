@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-pr2-navigation-local";
   version = "0.1.28-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pr2-gbp/pr2_navigation-release/archive/release/melodic/pr2_navigation_local/0.1.28-1.tar.gz";
-    name = "0.1.28-1.tar.gz";
-    sha256 = "1c6411bd2d1fce5a45a9a803bbcc502798392734c699402a88ae6c5121d4f290";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pr2_navigation-release";
+    rev = "64804879d3c7d9b8afb9a3c540180bbb4a8fdc43";
+    owner = "pr2-gbp";
+    sha256 = "sha256-+nPmORZVI9R7Ef4dfJ7WqDVZcCOCaLELUMrcX+cionA=";
   };
 
   buildType = "catkin";

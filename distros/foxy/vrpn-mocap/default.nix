@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-vrpn-mocap";
   version = "1.0.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/vrpn_mocap-release/archive/release/foxy/vrpn_mocap/1.0.3-1.tar.gz";
-    name = "1.0.3-1.tar.gz";
-    sha256 = "7e2cf600915b00bdb04387d4d543bce6e49286a6ca53b93aee6ba99fde20a7b6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "vrpn_mocap-release";
+    rev = "afcc703602ccda371dc54d7121774b24429713a4";
+    owner = "ros2-gbp";
+    sha256 = "sha256-yghDg5y4lcHd2MvyCvl/reTksyFDaIp0sHv/j9nlSSQ=";
   };
 
   buildType = "ament_cmake";

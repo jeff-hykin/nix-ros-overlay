@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-pr2-simulator";
   version = "2.0.14";
 
-  src = fetchurl {
-    url = "https://github.com/pr2-gbp/pr2_simulator-release/archive/release/melodic/pr2_simulator/2.0.14-0.tar.gz";
-    name = "2.0.14-0.tar.gz";
-    sha256 = "4502d2d3680adc3ad5bb876120527c7deb7642208da743e0c853353d8524b0cc";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pr2_simulator-release";
+    rev = "f9ffbabdb4d18d45cba5103083bab52be789723a";
+    owner = "pr2-gbp";
+    sha256 = "sha256-wIErbJRB+Xom7dWe+MPGQhyQCaVT4RzUBHsJiyOWlWM=";
   };
 
   buildType = "catkin";

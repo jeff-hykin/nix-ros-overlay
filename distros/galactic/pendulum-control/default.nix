@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-pendulum-control";
   version = "0.14.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/demos-release/archive/release/galactic/pendulum_control/0.14.4-1.tar.gz";
-    name = "0.14.4-1.tar.gz";
-    sha256 = "028f56fcafa24ff91ad90915b20f3bf78a5d7e5e96d6640702b1811aac05e26c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "demos-release";
+    rev = "a8192cc192466d520a8c78a2f5653f7c41e941d5";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Tbe+n349sy1rTQkpvt9QndQADtJTM0N0m6b9uLXqcPo=";
   };
 
   buildType = "ament_cmake";

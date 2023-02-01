@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ur-controllers";
   version = "2.1.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/Universal_Robots_ROS2_Driver-release/archive/release/galactic/ur_controllers/2.1.2-1.tar.gz";
-    name = "2.1.2-1.tar.gz";
-    sha256 = "fa153a2befa17050d828cab2b78ab668e5c535476e0c0a4a0af8b9953dcae60f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "Universal_Robots_ROS2_Driver-release";
+    rev = "086513ca5852b6302497236ba445eb8016d147db";
+    owner = "ros2-gbp";
+    sha256 = "sha256-XeSZyiWAWxzzogMbf8sTpIxi7BFhJ8X6JVBI6VHJXP0=";
   };
 
   buildType = "ament_cmake";

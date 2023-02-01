@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-velodyne-pointcloud";
   version = "2.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/velodyne-release/archive/release/galactic/velodyne_pointcloud/2.3.0-1.tar.gz";
-    name = "2.3.0-1.tar.gz";
-    sha256 = "edd5447b505a0f786f0a98bf33fbbf8b9d58af488aa0241d3ebaa50a9dd4f0cd";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "velodyne-release";
+    rev = "447f4e3973e21955fcf65e05e38d8d04906b3cca";
+    owner = "ros2-gbp";
+    sha256 = "sha256-hkvzuZw8cF8+XSVnSmlVOPLOTlg7vhtPoqd1gNK0mo8=";
   };
 
   buildType = "ament_cmake";

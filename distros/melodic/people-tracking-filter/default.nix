@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-people-tracking-filter";
   version = "1.4.0-r4";
 
-  src = fetchurl {
-    url = "https://github.com/OSUrobotics/people-release/archive/release/melodic/people_tracking_filter/1.4.0-4.tar.gz";
-    name = "1.4.0-4.tar.gz";
-    sha256 = "c865fb866c756894069ec3c6565a742ce0927c3f42b2359cd0f46f31230ad87c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "people-release";
+    rev = "85f77f705c4e530732d4182e9b200886dfc9dbc7";
+    owner = "OSUrobotics";
+    sha256 = "sha256-mITMNrsgbP7qohSushJID/BdNJT5GlPcBpivEhM3/hY=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-soccer-interfaces";
   version = "0.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/soccer_interfaces-release/archive/release/humble/soccer_interfaces/0.1.0-1.tar.gz";
-    name = "0.1.0-1.tar.gz";
-    sha256 = "eebcf5e4c80c4f01480092b62b2d478737c77e8c8cc5403e55536dea91f35177";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "soccer_interfaces-release";
+    rev = "2224909394318a66fc75e1c96e4345ebe9377ca5";
+    owner = "ros2-gbp";
+    sha256 = "sha256-4lOFn2p0uaDcS/4mDfWG/Q1OGsw8t1EAYJWVsHD6k+M=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ament-pyflakes";
   version = "0.10.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ament_lint-release/archive/release/galactic/ament_pyflakes/0.10.7-1.tar.gz";
-    name = "0.10.7-1.tar.gz";
-    sha256 = "95db0a173769d631f923652bedeea47b82ef025afdce59fa84c6d37fbba8f88b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ament_lint-release";
+    rev = "97efcb8d9def29a8d652b4d3c67eedce75619343";
+    owner = "ros2-gbp";
+    sha256 = "sha256-yCUQs1toq0Jnx9frfL27kJyQWSpnqmpbhkTw5lgmsvA=";
   };
 
   buildType = "ament_python";

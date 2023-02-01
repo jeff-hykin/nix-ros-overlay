@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-cl-tf";
   version = "0.2.13-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/roslisp_common-release/archive/release/melodic/cl_tf/0.2.13-1.tar.gz";
-    name = "0.2.13-1.tar.gz";
-    sha256 = "55f40c96b372a6be8a05277f034e5f465ea5bcf5038cfb8a0ddbc6c3046d43d7";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "roslisp_common-release";
+    rev = "44eae6f5dcf36e77af59952cd5feddc97132908c";
+    owner = "ros-gbp";
+    sha256 = "sha256-7I21v541KUAnMd1JnSPxcloKoQMiXVQXtyXufNLqs64=";
   };
 
   buildType = "catkin";

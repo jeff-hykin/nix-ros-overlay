@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-twist-mux";
   version = "3.1.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/twist_mux-release/archive/release/melodic/twist_mux/3.1.2-1.tar.gz";
-    name = "3.1.2-1.tar.gz";
-    sha256 = "f789b4f46623508b3c7e8071a4e2960788930e04a5795fc8d6bc323994a272cc";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "twist_mux-release";
+    rev = "e3e2ec67cbf231f5a7f53d4d272252500eef09a2";
+    owner = "ros-gbp";
+    sha256 = "sha256-CCIS9YXTYqoQyvK4VNkMOwAI4anz2NfTeVJtom7YmWA=";
   };
 
   buildType = "catkin";

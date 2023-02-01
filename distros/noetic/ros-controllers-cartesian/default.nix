@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-ros-controllers-cartesian";
   version = "0.1.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/UniversalRobots/Universal_Robots_ROS_controllers_cartesian-release/archive/release/noetic/ros_controllers_cartesian/0.1.5-1.tar.gz";
-    name = "0.1.5-1.tar.gz";
-    sha256 = "c9809ea177dcb158ec15cd20bcd3d8de96a6d235db4b04baa825bf653e7dcf36";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "Universal_Robots_ROS_controllers_cartesian-release";
+    rev = "2cae0cd083881f1b0118053497d6f0fae4c5a82e";
+    owner = "UniversalRobots";
+    sha256 = "sha256-LlTAuMyx/GJd2Rpf38IBGJ7Np4M2/0WsHC3ufyTj2yw=";
   };
 
   buildType = "catkin";

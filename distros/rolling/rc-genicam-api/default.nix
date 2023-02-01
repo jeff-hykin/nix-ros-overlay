@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-rc-genicam-api";
   version = "2.5.12-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rc_genicam_api-release/archive/release/rolling/rc_genicam_api/2.5.12-2.tar.gz";
-    name = "2.5.12-2.tar.gz";
-    sha256 = "c72e66ceb96d02b4b050194752f933c66f53675717848d1d8847f12dd74d74c3";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rc_genicam_api-release";
+    rev = "b62a34cffb8ff411e6e2b2c16773410b0006a7a3";
+    owner = "ros2-gbp";
+    sha256 = "sha256-YkKXiMMUXT+aUMsQJFQ3PcRm8kWdFZTFd4NM5JLRheA=";
   };
 
   buildType = "cmake";

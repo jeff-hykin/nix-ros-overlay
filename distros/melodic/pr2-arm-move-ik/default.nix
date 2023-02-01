@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-pr2-arm-move-ik";
   version = "0.0.11";
 
-  src = fetchurl {
-    url = "https://github.com/pr2-gbp/pr2_common_actions-release/archive/release/melodic/pr2_arm_move_ik/0.0.11-0.tar.gz";
-    name = "0.0.11-0.tar.gz";
-    sha256 = "8051d2f766e269e465921bb3b85eb08ab5a8f24c1e9e0f2ee7422665e5f23eee";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pr2_common_actions-release";
+    rev = "bb6d7de628a9f922f584b2fc7b7eca13975e20bb";
+    owner = "pr2-gbp";
+    sha256 = "sha256-YbCITHIaouXm/Y4q+oS2PtNa8LyW3sYV0QKA6usC6vQ=";
   };
 
   buildType = "catkin";

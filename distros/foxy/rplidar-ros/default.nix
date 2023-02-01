@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-rplidar-ros";
   version = "2.0.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/allenh1/rplidar_ros-release/archive/release/foxy/rplidar_ros/2.0.2-1.tar.gz";
-    name = "2.0.2-1.tar.gz";
-    sha256 = "1c6953014038b0b8642f08b8b85bbe807bda36a6d0ebde093399024df075acff";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rplidar_ros-release";
+    rev = "c8949aacdcae7b0ddeed7bc3b52e737be98af937";
+    owner = "allenh1";
+    sha256 = "sha256-NIXU4rmre0ZJIQW6jsE3k4D930KpOzEz4/T7aAFy9Uw=";
   };
 
   buildType = "ament_cmake";

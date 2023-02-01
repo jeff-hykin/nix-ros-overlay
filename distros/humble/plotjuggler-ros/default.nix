@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-plotjuggler-ros";
   version = "1.5.1-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/plotjuggler-ros-plugins-release/archive/release/humble/plotjuggler_ros/1.5.1-3.tar.gz";
-    name = "1.5.1-3.tar.gz";
-    sha256 = "12e2d2ff4df721386ed1417ffad4a2028c697cd22f125c99d59a55b8ed805ca9";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "plotjuggler-ros-plugins-release";
+    rev = "b2f717fa34cb37eda466d5580c3519e458463dbf";
+    owner = "ros2-gbp";
+    sha256 = "sha256-8oFamJdnPvwnDaEMvHq3bvHZpcOewcf29tSfMR8w87Q=";
   };
 
   buildType = "ament_cmake";

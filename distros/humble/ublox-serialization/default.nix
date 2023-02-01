@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-ublox-serialization";
   version = "2.3.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ublox-release/archive/release/humble/ublox_serialization/2.3.0-2.tar.gz";
-    name = "2.3.0-2.tar.gz";
-    sha256 = "91809609411efbee1acb843064f1ee697335cc3a03d45385077f11dc45551f68";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ublox-release";
+    rev = "fb78feba0d3bf7c3e525e57c14d0c51ad4188112";
+    owner = "ros2-gbp";
+    sha256 = "sha256-b2kP01irILk8Ct0RNRYsczUU7sgdAugMNejSpNFPdGE=";
   };
 
   buildType = "ament_cmake";

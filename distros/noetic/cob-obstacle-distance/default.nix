@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-cob-obstacle-distance";
   version = "0.8.20-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_control-release/archive/release/noetic/cob_obstacle_distance/0.8.20-1.tar.gz";
-    name = "0.8.20-1.tar.gz";
-    sha256 = "6bcf902f3bf1fcaf5cb288f95f9f3bfd2c009bbb3376e2be9207ca59b4ed496f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_control-release";
+    rev = "92b76c5bc9f8092ff46e058909065a5c99881ea9";
+    owner = "ipa320";
+    sha256 = "sha256-2lSwASBH+Ba/bJJ8vN6QYe2yopB4GQrPkudOpqpuaLQ=";
   };
 
   buildType = "catkin";

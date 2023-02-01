@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-rqt-joint-trajectory-controller";
   version = "0.17.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/ros_controllers-release/archive/release/melodic/rqt_joint_trajectory_controller/0.17.2-1.tar.gz";
-    name = "0.17.2-1.tar.gz";
-    sha256 = "68cbcd1d5be02ae72c77a890debca340b587a338e72afe4a26f966605724d2bc";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_controllers-release";
+    rev = "53aa43cc45d549cb5b534e963086ef846d0c8bca";
+    owner = "ros-gbp";
+    sha256 = "sha256-A+/bWODLQcMvt0Iu77p10Hhw5wAbx9BbW2H+ZzUZhU4=";
   };
 
   buildType = "catkin";

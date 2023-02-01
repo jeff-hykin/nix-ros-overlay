@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-force-torque-sensor-broadcaster";
   version = "2.15.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_controllers-release/archive/release/humble/force_torque_sensor_broadcaster/2.15.0-1.tar.gz";
-    name = "2.15.0-1.tar.gz";
-    sha256 = "be8b20bb400b500f3e4d0d0ff8d8fd2d334e9c329e8a3d528288d4d965748f46";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_controllers-release";
+    rev = "6648a772a32e57571aa2845211eed04b1aea0bf2";
+    owner = "ros2-gbp";
+    sha256 = "sha256-nS74X8kCxbF+b2fGvcGMRwmzltm2KDaNc+cqz6sTDgM=";
   };
 
   buildType = "ament_cmake";

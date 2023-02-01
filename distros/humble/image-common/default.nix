@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-image-common";
   version = "3.1.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/image_common-release/archive/release/humble/image_common/3.1.5-1.tar.gz";
-    name = "3.1.5-1.tar.gz";
-    sha256 = "8546964936eef73a71f6279a6f11b5e672af35175c4e41e6a866b02f58a400db";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "image_common-release";
+    rev = "9b2d99fac77e9d091d0364338f18b56c81998cd6";
+    owner = "ros2-gbp";
+    sha256 = "sha256-m0ZyetBDourFXXxspBc96gdKXBEfV8mJuB/J0h9Bwrs=";
   };
 
   buildType = "ament_cmake";

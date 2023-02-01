@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rviz-imu-plugin";
   version = "2.0.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/imu_tools-release/archive/release/galactic/rviz_imu_plugin/2.0.3-1.tar.gz";
-    name = "2.0.3-1.tar.gz";
-    sha256 = "c18b74be79f4e84ceb530f16ca650a01e60a0cc34838f926afce956056b1f89f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "imu_tools-release";
+    rev = "167dbe80e4012bfe5f50970682abdf1de5c7ed75";
+    owner = "ros2-gbp";
+    sha256 = "sha256-2G18uVrBRTNQw56i8e1G6UWTDwG7uiZIchSoyH14n6s=";
   };
 
   buildType = "ament_cmake";

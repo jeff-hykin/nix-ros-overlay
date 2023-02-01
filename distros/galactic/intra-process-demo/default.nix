@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-intra-process-demo";
   version = "0.14.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/demos-release/archive/release/galactic/intra_process_demo/0.14.4-1.tar.gz";
-    name = "0.14.4-1.tar.gz";
-    sha256 = "de5bdfa453ee8c6b31f668a2d73e7bca189a91c1e65588d9b157dde5d435c519";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "demos-release";
+    rev = "710a085e900d88045edb0177acf3382e67706289";
+    owner = "ros2-gbp";
+    sha256 = "sha256-qyPsNWm+IiGcFUCocqmG9A5Hxxj2QHpn0oMpHkDVdi4=";
   };
 
   buildType = "ament_cmake";

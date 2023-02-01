@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-ifm3d-core";
   version = "0.18.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ifm/ifm3d-release/archive/release/melodic/ifm3d_core/0.18.0-1.tar.gz";
-    name = "0.18.0-1.tar.gz";
-    sha256 = "c34250d57fa25729bccdf466a3b94c02a22e900d7b17a9b88fc5ec34b60b98b4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ifm3d-release";
+    rev = "6ca2e25ced6695282bf5f20abc53ff618c1c15da";
+    owner = "ifm";
+    sha256 = "sha256-AhAJqGARcpU087nBGQRL80/Xk0BF3+5wmxDeZfxofog=";
   };
 
   buildType = "cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-nav-2d-msgs";
   version = "0.4.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/SteveMacenski/navigation2-release/archive/release/foxy/nav_2d_msgs/0.4.7-1.tar.gz";
-    name = "0.4.7-1.tar.gz";
-    sha256 = "7f4be2d1efb9f1e77827c792e8cab646b88e47787b681a3addee6b7ad7ad16df";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation2-release";
+    rev = "12cc7988d7cdbc454f8233d2a0d6f6c48a8b4ec6";
+    owner = "SteveMacenski";
+    sha256 = "sha256-NS0GedlbbqVtzuf3pEP20+kv2f4wffxhOlYBNIUdwrk=";
   };
 
   buildType = "ament_cmake";

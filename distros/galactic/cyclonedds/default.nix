@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-cyclonedds";
   version = "0.8.0-r6";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/cyclonedds-release/archive/release/galactic/cyclonedds/0.8.0-6.tar.gz";
-    name = "0.8.0-6.tar.gz";
-    sha256 = "83c0f1b6fcbefdd65d1e5dc1846472a5e9d41b791a0672c5c7630315fa1e653c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cyclonedds-release";
+    rev = "c6c99825bf981c1a37ac380aff46f05800606056";
+    owner = "ros2-gbp";
+    sha256 = "sha256-XzjKbGJHgWwujcYGTvD8yJoYr/lynDp2jDjUj42u3UI=";
   };
 
   buildType = "cmake";

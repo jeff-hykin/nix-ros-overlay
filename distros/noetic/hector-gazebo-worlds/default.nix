@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-hector-gazebo-worlds";
   version = "0.5.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/tu-darmstadt-ros-pkg-gbp/hector_gazebo-release/archive/release/noetic/hector_gazebo_worlds/0.5.4-1.tar.gz";
-    name = "0.5.4-1.tar.gz";
-    sha256 = "9f031c0dc2cdc17c197b11771da7a0d8afa8b9063ec206af2ff3825b339573e9";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "hector_gazebo-release";
+    rev = "d7812c748f4ba0617d778d6d3cfd92535dd31fd0";
+    owner = "tu-darmstadt-ros-pkg-gbp";
+    sha256 = "sha256-DMc4PnfYFalcJ8tf4UDRrf68rGq90JQeC6ASpbRNmdc=";
   };
 
   buildType = "catkin";

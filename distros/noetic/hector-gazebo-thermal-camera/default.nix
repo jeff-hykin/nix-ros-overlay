@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-hector-gazebo-thermal-camera";
   version = "0.5.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/tu-darmstadt-ros-pkg-gbp/hector_gazebo-release/archive/release/noetic/hector_gazebo_thermal_camera/0.5.4-1.tar.gz";
-    name = "0.5.4-1.tar.gz";
-    sha256 = "64ac64b5360fd91f91890f06fe200f1c05e509a49bb8614dcb43f8cf4375f01b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "hector_gazebo-release";
+    rev = "b5f64075887769fb3a0b0b66751049d30b411028";
+    owner = "tu-darmstadt-ros-pkg-gbp";
+    sha256 = "sha256-6h4wPMO/Rda03LKTTNKb35YD/xj0BKpHeKTj+F/tG74=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-message-filters";
   version = "3.2.6-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_message_filters-release/archive/release/galactic/message_filters/3.2.6-1.tar.gz";
-    name = "3.2.6-1.tar.gz";
-    sha256 = "7c1ae18768d7546eb08e24e4f216c257e9161f4a5e980d442632b81516c29f1c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_message_filters-release";
+    rev = "b6c629a6508f1822af13afdb71aa2ddd22e2349d";
+    owner = "ros2-gbp";
+    sha256 = "sha256-sVCczm3c8umYdpTNDPD3SrzBwZDTkF/cGxKHjvAN4Z0=";
   };
 
   buildType = "ament_cmake";

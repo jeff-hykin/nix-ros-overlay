@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-zmqpp-vendor";
   version = "0.0.2-r2";
 
-  src = fetchurl {
-    url = "https://github.com/tier4/zmqpp_vendor-release/archive/release/foxy/zmqpp_vendor/0.0.2-2.tar.gz";
-    name = "0.0.2-2.tar.gz";
-    sha256 = "efe0919a69f130328417e4099658b10219ecccfb59bad44d7b8183e4654ac209";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "zmqpp_vendor-release";
+    rev = "e5e20ad05dbbe69fe02937fabbd734d9ca16c1e0";
+    owner = "tier4";
+    sha256 = "sha256-OHJpSJAua016kXvKxcD1ay55wprlXnqSL19uzz/el6w=";
   };
 
   buildType = "ament_cmake";

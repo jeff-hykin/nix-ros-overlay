@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-razor-imu-9dof";
   version = "1.3.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ENSTABretagneRobotics/razor_imu_9dof-release/archive/release/noetic/razor_imu_9dof/1.3.0-2.tar.gz";
-    name = "1.3.0-2.tar.gz";
-    sha256 = "96b9ff366ac1665105c8473acaf18fc2e6741c2454364150e9160d200560fe25";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "razor_imu_9dof-release";
+    rev = "3a6958684e0f42bf21e6dce216681cbd807bc0a3";
+    owner = "ENSTABretagneRobotics";
+    sha256 = "sha256-Rw43NOBQa8g1j28eWJtP1kpR8oEEMBxehjwTafyOkTg=";
   };
 
   buildType = "catkin";

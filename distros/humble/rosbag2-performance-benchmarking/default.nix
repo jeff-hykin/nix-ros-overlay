@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-rosbag2-performance-benchmarking";
   version = "0.15.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rosbag2-release/archive/release/humble/rosbag2_performance_benchmarking/0.15.3-1.tar.gz";
-    name = "0.15.3-1.tar.gz";
-    sha256 = "b5b012e94618554a20125bfd44b8f469060f324b6cad87c1b8abbc00ddb604d6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosbag2-release";
+    rev = "d77015e9573f5d89401454d8ae2f8055413a2f51";
+    owner = "ros2-gbp";
+    sha256 = "sha256-bXWnR01j9Gub2UhNSyFGm3HGRvdG5K81j1KMLFrUtvc=";
   };
 
   buildType = "ament_cmake";

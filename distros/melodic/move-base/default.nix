@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-move-base";
   version = "1.16.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/navigation-release/archive/release/melodic/move_base/1.16.7-1.tar.gz";
-    name = "1.16.7-1.tar.gz";
-    sha256 = "6b773a56d433a2d2df739c2b602a3928bde36f6217c9c22a2dc79f1139191082";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation-release";
+    rev = "36aaf61abc6683b5fa6598acd64f5b330fc86ecb";
+    owner = "ros-gbp";
+    sha256 = "sha256-r0760iejdGU+HcWfTY7GEoOvloucsrU/IjQ/Z0Jyc/g=";
   };
 
   buildType = "catkin";

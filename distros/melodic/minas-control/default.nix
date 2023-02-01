@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-minas-control";
   version = "1.0.10-r1";
 
-  src = fetchurl {
-    url = "https://github.com/tork-a/minas-release/archive/release/melodic/minas_control/1.0.10-1.tar.gz";
-    name = "1.0.10-1.tar.gz";
-    sha256 = "b3d7ec61f7f282359cef85b5a974807849ff747f9e2aff0d8589e8a9cbf363b4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "minas-release";
+    rev = "d4082565e9e4fd2f94897b23db0282dba7efaf7c";
+    owner = "tork-a";
+    sha256 = "sha256-s/6MFMllPJZySZM6LZn7hxnM7cD3H/jZ1yLbmLos+Zc=";
   };
 
   buildType = "catkin";

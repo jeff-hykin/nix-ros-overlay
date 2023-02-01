@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ecl-errors";
   version = "1.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/yujinrobot-release/ecl_lite-release/archive/release/galactic/ecl_errors/1.1.0-1.tar.gz";
-    name = "1.1.0-1.tar.gz";
-    sha256 = "546374578011e676419afde3e1ba554f7a0afb7047fe2226d8c0f29dfb503377";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ecl_lite-release";
+    rev = "880d2951cc4aa8eeb1f1b78e61cbeb089aed159f";
+    owner = "yujinrobot-release";
+    sha256 = "sha256-09ZFCQzj4nYs83txDT37v2Tv9ikzj+XQJCtpIz6nmy8=";
   };
 
   buildType = "ament_cmake";

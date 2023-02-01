@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-moveit-resources-fanuc-description";
   version = "2.0.6-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/moveit_resources-release/archive/release/humble/moveit_resources_fanuc_description/2.0.6-1.tar.gz";
-    name = "2.0.6-1.tar.gz";
-    sha256 = "8a4cb78d5e11e83c10aab085cb4d29bd40661c4acd002ccf370b8f6ec4a4051a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "moveit_resources-release";
+    rev = "a205eeac8eb51a4ef61b8a0ffce0c0a9e0eb4644";
+    owner = "ros2-gbp";
+    sha256 = "sha256-hGTrUYAikxOi8egxDimAoqOcoKHW8F0RW1t6vuYewIA=";
   };
 
   buildType = "ament_cmake";

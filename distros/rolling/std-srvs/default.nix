@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-std-srvs";
   version = "4.6.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/common_interfaces-release/archive/release/rolling/std_srvs/4.6.1-1.tar.gz";
-    name = "4.6.1-1.tar.gz";
-    sha256 = "895490d443aacba01213bc274e2f5fc889b7cff9eb8dd2dfe2a6a51a65b857d0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "common_interfaces-release";
+    rev = "293364035b182c15b723500e38f84402de038150";
+    owner = "ros2-gbp";
+    sha256 = "sha256-0n5t+y6q+SNWey8GemELyAZNkC0+1il3JCiTxtPEI7M=";
   };
 
   buildType = "ament_cmake";

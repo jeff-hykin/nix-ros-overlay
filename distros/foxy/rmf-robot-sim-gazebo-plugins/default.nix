@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-rmf-robot-sim-gazebo-plugins";
   version = "1.3.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_simulation-release/archive/release/foxy/rmf_robot_sim_gazebo_plugins/1.3.1-1.tar.gz";
-    name = "1.3.1-1.tar.gz";
-    sha256 = "c55e49919ad136b8ec6c94dc8f37a6c02b2c462bf6a0e8a1fe994f2c3039d7d2";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_simulation-release";
+    rev = "2a343b21a904e8f8111d4aa66ab35eba6275e15d";
+    owner = "ros2-gbp";
+    sha256 = "sha256-gbQaKwq1Msp09Y14FDNVxZi1pjQAn5wih7UXGpJ8BmM=";
   };
 
   buildType = "ament_cmake";

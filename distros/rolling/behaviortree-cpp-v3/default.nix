@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-behaviortree-cpp-v3";
   version = "3.8.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/behaviortree_cpp-release/archive/release/rolling/behaviortree_cpp_v3/3.8.0-1.tar.gz";
-    name = "3.8.0-1.tar.gz";
-    sha256 = "fd9006bc7bbc50b5e4343a354dd836644a720c300ec2c29e2085d3495f4ec541";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "behaviortree_cpp-release";
+    rev = "268d02aa2525d4a68acc9a788a18471c205a8139";
+    owner = "ros2-gbp";
+    sha256 = "sha256-oQken785w4AIUgMM/fUcZ5Cka1PNfrFhFxhgqMfCKqs=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-kobuki-ftdi";
   version = "1.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/stonier/kobuki_ftdi-release/archive/release/foxy/kobuki_ftdi/1.0.0-1.tar.gz";
-    name = "1.0.0-1.tar.gz";
-    sha256 = "cda5ab2f72ec067de9755cea8f98e7c596690c3ddb65eb4e9a3d3a472df34cfa";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "kobuki_ftdi-release";
+    rev = "b199496efcf1e519cd6897dd74b94c4be7709c42";
+    owner = "stonier";
+    sha256 = "sha256-xtx3VhcIxSg/UoHQ64Hfo8Z0D8zZwiB0xWd2zsrG178=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-jsk-recognition-msgs";
   version = "1.2.15-r1";
 
-  src = fetchurl {
-    url = "https://github.com/tork-a/jsk_recognition-release/archive/release/melodic/jsk_recognition_msgs/1.2.15-1.tar.gz";
-    name = "1.2.15-1.tar.gz";
-    sha256 = "3214810dd81fd86a3023aa920f5a57cacab4d57e635900f4ec034897954b22f8";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "jsk_recognition-release";
+    rev = "8709b9ca3d4724a7f835e237bca53b63b3ecae7e";
+    owner = "tork-a";
+    sha256 = "sha256-pTlRnRxhSm8VEDkgg6BRIZSnxvK2m86qOokTuzrUPJ0=";
   };
 
   buildType = "catkin";

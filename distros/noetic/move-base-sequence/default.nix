@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-move-base-sequence";
   version = "0.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/MarkNaeem/move_base_sequence-release/archive/release/noetic/move_base_sequence/0.0.1-1.tar.gz";
-    name = "0.0.1-1.tar.gz";
-    sha256 = "b3dc4489b880f87708249280f6b9eb3b5fb7b6b827563cec478326fad010a6ad";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "move_base_sequence-release";
+    rev = "e414da164855c11fc31e40375591bbf2e62133c6";
+    owner = "MarkNaeem";
+    sha256 = "sha256-oqxbZ5bmLpaSRgmTv/7TyipOXVPQgGUxoqsJpVR2hs0=";
   };
 
   buildType = "catkin";

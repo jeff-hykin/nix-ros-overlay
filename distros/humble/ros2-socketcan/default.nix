@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-ros2-socketcan";
   version = "1.1.0-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_socketcan-release/archive/release/humble/ros2_socketcan/1.1.0-3.tar.gz";
-    name = "1.1.0-3.tar.gz";
-    sha256 = "faa44746237d959c156abcb6d59a3e5ec7f6f1d1f9053cfe0543a122881da0dd";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_socketcan-release";
+    rev = "74aed3f47cf18318513287f579b6b307df719be7";
+    owner = "ros2-gbp";
+    sha256 = "sha256-5X1Zt8nQDN5Bp9dZgz8CzQW6gMNhDsjMt0D6P1X/JSg=";
   };
 
   buildType = "ament_cmake";

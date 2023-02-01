@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-rmf-battery";
   version = "0.1.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_battery-release/archive/release/rolling/rmf_battery/0.1.3-1.tar.gz";
-    name = "0.1.3-1.tar.gz";
-    sha256 = "a226153acd4ffa0d35868eb2d393f664c9fcf183958832eec240ac8184218ff5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_battery-release";
+    rev = "5382e5010b026f9777cfce5a75ff20873eded496";
+    owner = "ros2-gbp";
+    sha256 = "sha256-oGw9NxbR7XnmDLwVkWHPmJHRVwOZtCV59cLWq56hrUA=";
   };
 
   buildType = "cmake";

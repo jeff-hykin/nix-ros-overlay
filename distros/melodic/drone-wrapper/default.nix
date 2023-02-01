@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-drone-wrapper";
   version = "1.3.10-r1";
 
-  src = fetchurl {
-    url = "https://github.com/JdeRobot/drones-release/archive/release/melodic/drone_wrapper/1.3.10-1.tar.gz";
-    name = "1.3.10-1.tar.gz";
-    sha256 = "b24352ca3298628b35cfb8b980a1a1954c380fab351f91d3fb0654650e4e1d6e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "drones-release";
+    rev = "c258dc37b54898ff5612b1afdbba8def91ad930b";
+    owner = "JdeRobot";
+    sha256 = "sha256-l7OrpI+NQ5BSxTEaFFVqtsis5P3bsGu/8pcgDUxbR2k=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-image-cb-detector";
   version = "0.10.14";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/calibration-release/archive/release/melodic/image_cb_detector/0.10.14-0.tar.gz";
-    name = "0.10.14-0.tar.gz";
-    sha256 = "b979f5db4bef45b9072a8392e5abb0f8608a5ebd06ba6dbbb5c51cb48e2ed335";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "calibration-release";
+    rev = "d207d310ab63107807ee46557b8bf9ae1d26f5ec";
+    owner = "ros-gbp";
+    sha256 = "sha256-+JELnlCH9MHLdFJhvmHQa5njYTXOPECVcAPGXkvlIzw=";
   };
 
   buildType = "catkin";

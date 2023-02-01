@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-nerian-stereo";
   version = "1.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/nerian-vision/nerian_stereo_ros2-release/archive/release/humble/nerian_stereo/1.1.1-1.tar.gz";
-    name = "1.1.1-1.tar.gz";
-    sha256 = "52fe766f6f1a4802a71645820e77e2e536840498ebb64acf2086af3a94de2e2f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "nerian_stereo_ros2-release";
+    rev = "e36a744b1c74bb770488a0e4962b20422e3f10dd";
+    owner = "nerian-vision";
+    sha256 = "sha256-6CoVp+bNN3DR6PXmHMBsHHQjSlUDErcEe1MsKNvOF04=";
   };
 
   buildType = "ament_cmake";

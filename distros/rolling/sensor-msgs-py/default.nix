@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-sensor-msgs-py";
   version = "4.6.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/common_interfaces-release/archive/release/rolling/sensor_msgs_py/4.6.1-1.tar.gz";
-    name = "4.6.1-1.tar.gz";
-    sha256 = "37793a2ec34c3f62240f2055b967e52606c86b69cce1bcfaffd816c53872ac7f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "common_interfaces-release";
+    rev = "3300359691e2c7de7000db72fe42da4eb046e054";
+    owner = "ros2-gbp";
+    sha256 = "sha256-etgqRp/QIwYymDTE9HvIEPAZbfdrtp0SsTJs31lIke0=";
   };
 
   buildType = "ament_python";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-marti-visualization-msgs";
   version = "1.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/marti_messages-release/archive/release/foxy/marti_visualization_msgs/1.3.0-1.tar.gz";
-    name = "1.3.0-1.tar.gz";
-    sha256 = "dc29bd78e7f35d749ad4f42ee97e553f13708fddc25f4ade11d42a96df35a2d8";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "marti_messages-release";
+    rev = "84f0ce4b4399845872347610a961537eec45ed0b";
+    owner = "ros2-gbp";
+    sha256 = "sha256-ln8TB7XB3itqW2qSG4noDxLwjdTJMrccgDELU/7sm+A=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-rqt-nav-view";
   version = "0.5.7";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/rqt_nav_view-release/archive/release/melodic/rqt_nav_view/0.5.7-0.tar.gz";
-    name = "0.5.7-0.tar.gz";
-    sha256 = "a531ad91a1753f9dd2b74d56b519c52aebeac013373f76c6e4e6b19c66ca46a0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt_nav_view-release";
+    rev = "8eac52d5b576353f01f8f90af097cc02e62ce684";
+    owner = "ros-gbp";
+    sha256 = "sha256-EP33l2lVCEe3AF/jxTwus9WHpxFk1R3awJ02+OEjINo=";
   };
 
   buildType = "catkin";

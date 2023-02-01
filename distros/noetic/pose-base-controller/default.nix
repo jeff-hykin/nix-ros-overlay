@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-pose-base-controller";
   version = "0.4.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/navigation_experimental-release/archive/release/noetic/pose_base_controller/0.4.1-1.tar.gz";
-    name = "0.4.1-1.tar.gz";
-    sha256 = "b1849295bd12f2ab3acbaaa5878cf3c1b20fb08682e46bcaf7d7f6ec7388a93b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation_experimental-release";
+    rev = "2c0a4446e55185ad4276f1939cb4ef9e38fd0874";
+    owner = "ros-gbp";
+    sha256 = "sha256-ZYdbzGzbdCnQcZ+9HuOilc3qLQFSHSoI24BtYvJDPTg=";
   };
 
   buildType = "catkin";

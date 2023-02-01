@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-dbw-fca-description";
   version = "2.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/DataspeedInc-release/dbw_ros-release/archive/release/humble/dbw_fca_description/2.1.0-1.tar.gz";
-    name = "2.1.0-1.tar.gz";
-    sha256 = "29b11e585dfb21ba9a05cc832744fe68979e51c39cf03ea608d270ec53071029";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "dbw_ros-release";
+    rev = "7f5913c5b6c94018b7dcbf34d390a7e9a5920e10";
+    owner = "DataspeedInc-release";
+    sha256 = "sha256-B1sW2lYDBAII60cpqM/en3Z4WBElOg+DHM7E1c+WycQ=";
   };
 
   buildType = "ament_cmake";

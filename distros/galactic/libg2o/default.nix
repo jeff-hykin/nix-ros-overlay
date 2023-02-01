@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-libg2o";
   version = "2020.5.29-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/libg2o-release/archive/release/galactic/libg2o/2020.5.29-3.tar.gz";
-    name = "2020.5.29-3.tar.gz";
-    sha256 = "9bebbccd56e96a9a011cf6aa1c1fcb6f8a71b26f1d1b40589249bf6c43125c76";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "libg2o-release";
+    rev = "0b4900dbf43956e1e680cc0c3c9ed0dcd59da28c";
+    owner = "ros2-gbp";
+    sha256 = "sha256-CjzbPeEWNlKOev8+iQ9bz0j6xezyU15scMuFVo9uWpo=";
   };
 
   buildType = "ament_cmake";

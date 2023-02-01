@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-control-msgs";
   version = "1.5.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/control_msgs-release/archive/release/noetic/control_msgs/1.5.2-1.tar.gz";
-    name = "1.5.2-1.tar.gz";
-    sha256 = "a1fc24186afc292cd6e94eec5b30eae1fef0c05776c5bac7606a63c5223c9d63";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "control_msgs-release";
+    rev = "85973597fa76c4101f91f61d03dd7b1a2e461d6a";
+    owner = "ros-gbp";
+    sha256 = "sha256-GSE7ntUKLYfvrN/UnDGjcn8Aqxv7WulbCgRXOfciglA=";
   };
 
   buildType = "catkin";

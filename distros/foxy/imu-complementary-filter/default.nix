@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-imu-complementary-filter";
   version = "2.0.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/imu_tools-release/archive/release/foxy/imu_complementary_filter/2.0.3-1.tar.gz";
-    name = "2.0.3-1.tar.gz";
-    sha256 = "59f4c53358e5bed435241d6b96098bfdc6f9e7eb7b7d417e8dcd3d977502aceb";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "imu_tools-release";
+    rev = "1cf31c9a7a142120649b1ea4e09ad2104679e7c3";
+    owner = "ros2-gbp";
+    sha256 = "sha256-1u4cc/2DqGnlEleAltO4KeLEY3vykH4jdFTFqKny0YI=";
   };
 
   buildType = "ament_cmake";

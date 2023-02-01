@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-teleop-twist-keyboard";
   version = "2.3.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/teleop_twist_keyboard-release/archive/release/foxy/teleop_twist_keyboard/2.3.2-1.tar.gz";
-    name = "2.3.2-1.tar.gz";
-    sha256 = "f9db198aea5cf6c7e50963ce72fc7642c15f7eb843776d5119e498ea6eb9a1ae";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "teleop_twist_keyboard-release";
+    rev = "068f7b572b6c50a35296eb80e552696d510b17da";
+    owner = "ros2-gbp";
+    sha256 = "sha256-lxwiaJp3eRsvCIRQzNZmogFEOdO5fLDA35rX8PgLx4s=";
   };
 
   buildType = "ament_python";

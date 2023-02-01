@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-moveit-chomp-optimizer-adapter";
   version = "2.3.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/moveit/moveit2-release/archive/release/galactic/moveit_chomp_optimizer_adapter/2.3.4-1.tar.gz";
-    name = "2.3.4-1.tar.gz";
-    sha256 = "661a6686035bd43bdda5ee07430193872ceeee9922b4ef9a993ff6680b40eb38";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "moveit2-release";
+    rev = "358f07e8235776090f9de5a8d98d026a7ad37ae4";
+    owner = "moveit";
+    sha256 = "sha256-hNVXT2R1LGp2deLipXoVYyiFjxAFpVI85JgdLrxXDnY=";
   };
 
   buildType = "ament_cmake";

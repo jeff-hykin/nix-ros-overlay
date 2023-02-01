@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-ros2-controllers";
   version = "0.8.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_controllers-release/archive/release/foxy/ros2_controllers/0.8.2-1.tar.gz";
-    name = "0.8.2-1.tar.gz";
-    sha256 = "048166bd7d28136b0ccf39ce3365d63850035412fa7ac2e560c800ea2bae1cae";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_controllers-release";
+    rev = "e9b1947636d247738370ecb0956a41eadc0382db";
+    owner = "ros2-gbp";
+    sha256 = "sha256-e8131wmD5fKDIJj9fjfiBRccuqxkKYeyv8gIScgLM2U=";
   };
 
   buildType = "ament_cmake";

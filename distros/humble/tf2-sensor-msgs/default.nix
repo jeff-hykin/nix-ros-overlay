@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-tf2-sensor-msgs";
   version = "0.25.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/geometry2-release/archive/release/humble/tf2_sensor_msgs/0.25.1-1.tar.gz";
-    name = "0.25.1-1.tar.gz";
-    sha256 = "92efb7f9a81400b441069c9fee904f6e2b20ee2e89c5f02817a0fa94b5b846cb";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "geometry2-release";
+    rev = "4cb3842a1dea65545e1ee0e15983a80a0ffb9a62";
+    owner = "ros2-gbp";
+    sha256 = "sha256-qyn8ckl4kfZ87AA8mdrNdHReboLdEpbfDYaExFUqw5Q=";
   };
 
   buildType = "ament_cmake";

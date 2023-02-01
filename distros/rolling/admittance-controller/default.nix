@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-admittance-controller";
   version = "2.15.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_controllers-release/archive/release/rolling/admittance_controller/2.15.0-1.tar.gz";
-    name = "2.15.0-1.tar.gz";
-    sha256 = "791ae44b516dce3cee0c0611ed25520d90a23020c492589283df7913f74ab7b9";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_controllers-release";
+    rev = "2e15d674ce2233f99793d90e3eb18684a13d0407";
+    owner = "ros2-gbp";
+    sha256 = "sha256-A1TupRcyYPFA2Eqc1L7vHSjPvBWEUoAyDpivhYZxrBg=";
   };
 
   buildType = "ament_cmake";

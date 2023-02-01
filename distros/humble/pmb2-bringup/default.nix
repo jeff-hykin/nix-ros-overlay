@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-pmb2-bringup";
   version = "4.0.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pal-gbp/pmb2_robot-gbp/archive/release/humble/pmb2_bringup/4.0.5-1.tar.gz";
-    name = "4.0.5-1.tar.gz";
-    sha256 = "0dab720e96e8df92fa588b989eed6630cfad035333108392d58138c39ad2d152";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pmb2_robot-gbp";
+    rev = "ee9e90cf5df0c9b730ec9c73a49ed8c598efdcb2";
+    owner = "pal-gbp";
+    sha256 = "sha256-GkS4BVmjN5+Y55CF8ZycebgOo19SKVOxBtCK0Ca/PzM=";
   };
 
   buildType = "ament_cmake";

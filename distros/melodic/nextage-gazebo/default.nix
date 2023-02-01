@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-nextage-gazebo";
   version = "0.8.6-r3";
 
-  src = fetchurl {
-    url = "https://github.com/tork-a/rtmros_nextage-release/archive/release/melodic/nextage_gazebo/0.8.6-3.tar.gz";
-    name = "0.8.6-3.tar.gz";
-    sha256 = "bafdf9503709b361786350ec586dfc827e3d65b05f5c2ce69be727d093050be1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rtmros_nextage-release";
+    rev = "1eb1f24b2db4f1367c2bc721f889ca13621dfd86";
+    owner = "tork-a";
+    sha256 = "sha256-38mJaNFPXL4wRWF1y8Dkwkg8/Wxa/FgkJDnVq+kzJiE=";
   };
 
   buildType = "catkin";

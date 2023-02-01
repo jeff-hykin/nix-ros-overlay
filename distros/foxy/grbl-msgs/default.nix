@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-grbl-msgs";
   version = "0.0.2-r2";
 
-  src = fetchurl {
-    url = "https://github.com/flynneva/grbl_msgs-release/archive/release/foxy/grbl_msgs/0.0.2-2.tar.gz";
-    name = "0.0.2-2.tar.gz";
-    sha256 = "3408a480eafe47cb705bd2f477f4d36d9e63d383ed566d49a4e7905a5daf3b18";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "grbl_msgs-release";
+    rev = "42aa69fa39ab8db3b91156d74c23684d5dfd11f0";
+    owner = "flynneva";
+    sha256 = "sha256-cjvc4arr+Z92IcwzqZryuU4FC2MY+FNpA+6JBe0dhiE=";
   };
 
   buildType = "ament_cmake";

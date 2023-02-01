@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-dwb-msgs";
   version = "0.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/DLu/robot_navigation-release/archive/release/melodic/dwb_msgs/0.3.0-1.tar.gz";
-    name = "0.3.0-1.tar.gz";
-    sha256 = "5769cd1bf4f0ba369d9884e9d698f1170f993c68acd5bc97f37b20411ea9a2f7";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "robot_navigation-release";
+    rev = "6a2f905f144272b87a649d43a3f412868125ae9f";
+    owner = "DLu";
+    sha256 = "sha256-AUVn4fevlMcQ10D5u/tEL7RZsP8uMp/jgl12H5/qAew=";
   };
 
   buildType = "catkin";

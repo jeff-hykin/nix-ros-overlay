@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-webots-ros2-importer";
   version = "2023.0.0-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/webots_ros2-release/archive/release/foxy/webots_ros2_importer/2023.0.0-3.tar.gz";
-    name = "2023.0.0-3.tar.gz";
-    sha256 = "3b2ac4689a01a9d3eb9cdb75e65fbe2b1c0ffae978ec7c4c6fedd1a997b33a91";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "webots_ros2-release";
+    rev = "352db30d715d1d6472651f0292fc29e7283b1942";
+    owner = "ros2-gbp";
+    sha256 = "sha256-kGqvhwYkxZo+AIydrppM6mX0fjhVrG/7itwvfqiY5Wg=";
   };
 
   buildType = "ament_python";

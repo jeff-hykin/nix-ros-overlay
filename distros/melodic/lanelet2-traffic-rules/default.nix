@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-lanelet2-traffic-rules";
   version = "1.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/fzi-forschungszentrum-informatik/lanelet2-release/archive/release/melodic/lanelet2_traffic_rules/1.0.1-1.tar.gz";
-    name = "1.0.1-1.tar.gz";
-    sha256 = "f4c595f49fde53881eb785a245e2b4d60a6cf43209d1d5dcdc6d96d6f928f6a3";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "lanelet2-release";
+    rev = "312e8cee6f6218e5429ae71db1f6275c3cd85939";
+    owner = "fzi-forschungszentrum-informatik";
+    sha256 = "sha256-cfxRXsWVlCKt1977kV7+42/X3HwRej1Zm2RvJDK59GM=";
   };
 
   buildType = "catkin";

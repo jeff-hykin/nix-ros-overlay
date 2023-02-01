@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-schunk-simulated-tactile-sensors";
   version = "0.6.14-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/schunk_modular_robotics-release/archive/release/melodic/schunk_simulated_tactile_sensors/0.6.14-1.tar.gz";
-    name = "0.6.14-1.tar.gz";
-    sha256 = "9f51c59099e957bbeb3cf7dac8267d3940787b6c6db8d5cb1ef0fbbba1fbdbb4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "schunk_modular_robotics-release";
+    rev = "7dcd3e841e8b1a9f1435eb9adc2e8f225ccc5619";
+    owner = "ipa320";
+    sha256 = "sha256-P3bjg82EBGfPHnC31BV6ZxuoS42QWa2Fo10SNMCOjAE=";
   };
 
   buildType = "catkin";

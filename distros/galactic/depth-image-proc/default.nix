@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-depth-image-proc";
   version = "2.2.1-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/image_pipeline-release/archive/release/galactic/depth_image_proc/2.2.1-3.tar.gz";
-    name = "2.2.1-3.tar.gz";
-    sha256 = "01067921b1f955e708d67e48b5098e7e38c288b133f8593c1d7064723606dab6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "image_pipeline-release";
+    rev = "4d150ffa21cff5cf9aa43e1cb789deb9409a7321";
+    owner = "ros2-gbp";
+    sha256 = "sha256-G2sN2zb9YMcpIXIGQjV52cXnLvNJkQ457Iz0FO7oeDc=";
   };
 
   buildType = "ament_cmake";

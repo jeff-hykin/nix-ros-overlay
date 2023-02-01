@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-swri-console-util";
   version = "3.5.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/marti_common-release/archive/release/humble/swri_console_util/3.5.0-1.tar.gz";
-    name = "3.5.0-1.tar.gz";
-    sha256 = "cfac37cc8f58fb2be6af9517e7bb86afdb692741921f4912714e138e363a1391";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "marti_common-release";
+    rev = "b4ea2f67de4b991f2aaa9c013add38e1e6df3854";
+    owner = "ros2-gbp";
+    sha256 = "sha256-ZH32tPitHyM8QwDOEH/eFIRSWfFAjERyrUOXxIpM6LE=";
   };
 
   buildType = "ament_cmake";

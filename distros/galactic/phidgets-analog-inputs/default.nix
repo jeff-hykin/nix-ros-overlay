@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-phidgets-analog-inputs";
   version = "2.2.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/phidgets_drivers-release/archive/release/galactic/phidgets_analog_inputs/2.2.3-1.tar.gz";
-    name = "2.2.3-1.tar.gz";
-    sha256 = "2c81b078a3c99cc1d14cb04d63d5489e8af187a778eced872acc93d3a1ec4695";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "phidgets_drivers-release";
+    rev = "a4a1c287329de3ae9f953a94343ea513c61df0e8";
+    owner = "ros2-gbp";
+    sha256 = "sha256-5vBjysokl8Q20c2EQMfHwatY9JJLbUoYARg9ANfC0Vk=";
   };
 
   buildType = "ament_cmake";

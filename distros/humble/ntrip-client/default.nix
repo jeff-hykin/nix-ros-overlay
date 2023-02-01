@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-ntrip-client";
   version = "1.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ntrip_client-release/archive/release/humble/ntrip_client/1.2.0-1.tar.gz";
-    name = "1.2.0-1.tar.gz";
-    sha256 = "7516989ca6c25bdc5db576845a4156554a32076b2ca71f0455e22502eedd2232";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ntrip_client-release";
+    rev = "073f00a97f0d3ea09f815f23f14c1b3cfb8c03d6";
+    owner = "ros2-gbp";
+    sha256 = "sha256-D2B2lApA/XdsUVc6tMvHaZBKPMxKG+1deA3REcfJSS8=";
   };
 
   buildType = "ament_python";

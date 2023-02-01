@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-tf2-urdf";
   version = "0.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/standmit/tf2_urdf-release/archive/release/melodic/tf2_urdf/0.1.1-1.tar.gz";
-    name = "0.1.1-1.tar.gz";
-    sha256 = "f397b372dd5c56a93f4dd6f42187929d66c3cb92103899f95a61734d2d466277";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "tf2_urdf-release";
+    rev = "5b8bea6caf283d19795ab1c52b11464bdf6a1e62";
+    owner = "standmit";
+    sha256 = "sha256-CTvgw7cgd6H2vKpW+Q1qFqul14LgAerFUsWEWODsPqI=";
   };
 
   buildType = "catkin";

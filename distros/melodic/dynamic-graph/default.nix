@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-dynamic-graph";
   version = "4.4.3-r2";
 
-  src = fetchurl {
-    url = "https://github.com/stack-of-tasks/dynamic-graph-ros-release/archive/release/melodic/dynamic-graph/4.4.3-2.tar.gz";
-    name = "4.4.3-2.tar.gz";
-    sha256 = "682d9e824e906f919778385d2244548da52656b31b1f34f9704c859c152fd001";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "dynamic-graph-ros-release";
+    rev = "b4cfa8bd0331bcd18fef0ed7c4aaecc1580be469";
+    owner = "stack-of-tasks";
+    sha256 = "sha256-ZjYVYmbMDjUMw0P7+KODSEEm94FSWSkq9bG/x6JNFYY=";
   };
 
   buildType = "cmake";

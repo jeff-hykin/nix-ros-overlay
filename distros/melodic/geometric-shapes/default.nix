@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-geometric-shapes";
   version = "0.6.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/geometric_shapes-release/archive/release/melodic/geometric_shapes/0.6.4-1.tar.gz";
-    name = "0.6.4-1.tar.gz";
-    sha256 = "0f6df13673315030432f153008c0d0eb9a8188911e84ade79d627358ea562e4d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "geometric_shapes-release";
+    rev = "c425e2dd86b6e405d47d8a23b32838a576c526ba";
+    owner = "ros-gbp";
+    sha256 = "sha256-ETVtsZZvyqZNDNYbrhtJYBqhl7RJLvO8ZhdnICRGnCc=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-serial-driver";
   version = "1.2.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/transport_drivers-release/archive/release/humble/serial_driver/1.2.0-2.tar.gz";
-    name = "1.2.0-2.tar.gz";
-    sha256 = "be898c4e7146a88141857f7372ee224524ce12b418f0f8214225670f76f214b1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "transport_drivers-release";
+    rev = "043d1a6d50a65c330aab6939ab721c168f9ead53";
+    owner = "ros2-gbp";
+    sha256 = "sha256-1Oc6jtsGEX0Jaxqs7jdlxu/nZJxZPxvagRST+L9bdwI=";
   };
 
   buildType = "ament_cmake";

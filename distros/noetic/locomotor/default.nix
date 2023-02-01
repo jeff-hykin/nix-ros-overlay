@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-locomotor";
   version = "0.3.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/DLu/robot_navigation-release/archive/release/noetic/locomotor/0.3.0-2.tar.gz";
-    name = "0.3.0-2.tar.gz";
-    sha256 = "cfc7f120c4321938de66608941cb312ef1ecfe925dcc2f698985751feabd8617";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "robot_navigation-release";
+    rev = "364756c6c6c7f4e26369aaa0b932962a8407c9fb";
+    owner = "DLu";
+    sha256 = "sha256-6kaeiVqQQXuk1FiGb9diHZGgqlpmtuPwUaSR8aS8jNY=";
   };
 
   buildType = "catkin";

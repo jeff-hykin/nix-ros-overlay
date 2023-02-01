@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rclcpp-action";
   version = "9.2.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rclcpp-release/archive/release/galactic/rclcpp_action/9.2.2-1.tar.gz";
-    name = "9.2.2-1.tar.gz";
-    sha256 = "e398abda6b8e70c90dfd5d69a2983908512e24caeb0a70a06676eff7185bd168";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rclcpp-release";
+    rev = "ca20260056b7a00bd65982b1371805d270cf6e54";
+    owner = "ros2-gbp";
+    sha256 = "sha256-zwob6z6fm99eWv2CCAUw33jrj4kWtMXwtp6bxFBv7GQ=";
   };
 
   buildType = "ament_cmake";

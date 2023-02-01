@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-robotont-description";
   version = "0.0.8-r2";
 
-  src = fetchurl {
-    url = "https://github.com/robotont-release/robotont_description-release/archive/release/noetic/robotont_description/0.0.8-2.tar.gz";
-    name = "0.0.8-2.tar.gz";
-    sha256 = "1b1b713aad635f182614d471ce49065a0dc0747fbd9bc434b7e2656ac9528d92";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "robotont_description-release";
+    rev = "a28589f324ae2db675f6a43bc7239c89f92b38f5";
+    owner = "robotont-release";
+    sha256 = "sha256-jT/rmUG7UA79Fx6nxn6Ky5GMlteOcZfwS/vHN6t+ogI=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-wireless-msgs";
   version = "0.1.1-r2";
 
-  src = fetchurl {
-    url = "https://github.com/clearpath-gbp/wireless-release/archive/release/noetic/wireless_msgs/0.1.1-2.tar.gz";
-    name = "0.1.1-2.tar.gz";
-    sha256 = "cd789f90673d73feda7f30fe6af06aa73459e4a6a7a6dff711fb6f493481b6f0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "wireless-release";
+    rev = "4832c197ee671d9873961a117c950bbde696995f";
+    owner = "clearpath-gbp";
+    sha256 = "sha256-TZJIhudGUEey1U/FfWaRu/ON7O4eZY8zACqCPRJNeYk=";
   };
 
   buildType = "catkin";

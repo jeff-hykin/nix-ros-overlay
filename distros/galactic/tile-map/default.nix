@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-tile-map";
   version = "2.2.0-r3";
 
-  src = fetchurl {
-    url = "https://github.com/swri-robotics-gbp/mapviz-release/archive/release/galactic/tile_map/2.2.0-3.tar.gz";
-    name = "2.2.0-3.tar.gz";
-    sha256 = "e5c953792639ada4f61da76904ecd2bd27cdacc2c3e0cace4053bc5c39d9cbc3";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mapviz-release";
+    rev = "4fa9d7af80d6d0cac563a7327ccd7719c803d568";
+    owner = "swri-robotics-gbp";
+    sha256 = "sha256-ECQRF0Ip6ulf/qrYRGDXYExWNYjsbiDZqfhh0ImQfC8=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-ros2-control";
   version = "3.5.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_control-release/archive/release/rolling/ros2_control/3.5.0-1.tar.gz";
-    name = "3.5.0-1.tar.gz";
-    sha256 = "e6c5c38689c5db714007cea6771b7ff07e87b87b05e5332b030f6d16723616a4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_control-release";
+    rev = "0ab0b530d42e7f82652c32c7a5e6a000ab877d72";
+    owner = "ros2-gbp";
+    sha256 = "sha256-6w9nV2g8BVUjMt3sNGS25kSD+1RqYTxkrB8hFovdQrw=";
   };
 
   buildType = "ament_cmake";

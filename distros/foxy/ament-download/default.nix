@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-ament-download";
   version = "0.0.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/samsung-ros/ament_download-release/archive/release/foxy/ament_download/0.0.5-1.tar.gz";
-    name = "0.0.5-1.tar.gz";
-    sha256 = "b85972b56f2b369c2007a178b7e1c8e4896c5873dc0c9ae8b029d68cf2ce8cb9";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ament_download-release";
+    rev = "20dc3b15feb1255f259223b9b064aebef0283f26";
+    owner = "samsung-ros";
+    sha256 = "sha256-6V9DhJraMIbNz3xeSeczpOFyaWgBqKsz2vQV4jFl6qk=";
   };
 
   buildType = "ament_cmake";

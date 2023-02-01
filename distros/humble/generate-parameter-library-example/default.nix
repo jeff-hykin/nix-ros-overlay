@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-generate-parameter-library-example";
   version = "0.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/PickNikRobotics/generate_parameter_library-release/archive/release/humble/generate_parameter_library_example/0.3.0-1.tar.gz";
-    name = "0.3.0-1.tar.gz";
-    sha256 = "2126f9ab30ce1856ad465ca112d9c58af3108f679b64d157360bd26881125afb";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "generate_parameter_library-release";
+    rev = "b11622f307ce4fed37fd83491625d835904ef652";
+    owner = "PickNikRobotics";
+    sha256 = "sha256-hH6ARQmZWvProM7nvmi+RWSycC93HYWVrMbULnw6AyA=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-leo-viz";
   version = "1.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/leo_desktop-release/archive/release/foxy/leo_viz/1.0.0-1.tar.gz";
-    name = "1.0.0-1.tar.gz";
-    sha256 = "043b980487e2e2da5b3b3b9e630b9ae36384d6c9a8425202c2d5548cf84ec087";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "leo_desktop-release";
+    rev = "7f3f219adf6deb8d19a27632b1feb9c3306d0689";
+    owner = "ros2-gbp";
+    sha256 = "sha256-DYXWnzrgeZXXKfIsG/KHe/8dD6hhcw3Ta79O2gvbsVw=";
   };
 
   buildType = "ament_cmake";

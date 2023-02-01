@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-ariles-ros";
   version = "1.3.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/asherikov/ariles-release/archive/release/melodic/ariles_ros/1.3.2-1.tar.gz";
-    name = "1.3.2-1.tar.gz";
-    sha256 = "7a898961b24ccb4b8974efe590485869432b9f5471596a6e3ce735a9d0f71c2e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ariles-release";
+    rev = "974154c34bcb64536e4852803f91265783a4e0c6";
+    owner = "asherikov";
+    sha256 = "sha256-dqfxCK+sGn97jKoq62fQV5ap9rjyNg9jSk3xVtDotYA=";
   };
 
   buildType = "cmake";

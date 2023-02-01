@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-pilz-robot-programming";
   version = "0.5.0-r4";
 
-  src = fetchurl {
-    url = "https://github.com/PilzDE/pilz_industrial_motion-release/archive/release/noetic/pilz_robot_programming/0.5.0-4.tar.gz";
-    name = "0.5.0-4.tar.gz";
-    sha256 = "4b094349fefd046eb81afc7c233cd56e763c5a7ba91bc13fcead1bf7bf598d62";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pilz_industrial_motion-release";
+    rev = "52de358a2cac527dc4457bf7ceaef1f38a905019";
+    owner = "PilzDE";
+    sha256 = "sha256-WZSJzQBaw263V9h1TLizLAd3BI9mA6DpiWaReZr13xA=";
   };
 
   buildType = "catkin";

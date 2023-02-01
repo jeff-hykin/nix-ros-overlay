@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-ntpd-driver";
   version = "2.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ntpd_driver-release/archive/release/humble/ntpd_driver/2.2.0-1.tar.gz";
-    name = "2.2.0-1.tar.gz";
-    sha256 = "78785bac0c28b57cd11f050e4235974983d7a5df0b2913d92931f765d2714a86";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ntpd_driver-release";
+    rev = "3e0ce55274357cab0b1d80da16108f1838abfdd0";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Y3hISLK0EHzcJD4MrfgxDdmYH+cpgQTjbH3DCmbd0VE=";
   };
 
   buildType = "ament_cmake";

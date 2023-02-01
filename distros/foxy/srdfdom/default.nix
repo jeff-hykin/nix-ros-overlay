@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-srdfdom";
   version = "2.0.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/moveit/srdfdom-release/archive/release/foxy/srdfdom/2.0.2-1.tar.gz";
-    name = "2.0.2-1.tar.gz";
-    sha256 = "fcc96f1c6ef4ce5070a873bb588749215eb2ee5faeb1034610da72ebf0e4670f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "srdfdom-release";
+    rev = "76ecbcc4a82c657ebbeefe4d3b21828555f598df";
+    owner = "moveit";
+    sha256 = "sha256-eglKkNuvnp75Yfykh8e2Urlpl9eqZEph8L0FqGhN8BI=";
   };
 
   buildType = "ament_cmake";

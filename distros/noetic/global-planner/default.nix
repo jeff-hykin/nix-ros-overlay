@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-global-planner";
   version = "1.17.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/navigation-release/archive/release/noetic/global_planner/1.17.2-1.tar.gz";
-    name = "1.17.2-1.tar.gz";
-    sha256 = "feb8a04bb141d5f90d4e2e0985845b15fcbbe9c66c122c85deeb07a1535f827e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation-release";
+    rev = "ce044bb61d5a5b577619bb6a3817c14ea9f4ba72";
+    owner = "ros-gbp";
+    sha256 = "sha256-7hEpH1WG5c4RLGiN4cHtDT/lYVzKzaEEcANyvUBujGU=";
   };
 
   buildType = "catkin";

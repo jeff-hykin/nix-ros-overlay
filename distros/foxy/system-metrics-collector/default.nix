@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-system-metrics-collector";
   version = "0.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-tooling/system_metrics_collector-release/archive/release/foxy/system_metrics_collector/0.1.1-1.tar.gz";
-    name = "0.1.1-1.tar.gz";
-    sha256 = "1b781a5d922279744556fd6bad6c48db88dae8ce17ed21d5abf8c70ad17f590a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "system_metrics_collector-release";
+    rev = "d4a9741303f0c5c232ab81356d73f64c86299117";
+    owner = "ros-tooling";
+    sha256 = "sha256-udhrr1Uzr8NnyxADISCZOOKuQOqvx2PI8o/o9PG7t4w=";
   };
 
   buildType = "ament_cmake";

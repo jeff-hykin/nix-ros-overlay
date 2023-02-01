@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-rospy";
   version = "1.14.13-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/rospy/1.14.13-1.tar.gz";
-    name = "1.14.13-1.tar.gz";
-    sha256 = "b4a5bf60412932d0ebe959b4958112cac22af9ec3174ae1c1825b7568a727299";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_comm-release";
+    rev = "e9ce1a28194f44a4da2e3bba1d4dc1a2bf5d115c";
+    owner = "ros-gbp";
+    sha256 = "sha256-9oxUjY1JLw0uXjm5XjiIuFJeXe3vHs04N+8fqOw3sIo=";
   };
 
   buildType = "catkin";

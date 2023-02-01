@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ecl-command-line";
   version = "1.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/yujinrobot-release/ecl_core-release/archive/release/galactic/ecl_command_line/1.2.0-1.tar.gz";
-    name = "1.2.0-1.tar.gz";
-    sha256 = "e551972e80b1353281ab82642c22a775a541bf69e8ff0d7329d3fd250193c0f5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ecl_core-release";
+    rev = "875f58c75e644b27fce538e582034917d0241403";
+    owner = "yujinrobot-release";
+    sha256 = "sha256-OJqjljzcxcgIc4ddIIPO4LkpmLtja1iz8TgUAW00g/w=";
   };
 
   buildType = "ament_cmake";

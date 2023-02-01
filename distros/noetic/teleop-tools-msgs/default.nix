@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-teleop-tools-msgs";
   version = "0.4.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/teleop_tools-release/archive/release/noetic/teleop_tools_msgs/0.4.0-1.tar.gz";
-    name = "0.4.0-1.tar.gz";
-    sha256 = "8cc7640ebe831d44cbfed52384248636cb2dd9e54c142f70d5fa847143d521e8";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "teleop_tools-release";
+    rev = "f860652c9e53db4de9ca6c10f063947c14486a02";
+    owner = "ros-gbp";
+    sha256 = "sha256-rrylntQijuAVz3SEfgg1G7WQKFosg+AJLJuOiixm7zo=";
   };
 
   buildType = "catkin";

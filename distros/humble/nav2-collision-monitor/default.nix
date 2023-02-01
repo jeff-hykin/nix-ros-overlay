@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-nav2-collision-monitor";
   version = "1.1.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/SteveMacenski/navigation2-release/archive/release/humble/nav2_collision_monitor/1.1.5-1.tar.gz";
-    name = "1.1.5-1.tar.gz";
-    sha256 = "3548346facef75358c1785f603a70bd4945366a72a5139ee42173391882ffe06";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation2-release";
+    rev = "34b2bc31b086ae56b58a621e32b095d589471a50";
+    owner = "SteveMacenski";
+    sha256 = "sha256-fbeKziOP5UoA0xj50wgo1YLkA+kDHYGLEVdOcQPWdxE=";
   };
 
   buildType = "ament_cmake";

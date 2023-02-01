@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-kobuki-ros-interfaces";
   version = "1.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/kobuki_ros_interfaces-release/archive/release/humble/kobuki_ros_interfaces/1.0.0-1.tar.gz";
-    name = "1.0.0-1.tar.gz";
-    sha256 = "1ec057fc3c140f9d27ef9f04162be2adf22252b856d8398e76737c0e8cd0a17f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "kobuki_ros_interfaces-release";
+    rev = "b9cf881332db5857b6623eb712bba4b2adf09d22";
+    owner = "ros2-gbp";
+    sha256 = "sha256-svbQG6e1o4u1HncdcNcx55XoYK99I02G7CxL2jvBZhs=";
   };
 
   buildType = "ament_cmake";

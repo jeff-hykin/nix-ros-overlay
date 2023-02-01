@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-realsense2-description";
   version = "4.51.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/IntelRealSense/realsense-ros-release/archive/release/galactic/realsense2_description/4.51.1-1.tar.gz";
-    name = "4.51.1-1.tar.gz";
-    sha256 = "7eb5ccfbf38877b767ab4e11d20eb8eb5e548ad8314546611ae942d63b5c354a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "realsense-ros-release";
+    rev = "d01592c954223787d617f513298a6310c2d6352c";
+    owner = "IntelRealSense";
+    sha256 = "sha256-7xl3PXh5S904NsGFLRSC121dwycHugAR8VcHIP0yvXE=";
   };
 
   buildType = "ament_cmake";

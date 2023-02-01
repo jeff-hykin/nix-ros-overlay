@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rqt-image-view";
   version = "1.1.1-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rqt_image_view-release/archive/release/galactic/rqt_image_view/1.1.1-2.tar.gz";
-    name = "1.1.1-2.tar.gz";
-    sha256 = "c0b939e88ae8c627fc460d8147c8672c93efa87e0c6b4932e1ecf7502397a8b1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt_image_view-release";
+    rev = "fae4cc145de30ff2fceee84d6d6e5cedb8c3eba9";
+    owner = "ros2-gbp";
+    sha256 = "sha256-nnGCQz6FV1THxiOZknWHh0BMYkEK4FR2uh+hi2pPhCs=";
   };
 
   buildType = "ament_cmake";

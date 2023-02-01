@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-cartesian-control-msgs";
   version = "0.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/UniversalRobots/Universal_Robots_ROS_cartesian_control_msgs-release/archive/release/noetic/cartesian_control_msgs/0.1.0-1.tar.gz";
-    name = "0.1.0-1.tar.gz";
-    sha256 = "88d6f5a6c0add62f1ade742e8741e077fe434382cd7b9f0a743aeb24c15caa1b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "Universal_Robots_ROS_cartesian_control_msgs-release";
+    rev = "2089159c66c35cc3a36d8ad028297da34a458f51";
+    owner = "UniversalRobots";
+    sha256 = "sha256-uPW2h5O83C0HDN+7KJPJyMYjI3+bCHV9PPDf2bqI1ys=";
   };
 
   buildType = "catkin";

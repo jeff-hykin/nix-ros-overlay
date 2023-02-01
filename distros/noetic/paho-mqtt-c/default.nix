@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-paho-mqtt-c";
   version = "1.3.11-r1";
 
-  src = fetchurl {
-    url = "https://github.com/nobleo/paho.mqtt.c-release/archive/release/noetic/paho-mqtt-c/1.3.11-1.tar.gz";
-    name = "1.3.11-1.tar.gz";
-    sha256 = "ac047afc17c08dcab54263ec0206bc379e1abe564eab1ac859fe2debb66128ac";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "paho.mqtt.c-release";
+    rev = "f2f31208007d12cd1e7749191bc62de60f1baf21";
+    owner = "nobleo";
+    sha256 = "sha256-uXVOg1GeQM0ACNssc+04QYiEgPpTDj7ervpQHf9uU1A=";
   };
 
   buildType = "cmake";

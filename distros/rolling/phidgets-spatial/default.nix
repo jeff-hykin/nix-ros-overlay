@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-phidgets-spatial";
   version = "2.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/phidgets_drivers-release/archive/release/rolling/phidgets_spatial/2.3.0-1.tar.gz";
-    name = "2.3.0-1.tar.gz";
-    sha256 = "2501e496a87c16310b02e974063dc9862254ca866dee082550373984239ac845";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "phidgets_drivers-release";
+    rev = "66e142f733af10aca5ddcdc55e0079f8823ffee4";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Kp1BaQKjpaOh8SZWo/h8mLTA4ZfYszHCYd0vY8xqtNI=";
   };
 
   buildType = "ament_cmake";

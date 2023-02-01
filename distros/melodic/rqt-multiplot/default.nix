@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-rqt-multiplot";
   version = "0.0.10";
 
-  src = fetchurl {
-    url = "https://github.com/anybotics/rqt_multiplot_plugin-release/archive/release/melodic/rqt_multiplot/0.0.10-0.tar.gz";
-    name = "0.0.10-0.tar.gz";
-    sha256 = "92e975517c6726dcd8a9c73c658d524126d48716bd4db032cec61f641ce27ae8";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt_multiplot_plugin-release";
+    rev = "890b0183dd413c19d262447de004e70f23b03cee";
+    owner = "anybotics";
+    sha256 = "sha256-CnQEVSfDrT3vzAEozmck7WmNXCd0F1f++uDJ6sDQAWk=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-pr2-common-actions";
   version = "0.0.12-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pr2-gbp/pr2_common_actions-release/archive/release/noetic/pr2_common_actions/0.0.12-1.tar.gz";
-    name = "0.0.12-1.tar.gz";
-    sha256 = "7dfba611208532414ba926f98c67113d8a227a74c74e8eba44e559a76f6364ac";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pr2_common_actions-release";
+    rev = "1e3790bbe2fc6f3f4c9363361dcda194a895f78a";
+    owner = "pr2-gbp";
+    sha256 = "sha256-qFohAtLPFmB4tkpEVd+qB32gkFWZIDjmWIoZNMZItIQ=";
   };
 
   buildType = "catkin";

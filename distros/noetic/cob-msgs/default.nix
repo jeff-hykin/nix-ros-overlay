@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-cob-msgs";
   version = "0.7.8-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_common-release/archive/release/noetic/cob_msgs/0.7.8-1.tar.gz";
-    name = "0.7.8-1.tar.gz";
-    sha256 = "e871d7c85cfe1b83c13d3102365ec95e0d3741fa9820ea10b47a26aea9829571";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_common-release";
+    rev = "0addfa29d511b3fc59514cf16260e8a0938a0fec";
+    owner = "ipa320";
+    sha256 = "sha256-uzKFi/OEpQ0pk1FGStDelwZ2G3oiA0xMBzkEAdnEdiU=";
   };
 
   buildType = "catkin";

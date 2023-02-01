@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-image-publisher";
   version = "3.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/image_pipeline-release/archive/release/rolling/image_publisher/3.0.1-1.tar.gz";
-    name = "3.0.1-1.tar.gz";
-    sha256 = "ba3fe7ea277aa9e995a03fb514956f2b977661afdf94e0d5b12794e42322cfb8";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "image_pipeline-release";
+    rev = "1f2c4c9453e6924b10004e21bef4c89ac74b2eb5";
+    owner = "ros2-gbp";
+    sha256 = "sha256-k4+TCzE59mefv1hV1qUuhHcT6Iv0B8celAX1EsPAEl4=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-gps-msgs";
   version = "1.0.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/gps_umd-release/archive/release/galactic/gps_msgs/1.0.5-1.tar.gz";
-    name = "1.0.5-1.tar.gz";
-    sha256 = "fc917e0a56a0704a851f765c48794122a5b1b8ba1fe8ad03eb90b1de95322d2a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "gps_umd-release";
+    rev = "efd3dcd27499bc0108962987835cb6dfcce35c9f";
+    owner = "ros2-gbp";
+    sha256 = "sha256-dLL6txdiSv+CiNq/vU/wBuTtZr2ZUTWuyk3gHK0QmtI=";
   };
 
   buildType = "ament_cmake";

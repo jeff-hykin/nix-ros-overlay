@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-cob-hardware-config";
   version = "0.7.8-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_robots-release/archive/release/noetic/cob_hardware_config/0.7.8-1.tar.gz";
-    name = "0.7.8-1.tar.gz";
-    sha256 = "a57ed950e46875dc5c7bfe7168e4f41d7dda8866535c8943db10f890f13edf64";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_robots-release";
+    rev = "f5892f7fcd1e7bff27d481164c0fc13de9f63683";
+    owner = "ipa320";
+    sha256 = "sha256-3Psazx33JvzXf34TRClZ2O4ACP0s8dc1ia7BgAS919E=";
   };
 
   buildType = "catkin";

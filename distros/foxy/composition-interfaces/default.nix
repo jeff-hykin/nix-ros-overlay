@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-composition-interfaces";
   version = "1.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rcl_interfaces-release/archive/release/foxy/composition_interfaces/1.0.0-1.tar.gz";
-    name = "1.0.0-1.tar.gz";
-    sha256 = "22653ac9eaa92432abe00d7e6c67b29fdde39e9ab7d84d76bdea7c7c29b82fa7";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rcl_interfaces-release";
+    rev = "752f1c3a5f5785d921fd3f351a7733256dcef0c4";
+    owner = "ros2-gbp";
+    sha256 = "sha256-MFFzXzkH0WKNryRRgX/wbObpIS6iHEv/4oxaIxALVNM=";
   };
 
   buildType = "ament_cmake";

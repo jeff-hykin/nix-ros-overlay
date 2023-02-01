@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-yocs-localization-manager";
   version = "0.8.2";
 
-  src = fetchurl {
-    url = "https://github.com/yujinrobot-release/yujin_ocs-release/archive/release/melodic/yocs_localization_manager/0.8.2-0.tar.gz";
-    name = "0.8.2-0.tar.gz";
-    sha256 = "eb2e39a17f8f78cbe98c04b73a63d666fb5937156490539ae49ad1e94b607a49";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "yujin_ocs-release";
+    rev = "edcc6f2cc97013aafae20fccc748e512077ee1bd";
+    owner = "yujinrobot-release";
+    sha256 = "sha256-AXeKsYM9pQKOHSOmYquCkVK9kmFw28HNmvXFN8bvBNk=";
   };
 
   buildType = "catkin";

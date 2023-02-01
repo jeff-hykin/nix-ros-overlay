@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-plotjuggler-msgs";
   version = "0.2.3-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/plotjuggler_msgs-release/archive/release/humble/plotjuggler_msgs/0.2.3-3.tar.gz";
-    name = "0.2.3-3.tar.gz";
-    sha256 = "16dfb632d8a0b7a03987cc581ffe9d05213c45e30c056f2676db1b17f502c51f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "plotjuggler_msgs-release";
+    rev = "b8a7b01e33e8640afe2ff62d450c01b33f9cdb8c";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Lu4ZRsDpvbS2QzbjWOL23H8lsKRSTPGe6MgiCaUedO4=";
   };
 
   buildType = "ament_cmake";

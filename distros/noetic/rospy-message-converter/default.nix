@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-rospy-message-converter";
   version = "0.5.9-r1";
 
-  src = fetchurl {
-    url = "https://github.com/uos-gbp/rospy_message_converter-release/archive/release/noetic/rospy_message_converter/0.5.9-1.tar.gz";
-    name = "0.5.9-1.tar.gz";
-    sha256 = "d7b0cbafdd524f06928b315e1d5a079781999f34cc7cff4121f1ce56c82c9cf6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rospy_message_converter-release";
+    rev = "1da01dd1bd2e61235127a5efa3427d3d884ecba1";
+    owner = "uos-gbp";
+    sha256 = "sha256-/QmKoz7Y/DE3g/dz535r6vkFH/k92V6DebqapX0gqeU=";
   };
 
   buildType = "catkin";

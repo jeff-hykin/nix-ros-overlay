@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-class-loader";
   version = "2.0.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/class_loader-release/archive/release/foxy/class_loader/2.0.3-1.tar.gz";
-    name = "2.0.3-1.tar.gz";
-    sha256 = "4f79f4f883be95b2580b184def1ef5779a2d60135849b139e3ee678e3f0ef60e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "class_loader-release";
+    rev = "7a29e7f601d6bc5993012bd60dec2c01dcb0a588";
+    owner = "ros2-gbp";
+    sha256 = "sha256-djXnkPsFs85l+KhbZKfbwIneJCKw2N9h3ilkajYT23Q=";
   };
 
   buildType = "ament_cmake";

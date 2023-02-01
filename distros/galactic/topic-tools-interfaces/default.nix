@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-topic-tools-interfaces";
   version = "1.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/topic_tools-release/archive/release/galactic/topic_tools_interfaces/1.0.0-1.tar.gz";
-    name = "1.0.0-1.tar.gz";
-    sha256 = "f7e957180a7ade596673a858dfc6a281cc2fe31bed571f9ac9201c96e1c789c1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "topic_tools-release";
+    rev = "a638a39397252e43f48e9dfee1880d3dd19403e0";
+    owner = "ros2-gbp";
+    sha256 = "sha256-jgnfd+kmIaH/wQmVa5MUEaJ9j+SDBphMz9LbGAr2uIA=";
   };
 
   buildType = "ament_cmake";

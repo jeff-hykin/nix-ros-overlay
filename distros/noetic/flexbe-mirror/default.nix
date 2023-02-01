@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-flexbe-mirror";
   version = "1.3.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/FlexBE/flexbe_behavior_engine-release/archive/release/noetic/flexbe_mirror/1.3.1-1.tar.gz";
-    name = "1.3.1-1.tar.gz";
-    sha256 = "d5b3531784820f0f4ceb53eb53554eb98282f35ddce037e9f694d872bcbc954e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "flexbe_behavior_engine-release";
+    rev = "45989b4c581d5e5ff08d3a3bc12c0945f0c0390d";
+    owner = "FlexBE";
+    sha256 = "sha256-cR7e7+J7x56JXLhtdTu6yk2mT4jI8FPxnCkifA1U41c=";
   };
 
   buildType = "catkin";

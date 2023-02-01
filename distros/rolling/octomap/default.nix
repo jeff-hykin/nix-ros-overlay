@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-octomap";
   version = "1.9.8-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/octomap-release/archive/release/rolling/octomap/1.9.8-1.tar.gz";
-    name = "1.9.8-1.tar.gz";
-    sha256 = "c8ceb252810657d25e85dfef154406cea09166100a2c1cb2b803334179e49f23";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "octomap-release";
+    rev = "6cf3e8feabad6f5c112bee956f114c52737e3b76";
+    owner = "ros2-gbp";
+    sha256 = "sha256-1C49qDf+5BFNi34JzrSFN0B0kNfv1MBTmcdT/hEjkKI=";
   };
 
   buildType = "cmake";

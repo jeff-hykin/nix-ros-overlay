@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rqt-robot-dashboard";
   version = "0.6.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/rqt_robot_dashboard-release/archive/release/galactic/rqt_robot_dashboard/0.6.1-1.tar.gz";
-    name = "0.6.1-1.tar.gz";
-    sha256 = "3aa35f410acb280ae3e6761776f928fe839313451b269be221c7841a7872235e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt_robot_dashboard-release";
+    rev = "3d2f68b17e1f6ea27dafcbf5473f211d1e5fc1e0";
+    owner = "ros-gbp";
+    sha256 = "sha256-o2FskVGSpDLTcYD8PlfRgHpBlDa3UId/Xq+IlAvaZGY=";
   };
 
   buildType = "ament_python";

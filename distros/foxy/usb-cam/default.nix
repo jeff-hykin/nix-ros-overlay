@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-usb-cam";
   version = "0.4.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/usb_cam-release/archive/release/foxy/usb_cam/0.4.2-1.tar.gz";
-    name = "0.4.2-1.tar.gz";
-    sha256 = "4ebd79d187833e24d7d24a13209274c528d271f073c4c700a73dcc57674f4b3d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "usb_cam-release";
+    rev = "ccc62b34e617292d4133740c3252ec667559647a";
+    owner = "ros-gbp";
+    sha256 = "sha256-OhTKzwQ2OsM4K3BdaW6s6nOIjMLuEw1Ui3mab948Edc=";
   };
 
   buildType = "ament_cmake";

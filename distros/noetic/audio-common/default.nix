@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-audio-common";
   version = "0.3.16-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/audio_common-release/archive/release/noetic/audio_common/0.3.16-1.tar.gz";
-    name = "0.3.16-1.tar.gz";
-    sha256 = "026aea3afcbd816b184e626c65f7541c9c0915d7bfc13e5b7efaa91ba830a5c4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "audio_common-release";
+    rev = "d8c651687e826be581d6ae033988a46d9b7e0358";
+    owner = "ros-gbp";
+    sha256 = "sha256-tiuvSCP9y4tImZv5qRMTKI+r/sUB6hur5sWDlq7s6Hc=";
   };
 
   buildType = "catkin";

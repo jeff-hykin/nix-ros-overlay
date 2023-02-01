@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-velodyne-driver";
   version = "2.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/velodyne-release/archive/release/foxy/velodyne_driver/2.1.1-1.tar.gz";
-    name = "2.1.1-1.tar.gz";
-    sha256 = "9b53724abc6976b2fa6ea09db9adc0144c1b6ad398045e772a8f622a091c2d0e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "velodyne-release";
+    rev = "e8daf9ee30b7a776c21e94f4e50140fb54c5c69c";
+    owner = "ros2-gbp";
+    sha256 = "sha256-9GwZp6n3lCArcvLjBA3EmiHw1vvzWJ5uQJiraj/3PNI=";
   };
 
   buildType = "ament_cmake";

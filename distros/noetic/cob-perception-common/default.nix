@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-cob-perception-common";
   version = "0.6.19-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_perception_common-release/archive/release/noetic/cob_perception_common/0.6.19-1.tar.gz";
-    name = "0.6.19-1.tar.gz";
-    sha256 = "f5cd06f99e618d50e13e1a5c79858d58d464414ebcf3db9c90feb4082ef8bcaa";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_perception_common-release";
+    rev = "fbd4ea831e9fa1eae4d6260420984692d0a7ae08";
+    owner = "ipa320";
+    sha256 = "sha256-5qCQSDVrUq3WQP7hl2SX5hTPf+1ccB0UyR/w201miAw=";
   };
 
   buildType = "catkin";

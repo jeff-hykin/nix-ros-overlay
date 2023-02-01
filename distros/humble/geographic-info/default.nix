@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-geographic-info";
   version = "1.0.4-r6";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/geographic_info-release/archive/release/humble/geographic_info/1.0.4-6.tar.gz";
-    name = "1.0.4-6.tar.gz";
-    sha256 = "32b9ce827d3ee4eb5a961173e738ad614f4077231909db44c6af8dcc308dfbb5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "geographic_info-release";
+    rev = "c0c16be172b51e14ba033f85f8ab8174301ba8da";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Fem5FLsZ+lxPuX8NgnKK7k543+bE3uOlVAPQ/5sMLJM=";
   };
 
   buildType = "ament_cmake";

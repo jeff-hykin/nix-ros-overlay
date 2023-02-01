@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-jsk-calibration";
   version = "0.1.16-r1";
 
-  src = fetchurl {
-    url = "https://github.com/tork-a/jsk_control-release/archive/release/melodic/jsk_calibration/0.1.16-1.tar.gz";
-    name = "0.1.16-1.tar.gz";
-    sha256 = "8a6b4ebf86b29e86feec2f50c7c901c8e4f796171ff5f24741f6e6deb3b3f5c0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "jsk_control-release";
+    rev = "ddfa1c172721d9a0db41e22d12e867dcf6b4d7b3";
+    owner = "tork-a";
+    sha256 = "sha256-C0ViUnTsZ1bs8/mhCdlS34UmBr88sgfEPIHtxDmwOEY=";
   };
 
   buildType = "catkin";

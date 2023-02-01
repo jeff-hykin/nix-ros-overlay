@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-lgsvl-msgs";
   version = "0.0.4-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/lgsvl_msgs-release/archive/release/humble/lgsvl_msgs/0.0.4-3.tar.gz";
-    name = "0.0.4-3.tar.gz";
-    sha256 = "0cacb1bdf9448391eafbe75a1076838f44c83e6676180b7ad82bdfe700097e87";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "lgsvl_msgs-release";
+    rev = "9e905ecf5dad06bff8f1da11ba7744474ca4c5f6";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Pd5TP0wLuUr0/m+WvLpkvURpB0d0hbik3SOPkifg8YU=";
   };
 
   buildType = "ament_cmake";

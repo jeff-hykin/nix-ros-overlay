@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-pincher-arm-ikfast-plugin";
   version = "0.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/fictionlab-gbp/pincher_arm-release/archive/release/noetic/pincher_arm_ikfast_plugin/0.2.0-1.tar.gz";
-    name = "0.2.0-1.tar.gz";
-    sha256 = "f1da57fc59c5f2a46ed6ead7598bd9aadb4a36d06249dba1a07d2237d72afe13";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pincher_arm-release";
+    rev = "f2981083398cf37bd18154b71f90de7e82ab4566";
+    owner = "fictionlab-gbp";
+    sha256 = "sha256-YPMdLXfqe3HujZW+F5ShqGpKCv7F0zD+6VrVn+Uz9Rc=";
   };
 
   buildType = "catkin";

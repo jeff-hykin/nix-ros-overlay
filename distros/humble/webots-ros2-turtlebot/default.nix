@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-webots-ros2-turtlebot";
   version = "2023.0.0-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/webots_ros2-release/archive/release/humble/webots_ros2_turtlebot/2023.0.0-3.tar.gz";
-    name = "2023.0.0-3.tar.gz";
-    sha256 = "5fdee0488f7dca719480666813b3fccc96727bc260f884655543bdb1ebfee942";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "webots_ros2-release";
+    rev = "dc1194bffb2d49d79dd3a7136313dc06870303fa";
+    owner = "ros2-gbp";
+    sha256 = "sha256-O5mEcyb8gCRQe6y9x4TR/IYPUlbxiruAvLgcTW4Svhc=";
   };
 
   buildType = "ament_python";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-jackal-control";
   version = "0.8.6-r1";
 
-  src = fetchurl {
-    url = "https://github.com/clearpath-gbp/jackal-release/archive/release/noetic/jackal_control/0.8.6-1.tar.gz";
-    name = "0.8.6-1.tar.gz";
-    sha256 = "c11f3523ad2b13789ab33fa175b15befddb2f8691a8d53493eeadaf5dabc0ec1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "jackal-release";
+    rev = "65a87c4727d9846289a0fe53846437089cf04137";
+    owner = "clearpath-gbp";
+    sha256 = "sha256-fgdXViMGyv0cuto+OIA2nBydMX3fDSUZLyKvhrMO4k4=";
   };
 
   buildType = "catkin";

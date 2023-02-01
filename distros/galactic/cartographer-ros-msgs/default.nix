@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-cartographer-ros-msgs";
   version = "1.0.9003-r4";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/cartographer_ros-release/archive/release/galactic/cartographer_ros_msgs/1.0.9003-4.tar.gz";
-    name = "1.0.9003-4.tar.gz";
-    sha256 = "45e84683cb7572e9c6663c519e0195ea21f1a108a79d814045e3afc95765d7d3";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cartographer_ros-release";
+    rev = "795f1a275e96f4e848effc3cbd8b85633286efc2";
+    owner = "ros2-gbp";
+    sha256 = "sha256-4gZX+pmdIbD8wBcA9hOz7iplDDCwaAGkkfedX15lDTQ=";
   };
 
   buildType = "ament_cmake";

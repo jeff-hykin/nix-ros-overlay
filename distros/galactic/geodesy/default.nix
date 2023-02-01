@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-geodesy";
   version = "1.0.4-r5";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/geographic_info-release/archive/release/galactic/geodesy/1.0.4-5.tar.gz";
-    name = "1.0.4-5.tar.gz";
-    sha256 = "bb3d667e92d67677aee68063dd76b3f43d745649614787c04abf2c0fe562aeb7";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "geographic_info-release";
+    rev = "d3c6e6387cae23e0a85a8f6238445e769d2f4898";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Mzm8AWuKEp7IOCpF3+LvcThDlbjh5/5D9ftJVe7R1AA=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-compressed-image-transport";
   version = "1.14.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/image_transport_plugins-release/archive/release/noetic/compressed_image_transport/1.14.0-1.tar.gz";
-    name = "1.14.0-1.tar.gz";
-    sha256 = "e6e3ada1e7da3d37a2b3d73c9bad5c9c6acc1535ba0f24916f8de15fad7d85d1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "image_transport_plugins-release";
+    rev = "0ad988f7019a5c31d28e27b24e6143bbb4e0bb9d";
+    owner = "ros-gbp";
+    sha256 = "sha256-APaQ0pfr0A29YbSDSb2sUW1vxcFhKiw+umu5nNXqG+Q=";
   };
 
   buildType = "catkin";

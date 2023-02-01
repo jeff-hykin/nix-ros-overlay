@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-mrp2-common";
   version = "1.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/milvusrobotics/mrp2_common-release/archive/release/melodic/mrp2_common/1.0.1-1.tar.gz";
-    name = "1.0.1-1.tar.gz";
-    sha256 = "77c19936251d04af85bdbc6d3795d77c6c534a7aeaae13e9afcf044734141faf";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mrp2_common-release";
+    rev = "513c5b1235c47635f697190a56bbd0c583b14633";
+    owner = "milvusrobotics";
+    sha256 = "sha256-KYZdO01TXcuBPHdWDqYGdvOtPoPKXSBSH3j6YjZXC8Y=";
   };
 
   buildType = "catkin";

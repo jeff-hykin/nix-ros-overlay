@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-rmf-dispenser-msgs";
   version = "3.0.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_internal_msgs-release/archive/release/rolling/rmf_dispenser_msgs/3.0.2-1.tar.gz";
-    name = "3.0.2-1.tar.gz";
-    sha256 = "45bbb39049067c65f504d069d86d1025019aaa9e30b6637206f1bd7031673a44";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_internal_msgs-release";
+    rev = "5db421355c45f01ab4297069444c64a24392ef97";
+    owner = "ros2-gbp";
+    sha256 = "sha256-iNMN6NJs3s2ZsHxHu9opSZOBDchOT/IdFZ4VuWr5IaM=";
   };
 
   buildType = "ament_cmake";

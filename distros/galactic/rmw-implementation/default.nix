@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rmw-implementation";
   version = "2.4.1-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmw_implementation-release/archive/release/galactic/rmw_implementation/2.4.1-3.tar.gz";
-    name = "2.4.1-3.tar.gz";
-    sha256 = "855a6aed35b89f41b93ad4d9c675efdf9d92eab1cc3d271c6e91e950f4797d3c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmw_implementation-release";
+    rev = "c9257157a163f5aa8c081d5354a03fc2732c0af0";
+    owner = "ros2-gbp";
+    sha256 = "sha256-S6ltVbYNwAEYfKg6bxxVA+zb78HowF27w2mIB2rRq6A=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-rmf-fleet-msgs";
   version = "1.4.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_internal_msgs-release/archive/release/foxy/rmf_fleet_msgs/1.4.0-1.tar.gz";
-    name = "1.4.0-1.tar.gz";
-    sha256 = "baf1a625bd178c22f7b5ef3fcdb6f6a401720aa52fb4f41412f2d857d07df42d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_internal_msgs-release";
+    rev = "8c5cf9e40c42212705f9180923df683a4b5aa011";
+    owner = "ros2-gbp";
+    sha256 = "sha256-v4n+h89rKAvNJoABXpsSxf9v1k3kYHYmHmwXtOXHddc=";
   };
 
   buildType = "ament_cmake";

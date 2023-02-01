@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-diagnostic-msgs";
   version = "1.13.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/common_msgs-release/archive/release/noetic/diagnostic_msgs/1.13.1-1.tar.gz";
-    name = "1.13.1-1.tar.gz";
-    sha256 = "c7837360b3b3f69b02d2b452653827d70d4d24a209abdfed8f447b165f4c8d50";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "common_msgs-release";
+    rev = "6d4d684c3c759acf2bd7bf09db9c4e235c85f7e4";
+    owner = "ros-gbp";
+    sha256 = "sha256-biv7EguJNxUF4G1PlDsn9g0a0O3MnWm5mrCy8pYzbqA=";
   };
 
   buildType = "catkin";

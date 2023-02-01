@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-spatio-temporal-voxel-layer";
   version = "2.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/SteveMacenski/spatio_temporal_voxel_layer-release/archive/release/galactic/spatio_temporal_voxel_layer/2.2.0-1.tar.gz";
-    name = "2.2.0-1.tar.gz";
-    sha256 = "9d43d3893b2471cc77a38dbb1e8c84d749b17259e8581c7a27c7d94e4457de73";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "spatio_temporal_voxel_layer-release";
+    rev = "f125116e0f971301f43885f4dae3440a2d26d9a0";
+    owner = "SteveMacenski";
+    sha256 = "sha256-+xETzCC5V/jzWzd2+yosO+NLWzpCNtDY4+ZmASOjSKE=";
   };
 
   buildType = "ament_cmake";

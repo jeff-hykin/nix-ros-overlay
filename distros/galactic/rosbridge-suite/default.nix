@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rosbridge-suite";
   version = "1.3.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rosbridge_suite-release/archive/release/galactic/rosbridge_suite/1.3.1-1.tar.gz";
-    name = "1.3.1-1.tar.gz";
-    sha256 = "582c0ce39f07c8e145ad353cf079a82517dfbacef58625f409c8e0b06c2272ac";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosbridge_suite-release";
+    rev = "9ed7fc278f44b5241f4b49d835434680ba7f6d4e";
+    owner = "ros2-gbp";
+    sha256 = "sha256-GCCnTrZrj1fE7QXPG5N1kyb5GiaunUe6YsYLdnGRJJ8=";
   };
 
   buildType = "ament_cmake";

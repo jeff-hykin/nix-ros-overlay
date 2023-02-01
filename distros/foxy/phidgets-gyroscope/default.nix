@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-phidgets-gyroscope";
   version = "2.1.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/phidgets_drivers-release/archive/release/foxy/phidgets_gyroscope/2.1.2-1.tar.gz";
-    name = "2.1.2-1.tar.gz";
-    sha256 = "92cc37fa9a65a97e8fc3926ec74e5337e34bb2fbd77d45c9b75e69001443c409";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "phidgets_drivers-release";
+    rev = "110556b1c08afab9fcc669532c8ed431a27a2fa1";
+    owner = "ros2-gbp";
+    sha256 = "sha256-yf/qslY06zl0M/uFb8j3Acf/2jdDaIH54S5yf+RfVj0=";
   };
 
   buildType = "ament_cmake";

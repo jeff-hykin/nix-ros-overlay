@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-joint-state-broadcaster";
   version = "2.15.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_controllers-release/archive/release/humble/joint_state_broadcaster/2.15.0-1.tar.gz";
-    name = "2.15.0-1.tar.gz";
-    sha256 = "43a1142b94ab9b79814f2bb46ceae4bdc5aaebd44718f7dfc24009231c53c7ac";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_controllers-release";
+    rev = "03fdad47d4549b3c632b67ac4535a9421078e180";
+    owner = "ros2-gbp";
+    sha256 = "sha256-DD8B0ZPc0fLz+X9b8U4E5rdb6mAjRafDzbvebelurFU=";
   };
 
   buildType = "ament_cmake";

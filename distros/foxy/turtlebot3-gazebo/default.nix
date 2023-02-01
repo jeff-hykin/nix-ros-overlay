@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-turtlebot3-gazebo";
   version = "2.2.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/robotis-ros2-release/turtlebot3_simulations-release/archive/release/foxy/turtlebot3_gazebo/2.2.3-1.tar.gz";
-    name = "2.2.3-1.tar.gz";
-    sha256 = "d0a90b9de5b1bd1b4d669c1eec7565ddc4153d47239eef32b87f7b806906cb11";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "turtlebot3_simulations-release";
+    rev = "271de6c18a858b27703ebdfe10f6fa63d7c7fded";
+    owner = "robotis-ros2-release";
+    sha256 = "sha256-J0aLwsrPQILUg9AJ+GTC65gmF6AP1NFGEkG/oJdFS5U=";
   };
 
   buildType = "ament_cmake";

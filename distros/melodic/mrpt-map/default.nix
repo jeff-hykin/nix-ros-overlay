@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-mrpt-map";
   version = "1.0.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/mrpt-ros-pkg-release/mrpt_navigation-release/archive/release/melodic/mrpt_map/1.0.3-1.tar.gz";
-    name = "1.0.3-1.tar.gz";
-    sha256 = "24ef2e1113adfdd73ba8564c967eb127dc979be58553a0446113c1e1188f8692";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mrpt_navigation-release";
+    rev = "61824f1a26e391a64a8ec7f12418e8926a552e10";
+    owner = "mrpt-ros-pkg-release";
+    sha256 = "sha256-uVw11bzQNNLeCSkYlWpN502jdgIKwQcXt+atEOItQvw=";
   };
 
   buildType = "catkin";

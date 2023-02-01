@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-xpp-states";
   version = "1.0.10-r1";
 
-  src = fetchurl {
-    url = "https://github.com/leggedrobotics/xpp-release/archive/release/noetic/xpp_states/1.0.10-1.tar.gz";
-    name = "1.0.10-1.tar.gz";
-    sha256 = "cda3dc0aa390e9aec9fdcf29f5f22dd0bcb5cb1850d8a11904c47627cd2acaf5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "xpp-release";
+    rev = "5b2ca70805b43a3fd259637453a1923937d6a2ff";
+    owner = "leggedrobotics";
+    sha256 = "sha256-6tRWtoNGYmKG79eGQPk28C00gV9Wl7AXN+SxcezJ05U=";
   };
 
   buildType = "catkin";

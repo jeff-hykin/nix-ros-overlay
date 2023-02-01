@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-delphi-srr-msgs";
   version = "3.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/astuff/astuff_sensor_msgs-release/archive/release/foxy/delphi_srr_msgs/3.1.0-1.tar.gz";
-    name = "3.1.0-1.tar.gz";
-    sha256 = "b150a619194892976766f98d02eb1cb91ffd7fecb6405337cf5d78f838a373da";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "astuff_sensor_msgs-release";
+    rev = "cda3705737905e7a3a2639d5b59f86d022b2abec";
+    owner = "astuff";
+    sha256 = "sha256-7c3Zu973+d/j+c9+yu2oXnFEEiollrve9gUCH7BICi0=";
   };
 
   buildType = "ament_cmake";

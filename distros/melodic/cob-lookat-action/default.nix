@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-cob-lookat-action";
   version = "0.7.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_manipulation-release/archive/release/melodic/cob_lookat_action/0.7.5-1.tar.gz";
-    name = "0.7.5-1.tar.gz";
-    sha256 = "e38d9ae68a3777750dee9593bdc83ceaf1c6550870f9749e82759a3dfb83737a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_manipulation-release";
+    rev = "39536ac14dfadb82b9ccf9245d602d0d151096b7";
+    owner = "ipa320";
+    sha256 = "sha256-Qw5eGw2GhtNP7xVDr+WCfTJYIEXiceiDVs38Y+vv6CY=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-depthai";
   version = "2.19.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/luxonis/depthai-core-release/archive/release/foxy/depthai/2.19.1-1.tar.gz";
-    name = "2.19.1-1.tar.gz";
-    sha256 = "eb803428dab9d961ae454a3ef4721da6488260c79eb5b83dbd21cefd5da243c6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "depthai-core-release";
+    rev = "d279982de97e92df6232e49d1bf7967c502425c2";
+    owner = "luxonis";
+    sha256 = "sha256-asz+vES7vnON/Vo2RoXdbiVvHskhoX0ZYINntSXZ+EA=";
   };
 
   buildType = "ament_cmake";

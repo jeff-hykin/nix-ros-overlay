@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-ypspur";
   version = "1.20.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/openspur/yp-spur-release/archive/release/noetic/ypspur/1.20.2-1.tar.gz";
-    name = "1.20.2-1.tar.gz";
-    sha256 = "3b6048cde6a08aaa82eaea43e86ddcd1e1c2dfe9e68dcc3dfee93e45d215ea4d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "yp-spur-release";
+    rev = "b672ba188267b17084b33a013942ae634096ffcb";
+    owner = "openspur";
+    sha256 = "sha256-6X3eQ6hN+LQ1a4j6LumjyVGeUZogRwfhGDy9709Sl+8=";
   };
 
   buildType = "cmake";

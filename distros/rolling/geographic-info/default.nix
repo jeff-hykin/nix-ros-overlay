@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-geographic-info";
   version = "1.0.4-r5";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/geographic_info-release/archive/release/rolling/geographic_info/1.0.4-5.tar.gz";
-    name = "1.0.4-5.tar.gz";
-    sha256 = "198c754db78ae53be82c8288ea2091736814ab5cf2094119365781bf91203753";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "geographic_info-release";
+    rev = "79ceea28f359e33157167ea0bca55480c0326e32";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Fem5FLsZ+lxPuX8NgnKK7k543+bE3uOlVAPQ/5sMLJM=";
   };
 
   buildType = "ament_cmake";

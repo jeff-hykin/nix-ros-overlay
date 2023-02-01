@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-psen-scan-v2";
   version = "0.10.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/PilzDE/psen_scan_v2-release/archive/release/melodic/psen_scan_v2/0.10.2-1.tar.gz";
-    name = "0.10.2-1.tar.gz";
-    sha256 = "15f5b76b8f5e2b4a121051dad537c4f3916a7af8a7bd96ec6fe0a886277d46fc";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "psen_scan_v2-release";
+    rev = "ced27a9a0b1d60df0dd8d195a1fabd5892fa013f";
+    owner = "PilzDE";
+    sha256 = "sha256-Ufw3h/3Yl7IeD+f7U132XgTHjticFhuMQskiyohjrkk=";
   };
 
   buildType = "catkin";

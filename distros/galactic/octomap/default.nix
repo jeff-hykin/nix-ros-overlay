@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-octomap";
   version = "1.9.8-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/octomap-release/archive/release/galactic/octomap/1.9.8-1.tar.gz";
-    name = "1.9.8-1.tar.gz";
-    sha256 = "63f2be49d860a8f7971d384788ae7d14294591e5d96dfb7111d462ccddc9a806";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "octomap-release";
+    rev = "f70b17766e1c68221c71f54970868af9395c5d4f";
+    owner = "ros-gbp";
+    sha256 = "sha256-8DAIMo4RdqnTKlM9nK2fg9FEc9jiOtHIL52VQjvOY10=";
   };
 
   buildType = "cmake";

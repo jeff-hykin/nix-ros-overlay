@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-realtime-tools";
   version = "1.16.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/realtime_tools-release/archive/release/noetic/realtime_tools/1.16.1-1.tar.gz";
-    name = "1.16.1-1.tar.gz";
-    sha256 = "0082db3f482804a3abc2034b2452fb7777b90b47a7144a78fcd552412bac76ac";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "realtime_tools-release";
+    rev = "51f3b31b7cf5b7c9fd4c34f63c8c380c27980d8a";
+    owner = "ros-gbp";
+    sha256 = "sha256-ISjU/Pn5myVjhFdt3FPDjx4dkPdjOdk5FdnP1sQyQmc=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-nav2-costmap-2d";
   version = "1.0.12-r1";
 
-  src = fetchurl {
-    url = "https://github.com/SteveMacenski/navigation2-release/archive/release/galactic/nav2_costmap_2d/1.0.12-1.tar.gz";
-    name = "1.0.12-1.tar.gz";
-    sha256 = "cce941aa526e0d5aa402c7611eea065a09ca65370b970c6eaad37bec8ba4c300";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation2-release";
+    rev = "73eb2f0b07b48c6490d0bb46ce2c16bdea626ce0";
+    owner = "SteveMacenski";
+    sha256 = "sha256-bxN0rUW1JL0FTdfPZQCWo0KNmxwwyAZw9tab0Fwivlo=";
   };
 
   buildType = "ament_cmake";

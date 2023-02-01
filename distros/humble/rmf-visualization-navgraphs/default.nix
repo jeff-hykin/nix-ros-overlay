@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-rmf-visualization-navgraphs";
   version = "2.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_visualization-release/archive/release/humble/rmf_visualization_navgraphs/2.0.0-1.tar.gz";
-    name = "2.0.0-1.tar.gz";
-    sha256 = "dc8b8b117fa1799583ca356e3572f2b19c913f66b0af2a3ad6cc8ec6b174326c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_visualization-release";
+    rev = "cbefbd1909a358cfc1e9947961e339875ddc54f8";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Y3fvl5vcN7ATCegGR3G+E2YKBGPi1NJIHIIBb53Uho8=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-rmf-api-msgs";
   version = "0.0.1-r4";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_api_msgs-release/archive/release/rolling/rmf_api_msgs/0.0.1-4.tar.gz";
-    name = "0.0.1-4.tar.gz";
-    sha256 = "d9678142b0b777ce4951ee4cf72db857ca6da3ff0544d43ebfcb8b3dcb5414e7";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_api_msgs-release";
+    rev = "3fdac98d7b5f10a63b79d87c3033326fdc320c9e";
+    owner = "ros2-gbp";
+    sha256 = "sha256-h4F3FbFrB5lQ4zR80l3Dj3w4eoUeCzJBa5s9iUPL6fg=";
   };
 
   buildType = "ament_cmake";

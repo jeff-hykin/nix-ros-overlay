@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-webots-ros2-tesla";
   version = "2023.0.0-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/webots_ros2-release/archive/release/humble/webots_ros2_tesla/2023.0.0-3.tar.gz";
-    name = "2023.0.0-3.tar.gz";
-    sha256 = "6045ccefcc4428651c163ebf8e15072625b6ba936f77695cc1739a1cce4e4c02";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "webots_ros2-release";
+    rev = "15e24a77428a422ad66eb87b942b2408a3260917";
+    owner = "ros2-gbp";
+    sha256 = "sha256-fOUwcMUisSV9+THPY18VM8nrqyYuwiXpW6E8TBzDdPk=";
   };
 
   buildType = "ament_python";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-mir-gazebo";
   version = "1.1.6-r1";
 
-  src = fetchurl {
-    url = "https://github.com/uos-gbp/mir_robot-release/archive/release/noetic/mir_gazebo/1.1.6-1.tar.gz";
-    name = "1.1.6-1.tar.gz";
-    sha256 = "807f570cc0c61f6e362639997c8c8a0f0293225d8923f202f23c08f57a419993";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mir_robot-release";
+    rev = "1ac9d66483c95ab3275940ef3c9b016828abd452";
+    owner = "uos-gbp";
+    sha256 = "sha256-1nz3e/CmQcWirdp/VXACN3YxPP3kPM02vY5cOPion6s=";
   };
 
   buildType = "catkin";

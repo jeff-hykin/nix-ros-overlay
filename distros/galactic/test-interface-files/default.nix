@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-test-interface-files";
   version = "0.8.1-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/test_interface_files-release/archive/release/galactic/test_interface_files/0.8.1-2.tar.gz";
-    name = "0.8.1-2.tar.gz";
-    sha256 = "4f3fc5d8c83dc309effa56b0cf93508bc62afc5a40d9adb61e33607337335152";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "test_interface_files-release";
+    rev = "886b3fd8f1ee8dd97856cacf6aa78e640b09fcf9";
+    owner = "ros2-gbp";
+    sha256 = "sha256-1LaOTUZ0PRrPCOWKAJIUsZPXslHoaCv/erPnexXKhAI=";
   };
 
   buildType = "ament_cmake";

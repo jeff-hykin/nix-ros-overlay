@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-rx-service-tools";
   version = "1.0.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/nobleo/rx_service_tools-release/archive/release/noetic/rx_service_tools/1.0.2-1.tar.gz";
-    name = "1.0.2-1.tar.gz";
-    sha256 = "4bab469592a818690220bfbcee55ee63d3f48b4376bc5bdd088e3d958a9dd61a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rx_service_tools-release";
+    rev = "383ada457432b83c8b615241b7316cef860c25ee";
+    owner = "nobleo";
+    sha256 = "sha256-AvI2p13mSrM75a59AikYEVByVELPM0c/8c+BncqC460=";
   };
 
   buildType = "catkin";

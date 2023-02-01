@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-depthai-bridge";
   version = "2.5.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/luxonis/depthai-ros-release/archive/release/humble/depthai_bridge/2.5.3-1.tar.gz";
-    name = "2.5.3-1.tar.gz";
-    sha256 = "370db157b07fae810ea63f80e1afa92dafc86a4f2c640b02dd97b1c6f177fb6c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "depthai-ros-release";
+    rev = "64c657d63d72da8e2454f80b3f923d91296bc4a7";
+    owner = "luxonis";
+    sha256 = "sha256-XrIGeRQUvCJEfBsQxcRwfkbocEEesqLGwDZ8LBkH0WY=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-rmf-task-msgs";
   version = "3.0.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_internal_msgs-release/archive/release/rolling/rmf_task_msgs/3.0.2-1.tar.gz";
-    name = "3.0.2-1.tar.gz";
-    sha256 = "a24a6e44b18926ee54d1fe0bf9a0df35aa2a5b6785fa0fbc433d8e8438442d00";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_internal_msgs-release";
+    rev = "75af5ac4d0bec85c5fc92df0e88d76b25233d2f0";
+    owner = "ros2-gbp";
+    sha256 = "sha256-VQIlf3lwjm+YzFprx0m6KsFMFvhyL9ZwG6L0o9mZJio=";
   };
 
   buildType = "ament_cmake";

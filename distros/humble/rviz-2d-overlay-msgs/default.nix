@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-rviz-2d-overlay-msgs";
   version = "1.2.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rviz_2d_overlay_plugins-release/archive/release/humble/rviz_2d_overlay_msgs/1.2.1-1.tar.gz";
-    name = "1.2.1-1.tar.gz";
-    sha256 = "fad634de90d6af5ff1902e504bb35c2b2b26df0e8711487ca47e2e30d1004e54";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rviz_2d_overlay_plugins-release";
+    rev = "aa7999e82eb9d16f3da86412ce8322a077e9aaf9";
+    owner = "ros2-gbp";
+    sha256 = "sha256-C7S+lCIduBpuVmNNB6nFZ7LkOw2X/TQKq5tqZAkMElk=";
   };
 
   buildType = "ament_cmake";

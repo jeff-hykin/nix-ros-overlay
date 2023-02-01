@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-fkie-message-filters";
   version = "1.1.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/fkie-release/message_filters-release/archive/release/melodic/fkie_message_filters/1.1.2-1.tar.gz";
-    name = "1.1.2-1.tar.gz";
-    sha256 = "eb46a7a5c55017a8d1b6ac46a790e57762819ccc0e26884a1ce1f9f9835bce39";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "message_filters-release";
+    rev = "72d4fc00d86f3dafba36e1cddeca92df0a865e28";
+    owner = "fkie-release";
+    sha256 = "sha256-QFSEVgbep32zGMY9OffccZ80J7SEc6n0wrni+Hc6/SY=";
   };
 
   buildType = "catkin";

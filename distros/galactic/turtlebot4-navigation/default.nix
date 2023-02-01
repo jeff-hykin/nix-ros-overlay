@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-turtlebot4-navigation";
   version = "0.1.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/turtlebot4-release/archive/release/galactic/turtlebot4_navigation/0.1.2-1.tar.gz";
-    name = "0.1.2-1.tar.gz";
-    sha256 = "47647d1599758b99e7a0f521a32212b76246c94a9a5824824d5dbae317a402f8";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "turtlebot4-release";
+    rev = "39fdecf71de804a9d17e82e816e1d58abf09fe92";
+    owner = "ros2-gbp";
+    sha256 = "sha256-X6rhNBpKJ1/RRnhOeJuMLAgPM7p/xSPoek4Tv7QYDvs=";
   };
 
   buildType = "ament_cmake";

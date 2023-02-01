@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-iceoryx-binding-c";
   version = "2.0.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/iceoryx-release/archive/release/rolling/iceoryx_binding_c/2.0.2-1.tar.gz";
-    name = "2.0.2-1.tar.gz";
-    sha256 = "9dbd62e3905781498fabf30d430893d1f86ef6dda88466e83c8dd8a4663bc490";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "iceoryx-release";
+    rev = "3e0546718c95a113fc64ceaccd4ce203541e1b91";
+    owner = "ros2-gbp";
+    sha256 = "sha256-bYKtG1mrp/9TmmCt2BRAtbAsvOY5zYMpTKhZNuniXcg=";
   };
 
   buildType = "cmake";

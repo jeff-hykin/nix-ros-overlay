@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-rosflight-utils";
   version = "1.3.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/rosflight/rosflight-release/archive/release/melodic/rosflight_utils/1.3.1-1.tar.gz";
-    name = "1.3.1-1.tar.gz";
-    sha256 = "5a9ff019490687c98ed678a9b1074534a44e3c3d07c3cedc79d91688d4607e35";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosflight-release";
+    rev = "2ab5662d72d4252f5a9ac73fc744281d7b536a84";
+    owner = "rosflight";
+    sha256 = "sha256-18n4x/Sx44od25W3jFtziwQKYrSdtcHCKvY/ykAkDW8=";
   };
 
   buildType = "catkin";

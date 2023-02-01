@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-pacmod-game-control";
   version = "3.0.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/astuff/pacmod_game_control-release/archive/release/melodic/pacmod_game_control/3.0.2-1.tar.gz";
-    name = "3.0.2-1.tar.gz";
-    sha256 = "7ac2b341575d857379b9cec72b934042fc3832bab2d608857aab922236ba3820";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pacmod_game_control-release";
+    rev = "b3340ecbd6810a04c7ce509d67ca07d4fdcd2446";
+    owner = "astuff";
+    sha256 = "sha256-fjmJCHP9ZzgF4eaDQyqRgioCnbm8H0WGXaclaMR0Wpg=";
   };
 
   buildType = "catkin";

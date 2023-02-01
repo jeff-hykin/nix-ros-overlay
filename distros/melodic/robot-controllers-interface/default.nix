@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-robot-controllers-interface";
   version = "0.6.0";
 
-  src = fetchurl {
-    url = "https://github.com/fetchrobotics-gbp/robot_controllers-release/archive/release/melodic/robot_controllers_interface/0.6.0-0.tar.gz";
-    name = "0.6.0-0.tar.gz";
-    sha256 = "e32be3bf72bffa92847724a0d2ca5fa70a636b9a80b836a28d6ccf244888c8a3";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "robot_controllers-release";
+    rev = "6509541ae6cf86ee3fb3d380b743d10488d5700d";
+    owner = "fetchrobotics-gbp";
+    sha256 = "sha256-dOR7btAmG3Y40avAVqBAaXwgHhZnJg9bke6nYwkXHNs=";
   };
 
   buildType = "catkin";

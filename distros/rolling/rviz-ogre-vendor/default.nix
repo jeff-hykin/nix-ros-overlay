@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-rviz-ogre-vendor";
   version = "12.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rviz-release/archive/release/rolling/rviz_ogre_vendor/12.2.0-1.tar.gz";
-    name = "12.2.0-1.tar.gz";
-    sha256 = "ad252d22a0bb20eb4be7c5ecf71fdd2c9013d409f2d00139b0d192f7f316181c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rviz-release";
+    rev = "f50c00e0b87371ad66d46359c7840d3928049aae";
+    owner = "ros2-gbp";
+    sha256 = "sha256-o3r8qmy2MlIJQLDiEpNEWYxQXsPLKZIWmgq3XT3prZg=";
   };
 
   buildType = "ament_cmake";

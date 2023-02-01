@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-mongodb-store-msgs";
   version = "0.5.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/strands-project-releases/mongodb_store/archive/release/melodic/mongodb_store_msgs/0.5.2-1.tar.gz";
-    name = "0.5.2-1.tar.gz";
-    sha256 = "9e04a9e03d5d12af73025911fbc85aa0ba7fc03b0e44b3bc6247df1d39fb7526";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mongodb_store";
+    rev = "9abd3d14d8b4892fd4f2749c80289f848b3ed1c5";
+    owner = "strands-project-releases";
+    sha256 = "sha256-ChG/0BVT6J6J1njwVjxPv2QphJ11m/tnKr7kx8w8bo0=";
   };
 
   buildType = "catkin";

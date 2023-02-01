@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-vrxperience-msgs";
   version = "1.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/autowarefoundation/ansys-vrxperience-ros2-release/archive/release/foxy/vrxperience_msgs/1.0.0-1.tar.gz";
-    name = "1.0.0-1.tar.gz";
-    sha256 = "94c8ac5f9bf2b5d175e9c57f44c3c05a8ec28953c18eff9aef33117feda928a3";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ansys-vrxperience-ros2-release";
+    rev = "e31805f96b8b12d423cd54a2604d7ed8004b49cf";
+    owner = "autowarefoundation";
+    sha256 = "sha256-+XCA8xK2tdmzRFCGN/UrZ6Dtiq+PbIcxSnpf/C8nnqI=";
   };
 
   buildType = "ament_cmake";

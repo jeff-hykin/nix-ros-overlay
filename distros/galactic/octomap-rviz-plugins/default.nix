@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-octomap-rviz-plugins";
   version = "2.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/octomap_rviz_plugins-release/archive/release/galactic/octomap_rviz_plugins/2.0.0-1.tar.gz";
-    name = "2.0.0-1.tar.gz";
-    sha256 = "30e4acb74abded27d2a77ab223f45df9a40f49afbf480c54a74b3335ae8fda46";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "octomap_rviz_plugins-release";
+    rev = "e4ac1f9f4b8363322c1fe55712c4417320181100";
+    owner = "ros2-gbp";
+    sha256 = "sha256-M9xdQSP9dc1bw2Jkn7tJ506Ah5/lABFrjFf03Ot8828=";
   };
 
   buildType = "ament_cmake";

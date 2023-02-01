@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-composition";
   version = "0.14.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/demos-release/archive/release/galactic/composition/0.14.4-1.tar.gz";
-    name = "0.14.4-1.tar.gz";
-    sha256 = "f076d910732f3be8de077de4ef59c80070f90c7adfcc1ba86b3762de81dfd39d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "demos-release";
+    rev = "ba6e3321d5dcd7c93c3c7453b1c2aa55075b8186";
+    owner = "ros2-gbp";
+    sha256 = "sha256-ymMVYX0gPBIuSXG2P7eQntqvGa+3DME/u2wlT60uiKw=";
   };
 
   buildType = "ament_cmake";

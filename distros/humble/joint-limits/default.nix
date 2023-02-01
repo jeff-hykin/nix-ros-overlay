@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-joint-limits";
   version = "2.18.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_control-release/archive/release/humble/joint_limits/2.18.0-1.tar.gz";
-    name = "2.18.0-1.tar.gz";
-    sha256 = "7a1c4160451ed30837d1486a95369179914825ef8173b4efdd651dc2937ce6e3";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_control-release";
+    rev = "9eb342e230f62b50cc1462a81cc73955bb0f7e72";
+    owner = "ros2-gbp";
+    sha256 = "sha256-YP+DWUbDLXZ7B7aivbb1si9niThpzhmTKKFGPo76x+o=";
   };
 
   buildType = "ament_cmake";

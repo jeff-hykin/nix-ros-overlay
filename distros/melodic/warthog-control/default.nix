@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-warthog-control";
   version = "0.1.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/clearpath-gbp/warthog-release/archive/release/melodic/warthog_control/0.1.5-1.tar.gz";
-    name = "0.1.5-1.tar.gz";
-    sha256 = "57f23805ee7fe02e49a667344fc9d83c9da862f0d5ca656cfe07aa2499a9fb2e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "warthog-release";
+    rev = "a8b1d99583be0cdc419954d7e4adb63f9a9f933e";
+    owner = "clearpath-gbp";
+    sha256 = "sha256-H+Wg0A+1CO5K5BJHSKvwdyVvHLC6GNre3a/bfvuq8Ac=";
   };
 
   buildType = "catkin";

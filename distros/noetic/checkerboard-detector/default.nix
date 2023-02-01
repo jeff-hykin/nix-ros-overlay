@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-checkerboard-detector";
   version = "1.2.15-r1";
 
-  src = fetchurl {
-    url = "https://github.com/tork-a/jsk_recognition-release/archive/release/noetic/checkerboard_detector/1.2.15-1.tar.gz";
-    name = "1.2.15-1.tar.gz";
-    sha256 = "70b9133ad9add9dcad01366b8a2969cdf43acea745ba922d1497d887aa58fed9";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "jsk_recognition-release";
+    rev = "36b8f71201e7904f974b3e86c3e6c3e88fa5151e";
+    owner = "tork-a";
+    sha256 = "sha256-iX6S82etL1rz97KfvrS8FJhqcF4VEEPY4NiXZRWNUUA=";
   };
 
   buildType = "catkin";

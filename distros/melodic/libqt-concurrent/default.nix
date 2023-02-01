@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-libqt-concurrent";
   version = "1.0.1";
 
-  src = fetchurl {
-    url = "https://github.com/swri-robotics-gbp/qt_metapackages-release/archive/release/melodic/libqt_concurrent/1.0.1-0.tar.gz";
-    name = "1.0.1-0.tar.gz";
-    sha256 = "0a2f5224aac3226ee88584ff99f9058aeb3cb4dd581fcf12772d3ab964d3ea19";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "qt_metapackages-release";
+    rev = "4831d1368f0f387d303df55c8195898965731324";
+    owner = "swri-robotics-gbp";
+    sha256 = "sha256-d6zNPaBj/m1lHNnWpIzty3W8bgy7cojoEELM43W9tTQ=";
   };
 
   buildType = "catkin";

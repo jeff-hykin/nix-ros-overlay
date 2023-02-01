@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-tf2-geometry-msgs";
   version = "0.13.13-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/geometry2-release/archive/release/foxy/tf2_geometry_msgs/0.13.13-1.tar.gz";
-    name = "0.13.13-1.tar.gz";
-    sha256 = "5a4ef0125f65f63c84439cfba4c18384dc97dab2ef05996a1f72c950141452a0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "geometry2-release";
+    rev = "3d8c2c16f2516e3fa74a7a492ddec16afe5748a9";
+    owner = "ros2-gbp";
+    sha256 = "sha256-LrjVAWc0/Hepu+4OKC6CGMNq9ZHrDw/1A4slhE6XoTs=";
   };
 
   buildType = "ament_cmake";

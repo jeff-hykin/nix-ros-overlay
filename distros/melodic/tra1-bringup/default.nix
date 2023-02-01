@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-tra1-bringup";
   version = "1.0.10-r1";
 
-  src = fetchurl {
-    url = "https://github.com/tork-a/minas-release/archive/release/melodic/tra1_bringup/1.0.10-1.tar.gz";
-    name = "1.0.10-1.tar.gz";
-    sha256 = "b26072a45edf374187cbf24fc53bdaa12840abfcd32a5e5a3e78e6d76609f721";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "minas-release";
+    rev = "0225064e11ef911d4acc23e1a9d874e9c393c9bc";
+    owner = "tork-a";
+    sha256 = "sha256-t6ay/ufQCW6G8gpN+5Y975gRossCpClwz/PuKVKCy04=";
   };
 
   buildType = "catkin";

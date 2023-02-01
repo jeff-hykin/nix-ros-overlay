@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-eigen3-cmake-module";
   version = "0.1.1-r4";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/eigen3_cmake_module-release/archive/release/humble/eigen3_cmake_module/0.1.1-4.tar.gz";
-    name = "0.1.1-4.tar.gz";
-    sha256 = "eca361d06c42cf4b554e17a2583f248dc85d61a29b6c8f92f7022a2337fbb07b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "eigen3_cmake_module-release";
+    rev = "fb6325b445a199f927e85fa6eb1e2136f1b938b9";
+    owner = "ros2-gbp";
+    sha256 = "sha256-JYv6XaPTqspaLTKHbLNoNYx3ivXCTVAvRO3oNEhhxQ4=";
   };
 
   buildType = "ament_cmake";

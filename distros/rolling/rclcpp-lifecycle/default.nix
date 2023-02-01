@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-rclcpp-lifecycle";
   version = "18.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rclcpp-release/archive/release/rolling/rclcpp_lifecycle/18.0.0-1.tar.gz";
-    name = "18.0.0-1.tar.gz";
-    sha256 = "0ba7955fef1252b364d198c3a4b41d4072d98eca60143ed17b867455e1f77f58";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rclcpp-release";
+    rev = "f6b5a7a51ae249120a420705677809c56cd753f9";
+    owner = "ros2-gbp";
+    sha256 = "sha256-vsh4FIYa6gCwiMkAt7G0LWLc01r+VaNmPFrdmyReWoY=";
   };
 
   buildType = "ament_cmake";

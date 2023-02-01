@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ublox-dgnss";
   version = "0.2.3-r4";
 
-  src = fetchurl {
-    url = "https://github.com/aussierobots/ublox_dgnss-release/archive/release/galactic/ublox_dgnss/0.2.3-4.tar.gz";
-    name = "0.2.3-4.tar.gz";
-    sha256 = "f78bd221cef424ca70fbf61ec88bdbfa2c7eb37990d92317595515450bc1fd5e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ublox_dgnss-release";
+    rev = "92ccaebf4e6fdb297e79424fc33ef4ea9288c6af";
+    owner = "aussierobots";
+    sha256 = "sha256-kW+YQaAO4yQ4A3YToXYm57l6qXdNXYL3SR9U1MZ74L8=";
   };
 
   buildType = "ament_cmake";

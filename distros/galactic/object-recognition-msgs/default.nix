@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-object-recognition-msgs";
   version = "2.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/object_recognition_msgs-release/archive/release/galactic/object_recognition_msgs/2.0.0-1.tar.gz";
-    name = "2.0.0-1.tar.gz";
-    sha256 = "4562f648b5e56b2b264788980932c42035a4ff3f3f7b7ed51f7c2ebf13d228c8";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "object_recognition_msgs-release";
+    rev = "7a351afc359ddf2b7dae867b59b3006eacdf7c7c";
+    owner = "ros-gbp";
+    sha256 = "sha256-51GLrMSSWkdlTz5SBW9ImQilU5Rojo8emRiwZZtZtS0=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-semantic-point-annotator";
   version = "0.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pr2-gbp/pr2_navigation-release/archive/release/noetic/semantic_point_annotator/0.2.0-1.tar.gz";
-    name = "0.2.0-1.tar.gz";
-    sha256 = "c87f87e059bee66848d92f71e78ec1dbf239f5ed7a8425b6a8a115848070031b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pr2_navigation-release";
+    rev = "8c835f39f4087654f2a329b6e61d8145c3f1cec3";
+    owner = "pr2-gbp";
+    sha256 = "sha256-9+6GYoYZeL4ym1bXrqX4rQTnv4myh40cxiEmAE6escg=";
   };
 
   buildType = "catkin";

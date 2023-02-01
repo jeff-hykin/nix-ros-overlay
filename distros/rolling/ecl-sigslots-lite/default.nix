@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-ecl-sigslots-lite";
   version = "1.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/yujinrobot-release/ecl_lite-release/archive/release/rolling/ecl_sigslots_lite/1.2.0-1.tar.gz";
-    name = "1.2.0-1.tar.gz";
-    sha256 = "ed9ae02df0d914c99a91fbb94c2c63407988575a98e36d72281fbddf5254d277";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ecl_lite-release";
+    rev = "91680fdc9d0689a6dc7ae8ec3bfda6fb878da387";
+    owner = "yujinrobot-release";
+    sha256 = "sha256-nGYQQNr6VnsCIPQoCQfLmIxpw1uEBrqSu1PjF4XPSxk=";
   };
 
   buildType = "ament_cmake";

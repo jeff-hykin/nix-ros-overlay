@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-dynamixel-workbench-msgs";
   version = "2.0.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/dynamixel_workbench_msgs-release/archive/release/humble/dynamixel_workbench_msgs/2.0.3-1.tar.gz";
-    name = "2.0.3-1.tar.gz";
-    sha256 = "eb9b0c36bf9594621e8afb7c7fa3218bc1f5069515d8616bb5d8efc9e6663222";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "dynamixel_workbench_msgs-release";
+    rev = "1f0195e5668ee85a8d8c37dd55f1e54cd140cff7";
+    owner = "ros2-gbp";
+    sha256 = "sha256-NMrVMFxbUmSDCdSRTO6gRJtKsmEeqY4Q5FqkBQCeY3I=";
   };
 
   buildType = "ament_cmake";

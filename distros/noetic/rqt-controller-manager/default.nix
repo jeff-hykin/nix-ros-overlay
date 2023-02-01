@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-rqt-controller-manager";
   version = "0.19.6-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/ros_control-release/archive/release/noetic/rqt_controller_manager/0.19.6-1.tar.gz";
-    name = "0.19.6-1.tar.gz";
-    sha256 = "86fffa5683360ad7909e1fcd7fe940cc93e0ac25df749ebd39c79c628bf75d5f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_control-release";
+    rev = "7db221c17a375522689e82022ddff7e80ea0ff4d";
+    owner = "ros-gbp";
+    sha256 = "sha256-UusnF6Q+PwsaevvZd9wTzqW4S5ZMQ1an4K8GCraEfCY=";
   };
 
   buildType = "catkin";

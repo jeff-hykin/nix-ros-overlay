@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-tf2-sensor-msgs";
   version = "0.6.5";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/geometry2-release/archive/release/melodic/tf2_sensor_msgs/0.6.5-0.tar.gz";
-    name = "0.6.5-0.tar.gz";
-    sha256 = "1a5247c2cfec650cb26758f587e6af12e90b0a99749eb861813ab39f83c7b2e6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "geometry2-release";
+    rev = "300b646f98459bb64656344387665e8c6ce6e5b0";
+    owner = "ros-gbp";
+    sha256 = "sha256-YMJHiQzYlN+G+nvl7HoD5BP0tjexKy8LX3A6HM3oMEc=";
   };
 
   buildType = "catkin";

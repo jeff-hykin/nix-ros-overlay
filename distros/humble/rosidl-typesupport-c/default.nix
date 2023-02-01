@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-rosidl-typesupport-c";
   version = "2.0.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rosidl_typesupport-release/archive/release/humble/rosidl_typesupport_c/2.0.0-2.tar.gz";
-    name = "2.0.0-2.tar.gz";
-    sha256 = "98e0dc0df20ebf3a9b8222db07d970f3bbe67ed937a4ee72c6a73e053378b510";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosidl_typesupport-release";
+    rev = "66f0176993aa0ae9d256231bd9ffd2e91fd64c90";
+    owner = "ros2-gbp";
+    sha256 = "sha256-nOo9egEXV6lM3TllNPG5gqsOp+beZ7b02hf9idZhhEY=";
   };
 
   buildType = "ament_cmake";

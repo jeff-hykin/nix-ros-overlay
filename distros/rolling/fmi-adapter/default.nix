@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-fmi-adapter";
   version = "2.1.1-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/fmi_adapter-release/archive/release/rolling/fmi_adapter/2.1.1-2.tar.gz";
-    name = "2.1.1-2.tar.gz";
-    sha256 = "6d78acb9a8142111da89acd32ec9bf1f7dd4924d084a951b5bc4d5ebd0aef7af";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "fmi_adapter-release";
+    rev = "947144138ea9738aac4687ed669d1eb58a9d6bc1";
+    owner = "ros2-gbp";
+    sha256 = "sha256-pC2a5q3fbSAGFRlotIahHSzRm+tJOBSAjho9Q70/otU=";
   };
 
   buildType = "ament_cmake";

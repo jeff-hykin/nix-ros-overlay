@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rcl";
   version = "3.1.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rcl-release/archive/release/galactic/rcl/3.1.4-1.tar.gz";
-    name = "3.1.4-1.tar.gz";
-    sha256 = "cf1b6113d9c2e6317e9872a0d5557208a03e9b3e4aed276d32634f2af7cc7f21";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rcl-release";
+    rev = "7c046ca00b8fbff565a77a873c32aa87a67d5f84";
+    owner = "ros2-gbp";
+    sha256 = "sha256-VJBl4qSsNENV7/Q02JzWeG3OFrX7sceYTO38egs1gEY=";
   };
 
   buildType = "ament_cmake";

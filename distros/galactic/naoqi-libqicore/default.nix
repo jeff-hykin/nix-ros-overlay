@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-naoqi-libqicore";
   version = "2.9.7";
 
-  src = fetchurl {
-    url = "https://github.com/ros-naoqi/libqicore-release/archive/release/galactic/naoqi_libqicore/2.9.7-0.tar.gz";
-    name = "2.9.7-0.tar.gz";
-    sha256 = "a91323a2682380407f87feb4de52b55078cd775639f1f4ceef38637052b55b92";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "libqicore-release";
+    rev = "2dec21f949f4547c642a1b24ccdd6597c7e97f26";
+    owner = "ros-naoqi";
+    sha256 = "sha256-hLcaaRY2n8iu8LP5doxZNdXajSdJKNeJqmG9V35cmII=";
   };
 
   buildType = "ament_cmake";

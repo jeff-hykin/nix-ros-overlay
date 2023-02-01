@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-topic-statistics-demo";
   version = "0.20.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/demos-release/archive/release/humble/topic_statistics_demo/0.20.2-1.tar.gz";
-    name = "0.20.2-1.tar.gz";
-    sha256 = "85a97b428f77c40407de436602de5ea39b304ad7dadd4449299d96e99c36421d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "demos-release";
+    rev = "f9d55b90b184516384f9cf6f45cbbd01cece5c41";
+    owner = "ros2-gbp";
+    sha256 = "sha256-OlUNH1IZVMDnKi3Wr9rPxR4/Ydwug4BChCLxmbjyJTA=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-polled-camera";
   version = "1.11.13";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/image_common-release/archive/release/melodic/polled_camera/1.11.13-0.tar.gz";
-    name = "1.11.13-0.tar.gz";
-    sha256 = "87717ae0569b27aeccb0c84c372ef5e5b16ea23e4549f918d7a2ad1ba88464f3";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "image_common-release";
+    rev = "35065bca5d1f2b7c1269939565a5cabd6d721673";
+    owner = "ros-gbp";
+    sha256 = "sha256-LinPhzCfuIvge0oPBe3/NhWIKBKyT0aEkjTQDJGCdfY=";
   };
 
   buildType = "catkin";

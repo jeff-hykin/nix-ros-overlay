@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-pr2-dense-laser-snapshotter";
   version = "1.0.11-r3";
 
-  src = fetchurl {
-    url = "https://github.com/UNR-RoboticsResearchLab/pr2_calibration-release/archive/release/melodic/pr2_dense_laser_snapshotter/1.0.11-3.tar.gz";
-    name = "1.0.11-3.tar.gz";
-    sha256 = "a40e1a007d63427cfc72b218f652aaef205545937a028252b4672b45b971bfd0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pr2_calibration-release";
+    rev = "30cb2cd53549fab6fefbffe18fa25785661dfebc";
+    owner = "UNR-RoboticsResearchLab";
+    sha256 = "sha256-pJxLInUGSN9oRHZPGFEq9YYSg7VknFFV7uWc8Q+ZoYk=";
   };
 
   buildType = "catkin";

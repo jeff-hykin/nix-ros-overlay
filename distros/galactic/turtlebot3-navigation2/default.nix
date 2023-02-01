@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-turtlebot3-navigation2";
   version = "2.1.2-r2";
 
-  src = fetchurl {
-    url = "https://github.com/robotis-ros2-release/turtlebot3-release/archive/release/galactic/turtlebot3_navigation2/2.1.2-2.tar.gz";
-    name = "2.1.2-2.tar.gz";
-    sha256 = "7db70abb6c3c439138c650627c90f6745ccbdb372875942f1ce131a28b5ae020";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "turtlebot3-release";
+    rev = "ffe7d361a118c16c4cab6eb9ffb732a80126dd1d";
+    owner = "robotis-ros2-release";
+    sha256 = "sha256-Y+smI8oYE7HFsnNWesWS7rfsPr+AqC+fqvny6UgGwUU=";
   };
 
   buildType = "ament_cmake";

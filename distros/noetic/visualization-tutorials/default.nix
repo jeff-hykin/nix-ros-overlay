@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-visualization-tutorials";
   version = "0.11.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/visualization_tutorials-release/archive/release/noetic/visualization_tutorials/0.11.0-1.tar.gz";
-    name = "0.11.0-1.tar.gz";
-    sha256 = "595fcd50bd39b8cfa6ddcafd6e3365d6ed515d8a0cebbeb05603c29400c62cb9";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "visualization_tutorials-release";
+    rev = "253560163578f05c0fb51f583836ee8e9d1feb41";
+    owner = "ros-gbp";
+    sha256 = "sha256-pxezit9eNzvfgVPOc3WOHAhtbHH2Vx1lPupxWXkQLDM=";
   };
 
   buildType = "catkin";

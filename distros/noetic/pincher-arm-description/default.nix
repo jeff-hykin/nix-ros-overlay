@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-pincher-arm-description";
   version = "0.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/fictionlab-gbp/pincher_arm-release/archive/release/noetic/pincher_arm_description/0.2.0-1.tar.gz";
-    name = "0.2.0-1.tar.gz";
-    sha256 = "6a65b4212527b1e82f01a2746eaf19d96578c173cf214263b6d3ceca58876989";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pincher_arm-release";
+    rev = "1968a308e25943e41a220b57524cd6d2d21b315a";
+    owner = "fictionlab-gbp";
+    sha256 = "sha256-MdQyDNZzz9WikKS6YvpI9vKT7HJGccuKspkTzQNJ8J8=";
   };
 
   buildType = "catkin";

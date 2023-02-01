@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-jderobot-drones";
   version = "1.4.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/JdeRobot/drones-release/archive/release/noetic/jderobot_drones/1.4.2-1.tar.gz";
-    name = "1.4.2-1.tar.gz";
-    sha256 = "4993de1fb338d286572a2d737cae4977737658febd1aecaf82ae96637531a1ee";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "drones-release";
+    rev = "0d8bced58d645b1aaa949f2f659c9a9199af29e3";
+    owner = "JdeRobot";
+    sha256 = "sha256-0I0g+OpGxoW3RhCP9OtI4rl71VeFEKc3Qepm1hz3q5g=";
   };
 
   buildType = "catkin";

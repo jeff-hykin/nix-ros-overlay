@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-roslint";
   version = "0.12.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/roslint-release/archive/release/noetic/roslint/0.12.0-1.tar.gz";
-    name = "0.12.0-1.tar.gz";
-    sha256 = "94a1e257cf7fafc84cfdce9e330aa032ba58c14461cc3f96625605973b5eea43";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "roslint-release";
+    rev = "72fbf79c8ec0a5d8245aefafe1f8f7463b228652";
+    owner = "ros-gbp";
+    sha256 = "sha256-6zqBH9P++1wWPD9BasHzkFfxxbY8AjYyTMsIkC2F/n0=";
   };
 
   buildType = "catkin";

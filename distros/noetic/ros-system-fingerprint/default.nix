@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-ros-system-fingerprint";
   version = "0.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/MetroRobots/ros_system_fingerprint-release/archive/release/noetic/ros_system_fingerprint/0.3.0-1.tar.gz";
-    name = "0.3.0-1.tar.gz";
-    sha256 = "6501b19c0d916e475c39d39839cc65a449fd296d93b996af0da838e7ec1f29f4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_system_fingerprint-release";
+    rev = "53ea31bf6bf57713aeaa472f62c422f1c68aa06e";
+    owner = "MetroRobots";
+    sha256 = "sha256-BX5JRRs4JTIo6fd/7LemO+HZja5hckQGgR5mPLVevQ0=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-rqt-rosmon";
   version = "2.3.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/xqms/rosmon-release/archive/release/melodic/rqt_rosmon/2.3.2-1.tar.gz";
-    name = "2.3.2-1.tar.gz";
-    sha256 = "9769d8e7d864db419856c498157f0bb6d41913049802afbc22f7bc229f173ec5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosmon-release";
+    rev = "8b1d8df8e5921302ace534ff78e95beba9ddb961";
+    owner = "xqms";
+    sha256 = "sha256-Je81db7u5bhu3C3HC0kQyMzeBPb+iD4qq+pcTHSILcU=";
   };
 
   buildType = "catkin";

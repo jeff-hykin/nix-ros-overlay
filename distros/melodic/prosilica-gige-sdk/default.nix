@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-prosilica-gige-sdk";
   version = "1.26.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-drivers-gbp/prosilica_gige_sdk-release/archive/release/melodic/prosilica_gige_sdk/1.26.3-1.tar.gz";
-    name = "1.26.3-1.tar.gz";
-    sha256 = "3ba1f4695e70b0a8d831ec38c0e76b5d018e589d74cbf0436c828ce934e0ab3d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "prosilica_gige_sdk-release";
+    rev = "9c3eb71c5673abaa5e764cc52d893e8f35105ceb";
+    owner = "ros-drivers-gbp";
+    sha256 = "sha256-cX85yiPAgi7o6+4ejYv642BsMbesKjHlXtP3ZJ4bkQM=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-knowledge-representation";
   version = "0.9.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/utexas-bwi-gbp/knowledge_representation-release/archive/release/melodic/knowledge_representation/0.9.4-1.tar.gz";
-    name = "0.9.4-1.tar.gz";
-    sha256 = "9d78c86fd031e08f16d5c2592b9f6d24a4d91f97a8c894752727c37ea292820d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "knowledge_representation-release";
+    rev = "15f8d25d32a666bfa870d91675dc3cb3aba961ce";
+    owner = "utexas-bwi-gbp";
+    sha256 = "sha256-gnLg1NF27HVgu0h2vR88yG01B1RxwFzYu9GLoz6HHDM=";
   };
 
   buildType = "catkin";

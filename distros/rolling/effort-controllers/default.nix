@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-effort-controllers";
   version = "2.15.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_controllers-release/archive/release/rolling/effort_controllers/2.15.0-1.tar.gz";
-    name = "2.15.0-1.tar.gz";
-    sha256 = "4671be67801af24f350fabad3f670b465997123d671f1992d237b959b2752aa1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_controllers-release";
+    rev = "9485b8001158b1d3c8041f34c76a2e6594da865f";
+    owner = "ros2-gbp";
+    sha256 = "sha256-rG41W13W6JTFieB07+RdqWOvLNnlOdmsadTawJuNLxc=";
   };
 
   buildType = "ament_cmake";

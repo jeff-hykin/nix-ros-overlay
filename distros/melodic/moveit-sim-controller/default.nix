@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-moveit-sim-controller";
   version = "0.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/PickNikRobotics/moveit_sim_controller-release/archive/release/melodic/moveit_sim_controller/0.2.0-1.tar.gz";
-    name = "0.2.0-1.tar.gz";
-    sha256 = "86cfd592c05305bb60387de3f33bcc248b800f29d8e6f7aeba371349da86372e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "moveit_sim_controller-release";
+    rev = "b74181c2bc3f79203dd0269896fac28ca5678e60";
+    owner = "PickNikRobotics";
+    sha256 = "sha256-VXgpOY/pWMUQ4jPKrYlwss8wmoC/kl/utfkieqg5X30=";
   };
 
   buildType = "catkin";

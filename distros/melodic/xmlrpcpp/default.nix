@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-xmlrpcpp";
   version = "1.14.13-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/xmlrpcpp/1.14.13-1.tar.gz";
-    name = "1.14.13-1.tar.gz";
-    sha256 = "751ddf0d3bf22779e408a924efaebff82d4fa16a9b3557b881c1018b49a0e841";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_comm-release";
+    rev = "80ef6e9acc288f95a5c3001630d75a75484afcda";
+    owner = "ros-gbp";
+    sha256 = "sha256-Ef8TD4X01VXyp0SUvSKllryVFfXd3PEvf/sSsKLcdTo=";
   };
 
   buildType = "catkin";

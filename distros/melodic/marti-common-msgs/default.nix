@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-marti-common-msgs";
   version = "0.11.0-r3";
 
-  src = fetchurl {
-    url = "https://github.com/swri-robotics-gbp/marti_messages-release/archive/release/melodic/marti_common_msgs/0.11.0-3.tar.gz";
-    name = "0.11.0-3.tar.gz";
-    sha256 = "cfcf1054bea3cf47aaf3e7478bc64ab645d2edcf388029351c5a800461ee4738";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "marti_messages-release";
+    rev = "d121c505847dfb26a9cedfa635fc9d3b89b1f4f5";
+    owner = "swri-robotics-gbp";
+    sha256 = "sha256-TI0Ie7rtNnkvYK3slDpl+GjkGFxmt507eP0RWKz7tpw=";
   };
 
   buildType = "catkin";

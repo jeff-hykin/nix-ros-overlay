@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-stubborn-buddies-msgs";
   version = "1.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/stubborn_buddies-release/archive/release/galactic/stubborn_buddies_msgs/1.0.0-1.tar.gz";
-    name = "1.0.0-1.tar.gz";
-    sha256 = "bce2abcd2da5bf94ccbea3da174f9961d3b389f17cecf413a61e6342a22f8127";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "stubborn_buddies-release";
+    rev = "106133ed3457c987fd5bf5ce47f26e57e012d285";
+    owner = "ros2-gbp";
+    sha256 = "sha256-ca+tBYzurY7xkoSry24RR8HaTLuuHAEKuBOxT57QSXY=";
   };
 
   buildType = "ament_cmake";

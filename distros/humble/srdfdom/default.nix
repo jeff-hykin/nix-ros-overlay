@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-srdfdom";
   version = "2.0.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/srdfdom-release/archive/release/humble/srdfdom/2.0.4-1.tar.gz";
-    name = "2.0.4-1.tar.gz";
-    sha256 = "611afe6f307eb4ac073e1cbbbfd46c4566817b7ff5dd11b33aff8d31ba8072bb";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "srdfdom-release";
+    rev = "fa6d291b733607e65ca3cc5dce675f5c71d4cf3f";
+    owner = "ros2-gbp";
+    sha256 = "sha256-4SrjgL5tauV2LvLisilSnXwyD2qTdhVdYDtH8D/69yg=";
   };
 
   buildType = "ament_cmake";

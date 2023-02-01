@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-turtle-tf";
   version = "0.2.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/geometry_tutorials-release/archive/release/noetic/turtle_tf/0.2.3-1.tar.gz";
-    name = "0.2.3-1.tar.gz";
-    sha256 = "647812c3fbed1534f79012e4c22e5701fe2d1b8dc0e3f838e96420e803fc313f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "geometry_tutorials-release";
+    rev = "e926e50ad8b641a994a04b637251cf4dd20b238b";
+    owner = "ros-gbp";
+    sha256 = "sha256-mm+mu28PNvjmav8NDsiiFBpYUax8rJ/rvAykWq6QM7w=";
   };
 
   buildType = "catkin";

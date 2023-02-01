@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-pmb2-robot";
   version = "4.0.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pal-gbp/pmb2_robot-gbp/archive/release/foxy/pmb2_robot/4.0.4-1.tar.gz";
-    name = "4.0.4-1.tar.gz";
-    sha256 = "cbb1425c6e135dee80443f4422de0819b2f16e2d0e41a45398bb25a274127aa4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pmb2_robot-gbp";
+    rev = "4bce67ac9ab9228a3eb587779a83395b171fecfe";
+    owner = "pal-gbp";
+    sha256 = "sha256-jBMDy69oYB/rDZIj6GRPAlQjaWBgzakCyt3rMaUbSfk=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-rospilot";
   version = "1.6.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/rospilot/rospilot-release/archive/release/noetic/rospilot/1.6.1-1.tar.gz";
-    name = "1.6.1-1.tar.gz";
-    sha256 = "85196c13b22f7f490591432bbd4c51aa575f1083af6eaffa34d24b88dbe15f08";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rospilot-release";
+    rev = "a855a273d5c91f5678f335163488d80f54eda053";
+    owner = "rospilot";
+    sha256 = "sha256-SoInknI7Yxng9nlQ31g8sHZkQK9IMLiuHNbE91Blja4=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-vrpn";
   version = "7.35.0-r11";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/vrpn-release/archive/release/humble/vrpn/7.35.0-11.tar.gz";
-    name = "7.35.0-11.tar.gz";
-    sha256 = "70327fe398c88fd84af4117ae83f84c60cc6646560c370c5895445c5ec1ce422";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "vrpn-release";
+    rev = "ff688a4507797c35a48710be678c06defc5e6629";
+    owner = "ros2-gbp";
+    sha256 = "sha256-gVABNgsOIA99lKIlrcjjsnCvXMYzmJtNB/5AH1Im0Wc=";
   };
 
   buildType = "cmake";

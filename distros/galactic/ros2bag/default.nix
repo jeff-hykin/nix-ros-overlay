@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ros2bag";
   version = "0.9.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rosbag2-release/archive/release/galactic/ros2bag/0.9.2-1.tar.gz";
-    name = "0.9.2-1.tar.gz";
-    sha256 = "812d8c1bfe43dea2ccb1ffb3e7445559b849176c72bf86b67f79c2f7ebc6ec0e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosbag2-release";
+    rev = "619527d2905a2cf92842e3102a7bfa8e28c10c6a";
+    owner = "ros2-gbp";
+    sha256 = "sha256-p1YUq2mrkrWJJhNytXBxPZ/x62FgdKqvUNjqdjdDNUo=";
   };
 
   buildType = "ament_python";

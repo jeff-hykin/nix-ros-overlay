@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-clober-slam";
   version = "0.2.0-r5";
 
-  src = fetchurl {
-    url = "https://github.com/CLOBOT-Co-Ltd-release/clober_ros2-release/archive/release/foxy/clober_slam/0.2.0-5.tar.gz";
-    name = "0.2.0-5.tar.gz";
-    sha256 = "454b7fc14ff9029a21a4cefb0ad546989d5c5198c32c83188fcc953786a0991e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "clober_ros2-release";
+    rev = "37a5ebc4b6c37226f71a11ee09aad56b7a3f939c";
+    owner = "CLOBOT-Co-Ltd-release";
+    sha256 = "sha256-YnGHKfxCYSVY+bNZoWJrWuYPdGz0luecTSnFCAHLiuk=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-raptor-dbw-can";
   version = "1.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/NewEagleRaptor/raptor-dbw-ros2-release/archive/release/foxy/raptor_dbw_can/1.2.0-1.tar.gz";
-    name = "1.2.0-1.tar.gz";
-    sha256 = "3e1b0b13b8f0e686eb4e592c4aa4f330fed428a474b874d843ca6b69aeeadad1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "raptor-dbw-ros2-release";
+    rev = "27241a86576b87aa04d3ab8ed49a6abb81162c65";
+    owner = "NewEagleRaptor";
+    sha256 = "sha256-yaDG2EstOPr8Pa3NBQ2ZPN+67Fujj3kXaW9hkD4GoDA=";
   };
 
   buildType = "ament_cmake";

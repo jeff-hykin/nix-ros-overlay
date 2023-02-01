@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-ruckig";
   version = "0.6.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pantor/ruckig-release/archive/release/foxy/ruckig/0.6.3-1.tar.gz";
-    name = "0.6.3-1.tar.gz";
-    sha256 = "cff3d3db056f7026f298f4b87c843781ceeec72947f706d1f861d69a96aed9a4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ruckig-release";
+    rev = "025e103f2d54f8b62db77a277a0905b979c5bdec";
+    owner = "pantor";
+    sha256 = "sha256-Rc7jKjIwuJUT7To4WUmmKX8mvICZzHMQ1RQ7R4mL3FY=";
   };
 
   buildType = "cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-open-manipulator-with-tb3-waffle-moveit";
   version = "1.1.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ROBOTIS-GIT-release/open_manipulator_with_tb3-release/archive/release/melodic/open_manipulator_with_tb3_waffle_moveit/1.1.0-2.tar.gz";
-    name = "1.1.0-2.tar.gz";
-    sha256 = "48ccf4228562e681d256e965706ea41f90a7fc34ea1b9829ff95529fc4a4b361";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "open_manipulator_with_tb3-release";
+    rev = "6ebdfc0a3861a12419660537c699147656e20e25";
+    owner = "ROBOTIS-GIT-release";
+    sha256 = "sha256-iGCbTikUwlmsQvMbyTAfDQEbdHYHDZWed5jLqd/a4dc=";
   };
 
   buildType = "catkin";

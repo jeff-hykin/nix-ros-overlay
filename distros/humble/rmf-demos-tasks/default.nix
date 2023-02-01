@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-rmf-demos-tasks";
   version = "1.3.1-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_demos-release/archive/release/humble/rmf_demos_tasks/1.3.1-3.tar.gz";
-    name = "1.3.1-3.tar.gz";
-    sha256 = "ea8bcbd9041a9e85fccca51b328b8df1d4f67e3f3f1a1c9fc6ba6a28bba5dbf5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_demos-release";
+    rev = "bf3bcad9581e65a17a94da55e4b32a67f65a3542";
+    owner = "ros2-gbp";
+    sha256 = "sha256-32NRlvRhG4QpnGWdAsozB0ZIs4Gklcxz1vuUGOdYVrc=";
   };
 
   buildType = "ament_python";

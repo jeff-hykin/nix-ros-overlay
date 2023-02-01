@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-desktop";
   version = "0.9.3-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/variants-release/archive/release/galactic/desktop/0.9.3-2.tar.gz";
-    name = "0.9.3-2.tar.gz";
-    sha256 = "a254e4acdbab0e6849597fa7f8e9983ff46ced7f48976475ca9c90f9b58ccd81";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "variants-release";
+    rev = "61b46551988823b4d7d436107b3c98032fe6ea44";
+    owner = "ros2-gbp";
+    sha256 = "sha256-e/vqH+CT1n1Pvl/HUrDHolVARRUvLxgj15CkCtiVv1w=";
   };
 
   buildType = "ament_cmake";

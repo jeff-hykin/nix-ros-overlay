@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-graft";
   version = "0.2.3-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/graft-release/archive/release/melodic/graft/0.2.3-2.tar.gz";
-    name = "0.2.3-2.tar.gz";
-    sha256 = "9a8974a928fe75527071337fedbe94266631129c0a1b9cb9d9163b06302bedce";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "graft-release";
+    rev = "adccb4c5b48be9c05eb1a315fd6df1775dbd999e";
+    owner = "ros-gbp";
+    sha256 = "sha256-iptW0ogmMJY4rrW2fbaDEO+ZC/+ZS4Nx1KvnUlQADaE=";
   };
 
   buildType = "catkin";

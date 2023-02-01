@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-realsense2-camera";
   version = "4.51.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/IntelRealSense/realsense-ros-release/archive/release/humble/realsense2_camera/4.51.1-1.tar.gz";
-    name = "4.51.1-1.tar.gz";
-    sha256 = "0c85f59e0775a70bf9377a16efc5271eb8e072999bd8eddad169764b11b54fe6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "realsense-ros-release";
+    rev = "a2e57f4ef22abf0efdb9e28db8f3373842d28147";
+    owner = "IntelRealSense";
+    sha256 = "sha256-O/ta/1y9TxZ4fnhsBw20dq7eCrtG+nuRaN35kbJx2dc=";
   };
 
   buildType = "ament_cmake";

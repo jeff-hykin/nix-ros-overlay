@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-euscollada";
   version = "0.4.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/tork-a/jsk_model_tools-release/archive/release/melodic/euscollada/0.4.4-1.tar.gz";
-    name = "0.4.4-1.tar.gz";
-    sha256 = "66836a2b67d75a93f8b328355c0bef40fd8894e4640f144bd3751c7b36a5f6b6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "jsk_model_tools-release";
+    rev = "e2c8d3da95f75dc2a5464f4b0030fe5d60a56b4e";
+    owner = "tork-a";
+    sha256 = "sha256-Z65Xvzg6tZ/MsnAwlyRNAVZFKaPQ1QUVOwJU02CmTnA=";
   };
 
   buildType = "catkin";

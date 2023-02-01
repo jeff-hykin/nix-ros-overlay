@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-exotica-cartpole-dynamics-solver";
   version = "6.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipab-slmc/exotica-release/archive/release/noetic/exotica_cartpole_dynamics_solver/6.2.0-1.tar.gz";
-    name = "6.2.0-1.tar.gz";
-    sha256 = "baa1d842aa76a78e30f715e34ee6c7875ed6fbe1c303f7da57967671c6bef9bb";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "exotica-release";
+    rev = "7e483900462f43669af2fc738a309ff278126245";
+    owner = "ipab-slmc";
+    sha256 = "sha256-46GX8+6hpXfuZFwnn2TnQy+Dq+eN0iPxfFnJ+uBjSm0=";
   };
 
   buildType = "catkin";

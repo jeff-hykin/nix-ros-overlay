@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-rc-silhouettematch-client";
   version = "3.3.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/roboception-gbp/rc_visard-release/archive/release/noetic/rc_silhouettematch_client/3.3.2-1.tar.gz";
-    name = "3.3.2-1.tar.gz";
-    sha256 = "17a9b5d56afef1e0bda6c09e4f47c2c38c9cdccbef4748ea2b0c2a1ea11bc74b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rc_visard-release";
+    rev = "ef8319606d3e3de6f69a2d933f68e02f6050384a";
+    owner = "roboception-gbp";
+    sha256 = "sha256-qbXXttEhKp/my4mMmsa5YNssUJoNHOJOqWgMY3oD4FM=";
   };
 
   buildType = "catkin";

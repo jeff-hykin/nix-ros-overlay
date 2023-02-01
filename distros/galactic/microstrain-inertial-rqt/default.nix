@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-microstrain-inertial-rqt";
   version = "2.7.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/microstrain_inertial-release/archive/release/galactic/microstrain_inertial_rqt/2.7.1-1.tar.gz";
-    name = "2.7.1-1.tar.gz";
-    sha256 = "d85925ee6c226e1ae387f7f9bf31480879f0aa4766b979a0c143a82cbcd20943";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "microstrain_inertial-release";
+    rev = "176c26e32b7eb9b3419fe44051f8667de6e34355";
+    owner = "ros2-gbp";
+    sha256 = "sha256-X+Ln2qrYa5YMXjH/lKuPt55wU6rW1792SMe6RZyi+BU=";
   };
 
   buildType = "ament_python";

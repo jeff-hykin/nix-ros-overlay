@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-multires-image";
   version = "2.2.0-r3";
 
-  src = fetchurl {
-    url = "https://github.com/swri-robotics-gbp/mapviz-release/archive/release/galactic/multires_image/2.2.0-3.tar.gz";
-    name = "2.2.0-3.tar.gz";
-    sha256 = "eb5f31714e20a21e5cbb6203f074df73be19f2cf357b9ef068b55f759bd02e53";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mapviz-release";
+    rev = "12f2f8cc6f5927d8829a13fcce4e2b62453de4ce";
+    owner = "swri-robotics-gbp";
+    sha256 = "sha256-UWbiR9Yi4OVCQvGBHOE+Fj3qAbvA18AA/epPr0smy3A=";
   };
 
   buildType = "ament_cmake";

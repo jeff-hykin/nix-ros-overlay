@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-examples-rclcpp-minimal-timer";
   version = "0.9.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/examples-release/archive/release/foxy/examples_rclcpp_minimal_timer/0.9.4-1.tar.gz";
-    name = "0.9.4-1.tar.gz";
-    sha256 = "b60787e3aa6033099bd8ebf49cfb91e5f50bffcc78b0d69f4053aa6cf492cfe9";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "examples-release";
+    rev = "531d3d0d30bcd86ae576f44bbe69c6ebe910b2fd";
+    owner = "ros2-gbp";
+    sha256 = "sha256-28qPQdi0NxV6MD9wDDyz8OpgmR3uHS40Ish93Ya8avg=";
   };
 
   buildType = "ament_cmake";

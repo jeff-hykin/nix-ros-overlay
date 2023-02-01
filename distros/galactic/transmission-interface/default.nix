@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-transmission-interface";
   version = "1.6.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_control-release/archive/release/galactic/transmission_interface/1.6.0-1.tar.gz";
-    name = "1.6.0-1.tar.gz";
-    sha256 = "8286d3b3871bcc067a55d0696cd4c10f19bd559a75f2d5401ba492d72d3ecc7c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_control-release";
+    rev = "f96d5ab3209ca3f551461ef5bd4d0fa17e87f1fc";
+    owner = "ros2-gbp";
+    sha256 = "sha256-xUmVbc3cLlIqJman2fHrLlJIZoh093hq/HhFJMEp9iM=";
   };
 
   buildType = "ament_cmake";

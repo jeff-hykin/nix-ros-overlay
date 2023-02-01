@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-ethercat-manager";
   version = "1.0.10-r1";
 
-  src = fetchurl {
-    url = "https://github.com/tork-a/minas-release/archive/release/melodic/ethercat_manager/1.0.10-1.tar.gz";
-    name = "1.0.10-1.tar.gz";
-    sha256 = "de54e41f6f741c656d0b4124f7c9d9b2329e4364efef0463ee32ed2635b7b17f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "minas-release";
+    rev = "3eb65c1b95e8fb0e5b5e184c32e9f39f417f5ee4";
+    owner = "tork-a";
+    sha256 = "sha256-qamTb4KFwTvj1RBvyB5F7baOZnpy/aNxjIkRej1TuGo=";
   };
 
   buildType = "catkin";

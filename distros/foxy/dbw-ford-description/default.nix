@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-dbw-ford-description";
   version = "2.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/DataspeedInc-release/dbw_ros-release/archive/release/foxy/dbw_ford_description/2.1.0-1.tar.gz";
-    name = "2.1.0-1.tar.gz";
-    sha256 = "1bec7434eb484a4a2cde6997d6d88328949e1a99cda199ca45fc590788c0abe3";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "dbw_ros-release";
+    rev = "ab4407613bd1f894ec873341efbff1d4619dbbe6";
+    owner = "DataspeedInc-release";
+    sha256 = "sha256-VMHbEYr7ykq1gEuSTCn8XpIqxZ47PNaK7VDuOPAqhD8=";
   };
 
   buildType = "ament_cmake";

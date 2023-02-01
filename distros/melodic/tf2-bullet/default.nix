@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-tf2-bullet";
   version = "0.6.5";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/geometry2-release/archive/release/melodic/tf2_bullet/0.6.5-0.tar.gz";
-    name = "0.6.5-0.tar.gz";
-    sha256 = "2cb1d1e6d4ba180010c3f53ac138ba147ef4fb2c037d1b76be5cfb7d60ecd8e8";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "geometry2-release";
+    rev = "03d1b17a30c07ca20cc226e721bf26fd12d95410";
+    owner = "ros-gbp";
+    sha256 = "sha256-aITQnFz9/4H80uaffidkNE1F3yvAIgIoCtECpawNOGw=";
   };
 
   buildType = "catkin";

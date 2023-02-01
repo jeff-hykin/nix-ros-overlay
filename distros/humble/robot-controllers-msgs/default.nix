@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-robot-controllers-msgs";
   version = "0.9.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/fetchrobotics-gbp/robot_controllers-ros2-release/archive/release/humble/robot_controllers_msgs/0.9.3-1.tar.gz";
-    name = "0.9.3-1.tar.gz";
-    sha256 = "dd8b03b0617a7e93dbcd175615138c8f2f4a793aab2be3bbd273c9cd5fdae18f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "robot_controllers-ros2-release";
+    rev = "c87a19cec79fdb3b63170dd9fda11b7e0a93ae23";
+    owner = "fetchrobotics-gbp";
+    sha256 = "sha256-utKROZ18GIYSRr1eO7wR5SHfPu2qKiX38fAMIqeqwwo=";
   };
 
   buildType = "ament_cmake";

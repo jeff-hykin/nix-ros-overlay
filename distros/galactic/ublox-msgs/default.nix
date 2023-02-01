@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ublox-msgs";
   version = "2.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ublox-release/archive/release/galactic/ublox_msgs/2.2.0-1.tar.gz";
-    name = "2.2.0-1.tar.gz";
-    sha256 = "3993c5a8e646795c33351042535c5fc3f61bd5a27d41afe262edce5e6e744b52";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ublox-release";
+    rev = "a8440013373dd2af45092864efb669e3570aa84f";
+    owner = "ros2-gbp";
+    sha256 = "sha256-UDRLLW9D36QuozW9tTeRhb1NMCzeaCEKb1WB1kFkX1g=";
   };
 
   buildType = "ament_cmake";

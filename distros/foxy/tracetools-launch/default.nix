@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-tracetools-launch";
   version = "1.0.5-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_tracing-release/archive/release/foxy/tracetools_launch/1.0.5-2.tar.gz";
-    name = "1.0.5-2.tar.gz";
-    sha256 = "7789d923e675d776aea16b103bf20e4bb8ca38534ac3f0712b59985e7190dfee";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_tracing-release";
+    rev = "41221284fcc24b0cb50ef584726b83396b97c1d4";
+    owner = "ros2-gbp";
+    sha256 = "sha256-qjWCRFd8X6ZeEKPRVOIK8QPdazIX/eJqGgAS7R01xEE=";
   };
 
   buildType = "ament_python";

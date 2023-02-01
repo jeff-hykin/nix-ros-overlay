@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-foxglove-bridge";
   version = "0.2.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/foxglove/ros_foxglove_bridge-release/archive/release/noetic/foxglove_bridge/0.2.2-1.tar.gz";
-    name = "0.2.2-1.tar.gz";
-    sha256 = "abf7487e53c5a0e4d2c07b0bb38bfdd641c02fc87fb69e0123eca0e4939d2733";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_foxglove_bridge-release";
+    rev = "4348340c65b13ab9838286cb21acec14f87c5b43";
+    owner = "foxglove";
+    sha256 = "sha256-G1VqLpc+S2Yng1cVVBxbYH4EsGP9TZQWwWa7cj9/8dY=";
   };
 
   buildType = "catkin";

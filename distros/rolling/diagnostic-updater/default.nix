@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-diagnostic-updater";
   version = "3.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/diagnostics-release/archive/release/rolling/diagnostic_updater/3.0.0-1.tar.gz";
-    name = "3.0.0-1.tar.gz";
-    sha256 = "69910ba4759b5604a441df600dcd599b53e965c5ed9cbb01c36b755231da8e45";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "diagnostics-release";
+    rev = "d4e3481e89c4dda5a3adc4784cf62f3b08cbbe93";
+    owner = "ros2-gbp";
+    sha256 = "sha256-AW6zEvv2ePk8JMarkjUM4F9DwemHTR8QqQKDEu1Coms=";
   };
 
   buildType = "ament_cmake";

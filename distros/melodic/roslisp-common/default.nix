@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-roslisp-common";
   version = "0.2.13-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/roslisp_common-release/archive/release/melodic/roslisp_common/0.2.13-1.tar.gz";
-    name = "0.2.13-1.tar.gz";
-    sha256 = "7fbfd8b1d0dc002023ed13524091df870f94315258f7db00c994c0ab6ce7e309";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "roslisp_common-release";
+    rev = "abc6448169323bc93af21c3f17e786426f72fc4d";
+    owner = "ros-gbp";
+    sha256 = "sha256-8cySZNIbAOJmWhkrxC8aPHXqQnmslzWh6qRch+h/6hs=";
   };
 
   buildType = "catkin";

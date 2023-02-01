@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-audio-common";
   version = "0.3.16-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/audio_common-release/archive/release/melodic/audio_common/0.3.16-1.tar.gz";
-    name = "0.3.16-1.tar.gz";
-    sha256 = "1a2ab0b4192ce074b57f4a7ee13ce82bb7a865d680d27bf942f6f1a59ba8ce6b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "audio_common-release";
+    rev = "d0ba7a071ef2bedcce03a0fe43fa6379870d5d4a";
+    owner = "ros-gbp";
+    sha256 = "sha256-tiuvSCP9y4tImZv5qRMTKI+r/sUB6hur5sWDlq7s6Hc=";
   };
 
   buildType = "catkin";

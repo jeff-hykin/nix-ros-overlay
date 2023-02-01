@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rmf-lift-msgs";
   version = "1.4.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_internal_msgs-release/archive/release/galactic/rmf_lift_msgs/1.4.0-1.tar.gz";
-    name = "1.4.0-1.tar.gz";
-    sha256 = "9da4d014f008f1856623efeeacebde64cb3cfb4e24e39d11e9248d736fd81802";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_internal_msgs-release";
+    rev = "4096a0d1ced937478b5c33b78c74c104f4e86a5d";
+    owner = "ros2-gbp";
+    sha256 = "sha256-lXg6zjKTVLK5AlDM8fecDRUvg24tgr2q+IDyHXABF3A=";
   };
 
   buildType = "ament_cmake";

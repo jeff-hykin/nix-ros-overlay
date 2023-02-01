@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-pr2-self-test";
   version = "1.0.15-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pr2-gbp/pr2_self_test-release/archive/release/noetic/pr2_self_test/1.0.15-1.tar.gz";
-    name = "1.0.15-1.tar.gz";
-    sha256 = "16c9ed1182dfb953d741b40605c53ae37e2f1d9fd81394f1a07131040105ee4e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pr2_self_test-release";
+    rev = "921062158cfc447c016059794fc0c6f5799d5c90";
+    owner = "pr2-gbp";
+    sha256 = "sha256-QKGI4UV3Lgp6swZDwW8P8JeEbWs19pBB4OU0AnluY3c=";
   };
 
   buildType = "catkin";

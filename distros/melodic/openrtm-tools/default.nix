@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-openrtm-tools";
   version = "1.4.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/tork-a/rtmros_common-release/archive/release/melodic/openrtm_tools/1.4.3-1.tar.gz";
-    name = "1.4.3-1.tar.gz";
-    sha256 = "49f4aecff4ed1770796d07d505e850852fc4cd0a5d1b8e5879bbbfddc46539e1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rtmros_common-release";
+    rev = "8b92ec29acabe207ef88f706bf216c0af38b04b4";
+    owner = "tork-a";
+    sha256 = "sha256-0eDPw2hCsGg0BVEoqvuAtn/tTOKASoDPSRVVBYp9TG4=";
   };
 
   buildType = "catkin";

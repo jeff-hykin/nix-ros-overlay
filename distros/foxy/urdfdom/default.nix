@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-urdfdom";
   version = "2.3.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/urdfdom-release/archive/release/foxy/urdfdom/2.3.3-1.tar.gz";
-    name = "2.3.3-1.tar.gz";
-    sha256 = "8d07feb6325247a03f364bb574f7879fa1cfa8dc6a7e279aafb31166be240767";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "urdfdom-release";
+    rev = "77e49fe021576a81aa71d05627ff3a5709ce5978";
+    owner = "ros2-gbp";
+    sha256 = "sha256-DQ8f+j0pd7b9dnVbFUbe6UG44jmUUkkHq1twlANeI4c=";
   };
 
   buildType = "cmake";

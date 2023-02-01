@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-naoqi-libqicore";
   version = "2.9.7";
 
-  src = fetchurl {
-    url = "https://github.com/ros-naoqi/libqicore-release/archive/release/foxy/naoqi_libqicore/2.9.7-0.tar.gz";
-    name = "2.9.7-0.tar.gz";
-    sha256 = "fd7d2e92011aadf303c933e69875317ad8a70d51795dfebaf03f810d6aba7758";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "libqicore-release";
+    rev = "db533782fe33fe960efe19ead26c18291e6399dc";
+    owner = "ros-naoqi";
+    sha256 = "sha256-hLcaaRY2n8iu8LP5doxZNdXajSdJKNeJqmG9V35cmII=";
   };
 
   buildType = "ament_cmake";

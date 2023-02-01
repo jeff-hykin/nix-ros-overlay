@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-turtlebot4-bringup";
   version = "0.1.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/turtlebot4_robot-release/archive/release/galactic/turtlebot4_bringup/0.1.3-1.tar.gz";
-    name = "0.1.3-1.tar.gz";
-    sha256 = "94d3d72b810e5d6d7ff6e5e9c856db02a92d8a8717d647ff212390a7a153b31b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "turtlebot4_robot-release";
+    rev = "b4fc5d1f6832357ec8a82f94974da3bf04e69ff7";
+    owner = "ros2-gbp";
+    sha256 = "sha256-KXhwiP5THSx6xjpvJ8eNndODPDZsC8J9GCYZz7YBnb4=";
   };
 
   buildType = "ament_cmake";

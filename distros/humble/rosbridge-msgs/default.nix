@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-rosbridge-msgs";
   version = "1.3.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rosbridge_suite-release/archive/release/humble/rosbridge_msgs/1.3.1-1.tar.gz";
-    name = "1.3.1-1.tar.gz";
-    sha256 = "8b3b2eed3876eca3fddbf515267aef4f6af59a8bf5d09ee52db209f4dad593cd";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosbridge_suite-release";
+    rev = "1ebbece86dcbf4820fb5d79bac9f6ad36677c3dd";
+    owner = "ros2-gbp";
+    sha256 = "sha256-fa8a7XqxoY7IgwXCc994LiFABO2+hCdOVKmPRxpT3PQ=";
   };
 
   buildType = "ament_cmake";

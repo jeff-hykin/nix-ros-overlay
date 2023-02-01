@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-sqlite3-vendor";
   version = "0.18.0-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rosbag2-release/archive/release/rolling/sqlite3_vendor/0.18.0-3.tar.gz";
-    name = "0.18.0-3.tar.gz";
-    sha256 = "f75c05844cd8ae2260067d18088f2154b42e139ad2fc3a06ea8b494b1457b762";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosbag2-release";
+    rev = "de7a4529c2169fccabdb6c7f66515f533fc65bfe";
+    owner = "ros2-gbp";
+    sha256 = "sha256-oj0uGGfczEymurYeIEd7syNupZUQ0cSXL8VSy1ayRCQ=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rmf-building-sim-common";
   version = "1.3.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_simulation-release/archive/release/galactic/rmf_building_sim_common/1.3.1-1.tar.gz";
-    name = "1.3.1-1.tar.gz";
-    sha256 = "0595835d60f45f636b85b98d403981e3824ccfabb5c7246ad5d39f1ce733c546";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_simulation-release";
+    rev = "b4b17edb6c22d9bc34bf40dcf6f17b19d1053e32";
+    owner = "ros2-gbp";
+    sha256 = "sha256-PxX2yuXj1HZ3Y3vfOesQLYdg2KnT4/wM78T274bPlhM=";
   };
 
   buildType = "ament_cmake";

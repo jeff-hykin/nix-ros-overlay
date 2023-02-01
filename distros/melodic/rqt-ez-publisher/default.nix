@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-rqt-ez-publisher";
   version = "0.5.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/OTL/rqt_ez_publisher-release/archive/release/melodic/rqt_ez_publisher/0.5.0-1.tar.gz";
-    name = "0.5.0-1.tar.gz";
-    sha256 = "0ddd9a4715365473360ac5443887e7da747eb8280c7c9f90894f304131582f7a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt_ez_publisher-release";
+    rev = "682ed9a3a0c1baa92d8c9f2b897593c0a7ac3b7c";
+    owner = "OTL";
+    sha256 = "sha256-3z+SiisueQ5IEJ+ztpeUtEbKTKDzupqxTLpIBgEgHmw=";
   };
 
   buildType = "catkin";

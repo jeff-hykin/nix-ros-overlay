@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-human-description";
   version = "1.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros4hri/human_description-release/archive/release/noetic/human_description/1.0.0-1.tar.gz";
-    name = "1.0.0-1.tar.gz";
-    sha256 = "53c4b36c314d3d1e70e075cfae012ebc4aa69474ae724b87eb138f1c31e4046a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "human_description-release";
+    rev = "67ab0074515dbd3d383e601568b7fd0740679b0d";
+    owner = "ros4hri";
+    sha256 = "sha256-IOiqvPIAOordrjzw3G+CeOGXowXXGRNwkrC3RNIKHvI=";
   };
 
   buildType = "catkin";

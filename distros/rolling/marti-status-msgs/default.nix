@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-marti-status-msgs";
   version = "1.3.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/marti_messages-release/archive/release/rolling/marti_status_msgs/1.3.0-2.tar.gz";
-    name = "1.3.0-2.tar.gz";
-    sha256 = "c3faa422ac7e0672cb553925e7ea07aafae77f44be50b7cbc6a0a7712e88c8de";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "marti_messages-release";
+    rev = "a974e2b71de601502736be5b37a6027a1aa858f8";
+    owner = "ros2-gbp";
+    sha256 = "sha256-JIIYkZANCtSigjSIfcZ1T7ysxvv3VaxVxHjIF6c5qQY=";
   };
 
   buildType = "ament_cmake";

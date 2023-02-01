@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-python-cmake-module";
   version = "0.10.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/python_cmake_module-release/archive/release/rolling/python_cmake_module/0.10.1-1.tar.gz";
-    name = "0.10.1-1.tar.gz";
-    sha256 = "9b964563288c32d7578328efe797c9ce7ae2a4d130a065d884ef443c990547fb";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "python_cmake_module-release";
+    rev = "5247b9c909acca12a82d3b541904155a9bf5e144";
+    owner = "ros2-gbp";
+    sha256 = "sha256-pLwS7Ch7Zqch033Z4Qe35W1AOQz4fvBmwGiH2C+FfNg=";
   };
 
   buildType = "ament_cmake";

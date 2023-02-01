@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-visualization-rwt";
   version = "0.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/tork-a/visualization_rwt-release/archive/release/melodic/visualization_rwt/0.1.1-1.tar.gz";
-    name = "0.1.1-1.tar.gz";
-    sha256 = "8aa62e182a1ec6a2f54cd4701d81358c7de4c3e7d99272003243c2c5cead42dc";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "visualization_rwt-release";
+    rev = "311c2892a63797e3133eac6525efbe43a4275535";
+    owner = "tork-a";
+    sha256 = "sha256-3cruRexM/a6EZqJjRS4oXTWNJoNUdindwDT+TELeg0A=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-nav2-simple-commander";
   version = "1.1.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/SteveMacenski/navigation2-release/archive/release/humble/nav2_simple_commander/1.1.5-1.tar.gz";
-    name = "1.1.5-1.tar.gz";
-    sha256 = "5ee6a210d442ed1d8a3a3b86274b4048f57c934077d0cb3fd01726638fc41c33";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation2-release";
+    rev = "05b5f6723f207f19f6f9e904ec565e033ac9c0ea";
+    owner = "SteveMacenski";
+    sha256 = "sha256-pvdtjQAh7db4Jc8b93XYMBSOkxSZKIAmZrsf02O671Y=";
   };
 
   buildType = "ament_python";

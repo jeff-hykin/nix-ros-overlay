@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-random-numbers";
   version = "0.3.2";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/random_numbers-release/archive/release/melodic/random_numbers/0.3.2-0.tar.gz";
-    name = "0.3.2-0.tar.gz";
-    sha256 = "989cf481e8bd4c7b44278d73a549554fd874479c1f28e8d26f77fa905a43e409";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "random_numbers-release";
+    rev = "bee7dd844f3393fcfa04c5dc26dcb18dec966bb8";
+    owner = "ros-gbp";
+    sha256 = "sha256-Ahi8HGqZdCpFcqJ7cKYqmlBf0xTZ1tyUfXC38Nq715A=";
   };
 
   buildType = "catkin";

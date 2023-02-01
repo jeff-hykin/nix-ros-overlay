@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-rosserial-tivac";
   version = "0.8.0";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/rosserial-release/archive/release/melodic/rosserial_tivac/0.8.0-0.tar.gz";
-    name = "0.8.0-0.tar.gz";
-    sha256 = "3d4ce56cd9d2dd5e1d51afa86467890aa0d06c97b7342f7d469640eaa09c1372";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosserial-release";
+    rev = "5d87165fef68ac51a294f18b2e33ea13f24d145b";
+    owner = "ros-gbp";
+    sha256 = "sha256-LT++YPb99HzGWrvjMO9b1iLL6NT9iEY/RNR2YFn8dWM=";
   };
 
   buildType = "catkin";

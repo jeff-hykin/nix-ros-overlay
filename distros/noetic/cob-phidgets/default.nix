@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-cob-phidgets";
   version = "0.7.14-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_driver-release/archive/release/noetic/cob_phidgets/0.7.14-1.tar.gz";
-    name = "0.7.14-1.tar.gz";
-    sha256 = "d8951094e295eac9327e5a380b248ae135494ed2bc1cbea7589d1d078cb7b9b6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_driver-release";
+    rev = "2745f7c6d79c4b7c1c82fcf0e940a899f99f5f65";
+    owner = "ipa320";
+    sha256 = "sha256-uL91MHluODnYUcsCD7ADV9eWHE+5azBJCB5BYJDxzsM=";
   };
 
   buildType = "catkin";

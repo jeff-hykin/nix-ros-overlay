@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-global-planner";
   version = "1.16.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/navigation-release/archive/release/melodic/global_planner/1.16.7-1.tar.gz";
-    name = "1.16.7-1.tar.gz";
-    sha256 = "2905ff218546ce410b06ffb9884013561952e391f206326b1ac78917480a5379";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation-release";
+    rev = "4a19351791b79a58e94d45704afbaec88461846d";
+    owner = "ros-gbp";
+    sha256 = "sha256-doYXLRgI8a8Qw8J4f9j1ePwcEY/dUNVLoaL5XkBq90M=";
   };
 
   buildType = "catkin";

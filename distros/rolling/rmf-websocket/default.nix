@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-rmf-websocket";
   version = "2.1.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_ros2-release/archive/release/rolling/rmf_websocket/2.1.2-1.tar.gz";
-    name = "2.1.2-1.tar.gz";
-    sha256 = "0ae843000d9a4ff7a5a1546cd3b5354d0e03a5062f6bb19474674cb1b8ddf3dc";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_ros2-release";
+    rev = "88c8e9fa22399da4d886ca9d9e4d3fa3eabad5fa";
+    owner = "ros2-gbp";
+    sha256 = "sha256-ryGSxKGS5CeRUUw9vuR9ehUBZy396JC8mTLmPjg8Er8=";
   };
 
   buildType = "ament_cmake";

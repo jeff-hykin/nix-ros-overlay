@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-cob-frame-tracker";
   version = "0.8.20-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_control-release/archive/release/noetic/cob_frame_tracker/0.8.20-1.tar.gz";
-    name = "0.8.20-1.tar.gz";
-    sha256 = "3b34c54bf48dfab2c12e6cfc46395fe30b6cb62071d1bb3afe0188eca2c69b38";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_control-release";
+    rev = "a3b7c0c1b8b630b864596c74a0330a03efa9b35c";
+    owner = "ipa320";
+    sha256 = "sha256-cdVtnN2IxsKIrFtOidmx2rDyWTAoQsw159dZoiztC48=";
   };
 
   buildType = "catkin";

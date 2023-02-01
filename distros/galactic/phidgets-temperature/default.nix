@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-phidgets-temperature";
   version = "2.2.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/phidgets_drivers-release/archive/release/galactic/phidgets_temperature/2.2.3-1.tar.gz";
-    name = "2.2.3-1.tar.gz";
-    sha256 = "a995c08fb08a011ad18105e3e0d703a02af9d8ec6eb591a3ddc77a54a30e0bc2";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "phidgets_drivers-release";
+    rev = "d0bc83441d38f806fdac68d5488a35c37f63450a";
+    owner = "ros2-gbp";
+    sha256 = "sha256-0m2x5A+PnNLJ6KfH6wf6E9tBaqpGmU7spWxJfZWndPg=";
   };
 
   buildType = "ament_cmake";

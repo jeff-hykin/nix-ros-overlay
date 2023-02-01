@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-tiago-simulation";
   version = "4.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pal-gbp/tiago_simulation-release/archive/release/humble/tiago_simulation/4.0.0-1.tar.gz";
-    name = "4.0.0-1.tar.gz";
-    sha256 = "e7aa5db9bc41a3394ad2ee514b60af9d6ab6f8ed9cc2d25de217031283762c9b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "tiago_simulation-release";
+    rev = "56196d72de8fd4be2cc37ed9a1956327a63124ca";
+    owner = "pal-gbp";
+    sha256 = "sha256-CCFztISmrnIJgFLfTGVqoEY4STOtF06QESFYDk9Cvm8=";
   };
 
   buildType = "ament_cmake";

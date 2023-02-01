@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-hector-geotiff-launch";
   version = "0.5.2-r4";
 
-  src = fetchurl {
-    url = "https://github.com/tu-darmstadt-ros-pkg-gbp/hector_slam-release/archive/release/noetic/hector_geotiff_launch/0.5.2-4.tar.gz";
-    name = "0.5.2-4.tar.gz";
-    sha256 = "3e8f605d905a45743d07dfc38895f2e5e8163be71dfb3856ac4332c581cf1821";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "hector_slam-release";
+    rev = "9ae837fa5ba7a6a29dc1d90d5c7ccefe4f6b760a";
+    owner = "tu-darmstadt-ros-pkg-gbp";
+    sha256 = "sha256-VssSobVIbY4BnIYyq5RU+MsLy8dBMOuR+KYhItdsBEw=";
   };
 
   buildType = "catkin";

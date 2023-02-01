@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-example-interfaces";
   version = "0.9.2-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/example_interfaces-release/archive/release/galactic/example_interfaces/0.9.2-2.tar.gz";
-    name = "0.9.2-2.tar.gz";
-    sha256 = "04e3ca352f50c4e8e66a9d51130977345f90e547937634125f92a34e16922716";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "example_interfaces-release";
+    rev = "b2cb2fd441b0b2fe8e9c6640004302a2c784f35a";
+    owner = "ros2-gbp";
+    sha256 = "sha256-4rSVP5vgU3TY3oST+SL/6zB13VIG8DW7ufcq4nHjYDA=";
   };
 
   buildType = "ament_cmake";

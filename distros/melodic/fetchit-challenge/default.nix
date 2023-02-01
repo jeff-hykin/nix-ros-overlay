@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-fetchit-challenge";
   version = "0.9.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/fetchrobotics-gbp/fetch_gazebo-release/archive/release/melodic/fetchit_challenge/0.9.2-1.tar.gz";
-    name = "0.9.2-1.tar.gz";
-    sha256 = "603d36878e1a24437139fe6bc9542bbd19f197c3bea78c6c977b2231c7abb837";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "fetch_gazebo-release";
+    rev = "6f18de0a614b8a334251ebc2f380b297ac4e7abc";
+    owner = "fetchrobotics-gbp";
+    sha256 = "sha256-OMso/ie2HjtbevGkPQZSuOenvu1t1RIIkMk9yEGlWU0=";
   };
 
   buildType = "catkin";

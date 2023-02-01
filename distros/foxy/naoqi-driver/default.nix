@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-naoqi-driver";
   version = "2.0.0";
 
-  src = fetchurl {
-    url = "https://github.com/ros-naoqi/naoqi_driver2-release/archive/release/foxy/naoqi_driver/2.0.0-0.tar.gz";
-    name = "2.0.0-0.tar.gz";
-    sha256 = "b4c3f77f1266343aee694328f741ccb925cc60d74172a831f18d99fd15951421";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "naoqi_driver2-release";
+    rev = "90ce757ee11e08fb2c34c570826eaeed7d152ced";
+    owner = "ros-naoqi";
+    sha256 = "sha256-1c4WSc7FAAmwhf5InFODoUhkp2v9KlF5W+qEMexjzgc=";
   };
 
   buildType = "ament_cmake";

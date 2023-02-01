@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-performance-test";
   version = "1.2.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/performance_test-release/archive/release/humble/performance_test/1.2.1-1.tar.gz";
-    name = "1.2.1-1.tar.gz";
-    sha256 = "c2c82361579b9a02dea39bc4d3b589c0ed055bacf12b701e291e4629d96f7585";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "performance_test-release";
+    rev = "25fec55b63cf62d3b5c0be2dc281f9901b7712aa";
+    owner = "ros2-gbp";
+    sha256 = "sha256-u4mAwbA+JRMXmY53Z0E6Uz7BQJcVZkDovcmnVCK1KxU=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-ros-comm";
   version = "1.14.13-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/ros_comm-release/archive/release/melodic/ros_comm/1.14.13-1.tar.gz";
-    name = "1.14.13-1.tar.gz";
-    sha256 = "7410a95617d455542568170e450b9282d4beb0404e8fcec172f766befcc26750";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_comm-release";
+    rev = "1f282aa9831004b09991bb230145ce8c169e6af0";
+    owner = "ros-gbp";
+    sha256 = "sha256-Gg+OdxG+uhXt3+DYIoPAabzfVlGgQFIKgNU+YBljm2o=";
   };
 
   buildType = "catkin";

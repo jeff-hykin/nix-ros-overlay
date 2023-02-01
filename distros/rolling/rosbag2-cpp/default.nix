@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-rosbag2-cpp";
   version = "0.18.0-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rosbag2-release/archive/release/rolling/rosbag2_cpp/0.18.0-3.tar.gz";
-    name = "0.18.0-3.tar.gz";
-    sha256 = "136e2afd09041afffe0475fa8f8605003eb0611118c3ea94025e97d418415740";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosbag2-release";
+    rev = "272958c5c778802f80d14ee646a037d9b685d517";
+    owner = "ros2-gbp";
+    sha256 = "sha256-gDBaVXZwFe/UEJUgtQ5+VXHlPe6YlVuVtn9vCKPGVyw=";
   };
 
   buildType = "ament_cmake";

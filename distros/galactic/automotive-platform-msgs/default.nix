@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-automotive-platform-msgs";
   version = "3.0.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/astuff/automotive_autonomy_msgs-release/archive/release/galactic/automotive_platform_msgs/3.0.4-1.tar.gz";
-    name = "3.0.4-1.tar.gz";
-    sha256 = "9fc8aa25dbb5300ee388979528c8ee5a37ad43ffa234ab8359909237a010498c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "automotive_autonomy_msgs-release";
+    rev = "0cf00b89e76713b65a19bab91df33ead41376144";
+    owner = "astuff";
+    sha256 = "sha256-HMhXhLS41h9P1STIbuEdhOgxNORj/YJrfDldGKeMKfA=";
   };
 
   buildType = "ament_cmake";

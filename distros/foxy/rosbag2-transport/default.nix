@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-rosbag2-transport";
   version = "0.3.9-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rosbag2-release/archive/release/foxy/rosbag2_transport/0.3.9-1.tar.gz";
-    name = "0.3.9-1.tar.gz";
-    sha256 = "f186303cdb48a31c21a681cfe94b5ab4d4f27da07d266e6a1cecb8ae5eba558f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosbag2-release";
+    rev = "9e25f5d0f6eaf767c6470201753790bc66d1751d";
+    owner = "ros2-gbp";
+    sha256 = "sha256-/kz7/6RfE3Sli4Ah9p8us4tzsB77SIK+M0cpJNDfcnk=";
   };
 
   buildType = "ament_cmake";

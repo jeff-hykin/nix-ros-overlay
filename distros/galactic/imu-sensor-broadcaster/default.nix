@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-imu-sensor-broadcaster";
   version = "1.5.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_controllers-release/archive/release/galactic/imu_sensor_broadcaster/1.5.1-1.tar.gz";
-    name = "1.5.1-1.tar.gz";
-    sha256 = "e6cb994d60dc1505164b849d207081601e70995f25d1192af788c380e679b4fb";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_controllers-release";
+    rev = "2dc65c18fbc198777f9fee69b08f77e0776598b2";
+    owner = "ros2-gbp";
+    sha256 = "sha256-pD5tSbrJY1I7+C2yqI7bzHplUy84hqOONgR/X6gUC8A=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-ruckig";
   version = "0.6.3-r7";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ruckig-release/archive/release/humble/ruckig/0.6.3-7.tar.gz";
-    name = "0.6.3-7.tar.gz";
-    sha256 = "6d01590694ffad000dfeb3c85c90453d725a23d3b58ff3fdf95087455c8e7cdf";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ruckig-release";
+    rev = "b95404e32eea3f0ff0354aacd85e8fc033078072";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Rc7jKjIwuJUT7To4WUmmKX8mvICZzHMQ1RQ7R4mL3FY=";
   };
 
   buildType = "cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-v4l2-camera";
   version = "0.6.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_v4l2_camera-release/archive/release/humble/v4l2_camera/0.6.0-1.tar.gz";
-    name = "0.6.0-1.tar.gz";
-    sha256 = "c551af6c9c6f8c2997942a2db02fe2745feb9b273beeebdd1736958c4e90d1bb";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_v4l2_camera-release";
+    rev = "5743ded71ec4594c6f4c724d583cc6c67610d204";
+    owner = "ros2-gbp";
+    sha256 = "sha256-x3tbjd5OUe5Sp4DiehI4Oa4patHeBnmgZqtF0arkUxc=";
   };
 
   buildType = "ament_cmake";

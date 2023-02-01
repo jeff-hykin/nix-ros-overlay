@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-openni2-camera";
   version = "1.6.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/openni2_camera-release/archive/release/noetic/openni2_camera/1.6.0-1.tar.gz";
-    name = "1.6.0-1.tar.gz";
-    sha256 = "be6698786c1add6f19733466b7ae1d97f59b1ac340c3cb8d479532eaae953076";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "openni2_camera-release";
+    rev = "1d4b21caf9b3b1293366a46afcf8da79c9571db3";
+    owner = "ros-gbp";
+    sha256 = "sha256-yFGreuBKZHu0EXVGogjo5RMENPQfjqGsx98r3gy/n2Y=";
   };
 
   buildType = "catkin";

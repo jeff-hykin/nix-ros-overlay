@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-pcl-msgs";
   version = "1.0.0-r7";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/pcl_msgs-release/archive/release/humble/pcl_msgs/1.0.0-7.tar.gz";
-    name = "1.0.0-7.tar.gz";
-    sha256 = "5510338bcc3a5a0eebb0790e0d4352901b7a7c01018bc66614cedc8885b793ee";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pcl_msgs-release";
+    rev = "bfc47345603ead755899b092e701d2308a0af0a5";
+    owner = "ros2-gbp";
+    sha256 = "sha256-YdspDlpwU8CIVBKEa3kLCnDsR3MsuehC9zuvXtAnt4w=";
   };
 
   buildType = "ament_cmake";

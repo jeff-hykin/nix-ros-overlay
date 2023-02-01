@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-irobot-create-nodes";
   version = "1.0.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/create3_sim-release/archive/release/galactic/irobot_create_nodes/1.0.3-1.tar.gz";
-    name = "1.0.3-1.tar.gz";
-    sha256 = "fdc6f1adcfd8b407bad06d528d724f6d43091ffa4560da66d3dc1748f874d87e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "create3_sim-release";
+    rev = "d7372bd92da5cd06bdae30df37d8d270e7928e0d";
+    owner = "ros2-gbp";
+    sha256 = "sha256-rqK+DYfu6TWMWq+Pl1HVAG71Eg4xvgrR0KMk0FjZ6oE=";
   };
 
   buildType = "ament_cmake";

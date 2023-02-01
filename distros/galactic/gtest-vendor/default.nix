@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-gtest-vendor";
   version = "1.10.9003-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/googletest-release/archive/release/galactic/gtest_vendor/1.10.9003-2.tar.gz";
-    name = "1.10.9003-2.tar.gz";
-    sha256 = "f13bf156d50ceaeb2ff668daab276470f5f68877e8275a9a03ff47dfae11eeee";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "googletest-release";
+    rev = "40adab3dec74c732b8a211a777b0e8b2d1ffa7e9";
+    owner = "ros2-gbp";
+    sha256 = "sha256-gNHdPKMhcQ2OvKIF46hl7FLGTtq7OWtkdzdjStdfnYY=";
   };
 
   buildType = "cmake";

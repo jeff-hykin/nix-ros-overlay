@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rosbridge-test-msgs";
   version = "1.3.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rosbridge_suite-release/archive/release/galactic/rosbridge_test_msgs/1.3.1-1.tar.gz";
-    name = "1.3.1-1.tar.gz";
-    sha256 = "5f37c4072957a747eec70374ad84fd3f419b5d9ceb921fca04974c1bacc6aab5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosbridge_suite-release";
+    rev = "5d9f8a759def0b5752010db75bc73ad397f2dfc5";
+    owner = "ros2-gbp";
+    sha256 = "sha256-QbIObUjU3gN7gPnoKMc6Yu+ZEnUDP+vtpzT81rjq2xg=";
   };
 
   buildType = "ament_cmake";

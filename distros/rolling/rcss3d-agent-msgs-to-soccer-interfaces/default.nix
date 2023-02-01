@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-rcss3d-agent-msgs-to-soccer-interfaces";
   version = "0.4.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rcss3d_agent-release/archive/release/rolling/rcss3d_agent_msgs_to_soccer_interfaces/0.4.1-1.tar.gz";
-    name = "0.4.1-1.tar.gz";
-    sha256 = "05ada4c47ceb9d57601d36ed50b7b4c8a638d201d16ee4ac823301c8701f4684";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rcss3d_agent-release";
+    rev = "d56cceae489cc5d9ef611a125b456ef1f50d9de4";
+    owner = "ros2-gbp";
+    sha256 = "sha256-2bEjbfPy02UiTflYzF8AZb2bjZB/Xg1iHUC0deLs7UQ=";
   };
 
   buildType = "ament_cmake";

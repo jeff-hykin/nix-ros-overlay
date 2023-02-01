@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-examples-rclcpp-minimal-subscriber";
   version = "0.11.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/examples-release/archive/release/galactic/examples_rclcpp_minimal_subscriber/0.11.2-1.tar.gz";
-    name = "0.11.2-1.tar.gz";
-    sha256 = "46182e1e9189099eafc3981498f89d0eefaade2bf73623c963e138f363ef5bd4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "examples-release";
+    rev = "a817cde4a9aac17476ed7bfcf157322b88262215";
+    owner = "ros2-gbp";
+    sha256 = "sha256-t8feuiXgffhpxGZjM4pJcgmh/aqVvCMYvqdm9vYoIOc=";
   };
 
   buildType = "ament_cmake";

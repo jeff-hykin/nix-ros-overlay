@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-turtlebot3-simulations";
   version = "2.2.5-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/turtlebot3_simulations-release/archive/release/rolling/turtlebot3_simulations/2.2.5-2.tar.gz";
-    name = "2.2.5-2.tar.gz";
-    sha256 = "fead2502c484e06cefbd6681fa5a5b92b9a21af96d99bb608a392084f2a49c9b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "turtlebot3_simulations-release";
+    rev = "dc95ec34a6f77fabd07a0ce5844e84a51db34bf6";
+    owner = "ros2-gbp";
+    sha256 = "sha256-W+h1Fb5Y9PXr/M12d+YOfwxWR1QaArnZtIDmkpQ95xI=";
   };
 
   buildType = "ament_cmake";

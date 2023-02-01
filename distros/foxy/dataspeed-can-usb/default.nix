@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-dataspeed-can-usb";
   version = "2.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/DataspeedInc-release/dataspeed_can-release/archive/release/foxy/dataspeed_can_usb/2.0.1-1.tar.gz";
-    name = "2.0.1-1.tar.gz";
-    sha256 = "251aea36db8f3e5714fdca9e73cf90500bf65feef530bef8612278cc9d8ae70c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "dataspeed_can-release";
+    rev = "d67319eeb22d881d15f2a6e7c5c525c6fcfb13f5";
+    owner = "DataspeedInc-release";
+    sha256 = "sha256-ydTwDeP2cNM8nLY8vHK6lkU+AoPQElN7C3xc7yaOoqc=";
   };
 
   buildType = "ament_cmake";

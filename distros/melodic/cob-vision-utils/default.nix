@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-cob-vision-utils";
   version = "0.6.17-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_perception_common-release/archive/release/melodic/cob_vision_utils/0.6.17-1.tar.gz";
-    name = "0.6.17-1.tar.gz";
-    sha256 = "daca617cb07fd45d5cefd25dcbe5ddd06ee6a91edf323f709ce565b92f604340";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_perception_common-release";
+    rev = "3ba82666053f76ec3f8b176ed29382b0e89fc757";
+    owner = "ipa320";
+    sha256 = "sha256-7RZeCQ3/ZNPkMAvwGgOiYfmr9mbH8UMIpuVONjRhNHI=";
   };
 
   buildType = "catkin";

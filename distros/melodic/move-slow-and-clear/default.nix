@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-move-slow-and-clear";
   version = "1.16.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/navigation-release/archive/release/melodic/move_slow_and_clear/1.16.7-1.tar.gz";
-    name = "1.16.7-1.tar.gz";
-    sha256 = "e20137bbc654b39379d03cc710b62738f1da7fce3109d1d039c6ce0a74a60288";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation-release";
+    rev = "b95d8c8573743068db3d71a2b066ef8ebd0d6dff";
+    owner = "ros-gbp";
+    sha256 = "sha256-TsCAN9qsGKU/gKbLXN9AzLnZ0GrIYDeChreMEGgBqgs=";
   };
 
   buildType = "catkin";

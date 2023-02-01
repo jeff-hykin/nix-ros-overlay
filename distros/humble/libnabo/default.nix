@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-libnabo";
   version = "1.0.7-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/libnabo-release/archive/release/humble/libnabo/1.0.7-3.tar.gz";
-    name = "1.0.7-3.tar.gz";
-    sha256 = "158ee7511366ea52d4ad0cc4fbbdc7140a79eb999db1d28b325bb77196770b03";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "libnabo-release";
+    rev = "6bfba358356c63e61e6e6ab1dacd541e814b52bc";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Mgrzbissrz6FpDhNnycTc06xxw2+MpwzohUg4wBKVmI=";
   };
 
   buildType = "cmake";

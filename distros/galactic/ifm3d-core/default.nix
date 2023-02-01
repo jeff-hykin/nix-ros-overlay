@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ifm3d-core";
   version = "0.18.0-r6";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ifm3d-release/archive/release/galactic/ifm3d_core/0.18.0-6.tar.gz";
-    name = "0.18.0-6.tar.gz";
-    sha256 = "0fe643916a6ee1b259e206420d4967cf821e147d019a4f8f2584eb3a40d2052a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ifm3d-release";
+    rev = "ce62465681258d97b34d0c114c45e8d022e5cf2f";
+    owner = "ros2-gbp";
+    sha256 = "sha256-jeUy9mAyhsabDgK0Y3SmT6BdL6NFNrfrcM6u+ec5/vU=";
   };
 
   buildType = "cmake";

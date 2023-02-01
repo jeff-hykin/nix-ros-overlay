@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-moveit-ros-occupancy-map-monitor";
   version = "2.3.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/moveit/moveit2-release/archive/release/galactic/moveit_ros_occupancy_map_monitor/2.3.4-1.tar.gz";
-    name = "2.3.4-1.tar.gz";
-    sha256 = "b09757c26166e7ab45dc305f9ca20318a3a5c067d84677afaf228ed60fa14a33";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "moveit2-release";
+    rev = "4431b6a6344d667f233fc1b3ae1f568664ad5785";
+    owner = "moveit";
+    sha256 = "sha256-+TWkwJI3cv6ABVdbrpHdsz+CXomMIU++XsatsD6azBU=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-moveit-resources-prbt-support";
   version = "0.8.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/moveit_resources-release/archive/release/melodic/moveit_resources_prbt_support/0.8.2-1.tar.gz";
-    name = "0.8.2-1.tar.gz";
-    sha256 = "cc497fc0af21b41b5d729bff4a7bd455dde484fb0786be1a4d1fdfcb0547d691";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "moveit_resources-release";
+    rev = "6b44a01112ac1632338aaf7f1870e5a6970f48ce";
+    owner = "ros-gbp";
+    sha256 = "sha256-d6yfXC8JVjp5keCYXz+vg77ZNiLFVU6VSCRc4tS58Q8=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-opt-camera";
   version = "2.1.24-r2";
 
-  src = fetchurl {
-    url = "https://github.com/tork-a/jsk_3rdparty-release/archive/release/melodic/opt_camera/2.1.24-2.tar.gz";
-    name = "2.1.24-2.tar.gz";
-    sha256 = "30a71fe885a1d964a1b369c180a6644a6e92f17f0530f6eadd15e19fad2d3551";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "jsk_3rdparty-release";
+    rev = "8bb31f9369ea6c49067b412635ac41e04c33399f";
+    owner = "tork-a";
+    sha256 = "sha256-+VOxNFj1w7QsvE99v8PshLZ6bDx8jBhOMH5VnCpyTrg=";
   };
 
   buildType = "catkin";

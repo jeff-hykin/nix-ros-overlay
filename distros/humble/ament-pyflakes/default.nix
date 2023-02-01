@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-ament-pyflakes";
   version = "0.12.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ament_lint-release/archive/release/humble/ament_pyflakes/0.12.4-1.tar.gz";
-    name = "0.12.4-1.tar.gz";
-    sha256 = "99a00f6183ad94d9085885eba634202b15f80aeaa7ab209da2a31ce94da4d382";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ament_lint-release";
+    rev = "a23baf38596aa440c9266996e6d5a8bb5f9c07f4";
+    owner = "ros2-gbp";
+    sha256 = "sha256-pIWau2x1rk3q/+p4fCxz0KsWpJv/KGmuNlIItZyR8XE=";
   };
 
   buildType = "ament_python";

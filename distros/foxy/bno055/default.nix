@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-bno055";
   version = "0.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/flynneva/bno055-release/archive/release/foxy/bno055/0.3.0-1.tar.gz";
-    name = "0.3.0-1.tar.gz";
-    sha256 = "2fa11534723964ea51cb8f3ecff54480fc62241b367feb845d4630926cd6226c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "bno055-release";
+    rev = "be5f908649fa4d27257e226af38d80f61194552b";
+    owner = "flynneva";
+    sha256 = "sha256-MmbdakakPjDK5FxQLOnxcbcAkpFKAkGD+vXIfGT8APA=";
   };
 
   buildType = "ament_python";

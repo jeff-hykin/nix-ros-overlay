@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-octomap";
   version = "1.9.8-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/octomap-release/archive/release/noetic/octomap/1.9.8-1.tar.gz";
-    name = "1.9.8-1.tar.gz";
-    sha256 = "b8e00029f05725f6367a03e337c5c2ffd2c7a140fa5e78a7f1ee4417e249a83b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "octomap-release";
+    rev = "82d5fc331e9807808d6c95ebcc61cbb7417552cc";
+    owner = "ros-gbp";
+    sha256 = "sha256-0dAJlm89h70A+p1jhMznxZiZ45LkW+a27R6W71Z+bRs=";
   };
 
   buildType = "cmake";

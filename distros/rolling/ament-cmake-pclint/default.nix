@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-ament-cmake-pclint";
   version = "0.13.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ament_lint-release/archive/release/rolling/ament_cmake_pclint/0.13.2-1.tar.gz";
-    name = "0.13.2-1.tar.gz";
-    sha256 = "c50004c06c7c270e26cb816c2c10179246f74b3f214443e501d814b02bca17f8";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ament_lint-release";
+    rev = "3c7a28ae9ccde1baf184e6d24de4d31dfd18f7b6";
+    owner = "ros2-gbp";
+    sha256 = "sha256-rwzi3l3+/moBy38PtROA88W8cxk543PTUISbdpdT0Ng=";
   };
 
   buildType = "ament_cmake";

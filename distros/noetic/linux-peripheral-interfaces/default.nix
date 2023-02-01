@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-linux-peripheral-interfaces";
   version = "0.2.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/linux_peripheral_interfaces-release/archive/release/noetic/linux_peripheral_interfaces/0.2.2-1.tar.gz";
-    name = "0.2.2-1.tar.gz";
-    sha256 = "c2da8bce0693ee4268de91e273dd47cc8e63bb4422e30b6445bbe51bfede833e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "linux_peripheral_interfaces-release";
+    rev = "9d312843d3c7eeded356971b69c2347cfb77cba6";
+    owner = "ros-gbp";
+    sha256 = "sha256-iroBExDPMILuv8NHA+U4Plq1E65g1H0/wjYvXtIvCGw=";
   };
 
   buildType = "catkin";

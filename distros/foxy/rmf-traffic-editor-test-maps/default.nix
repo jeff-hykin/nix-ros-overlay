@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-rmf-traffic-editor-test-maps";
   version = "1.4.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_traffic_editor-release/archive/release/foxy/rmf_traffic_editor_test_maps/1.4.0-1.tar.gz";
-    name = "1.4.0-1.tar.gz";
-    sha256 = "8ce04dfe020804ad0642750aa402275a5c6ebf2e4919bc026cf5f7c78a2dff00";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_traffic_editor-release";
+    rev = "d78577c148f34140d57dcbaf9911a348d62d82f3";
+    owner = "ros2-gbp";
+    sha256 = "sha256-X9F+9NaAAQERryKP4W9r7mml8IJMZInQmSVnuPpF5+A=";
   };
 
   buildType = "ament_cmake";

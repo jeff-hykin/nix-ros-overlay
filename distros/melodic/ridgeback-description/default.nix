@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-ridgeback-description";
   version = "0.3.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/clearpath-gbp/ridgeback-release/archive/release/melodic/ridgeback_description/0.3.2-1.tar.gz";
-    name = "0.3.2-1.tar.gz";
-    sha256 = "1c00ca0f22cf8185c034c172bff114c9380a54253663a56b4c3908c1410274bf";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ridgeback-release";
+    rev = "9525ba2f4a065a9d6997a83325fde4b2c42abef7";
+    owner = "clearpath-gbp";
+    sha256 = "sha256-08fNaVb8ChCA0Nt02RPiV1HC9r6URu0jlhbSr1GJIlE=";
   };
 
   buildType = "catkin";

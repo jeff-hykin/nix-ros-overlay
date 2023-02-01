@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-costmap-cspace-msgs";
   version = "0.8.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/at-wat/neonavigation_msgs-release/archive/release/melodic/costmap_cspace_msgs/0.8.0-1.tar.gz";
-    name = "0.8.0-1.tar.gz";
-    sha256 = "da79ed874b003e9f707cfa3973fe724b22fb2e11e893e96ae4c73bbc99278c40";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "neonavigation_msgs-release";
+    rev = "bc13695fa4ac10713061375950b8a09c9a2436fb";
+    owner = "at-wat";
+    sha256 = "sha256-6OGv4K72I9OpmGPkHvbwAQoxOCGeDfL1MKi949m7Mng=";
   };
 
   buildType = "catkin";

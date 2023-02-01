@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-automotive-autonomy-msgs";
   version = "3.0.4-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/automotive_autonomy_msgs-release/archive/release/humble/automotive_autonomy_msgs/3.0.4-3.tar.gz";
-    name = "3.0.4-3.tar.gz";
-    sha256 = "a8e239376c418f9ebd6372855bac4c168e3ebe93b3159f532071f83e8c0273b6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "automotive_autonomy_msgs-release";
+    rev = "5880c3cc38021677950701ebac2d2ac0c0b665c1";
+    owner = "ros2-gbp";
+    sha256 = "sha256-R/GduU+VD3B9INpzOpa84Bl42xFAtGthn8PEt8iYmpw=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-nerian-stereo";
   version = "1.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/nerian-vision/nerian_stereo_ros2-release/archive/release/galactic/nerian_stereo/1.1.1-1.tar.gz";
-    name = "1.1.1-1.tar.gz";
-    sha256 = "05cda22e7fa5597a900ab06c0e893cc6b7cc85ea237896ebba554d029bbc1fed";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "nerian_stereo_ros2-release";
+    rev = "98415ac151f4164ed4bea7ff19233fcab37e852e";
+    owner = "nerian-vision";
+    sha256 = "sha256-6CoVp+bNN3DR6PXmHMBsHHQjSlUDErcEe1MsKNvOF04=";
   };
 
   buildType = "ament_cmake";

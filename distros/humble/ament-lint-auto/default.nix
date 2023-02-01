@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-ament-lint-auto";
   version = "0.12.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ament_lint-release/archive/release/humble/ament_lint_auto/0.12.4-1.tar.gz";
-    name = "0.12.4-1.tar.gz";
-    sha256 = "6c2caa02e546d9dcb9725d28236f0dd8c7a6cc5b02b9f99da49edeb21f831924";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ament_lint-release";
+    rev = "ee3dfdab0e3a385ee1a4849ca4423b5c2ae9b2c1";
+    owner = "ros2-gbp";
+    sha256 = "sha256-cg7uptQtGArvRStH6rvAyZI2iPm6EWWlXAxFhBVHkgs=";
   };
 
   buildType = "ament_cmake";

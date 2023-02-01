@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-rqt-msg";
   version = "1.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rqt_msg-release/archive/release/humble/rqt_msg/1.2.0-1.tar.gz";
-    name = "1.2.0-1.tar.gz";
-    sha256 = "a457834c44068d33b03bdad0fe9cffe7da199f0e863fe51532f38f47bef1b848";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt_msg-release";
+    rev = "de089c4bcaf5ad5ecbfc65cd387f526812330c08";
+    owner = "ros2-gbp";
+    sha256 = "sha256-FyLj4I2R0NF5DK+LFLMbZCOzhfm9D5wwkNzFC9odAgE=";
   };
 
   buildType = "ament_python";

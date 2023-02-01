@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-urg-node";
   version = "0.1.18-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/urg_node-release/archive/release/noetic/urg_node/0.1.18-1.tar.gz";
-    name = "0.1.18-1.tar.gz";
-    sha256 = "e0ac11a6cd9056155458a6ceb1b639adcf289bab7933f2236bb0cdbfae305d6b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "urg_node-release";
+    rev = "9635849226fcc4e8b4254dcd0af908f46b8e79fc";
+    owner = "ros-gbp";
+    sha256 = "sha256-sGUjNvOfcAt2vDn73QWWnr97ccvyARR7PUAyl25Gty8=";
   };
 
   buildType = "catkin";

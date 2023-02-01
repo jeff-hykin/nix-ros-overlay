@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-ros-industrial-cmake-boilerplate";
   version = "0.3.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-industrial-release/ros_industrial_cmake_boilerplate-release/archive/release/noetic/ros_industrial_cmake_boilerplate/0.3.1-1.tar.gz";
-    name = "0.3.1-1.tar.gz";
-    sha256 = "ef75a46d3b9dc1c835ca7b644e0f8ed36681ac0061a4afe78c46342d2c9b2d53";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_industrial_cmake_boilerplate-release";
+    rev = "9cb74dca5f217135c70ecb7ba25e30116fae2d68";
+    owner = "ros-industrial-release";
+    sha256 = "sha256-5lYNEh3gr7khtWvarULqiCl1QfyxrLz5Mv98XArVJho=";
   };
 
   buildType = "cmake";

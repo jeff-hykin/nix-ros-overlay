@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-prosilica-camera";
   version = "1.9.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-drivers-gbp/prosilica_driver-release/archive/release/melodic/prosilica_camera/1.9.4-1.tar.gz";
-    name = "1.9.4-1.tar.gz";
-    sha256 = "7c2aafe58194390d9dbaaf25cf54cf5ba4060742e2ef9f10a0bb207c377d8202";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "prosilica_driver-release";
+    rev = "2091a5eafb50a1bf2f207cc0b1bd4185f3386da6";
+    owner = "ros-drivers-gbp";
+    sha256 = "sha256-dFhXCk4FGtfSQk8kvb+pn9DzZRJdJRU7iocGkvWNK9Q=";
   };
 
   buildType = "catkin";

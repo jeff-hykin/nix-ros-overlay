@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-usb-cam";
   version = "0.4.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/usb_cam-release/archive/release/galactic/usb_cam/0.4.2-1.tar.gz";
-    name = "0.4.2-1.tar.gz";
-    sha256 = "6ca56175471c6e497a0d5f4ae8b7fa4a3d2cdd47acd8989b57b9561b9858795d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "usb_cam-release";
+    rev = "ced77c22dff664beb3daf5e43d76a4b8f3658756";
+    owner = "ros-gbp";
+    sha256 = "sha256-OhTKzwQ2OsM4K3BdaW6s6nOIjMLuEw1Ui3mab948Edc=";
   };
 
   buildType = "ament_cmake";

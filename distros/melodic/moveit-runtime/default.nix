@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-moveit-runtime";
   version = "1.0.11-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit_runtime/1.0.11-1.tar.gz";
-    name = "1.0.11-1.tar.gz";
-    sha256 = "5506c65354acd5af98468538578b7b4709605bce2cadb432c77fce588c25e744";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "moveit-release";
+    rev = "6f3bff837d5af362e0d6a52ca48161e2d9c9c2c5";
+    owner = "ros-gbp";
+    sha256 = "sha256-vVGSiC6iKv/GJ+IKFueupjkEgtqbkbNurBAemam/LLg=";
   };
 
   buildType = "catkin";

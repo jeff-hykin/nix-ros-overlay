@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-dwb-msgs";
   version = "0.3.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/DLu/robot_navigation-release/archive/release/noetic/dwb_msgs/0.3.0-2.tar.gz";
-    name = "0.3.0-2.tar.gz";
-    sha256 = "f0bc6b295dd86e6b4925cb9710b763f455252030d1ff36beb6f276ef467f0713";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "robot_navigation-release";
+    rev = "13bbc8ea121a820de103d683ed0da88273ad5f3f";
+    owner = "DLu";
+    sha256 = "sha256-6XfnYy+V8npkdg9y6OaG3LbO0YSTUcspv8RV8P74Mag=";
   };
 
   buildType = "catkin";

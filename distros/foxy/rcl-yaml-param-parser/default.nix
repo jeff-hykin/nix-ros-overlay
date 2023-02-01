@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-rcl-yaml-param-parser";
   version = "1.1.14-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rcl-release/archive/release/foxy/rcl_yaml_param_parser/1.1.14-1.tar.gz";
-    name = "1.1.14-1.tar.gz";
-    sha256 = "6e3c7bf84c4c47de543669bd64b0d653af39f47f19ab2da9b48685d4d5179835";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rcl-release";
+    rev = "656855e4732cc1e7652fefa7001b468faedc2b4e";
+    owner = "ros2-gbp";
+    sha256 = "sha256-mdc2OzlZXFptBAtzWNjHtyaPHTLN0A6xNP2/AyDShNI=";
   };
 
   buildType = "ament_cmake";

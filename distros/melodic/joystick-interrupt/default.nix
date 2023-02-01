@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-joystick-interrupt";
   version = "0.11.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/at-wat/neonavigation-release/archive/release/melodic/joystick_interrupt/0.11.7-1.tar.gz";
-    name = "0.11.7-1.tar.gz";
-    sha256 = "7d4a26f4ce4c19bd29e782e160b81c8da6ae7aaee19eded8b9933185e7e4e7c1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "neonavigation-release";
+    rev = "cb6ee7ac5f2c8b424e25defcd1de37ffef4d35a7";
+    owner = "at-wat";
+    sha256 = "sha256-x1rNsBXFrRxeLi3M9VXjIXJ5Tl7YVKpCsK0ys2yMpSs=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-rosidl-cmake";
   version = "3.1.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rosidl-release/archive/release/humble/rosidl_cmake/3.1.4-1.tar.gz";
-    name = "3.1.4-1.tar.gz";
-    sha256 = "06f09be35abc2db16eeb49f890b0c775ec4e84c238f4b5ede10d211728f08986";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosidl-release";
+    rev = "ecba8fe54203102d8e7bd20281bdeea98c46f999";
+    owner = "ros2-gbp";
+    sha256 = "sha256-2hwZhE3cVq7tLhmr+iu/qXlN89pXeou1W8l2moSORiU=";
   };
 
   buildType = "ament_cmake";

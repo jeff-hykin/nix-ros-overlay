@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-tf-transformations";
   version = "1.0.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/DLu/tf_transformations_release/archive/release/galactic/tf_transformations/1.0.2-1.tar.gz";
-    name = "1.0.2-1.tar.gz";
-    sha256 = "a2c6d18520263bc2c95e8734412d117523ae928f334224beea16ed8bcf823863";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "tf_transformations_release";
+    rev = "ffabf29191320df6b21fbde24877e49cb406acf5";
+    owner = "DLu";
+    sha256 = "sha256-F2TIhZSc35QZmOpEFI5ROWicRY4QTJ5einfCDJ8d6ks=";
   };
 
   buildType = "ament_python";

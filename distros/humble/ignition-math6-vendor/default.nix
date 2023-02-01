@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-ignition-math6-vendor";
   version = "0.0.2-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ignition_math6_vendor-release/archive/release/humble/ignition_math6_vendor/0.0.2-2.tar.gz";
-    name = "0.0.2-2.tar.gz";
-    sha256 = "fec674061b7a8feda3bdadf48c9ce762ba2170b39660f9cb763da882425167be";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ignition_math6_vendor-release";
+    rev = "b5212d1728b71644c7c817796bb37ec7fa33b46b";
+    owner = "ros2-gbp";
+    sha256 = "sha256-HR32tjvnD5KaVPw4YWj43yrNsA3PGhuwcALJlBciHYQ=";
   };
 
   buildType = "cmake";

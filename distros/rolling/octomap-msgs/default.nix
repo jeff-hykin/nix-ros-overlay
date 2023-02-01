@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-octomap-msgs";
   version = "2.0.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/octomap_msgs-release/archive/release/rolling/octomap_msgs/2.0.0-2.tar.gz";
-    name = "2.0.0-2.tar.gz";
-    sha256 = "6a592edc220ac9884d80193f35487e2e0c8d142002378e64be4002e529024e2a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "octomap_msgs-release";
+    rev = "dd31ee390677b68209bb44e691af2f90bf4eaa91";
+    owner = "ros2-gbp";
+    sha256 = "sha256-97tbZTVcZMc2CB2JAW6gn0/ABahvBbfiC3jpHDIJJ6I=";
   };
 
   buildType = "ament_cmake";

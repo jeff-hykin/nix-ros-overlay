@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-perception-pcl";
   version = "1.7.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/perception_pcl-release/archive/release/noetic/perception_pcl/1.7.4-1.tar.gz";
-    name = "1.7.4-1.tar.gz";
-    sha256 = "3077dfaf130b76eb2399373a28c4d9d403a0a9046c56e7f79352c34d8bb99fdd";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "perception_pcl-release";
+    rev = "98a08ec191619f3a7dd1b66c45a2a5e9cce75de9";
+    owner = "ros-gbp";
+    sha256 = "sha256-1J5fNsyjyAPxqPE04i/TaOSRsIiQK4ZMRLRKEzEwMCU=";
   };
 
   buildType = "catkin";

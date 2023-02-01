@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-prbt-gazebo";
   version = "0.6.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/PilzDE/pilz_robots-release/archive/release/noetic/prbt_gazebo/0.6.0-1.tar.gz";
-    name = "0.6.0-1.tar.gz";
-    sha256 = "280c0ed66eb1a3da2af1948f312fce548ed54c929502b32b1f340de8f351a2b1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pilz_robots-release";
+    rev = "74e0d00fc103e52b79efc6bf61678beef82410bf";
+    owner = "PilzDE";
+    sha256 = "sha256-ZH++mpfc8kWmp505WVHvWkfL8WS9tag6ePBg18eKJoA=";
   };
 
   buildType = "catkin";

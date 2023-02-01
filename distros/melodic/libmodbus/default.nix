@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-libmodbus";
   version = "0.8.8-r1";
 
-  src = fetchurl {
-    url = "https://github.com/KITrobotics/ipr_extern-release/archive/release/melodic/libmodbus/0.8.8-1.tar.gz";
-    name = "0.8.8-1.tar.gz";
-    sha256 = "f5b0b1453abb1f1950ad1ca3378b061979259515d0d5bdc5958dd46a5c6b3c36";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ipr_extern-release";
+    rev = "8dbbf8f32961990cfd6814b5d67c785328750c62";
+    owner = "KITrobotics";
+    sha256 = "sha256-1dYHVupE6d+sHH+Do8rTZ5jg8O4dhH+5Ci7yJ0F8VJs=";
   };
 
   buildType = "catkin";

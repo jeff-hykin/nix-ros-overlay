@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-gtest-vendor";
   version = "1.8.9001-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/googletest-release/archive/release/foxy/gtest_vendor/1.8.9001-1.tar.gz";
-    name = "1.8.9001-1.tar.gz";
-    sha256 = "44cb12b30c00c7b3d6001469d62ecaf1d27dfa271f867de849f35e9e6f23ba83";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "googletest-release";
+    rev = "3323562f97767b40df7a8fba23ef02ddd6489de0";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Gy7APHYzmyiyJ1EB0rWCVbsh3zrdKeJTnIPiJ2edi1w=";
   };
 
   buildType = "cmake";

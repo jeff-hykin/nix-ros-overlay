@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-pluginlib";
   version = "5.2.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/pluginlib-release/archive/release/rolling/pluginlib/5.2.1-1.tar.gz";
-    name = "5.2.1-1.tar.gz";
-    sha256 = "e716b282ce049be7f68da54f9abb771c44903d2917128567fe565b86810adf56";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pluginlib-release";
+    rev = "5d4bb4bcd92ab902020202312d7e8af913e9bc48";
+    owner = "ros2-gbp";
+    sha256 = "sha256-GnQonedocJAzqRn6N+CRmPjNCOt66kpMpsgutiofqkw=";
   };
 
   buildType = "ament_cmake";

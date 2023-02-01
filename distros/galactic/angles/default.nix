@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-angles";
   version = "1.14.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/angles-release/archive/release/galactic/angles/1.14.0-1.tar.gz";
-    name = "1.14.0-1.tar.gz";
-    sha256 = "3c77795be096e8bbeb34b3ae79528a2764cf5db6177361ab208e3321f223b866";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "angles-release";
+    rev = "46868fe6bb66f263ba2c2a673328a6b695c3bbbd";
+    owner = "ros2-gbp";
+    sha256 = "sha256-rjblP2nIUSCp4e4K7LN0JAQUDqMmbOIFfaGt5aG7TVU=";
   };
 
   buildType = "ament_cmake";

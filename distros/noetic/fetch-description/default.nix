@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-fetch-description";
   version = "0.9.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/fetchrobotics-gbp/fetch_ros-release/archive/release/noetic/fetch_description/0.9.1-1.tar.gz";
-    name = "0.9.1-1.tar.gz";
-    sha256 = "e9b0b5bac52c230f416305f0cb8ff4cdb5a5567a3df8143795e6fda8e57f78d7";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "fetch_ros-release";
+    rev = "9219544e9d77b0f2a8db2711b2b191d7972d420e";
+    owner = "fetchrobotics-gbp";
+    sha256 = "sha256-QdaHLnT9f/lFvTQNBJEeu4mN3DWI/RIpu17vwTmNllI=";
   };
 
   buildType = "catkin";

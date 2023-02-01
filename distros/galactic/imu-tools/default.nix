@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-imu-tools";
   version = "2.0.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/imu_tools-release/archive/release/galactic/imu_tools/2.0.3-1.tar.gz";
-    name = "2.0.3-1.tar.gz";
-    sha256 = "0c716be4760a0b7c4c72422e4e573c20bc13461f8fb7cf1a7189b9a2dcfb2ba5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "imu_tools-release";
+    rev = "84b2d821224900d49f09f68c58d5dfd790a250a1";
+    owner = "ros2-gbp";
+    sha256 = "sha256-gGHAWxN+eKDeebQakfbV1zdJ4s07qe4CwAYY1sZiqUg=";
   };
 
   buildType = "ament_cmake";

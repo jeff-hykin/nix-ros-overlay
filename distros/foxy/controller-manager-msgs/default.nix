@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-controller-manager-msgs";
   version = "0.11.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_control-release/archive/release/foxy/controller_manager_msgs/0.11.0-1.tar.gz";
-    name = "0.11.0-1.tar.gz";
-    sha256 = "352bc1691a1bee337ebd71a29b937780a7790ca111e28f1006cb79d14410d881";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_control-release";
+    rev = "cf498b36765819886abc6ed9caa7a4bef8e12d69";
+    owner = "ros2-gbp";
+    sha256 = "sha256-gLx1G/ygyNjFr/1LMezwXCQKZxvZHHSBEApPk4NVQdw=";
   };
 
   buildType = "ament_cmake";

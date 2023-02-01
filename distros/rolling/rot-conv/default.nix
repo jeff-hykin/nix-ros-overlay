@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-rot-conv";
   version = "1.0.11-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rot_conv_lib-release/archive/release/rolling/rot_conv/1.0.11-1.tar.gz";
-    name = "1.0.11-1.tar.gz";
-    sha256 = "4ab0513c64b78ab832f4e3750d764cbec73b7af6fb6d76db07a44957eaec45f0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rot_conv_lib-release";
+    rev = "2f32339820717033a768e8d4862bfd49e1438b34";
+    owner = "ros2-gbp";
+    sha256 = "sha256-6/6mfqRarCEYQCMc18m5vFDCS0UjiBqGWsoHUEB7LiU=";
   };
 
   buildType = "ament_cmake";

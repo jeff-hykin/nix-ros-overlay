@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-franka-gripper";
   version = "0.10.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/frankaemika/franka_ros-release/archive/release/melodic/franka_gripper/0.10.1-1.tar.gz";
-    name = "0.10.1-1.tar.gz";
-    sha256 = "4b2b55e24afe8ed4bf32f48b18027ea5fab1920c2685495deb0ea2041ecf1d6c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "franka_ros-release";
+    rev = "0941f65dbdf5b31c5d1eb97a7e50e7c05dfd4949";
+    owner = "frankaemika";
+    sha256 = "sha256-0+LWjt71ty6lIcgby7jtYDAGWWyxV5w68nV4+9xxaIg=";
   };
 
   buildType = "catkin";

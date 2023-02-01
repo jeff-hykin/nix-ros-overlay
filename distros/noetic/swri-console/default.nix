@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-swri-console";
   version = "1.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/swri-robotics-gbp/swri_console-release/archive/release/noetic/swri_console/1.1.0-1.tar.gz";
-    name = "1.1.0-1.tar.gz";
-    sha256 = "a4d06a2b1af47088c200a94adcc12a38c7108e63cacc3e354fac93782e983ff8";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "swri_console-release";
+    rev = "7171279c5a7bc78fc05c4dfc5a1d460d7d91ad6e";
+    owner = "swri-robotics-gbp";
+    sha256 = "sha256-oF/7iUjp8cjtvWmnqqqXSRNn636RlQM7unl7lVMNVC4=";
   };
 
   buildType = "catkin";

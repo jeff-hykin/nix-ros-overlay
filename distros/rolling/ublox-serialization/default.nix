@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-ublox-serialization";
   version = "2.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ublox-release/archive/release/rolling/ublox_serialization/2.3.0-1.tar.gz";
-    name = "2.3.0-1.tar.gz";
-    sha256 = "0e4d6445f2910c3235aa35fed4be538d2fac2ff02d8a70f4349ebde10bb25b63";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ublox-release";
+    rev = "4e75b430fcfbaa8f35276e6a2872b8c10bc0f6fe";
+    owner = "ros2-gbp";
+    sha256 = "sha256-b2kP01irILk8Ct0RNRYsczUU7sgdAugMNejSpNFPdGE=";
   };
 
   buildType = "ament_cmake";

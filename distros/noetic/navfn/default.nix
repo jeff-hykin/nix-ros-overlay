@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-navfn";
   version = "1.17.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/navigation-release/archive/release/noetic/navfn/1.17.2-1.tar.gz";
-    name = "1.17.2-1.tar.gz";
-    sha256 = "fcc0b0ec8831039cf46378d4bbace12deada0099b5e158904a2055bdeebf7b9b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation-release";
+    rev = "85c72a2f1a3d68356d861b4f179254d707350701";
+    owner = "ros-gbp";
+    sha256 = "sha256-OV8ezkE+SvIk2t7BPj4hjgtHdoZc0UaiFlxQ6eQPBoI=";
   };
 
   buildType = "catkin";

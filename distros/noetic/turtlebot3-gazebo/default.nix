@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-turtlebot3-gazebo";
   version = "1.3.2-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ROBOTIS-GIT-release/turtlebot3_simulations-release/archive/release/noetic/turtlebot3_gazebo/1.3.2-2.tar.gz";
-    name = "1.3.2-2.tar.gz";
-    sha256 = "0mg4msjha9g0c5mpi805za9dv56382x0swkrqcl5h72sirdify1g";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "turtlebot3_simulations-release";
+    rev = "673ac06187511d604238638f65cff92736cfbd3b";
+    owner = "ROBOTIS-GIT-release";
+    sha256 = "sha256-eyDNkPH3zZEUUCqFCy0/hQW/ufKcgF7C8rVTyMNMWuY=";
   };
 
   buildType = "catkin";

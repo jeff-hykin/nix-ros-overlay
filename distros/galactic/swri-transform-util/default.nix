@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-swri-transform-util";
   version = "3.5.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/marti_common-release/archive/release/galactic/swri_transform_util/3.5.1-1.tar.gz";
-    name = "3.5.1-1.tar.gz";
-    sha256 = "4f4ead3cfb1457b49fd6473f8f36867ef89d4d9e1b14762111997765de65d007";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "marti_common-release";
+    rev = "f6e90eeaf8180a60c884b61607efe916038c377b";
+    owner = "ros2-gbp";
+    sha256 = "sha256-JZrEbYFoFAgDSJCYxRmTEujv2o8bEw0DmnKY4Zgsobg=";
   };
 
   buildType = "ament_cmake";

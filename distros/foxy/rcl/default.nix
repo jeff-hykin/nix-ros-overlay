@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-rcl";
   version = "1.1.14-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rcl-release/archive/release/foxy/rcl/1.1.14-1.tar.gz";
-    name = "1.1.14-1.tar.gz";
-    sha256 = "3df5ac418335d1a6b9172273e788555a647f33f98c88312e705dfccf50645703";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rcl-release";
+    rev = "8defa4cdd99b826d59fcce64a85db908394343df";
+    owner = "ros2-gbp";
+    sha256 = "sha256-R5tI+wO/QUU4b0Eq+mbvmK7rBnrPWs/rZ7K1kKNiAno=";
   };
 
   buildType = "ament_cmake";

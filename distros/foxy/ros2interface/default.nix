@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-ros2interface";
   version = "0.9.12-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2cli-release/archive/release/foxy/ros2interface/0.9.12-1.tar.gz";
-    name = "0.9.12-1.tar.gz";
-    sha256 = "6114af9426012aa3b39a40c69d628693aac0735bbd56a9686554e99e4e5dbcc2";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2cli-release";
+    rev = "9fd241752f4a00a2813598a1773dfd1d6b6d97fb";
+    owner = "ros2-gbp";
+    sha256 = "sha256-z/zupH6RkvuG7J25FtD7HfNbrNwmi2HC7TowsB0qymE=";
   };
 
   buildType = "ament_python";

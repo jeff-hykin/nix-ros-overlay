@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ruckig";
   version = "0.6.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pantor/ruckig-release/archive/release/galactic/ruckig/0.6.3-1.tar.gz";
-    name = "0.6.3-1.tar.gz";
-    sha256 = "91750030501256e14e8c00f906a6dfb190f853de8cb7105113168cd24d9f3420";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ruckig-release";
+    rev = "1b79c92fb75f9d8df2190d7f9c101e99c2d43ebc";
+    owner = "pantor";
+    sha256 = "sha256-Rc7jKjIwuJUT7To4WUmmKX8mvICZzHMQ1RQ7R4mL3FY=";
   };
 
   buildType = "cmake";

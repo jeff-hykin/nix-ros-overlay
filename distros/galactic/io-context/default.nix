@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-io-context";
   version = "1.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/transport_drivers-release/archive/release/galactic/io_context/1.1.1-1.tar.gz";
-    name = "1.1.1-1.tar.gz";
-    sha256 = "7bceb53fd40beec256ad4b4a2c1720b2d37bda18e852a3805f85bf9dca772c5e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "transport_drivers-release";
+    rev = "a46136ccee6cb75dd2a0c757f2f86377d4ad5ebd";
+    owner = "ros2-gbp";
+    sha256 = "sha256-gHMCvdn6koUTg+K5ApsTRkbySEynEi6oXNQQrt62HoA=";
   };
 
   buildType = "ament_cmake";

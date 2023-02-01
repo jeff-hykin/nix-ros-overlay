@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-dwb-plugins";
   version = "1.0.12-r1";
 
-  src = fetchurl {
-    url = "https://github.com/SteveMacenski/navigation2-release/archive/release/galactic/dwb_plugins/1.0.12-1.tar.gz";
-    name = "1.0.12-1.tar.gz";
-    sha256 = "892479c0c1daa707be18db68cabfa65af61e9305d59d2815b9e43775b7c515c5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation2-release";
+    rev = "198025b42654d41d2a4f8acb26dc5c791c13e001";
+    owner = "SteveMacenski";
+    sha256 = "sha256-YNSrBb1QImSdpXDx71qxXEJ5VXlpI6CL6b4JgLsNl6I=";
   };
 
   buildType = "ament_cmake";

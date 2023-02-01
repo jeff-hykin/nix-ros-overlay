@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-rmf-lift-msgs";
   version = "1.4.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_internal_msgs-release/archive/release/foxy/rmf_lift_msgs/1.4.0-1.tar.gz";
-    name = "1.4.0-1.tar.gz";
-    sha256 = "0f6bb1441f407c44dc5809841bf7af6e833b1c216f88cf894dfe14ced3437c2a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_internal_msgs-release";
+    rev = "610ac1bcda7344cf2139b5445cd12ad766efc7bf";
+    owner = "ros2-gbp";
+    sha256 = "sha256-lXg6zjKTVLK5AlDM8fecDRUvg24tgr2q+IDyHXABF3A=";
   };
 
   buildType = "ament_cmake";

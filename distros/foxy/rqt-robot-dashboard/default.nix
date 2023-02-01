@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-rqt-robot-dashboard";
   version = "0.6.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/rqt_robot_dashboard-release/archive/release/foxy/rqt_robot_dashboard/0.6.1-1.tar.gz";
-    name = "0.6.1-1.tar.gz";
-    sha256 = "d4f1a459e3e8327d57aa5c606ed219870db701ed3020b0d937dac83994ed2aa0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt_robot_dashboard-release";
+    rev = "5e6dc449522bb2e9100fa9d604e05b4980704d8e";
+    owner = "ros-gbp";
+    sha256 = "sha256-o2FskVGSpDLTcYD8PlfRgHpBlDa3UId/Xq+IlAvaZGY=";
   };
 
   buildType = "ament_python";

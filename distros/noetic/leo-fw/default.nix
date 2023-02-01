@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-leo-fw";
   version = "2.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/fictionlab-gbp/leo_robot-release/archive/release/noetic/leo_fw/2.3.0-1.tar.gz";
-    name = "2.3.0-1.tar.gz";
-    sha256 = "bc87102d915f7bfd65aee57a81a942bd22a5729a7b77adbe308debf7238d8ee7";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "leo_robot-release";
+    rev = "1b9c1435a6ce8b71b1808bc55b083ad458528d31";
+    owner = "fictionlab-gbp";
+    sha256 = "sha256-WbWMMP5u+CBYtSRil5nwAWLGRjpNqqboCQpDeAnOxLg=";
   };
 
   buildType = "catkin";

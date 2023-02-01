@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-mav-comm";
   version = "3.3.2";
 
-  src = fetchurl {
-    url = "https://github.com/ethz-asl/mav_comm-release/archive/release/melodic/mav_comm/3.3.2-0.tar.gz";
-    name = "3.3.2-0.tar.gz";
-    sha256 = "58c58a99785c47a9b06a616dfc6d579251b7a18caf26b6acb7702fab69df27cc";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mav_comm-release";
+    rev = "1fecb631e67b7e8846e10f6468af8b2587ff60ce";
+    owner = "ethz-asl";
+    sha256 = "sha256-Q0Coclx2t/mrkMOfRMGNyW+5gFMfiymfklclaB6Bxo4=";
   };
 
   buildType = "catkin";

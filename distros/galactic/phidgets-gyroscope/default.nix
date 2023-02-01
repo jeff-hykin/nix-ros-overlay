@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-phidgets-gyroscope";
   version = "2.2.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/phidgets_drivers-release/archive/release/galactic/phidgets_gyroscope/2.2.3-1.tar.gz";
-    name = "2.2.3-1.tar.gz";
-    sha256 = "bc3d6746f21fb61a2a25237fb0dfd8538f7efe6bdc8d75928491aa31403002e5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "phidgets_drivers-release";
+    rev = "69edc068e20c94830563a87730d1bc0e181aeaf6";
+    owner = "ros2-gbp";
+    sha256 = "sha256-qpfxku+gPyFtf3/Uro+6zx1YnyUPWtxc1yfCcEY4amc=";
   };
 
   buildType = "ament_cmake";

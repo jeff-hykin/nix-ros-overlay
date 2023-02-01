@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-pheeno-ros-description";
   version = "0.1.0";
 
-  src = fetchurl {
-    url = "https://github.com/acslaboratory/pheeno_ros_description-release/archive/release/melodic/pheeno_ros_description/0.1.0-0.tar.gz";
-    name = "0.1.0-0.tar.gz";
-    sha256 = "4849cdf4250dfdbd134a913bd739e1b2647446a89eb50a6dde59bdbc9632019c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pheeno_ros_description-release";
+    rev = "fe521b758441ad7d251ea762c77d1f1ee48bf2ba";
+    owner = "acslaboratory";
+    sha256 = "sha256-q/taM6MhmN+qjSaOkuSPVdTsk8vkX+qCHk00R49V470=";
   };
 
   buildType = "catkin";

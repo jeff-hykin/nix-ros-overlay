@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-sqlite3-vendor";
   version = "0.3.9-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rosbag2-release/archive/release/foxy/sqlite3_vendor/0.3.9-1.tar.gz";
-    name = "0.3.9-1.tar.gz";
-    sha256 = "cf2a0488809b957a0bd612a3d7116d68193e70d4eaf1eb99bbb37cf0464e2329";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosbag2-release";
+    rev = "78734e02c324a16abfdef619314cd516091b4024";
+    owner = "ros2-gbp";
+    sha256 = "sha256-mGdvzDc0RIdLBs4RKla3KBwVBNj7+2R4tdzekGu4pO8=";
   };
 
   buildType = "ament_cmake";

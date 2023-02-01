@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-laser-proc";
   version = "0.1.5";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/laser_proc-release/archive/release/melodic/laser_proc/0.1.5-0.tar.gz";
-    name = "0.1.5-0.tar.gz";
-    sha256 = "bd596ebcfc3016970ba1c6abcd0d8c550e9b96a19ec6ab23ec8f5f3bc0f3d7c5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "laser_proc-release";
+    rev = "286a229144e66b1d2045a9da52c080d693e3f060";
+    owner = "ros-gbp";
+    sha256 = "sha256-425rbbJol1PAzrEJ+45thb/cPqU01ZN48E+UPJtsPY0=";
   };
 
   buildType = "catkin";

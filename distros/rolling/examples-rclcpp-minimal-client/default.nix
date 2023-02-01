@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-examples-rclcpp-minimal-client";
   version = "0.16.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/examples-release/archive/release/rolling/examples_rclcpp_minimal_client/0.16.2-1.tar.gz";
-    name = "0.16.2-1.tar.gz";
-    sha256 = "4ea51cdede621c1f1c39a40ad93fa8b723092eb2db8e7bf872c6afdd9b7fd00d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "examples-release";
+    rev = "29151d8ffdb6cf632916bcc6fc59eb1ad123cc5a";
+    owner = "ros2-gbp";
+    sha256 = "sha256-XRs1bkSGPOmunEur11p+5FNF0kqivWr+MR6zK0Epg8g=";
   };
 
   buildType = "ament_cmake";

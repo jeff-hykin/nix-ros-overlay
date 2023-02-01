@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-cnpy";
   version = "0.0.8-r1";
 
-  src = fetchurl {
-    url = "https://github.com/PeterMitrano/cnpy-release/archive/release/noetic/cnpy/0.0.8-1.tar.gz";
-    name = "0.0.8-1.tar.gz";
-    sha256 = "87f066147c2ba2f9c142065072514b6cecef45bf5aa506dcc85fbc0b07c5eee3";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cnpy-release";
+    rev = "f30abafb41a0889664efc3de7f24d993f65221d4";
+    owner = "PeterMitrano";
+    sha256 = "sha256-jrOoTg772vMXbU5KCB/V9EAokyf6kHqgVGbuOuIpk6A=";
   };
 
   buildType = "catkin";

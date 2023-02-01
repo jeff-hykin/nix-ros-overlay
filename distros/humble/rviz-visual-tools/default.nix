@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-rviz-visual-tools";
   version = "4.1.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rviz_visual_tools-release/archive/release/humble/rviz_visual_tools/4.1.3-1.tar.gz";
-    name = "4.1.3-1.tar.gz";
-    sha256 = "49e3607f5fd4c62155d1b9522c53a1eb2103359ec19ee0ed41840fb44b0dd51b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rviz_visual_tools-release";
+    rev = "e0880b8ddf40aed6e062b8186e545b4bcc5e788d";
+    owner = "ros2-gbp";
+    sha256 = "sha256-QQ5ezZ1QYtBqzJ90dJ/WNhSNSsNwvT32p+idNgk+/D8=";
   };
 
   buildType = "ament_cmake";

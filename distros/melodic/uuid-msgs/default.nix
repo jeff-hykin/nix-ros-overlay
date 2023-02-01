@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-uuid-msgs";
   version = "1.0.6";
 
-  src = fetchurl {
-    url = "https://github.com/ros-geographic-info/unique_identifier-release/archive/release/melodic/uuid_msgs/1.0.6-0.tar.gz";
-    name = "1.0.6-0.tar.gz";
-    sha256 = "c00cacdbfc12e1cc2715a8531eae1fc69700362b2abab974d03d70de5de6d2b5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "unique_identifier-release";
+    rev = "0436ef38f0d17b91fcfbb113569bf015cc7654e2";
+    owner = "ros-geographic-info";
+    sha256 = "sha256-I2wvd92JL9cbXsWyCd2Vnm0TXQQbqeTXJrTopF6F0rk=";
   };
 
   buildType = "catkin";

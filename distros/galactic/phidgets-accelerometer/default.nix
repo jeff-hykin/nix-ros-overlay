@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-phidgets-accelerometer";
   version = "2.2.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/phidgets_drivers-release/archive/release/galactic/phidgets_accelerometer/2.2.3-1.tar.gz";
-    name = "2.2.3-1.tar.gz";
-    sha256 = "b513c97a15af7ff867ac729ce3a84c8ee17542d2934f0cb25166c940b89a82b4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "phidgets_drivers-release";
+    rev = "2a14c468b143f2f5f60337f1add7d798e080cd6f";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Ep8E+rtrfzyd6z0jd1hZ6pzyEJcy7/+XTs78h8bv58w=";
   };
 
   buildType = "ament_cmake";

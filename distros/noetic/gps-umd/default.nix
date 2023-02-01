@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-gps-umd";
   version = "0.3.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/swri-robotics-gbp/gps_umd-release/archive/release/noetic/gps_umd/0.3.3-1.tar.gz";
-    name = "0.3.3-1.tar.gz";
-    sha256 = "d558c65ce8b83fb5235b7165b3662eefba2126b23685b623b087d44a4a00fed1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "gps_umd-release";
+    rev = "2cfeaa9b4b845c91f2b4f623cdd4f126dfe247a4";
+    owner = "swri-robotics-gbp";
+    sha256 = "sha256-RfpgXAfHt3iFHFy6QLBMHkXpkysWJnkJ3v1Xj/GB9bM=";
   };
 
   buildType = "catkin";

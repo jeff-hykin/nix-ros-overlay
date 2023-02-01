@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-pr2-machine";
   version = "1.13.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pr2-gbp/pr2_common-release/archive/release/noetic/pr2_machine/1.13.1-1.tar.gz";
-    name = "1.13.1-1.tar.gz";
-    sha256 = "1586780480d4ec1a797838f87265ef2c273be2455777f94b6742d1195a9481b2";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pr2_common-release";
+    rev = "b0022894f1ff7cac734ad7fca2f4fe5b84480110";
+    owner = "pr2-gbp";
+    sha256 = "sha256-17o10Esp/xkazOyDsAvJ/HwHHZ3MAL3nahc6QGNjLNA=";
   };
 
   buildType = "catkin";

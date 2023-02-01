@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-image-view";
   version = "1.15.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/image_pipeline-release/archive/release/melodic/image_view/1.15.2-1.tar.gz";
-    name = "1.15.2-1.tar.gz";
-    sha256 = "29776f65d7776982f87630615460afec9ae3666212b1ce2384b91c954cce154c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "image_pipeline-release";
+    rev = "3eb0589ce50a4346228a26af78834b6fc9244bda";
+    owner = "ros-gbp";
+    sha256 = "sha256-JutAY2sz/XQnZu1VERzYRBuGKvGx1OrScDgnQt10cqE=";
   };
 
   buildType = "catkin";

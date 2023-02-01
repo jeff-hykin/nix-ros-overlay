@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-omnibase-control";
   version = "1.0.2-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ERC-BPGC/omnibase-release/archive/release/melodic/omnibase_control/1.0.2-2.tar.gz";
-    name = "1.0.2-2.tar.gz";
-    sha256 = "a6157c6071bd5a43916f3916d44a85bba3fb38da5b5fa4ae18f54d9b50e9cec0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "omnibase-release";
+    rev = "2a2f8b79436cdaa50b852a4f815ff56c9ef1584d";
+    owner = "ERC-BPGC";
+    sha256 = "sha256-yBcBcGiPBWHFC8+K/Ge5cB+qP0SXbweIB/cxFkQgvRk=";
   };
 
   buildType = "catkin";

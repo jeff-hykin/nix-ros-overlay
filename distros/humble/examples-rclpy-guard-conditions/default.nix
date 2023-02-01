@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-examples-rclpy-guard-conditions";
   version = "0.15.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/examples-release/archive/release/humble/examples_rclpy_guard_conditions/0.15.1-1.tar.gz";
-    name = "0.15.1-1.tar.gz";
-    sha256 = "f6d0d58b4dd6f7bec82bb19430bc0aa184dd2c9f8d45f9fe0290540e6a595daf";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "examples-release";
+    rev = "845b444c0a76d4f2d60225f4689410d68986ff07";
+    owner = "ros2-gbp";
+    sha256 = "sha256-HEAm7jj9mLIwutmfaBtaW8q9ScDEshtr56iwDSQtST4=";
   };
 
   buildType = "ament_python";

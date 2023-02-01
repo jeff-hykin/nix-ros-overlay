@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-grid-map-cmake-helpers";
   version = "2.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/grid_map-release/archive/release/humble/grid_map_cmake_helpers/2.0.0-1.tar.gz";
-    name = "2.0.0-1.tar.gz";
-    sha256 = "bfb04f052926d584c05b994400ec8c827703c00183abfc847d9baa907be6b654";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "grid_map-release";
+    rev = "f1f8c547f0b1cb9aeb50e8b9b43168b76d45b208";
+    owner = "ros2-gbp";
+    sha256 = "sha256-LjphUxeZf8+o/84nll1opLo1LAylfOeaIe2HCwIf2jQ=";
   };
 
   buildType = "ament_cmake";

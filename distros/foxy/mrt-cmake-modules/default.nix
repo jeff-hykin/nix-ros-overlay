@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-mrt-cmake-modules";
   version = "1.0.9-r1";
 
-  src = fetchurl {
-    url = "https://github.com/KIT-MRT/mrt_cmake_modules-release/archive/release/foxy/mrt_cmake_modules/1.0.9-1.tar.gz";
-    name = "1.0.9-1.tar.gz";
-    sha256 = "5cdfc80bb4ea0a2225701ef2ed428945c0e819eb5ce748f59ab86499b2cb116c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mrt_cmake_modules-release";
+    rev = "bcbd3eee7974a77592d0d1a1994a9f14a07246f1";
+    owner = "KIT-MRT";
+    sha256 = "sha256-ZjBS7JweCjrLxmiI/CCKGUmW4czdpkPzIF1PaDbqRkk=";
   };
 
   buildType = "catkin";

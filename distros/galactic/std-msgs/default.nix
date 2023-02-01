@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-std-msgs";
   version = "2.2.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/common_interfaces-release/archive/release/galactic/std_msgs/2.2.4-1.tar.gz";
-    name = "2.2.4-1.tar.gz";
-    sha256 = "5fa2de4ee95439db1b984c5f18b225cccdb4ea0daae4c9b516b06f981dcd3834";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "common_interfaces-release";
+    rev = "e2db07f64aeaf2a289db3b7ab0686eb23a78b172";
+    owner = "ros2-gbp";
+    sha256 = "sha256-f2BTLPWAXDO8aLJgEHPgyrRoR88HBGicstpnvgj9WVo=";
   };
 
   buildType = "ament_cmake";

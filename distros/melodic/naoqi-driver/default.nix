@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-naoqi-driver";
   version = "0.5.12-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-naoqi/naoqi_driver-release/archive/release/melodic/naoqi_driver/0.5.12-1.tar.gz";
-    name = "0.5.12-1.tar.gz";
-    sha256 = "1517ffa176b401ddd678425f053560707dd214d0371ed5d93472fad5f51ec665";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "naoqi_driver-release";
+    rev = "fc321a2c5bf568ca9bce4e2645b0e1350a7e436f";
+    owner = "ros-naoqi";
+    sha256 = "sha256-6XRl2Q3Q1tf4SbOx6BOCV5hVkgaIbOgJvjaR0zH6oIM=";
   };
 
   buildType = "catkin";

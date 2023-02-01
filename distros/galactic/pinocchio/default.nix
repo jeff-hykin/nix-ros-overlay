@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-pinocchio";
   version = "2.6.12-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/pinocchio-release/archive/release/galactic/pinocchio/2.6.12-1.tar.gz";
-    name = "2.6.12-1.tar.gz";
-    sha256 = "76ce9d909565cc96d76396fdfe979b82002b7429aa3c96eb42c6aa5360cf508e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pinocchio-release";
+    rev = "46375cf545a0a0860dfba97c255e9c35b92d1ccd";
+    owner = "ros2-gbp";
+    sha256 = "sha256-SpkiWgT3k92ZwwgSryunq4dVPF3rUvkl36Z5bQRB9P8=";
   };
 
   buildType = "cmake";

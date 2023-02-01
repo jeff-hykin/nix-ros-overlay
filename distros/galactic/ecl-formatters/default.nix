@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ecl-formatters";
   version = "1.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/yujinrobot-release/ecl_core-release/archive/release/galactic/ecl_formatters/1.2.0-1.tar.gz";
-    name = "1.2.0-1.tar.gz";
-    sha256 = "796e377bdeea2aa294b1adedfa671a8d37df888ae95712ca7522c0f72ebb3a10";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ecl_core-release";
+    rev = "24be0cdd681a1549e8b7d0bd67c519ed5c38867f";
+    owner = "yujinrobot-release";
+    sha256 = "sha256-csnK/KT7emSpanWIXw3QXNb2qWq3S4io17fniIvDyLk=";
   };
 
   buildType = "ament_cmake";

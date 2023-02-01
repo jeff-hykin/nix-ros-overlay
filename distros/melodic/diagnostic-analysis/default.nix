@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-diagnostic-analysis";
   version = "1.9.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/diagnostics-release/archive/release/melodic/diagnostic_analysis/1.9.7-1.tar.gz";
-    name = "1.9.7-1.tar.gz";
-    sha256 = "e38eb20f984ae213806289f7c7ee095f6af5acb8b4163aecfc20b9cf668e043f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "diagnostics-release";
+    rev = "37d21032ca687e562d38b793694447e860e65587";
+    owner = "ros-gbp";
+    sha256 = "sha256-bhxF2+hXdwbAbIMtnZUnp7Le+w9Vk6ygjGQnJj+hR6s=";
   };
 
   buildType = "catkin";

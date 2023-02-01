@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-rmf-visualization-navgraphs";
   version = "2.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_visualization-release/archive/release/rolling/rmf_visualization_navgraphs/2.0.1-1.tar.gz";
-    name = "2.0.1-1.tar.gz";
-    sha256 = "559c1e0dc893eb78c743f129b581f6df4d6b8ee7893374c10afcf641e8b13e7a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_visualization-release";
+    rev = "3135ed8b1865b514bcd0e27ac5d6600d46f843b0";
+    owner = "ros2-gbp";
+    sha256 = "sha256-h+H688TKVECTpN5AYTFxfpMN4xcLtdN5cH9SJmpEm0s=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-ament-cmake-pep257";
   version = "0.12.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ament_lint-release/archive/release/humble/ament_cmake_pep257/0.12.4-1.tar.gz";
-    name = "0.12.4-1.tar.gz";
-    sha256 = "cad627b9584fce8199ec91d93d74947d5c43180062b41ce23766feb1290b84d0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ament_lint-release";
+    rev = "5058c4dbc6f5432531dd9d234a7fbfeacf7d63ff";
+    owner = "ros2-gbp";
+    sha256 = "sha256-1sy8zxbzr3WFRSFJ/VyrxPW9dPCZqMHYH+ehKOz7nVk=";
   };
 
   buildType = "ament_cmake";

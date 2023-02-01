@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-nmea-navsat-driver";
   version = "2.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/nmea_navsat_driver-release/archive/release/rolling/nmea_navsat_driver/2.0.0-1.tar.gz";
-    name = "2.0.0-1.tar.gz";
-    sha256 = "7f7db9e81bbedd1f03f7b3a16c999deb787fbdf15858fd80e07554baccb449ba";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "nmea_navsat_driver-release";
+    rev = "d92d16c649753a988a7aa20cab5e6b804b44584b";
+    owner = "ros2-gbp";
+    sha256 = "sha256-/jHp7vYV6qWnGc27Qt0moJsJK6CptKQULqNO1KHWgec=";
   };
 
   buildType = "ament_python";

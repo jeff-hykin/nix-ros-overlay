@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-py-trees-ros-interfaces";
   version = "2.0.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/stonier/py_trees_ros_interfaces-release/archive/release/galactic/py_trees_ros_interfaces/2.0.3-1.tar.gz";
-    name = "2.0.3-1.tar.gz";
-    sha256 = "0ddd15953e7931193bb4375140611930fff3dca9f7723ab7f60cb60520f32998";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "py_trees_ros_interfaces-release";
+    rev = "7fb77533f2d8e4184111db5fb6bdb6e9b689277a";
+    owner = "stonier";
+    sha256 = "sha256-/YAn9axu8hgAg09ST4zfeqgKuT03Ar4oCl3A9wNUdWg=";
   };
 
   buildType = "ament_cmake";

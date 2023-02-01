@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-dynamixel-sdk-examples";
   version = "3.7.40-r1";
 
-  src = fetchurl {
-    url = "https://github.com/robotis-ros2-release/dynamixel_sdk-release/archive/release/galactic/dynamixel_sdk_examples/3.7.40-1.tar.gz";
-    name = "3.7.40-1.tar.gz";
-    sha256 = "3a9c19cd0fff9f42d31aaf52cf2c0336eabf4b575cdcadd24e97bda3c1dee313";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "dynamixel_sdk-release";
+    rev = "6cd5a6f2fd7c6127ce9cf7951638a66baf378276";
+    owner = "robotis-ros2-release";
+    sha256 = "sha256-TRPWVWEEJtx/attfpSr6SATpy7YhzqP9x8ef/IVsULA=";
   };
 
   buildType = "ament_cmake";

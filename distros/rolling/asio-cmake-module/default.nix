@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-asio-cmake-module";
   version = "1.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/transport_drivers-release/archive/release/rolling/asio_cmake_module/1.2.0-1.tar.gz";
-    name = "1.2.0-1.tar.gz";
-    sha256 = "8fc00f544859bbd8f3ee84ae4cacb66189f5291a396bacbfcde722a90f9ea039";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "transport_drivers-release";
+    rev = "1c2c08e468fc4403c1cf2272bf280a02dd4e9d1f";
+    owner = "ros2-gbp";
+    sha256 = "sha256-S4As/gOIQQTIqYgblUDPs2pjBDmLPz4Ii2/CTMHhRUs=";
   };
 
   buildType = "ament_cmake";

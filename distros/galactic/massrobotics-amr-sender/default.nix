@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-massrobotics-amr-sender";
   version = "1.1.1-r2";
 
-  src = fetchurl {
-    url = "https://github.com/inorbit-ai/ros_amr_interop-release/archive/release/galactic/massrobotics_amr_sender/1.1.1-2.tar.gz";
-    name = "1.1.1-2.tar.gz";
-    sha256 = "8c675fccc204fabcd3906b327bbf15a9a76142e9592f00962269936c513a4963";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_amr_interop-release";
+    rev = "2fc11e90ebc6fe9017c9df4f29137f042716b9cc";
+    owner = "inorbit-ai";
+    sha256 = "sha256-tkonIOMY+pdqYFlO07YHctRYvgH2oGlaj57nw4NqGiE=";
   };
 
   buildType = "ament_python";

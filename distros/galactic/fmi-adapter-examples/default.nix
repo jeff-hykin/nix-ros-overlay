@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-fmi-adapter-examples";
   version = "2.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/fmi_adapter-release/archive/release/galactic/fmi_adapter_examples/2.1.1-1.tar.gz";
-    name = "2.1.1-1.tar.gz";
-    sha256 = "6fa264616c1823d9496d83a2011ea12904205a136c7c79f4506818599d1325c3";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "fmi_adapter-release";
+    rev = "75d72ebbf47ffef69ca93164f5a31a9cf66a437a";
+    owner = "ros2-gbp";
+    sha256 = "sha256-R5kjXvGqUx+ux+q1zgh54sd5aNSXWSJ1edV01iOh5Fc=";
   };
 
   buildType = "ament_cmake";

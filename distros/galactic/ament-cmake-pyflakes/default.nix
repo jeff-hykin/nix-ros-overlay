@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ament-cmake-pyflakes";
   version = "0.10.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ament_lint-release/archive/release/galactic/ament_cmake_pyflakes/0.10.7-1.tar.gz";
-    name = "0.10.7-1.tar.gz";
-    sha256 = "34387e05761a886d39e81dab3bd9dc19d8c586d6c8302dd8080f7f59e1334a95";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ament_lint-release";
+    rev = "ee9076768c796b35f6237c50cd8a428a8552cb76";
+    owner = "ros2-gbp";
+    sha256 = "sha256-1FxHjdxTgQeKk3Mw86eLsAh0l1AtuCTSVmfoOYeI49M=";
   };
 
   buildType = "ament_cmake";

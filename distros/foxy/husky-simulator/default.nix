@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-husky-simulator";
   version = "1.0.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/clearpath-gbp/husky-release/archive/release/foxy/husky_simulator/1.0.7-1.tar.gz";
-    name = "1.0.7-1.tar.gz";
-    sha256 = "72c78817ea2df607e2f22da6b35cca5f6a91c8b760ba0e9160f48427acd2c29a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "husky-release";
+    rev = "c27351ee62ea309584d79988e30cd130839a6ba3";
+    owner = "clearpath-gbp";
+    sha256 = "sha256-FrH+FLf8oWaaT7WL82EkZbnIOLO94j07qQvia5xvF9Y=";
   };
 
   buildType = "ament_cmake";

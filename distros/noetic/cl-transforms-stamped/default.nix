@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-cl-transforms-stamped";
   version = "0.2.14-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/roslisp_common-release/archive/release/noetic/cl_transforms_stamped/0.2.14-1.tar.gz";
-    name = "0.2.14-1.tar.gz";
-    sha256 = "9455b466eaca1765ff31ee517ec637d2e5980ca4332c2eda8c2c039e9c16b232";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "roslisp_common-release";
+    rev = "75d3caafdb5341be66b990792d056668ef0a2af5";
+    owner = "ros-gbp";
+    sha256 = "sha256-Sh/ZxO0JB/nsqTBh/QAxFFb8mzIy1nXGVWS28CIAuEY=";
   };
 
   buildType = "catkin";

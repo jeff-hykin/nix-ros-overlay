@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-ecl-linear-algebra";
   version = "0.62.2";
 
-  src = fetchurl {
-    url = "https://github.com/yujinrobot-release/ecl_core-release/archive/release/melodic/ecl_linear_algebra/0.62.2-0.tar.gz";
-    name = "0.62.2-0.tar.gz";
-    sha256 = "5e9b99a6c02c0546ffdd155726bb735897f8591739850b9614143d6719e756e6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ecl_core-release";
+    rev = "5e6bf31edf000ca8d5bfff8fb4cf6ad95a1ad309";
+    owner = "yujinrobot-release";
+    sha256 = "sha256-iSMpwedT4ESpLVPPyZB/nMbByjKBZXPps0YKWfULGxE=";
   };
 
   buildType = "catkin";

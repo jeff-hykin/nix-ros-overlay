@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-exotica-levenberg-marquardt-solver";
   version = "6.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipab-slmc/exotica-release/archive/release/melodic/exotica_levenberg_marquardt_solver/6.2.0-1.tar.gz";
-    name = "6.2.0-1.tar.gz";
-    sha256 = "5c6f06ce4d3fd4a069477fd994f0b31c61adc48bc4b2709b955e1a784721879a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "exotica-release";
+    rev = "efbf278e36783f7214c8f7a9e552d10d67364ce8";
+    owner = "ipab-slmc";
+    sha256 = "sha256-MoKLbKXkYLJYuzK0y2S5k6MXb/ePEMTLQBfmecPE7YY=";
   };
 
   buildType = "catkin";

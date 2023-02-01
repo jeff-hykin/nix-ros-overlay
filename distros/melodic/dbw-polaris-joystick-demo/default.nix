@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-dbw-polaris-joystick-demo";
   version = "1.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/DataspeedInc-release/dbw_polaris_ros-release/archive/release/melodic/dbw_polaris_joystick_demo/1.1.0-1.tar.gz";
-    name = "1.1.0-1.tar.gz";
-    sha256 = "5e6b31cb0ca08399c7f80acb0d147799f32e910831799c0d4a9390c72f435151";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "dbw_polaris_ros-release";
+    rev = "e266accb3bfa74292c6f0ab727654b026f1a6012";
+    owner = "DataspeedInc-release";
+    sha256 = "sha256-IScNwPCoynOnNCzpFxHEM2mRUhyOE6p1ECD0THPCZQs=";
   };
 
   buildType = "catkin";

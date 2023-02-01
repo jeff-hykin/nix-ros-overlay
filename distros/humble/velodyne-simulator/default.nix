@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-velodyne-simulator";
   version = "2.0.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/velodyne_simulator-release/archive/release/humble/velodyne_simulator/2.0.3-1.tar.gz";
-    name = "2.0.3-1.tar.gz";
-    sha256 = "6e77d5c80e0a6df40350038fc4fb7be3700fb11fda4049f1b62a67e5af246f1c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "velodyne_simulator-release";
+    rev = "bf865a75390be66850dba3e25e9ef5f59eea022d";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Cu17nhMENoRv3E5+1HvQyw35oWBdZXPr9BQ3APt4Q0c=";
   };
 
   buildType = "ament_cmake";

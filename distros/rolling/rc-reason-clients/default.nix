@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-rc-reason-clients";
   version = "0.2.1-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rc_reason_clients-release/archive/release/rolling/rc_reason_clients/0.2.1-3.tar.gz";
-    name = "0.2.1-3.tar.gz";
-    sha256 = "4bb863984475bfa4d0f7c72e6923b3a1972d797f874c2e479783bed085d1310c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rc_reason_clients-release";
+    rev = "70c23d7ca2cda95e741e5d676c7bf43747b346d9";
+    owner = "ros2-gbp";
+    sha256 = "sha256-0AzKL+C5f5BEGPSkQ+Tj53eFBF2C4KMC1hYhmGqCq94=";
   };
 
   buildType = "ament_python";

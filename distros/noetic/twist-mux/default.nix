@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-twist-mux";
   version = "3.1.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/twist_mux-release/archive/release/noetic/twist_mux/3.1.3-1.tar.gz";
-    name = "3.1.3-1.tar.gz";
-    sha256 = "71e3e5b1d10125f0fed59a044ff37eddc799ed27c0a944fe319dbe0cece79844";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "twist_mux-release";
+    rev = "bce918dd3d9128fc0f408de16591ac5a6fd564f9";
+    owner = "ros-gbp";
+    sha256 = "sha256-00ma5idqDTHO75R9MbC9kYLfuA8EqlHl5iHsY82DQ9M=";
   };
 
   buildType = "catkin";

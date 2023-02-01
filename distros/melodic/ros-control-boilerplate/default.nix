@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-ros-control-boilerplate";
   version = "0.5.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/PickNikRobotics/ros_control_boilerplate-release/archive/release/melodic/ros_control_boilerplate/0.5.2-1.tar.gz";
-    name = "0.5.2-1.tar.gz";
-    sha256 = "32bc71c9a5eea76b805a56072ea0e638cdf78f8ea2d8de13fb8c0c72fc512514";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_control_boilerplate-release";
+    rev = "0d82755aa48e5cc6a505f521f2be633924416fad";
+    owner = "PickNikRobotics";
+    sha256 = "sha256-XuRMXyv88A55fdYtvL66dwjaYfe9HJd6mU1JJJHSGL4=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-rmf-site-map-msgs";
   version = "3.0.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_internal_msgs-release/archive/release/humble/rmf_site_map_msgs/3.0.2-1.tar.gz";
-    name = "3.0.2-1.tar.gz";
-    sha256 = "edbeeb54b2efbe832b25e44e3c250be92cf06deeb9840a36673db8273c26aa64";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_internal_msgs-release";
+    rev = "d3f85e8a359e78aaaa40605cb2736650eb93d1f5";
+    owner = "ros2-gbp";
+    sha256 = "sha256-1XFEKfUJX0WX7J2hgLsCBAGNmLr8rGxCv2No62KeDjg=";
   };
 
   buildType = "ament_cmake";

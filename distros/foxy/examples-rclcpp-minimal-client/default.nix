@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-examples-rclcpp-minimal-client";
   version = "0.9.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/examples-release/archive/release/foxy/examples_rclcpp_minimal_client/0.9.4-1.tar.gz";
-    name = "0.9.4-1.tar.gz";
-    sha256 = "1431441e74384885c9634ab1c8ab0b71d93b09f3bb9c86abd8a37c771b249e88";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "examples-release";
+    rev = "9bfcc4864c47ba34194837a0e1ecf26ae9a72cf4";
+    owner = "ros2-gbp";
+    sha256 = "sha256-MO4EdKpNztGzxY5Crk2h6Dc0pvFTQbdmFIrWUx7IFHo=";
   };
 
   buildType = "ament_cmake";

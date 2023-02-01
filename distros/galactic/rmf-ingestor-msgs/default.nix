@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rmf-ingestor-msgs";
   version = "1.4.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_internal_msgs-release/archive/release/galactic/rmf_ingestor_msgs/1.4.0-1.tar.gz";
-    name = "1.4.0-1.tar.gz";
-    sha256 = "a93bed9b83509830ef45f06392999e1ea16731fd3e9163ca3ad0b48fd82bb631";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_internal_msgs-release";
+    rev = "8130fb5038f0cc511801704454c7fbdbcaf77209";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Xwiv4wp9G1bYLm+ehVeoA3LA7Ll/ahXilMPReTfbHNo=";
   };
 
   buildType = "ament_cmake";

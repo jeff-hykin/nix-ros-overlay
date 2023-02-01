@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-joint-state-publisher-gui";
   version = "2.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/joint_state_publisher-release/archive/release/humble/joint_state_publisher_gui/2.3.0-1.tar.gz";
-    name = "2.3.0-1.tar.gz";
-    sha256 = "63ced7d5e798e6ff8b3b61093cedbe80bd929c6ba2134a116681585cd92d03d4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "joint_state_publisher-release";
+    rev = "eb23e50900739c97e66da61eb007b3ecdbdab0cb";
+    owner = "ros2-gbp";
+    sha256 = "sha256-UgpMKR1spc/YH/Bs30Gifn/Ov9lC+cuHmXgs+d4a7I8=";
   };
 
   buildType = "ament_python";

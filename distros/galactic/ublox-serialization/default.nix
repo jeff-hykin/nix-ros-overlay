@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ublox-serialization";
   version = "2.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ublox-release/archive/release/galactic/ublox_serialization/2.2.0-1.tar.gz";
-    name = "2.2.0-1.tar.gz";
-    sha256 = "4e94c853e242f192f253d1d6708fd901b08e771455d736fc1f134efb862a5e29";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ublox-release";
+    rev = "08fd60fd0a4fd1d7c29078bb4cee943566cb7f6d";
+    owner = "ros2-gbp";
+    sha256 = "sha256-sqZjBGOtZdUho2ZWx/UY4uNxUQI0vz01+fYizwbhLac=";
   };
 
   buildType = "ament_cmake";

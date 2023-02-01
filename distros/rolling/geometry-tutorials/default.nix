@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-geometry-tutorials";
   version = "0.3.6-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/geometry_tutorials-release/archive/release/rolling/geometry_tutorials/0.3.6-1.tar.gz";
-    name = "0.3.6-1.tar.gz";
-    sha256 = "4916738beadc2cbb6611476669bf7e17cb9bea9d0ea1cdddd7f1c7be3e2b71d5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "geometry_tutorials-release";
+    rev = "69e6127fec411600d7f53466b77f1712a0540469";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Cy6+rG9fkARM6Pr7xFDRN/CEObs8kkLsxj+qr4W2h0U=";
   };
 
   buildType = "ament_cmake";

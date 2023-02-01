@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-pose-follower";
   version = "0.4.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/navigation_experimental-release/archive/release/noetic/pose_follower/0.4.1-1.tar.gz";
-    name = "0.4.1-1.tar.gz";
-    sha256 = "4125ce1012b62fd5713fd179a6de088aaa89009b6b7bc6c346be828004c43971";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation_experimental-release";
+    rev = "37332e0aca1c57df1d9043441cffc5a5c3903011";
+    owner = "ros-gbp";
+    sha256 = "sha256-g6kgumgaNZ0+72Xgasfc1PW4ZnezAO/ftVp0IH//EU8=";
   };
 
   buildType = "catkin";

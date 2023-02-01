@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-rcgcd-spl-14-conversion";
   version = "3.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/gc_spl-release/archive/release/rolling/rcgcd_spl_14_conversion/3.0.0-1.tar.gz";
-    name = "3.0.0-1.tar.gz";
-    sha256 = "df5f680138520ce426209d7aa290c49c409efdf7e60f4b25753a77edb1166d68";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "gc_spl-release";
+    rev = "9fbf97bcc6a246fc9a5ad868c083ca8ef939c7d6";
+    owner = "ros2-gbp";
+    sha256 = "sha256-ofPNtyAdCLgHocDftNu/4aE6Bk5j+kYdth8shL27G3g=";
   };
 
   buildType = "ament_python";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-rcgcrd-spl-4";
   version = "2.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/gc_spl-release/archive/release/humble/rcgcrd_spl_4/2.0.0-1.tar.gz";
-    name = "2.0.0-1.tar.gz";
-    sha256 = "7277ccaf67c282aa7347c38ed6b19d6e843e165a99833516789edd565c87eca4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "gc_spl-release";
+    rev = "99b0256b1171e79403c65d4c078bf491b2994560";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Wp1a0GzTEB5HE5IPGjXTA2HS7ElQXZRPzT955XehU98=";
   };
 
   buildType = "ament_cmake";

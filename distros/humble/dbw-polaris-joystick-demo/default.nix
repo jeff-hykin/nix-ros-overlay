@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-dbw-polaris-joystick-demo";
   version = "2.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/DataspeedInc-release/dbw_ros-release/archive/release/humble/dbw_polaris_joystick_demo/2.1.0-1.tar.gz";
-    name = "2.1.0-1.tar.gz";
-    sha256 = "3587f96390161860532e7df792c1428532c92f875c98a62ccad00ff3f2ffcc85";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "dbw_ros-release";
+    rev = "651a0a00b63f9b08bd436973420bf80cd26432ad";
+    owner = "DataspeedInc-release";
+    sha256 = "sha256-pqUecxl3Co6F08oaqqnxBO0tEYNw8Pb7F3tVFX8NdSA=";
   };
 
   buildType = "ament_cmake";

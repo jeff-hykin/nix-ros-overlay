@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-code-coverage";
   version = "0.4.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/mikeferguson/code_coverage-gbp/archive/release/noetic/code_coverage/0.4.4-1.tar.gz";
-    name = "0.4.4-1.tar.gz";
-    sha256 = "9b9a65c55bcf50a7a90c55a13d0376e59aa1d331a6a2ae75d1c452caa9cb03f0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "code_coverage-gbp";
+    rev = "9a564e5d5c7cbd6fc3e518eb404e95efb61c3fa2";
+    owner = "mikeferguson";
+    sha256 = "sha256-fKLxP4ry2JxTuyzUBrKpjFCsYYY2ceN5PKZZ5LRucPA=";
   };
 
   buildType = "catkin";

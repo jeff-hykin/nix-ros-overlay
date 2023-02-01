@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-orocos-kdl";
   version = "3.4.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/orocos_kinematics_dynamics-release/archive/release/galactic/orocos_kdl/3.4.0-1.tar.gz";
-    name = "3.4.0-1.tar.gz";
-    sha256 = "a05fa79711b5301584f34e7e4107fbaec8239f90249608ff8f0842a4171982a2";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "orocos_kinematics_dynamics-release";
+    rev = "6efe902b5ff905bf2bf8f84df22a65629396a608";
+    owner = "ros2-gbp";
+    sha256 = "sha256-VsYBqpDhQYSYuKKnwQEH64aRwsHQ6V9NmqMycHzp/cM=";
   };
 
   buildType = "cmake";

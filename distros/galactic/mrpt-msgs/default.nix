@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-mrpt-msgs";
   version = "0.4.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/mrpt_msgs-release/archive/release/galactic/mrpt_msgs/0.4.4-1.tar.gz";
-    name = "0.4.4-1.tar.gz";
-    sha256 = "7d37ac5cc7d7d9d50b7ad1724dad268f9916de505c3245c7290a1850b2f99b9d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mrpt_msgs-release";
+    rev = "ea47c3f488f0ae3eede07d8a6ecb0e0d4c7a24d1";
+    owner = "ros2-gbp";
+    sha256 = "sha256-FSw//54G9jpJoibViHkmDUI+/IqcjDC67ZxH4JOk4qk=";
   };
 
   buildType = "ament_cmake";

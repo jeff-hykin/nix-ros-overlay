@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-fastcdr";
   version = "1.0.24-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/fastcdr-release/archive/release/rolling/fastcdr/1.0.24-2.tar.gz";
-    name = "1.0.24-2.tar.gz";
-    sha256 = "abd9ad1d4b1a7644bc9f27d06c16a79c79215955ed31715242187c11b9418a7c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "fastcdr-release";
+    rev = "9e0f90cf5f6586e70e627b6fc69aa67ba874c1e1";
+    owner = "ros2-gbp";
+    sha256 = "sha256-c3xN1mu7qNZyR0MBb923pa0a69z/QGvWtYRN6aJtDq4=";
   };
 
   buildType = "cmake";

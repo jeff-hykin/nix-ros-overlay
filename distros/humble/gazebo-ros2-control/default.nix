@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-gazebo-ros2-control";
   version = "0.4.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/gazebo_ros2_control-release/archive/release/humble/gazebo_ros2_control/0.4.0-1.tar.gz";
-    name = "0.4.0-1.tar.gz";
-    sha256 = "b549f9311a704006adf5ce23688fa1cf13850284ed19ea87f8a143af57ac8858";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "gazebo_ros2_control-release";
+    rev = "7a3abc2429d84f52b97aaf4f2df5eb09c10633bb";
+    owner = "ros2-gbp";
+    sha256 = "sha256-4bTTtCPCI2854uVTenPCW7gxBZdQvsp/LCdfu0Q5eiw=";
   };
 
   buildType = "ament_cmake";

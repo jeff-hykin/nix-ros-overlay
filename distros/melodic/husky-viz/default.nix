@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-husky-viz";
   version = "0.4.13-r1";
 
-  src = fetchurl {
-    url = "https://github.com/clearpath-gbp/husky-release/archive/release/melodic/husky_viz/0.4.13-1.tar.gz";
-    name = "0.4.13-1.tar.gz";
-    sha256 = "1428ff190714d183165eb4f47e76b9e93ab241716dea92d2a6520e00fd4f73b5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "husky-release";
+    rev = "16399bc150a54d983f5e121dd4355d0e557f57ce";
+    owner = "clearpath-gbp";
+    sha256 = "sha256-nb2BOzWg9mIV1knLFrgUZT6AfNy3xdmT+sosrYB8WNk=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-marti-status-msgs";
   version = "1.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/marti_messages-release/archive/release/galactic/marti_status_msgs/1.3.0-1.tar.gz";
-    name = "1.3.0-1.tar.gz";
-    sha256 = "2c75a884abc4388ca1ed4771846f6ecd667d04ae3c44c0e1e855533659b77a6a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "marti_messages-release";
+    rev = "335a5e3afa235da81b24f1438c99e3778b6c968e";
+    owner = "ros2-gbp";
+    sha256 = "sha256-JIIYkZANCtSigjSIfcZ1T7ysxvv3VaxVxHjIF6c5qQY=";
   };
 
   buildType = "ament_cmake";

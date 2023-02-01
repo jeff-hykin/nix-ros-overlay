@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-pr2-controllers-msgs";
   version = "1.10.18-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pr2-gbp/pr2_controllers-release/archive/release/noetic/pr2_controllers_msgs/1.10.18-1.tar.gz";
-    name = "1.10.18-1.tar.gz";
-    sha256 = "f9c03a06ee60764b673fa836ba64064b5c679695c79e0471a169701af1e1605c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pr2_controllers-release";
+    rev = "e7a73797687c9af0f292e2d5ba7af7e2243e3364";
+    owner = "pr2-gbp";
+    sha256 = "sha256-6j+k75lKtzbHnP3R6Qwi9sOXbY5/xwn9fjjdFGTnKWY=";
   };
 
   buildType = "catkin";

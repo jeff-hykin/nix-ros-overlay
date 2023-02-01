@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-demo-nodes-py";
   version = "0.20.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/demos-release/archive/release/humble/demo_nodes_py/0.20.2-1.tar.gz";
-    name = "0.20.2-1.tar.gz";
-    sha256 = "15e2be42652587644ca4a7ce33031e17070dbb0e40abe979cc5be2cc2bb33afb";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "demos-release";
+    rev = "a009cfe90749c7f06f1798f23f2356b690f1c627";
+    owner = "ros2-gbp";
+    sha256 = "sha256-3lScMYhVaXMu2YQL50nSyZr0vmRWZAt1WeZhrhYInbk=";
   };
 
   buildType = "ament_python";

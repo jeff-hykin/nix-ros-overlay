@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-genmypy";
   version = "0.3.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/rospypi/genmypy-release/archive/release/noetic/genmypy/0.3.1-1.tar.gz";
-    name = "0.3.1-1.tar.gz";
-    sha256 = "65630a5fe0762662abedd95c8193d9a0141e61511149f780b3d9bbfd69ef3aed";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "genmypy-release";
+    rev = "9dce7f518ac229c551843b0a31fe8bc475b3605a";
+    owner = "rospypi";
+    sha256 = "sha256-hf/egLXmmmwG/ST3AlI7ljjfjFcVTtTcGeRP2FiLBQA=";
   };
 
   buildType = "catkin";

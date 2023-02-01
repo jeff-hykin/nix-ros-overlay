@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-leo-fw";
   version = "1.2.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/leo_robot-release/archive/release/humble/leo_fw/1.2.1-1.tar.gz";
-    name = "1.2.1-1.tar.gz";
-    sha256 = "4b6230313b3a3b76e7aa92b197ad5fd47c8749faf735ef1977fa71fbb7c5a041";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "leo_robot-release";
+    rev = "4eb50a574aa6a434a035bf508d03dd409cc61c70";
+    owner = "ros2-gbp";
+    sha256 = "sha256-UtbHorxWBxhNeCHdoTkVrTIkxV8i99OlEfcR71I+UpM=";
   };
 
   buildType = "ament_cmake";

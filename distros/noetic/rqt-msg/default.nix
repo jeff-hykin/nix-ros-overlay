@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-rqt-msg";
   version = "0.4.10-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/rqt_msg-release/archive/release/noetic/rqt_msg/0.4.10-1.tar.gz";
-    name = "0.4.10-1.tar.gz";
-    sha256 = "a9afbaff68d9f0ffa209152355c1511010b312e04d7c8244068f460f165b9f9c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt_msg-release";
+    rev = "d11c62ea38fb3d4e1bdcd056c0eafb2e8b7eb9d4";
+    owner = "ros-gbp";
+    sha256 = "sha256-yX7pn/QPWdoo6xHv+7VcgVS5vnjMRYZWiqyuuImm2n4=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-smacc-msgs";
   version = "0.9.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/robosoft-ai/smacc-release/archive/release/noetic/smacc_msgs/0.9.7-1.tar.gz";
-    name = "0.9.7-1.tar.gz";
-    sha256 = "79cd5d5de9e4efc08814cd8dd19e8fd8ae6c603d50ab01f1e35473e92cb0fa0b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "smacc-release";
+    rev = "7522ce173a8359cdf5aa679e30921c6076c8bf31";
+    owner = "robosoft-ai";
+    sha256 = "sha256-pEJajW0INB3m/slKx3L6wzbP3rOE1oSsyLTF6YxfAwU=";
   };
 
   buildType = "catkin";

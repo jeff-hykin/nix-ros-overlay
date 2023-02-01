@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-nodelet-topic-tools";
   version = "1.9.16";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/nodelet_core-release/archive/release/melodic/nodelet_topic_tools/1.9.16-0.tar.gz";
-    name = "1.9.16-0.tar.gz";
-    sha256 = "39f55bdfb39c520b29a3c6004ca8d359a2e2ffc8da9ed254ba38c180bd035ae3";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "nodelet_core-release";
+    rev = "462821e605c69cd79f8a1002e222e42fb2f7c712";
+    owner = "ros-gbp";
+    sha256 = "sha256-XUbl/EoqMK1/tCISTYB/XogqozcXugYGBeKOCbCYQVU=";
   };
 
   buildType = "catkin";

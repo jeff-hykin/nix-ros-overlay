@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-rviz-ogre-vendor";
   version = "11.2.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rviz-release/archive/release/humble/rviz_ogre_vendor/11.2.4-1.tar.gz";
-    name = "11.2.4-1.tar.gz";
-    sha256 = "33f9865d8fe1566a2c4b793003571f73a106ffc622975b36c8c08e6192a4b75f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rviz-release";
+    rev = "5a1c693f48a18252a5cb490d39f2bcf3d95bb934";
+    owner = "ros2-gbp";
+    sha256 = "sha256-R3NLSY8oNapA0/prsLJyexhi9yJLmy3HAsYTE2bpaNU=";
   };
 
   buildType = "ament_cmake";

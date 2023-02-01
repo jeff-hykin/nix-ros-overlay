@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-cob-moveit-config";
   version = "0.7.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_robots-release/archive/release/melodic/cob_moveit_config/0.7.5-1.tar.gz";
-    name = "0.7.5-1.tar.gz";
-    sha256 = "e1052a445e6d6cd30165a2c6e7b097447547d7043f5947615d27391403ef25bc";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_robots-release";
+    rev = "6bc7134da63aa34ecc506cb83e586ebb659fb927";
+    owner = "ipa320";
+    sha256 = "sha256-A1u7M8FoRy8SeRCpDex0sEPOKBR5fmMEkKFO0mc8Xqs=";
   };
 
   buildType = "catkin";

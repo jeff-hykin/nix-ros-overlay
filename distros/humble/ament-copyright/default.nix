@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-ament-copyright";
   version = "0.12.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ament_lint-release/archive/release/humble/ament_copyright/0.12.4-1.tar.gz";
-    name = "0.12.4-1.tar.gz";
-    sha256 = "5f601024aab64705724f1b4b05029f601b51bc98c524253ec364bc8125f3d947";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ament_lint-release";
+    rev = "d384e73f3eecf4e48c0bb815d2704f622c2f952f";
+    owner = "ros2-gbp";
+    sha256 = "sha256-CPwlDsb2EQ6wttrnmUJuaWwCOMszxcdOMA1h+43zaeU=";
   };
 
   buildType = "ament_python";

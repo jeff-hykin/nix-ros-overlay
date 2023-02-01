@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-cob-twist-controller";
   version = "0.8.12-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_control-release/archive/release/melodic/cob_twist_controller/0.8.12-1.tar.gz";
-    name = "0.8.12-1.tar.gz";
-    sha256 = "92ce2a81a770ae09b3e348e0742850139cbd569546d2a49d06112953a65f5673";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_control-release";
+    rev = "4e0524f1f1fd59ebaba2baf321df24a4326a5e24";
+    owner = "ipa320";
+    sha256 = "sha256-sdIrv3jnbi80FHjERl5dvlGpsUQv/XNXDsJk9az9Q3c=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-rosbag2-compression-zstd";
   version = "0.15.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rosbag2-release/archive/release/humble/rosbag2_compression_zstd/0.15.3-1.tar.gz";
-    name = "0.15.3-1.tar.gz";
-    sha256 = "2d16caa07be4ad330ab428c3d6c1ea9645b70f840cb6bf6db37b6928df594867";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosbag2-release";
+    rev = "3932f9a4c599ed521be9298dbfc84cc238afcade";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Z8XQGXTuchshOvhRkOm4DMTBmEKHKuFVU55OBXHtyks=";
   };
 
   buildType = "ament_cmake";

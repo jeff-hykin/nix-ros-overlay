@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-laser-proc";
   version = "1.0.2-r4";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/laser_proc-release/archive/release/galactic/laser_proc/1.0.2-4.tar.gz";
-    name = "1.0.2-4.tar.gz";
-    sha256 = "f62296fdb3d556709f579529619f3dfe0b1f009ea43897e6acfe3c637e789648";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "laser_proc-release";
+    rev = "8d742fc062551d78473d07dea85c946f4c7875a3";
+    owner = "ros2-gbp";
+    sha256 = "sha256-h2lPjaJimCF/20eVEH3+ZS7CDqoML9voXq2B0x32NSY=";
   };
 
   buildType = "ament_cmake";

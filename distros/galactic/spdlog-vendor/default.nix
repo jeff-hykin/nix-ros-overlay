@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-spdlog-vendor";
   version = "1.3.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/spdlog_vendor-release/archive/release/galactic/spdlog_vendor/1.3.0-2.tar.gz";
-    name = "1.3.0-2.tar.gz";
-    sha256 = "2b71709aba3cfa61dc77cd650b009f4806c1bee8b1dc9c91607c2c1bf196beed";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "spdlog_vendor-release";
+    rev = "1c33e5a89d2d8b53d7069d49502a8d2463db3308";
+    owner = "ros2-gbp";
+    sha256 = "sha256-/I9nrqudZ02hCj0xn75WJ6J1NtiiGui/3AD8lsFmM80=";
   };
 
   buildType = "ament_cmake";

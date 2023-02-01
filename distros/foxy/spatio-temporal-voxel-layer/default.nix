@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-spatio-temporal-voxel-layer";
   version = "2.1.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/SteveMacenski/spatio_temporal_voxel_layer-release/archive/release/foxy/spatio_temporal_voxel_layer/2.1.4-1.tar.gz";
-    name = "2.1.4-1.tar.gz";
-    sha256 = "0afe659f14a38c182e9023ae8fc366b9592fc254a7e41ed400904b812181c1b5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "spatio_temporal_voxel_layer-release";
+    rev = "9b14d69050ab98e7a9b12a7481f2ac26bd0d350f";
+    owner = "SteveMacenski";
+    sha256 = "sha256-o8DDCujhpEmleUpWz2sX2eDDwQFXIcqlYgXV8E0ZwOs=";
   };
 
   buildType = "ament_cmake";

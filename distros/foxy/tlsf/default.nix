@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-tlsf";
   version = "0.5.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/tlsf-release/archive/release/foxy/tlsf/0.5.0-1.tar.gz";
-    name = "0.5.0-1.tar.gz";
-    sha256 = "a05caf5872288699965f98be0380289af1fc7ef00f4c42d343dba09ab3be5b5b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "tlsf-release";
+    rev = "0c0b049e24e8852acc9ed39e02c776fba9648867";
+    owner = "ros2-gbp";
+    sha256 = "sha256-DcR1szJimLKC9gU2198lWl7bimXVYPPg2/CNiKEkvqI=";
   };
 
   buildType = "ament_cmake";

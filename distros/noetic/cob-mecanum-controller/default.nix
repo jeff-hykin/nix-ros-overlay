@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-cob-mecanum-controller";
   version = "0.8.20-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_control-release/archive/release/noetic/cob_mecanum_controller/0.8.20-1.tar.gz";
-    name = "0.8.20-1.tar.gz";
-    sha256 = "63d2edacbbd8a3553508dfd7ba8ac3b8e4538dde97efd62bf6afb6a0b57399b1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_control-release";
+    rev = "c074aa289b0e5187a8b4a126f574db37c1d7c6b8";
+    owner = "ipa320";
+    sha256 = "sha256-PRtZ0i62kqNH4/n3lN01kYHTb1LsFlWPouCYT+rwTRg=";
   };
 
   buildType = "catkin";

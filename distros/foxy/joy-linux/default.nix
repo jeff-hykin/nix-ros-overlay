@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-joy-linux";
   version = "3.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/joystick_drivers-release/archive/release/foxy/joy_linux/3.0.1-1.tar.gz";
-    name = "3.0.1-1.tar.gz";
-    sha256 = "95d97d9bfd85e6a8455bc36ca5d9a01aaab46ec8422e0abd0ead7f56b0b8cf4a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "joystick_drivers-release";
+    rev = "dc244fd8e28de1efe0f3ae35c8e6d81caeef88cb";
+    owner = "ros2-gbp";
+    sha256 = "sha256-YlxOcZHQQLAdW445gBw6Vd10DRMHumRdZuFrqnSHfxU=";
   };
 
   buildType = "ament_cmake";

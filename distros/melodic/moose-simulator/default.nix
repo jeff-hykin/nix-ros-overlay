@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-moose-simulator";
   version = "0.1.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/clearpath-gbp/moose_simulator-release/archive/release/melodic/moose_simulator/0.1.3-1.tar.gz";
-    name = "0.1.3-1.tar.gz";
-    sha256 = "6e07c0ddc729792bd9f1437f7ec0498958624b2675eb966aa07d012371977070";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "moose_simulator-release";
+    rev = "07fee75e1335c3f7b91b567de863b31f281ca900";
+    owner = "clearpath-gbp";
+    sha256 = "sha256-U9TZwlgh4emo139idNrc4XqhrI9k+Ca7+rSu/wB82Pk=";
   };
 
   buildType = "catkin";

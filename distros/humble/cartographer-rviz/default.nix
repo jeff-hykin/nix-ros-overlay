@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-cartographer-rviz";
   version = "2.0.9000-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/cartographer_ros-release/archive/release/humble/cartographer_rviz/2.0.9000-2.tar.gz";
-    name = "2.0.9000-2.tar.gz";
-    sha256 = "44cdae3209cad289d23c68c52065cfc6f3ac6a4b3642025f50a1e68a0b7cbae1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cartographer_ros-release";
+    rev = "ebbd5da6f9205d13351a595e6c996ce9d1266e59";
+    owner = "ros2-gbp";
+    sha256 = "sha256-3RT9v1v/g5rj/7vGiqQI52l/LprLAdj/jH2mYk/ifQc=";
   };
 
   buildType = "ament_cmake";

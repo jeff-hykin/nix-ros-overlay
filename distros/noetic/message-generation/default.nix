@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-message-generation";
   version = "0.4.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/message_generation-release/archive/release/noetic/message_generation/0.4.1-1.tar.gz";
-    name = "0.4.1-1.tar.gz";
-    sha256 = "5733a6180d2cd104c5cbbbcd1f20eb11b0edeb6a6253ccdcb300f550264dbde0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "message_generation-release";
+    rev = "b247a74da11ad901f3a24e80e2c9874e40442d50";
+    owner = "ros-gbp";
+    sha256 = "sha256-OcZUypiOwRulERTbxJV5sMzsSKXMMqWkJFWQvexUZtQ=";
   };
 
   buildType = "catkin";

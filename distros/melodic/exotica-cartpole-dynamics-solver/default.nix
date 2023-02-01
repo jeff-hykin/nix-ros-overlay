@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-exotica-cartpole-dynamics-solver";
   version = "6.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipab-slmc/exotica-release/archive/release/melodic/exotica_cartpole_dynamics_solver/6.2.0-1.tar.gz";
-    name = "6.2.0-1.tar.gz";
-    sha256 = "70c082510ca9a1838c04f7de893251a0a510ba195d9078d2b1b9cfd9a8abae9f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "exotica-release";
+    rev = "b29d598acb7feb2748569506895402626771cac4";
+    owner = "ipab-slmc";
+    sha256 = "sha256-46GX8+6hpXfuZFwnn2TnQy+Dq+eN0iPxfFnJ+uBjSm0=";
   };
 
   buildType = "catkin";

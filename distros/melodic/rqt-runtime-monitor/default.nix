@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-rqt-runtime-monitor";
   version = "0.5.7";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/rqt_runtime_monitor-release/archive/release/melodic/rqt_runtime_monitor/0.5.7-0.tar.gz";
-    name = "0.5.7-0.tar.gz";
-    sha256 = "f58958b5649d59fca3022a1771e6a457382744c616835cc65980213ab742fd5c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt_runtime_monitor-release";
+    rev = "b5526295ba6a418ea9e88f0eb7e5e46675d56e7e";
+    owner = "ros-gbp";
+    sha256 = "sha256-JZw3GyHEK3J6Ektad2v2wx4d4YI6TmCTAxflsb5y/nc=";
   };
 
   buildType = "catkin";

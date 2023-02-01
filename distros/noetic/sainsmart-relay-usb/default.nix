@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-sainsmart-relay-usb";
   version = "0.0.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/DataspeedInc-release/sainsmart_relay_usb-release/archive/release/noetic/sainsmart_relay_usb/0.0.4-1.tar.gz";
-    name = "0.0.4-1.tar.gz";
-    sha256 = "5c1f7343e76f28546dc20762d166ea06b37a9090c845ade3eef101254c095503";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "sainsmart_relay_usb-release";
+    rev = "62bfe99d3fab8154f581c00a7181dab3209701f7";
+    owner = "DataspeedInc-release";
+    sha256 = "sha256-Fzb/XLmZfDK4mzsj7j2KjD62n6l4kVABp14CzMML4Xo=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-rqt-gui-cpp";
   version = "1.1.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rqt-release/archive/release/humble/rqt_gui_cpp/1.1.4-1.tar.gz";
-    name = "1.1.4-1.tar.gz";
-    sha256 = "8ebf87599693fbeab3ed3274d74410f1ea1babc174c8cba95f9e5f7c8d8187c8";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt-release";
+    rev = "5419e22562be0486fe3c1cdc4a7ec99c03d8700a";
+    owner = "ros2-gbp";
+    sha256 = "sha256-3oPMWFKkxJOkgApFtRYY2IOmkPlpWi/BQCRpIYS0miU=";
   };
 
   buildType = "ament_cmake";

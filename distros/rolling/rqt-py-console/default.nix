@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-rqt-py-console";
   version = "1.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rqt_py_console-release/archive/release/rolling/rqt_py_console/1.1.0-1.tar.gz";
-    name = "1.1.0-1.tar.gz";
-    sha256 = "4f82602ae32f00fb7d331cfead3d2c000a1b95a2ad05116a821536f222a8c0e3";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt_py_console-release";
+    rev = "5d3832f8d686ff8a5b75d67e64047e20ea588f85";
+    owner = "ros2-gbp";
+    sha256 = "sha256-0VrFeEk9W7/cS0jH2HpeiJSvClmwz+2LmBjgD6JhmHA=";
   };
 
   buildType = "ament_python";

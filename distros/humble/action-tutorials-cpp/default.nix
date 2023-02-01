@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-action-tutorials-cpp";
   version = "0.20.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/demos-release/archive/release/humble/action_tutorials_cpp/0.20.2-1.tar.gz";
-    name = "0.20.2-1.tar.gz";
-    sha256 = "eb08d60baebd3f44a85e85f7ffc96ce502ad898c06db719a41e5ff1cb3e81fbc";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "demos-release";
+    rev = "4a3e332f739c0a800e5d260d5a1e863367df2828";
+    owner = "ros2-gbp";
+    sha256 = "sha256-QiODUlZbIV68wzJdQMVd/qbqSe4vh2UQPVBfD7RpvT4=";
   };
 
   buildType = "ament_cmake";

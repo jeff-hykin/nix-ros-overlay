@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-rttest";
   version = "0.13.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/realtime_support-release/archive/release/humble/rttest/0.13.0-2.tar.gz";
-    name = "0.13.0-2.tar.gz";
-    sha256 = "b2fdf2304565bb63bc0ebc636fd763cef703b120457f7238bef8fa029f14c48e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "realtime_support-release";
+    rev = "ceedc6769ac4ce59c19669c403db6588d5bae69a";
+    owner = "ros2-gbp";
+    sha256 = "sha256-PC9D2ZP/+d4cJp4oF8oJtElhBMMJCsXsSidVy22Rfwo=";
   };
 
   buildType = "ament_cmake";

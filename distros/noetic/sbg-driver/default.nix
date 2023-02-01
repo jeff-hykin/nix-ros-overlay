@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-sbg-driver";
   version = "3.1.1-r7";
 
-  src = fetchurl {
-    url = "https://github.com/SBG-Systems/sbg_ros_driver-release/archive/release/noetic/sbg_driver/3.1.1-7.tar.gz";
-    name = "3.1.1-7.tar.gz";
-    sha256 = "4be93a16debf3e9d4a33389e9f9897a43200b94667b286a6a6dca1660de00514";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "sbg_ros_driver-release";
+    rev = "41b149209502de8f65a6afbc04a0bb6faf79efcc";
+    owner = "SBG-Systems";
+    sha256 = "sha256-JA2fWJxDT+voGEzlNo8hJF5Dq+vLNn5WPnQDumXPQN0=";
   };
 
   buildType = "catkin";

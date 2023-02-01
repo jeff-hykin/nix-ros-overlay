@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-asio-cmake-module";
   version = "1.2.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/transport_drivers-release/archive/release/humble/asio_cmake_module/1.2.0-2.tar.gz";
-    name = "1.2.0-2.tar.gz";
-    sha256 = "c99f1f8e2a27ce9407ae6455f11142cc197994f4b613642d93598c15d67073ca";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "transport_drivers-release";
+    rev = "a4adeccffcc5169f8c20c6355549d96fd0ea0fcd";
+    owner = "ros2-gbp";
+    sha256 = "sha256-S4As/gOIQQTIqYgblUDPs2pjBDmLPz4Ii2/CTMHhRUs=";
   };
 
   buildType = "ament_cmake";

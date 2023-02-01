@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-launch-system-modes";
   version = "0.9.0-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/system_modes-release/archive/release/rolling/launch_system_modes/0.9.0-3.tar.gz";
-    name = "0.9.0-3.tar.gz";
-    sha256 = "ee0eceaf6bf5918dd4c78f3b914d64d5ca9aa806db06775eac91d2804630136f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "system_modes-release";
+    rev = "71a4642cb40ed3183cc5f975f78364bbfea51834";
+    owner = "ros2-gbp";
+    sha256 = "sha256-igv7EQutLOf+qcExGB554hDDTuFxB1P9COvQUY2izGA=";
   };
 
   buildType = "ament_python";

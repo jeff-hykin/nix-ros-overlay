@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-controller-manager";
   version = "1.6.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_control-release/archive/release/galactic/controller_manager/1.6.0-1.tar.gz";
-    name = "1.6.0-1.tar.gz";
-    sha256 = "6f654dc85ad886626ea8ee6f80046883f7ff71c3c2431ba49088099d4caebe76";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_control-release";
+    rev = "807a337cb8c422327e1659d0576393675653345e";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Yy1ct6xcOvYAxkgHRCGSeFhJwDLN4MLdCrE5U1NqYzA=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-menge-vendor";
   version = "1.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/menge_vendor-release/archive/release/galactic/menge_vendor/1.0.0-1.tar.gz";
-    name = "1.0.0-1.tar.gz";
-    sha256 = "25af4778d17722066ce1f6bf922174d33210e2af13dd24c7a4d08cb2047d5c13";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "menge_vendor-release";
+    rev = "7036d8340e00b07c1fc1a09c8e8209f785539a74";
+    owner = "ros2-gbp";
+    sha256 = "sha256-pwDvm+FUMHbvtumRly3aV2QEDQ0UxPN8GlgjCe8TOZE=";
   };
 
   buildType = "catkin";

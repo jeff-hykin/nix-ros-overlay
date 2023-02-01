@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-sdc21x0";
   version = "1.1.6-r1";
 
-  src = fetchurl {
-    url = "https://github.com/uos-gbp/mir_robot-release/archive/release/noetic/sdc21x0/1.1.6-1.tar.gz";
-    name = "1.1.6-1.tar.gz";
-    sha256 = "e4a6afed0cad7c3501694b7f34e4553539ad6043cd1751ae375eab477e46a2e5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mir_robot-release";
+    rev = "3f3b8fbd9122ce7b54a52b8c12ca119719f608cd";
+    owner = "uos-gbp";
+    sha256 = "sha256-n44Iy0oKHNl6ygRCS7LDbgmvlVrjLQxKr8dsp0ShiQ0=";
   };
 
   buildType = "catkin";

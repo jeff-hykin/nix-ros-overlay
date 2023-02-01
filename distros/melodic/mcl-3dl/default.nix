@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-mcl-3dl";
   version = "0.6.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/at-wat/mcl_3dl-release/archive/release/melodic/mcl_3dl/0.6.0-1.tar.gz";
-    name = "0.6.0-1.tar.gz";
-    sha256 = "358c116f956375e1dc894ebfed45ea6cb4db998bdae98bf46d8a365c1ba66cec";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mcl_3dl-release";
+    rev = "2b8a044dfa1401bed5d0e48703747adf25a62953";
+    owner = "at-wat";
+    sha256 = "sha256-psDg0bRBaqqs3vUnli8jZ07DEqlyOhpHZWDgT1eOUj4=";
   };
 
   buildType = "catkin";

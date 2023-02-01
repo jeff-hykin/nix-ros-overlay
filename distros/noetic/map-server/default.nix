@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-map-server";
   version = "1.17.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/navigation-release/archive/release/noetic/map_server/1.17.2-1.tar.gz";
-    name = "1.17.2-1.tar.gz";
-    sha256 = "2aba872bfa613a6f0b91cfe7005e168c82919e3d38c6c6330f8bab2c2b028b82";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation-release";
+    rev = "fda57e2a57df416adbbb337d74a7c7c935a2d986";
+    owner = "ros-gbp";
+    sha256 = "sha256-731WnhYItxaRhYB71y1wdyv9cQuzq87mdQdsYYAByNc=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-gscam";
   version = "2.0.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/gscam-release/archive/release/humble/gscam/2.0.2-1.tar.gz";
-    name = "2.0.2-1.tar.gz";
-    sha256 = "98ee381e66ca35a2b2b3aa69299e1895641a8115a2c13a3e5a74f58167f7e810";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "gscam-release";
+    rev = "19680b4e550e06ba42c71f87213a398dc1eeac56";
+    owner = "ros2-gbp";
+    sha256 = "sha256-CKQzdZxZ6OZeWkirhmcrfJhb0hNN0vSimKIRHSUDT3k=";
   };
 
   buildType = "ament_cmake";

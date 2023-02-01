@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-pacmod-msgs";
   version = "3.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/astuff/astuff_sensor_msgs-release/archive/release/foxy/pacmod_msgs/3.1.0-1.tar.gz";
-    name = "3.1.0-1.tar.gz";
-    sha256 = "2339e91006ab1e3492f75d2c2b620cc5c1a99c2bf633811aa916d9093f97962b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "astuff_sensor_msgs-release";
+    rev = "d5accb23ac8f49f35d838e85f6fd215389fccb09";
+    owner = "astuff";
+    sha256 = "sha256-hPEBGr+Q78JfkJm55oMSuIhKiQ0fuidvRGI/zv9JKDg=";
   };
 
   buildType = "ament_cmake";

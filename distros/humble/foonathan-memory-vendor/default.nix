@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-foonathan-memory-vendor";
   version = "1.2.0-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/foonathan_memory_vendor-release/archive/release/humble/foonathan_memory_vendor/1.2.0-3.tar.gz";
-    name = "1.2.0-3.tar.gz";
-    sha256 = "d2a91cc8925b407621806b5c885ca558972838c52ba57c0cd6dbc6e3870ac8bc";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "foonathan_memory_vendor-release";
+    rev = "1cf70fe6d74f7fc0f536aab4ba0bf7c1cc0d852c";
+    owner = "ros2-gbp";
+    sha256 = "sha256-0DgqmgXZ9PpV/sf51//kHGZGB6L/VNySZf+o8dWcCE4=";
   };
 
   buildType = "cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-pr2-app-manager";
   version = "0.6.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pr2-gbp/pr2_apps-release/archive/release/noetic/pr2_app_manager/0.6.2-1.tar.gz";
-    name = "0.6.2-1.tar.gz";
-    sha256 = "f3cd087830e5f17457de40c24f9f499f3efe2a46a9db773d6ab54bd6c5c30d9b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pr2_apps-release";
+    rev = "6900330caa03e8b1c3ddcf7c182a012d4ce29f54";
+    owner = "pr2-gbp";
+    sha256 = "sha256-AE03CQ3ekbYoUn2rzQSB57Z8kDNU6jfssE/jEvX1Gm4=";
   };
 
   buildType = "catkin";

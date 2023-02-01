@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-resized-image-transport";
   version = "1.2.15-r1";
 
-  src = fetchurl {
-    url = "https://github.com/tork-a/jsk_recognition-release/archive/release/noetic/resized_image_transport/1.2.15-1.tar.gz";
-    name = "1.2.15-1.tar.gz";
-    sha256 = "9a64a0abf330c236a52bad2b2ffc0e9a2075a6d65d82c56485bf8315670aef6a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "jsk_recognition-release";
+    rev = "c46bcc342f9f9b426f4aebf28c8f04378c56a391";
+    owner = "tork-a";
+    sha256 = "sha256-RJV5zmMTKiygVxeQObnXK4bn4Iu2PoRrCwu58yVo9GE=";
   };
 
   buildType = "catkin";

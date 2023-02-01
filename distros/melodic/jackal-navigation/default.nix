@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-jackal-navigation";
   version = "0.7.9-r1";
 
-  src = fetchurl {
-    url = "https://github.com/clearpath-gbp/jackal-release/archive/release/melodic/jackal_navigation/0.7.9-1.tar.gz";
-    name = "0.7.9-1.tar.gz";
-    sha256 = "e709c33ef9e6ab625c9794e9a85321ded1ec0a6c5bc1a01effe53fdefc6e5c55";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "jackal-release";
+    rev = "08efe912603e89c4a133f4f071158234434bb9cc";
+    owner = "clearpath-gbp";
+    sha256 = "sha256-04iedYhhD+4jffEtOR1vpU9ccpDEjrRNE3YhdA6i55o=";
   };
 
   buildType = "catkin";

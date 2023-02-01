@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-demo-nodes-cpp-native";
   version = "0.20.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/demos-release/archive/release/humble/demo_nodes_cpp_native/0.20.2-1.tar.gz";
-    name = "0.20.2-1.tar.gz";
-    sha256 = "24dc9149d2341e0629c8d0dcfc074811eee4107ce03094a4ba2d2908e76b9839";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "demos-release";
+    rev = "51a7950ba5867d363673770ff65bd537cabf7f9b";
+    owner = "ros2-gbp";
+    sha256 = "sha256-MNEaFbk3SKv9FoVOB07DXVKMZWb/4tTb3XOVXVp9jwo=";
   };
 
   buildType = "ament_cmake";

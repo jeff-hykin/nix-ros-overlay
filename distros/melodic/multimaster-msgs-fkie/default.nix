@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-multimaster-msgs-fkie";
   version = "0.8.12";
 
-  src = fetchurl {
-    url = "https://github.com/fkie-release/multimaster_fkie-release/archive/release/melodic/multimaster_msgs_fkie/0.8.12-0.tar.gz";
-    name = "0.8.12-0.tar.gz";
-    sha256 = "e69b1c634583d23b9fce4e222c7e4f1728b6849811b9fcb13ef41b0bb26bbc6a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "multimaster_fkie-release";
+    rev = "a9a63872a027b2cf02d78a92d487b7a947593d93";
+    owner = "fkie-release";
+    sha256 = "sha256-rBXBy/KUDPobfiwqPozi2shgOJ2BCW/T+655H8IAdrg=";
   };
 
   buildType = "catkin";

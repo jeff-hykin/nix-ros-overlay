@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-libqt-svg-dev";
   version = "1.0.1";
 
-  src = fetchurl {
-    url = "https://github.com/swri-robotics-gbp/qt_metapackages-release/archive/release/melodic/libqt_svg_dev/1.0.1-0.tar.gz";
-    name = "1.0.1-0.tar.gz";
-    sha256 = "9650990b4fed04c6f124e9fbd4c007937351ea9b3fbb924e36a6c58aeb89cf95";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "qt_metapackages-release";
+    rev = "7909b368eb3947e43607e72fc340ebb3e5bff4c1";
+    owner = "swri-robotics-gbp";
+    sha256 = "sha256-Z5hcHUKLEz2Ka4Dmze5HFBaNZN6IWiuM0KrGA+KO618=";
   };
 
   buildType = "catkin";

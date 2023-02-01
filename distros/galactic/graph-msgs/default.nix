@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-graph-msgs";
   version = "0.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/PickNikRobotics/graph_msgs-release/archive/release/galactic/graph_msgs/0.2.0-1.tar.gz";
-    name = "0.2.0-1.tar.gz";
-    sha256 = "84456b185bcdd62e724fc3d75d7024a5b87a426e782d86a4e9a894edbe02c09d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "graph_msgs-release";
+    rev = "14de9912a04a46a321f93232fe1a02c99d2d3be5";
+    owner = "PickNikRobotics";
+    sha256 = "sha256-Zs/vEflqm3Ft6PVC5rmE7JAj2pPFja8QAhBxSsH93dg=";
   };
 
   buildType = "ament_cmake";

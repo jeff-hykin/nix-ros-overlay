@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-rc-common-msgs";
   version = "0.5.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/roboception-gbp/rc_common_msgs_ros2-release/archive/release/foxy/rc_common_msgs/0.5.3-1.tar.gz";
-    name = "0.5.3-1.tar.gz";
-    sha256 = "27d6c4743c107216aaef6c0e1ba7adb1bc41d9869c24cc89461f66b03446839e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rc_common_msgs_ros2-release";
+    rev = "457edba36781a3989288227d7d4a2c2cd8c88d30";
+    owner = "roboception-gbp";
+    sha256 = "sha256-/ApqcAoxtUu0eHcF5gxxFhroOIdz457iCAONfAC2xxQ=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-nao-lola";
   version = "0.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/nao_lola-release/archive/release/humble/nao_lola/0.1.0-1.tar.gz";
-    name = "0.1.0-1.tar.gz";
-    sha256 = "efe25b61711696e649f69f3012a7c047646c8d6f95c03dfdc3b333093a7b5aa9";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "nao_lola-release";
+    rev = "18e12d26afd52f779c2b6ee827099278b13d15ac";
+    owner = "ros2-gbp";
+    sha256 = "sha256-QrVYzmnxF5Xm4vVkGJwowRn5uJsVvmO8m+GxUm2/mGM=";
   };
 
   buildType = "ament_cmake";

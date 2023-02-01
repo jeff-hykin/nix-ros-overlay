@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-phidgets-accelerometer";
   version = "2.1.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/phidgets_drivers-release/archive/release/foxy/phidgets_accelerometer/2.1.2-1.tar.gz";
-    name = "2.1.2-1.tar.gz";
-    sha256 = "2bbb3a148e162663b8a236bb614c84e8b802d17c60a35e241ef5e178e5645dd0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "phidgets_drivers-release";
+    rev = "2fd657181269eb7f34596a25c7e1f0c45f851490";
+    owner = "ros2-gbp";
+    sha256 = "sha256-I35ebxXUXohd1MwztXctFfRFUhyaAWuyt52XEv/wzLs=";
   };
 
   buildType = "ament_cmake";

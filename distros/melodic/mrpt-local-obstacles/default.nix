@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-mrpt-local-obstacles";
   version = "1.0.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/mrpt-ros-pkg-release/mrpt_navigation-release/archive/release/melodic/mrpt_local_obstacles/1.0.3-1.tar.gz";
-    name = "1.0.3-1.tar.gz";
-    sha256 = "3b83801d32ab3cd2a9d4058928f76d41f1745c8a32649aef69b868eeadc3e1b0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mrpt_navigation-release";
+    rev = "f714b44fe6c86e84c1508a53eca515de047d26cb";
+    owner = "mrpt-ros-pkg-release";
+    sha256 = "sha256-+XelWhmpNWGN2VPwsYxvnDqE5n0evaT4N/G8w9QpAgk=";
   };
 
   buildType = "catkin";

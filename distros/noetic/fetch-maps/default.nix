@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-fetch-maps";
   version = "0.9.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/fetchrobotics-gbp/fetch_ros-release/archive/release/noetic/fetch_maps/0.9.1-1.tar.gz";
-    name = "0.9.1-1.tar.gz";
-    sha256 = "4679e269f796a687cef2c846602aec7a1de7873f1c0fcaa624b87f14a1efa265";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "fetch_ros-release";
+    rev = "59f3eeb15be7928931ec07fe2ac4143553fcf5b3";
+    owner = "fetchrobotics-gbp";
+    sha256 = "sha256-Vz/V1nh53BKPB/EWB3sjHFp+tc7XVHdd1V1M+eYAbzA=";
   };
 
   buildType = "catkin";

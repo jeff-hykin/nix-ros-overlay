@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-mavros";
   version = "2.4.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/mavros-release/archive/release/humble/mavros/2.4.0-1.tar.gz";
-    name = "2.4.0-1.tar.gz";
-    sha256 = "88fbffb80a779bb9bf3d19057fabe92901c9a6c6ae4b102f70a391ddbc8f026b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mavros-release";
+    rev = "e2ad77afaf7f0794286c29ceef19bf2393b31aef";
+    owner = "ros2-gbp";
+    sha256 = "sha256-vNoFZgoW95lOa0ryKo2cAkU20W/qQoNLgqDkdPSoV3k=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rqt-gui-py";
   version = "1.1.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rqt-release/archive/release/galactic/rqt_gui_py/1.1.2-1.tar.gz";
-    name = "1.1.2-1.tar.gz";
-    sha256 = "7ef3fcbcb013a9f65ec8c4f81872a39fa8a2a68bba5a14085d2ab0fc20306fab";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt-release";
+    rev = "7b234ad3e624be976f574b6916fffab6c09a35d3";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Z1xpdHqrroatppbZ89rbS8bNQO3WaHAfP9UPhXMW+Jg=";
   };
 
   buildType = "ament_python";

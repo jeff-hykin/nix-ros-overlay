@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-grid-map-rviz-plugin";
   version = "1.6.4-r2";
 
-  src = fetchurl {
-    url = "https://github.com/anybotics/grid_map-release/archive/release/melodic/grid_map_rviz_plugin/1.6.4-2.tar.gz";
-    name = "1.6.4-2.tar.gz";
-    sha256 = "3f7fc2d4d92f2b696fb751d0b62d995fcdcb23d6ba640805ac5fdb52e0b85c90";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "grid_map-release";
+    rev = "e274bb14f8003828f170a4064d92c952f5878049";
+    owner = "anybotics";
+    sha256 = "sha256-qkqH5aUWlSvVepOidlz6yY+8sUudmC/bNxbUjoJGTPE=";
   };
 
   buildType = "catkin";

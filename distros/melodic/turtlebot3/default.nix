@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-turtlebot3";
   version = "1.2.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ROBOTIS-GIT-release/turtlebot3-release/archive/release/melodic/turtlebot3/1.2.5-1.tar.gz";
-    name = "1.2.5-1.tar.gz";
-    sha256 = "e394c49a47c91bb821f4c037d47671e7150d6efc7e1eac31fa8688566abd56fc";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "turtlebot3-release";
+    rev = "a0c94c8d006cca01882e27a6c7fe743b90b1e28c";
+    owner = "ROBOTIS-GIT-release";
+    sha256 = "sha256-SU4ybJCdTW15hpQ0GnGfnmgggYfL4fQna7krrMH3kYc=";
   };
 
   buildType = "catkin";

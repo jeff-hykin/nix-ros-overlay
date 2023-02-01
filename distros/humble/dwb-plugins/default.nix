@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-dwb-plugins";
   version = "1.1.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/SteveMacenski/navigation2-release/archive/release/humble/dwb_plugins/1.1.5-1.tar.gz";
-    name = "1.1.5-1.tar.gz";
-    sha256 = "680106bc09a50e96dfd648728280cae6d8158d2ddf41dd7ae3b782594295242e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation2-release";
+    rev = "eeeba81bee84f4da2ce76bbb2a1ad18f9ec88fc8";
+    owner = "SteveMacenski";
+    sha256 = "sha256-/c+dY1wJkWPiml1tZTlDsCyseFNgOXBYcqGe9HPYy7M=";
   };
 
   buildType = "ament_cmake";

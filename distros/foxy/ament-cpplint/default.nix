@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-ament-cpplint";
   version = "0.9.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ament_lint-release/archive/release/foxy/ament_cpplint/0.9.7-1.tar.gz";
-    name = "0.9.7-1.tar.gz";
-    sha256 = "aba0bf64ed047084b1bac202d6816724171fd0406caa79c29a043375fe18d90f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ament_lint-release";
+    rev = "53273e81f2557c5fb053a453c0c6cb1be3a2c94c";
+    owner = "ros2-gbp";
+    sha256 = "sha256-1lu9LNoSJp59Gq6w0sgemkEuOcQQ1QZ0oDOynJQn7KA=";
   };
 
   buildType = "ament_python";

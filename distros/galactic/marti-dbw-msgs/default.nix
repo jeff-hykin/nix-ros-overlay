@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-marti-dbw-msgs";
   version = "1.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/marti_messages-release/archive/release/galactic/marti_dbw_msgs/1.3.0-1.tar.gz";
-    name = "1.3.0-1.tar.gz";
-    sha256 = "5a9911555baf2193cf06b608fba4b1acffa794c5e17dd77e1d10d14b8319d59f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "marti_messages-release";
+    rev = "f50bbbb97497cf439884837b79930a339b9fde53";
+    owner = "ros2-gbp";
+    sha256 = "sha256-JvC6VZgKaBLZehzL6s0p9Ce81FcuP/N42zHmtGhRBVQ=";
   };
 
   buildType = "ament_cmake";

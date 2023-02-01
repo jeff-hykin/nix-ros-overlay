@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-ridgeback-msgs";
   version = "0.3.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/clearpath-gbp/ridgeback-release/archive/release/noetic/ridgeback_msgs/0.3.2-1.tar.gz";
-    name = "0.3.2-1.tar.gz";
-    sha256 = "b861ea515733bd8c57a7facd666157dc9b310d45256fea511e650c83f6640c3c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ridgeback-release";
+    rev = "f5d18babf4f653ca764dcc9b392def81e6cd8c7f";
+    owner = "clearpath-gbp";
+    sha256 = "sha256-9AdMPbHoE4N6jtsXL8GjsODsMhPZ0jg4J2MA95KotOk=";
   };
 
   buildType = "catkin";

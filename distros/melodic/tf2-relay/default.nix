@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-tf2-relay";
   version = "0.0.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/clearpath-gbp/cpr_multimaster_tools-release/archive/release/melodic/tf2_relay/0.0.2-1.tar.gz";
-    name = "0.0.2-1.tar.gz";
-    sha256 = "6052668a6f51ee065e7833b033ade709311193d3b62f662e38dd617eab05dc31";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cpr_multimaster_tools-release";
+    rev = "77f034b418706fb6e918722e5f7a317b1e09cfa1";
+    owner = "clearpath-gbp";
+    sha256 = "sha256-2dW7qeIgKV94Evu95Q6kQYTI+4UxzA7v+Y8PdvjPggA=";
   };
 
   buildType = "catkin";

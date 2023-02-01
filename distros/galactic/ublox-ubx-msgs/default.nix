@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ublox-ubx-msgs";
   version = "0.2.3-r4";
 
-  src = fetchurl {
-    url = "https://github.com/aussierobots/ublox_dgnss-release/archive/release/galactic/ublox_ubx_msgs/0.2.3-4.tar.gz";
-    name = "0.2.3-4.tar.gz";
-    sha256 = "eb69525840403fb60e8661a4fbbe4032825ceba682b34df96293c869ee8fec2e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ublox_dgnss-release";
+    rev = "60890d236cb3565146fb94e58e3907a371dabfad";
+    owner = "aussierobots";
+    sha256 = "sha256-ukd9Jfu8FQylW3L3Ht0llJUgpGXfKwUdIADYpIQT4+c=";
   };
 
   buildType = "ament_cmake";

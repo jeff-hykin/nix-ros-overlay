@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-laser-geometry";
   version = "2.2.1-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/laser_geometry-release/archive/release/galactic/laser_geometry/2.2.1-2.tar.gz";
-    name = "2.2.1-2.tar.gz";
-    sha256 = "09a0499d6564798ee347edb2adec160417301e9daf607569907538a4c88ab0f5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "laser_geometry-release";
+    rev = "4bc51213f820492ab47bd9c750b9d91b12efae01";
+    owner = "ros2-gbp";
+    sha256 = "sha256-+ON/OzmNb/CvwupDNslHYbJmq2PPBFsoi8pDR1Q0UZI=";
   };
 
   buildType = "ament_cmake";

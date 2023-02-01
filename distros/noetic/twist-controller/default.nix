@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-twist-controller";
   version = "0.1.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/UniversalRobots/Universal_Robots_ROS_controllers_cartesian-release/archive/release/noetic/twist_controller/0.1.5-1.tar.gz";
-    name = "0.1.5-1.tar.gz";
-    sha256 = "1ce2d703821975d1535d64e9e5c182991f4e004fa5ebca3613468eb1521c3494";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "Universal_Robots_ROS_controllers_cartesian-release";
+    rev = "6d99c08e1c5fa0b4873e333c8be1225463690733";
+    owner = "UniversalRobots";
+    sha256 = "sha256-9ZeNKdV61DwK8A4FzIF2BhS/N6mso+lQk0SA+KP4xcQ=";
   };
 
   buildType = "catkin";

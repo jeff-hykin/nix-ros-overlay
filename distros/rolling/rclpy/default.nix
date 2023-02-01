@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-rclpy";
   version = "3.7.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rclpy-release/archive/release/rolling/rclpy/3.7.1-1.tar.gz";
-    name = "3.7.1-1.tar.gz";
-    sha256 = "0ab4628b5c8c90bceb74209e6ff3cb6ef4b66cb758cc1f12a1c84d5610a32e9d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rclpy-release";
+    rev = "6f506304e5cafad614d079a29de0190e0c053e14";
+    owner = "ros2-gbp";
+    sha256 = "sha256-BwZ0LEM2Uqd4pGLV1s0iYsr5Oi4dDJ8wQw5zX7kEwjU=";
   };
 
   buildType = "ament_cmake";

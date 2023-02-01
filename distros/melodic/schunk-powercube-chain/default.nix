@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-schunk-powercube-chain";
   version = "0.6.14-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/schunk_modular_robotics-release/archive/release/melodic/schunk_powercube_chain/0.6.14-1.tar.gz";
-    name = "0.6.14-1.tar.gz";
-    sha256 = "3e7774dfbaa500ebffd5a4c7cb63ea881e6941d0a5635e787e1707418bcf94db";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "schunk_modular_robotics-release";
+    rev = "9c4842ec17091b072256f8075f8e33a59f7e3871";
+    owner = "ipa320";
+    sha256 = "sha256-Bqgv2EXXzyTj4bgp8Pyf6AeyfOJABpGhtH/ln7pomEg=";
   };
 
   buildType = "catkin";

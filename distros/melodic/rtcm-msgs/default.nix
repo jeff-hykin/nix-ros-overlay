@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-rtcm-msgs";
   version = "1.1.6-r1";
 
-  src = fetchurl {
-    url = "https://github.com/nobleo/rtcm_msgs-release/archive/release/melodic/rtcm_msgs/1.1.6-1.tar.gz";
-    name = "1.1.6-1.tar.gz";
-    sha256 = "19fc3432ee5e525194ebbb7fac86afabcc2565e492980fd342cf42b44c49bd13";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rtcm_msgs-release";
+    rev = "ed1fec7fe2719cf3fea608716d63b43d0e5bacb3";
+    owner = "nobleo";
+    sha256 = "sha256-5yTtIdGostlOwChSlKKL4JivCyK284g0KYZxB6GBtBY=";
   };
 
   buildType = "catkin";

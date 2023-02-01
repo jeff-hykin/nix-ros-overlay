@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-jsk-interactive";
   version = "2.1.8-r1";
 
-  src = fetchurl {
-    url = "https://github.com/tork-a/jsk_visualization-release/archive/release/noetic/jsk_interactive/2.1.8-1.tar.gz";
-    name = "2.1.8-1.tar.gz";
-    sha256 = "ade9c8c7968de594d1f5ca67d8bda9adb2570635b1f35141004f5dabbe0a6eff";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "jsk_visualization-release";
+    rev = "28a340598632ddd072349e1281da83fbd23111e4";
+    owner = "tork-a";
+    sha256 = "sha256-C+M96eJuZZF6C9yX4tInILOfgUeuYbiQrDkG4U0nZBg=";
   };
 
   buildType = "catkin";

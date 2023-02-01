@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-ros2cli-test-interfaces";
   version = "0.18.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2cli-release/archive/release/humble/ros2cli_test_interfaces/0.18.4-1.tar.gz";
-    name = "0.18.4-1.tar.gz";
-    sha256 = "1d61d81df6177c086ab4165dae655cbf75ab158f078c80ecf8268ac5f401480f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2cli-release";
+    rev = "c6fd07bc0d23cd57c281de7a101feb50076c753a";
+    owner = "ros2-gbp";
+    sha256 = "sha256-l7g29bBY+X141DFAJXzmVkQbk89XIIJLbDN5hcP769g=";
   };
 
   buildType = "ament_cmake";

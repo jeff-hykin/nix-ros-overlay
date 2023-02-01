@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-nav2-velocity-smoother";
   version = "1.1.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/SteveMacenski/navigation2-release/archive/release/humble/nav2_velocity_smoother/1.1.5-1.tar.gz";
-    name = "1.1.5-1.tar.gz";
-    sha256 = "2ebbcd9ff0c4d242d5b20fae5f9d92fcc925d782ea49bda17236a9cc331d149b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation2-release";
+    rev = "034110a7b84f9d0b7080129e38cb00383376e7f8";
+    owner = "SteveMacenski";
+    sha256 = "sha256-QDEhW7N52Cm8gzkCT+SPekTsyqB0hha6XZFIFo3FwYw=";
   };
 
   buildType = "ament_cmake";

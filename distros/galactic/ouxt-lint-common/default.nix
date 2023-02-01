@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ouxt-lint-common";
   version = "0.0.8-r1";
 
-  src = fetchurl {
-    url = "https://github.com/OUXT-Polaris/ouxt_common-release/archive/release/galactic/ouxt_lint_common/0.0.8-1.tar.gz";
-    name = "0.0.8-1.tar.gz";
-    sha256 = "a87d0ee3b565afb10f1832e04cfb3f96df1cf3b47a448e369de7b8bc162d1375";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ouxt_common-release";
+    rev = "c8ce77ee4dced6901a1a760561cc32b55521628b";
+    owner = "OUXT-Polaris";
+    sha256 = "sha256-CzvbzrJWL16B2/c63ryLS008hT4dSu50P4AhU+lsHpQ=";
   };
 
   buildType = "ament_cmake";

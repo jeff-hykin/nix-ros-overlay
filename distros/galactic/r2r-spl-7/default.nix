@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-r2r-spl-7";
   version = "1.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/r2r_spl-release/archive/release/galactic/r2r_spl_7/1.0.1-1.tar.gz";
-    name = "1.0.1-1.tar.gz";
-    sha256 = "d102f7a313333d6b1ff1b73273f57dbadb59a668a85d6622192ae75d6906476e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "r2r_spl-release";
+    rev = "dcf35cc2e6966a8101710d789189652254d94b21";
+    owner = "ros2-gbp";
+    sha256 = "sha256-voaByqDgfdkWawnWHpZ/o0R+mubkv+0G2BuEOCXX+jA=";
   };
 
   buildType = "ament_python";

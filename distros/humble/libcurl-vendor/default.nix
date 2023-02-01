@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-libcurl-vendor";
   version = "3.1.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/resource_retriever-release/archive/release/humble/libcurl_vendor/3.1.0-2.tar.gz";
-    name = "3.1.0-2.tar.gz";
-    sha256 = "f9e630d70bf23cb9d439fc1e4e13585aa2597845db73c2757ca88fd8c9a58dc4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "resource_retriever-release";
+    rev = "b565298a1bba93bab7caebea32524dae79ced2f5";
+    owner = "ros2-gbp";
+    sha256 = "sha256-hnJT1GRIpUFCwr0wW94B0TvBuLV71VZtvo0i/+lpipk=";
   };
 
   buildType = "ament_cmake";

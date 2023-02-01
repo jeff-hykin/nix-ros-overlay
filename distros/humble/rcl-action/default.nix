@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-rcl-action";
   version = "5.3.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rcl-release/archive/release/humble/rcl_action/5.3.2-1.tar.gz";
-    name = "5.3.2-1.tar.gz";
-    sha256 = "b87df2ea6d1aef94ec8df1a77381d429a360fc7f0e880f1a16062a9913ba1f9b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rcl-release";
+    rev = "b015355292b0261dc34e51d7a9ac9db7abf0f1d5";
+    owner = "ros2-gbp";
+    sha256 = "sha256-pGKf9lCnstyNK9fOu0embE+OpL/ZkI8bK33+rimR4qA=";
   };
 
   buildType = "ament_cmake";

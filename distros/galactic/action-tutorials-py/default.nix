@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-action-tutorials-py";
   version = "0.14.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/demos-release/archive/release/galactic/action_tutorials_py/0.14.4-1.tar.gz";
-    name = "0.14.4-1.tar.gz";
-    sha256 = "c8297ec3c29764425bd0eee85cfd8d82559c92222cc81e6c3cd95537df47b1da";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "demos-release";
+    rev = "f40459dd89a0c9921da2e1fff07912b02ee81bd2";
+    owner = "ros2-gbp";
+    sha256 = "sha256-3SFGaIqBIWbdIwtgF1g/XJDB0K9yEvvZiy89+i2MmP0=";
   };
 
   buildType = "ament_python";

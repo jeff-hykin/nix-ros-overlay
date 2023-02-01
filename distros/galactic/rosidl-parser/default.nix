@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rosidl-parser";
   version = "2.2.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rosidl-release/archive/release/galactic/rosidl_parser/2.2.3-1.tar.gz";
-    name = "2.2.3-1.tar.gz";
-    sha256 = "56c3f0911b8ae2b392da15144269a7f2e7fdf7e2dedb40defbc617b040a9e505";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosidl-release";
+    rev = "701a095de1a31f905286fefd5b8297f91654e65d";
+    owner = "ros2-gbp";
+    sha256 = "sha256-X8UcHQZuCs01wUU1TwPwi3G4/HOr2KzkWohTLCn0hLs=";
   };
 
   buildType = "ament_cmake";

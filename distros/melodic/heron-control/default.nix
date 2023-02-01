@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-heron-control";
   version = "0.3.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/clearpath-gbp/heron-release/archive/release/melodic/heron_control/0.3.4-1.tar.gz";
-    name = "0.3.4-1.tar.gz";
-    sha256 = "fd775e78508739fa2e7860a3c9b23c24e37f1b9015a75de364c91693aed01738";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "heron-release";
+    rev = "ce0a5794bf5151184d8f3e350a19016a98d0d697";
+    owner = "clearpath-gbp";
+    sha256 = "sha256-iUddH8vBWHyrp3GIk4z4+IhAWysPl9DsKXj9k/RTCLE=";
   };
 
   buildType = "catkin";

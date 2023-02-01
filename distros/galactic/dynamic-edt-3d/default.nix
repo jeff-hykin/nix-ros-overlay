@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-dynamic-edt-3d";
   version = "1.9.8-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/octomap-release/archive/release/galactic/dynamic_edt_3d/1.9.8-1.tar.gz";
-    name = "1.9.8-1.tar.gz";
-    sha256 = "7978860470859665103211ff214abe844d51042785a403dd8e65b36fa66f334e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "octomap-release";
+    rev = "0f91b83fb928df5173a516713300b0c9483cd1a9";
+    owner = "ros-gbp";
+    sha256 = "sha256-p28ass6agSiGQV14tRJGr41aVOpOe1vDp5HCLwOyx7A=";
   };
 
   buildType = "cmake";

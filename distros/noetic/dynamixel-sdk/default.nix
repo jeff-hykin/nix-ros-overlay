@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-dynamixel-sdk";
   version = "3.7.51-r4";
 
-  src = fetchurl {
-    url = "https://github.com/ROBOTIS-GIT-release/DynamixelSDK-release/archive/release/noetic/dynamixel_sdk/3.7.51-4.tar.gz";
-    name = "3.7.51-4.tar.gz";
-    sha256 = "2af181d5c4a9fbadfaf2b4d52e26836aa038c22dcc233c85487712b7300a8c8b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "DynamixelSDK-release";
+    rev = "4e34188de918320ef91ff95b64fff1ca084ad77f";
+    owner = "ROBOTIS-GIT-release";
+    sha256 = "sha256-wTXs6YQHEhPL8cckdQ0sDogjfCPmOEQpGhWi5ao5EkU=";
   };
 
   buildType = "catkin";

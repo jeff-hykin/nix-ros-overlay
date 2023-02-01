@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-geometric-shapes";
   version = "2.1.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/moveit/geometric_shapes-release/archive/release/galactic/geometric_shapes/2.1.2-1.tar.gz";
-    name = "2.1.2-1.tar.gz";
-    sha256 = "17046796eb62521f9991f3fe32081187980b4340f8c43642ea6dc6f804780fc9";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "geometric_shapes-release";
+    rev = "a1b73037ece08f5b33b267cf9999c5e8a13b5afc";
+    owner = "moveit";
+    sha256 = "sha256-fKyq87F5dzlpnnoMG+LFuJyqkcGTPQeBgwnw5dEFigw=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-transmission-interface";
   version = "2.18.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_control-release/archive/release/humble/transmission_interface/2.18.0-1.tar.gz";
-    name = "2.18.0-1.tar.gz";
-    sha256 = "d0baa1cee4e7219d2108563176f2972645acf02cf6d204165ef60b19a239091a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_control-release";
+    rev = "85528776ad8c08d295918f56574bb0f823ba2133";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Q/RNupGwZEP9tlPeIseLRX3s0T2jBc7XjsPGgvk4KRo=";
   };
 
   buildType = "ament_cmake";

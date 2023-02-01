@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-robot-controllers-interface";
   version = "0.8.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/fetchrobotics-gbp/robot_controllers-ros2-release/archive/release/foxy/robot_controllers_interface/0.8.1-1.tar.gz";
-    name = "0.8.1-1.tar.gz";
-    sha256 = "c34090c04dcef35df231de376dc095fb722460236635f1b9f2a9e3b6978667cc";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "robot_controllers-ros2-release";
+    rev = "b730b2e37ee8c874617a772b87394b1d3a2d0eb4";
+    owner = "fetchrobotics-gbp";
+    sha256 = "sha256-9mHPtMaKJvMwpAGr/u2cBP40bC7Tl7xA8lTKwnirR0E=";
   };
 
   buildType = "ament_cmake";

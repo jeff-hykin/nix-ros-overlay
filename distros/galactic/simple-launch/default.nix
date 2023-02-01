@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-simple-launch";
   version = "1.6.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/simple_launch-release/archive/release/galactic/simple_launch/1.6.1-1.tar.gz";
-    name = "1.6.1-1.tar.gz";
-    sha256 = "3517e4720a5e3735fa0ffafad366c11561076c48e5fef162b446fcf9663225a7";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "simple_launch-release";
+    rev = "01f7d3362495fb0bb634e002e2a55e2c049caabe";
+    owner = "ros2-gbp";
+    sha256 = "sha256-dm6gKnTktDZtpVDY0z4sFNSDEnCrkcisjbhRlAMPcZo=";
   };
 
   buildType = "ament_cmake";

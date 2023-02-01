@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-console-bridge-vendor";
   version = "1.4.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/console_bridge_vendor-release/archive/release/humble/console_bridge_vendor/1.4.0-2.tar.gz";
-    name = "1.4.0-2.tar.gz";
-    sha256 = "1fffbc5c06fb893a4eabd0e2b59fb049e5b97c6d1c33f8415b97b28271151863";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "console_bridge_vendor-release";
+    rev = "45606e14e5431524bb8d18b41da5846a5e4f25d1";
+    owner = "ros2-gbp";
+    sha256 = "sha256-0df6z8eC3XXTh9o2s5Ad09jnBekWiITS0VAl8oWoLcg=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-udp-driver";
   version = "1.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/transport_drivers-release/archive/release/galactic/udp_driver/1.1.1-1.tar.gz";
-    name = "1.1.1-1.tar.gz";
-    sha256 = "a8db46b11f9368828d770dde8118732da8ce7c4363cb370eec2145c7cc56ab04";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "transport_drivers-release";
+    rev = "dcd966c6a57e45d035ceea52897a1e5779af334e";
+    owner = "ros2-gbp";
+    sha256 = "sha256-EnOjjKhX0oW+jrxT2n3nXCNyj0hNBUXfFRTkoc9ansc=";
   };
 
   buildType = "ament_cmake";

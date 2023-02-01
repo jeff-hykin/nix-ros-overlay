@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-realsense2-camera";
   version = "2.3.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/IntelRealSense/realsense-ros-release/archive/release/melodic/realsense2_camera/2.3.2-1.tar.gz";
-    name = "2.3.2-1.tar.gz";
-    sha256 = "481e740a9e28f8241e1ed5009090839286e3a0e50589414c5f4b6ecac6f07d12";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "realsense-ros-release";
+    rev = "c951ae0a42408786c50a4a7774d5dee3dbd18e62";
+    owner = "IntelRealSense";
+    sha256 = "sha256-My96v7R1TsuqQAkUC7ZyVCcfGG1OmhuJGnHJESXvwqY=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-image-transport";
   version = "1.11.13";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/image_common-release/archive/release/melodic/image_transport/1.11.13-0.tar.gz";
-    name = "1.11.13-0.tar.gz";
-    sha256 = "070c49d03d5320c322237672d62c34b3fd3f8c4b311a76f3572894f368421d55";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "image_common-release";
+    rev = "ff9a9a10aca2b23faa0d21d60c3420902ebe400d";
+    owner = "ros-gbp";
+    sha256 = "sha256-FbqaPg89mI4nws9/v/igDm+galB2BztRSX9ophhKySU=";
   };
 
   buildType = "catkin";

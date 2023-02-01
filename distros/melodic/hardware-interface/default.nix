@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-hardware-interface";
   version = "0.18.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/ros_control-release/archive/release/melodic/hardware_interface/0.18.4-1.tar.gz";
-    name = "0.18.4-1.tar.gz";
-    sha256 = "b80c58cf8ee11ea90f4efbe8498f686bc6b0e64c023b933e4abc1994f05b6bcc";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_control-release";
+    rev = "c99693b6747b88ad4e38aa476f5b17a7add8dd66";
+    owner = "ros-gbp";
+    sha256 = "sha256-4H2pPdoomobbAGAPzEqQkZMyslto82qtVTxZECDMhCQ=";
   };
 
   buildType = "catkin";

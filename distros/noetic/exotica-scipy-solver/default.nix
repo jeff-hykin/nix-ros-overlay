@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-exotica-scipy-solver";
   version = "6.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipab-slmc/exotica-release/archive/release/noetic/exotica_scipy_solver/6.2.0-1.tar.gz";
-    name = "6.2.0-1.tar.gz";
-    sha256 = "46dae74a65ba823ea0ba88ab9bd99d21cd57b130064c1b30ac0a0b0b02ac0c26";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "exotica-release";
+    rev = "b26008597944eae225653bf4bb1baf78ee82f6a9";
+    owner = "ipab-slmc";
+    sha256 = "sha256-CggoxRV9IGNIxfQ7XQw7mz91JtbthH40E0SfUQ0XDOs=";
   };
 
   buildType = "catkin";

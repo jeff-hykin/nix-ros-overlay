@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-nav2d-tutorials";
   version = "0.4.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/skasperski/navigation_2d-release/archive/release/noetic/nav2d_tutorials/0.4.3-1.tar.gz";
-    name = "0.4.3-1.tar.gz";
-    sha256 = "56ecf7b85421c00cbe828e17b78bfacd0dc841cbe4847d659782a8b42716ea0d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation_2d-release";
+    rev = "0a397c126b52cd393a7021f2b6af44b613e66d56";
+    owner = "skasperski";
+    sha256 = "sha256-Z4yRVoTemH2OUmlzQq6VycHzoIkI3FRMKMg55WcTvUc=";
   };
 
   buildType = "catkin";

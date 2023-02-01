@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-open-manipulator";
   version = "2.0.1";
 
-  src = fetchurl {
-    url = "https://github.com/ROBOTIS-GIT-release/open_manipulator-release/archive/release/melodic/open_manipulator/2.0.1-0.tar.gz";
-    name = "2.0.1-0.tar.gz";
-    sha256 = "8de684b52de5da0e425146ae3a13c0ab79f047544aa163c5b3344b8df2284ea3";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "open_manipulator-release";
+    rev = "a8a289fd4bcb11a575c62707f3a8d9285ee5ca47";
+    owner = "ROBOTIS-GIT-release";
+    sha256 = "sha256-wV0oBwVk7IocHqBnl55/eVTQ/k6jKrYL/aTfuEZLySo=";
   };
 
   buildType = "catkin";

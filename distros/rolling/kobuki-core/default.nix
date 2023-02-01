@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-kobuki-core";
   version = "1.4.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/kobuki_core-release/archive/release/rolling/kobuki_core/1.4.0-1.tar.gz";
-    name = "1.4.0-1.tar.gz";
-    sha256 = "3c514482ffa613e205601017f8680fdac9716bcf860ff72a2e0da08d77b4779b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "kobuki_core-release";
+    rev = "0a5af936c95217b2f1ac921bb2fada78c9c7d63b";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Bq/+5lnLAiJ2HQtIr0h6wB08J7OxRxT4YhcLHIrCUwI=";
   };
 
   buildType = "ament_cmake";

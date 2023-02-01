@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-xacro";
   version = "2.0.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/xacro-release/archive/release/galactic/xacro/2.0.7-1.tar.gz";
-    name = "2.0.7-1.tar.gz";
-    sha256 = "c6aeb71b83e4aa7c0f2a074ecef114137db3474c3b4728308a100e1baa20c847";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "xacro-release";
+    rev = "d8805b72e6f7ad983142c70a2e90b68dc4a3e10e";
+    owner = "ros2-gbp";
+    sha256 = "sha256-5jQLrEuz1WWJIJnpqyLBXOKVwC2psfhlPCPOOaFXjf4=";
   };
 
   buildType = "ament_cmake";

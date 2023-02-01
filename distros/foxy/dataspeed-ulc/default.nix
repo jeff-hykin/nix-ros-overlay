@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-dataspeed-ulc";
   version = "2.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/DataspeedInc-release/dbw_ros-release/archive/release/foxy/dataspeed_ulc/2.1.0-1.tar.gz";
-    name = "2.1.0-1.tar.gz";
-    sha256 = "86c742b5eaa252fe72708e33c4552758a7241d68bb5ffef3a505a58800d19a19";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "dbw_ros-release";
+    rev = "1a3a59428fd67b1682c1499ff3bacbda9f9e7f36";
+    owner = "DataspeedInc-release";
+    sha256 = "sha256-ZX+1t6NMshgUlsPUMx7ORSzFingeQBXSui5xepG7Zss=";
   };
 
   buildType = "ament_cmake";

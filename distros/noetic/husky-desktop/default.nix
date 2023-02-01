@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-husky-desktop";
   version = "0.6.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/clearpath-gbp/husky-release/archive/release/noetic/husky_desktop/0.6.5-1.tar.gz";
-    name = "0.6.5-1.tar.gz";
-    sha256 = "83b14b55f8ff40a2b978ceb94e938576e8bfc9178b336dca33ccb6f7e123f512";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "husky-release";
+    rev = "1e8382978b0c859ea1ad0bb1246732878ec97f94";
+    owner = "clearpath-gbp";
+    sha256 = "sha256-hrXB+9LKA+1+iCviGKQjekCRpRQTnNsqf+H1JNFZroU=";
   };
 
   buildType = "catkin";

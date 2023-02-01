@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-test-interface-files";
   version = "0.9.1-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/test_interface_files-release/archive/release/humble/test_interface_files/0.9.1-2.tar.gz";
-    name = "0.9.1-2.tar.gz";
-    sha256 = "d679abe08969464aad372b28f86d13953175f1346e3c42cca9f6651d9eed4430";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "test_interface_files-release";
+    rev = "e3d0c4e82b4ae8f07faa3c45d235a70313fb2e38";
+    owner = "ros2-gbp";
+    sha256 = "sha256-QNZlkUZcUAHAOEUnh0h7Ba8nKb7O6zH6wj36lqQKQSo=";
   };
 
   buildType = "ament_cmake";

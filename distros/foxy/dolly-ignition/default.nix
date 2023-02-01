@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-dolly-ignition";
   version = "0.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/chapulina/dolly-release/archive/release/foxy/dolly_ignition/0.3.0-1.tar.gz";
-    name = "0.3.0-1.tar.gz";
-    sha256 = "73060f3527bdf2b339720edae21e65c8462d2f62f45f5e85280bfdf9b707935d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "dolly-release";
+    rev = "0e6059cc4b706dd9504a555829d1c19be867da41";
+    owner = "chapulina";
+    sha256 = "sha256-byFER7fLZrWQwlO4ub0cMakVst1N8jDGxxXGiSd6KBE=";
   };
 
   buildType = "ament_cmake";

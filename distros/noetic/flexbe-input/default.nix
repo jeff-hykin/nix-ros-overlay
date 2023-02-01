@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-flexbe-input";
   version = "1.3.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/FlexBE/flexbe_behavior_engine-release/archive/release/noetic/flexbe_input/1.3.1-1.tar.gz";
-    name = "1.3.1-1.tar.gz";
-    sha256 = "6c8d5821e450c6cfa8831c5a04ebcd015ba4be97f22016a0c7bc17cf8220b085";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "flexbe_behavior_engine-release";
+    rev = "0b101c4054a34157f25b13f81c707c5fab26d38c";
+    owner = "FlexBE";
+    sha256 = "sha256-d7s3Rg5/scjED5UuXBN4+jbf08+qXoTcmYN0itVunFs=";
   };
 
   buildType = "catkin";

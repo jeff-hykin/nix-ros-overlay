@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-ecl-manipulators";
   version = "1.2.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/yujinrobot-release/ecl_core-release/archive/release/rolling/ecl_manipulators/1.2.1-1.tar.gz";
-    name = "1.2.1-1.tar.gz";
-    sha256 = "2b7523ed7c5da28eab425982742775852fa2c4b9f104487d6e63139b17db9d85";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ecl_core-release";
+    rev = "a0bdb7fd0998b58c1ef80e7a287579a57802d867";
+    owner = "yujinrobot-release";
+    sha256 = "sha256-O2B7UtubuHvctssWyG6E5OwnApjjdWF+m62+6Da9Qy4=";
   };
 
   buildType = "ament_cmake";

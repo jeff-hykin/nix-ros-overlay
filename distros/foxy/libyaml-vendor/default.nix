@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-libyaml-vendor";
   version = "1.0.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/libyaml_vendor-release/archive/release/foxy/libyaml_vendor/1.0.4-1.tar.gz";
-    name = "1.0.4-1.tar.gz";
-    sha256 = "d708f94e913702062a24568fa0589bdc36de45fffb7423a7155de544b81066f0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "libyaml_vendor-release";
+    rev = "cd9d142fc516348621f444e2e0ef4ded2a9ea3f3";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Joc1FjzPFxl6QGbovN/9V1aodctV+TC5TvSN4SYLoo4=";
   };
 
   buildType = "ament_cmake";

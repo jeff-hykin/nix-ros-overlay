@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-mavros";
   version = "2.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/mavlink/mavros-release/archive/release/galactic/mavros/2.3.0-1.tar.gz";
-    name = "2.3.0-1.tar.gz";
-    sha256 = "41967fc33571276c858ecf263df13b2c5458bea35f410e4a71412cba2b127f9a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mavros-release";
+    rev = "4af2083fd2a6c3ed2794b34456b17ec79bd035ba";
+    owner = "mavlink";
+    sha256 = "sha256-MDh7o1ZY42MWQHMKOaf3ZD68AjA4Xu2O+2s3Yqel4TU=";
   };
 
   buildType = "ament_cmake";

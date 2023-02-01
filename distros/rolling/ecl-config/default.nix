@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-ecl-config";
   version = "1.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/yujinrobot-release/ecl_lite-release/archive/release/rolling/ecl_config/1.2.0-1.tar.gz";
-    name = "1.2.0-1.tar.gz";
-    sha256 = "3bbb4c9a84ce2a3431ccbdf79e2201144ede725164df3e6a26acef5a949cc35b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ecl_lite-release";
+    rev = "5bb3c308bf3f0a7517e16b4167f6b9401c961b36";
+    owner = "yujinrobot-release";
+    sha256 = "sha256-eH0ytH9tso+gcYGQSXy83dIPeklxY5K+/Jo0cV9qAxI=";
   };
 
   buildType = "ament_cmake";

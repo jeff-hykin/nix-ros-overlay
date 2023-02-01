@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-mrp2-teleop";
   version = "1.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/milvusrobotics/mrp2_common-release/archive/release/melodic/mrp2_teleop/1.0.1-1.tar.gz";
-    name = "1.0.1-1.tar.gz";
-    sha256 = "2ce1fc55f49d75f858d0933568b15a432db23769b1241f5a088468b0ca12c21c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mrp2_common-release";
+    rev = "42d97667422780d36619db17ed47884c6cfc5842";
+    owner = "milvusrobotics";
+    sha256 = "sha256-145swAhbbQb9dqNWJryLDUGL1vu6wMMiDgodSIQOY2g=";
   };
 
   buildType = "catkin";

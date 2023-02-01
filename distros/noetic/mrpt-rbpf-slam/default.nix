@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-mrpt-rbpf-slam";
   version = "0.1.11-r1";
 
-  src = fetchurl {
-    url = "https://github.com/mrpt-ros-pkg-release/mrpt_slam-release/archive/release/noetic/mrpt_rbpf_slam/0.1.11-1.tar.gz";
-    name = "0.1.11-1.tar.gz";
-    sha256 = "29d9e82f748f18580fd8b628c708f68461ba338ab1bbf0214ae4f35f617a9470";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mrpt_slam-release";
+    rev = "6ec0817d7dc7a8e9d406a5fa8d75f80e2e1d9447";
+    owner = "mrpt-ros-pkg-release";
+    sha256 = "sha256-S9voaKHnvhr1x/m5p2YAk57lulo17tfE6XZ5B1jRets=";
   };
 
   buildType = "catkin";

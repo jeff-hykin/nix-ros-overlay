@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-ipcamera-driver";
   version = "0.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/alireza-hosseini/ipcamera_driver-release/archive/release/noetic/ipcamera_driver/0.1.1-1.tar.gz";
-    name = "0.1.1-1.tar.gz";
-    sha256 = "a1b25abd5b024972c806f46fa24f8abad5f3ec0e072baa282277ef354fb9fb57";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ipcamera_driver-release";
+    rev = "2edb40fcbcbeaf3f9096d5fba45477a7ba8d5ee3";
+    owner = "alireza-hosseini";
+    sha256 = "sha256-ivR9wNM/QGVEMrcRR4wv52fRANuXyRpFrdwOBa11HyM=";
   };
 
   buildType = "catkin";

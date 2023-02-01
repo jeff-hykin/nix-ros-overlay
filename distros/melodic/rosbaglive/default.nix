@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-rosbaglive";
   version = "0.2.6-r1";
 
-  src = fetchurl {
-    url = "https://github.com/wu-robotics/wu_ros_tools/archive/release/melodic/rosbaglive/0.2.6-1.tar.gz";
-    name = "0.2.6-1.tar.gz";
-    sha256 = "c7493934d67cb74ec6c94a40eb7089f647945123c38dd4f3e61f597eb05316fd";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "wu_ros_tools";
+    rev = "793b7c3fbb787bff75e5a7c72d232460de5545d3";
+    owner = "wu-robotics";
+    sha256 = "sha256-CAb2UyKf/xGLOdVeyk+zr8i9YcENc4rwlKPmuF/H7+A=";
   };
 
   buildType = "catkin";

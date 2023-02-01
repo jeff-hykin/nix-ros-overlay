@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-lanelet2-routing";
   version = "1.1.1-r2";
 
-  src = fetchurl {
-    url = "https://github.com/fzi-forschungszentrum-informatik/lanelet2-release/archive/release/galactic/lanelet2_routing/1.1.1-2.tar.gz";
-    name = "1.1.1-2.tar.gz";
-    sha256 = "cd07c8fee21f21b9550d3dbf340986fb7bec11f7417ef75660f7d9ba44aa6a2d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "lanelet2-release";
+    rev = "33252336befa9e51b1bb858e9ac50f328c6de648";
+    owner = "fzi-forschungszentrum-informatik";
+    sha256 = "sha256-bcQwF0woqvqfOeIO7haHyco3dmf6CNAotcyEVFPHkGk=";
   };
 
   buildType = "ament_cmake";

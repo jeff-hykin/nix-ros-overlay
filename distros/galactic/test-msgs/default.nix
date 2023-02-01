@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-test-msgs";
   version = "1.0.3-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rcl_interfaces-release/archive/release/galactic/test_msgs/1.0.3-2.tar.gz";
-    name = "1.0.3-2.tar.gz";
-    sha256 = "f057d60066fb9652cacb6c05fdd3aefd24753dfa1cad1e3a1fab90627037ca0b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rcl_interfaces-release";
+    rev = "ce92f0d55c49dc2913eab66e3f961a11add4bb85";
+    owner = "ros2-gbp";
+    sha256 = "sha256-xumJKs51Tga3UCyzmcNwHIsaJVH799H/8sDF/uimiAs=";
   };
 
   buildType = "ament_cmake";

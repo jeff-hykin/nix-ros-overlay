@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-joint-state-publisher";
   version = "2.2.0-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/joint_state_publisher-release/archive/release/galactic/joint_state_publisher/2.2.0-3.tar.gz";
-    name = "2.2.0-3.tar.gz";
-    sha256 = "e7b7cc65ad235f54a82563077113676508176a8b83dbba12b10255ea7522d8c9";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "joint_state_publisher-release";
+    rev = "564ef77742afbea647cc85bf4bdd69ee1ea7284c";
+    owner = "ros2-gbp";
+    sha256 = "sha256-9T/bX7rzYwP/oXz0tsPYAqQG8350HL0xyeMG/cs2fCE=";
   };
 
   buildType = "ament_python";

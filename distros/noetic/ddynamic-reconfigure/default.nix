@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-ddynamic-reconfigure";
   version = "0.3.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pal-gbp/ddynamic_reconfigure/archive/release/noetic/ddynamic_reconfigure/0.3.2-1.tar.gz";
-    name = "0.3.2-1.tar.gz";
-    sha256 = "1eb2ca206bff8c11dfc8522a25051d2f0ada8e36779e7c7f6f517ca3ac49a593";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ddynamic_reconfigure";
+    rev = "cd5c06dbc1cacc5fdf31f97d11a8287a774579a0";
+    owner = "pal-gbp";
+    sha256 = "sha256-7wU8+pg/natOlu90zvVV2vjRO1Gv7TBEiKiPXcpxOuM=";
   };
 
   buildType = "catkin";

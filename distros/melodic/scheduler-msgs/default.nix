@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-scheduler-msgs";
   version = "0.9.0";
 
-  src = fetchurl {
-    url = "https://github.com/yujinrobot-release/rocon_msgs-release/archive/release/melodic/scheduler_msgs/0.9.0-0.tar.gz";
-    name = "0.9.0-0.tar.gz";
-    sha256 = "1b4d4544455c6a6b0cd9dfa8388e3f497ada0125fd906b544ccdb0d23a491a71";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rocon_msgs-release";
+    rev = "77b90f8c70aa4cba67232711a398b6ef7b78524e";
+    owner = "yujinrobot-release";
+    sha256 = "sha256-d6PkSXculGsa08XSRC+nKk3dWV1ANnD6hRpHjqNJbF4=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-image-geometry";
   version = "3.0.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/vision_opencv-release/archive/release/foxy/image_geometry/3.0.7-1.tar.gz";
-    name = "3.0.7-1.tar.gz";
-    sha256 = "323dc42a166ad381774c4608fb561ed5397388a5c3da2bad47028415089fd8d6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "vision_opencv-release";
+    rev = "4bdefeea85afc718368c3561dea1ddc9014864d5";
+    owner = "ros2-gbp";
+    sha256 = "sha256-RIRX/Qs+emLde0yu9P4jOcs9EUjkuGCRormi+0yNz9E=";
   };
 
   buildType = "ament_cmake";

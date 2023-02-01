@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-fetch-depth-layer";
   version = "0.9.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/fetchrobotics-gbp/fetch_ros-release/archive/release/noetic/fetch_depth_layer/0.9.1-1.tar.gz";
-    name = "0.9.1-1.tar.gz";
-    sha256 = "42b7005d4a31d5ef1c928f52c0dc93f8106833a1a5170cec4e7f10f9defec6be";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "fetch_ros-release";
+    rev = "5c13f408ce5cd5e60ae95beafda912fd9bf2449d";
+    owner = "fetchrobotics-gbp";
+    sha256 = "sha256-8S/AnxtezsLI7dDfrvPZCzix/8tOj1WBA4RVD3McCX0=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-novatel-gps-msgs";
   version = "4.1.1-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/novatel_gps_driver-release/archive/release/humble/novatel_gps_msgs/4.1.1-2.tar.gz";
-    name = "4.1.1-2.tar.gz";
-    sha256 = "a114c62a2cf518dba63512014612730d8ac13d936f6e43ab243d6f442b9f8fe6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "novatel_gps_driver-release";
+    rev = "7b96dab4ef16f7f958f321761b32b49da4b08e73";
+    owner = "ros2-gbp";
+    sha256 = "sha256-m46G0xJJOb+WmCE3ngzX6N/Vuj9P1OU+dKjQdt/QsvM=";
   };
 
   buildType = "ament_cmake";

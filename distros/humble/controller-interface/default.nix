@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-controller-interface";
   version = "2.18.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_control-release/archive/release/humble/controller_interface/2.18.0-1.tar.gz";
-    name = "2.18.0-1.tar.gz";
-    sha256 = "6012df43306af0440164c2c3ab63355664fddd3ab5c62712f2f8284be549c1ac";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_control-release";
+    rev = "87789658d097b1220827407a47758e0392ec8db1";
+    owner = "ros2-gbp";
+    sha256 = "sha256-FkNWRjuLB+OVOMUBxDShwkr+oxJIn01O1fCzx6nidCk=";
   };
 
   buildType = "ament_cmake";

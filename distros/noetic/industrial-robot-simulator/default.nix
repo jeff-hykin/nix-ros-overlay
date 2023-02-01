@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-industrial-robot-simulator";
   version = "0.7.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-industrial-release/industrial_core-release/archive/release/noetic/industrial_robot_simulator/0.7.3-1.tar.gz";
-    name = "0.7.3-1.tar.gz";
-    sha256 = "daf1437c8dce7a3064c9ac78c7a29b89e0ba36623b2c1105743305029244545c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "industrial_core-release";
+    rev = "83fb22c9e81bd0c4c1e2e4481f91a7fbb239e90a";
+    owner = "ros-industrial-release";
+    sha256 = "sha256-oYT+ady9spoNwZ6DmC3djlPcdjo8n/W6uxh/mn0VMeE=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-dbw-mkz-joystick-demo";
   version = "1.6.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/DataspeedInc-release/dbw_mkz_ros-release/archive/release/noetic/dbw_mkz_joystick_demo/1.6.0-1.tar.gz";
-    name = "1.6.0-1.tar.gz";
-    sha256 = "97ac3f61dff26b108262155a3b65a3329dbf1c792e64e836bfa065b7cf78cab5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "dbw_mkz_ros-release";
+    rev = "eafba2a0cef7682586c962d1dd5252c64c5c59d3";
+    owner = "DataspeedInc-release";
+    sha256 = "sha256-rwm6KNrm3whiLIq07anS6H5tS7pY8G/vEorJYmCFPVE=";
   };
 
   buildType = "catkin";

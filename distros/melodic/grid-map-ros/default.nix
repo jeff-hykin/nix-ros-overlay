@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-grid-map-ros";
   version = "1.6.4-r2";
 
-  src = fetchurl {
-    url = "https://github.com/anybotics/grid_map-release/archive/release/melodic/grid_map_ros/1.6.4-2.tar.gz";
-    name = "1.6.4-2.tar.gz";
-    sha256 = "721766d9f080d0901ced0f174bef73beee1a0aa5b9a6b7085d2f615633a76afc";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "grid_map-release";
+    rev = "f3862c08303e75bc5abb5706fc07948cb2756b69";
+    owner = "anybotics";
+    sha256 = "sha256-aSYRr866BBxYhDK+2NSG7GeqCRLOZtAdOg9aWY9mm4s=";
   };
 
   buildType = "catkin";

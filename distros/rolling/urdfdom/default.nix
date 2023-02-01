@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-urdfdom";
   version = "3.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/urdfdom-release/archive/release/rolling/urdfdom/3.1.0-1.tar.gz";
-    name = "3.1.0-1.tar.gz";
-    sha256 = "dd657dbb15bca6ae1ab50377cdae82d40c28919e16ac358d86ec1cb4266743a9";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "urdfdom-release";
+    rev = "6b9b3b73e4adec9ba825d393334591e25370759f";
+    owner = "ros2-gbp";
+    sha256 = "sha256-uf1A8WiR0CUX++NOSAeS3g9D3ixzhY/rX9AVp0uBsfg=";
   };
 
   buildType = "cmake";

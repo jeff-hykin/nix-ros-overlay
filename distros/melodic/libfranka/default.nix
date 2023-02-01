@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-libfranka";
   version = "0.9.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/frankaemika/libfranka-release/archive/release/melodic/libfranka/0.9.0-1.tar.gz";
-    name = "0.9.0-1.tar.gz";
-    sha256 = "777d6d9868cacdedcf85f08d5a89c5e8a88b6fd13c86c82774104b9a91e44ad2";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "libfranka-release";
+    rev = "46146db797a9180a6d199c7a1893672ea0c62574";
+    owner = "frankaemika";
+    sha256 = "sha256-mK0cgRsFaLdV7y2lH3lTD9CxwgHG8JhVdNSEFFjCulU=";
   };
 
   buildType = "cmake";

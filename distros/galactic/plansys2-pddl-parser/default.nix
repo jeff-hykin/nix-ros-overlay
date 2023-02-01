@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-plansys2-pddl-parser";
   version = "2.0.8-r1";
 
-  src = fetchurl {
-    url = "https://github.com/IntelligentRoboticsLabs/ros2_planning_system-release/archive/release/galactic/plansys2_pddl_parser/2.0.8-1.tar.gz";
-    name = "2.0.8-1.tar.gz";
-    sha256 = "a5c1a57e29b045f0512d7b319f1a2317aaf93f835468cde8d128b8210e0588b0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_planning_system-release";
+    rev = "118b83b728fcb4dbf782c32ad0407af702e8c4d4";
+    owner = "IntelligentRoboticsLabs";
+    sha256 = "sha256-sVrs/1LaaXh/q/vbHliYgulmqEUXCzhXMGE+YyJPNH0=";
   };
 
   buildType = "ament_cmake";

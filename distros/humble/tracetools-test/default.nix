@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-tracetools-test";
   version = "4.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_tracing-release/archive/release/humble/tracetools_test/4.1.1-1.tar.gz";
-    name = "4.1.1-1.tar.gz";
-    sha256 = "78ef19510f297837af388cf9b630d58bc6fcc4b512c52ad01c361894f3d9fe26";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_tracing-release";
+    rev = "a2e7bdc0708f67a32efaf2e32f069eeb7976d12e";
+    owner = "ros2-gbp";
+    sha256 = "sha256-8nCkrsV/VFYy1st5spOxIpYzsa3Iq2oFGNz/Rj5a61o=";
   };
 
   buildType = "ament_python";

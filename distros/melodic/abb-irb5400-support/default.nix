@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-abb-irb5400-support";
   version = "1.3.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-industrial-release/abb-release/archive/release/melodic/abb_irb5400_support/1.3.1-1.tar.gz";
-    name = "1.3.1-1.tar.gz";
-    sha256 = "6755bde5b9794edba2c80fcfc27fc7c5eb8e3cdd992d8da9bbc4a8c907139f5c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "abb-release";
+    rev = "f8edbfd8167ed8b181cd49f263cbb10481239ce2";
+    owner = "ros-industrial-release";
+    sha256 = "sha256-EjPl+MXMG3pAqhpa2CPH7HHPyRwCO9ewgpvvrRvtpLw=";
   };
 
   buildType = "catkin";

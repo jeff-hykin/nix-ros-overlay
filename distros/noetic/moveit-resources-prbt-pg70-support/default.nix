@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-moveit-resources-prbt-pg70-support";
   version = "0.8.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/moveit_resources-release/archive/release/noetic/moveit_resources_prbt_pg70_support/0.8.2-1.tar.gz";
-    name = "0.8.2-1.tar.gz";
-    sha256 = "12d22c95034d670242999e2fb67155c8a5fadc627e03003d67e636b92457dbef";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "moveit_resources-release";
+    rev = "6e66e451a972f2c83f131a0ebf93c17679a3000a";
+    owner = "ros-gbp";
+    sha256 = "sha256-IWH45Xs5jhmDag0Uio1oJZOuBXicS+t1sWIrH0XKn+I=";
   };
 
   buildType = "catkin";

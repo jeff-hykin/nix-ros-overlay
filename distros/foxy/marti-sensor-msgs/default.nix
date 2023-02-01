@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-marti-sensor-msgs";
   version = "1.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/marti_messages-release/archive/release/foxy/marti_sensor_msgs/1.3.0-1.tar.gz";
-    name = "1.3.0-1.tar.gz";
-    sha256 = "d2c4a05d7186475c3a9c8bc3a33d36c45450ff528814a9f5f6e0e8ad919f9327";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "marti_messages-release";
+    rev = "7e9b1a08526c015b4f24364b7ec8da7564c8e76a";
+    owner = "ros2-gbp";
+    sha256 = "sha256-hGNz/a7qOnf12cPokEyjxe+Xp1zESqFYCzYxTa7Fg4g=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-swri-transform-util";
   version = "3.5.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/marti_common-release/archive/release/foxy/swri_transform_util/3.5.1-1.tar.gz";
-    name = "3.5.1-1.tar.gz";
-    sha256 = "16395bf2618211f424219c8376fd2cb15059479eb0e643c84ea8139e6e192a31";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "marti_common-release";
+    rev = "7bbf3b366954ec6f940059a6d9d2ccb27241ac27";
+    owner = "ros2-gbp";
+    sha256 = "sha256-JZrEbYFoFAgDSJCYxRmTEujv2o8bEw0DmnKY4Zgsobg=";
   };
 
   buildType = "ament_cmake";

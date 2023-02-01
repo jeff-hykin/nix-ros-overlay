@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-smclib";
   version = "1.8.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/bond_core-release/archive/release/melodic/smclib/1.8.5-1.tar.gz";
-    name = "1.8.5-1.tar.gz";
-    sha256 = "7048853d548eef1c934bf174c172b5afa93bdbe089a55667d045863feb40919f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "bond_core-release";
+    rev = "3dfb3710f77627e0c98c36a4b1dd4ee1c78f3213";
+    owner = "ros-gbp";
+    sha256 = "sha256-e3SGip9Gr6EYIqYbZB3DjHN7br0wyzvoBhq1CtIt504=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-dataspeed-dbw-gateway";
   version = "2.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/DataspeedInc-release/dbw_ros-release/archive/release/foxy/dataspeed_dbw_gateway/2.1.0-1.tar.gz";
-    name = "2.1.0-1.tar.gz";
-    sha256 = "45169d46cd7151d990e6b6553be338538ddb57b92f4196d605ce5892bab14fc2";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "dbw_ros-release";
+    rev = "6fe9acda8c37d0bb3fe33ad7c341808a1da5422d";
+    owner = "DataspeedInc-release";
+    sha256 = "sha256-hTtqX2TJmgsx/Aam6gR2Y8ollukRDs+9O15e7u/bt5o=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-desistek-saga-control";
   version = "0.3.2";
 
-  src = fetchurl {
-    url = "https://github.com/uuvsimulator/desistek_saga-release/archive/release/melodic/desistek_saga_control/0.3.2-0.tar.gz";
-    name = "0.3.2-0.tar.gz";
-    sha256 = "81fe5ef7f2ef085fcb784c8799971f63dd8f145ea59a04902b1adc9f04eda688";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "desistek_saga-release";
+    rev = "dcb71a48df3beb9e913f0492e845dd930b0d98e7";
+    owner = "uuvsimulator";
+    sha256 = "sha256-zztWgXl9XnBH7Xz+OKOiQJ43hmz4vvjFnseZts8+f8U=";
   };
 
   buildType = "catkin";

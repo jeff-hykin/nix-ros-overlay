@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rti-connext-dds-cmake-module";
   version = "0.6.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmw_connextdds-release/archive/release/galactic/rti_connext_dds_cmake_module/0.6.3-1.tar.gz";
-    name = "0.6.3-1.tar.gz";
-    sha256 = "a6bcc95b271c577be51d2649e4ca5d7b71eaf625871bdadccee2beb9fdaee11a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmw_connextdds-release";
+    rev = "3a15ccae3b54e6836e7908ab05b98d048bdc40ba";
+    owner = "ros2-gbp";
+    sha256 = "sha256-IQf2zqZD00aylrHjgyAZW6l8osgssuje85qZnNN+y2c=";
   };
 
   buildType = "ament_cmake";

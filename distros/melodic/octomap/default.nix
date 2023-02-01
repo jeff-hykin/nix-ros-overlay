@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-octomap";
   version = "1.9.8-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/octomap-release/archive/release/melodic/octomap/1.9.8-1.tar.gz";
-    name = "1.9.8-1.tar.gz";
-    sha256 = "deed4682029157898edbe591eada25b7c2acdef246d5097343ef79cc4f137245";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "octomap-release";
+    rev = "88e71c9431372e64721ee5fd36f7dcb6fd1a728c";
+    owner = "ros-gbp";
+    sha256 = "sha256-1C49qDf+5BFNi34JzrSFN0B0kNfv1MBTmcdT/hEjkKI=";
   };
 
   buildType = "cmake";

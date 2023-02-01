@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-soccer-object-msgs";
   version = "1.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ijnek/soccer_object_msgs-release/archive/release/galactic/soccer_object_msgs/1.0.1-1.tar.gz";
-    name = "1.0.1-1.tar.gz";
-    sha256 = "a8655139be867e798d39895b8424fc89e9f604dbb7ea6f37d7a202e4e63e2198";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "soccer_object_msgs-release";
+    rev = "42b23643df7444e11e4c11c64db24580d1a0c46d";
+    owner = "ijnek";
+    sha256 = "sha256-L9tzxNygLV6DbioNwnYhQLIEZ49+s1/LRBiPsBXopTw=";
   };
 
   buildType = "ament_cmake";

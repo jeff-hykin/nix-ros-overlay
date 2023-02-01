@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-stereo-image-proc";
   version = "2.2.1-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/image_pipeline-release/archive/release/galactic/stereo_image_proc/2.2.1-3.tar.gz";
-    name = "2.2.1-3.tar.gz";
-    sha256 = "1ad5b56a4512a600c6b01061fde14395deee73430e76ea9dba6da90ae96cd0b1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "image_pipeline-release";
+    rev = "f2e39d3cdf5a2944aa6bedc8b88cdb99b6f379b9";
+    owner = "ros2-gbp";
+    sha256 = "sha256-ZUOL0gWngi5rBcvlzWlLl0xzG0hK8PiTkOmMvg3eP7U=";
   };
 
   buildType = "ament_cmake";

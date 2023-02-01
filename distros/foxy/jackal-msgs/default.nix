@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-jackal-msgs";
   version = "1.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/clearpath-gbp/jackal-release/archive/release/foxy/jackal_msgs/1.0.1-1.tar.gz";
-    name = "1.0.1-1.tar.gz";
-    sha256 = "ea4f510daae2761aa419fb8742dda67946f52dc87b02cda9d7048a1691144d18";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "jackal-release";
+    rev = "ce3ce032b1c32db7f93bd14fe566204c34dfb104";
+    owner = "clearpath-gbp";
+    sha256 = "sha256-hggIjZMIOSKxdWiAWB4npRNxurXTRH3q+1RNy4uQ5Dk=";
   };
 
   buildType = "ament_cmake";

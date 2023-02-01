@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-tricycle-controller";
   version = "2.15.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_controllers-release/archive/release/humble/tricycle_controller/2.15.0-1.tar.gz";
-    name = "2.15.0-1.tar.gz";
-    sha256 = "c8d7a4c7a63b7fa55a5f2c0b374dd5b0b2bfe9dba10ff5213a03370cd43c3d3a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_controllers-release";
+    rev = "03a7f120a090064e318578a5e1787510e2b430be";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Q2tkjnGNutP8yH/Tca21URpPlVJLcEk3nhdsAn3Irk0=";
   };
 
   buildType = "ament_cmake";

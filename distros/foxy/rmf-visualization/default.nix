@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-rmf-visualization";
   version = "1.2.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_visualization-release/archive/release/foxy/rmf_visualization/1.2.1-1.tar.gz";
-    name = "1.2.1-1.tar.gz";
-    sha256 = "c8a75b715b70804b1820c00a9d4f4329238842fc3d0961035191c8cd06069186";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_visualization-release";
+    rev = "4c3bba6c254a3a7802a8731a4c06b8d3841e0ac6";
+    owner = "ros2-gbp";
+    sha256 = "sha256-gltCzDc0xlPFXncVu5VC3oXDeZ9aWLULzt2UtN4CqVg=";
   };
 
   buildType = "ament_cmake";

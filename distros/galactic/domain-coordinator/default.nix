@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-domain-coordinator";
   version = "0.9.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ament_cmake_ros-release/archive/release/galactic/domain_coordinator/0.9.2-1.tar.gz";
-    name = "0.9.2-1.tar.gz";
-    sha256 = "e7c6a6eabff14a83695e10f801ee4f484260f0d3aa53fc97346ff6a68abc302a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ament_cmake_ros-release";
+    rev = "29f563bba34f65e761f411e232d5afa09f021494";
+    owner = "ros2-gbp";
+    sha256 = "sha256-KsoDZfHbqVDIEtXAmeR3Zb+vvEtYVCPpTwFkq6weOEo=";
   };
 
   buildType = "ament_python";

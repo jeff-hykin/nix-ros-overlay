@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-moveit-chomp-optimizer-adapter";
   version = "1.0.11-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/moveit-release/archive/release/melodic/moveit_chomp_optimizer_adapter/1.0.11-1.tar.gz";
-    name = "1.0.11-1.tar.gz";
-    sha256 = "89749df53a84c6ebc9182fabcf7e45bbb26170d8bfdf69d03c468f0daa303146";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "moveit-release";
+    rev = "b3f8bb33ea3e09fd9ef5d14c1fa61f9a6a3a0298";
+    owner = "ros-gbp";
+    sha256 = "sha256-5arj3l8LY18JokO+BeMFCtJr08tEn2ncDDaJ+cus4Bo=";
   };
 
   buildType = "catkin";

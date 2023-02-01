@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-mrpt-bridge";
   version = "1.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/mrpt-ros-pkg-release/mrpt_bridge-release/archive/release/melodic/mrpt_bridge/1.0.1-1.tar.gz";
-    name = "1.0.1-1.tar.gz";
-    sha256 = "b7ddc4f04da6b2785c62e70a39c1d34a9872c2066457c932e17c765978994a4b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mrpt_bridge-release";
+    rev = "22a91301d0223dcdf0155379dad69f208a5a8613";
+    owner = "mrpt-ros-pkg-release";
+    sha256 = "sha256-9geX7dVwj7I5yWR53I4DtOHTxmwzaP5X4hJ1quh0XLc=";
   };
 
   buildType = "catkin";

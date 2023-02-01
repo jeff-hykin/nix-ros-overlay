@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-gpsd-client";
   version = "0.3.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/swri-robotics-gbp/gps_umd-release/archive/release/noetic/gpsd_client/0.3.3-1.tar.gz";
-    name = "0.3.3-1.tar.gz";
-    sha256 = "dc8b37e6b30d5983609a9ca86c0dea4febbd2c8b9830a5d7ce698ac2d440b5a8";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "gps_umd-release";
+    rev = "d9b33e07f04597aeaf684ce7581f35c5304b59d4";
+    owner = "swri-robotics-gbp";
+    sha256 = "sha256-MiUnHvwdIX+rvfcj2Uaok4Jud6lyIakUHJBnMsr9Z1g=";
   };
 
   buildType = "catkin";

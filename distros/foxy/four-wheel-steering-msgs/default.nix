@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-four-wheel-steering-msgs";
   version = "2.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-drivers-gbp/four_wheel_steering_msgs-release/archive/release/foxy/four_wheel_steering_msgs/2.0.1-1.tar.gz";
-    name = "2.0.1-1.tar.gz";
-    sha256 = "cfcd9be53b7fbc6539cff556d44317ba0dcfa3c4baf131944f8d58e7e8fd7f0b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "four_wheel_steering_msgs-release";
+    rev = "da67b89aacd756955acbe43a6ff5f43686c373f3";
+    owner = "ros-drivers-gbp";
+    sha256 = "sha256-lESkZ6d2jUSfCCCB5KsV8gJwBTO0EG7O4/LInYggSzc=";
   };
 
   buildType = "ament_cmake";

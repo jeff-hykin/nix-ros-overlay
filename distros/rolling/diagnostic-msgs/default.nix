@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-diagnostic-msgs";
   version = "4.6.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/common_interfaces-release/archive/release/rolling/diagnostic_msgs/4.6.1-1.tar.gz";
-    name = "4.6.1-1.tar.gz";
-    sha256 = "3a36f7c3926f58c5917c90eac301a7ee129aaa1f0d53375cedd18bf9049d82e3";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "common_interfaces-release";
+    rev = "9780bb36ae5ac1ca413fa71f0cb79a9d313de5f5";
+    owner = "ros2-gbp";
+    sha256 = "sha256-G2oGUWcZ7XwEMoAQaDrW3Wiui70GllJAYBw+b5XERiU=";
   };
 
   buildType = "ament_cmake";

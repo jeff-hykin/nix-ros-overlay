@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-class-loader";
   version = "2.1.2-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/class_loader-release/archive/release/galactic/class_loader/2.1.2-2.tar.gz";
-    name = "2.1.2-2.tar.gz";
-    sha256 = "64b8ced25b48226ea1560c7c6be8c71072a6d4cfacc307a48cfddc1fa29420f2";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "class_loader-release";
+    rev = "fc89011486518d9ce6b38ad22ea99d71aaa0737d";
+    owner = "ros2-gbp";
+    sha256 = "sha256-bEfmv4Mv0tEVskhKz3PjYO+YJMHJ5TEAhPYD1AyOvFg=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-jointstick";
   version = "0.9.1-r2";
 
-  src = fetchurl {
-    url = "https://github.com/gstavrinos/jointstick-release/archive/release/melodic/jointstick/0.9.1-2.tar.gz";
-    name = "0.9.1-2.tar.gz";
-    sha256 = "40810fdb769af4467b634649a2cfabf49337ae5e00fe08f034fe0555036ba39f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "jointstick-release";
+    rev = "2a77b4eb0bf08286f92af6295f0727b326430907";
+    owner = "gstavrinos";
+    sha256 = "sha256-GLWoprPLuRIvTq9KSnbDS/PgnOwIOUnHXJY/IpJGaO0=";
   };
 
   buildType = "catkin";

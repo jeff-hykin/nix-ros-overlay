@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-tinyxml-vendor";
   version = "0.8.2-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/tinyxml_vendor-release/archive/release/galactic/tinyxml_vendor/0.8.2-2.tar.gz";
-    name = "0.8.2-2.tar.gz";
-    sha256 = "61582cf218208ba794d93713fa6418f35fcc44cf599169a031fc742d000f9e09";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "tinyxml_vendor-release";
+    rev = "15407b0e55148eea18bdd7713732852d306f8558";
+    owner = "ros2-gbp";
+    sha256 = "sha256-i4Agh+ALMy1/SugIEi0CXA8PONq7VOR42fI4sEUsY34=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rmf-fleet-adapter";
   version = "1.4.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_ros2-release/archive/release/galactic/rmf_fleet_adapter/1.4.0-1.tar.gz";
-    name = "1.4.0-1.tar.gz";
-    sha256 = "806cc079e4e866ab2ec957feb8055d16246c5b202f7db582c62ad7292fb4f6c7";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_ros2-release";
+    rev = "ac447828c8f45b661cdf1159095bffaf5ddb0bdc";
+    owner = "ros2-gbp";
+    sha256 = "sha256-rJiBXIiOhjSc3ZruX4Zq8QVgF7LzhEYkAMYH9XnxDXQ=";
   };
 
   buildType = "ament_cmake";

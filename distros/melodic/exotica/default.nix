@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-exotica";
   version = "6.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipab-slmc/exotica-release/archive/release/melodic/exotica/6.2.0-1.tar.gz";
-    name = "6.2.0-1.tar.gz";
-    sha256 = "20efa697c52405088af5188ee7e119d6492f1272efe15849ae20c059fbba2880";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "exotica-release";
+    rev = "c627cbd8d2d87f0b29f8227588491b94946a4787";
+    owner = "ipab-slmc";
+    sha256 = "sha256-EMvZOSauwNKhUlur+T3Bn7rDI0oFyhOhDPQGhd0TkUo=";
   };
 
   buildType = "catkin";

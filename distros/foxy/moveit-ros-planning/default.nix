@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-moveit-ros-planning";
   version = "2.2.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/moveit/moveit2-release/archive/release/foxy/moveit_ros_planning/2.2.3-1.tar.gz";
-    name = "2.2.3-1.tar.gz";
-    sha256 = "bdb3c9502aee29ad8bb9b38ed6d3128ca81134a54e713e8c2a0a16656b35d950";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "moveit2-release";
+    rev = "5be17435a2c84a13f5247028c020ecb03ca0b9b0";
+    owner = "moveit";
+    sha256 = "sha256-+gMrk8eOnIYCsaeNq0PIysGmmWpCT0Aff+0qzZ6nEvk=";
   };
 
   buildType = "ament_cmake";

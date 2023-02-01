@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-ecl-ipc";
   version = "0.62.2";
 
-  src = fetchurl {
-    url = "https://github.com/yujinrobot-release/ecl_core-release/archive/release/melodic/ecl_ipc/0.62.2-0.tar.gz";
-    name = "0.62.2-0.tar.gz";
-    sha256 = "35873c953237fc4218b4a354119e76304a5a8aa4c4147e2ccfab5aac4f3bf4dc";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ecl_core-release";
+    rev = "04b45f18a6bac44c3820e9f0483c265a671a42a6";
+    owner = "yujinrobot-release";
+    sha256 = "sha256-/k0yGgJFNV1a9FgwTsNVCewMv1QVkPjOO7gXEF2LeL0=";
   };
 
   buildType = "catkin";

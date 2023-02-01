@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-swri-geometry-util";
   version = "2.15.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/swri-robotics-gbp/marti_common-release/archive/release/noetic/swri_geometry_util/2.15.2-1.tar.gz";
-    name = "2.15.2-1.tar.gz";
-    sha256 = "629c6d619c9feec388641c26dae35e196fa12270dc9e38b59aed22f58561909d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "marti_common-release";
+    rev = "df27b6803f2a6049ef15ccc8b98a7abd0da1dad2";
+    owner = "swri-robotics-gbp";
+    sha256 = "undefined";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-system-modes-msgs";
   version = "0.9.0-r6";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/system_modes-release/archive/release/humble/system_modes_msgs/0.9.0-6.tar.gz";
-    name = "0.9.0-6.tar.gz";
-    sha256 = "a79256d64ed5e8e94936e03207cb854c0896a6c56d8760ce6d51c00a07f11fb1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "system_modes-release";
+    rev = "b8308b956daac6a3e196b4b5dc6ccda68353581e";
+    owner = "ros2-gbp";
+    sha256 = "sha256-UcVnvMWo1lcz8PljlXg4m53YoUKsphq4TbfgB7Z3dgw=";
   };
 
   buildType = "ament_cmake";

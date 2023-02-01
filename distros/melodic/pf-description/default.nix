@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-pf-description";
   version = "1.2.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/PepperlFuchs/pf_lidar_ros_driver-release/archive/release/melodic/pf_description/1.2.0-2.tar.gz";
-    name = "1.2.0-2.tar.gz";
-    sha256 = "302e3c7f6a0642e3a8819f56eef5e2c9967c1a93ac1cd3cc3055f21e29852597";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pf_lidar_ros_driver-release";
+    rev = "a9b6736436425584c3138a3c6423eeb42424c8bf";
+    owner = "PepperlFuchs";
+    sha256 = "sha256-Kur/IEgrsr0yInyUTpVwzW2ggO/tnlUITMr6PuaG340=";
   };
 
   buildType = "catkin";

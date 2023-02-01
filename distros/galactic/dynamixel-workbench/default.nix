@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-dynamixel-workbench";
   version = "2.2.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/dynamixel_workbench-release/archive/release/galactic/dynamixel_workbench/2.2.3-1.tar.gz";
-    name = "2.2.3-1.tar.gz";
-    sha256 = "41b2cf1d4e9bb996c49e91b4db97bab0c0a6866f2b5412cb536eb573568e687c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "dynamixel_workbench-release";
+    rev = "5e915c4bdc4de300d0384cd48abb7e6bb9c0ff8b";
+    owner = "ros2-gbp";
+    sha256 = "sha256-iA1/c6eRcHNi0wnJhwog1K7jH1fKwsqIvSfgCZivKrc=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-ublox-serialization";
   version = "1.5.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/KumarRobotics/ublox-release/archive/release/melodic/ublox_serialization/1.5.0-1.tar.gz";
-    name = "1.5.0-1.tar.gz";
-    sha256 = "8da0916388a541cc8fd9508af13950edc16fb6da5517390f23cd1332d10dc069";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ublox-release";
+    rev = "108d857aaf3ae2f2d3950b883c1d58c5be42a8c2";
+    owner = "KumarRobotics";
+    sha256 = "sha256-5+/6oF8J4m3RAg7K0wKJoWtSuSmTqTejU22h4+n/hTM=";
   };
 
   buildType = "catkin";

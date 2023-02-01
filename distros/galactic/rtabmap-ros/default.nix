@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rtabmap-ros";
   version = "0.20.20-r1";
 
-  src = fetchurl {
-    url = "https://github.com/introlab/rtabmap_ros-release/archive/release/galactic/rtabmap_ros/0.20.20-1.tar.gz";
-    name = "0.20.20-1.tar.gz";
-    sha256 = "4ae9d2cdad6f365ebbd3b48ce59511c28230e0449b9bc9feb542718e5c81e66d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rtabmap_ros-release";
+    rev = "b3398959bc3ac54ba935a21d959ecb3de9cc02fc";
+    owner = "introlab";
+    sha256 = "sha256-1YfWcOMTG/WDOfRMKyHYGEUkn8Mq+DRldUmWxlIp7DI=";
   };
 
   buildType = "ament_cmake";

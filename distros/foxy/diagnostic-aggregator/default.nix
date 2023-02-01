@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-diagnostic-aggregator";
   version = "2.0.8-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/diagnostics-release/archive/release/foxy/diagnostic_aggregator/2.0.8-2.tar.gz";
-    name = "2.0.8-2.tar.gz";
-    sha256 = "7d666fe6d9592908b132b560e02fbc213f9808c628cd0e06cc101a1f1d48e47b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "diagnostics-release";
+    rev = "ff1b1964d9dcae58bab617f1f50456b371a29481";
+    owner = "ros2-gbp";
+    sha256 = "sha256-UbDkFi9ar/B+mMuz+36ohND5/FNc85O42j966ASi0jU=";
   };
 
   buildType = "ament_cmake";

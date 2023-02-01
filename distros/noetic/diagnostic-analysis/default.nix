@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-diagnostic-analysis";
   version = "1.11.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/diagnostics-release/archive/release/noetic/diagnostic_analysis/1.11.0-1.tar.gz";
-    name = "1.11.0-1.tar.gz";
-    sha256 = "8873422f1afad67a9cba7827c1f8ab7191783ac7f7fb3d52718635a7a22a8514";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "diagnostics-release";
+    rev = "0fc5873f78fa95d74e22d9566bb565b8a23fe4b0";
+    owner = "ros-gbp";
+    sha256 = "sha256-UJ09lK86LZlNm+ecYohGZ+nWn+wsVSGnlBE8oL+Qwxo=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-gazebo-ros-control";
   version = "2.9.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/gazebo_ros_pkgs-release/archive/release/noetic/gazebo_ros_control/2.9.2-1.tar.gz";
-    name = "2.9.2-1.tar.gz";
-    sha256 = "0e862d58508c1bf22aaf47c26aae4f7233863ea8da4e6d1e9ac1e21bb527501d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "gazebo_ros_pkgs-release";
+    rev = "320e9874a66db690c79beee7f67f74c57b00bada";
+    owner = "ros-gbp";
+    sha256 = "sha256-qmY04iT4FIn70ffi/cSsdrQICl0ybxVZyr0VQL2cU3w=";
   };
 
   buildType = "catkin";

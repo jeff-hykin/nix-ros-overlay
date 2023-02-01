@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-compressed-depth-image-transport";
   version = "2.3.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/image_transport_plugins-release/archive/release/galactic/compressed_depth_image_transport/2.3.3-1.tar.gz";
-    name = "2.3.3-1.tar.gz";
-    sha256 = "dda2b122d940adf12f72be1c93dc67642879d2895fa3d5617f17a5b9a828ab7d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "image_transport_plugins-release";
+    rev = "4959604522cec867f7464b6f06bcbb9305a47e13";
+    owner = "ros2-gbp";
+    sha256 = "sha256-IjWycEeMBouVfgW71CViiilTyNexLK0Ob313AzUCICM=";
   };
 
   buildType = "ament_cmake";

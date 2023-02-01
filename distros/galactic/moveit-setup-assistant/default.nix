@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-moveit-setup-assistant";
   version = "2.3.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/moveit/moveit2-release/archive/release/galactic/moveit_setup_assistant/2.3.4-1.tar.gz";
-    name = "2.3.4-1.tar.gz";
-    sha256 = "f169bb8e35ad2acbbeb55a1a41d3a1a9af984a68cf76b1b1661ec54f818fa931";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "moveit2-release";
+    rev = "241a2b3c20b3fdc25f8b256a2d5284031c47d4ec";
+    owner = "moveit";
+    sha256 = "sha256-HMxT3iAzHMqIRCdEn4RFHR98/Kv44BnQUCUY6aCQ/hs=";
   };
 
   buildType = "ament_cmake";

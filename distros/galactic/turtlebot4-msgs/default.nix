@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-turtlebot4-msgs";
   version = "0.1.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/turtlebot4-release/archive/release/galactic/turtlebot4_msgs/0.1.2-1.tar.gz";
-    name = "0.1.2-1.tar.gz";
-    sha256 = "fcac5ded260e98846dca37b9d7e367ed2adfff30c9692b5b691d2e1f74ba1e7d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "turtlebot4-release";
+    rev = "e98d6da965ede10decd92d84fb3723ab74a587f6";
+    owner = "ros2-gbp";
+    sha256 = "sha256-8+BjcGKNbX+ZoTCTsxNXSi5XOIDFXfor1MbZfVUhz4s=";
   };
 
   buildType = "ament_cmake";

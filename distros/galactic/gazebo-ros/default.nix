@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-gazebo-ros";
   version = "3.5.2-r5";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/gazebo_ros_pkgs-release/archive/release/galactic/gazebo_ros/3.5.2-5.tar.gz";
-    name = "3.5.2-5.tar.gz";
-    sha256 = "3ac674a23595b8a31380f8117bb342f4737faed26ed59aa33c188da28019421a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "gazebo_ros_pkgs-release";
+    rev = "3eba359c4a0f6eb21ce9127020595a50dbb7a567";
+    owner = "ros2-gbp";
+    sha256 = "sha256-FrCheUwB0QVVx017RmPBgT3a6PLQoLFynzprwTB4LdI=";
   };
 
   buildType = "ament_cmake";

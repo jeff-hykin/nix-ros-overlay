@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-carla-msgs";
   version = "1.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/carla-simulator/ros-carla-msgs-release/archive/release/melodic/carla_msgs/1.3.0-1.tar.gz";
-    name = "1.3.0-1.tar.gz";
-    sha256 = "e765f300aa110bc528f6bfad420849d5e88421e4014286efac4646db936a53cb";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros-carla-msgs-release";
+    rev = "d43a2b9f9d7cf261868b3cb2e718f7eb79f95984";
+    owner = "carla-simulator";
+    sha256 = "sha256-NTgm6pRu+Vv0vfOcZJd3y+UUP4VS3rzyU+ZdNre+prE=";
   };
 
   buildType = "catkin";

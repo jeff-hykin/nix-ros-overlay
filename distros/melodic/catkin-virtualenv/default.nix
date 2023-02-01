@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-catkin-virtualenv";
   version = "0.6.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/locusrobotics/catkin_virtualenv-release/archive/release/melodic/catkin_virtualenv/0.6.1-1.tar.gz";
-    name = "0.6.1-1.tar.gz";
-    sha256 = "0d7e3edfe443345b2c79aaf4b6b58604ecefb7581d2ddd5311d6cb5ec5113673";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "catkin_virtualenv-release";
+    rev = "5c01f91f8931aa8c4faea081d43f410439b2f2ef";
+    owner = "locusrobotics";
+    sha256 = "sha256-nu9aKuMCPIrm23vZshhs2WHT41X7QgkgqHgwsxxpXvk=";
   };
 
   buildType = "catkin";

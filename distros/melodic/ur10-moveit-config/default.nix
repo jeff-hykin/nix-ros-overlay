@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-ur10-moveit-config";
   version = "1.3.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-industrial-release/universal_robot-release/archive/release/melodic/ur10_moveit_config/1.3.1-1.tar.gz";
-    name = "1.3.1-1.tar.gz";
-    sha256 = "3eed64307b656770fa34ad475ce4cdda4a6e76356449782e77026ce235d27f80";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "universal_robot-release";
+    rev = "c6e4f710058baa69289f96ea1f6df87a668c0eda";
+    owner = "ros-industrial-release";
+    sha256 = "sha256-31mRsM0p44A/uTtBd62BSaq1qRk67vBcSYsznBaZKYM=";
   };
 
   buildType = "catkin";

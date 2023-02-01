@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-twist-mux";
   version = "4.1.0-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/twist_mux-release/archive/release/humble/twist_mux/4.1.0-3.tar.gz";
-    name = "4.1.0-3.tar.gz";
-    sha256 = "c1b49bb229fb409e6c698f2fa29ce5dda9fc5234e8a8b31461270948f058465f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "twist_mux-release";
+    rev = "f5c845204fedca6cc5f2be100d8b8beb2a28f230";
+    owner = "ros2-gbp";
+    sha256 = "sha256-BoZjLes6uwKLIV+Tt84oPmHntg1LPbq87iB0fQUKtm8=";
   };
 
   buildType = "ament_cmake";

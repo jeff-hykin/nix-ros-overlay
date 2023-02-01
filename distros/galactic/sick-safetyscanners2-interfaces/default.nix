@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-sick-safetyscanners2-interfaces";
   version = "1.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/SICKAG/sick_safetyscanners2_interfaces-release/archive/release/galactic/sick_safetyscanners2_interfaces/1.0.0-1.tar.gz";
-    name = "1.0.0-1.tar.gz";
-    sha256 = "745e3a59706875ad05ddb1dcb835e24bca73c9fd5831ee08030cd662c2da11bd";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "sick_safetyscanners2_interfaces-release";
+    rev = "05e0c404b724fcc8f7fee21265e8e76adebed3e0";
+    owner = "SICKAG";
+    sha256 = "sha256-FFsjwMwXpIDUcZce2QdkhLAspn9kJgyNkvTQ8UhjUYQ=";
   };
 
   buildType = "ament_cmake";

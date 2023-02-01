@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-leo";
   version = "1.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/leo_common-release/archive/release/foxy/leo/1.1.0-1.tar.gz";
-    name = "1.1.0-1.tar.gz";
-    sha256 = "20b2fdc32188a50de206d308dc75ba2e7b4b352c36ae2c140b82f05dbfaf0617";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "leo_common-release";
+    rev = "181c925d1c9f595e7f95e3153d3663f94dd72116";
+    owner = "ros2-gbp";
+    sha256 = "sha256-WJCkGR4qkb8TRdBFlNCutulapd/7necmCkVaJlztRuI=";
   };
 
   buildType = "ament_cmake";

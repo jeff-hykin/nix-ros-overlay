@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-dbw-polaris-can";
   version = "1.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/DataspeedInc-release/dbw_polaris_ros-release/archive/release/melodic/dbw_polaris_can/1.1.0-1.tar.gz";
-    name = "1.1.0-1.tar.gz";
-    sha256 = "e01e578a29021f2da9b0754de9d4b2e76ba1e118100ac53aa387c7050e170193";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "dbw_polaris_ros-release";
+    rev = "48e88b3e8551114aea32e08bd0ae864171ee7000";
+    owner = "DataspeedInc-release";
+    sha256 = "sha256-/t28Mhp2LDRwMEN4RJuXKt/imjxSdLpPT4izLkdCEqc=";
   };
 
   buildType = "catkin";

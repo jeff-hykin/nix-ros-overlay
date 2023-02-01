@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-soccer-marker-generation";
   version = "0.0.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ijnek/soccer_visualization-release/archive/release/galactic/soccer_marker_generation/0.0.2-1.tar.gz";
-    name = "0.0.2-1.tar.gz";
-    sha256 = "1e13d7dc88344b3c411dfb4f20a184ae8404680b888aa5bcd8a7021727caa94d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "soccer_visualization-release";
+    rev = "2ed241bd8187f2d7bfca897a30fcfe8670d5c74d";
+    owner = "ijnek";
+    sha256 = "sha256-3P3fmHnpeTlaI9ykWoLBv5F8HGk9vEReSDRKIvZum+Q=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-nav2d-operator";
   version = "0.4.2";
 
-  src = fetchurl {
-    url = "https://github.com/skasperski/navigation_2d-release/archive/release/melodic/nav2d_operator/0.4.2-0.tar.gz";
-    name = "0.4.2-0.tar.gz";
-    sha256 = "a8ba977c06ec3334210448ff31687a876686fe661f3b50f407471465c81faccd";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation_2d-release";
+    rev = "64af5b4d17f179473ad5845733c7935faa51c4bc";
+    owner = "skasperski";
+    sha256 = "sha256-tkMyZaQpwvD48g0Ujc9wSlUU22rlgalk/vNAEbqbyQw=";
   };
 
   buildType = "catkin";

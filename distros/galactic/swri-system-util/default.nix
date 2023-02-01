@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-swri-system-util";
   version = "3.5.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/marti_common-release/archive/release/galactic/swri_system_util/3.5.1-1.tar.gz";
-    name = "3.5.1-1.tar.gz";
-    sha256 = "55c3faa5e008941e0af2aae70f45d7c7f2835d067cc06650767857d0c935912b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "marti_common-release";
+    rev = "f7dabfba5c60aaac514cda399ca0aaac7d223e19";
+    owner = "ros2-gbp";
+    sha256 = "sha256-RVmxXs9fUTGh2ThWFQDsPbWr9g20i2rCG1CjqusayX4=";
   };
 
   buildType = "ament_cmake";

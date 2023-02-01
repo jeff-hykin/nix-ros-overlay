@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-lanelet2-validation";
   version = "1.1.1-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/lanelet2-release/archive/release/rolling/lanelet2_validation/1.1.1-3.tar.gz";
-    name = "1.1.1-3.tar.gz";
-    sha256 = "2d6e29a0d4e8ed09174571c93de49336537ce2a247048ae7de615ee0a452617d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "lanelet2-release";
+    rev = "9bcf90ee1d77ad2b20d2212c02de7a5390d3f0be";
+    owner = "ros2-gbp";
+    sha256 = "sha256-BjMp2DLjsi33ViCZSemJ1kXsu/o4W8xgoAIgna6cX5A=";
   };
 
   buildType = "ament_cmake";

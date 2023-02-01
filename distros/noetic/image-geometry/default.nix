@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-image-geometry";
   version = "1.16.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/vision_opencv-release/archive/release/noetic/image_geometry/1.16.2-1.tar.gz";
-    name = "1.16.2-1.tar.gz";
-    sha256 = "634b35652d7dd4664d03b4e095502946350a1038b2171be6e739d1efdc1e22d8";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "vision_opencv-release";
+    rev = "41fc84535640e16d6d3117fdfca3e6caa87d2514";
+    owner = "ros-gbp";
+    sha256 = "sha256-UzDpks0afc5sRLJDSiVmTo+pNTWZ6OKawChid5Z8wV4=";
   };
 
   buildType = "catkin";

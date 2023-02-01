@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rc-genicam-driver";
   version = "0.2.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rc_genicam_driver_ros2-release/archive/release/galactic/rc_genicam_driver/0.2.1-1.tar.gz";
-    name = "0.2.1-1.tar.gz";
-    sha256 = "31dc010c6c47efc65258c28f774d3df5bfc008970188295566f8c59ab6bb1e14";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rc_genicam_driver_ros2-release";
+    rev = "46e0806d1c2d5644294287bc4fa6eba197270132";
+    owner = "ros2-gbp";
+    sha256 = "sha256-nRYR4RZ3PnqDi707KxIuq4SODUBru+GdMF+Ex296hEw=";
   };
 
   buildType = "ament_cmake";

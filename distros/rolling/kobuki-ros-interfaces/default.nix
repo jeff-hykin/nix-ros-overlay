@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-kobuki-ros-interfaces";
   version = "1.0.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/kobuki_ros_interfaces-release/archive/release/rolling/kobuki_ros_interfaces/1.0.0-2.tar.gz";
-    name = "1.0.0-2.tar.gz";
-    sha256 = "0b78f44211880401b7b55b6078e2953e804944d8e0dbe45b7ab25c2e5382d490";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "kobuki_ros_interfaces-release";
+    rev = "fa5363fc4bcbdd8971fd4866ef46dce7076ce64f";
+    owner = "ros2-gbp";
+    sha256 = "sha256-svbQG6e1o4u1HncdcNcx55XoYK99I02G7CxL2jvBZhs=";
   };
 
   buildType = "ament_cmake";

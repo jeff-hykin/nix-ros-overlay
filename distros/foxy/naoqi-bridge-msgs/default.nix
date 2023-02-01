@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-naoqi-bridge-msgs";
   version = "2.0.0";
 
-  src = fetchurl {
-    url = "https://github.com/ros-naoqi/naoqi_bridge_msgs2-release/archive/release/foxy/naoqi_bridge_msgs/2.0.0-0.tar.gz";
-    name = "2.0.0-0.tar.gz";
-    sha256 = "3c366aa6eeb8325c54fdb7136fb60fbba252c995207786fb57d101f1f079711e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "naoqi_bridge_msgs2-release";
+    rev = "c5b131f0f5f8f1d5b82f31f074d1b13a83663954";
+    owner = "ros-naoqi";
+    sha256 = "sha256-AaG/G54fiOoMJ5eBb0/+P53U/xgguHfEhyoFfritTN0=";
   };
 
   buildType = "ament_cmake";

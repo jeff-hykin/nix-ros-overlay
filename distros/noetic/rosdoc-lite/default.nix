@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-rosdoc-lite";
   version = "0.2.10-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/rosdoc_lite-release/archive/release/noetic/rosdoc_lite/0.2.10-1.tar.gz";
-    name = "0.2.10-1.tar.gz";
-    sha256 = "f6c654ab10e56b36bc7ff84ae7de6126011c44ebec7c3b9e14c4018643bd15c9";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosdoc_lite-release";
+    rev = "c25c9be5a9841ab88bcb5c5d6fe8205020512e58";
+    owner = "ros-gbp";
+    sha256 = "sha256-4v9PL8U5IASfNKTY9nkrs+C6PlfRXeDOKELo+VFoDMo=";
   };
 
   buildType = "catkin";

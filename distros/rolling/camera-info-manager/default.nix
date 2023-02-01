@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-camera-info-manager";
   version = "4.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/image_common-release/archive/release/rolling/camera_info_manager/4.1.1-1.tar.gz";
-    name = "4.1.1-1.tar.gz";
-    sha256 = "105e78eabe85d659ca6af143e61a1d97f898a2ec0b8e8ea878cd3be62cfd88bf";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "image_common-release";
+    rev = "eb2801d040935cd7d8e7e10402980b2cf5f2bfc5";
+    owner = "ros2-gbp";
+    sha256 = "sha256-kfVJdEZHcGstEzSTQPqdaFJrGsrpFSofZEfG6008kTE=";
   };
 
   buildType = "ament_cmake";

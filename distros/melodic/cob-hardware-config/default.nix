@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-cob-hardware-config";
   version = "0.7.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_robots-release/archive/release/melodic/cob_hardware_config/0.7.5-1.tar.gz";
-    name = "0.7.5-1.tar.gz";
-    sha256 = "670e53bb3aace81f68898cd7c466bc28752bd4f166e38dfc3470ed0f89e25b41";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_robots-release";
+    rev = "243e8ae8328e65d8687332ce1e4d84cf4506709f";
+    owner = "ipa320";
+    sha256 = "sha256-o7MpnnWMyaT7SIYrry49sj7bECcS6jUCfBymU15IW9k=";
   };
 
   buildType = "catkin";

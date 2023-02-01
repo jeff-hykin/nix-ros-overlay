@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-moveit-ros-robot-interaction";
   version = "2.3.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/moveit/moveit2-release/archive/release/galactic/moveit_ros_robot_interaction/2.3.4-1.tar.gz";
-    name = "2.3.4-1.tar.gz";
-    sha256 = "ef4f58c64b657471ed73cda6f8cdccd6ad46513eee7aa911bd8bd785ef2c8e91";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "moveit2-release";
+    rev = "90189c06aaccbafff149f8f74f871b0d7f3131f0";
+    owner = "moveit";
+    sha256 = "sha256-HOhXnM63eaN/cC7/4/iIGHMdV0J0QWyXB0xvYPiccic=";
   };
 
   buildType = "ament_cmake";

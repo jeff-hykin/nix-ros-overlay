@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-vesc-ackermann";
   version = "1.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/f1tenth/vesc-release/archive/release/melodic/vesc_ackermann/1.1.0-1.tar.gz";
-    name = "1.1.0-1.tar.gz";
-    sha256 = "55d81b4911aceacfd99577263e426533fd70421f98d41257f36602e1d21e02de";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "vesc-release";
+    rev = "5b68a4fc9141c8b349b994505d8c989a96714f6b";
+    owner = "f1tenth";
+    sha256 = "sha256-wzk+jClgQuFZ38OYHpLesICUm7mGsmo44YeZrEmPeLA=";
   };
 
   buildType = "catkin";

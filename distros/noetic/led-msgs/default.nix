@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-led-msgs";
   version = "0.0.11-r1";
 
-  src = fetchurl {
-    url = "https://github.com/CopterExpress/ros_led-release/archive/release/noetic/led_msgs/0.0.11-1.tar.gz";
-    name = "0.0.11-1.tar.gz";
-    sha256 = "214072ab918d642a84d04b0e07b0b70e8b41208f2dac55c6bb2dc1cff10d1178";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_led-release";
+    rev = "f263e414993001ba4c4a25a2a1191e2f0833a1dd";
+    owner = "CopterExpress";
+    sha256 = "sha256-04t5GVtPsGh5wWfRmASubhvUaNFruhoh0aIwJEswCPg=";
   };
 
   buildType = "catkin";

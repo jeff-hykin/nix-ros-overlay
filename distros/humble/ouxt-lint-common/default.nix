@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-ouxt-lint-common";
   version = "0.0.8-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ouxt_common-release/archive/release/humble/ouxt_lint_common/0.0.8-3.tar.gz";
-    name = "0.0.8-3.tar.gz";
-    sha256 = "ced95f1aba172a1045e13e6b22a4c1f2bc3e43ab664ea42f1766f299d02fa45a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ouxt_common-release";
+    rev = "cdedf33462670102feaf023bbd60311269776a7f";
+    owner = "ros2-gbp";
+    sha256 = "sha256-CzvbzrJWL16B2/c63ryLS008hT4dSu50P4AhU+lsHpQ=";
   };
 
   buildType = "ament_cmake";

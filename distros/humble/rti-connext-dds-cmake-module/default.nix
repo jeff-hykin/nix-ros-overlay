@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-rti-connext-dds-cmake-module";
   version = "0.11.1-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmw_connextdds-release/archive/release/humble/rti_connext_dds_cmake_module/0.11.1-2.tar.gz";
-    name = "0.11.1-2.tar.gz";
-    sha256 = "9c498b779e8eda7f7c78c5ddf69c86e4a3b23cc8ed5e29942571b0dc6bc5ee67";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmw_connextdds-release";
+    rev = "37d473555cc192d4e5b2e3b1db707d74e0fc4d47";
+    owner = "ros2-gbp";
+    sha256 = "sha256-NCuXFZxAvaoP9/cqkYcCX4aGL6sA5NodxsGjjj+vDuw=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-xpp-hyq";
   version = "1.0.10-r1";
 
-  src = fetchurl {
-    url = "https://github.com/leggedrobotics/xpp-release/archive/release/noetic/xpp_hyq/1.0.10-1.tar.gz";
-    name = "1.0.10-1.tar.gz";
-    sha256 = "b62b282e59bc70fb9fde91beb6451de651efdb0012083c065ede1693d0aebcdb";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "xpp-release";
+    rev = "0e1e2d07eacf8b720823c22bbbb5eae3ae4de697";
+    owner = "leggedrobotics";
+    sha256 = "sha256-MlgPqAXIWfZ+S/1u17CCaqUkw3Yi6bsTVA86CTvdUaY=";
   };
 
   buildType = "catkin";

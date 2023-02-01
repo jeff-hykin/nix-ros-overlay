@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-robot-state-publisher";
   version = "2.5.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/robot_state_publisher-release/archive/release/galactic/robot_state_publisher/2.5.3-1.tar.gz";
-    name = "2.5.3-1.tar.gz";
-    sha256 = "7632aac8c3c71e0efa84468499625ec1bb002f0d119316e30c3f929d226463be";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "robot_state_publisher-release";
+    rev = "5ab3f01a5086ac800475ade3bafdbfec84d98e97";
+    owner = "ros2-gbp";
+    sha256 = "sha256-YEw/QHz8QCZbahi0Eptq+dO1cgY+MgIG7ABvRxKfIos=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-logging-demo";
   version = "0.20.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/demos-release/archive/release/humble/logging_demo/0.20.2-1.tar.gz";
-    name = "0.20.2-1.tar.gz";
-    sha256 = "2cb879b0ffefe7698b62cdae7a324252165c83678d142d7a98b45917747dbf5e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "demos-release";
+    rev = "a9549e42b8bd94dc5b5d81d66bdd0f9e73410668";
+    owner = "ros2-gbp";
+    sha256 = "sha256-EwxG3GP8tMbj3+qj72McCQscfRFnjRBaU7xWpG3+O+o=";
   };
 
   buildType = "ament_cmake";

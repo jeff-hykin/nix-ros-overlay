@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-kobuki-ftdi";
   version = "0.7.12-r1";
 
-  src = fetchurl {
-    url = "https://github.com/yujinrobot-release/kobuki_core-release/archive/release/noetic/kobuki_ftdi/0.7.12-1.tar.gz";
-    name = "0.7.12-1.tar.gz";
-    sha256 = "18412e46db87688bbb61c3fc5ff42be7aed0f10bab0de1677028c3152f663356";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "kobuki_core-release";
+    rev = "4adb81bf541a74361a01da1185ecb61f48c7d6f5";
+    owner = "yujinrobot-release";
+    sha256 = "sha256-i2LlVZgPhygnQ1VayUu65PWLgt4CPqOSiL1X4jqq4IA=";
   };
 
   buildType = "catkin";

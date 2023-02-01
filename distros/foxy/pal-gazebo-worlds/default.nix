@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-pal-gazebo-worlds";
   version = "3.0.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pal-gbp/pal_gazebo_worlds-ros2-release/archive/release/foxy/pal_gazebo_worlds/3.0.2-1.tar.gz";
-    name = "3.0.2-1.tar.gz";
-    sha256 = "e5931f7ab146d082b390e936ab1c231039b55d648e72aec181ba8d4b7d62e4ed";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pal_gazebo_worlds-ros2-release";
+    rev = "f5f0902bd41d51ed8ab1320e1d6b62696cc9527b";
+    owner = "pal-gbp";
+    sha256 = "sha256-esU3pv3zI59rrioXrYePD3rZO8IxF9CZF/lc1Od3vYQ=";
   };
 
   buildType = "ament_cmake";

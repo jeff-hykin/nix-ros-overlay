@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-rqt-graph";
   version = "1.4.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rqt_graph-release/archive/release/rolling/rqt_graph/1.4.0-1.tar.gz";
-    name = "1.4.0-1.tar.gz";
-    sha256 = "1e14d746651f852fc3d811913f6f51efea2e2ea44e29888bd56844dbd117fbb8";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt_graph-release";
+    rev = "d6942cfcd0267d8a400cdabcede00e0f04c866cf";
+    owner = "ros2-gbp";
+    sha256 = "sha256-/uzwlYKV+MVk/4Ct9zSkNhAb2RFz5JGlSnlpWcgYcRA=";
   };
 
   buildType = "ament_python";

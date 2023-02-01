@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-igvc-self-drive-sim";
   version = "0.1.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/robustify/igvc_self_drive_sim-release/archive/release/melodic/igvc_self_drive_sim/0.1.4-1.tar.gz";
-    name = "0.1.4-1.tar.gz";
-    sha256 = "8a843a920d6ffe9cb3c37a6c3e9b07e993aa0373599583f68304e5827883e214";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "igvc_self_drive_sim-release";
+    rev = "e46b5fea37e1984c6182a97390aabb9550113c10";
+    owner = "robustify";
+    sha256 = "sha256-kOPI73PHUXpGvyDNzMoP4oKS3l7oUqUgW4JwxNBUJR4=";
   };
 
   buildType = "catkin";

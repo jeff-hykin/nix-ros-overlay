@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-turtlebot4-ignition-bringup";
   version = "0.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/turtlebot4_simulator-release/archive/release/galactic/turtlebot4_ignition_bringup/0.1.1-1.tar.gz";
-    name = "0.1.1-1.tar.gz";
-    sha256 = "b939dfd8547d72ae2c13b879c38875aeb1257f645e8226d71020bd37c5bdd749";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "turtlebot4_simulator-release";
+    rev = "b2b22e0948bf7a8d35c9df5502e76264662df88b";
+    owner = "ros2-gbp";
+    sha256 = "sha256-WG3yenArDlrsNEG1EGIVAKI28T+a/LpiYgFeJ4yoTgI=";
   };
 
   buildType = "ament_cmake";

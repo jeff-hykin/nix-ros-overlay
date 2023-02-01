@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-shape-msgs";
   version = "4.2.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/common_interfaces-release/archive/release/humble/shape_msgs/4.2.2-1.tar.gz";
-    name = "4.2.2-1.tar.gz";
-    sha256 = "43f3b9856264e4c2b7755fd416f0e18c9b220a0a78a11945099df4cbbab0e6d7";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "common_interfaces-release";
+    rev = "30a5478e1a66d257d0ee5f4d33fdb6536f106841";
+    owner = "ros2-gbp";
+    sha256 = "sha256-siWqPTx9cyQLETwL/oi5ISs4g0U4rPC81C4ziDNDdAo=";
   };
 
   buildType = "ament_cmake";

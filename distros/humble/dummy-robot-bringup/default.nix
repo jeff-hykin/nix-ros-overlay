@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-dummy-robot-bringup";
   version = "0.20.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/demos-release/archive/release/humble/dummy_robot_bringup/0.20.2-1.tar.gz";
-    name = "0.20.2-1.tar.gz";
-    sha256 = "ac74ea9afbc4368facfc9f796b291ee19ad05b4629552c1a8755cafeeeafd285";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "demos-release";
+    rev = "e8de6d23534c5ed647b8731c4d0c4e3d7f66b25a";
+    owner = "ros2-gbp";
+    sha256 = "sha256-ggNVd7VgOoCle0yVu0yKq9ry2X7luxyj3sal28MGHv8=";
   };
 
   buildType = "ament_cmake";

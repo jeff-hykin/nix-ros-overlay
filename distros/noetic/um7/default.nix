@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-um7";
   version = "0.0.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-drivers-gbp/um7-release/archive/release/noetic/um7/0.0.7-1.tar.gz";
-    name = "0.0.7-1.tar.gz";
-    sha256 = "5d5a3f21139972a21ef808586bf3239794e197067c2523dc7c8cf8c4f6a22adc";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "um7-release";
+    rev = "30277c518249373b43816a7fcfcc46ef2eddd55e";
+    owner = "ros-drivers-gbp";
+    sha256 = "sha256-YWxUBWOI1Vn2U184XPqCVLb0y4wDmZD1bqxjIKouXbE=";
   };
 
   buildType = "catkin";

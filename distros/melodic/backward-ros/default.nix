@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-backward-ros";
   version = "0.1.7";
 
-  src = fetchurl {
-    url = "https://github.com/pal-gbp/backward_ros-release/archive/release/melodic/backward_ros/0.1.7-0.tar.gz";
-    name = "0.1.7-0.tar.gz";
-    sha256 = "3cec255db3ff1af9bfc80b31ca88a9be50f11d663d9213edf457b0a7ed7eb967";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "backward_ros-release";
+    rev = "7df5f8d961ce5bf27736ed66d9ec87ee26cf075d";
+    owner = "pal-gbp";
+    sha256 = "sha256-MolJFqHoajXdXEJBQR2LBa37fiXOh7IY1nSLt4/OMKw=";
   };
 
   buildType = "catkin";

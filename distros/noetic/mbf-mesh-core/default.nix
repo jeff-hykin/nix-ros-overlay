@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-mbf-mesh-core";
   version = "1.0.1-r2";
 
-  src = fetchurl {
-    url = "https://github.com/uos-gbp/mesh_navigation-release/archive/release/noetic/mbf_mesh_core/1.0.1-2.tar.gz";
-    name = "1.0.1-2.tar.gz";
-    sha256 = "f337999c2ea623831a872308f4932be1eca59747d293a5fd16247240063859be";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mesh_navigation-release";
+    rev = "8998fdf6f09472e1c4064f934086f86a9a51c5ba";
+    owner = "uos-gbp";
+    sha256 = "sha256-GmuQlfB/4M2WAbDJQYLDtZPqKFrk1APfG1AZfKRez5Y=";
   };
 
   buildType = "catkin";

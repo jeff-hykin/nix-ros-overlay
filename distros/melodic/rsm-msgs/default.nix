@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-rsm-msgs";
   version = "1.2.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/MarcoStb1993/robot_statemachine-release/archive/release/melodic/rsm_msgs/1.2.1-1.tar.gz";
-    name = "1.2.1-1.tar.gz";
-    sha256 = "309853640e80fb363b51b510b1638527021b6e961199f639eee8494c8650dd21";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "robot_statemachine-release";
+    rev = "eaeaf0bb2b65380873e9a0fbd42850a02a88edf3";
+    owner = "MarcoStb1993";
+    sha256 = "sha256-Q7qyM9yy8vq8CkddDlQCzL4hhmuqtDuRu50eYs+ksAQ=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-turtle-tf2";
   version = "0.2.2";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/geometry_tutorials-release/archive/release/melodic/turtle_tf2/0.2.2-0.tar.gz";
-    name = "0.2.2-0.tar.gz";
-    sha256 = "898be65b26bacc4c8ec117c9696b0506f18c33cce83c507442c3b4b239c64ada";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "geometry_tutorials-release";
+    rev = "81351fdd4ecfce0101b13be03153e3af5ed37974";
+    owner = "ros-gbp";
+    sha256 = "sha256-E4f/84fKrurMNKMbbIWEY3wWM76DmrJ6/dPRuMeBKcI=";
   };
 
   buildType = "catkin";

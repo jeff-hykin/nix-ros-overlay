@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-moveit-resources-panda-description";
   version = "2.0.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/moveit/moveit_resources-release/archive/release/galactic/moveit_resources_panda_description/2.0.3-1.tar.gz";
-    name = "2.0.3-1.tar.gz";
-    sha256 = "e072af181816e08c21769c1620c0674f8430b81d978f04800f91643b30147aff";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "moveit_resources-release";
+    rev = "2058f6b3341ddaaf1c1bd60a9911827e2903ce23";
+    owner = "moveit";
+    sha256 = "sha256-j8Zz+6LI58lXFQFYjG1Axa9kZNfLKwibEGFyZqkHPQU=";
   };
 
   buildType = "ament_cmake";

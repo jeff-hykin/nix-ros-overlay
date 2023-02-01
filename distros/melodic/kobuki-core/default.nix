@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-kobuki-core";
   version = "0.7.12-r1";
 
-  src = fetchurl {
-    url = "https://github.com/yujinrobot-release/kobuki_core-release/archive/release/melodic/kobuki_core/0.7.12-1.tar.gz";
-    name = "0.7.12-1.tar.gz";
-    sha256 = "d5b2023576b24ec3fcf8ea0a624084a8b6a7aad7f677c9c8b16d65bc2136c6ed";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "kobuki_core-release";
+    rev = "44e8c43fd54eeef65f1d76e41a5cff1e74fb47dd";
+    owner = "yujinrobot-release";
+    sha256 = "sha256-FJ6sT/26Sul/nwI17KnFDkFKz7eoZIwu1pA/RbbhmbE=";
   };
 
   buildType = "catkin";

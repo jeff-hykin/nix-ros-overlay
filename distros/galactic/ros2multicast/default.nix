@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ros2multicast";
   version = "0.13.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2cli-release/archive/release/galactic/ros2multicast/0.13.5-1.tar.gz";
-    name = "0.13.5-1.tar.gz";
-    sha256 = "2ea4f0b0cd05a01fdc49501ae933688b4287145e1da66227f83afe638f8ddbf6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2cli-release";
+    rev = "6cd106ca5e4781e3dfa97a4b449c267f79604914";
+    owner = "ros2-gbp";
+    sha256 = "sha256-iVFqceVoXRktUzM/ME5GTjiFw+F5OiE41QaX6gSUjIo=";
   };
 
   buildType = "ament_python";

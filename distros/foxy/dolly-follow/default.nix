@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-dolly-follow";
   version = "0.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/chapulina/dolly-release/archive/release/foxy/dolly_follow/0.3.0-1.tar.gz";
-    name = "0.3.0-1.tar.gz";
-    sha256 = "190836a56e7f2f29028311a94eec3e926ae4bb9334a921e10ed6e12a7dd6b7fe";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "dolly-release";
+    rev = "a44063a6e70a69b511f63056adeeb48eae634d5c";
+    owner = "chapulina";
+    sha256 = "sha256-BNzluvgNWZDMxx/Faj/iKoOMCZ/RJqllKFlqRwGzk/o=";
   };
 
   buildType = "ament_cmake";

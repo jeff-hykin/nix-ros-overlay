@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-rosbag2-storage-mcap";
   version = "0.6.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rosbag2_storage_mcap-release/archive/release/humble/rosbag2_storage_mcap/0.6.0-1.tar.gz";
-    name = "0.6.0-1.tar.gz";
-    sha256 = "8f8f48cd3a3e2b3f0b71420794b9c8bf769663ff7adf391a5a4157f335822b39";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosbag2_storage_mcap-release";
+    rev = "829f319d29286fa813d777093343317370865520";
+    owner = "ros2-gbp";
+    sha256 = "sha256-VRylbzLxzMfEKGv5N/rjaDEBiwDD7rv/kIIYgIpOTb4=";
   };
 
   buildType = "ament_cmake";

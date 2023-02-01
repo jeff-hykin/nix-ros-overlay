@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-vrpn";
   version = "7.34.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-drivers-gbp/vrpn-release/archive/release/melodic/vrpn/7.34.0-1.tar.gz";
-    name = "7.34.0-1.tar.gz";
-    sha256 = "1dd53934e26a049fba648ddb79d87c96a229181479c14a8c743fde9bddf854c3";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "vrpn-release";
+    rev = "2c191f6336f5b6568616375c3fb6a1c6f0c2fe0d";
+    owner = "ros-drivers-gbp";
+    sha256 = "sha256-6j5kKUAO8qNvfpS3TURnAzasQ4kmtoCIyY5g1T7PBK4=";
   };
 
   buildType = "cmake";

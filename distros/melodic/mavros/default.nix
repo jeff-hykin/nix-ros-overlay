@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-mavros";
   version = "1.15.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/mavlink/mavros-release/archive/release/melodic/mavros/1.15.0-1.tar.gz";
-    name = "1.15.0-1.tar.gz";
-    sha256 = "981dd4bb8fbf6c8220fa916ea3aa30a5c42fa1b965ce0aed599f86aa0bbab7c1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mavros-release";
+    rev = "68a13c6d3cbfb7ce994c3d4dcd2d171e0ac0a3f7";
+    owner = "mavlink";
+    sha256 = "sha256-y6QupmeEQ4CD1R9ochP/iaT0LE4+ej8tVF9XFtG3YcI=";
   };
 
   buildType = "catkin";

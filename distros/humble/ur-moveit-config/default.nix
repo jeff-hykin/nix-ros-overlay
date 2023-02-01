@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-ur-moveit-config";
   version = "2.2.6-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/Universal_Robots_ROS2_Driver-release/archive/release/humble/ur_moveit_config/2.2.6-1.tar.gz";
-    name = "2.2.6-1.tar.gz";
-    sha256 = "2c097afafe3e0af9baf6b4396421589c5138cd482bf4af6ce95462a6b3cf533e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "Universal_Robots_ROS2_Driver-release";
+    rev = "2f8484d8b7e317284386237ce8e8ed202bdd3d92";
+    owner = "ros2-gbp";
+    sha256 = "sha256-DACR6Dp8eP3GS7pGy2xG2n3Ug1UL3yZ5Rfucx5OHcE0=";
   };
 
   buildType = "ament_cmake";

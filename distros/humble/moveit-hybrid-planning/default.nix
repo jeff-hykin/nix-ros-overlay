@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-moveit-hybrid-planning";
   version = "2.5.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/moveit/moveit2-release/archive/release/humble/moveit_hybrid_planning/2.5.4-1.tar.gz";
-    name = "2.5.4-1.tar.gz";
-    sha256 = "487676782c81593f10e1009bc1269f6b7f6218f79c8521ba1bb42cbbe763fdf7";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "moveit2-release";
+    rev = "c960f0e302eaca9247fc2a463e62e646b5d01938";
+    owner = "moveit";
+    sha256 = "sha256-jiCT+UgnZl4IY6KFalllVkvjVziUBi8cDZioyPkQZ+c=";
   };
 
   buildType = "ament_cmake";

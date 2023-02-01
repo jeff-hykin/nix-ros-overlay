@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-euslisp";
   version = "9.29.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/tork-a/euslisp-release/archive/release/noetic/euslisp/9.29.0-1.tar.gz";
-    name = "9.29.0-1.tar.gz";
-    sha256 = "ecbf0b5ab05617eac190bb25eaf140fe576d01de47e779b5ad9c2a911d800693";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "euslisp-release";
+    rev = "f5294773bde43d3b7a874544a74a295511bb37f2";
+    owner = "tork-a";
+    sha256 = "sha256-7k/fAypjRjMND+c6MMIEjWyE5z0lTYJjtJESJne/WDg=";
   };
 
   buildType = "cmake";

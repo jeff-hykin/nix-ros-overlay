@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-heron-simulator";
   version = "0.3.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/clearpath-gbp/heron_simulator-release/archive/release/melodic/heron_simulator/0.3.3-1.tar.gz";
-    name = "0.3.3-1.tar.gz";
-    sha256 = "01e62741f3b4ac972fe81036559221d1c85baa78e0b6c9a6e4e42ad2013b3e77";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "heron_simulator-release";
+    rev = "8f13a4ff043a52f8d4fb2804e4d0472c8037aa8e";
+    owner = "clearpath-gbp";
+    sha256 = "sha256-s2OLWWT5eERt64/5M7FtjwMZu2xjd4J0yNXP4HLt6+s=";
   };
 
   buildType = "catkin";

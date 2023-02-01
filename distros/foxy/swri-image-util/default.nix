@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-swri-image-util";
   version = "3.5.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/marti_common-release/archive/release/foxy/swri_image_util/3.5.1-1.tar.gz";
-    name = "3.5.1-1.tar.gz";
-    sha256 = "4b3ef49a48b15fd74b0a870bfca957456e99c2868d5ac5a36513b9e6a9487d71";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "marti_common-release";
+    rev = "e635d6498faf28b2745ec9cac88df9c667705fe1";
+    owner = "ros2-gbp";
+    sha256 = "sha256-AdH4oRWWMWHk2BfGtOrHPlsuYJDjAe7UF/Jp0oPfK0c=";
   };
 
   buildType = "ament_cmake";

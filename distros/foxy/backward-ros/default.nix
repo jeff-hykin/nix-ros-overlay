@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-backward-ros";
   version = "1.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pal-gbp/backward_ros-release/archive/release/foxy/backward_ros/1.0.1-1.tar.gz";
-    name = "1.0.1-1.tar.gz";
-    sha256 = "1482d82dcdf6e056b40c87c27d0f0f29830c5410815ab4e2791178e1c78dd94d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "backward_ros-release";
+    rev = "651b58f61b157847e996afa9d3407ea4d75a28e6";
+    owner = "pal-gbp";
+    sha256 = "sha256-9ZYtzzb6VGZ16+gvRK9sQ03A9wQG7LznEVdeUTg+t4w=";
   };
 
   buildType = "ament_cmake";

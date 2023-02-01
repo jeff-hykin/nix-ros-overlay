@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-cmake-modules";
   version = "0.4.2";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/cmake_modules-release/archive/release/melodic/cmake_modules/0.4.2-0.tar.gz";
-    name = "0.4.2-0.tar.gz";
-    sha256 = "3598bda2ce4a55fdbe097c3d5c16cee1735b180cf234fea89628d78ea88da0bb";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cmake_modules-release";
+    rev = "9a9a244d605cf8ecb85fbd80efaa7defdf0641ad";
+    owner = "ros-gbp";
+    sha256 = "sha256-kV48QZeY9ecmSIWtlA5sHrphaXsywZ+/fN25VMAXcIY=";
   };
 
   buildType = "catkin";

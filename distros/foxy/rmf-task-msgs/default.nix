@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-rmf-task-msgs";
   version = "1.4.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_internal_msgs-release/archive/release/foxy/rmf_task_msgs/1.4.0-1.tar.gz";
-    name = "1.4.0-1.tar.gz";
-    sha256 = "323b4c6b89ee7eb73fa36a6fd98e0ed19f4a973b07d5289c5189bddfb95c7745";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_internal_msgs-release";
+    rev = "8350b6241eb75e6016521b2a6235850d7e95f6de";
+    owner = "ros2-gbp";
+    sha256 = "sha256-4BWQDtecTFbj8siecsuS4SSU362Vj3Az8xB8eI111cA=";
   };
 
   buildType = "ament_cmake";

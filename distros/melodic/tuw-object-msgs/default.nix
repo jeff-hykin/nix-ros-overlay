@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-tuw-object-msgs";
   version = "0.0.13";
 
-  src = fetchurl {
-    url = "https://github.com/tuw-robotics/tuw_msgs-release/archive/release/melodic/tuw_object_msgs/0.0.13-0.tar.gz";
-    name = "0.0.13-0.tar.gz";
-    sha256 = "cd872b1996ab016b75719c00f199bef95322fabf5efc964a169a6dd362fdec8f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "tuw_msgs-release";
+    rev = "dd66061038951b3fa58b6196b00ed2bbe0e00d31";
+    owner = "tuw-robotics";
+    sha256 = "sha256-c6XJfuFxbqSIf0egUIUIysRdmtZL/v9F0dG5E/EZXqc=";
   };
 
   buildType = "catkin";

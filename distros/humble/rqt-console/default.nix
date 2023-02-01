@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-rqt-console";
   version = "2.0.2-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rqt_console-release/archive/release/humble/rqt_console/2.0.2-3.tar.gz";
-    name = "2.0.2-3.tar.gz";
-    sha256 = "06759f530a897cb663e7d7648843466bfb775dc8bdd2f86adf727c1b46b6c760";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt_console-release";
+    rev = "42bd814aa95f143b5128220d3efeedcca5baf2a4";
+    owner = "ros2-gbp";
+    sha256 = "sha256-a2PcWtK997Gm2BkwEUHFMGfhy29uJPQwRt7CpqL83xg=";
   };
 
   buildType = "ament_python";

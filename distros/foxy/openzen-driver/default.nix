@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-openzen-driver";
   version = "1.2.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/lp-research/openzen_sensor_ros2-release/archive/release/foxy/openzen_driver/1.2.0-2.tar.gz";
-    name = "1.2.0-2.tar.gz";
-    sha256 = "13508ba2db05e446942b792dc0539e06546470a9071cb24c3543db431e3035f0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "openzen_sensor_ros2-release";
+    rev = "82d6f0846507525cdfefbb4ddb8955da91c69ad7";
+    owner = "lp-research";
+    sha256 = "sha256-Uy8ICCnPmuP/oIlfhQhSlp2soLk/U4Bq+d7GFAMqqBo=";
   };
 
   buildType = "ament_cmake";

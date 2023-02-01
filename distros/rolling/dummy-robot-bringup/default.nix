@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-dummy-robot-bringup";
   version = "0.23.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/demos-release/archive/release/rolling/dummy_robot_bringup/0.23.0-1.tar.gz";
-    name = "0.23.0-1.tar.gz";
-    sha256 = "77b6475aa585f014a74acff6d51baa56a49e1ba3d5a32e1cbde5fa1397d269c5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "demos-release";
+    rev = "e3ac08a056a22eebb43f80fd46907b5371e562cf";
+    owner = "ros2-gbp";
+    sha256 = "sha256-xZL85Iz7YFT07pnQbn2CFsI8YpXOeGWa2zJiGUvyxVI=";
   };
 
   buildType = "ament_cmake";

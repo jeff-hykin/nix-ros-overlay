@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-splsm-7";
   version = "3.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/r2r_spl-release/archive/release/rolling/splsm_7/3.0.1-1.tar.gz";
-    name = "3.0.1-1.tar.gz";
-    sha256 = "e169bdbebd40b8501344f07469ec5238aa9da7a10381841e425c6c27fff22bf6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "r2r_spl-release";
+    rev = "aaad2d5297e0b1a6c8f2ae547164f59de4bee2be";
+    owner = "ros2-gbp";
+    sha256 = "sha256-mJ9R0CRbOAigpJZL+lmcW5OrC4wfPc83FiMx8+NKjwY=";
   };
 
   buildType = "ament_cmake";

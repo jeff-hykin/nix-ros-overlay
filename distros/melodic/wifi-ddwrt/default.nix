@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-wifi-ddwrt";
   version = "0.2.0";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/wifi_ddwrt-release/archive/release/melodic/wifi_ddwrt/0.2.0-0.tar.gz";
-    name = "0.2.0-0.tar.gz";
-    sha256 = "d9315fb98ca9d63cd7fd67895b3430e832d674a01469a5af7ec18fbd0c57dc7e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "wifi_ddwrt-release";
+    rev = "2413f09dadf0ccf4d2f5c4ada1ca4a4fe46bcb01";
+    owner = "ros-gbp";
+    sha256 = "sha256-FCjgIm4TXBxmhJ5FbR3FK0qS5EVdd8mHCjYODGgCXnI=";
   };
 
   buildType = "catkin";

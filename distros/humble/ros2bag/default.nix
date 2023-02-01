@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-ros2bag";
   version = "0.15.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rosbag2-release/archive/release/humble/ros2bag/0.15.3-1.tar.gz";
-    name = "0.15.3-1.tar.gz";
-    sha256 = "4cfdeaba917b42c26f0196035bf358fb5efe806ad6b8661612f4639b6e309afe";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosbag2-release";
+    rev = "0efab4d04622bf214fc20644561833dbd46393d2";
+    owner = "ros2-gbp";
+    sha256 = "sha256-e93upgC2oVIeRUfQrWZg1TV+gC/uYcnnOa0bNACnIlk=";
   };
 
   buildType = "ament_python";

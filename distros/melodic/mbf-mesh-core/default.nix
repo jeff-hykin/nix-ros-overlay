@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-mbf-mesh-core";
   version = "1.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/uos-gbp/mesh_navigation-release/archive/release/melodic/mbf_mesh_core/1.0.1-1.tar.gz";
-    name = "1.0.1-1.tar.gz";
-    sha256 = "e90b7695399948cfe2e81f2a1a7a72039bdb08f31e9ec199ad0cf6be03762170";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mesh_navigation-release";
+    rev = "d727561631eb6bbcf504ed207a9e95865fadd07c";
+    owner = "uos-gbp";
+    sha256 = "sha256-GmuQlfB/4M2WAbDJQYLDtZPqKFrk1APfG1AZfKRez5Y=";
   };
 
   buildType = "catkin";

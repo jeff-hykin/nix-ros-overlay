@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-stag-ros";
   version = "0.2.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/usrl-uofsc/stag_ros-release/archive/release/melodic/stag_ros/0.2.2-1.tar.gz";
-    name = "0.2.2-1.tar.gz";
-    sha256 = "e0ad126a2ffbeacc996a39f3dc98b53401462a21d0aa46ba4873233f8c9b90ba";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "stag_ros-release";
+    rev = "50782d8e13bb529f1afa29945d1b0172971461e5";
+    owner = "usrl-uofsc";
+    sha256 = "sha256-XLxLVAYt5ltURELiZuUAb9CMnKhwnraU1A/5nzObqtA=";
   };
 
   buildType = "catkin";

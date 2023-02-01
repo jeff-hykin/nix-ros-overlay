@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-lanelet2-examples";
   version = "1.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/fzi-forschungszentrum-informatik/lanelet2-release/archive/release/noetic/lanelet2_examples/1.1.1-1.tar.gz";
-    name = "1.1.1-1.tar.gz";
-    sha256 = "57602b504adc7f742ff2a6cd04f679e515e0ad4e88bd3d698130eb47f205b524";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "lanelet2-release";
+    rev = "8ae00d5deab80c96f6a6e24e80eccb336b95b0c7";
+    owner = "fzi-forschungszentrum-informatik";
+    sha256 = "sha256-r9Uj64Lgu/hODrKwkACMfUdwdOk9wBWovMNWD5KjTvM=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-key-teleop";
   version = "1.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/teleop_tools-release/archive/release/foxy/key_teleop/1.3.0-1.tar.gz";
-    name = "1.3.0-1.tar.gz";
-    sha256 = "b4ac6357b734c50c591b8b5a9b783b26c29f82e7a1d1cb01dc60ccfff1e07130";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "teleop_tools-release";
+    rev = "829abae994f61c5d17e908a41bce9cd9c9bee017";
+    owner = "ros-gbp";
+    sha256 = "sha256-87yL4CShLr4rcnlMktKgwgbI5fQEz2pKnQ2f50LTssY=";
   };
 
   buildType = "ament_python";

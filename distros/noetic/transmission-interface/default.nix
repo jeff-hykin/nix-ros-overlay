@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-transmission-interface";
   version = "0.19.6-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/ros_control-release/archive/release/noetic/transmission_interface/0.19.6-1.tar.gz";
-    name = "0.19.6-1.tar.gz";
-    sha256 = "755e35de9c948073f5f97bcef76dfc4f9d851e6d1f18b892acf3ea8355315485";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_control-release";
+    rev = "c04bf8db8a487549eacb4bb1816b72cf25c1285c";
+    owner = "ros-gbp";
+    sha256 = "sha256-jorp8CX/2un3FnNPhyya3f6QGp6NFKjlL/o1a+5GqLQ=";
   };
 
   buildType = "catkin";

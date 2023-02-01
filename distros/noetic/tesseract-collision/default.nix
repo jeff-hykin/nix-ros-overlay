@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-tesseract-collision";
   version = "0.13.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-industrial-release/tesseract-release/archive/release/noetic/tesseract_collision/0.13.1-1.tar.gz";
-    name = "0.13.1-1.tar.gz";
-    sha256 = "7f85f240dd0ff1434db1bcf4d63ccc71afc0baa99fcfbcb862c3e6c599ec0337";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "tesseract-release";
+    rev = "24cf458085d3793899b96267dbe9307e5f3b57f3";
+    owner = "ros-industrial-release";
+    sha256 = "sha256-FrtqR2bflcpCls9PUgHtzJOWYQUpgGqA0DOaQMblWog=";
   };
 
   buildType = "cmake";

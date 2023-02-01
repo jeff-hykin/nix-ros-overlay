@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-random-numbers";
   version = "0.3.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/random_numbers-release/archive/release/noetic/random_numbers/0.3.2-1.tar.gz";
-    name = "0.3.2-1.tar.gz";
-    sha256 = "b1eba248517898185240a7f4f60dbddbe38d11b9409d55bc7512ea3903b909de";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "random_numbers-release";
+    rev = "f3214257eaac4bdaa1a6aa509da02953af59697d";
+    owner = "ros-gbp";
+    sha256 = "sha256-Ahi8HGqZdCpFcqJ7cKYqmlBf0xTZ1tyUfXC38Nq715A=";
   };
 
   buildType = "catkin";

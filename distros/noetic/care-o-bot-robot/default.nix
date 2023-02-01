@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-care-o-bot-robot";
   version = "0.7.9-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/care-o-bot-release/archive/release/noetic/care_o_bot_robot/0.7.9-1.tar.gz";
-    name = "0.7.9-1.tar.gz";
-    sha256 = "717e9a938cb65432fb85d8238aead1a7e62e7cada341d0d7ac4683d453535f66";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "care-o-bot-release";
+    rev = "277daebc6e175d6c9a127ea8f4988c5e6989f519";
+    owner = "ipa320";
+    sha256 = "sha256-3UO+jY6//kS+X1CuX32uj7nwRytih+BZuB8ZN12VIDA=";
   };
 
   buildType = "catkin";

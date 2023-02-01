@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-python-qt-binding";
   version = "1.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/python_qt_binding-release/archive/release/rolling/python_qt_binding/1.2.0-1.tar.gz";
-    name = "1.2.0-1.tar.gz";
-    sha256 = "10b196a7bfca5606ec27420dc6f8233e3d926d95b226f898972ff9e459ea6628";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "python_qt_binding-release";
+    rev = "56c75bc69f0721c01fc8d98511b01b5bab648996";
+    owner = "ros2-gbp";
+    sha256 = "sha256-AT0Kp3YFa14apGbBkI6y0TUx3DKNQMsS8NKrPTTY0uo=";
   };
 
   buildType = "ament_cmake";

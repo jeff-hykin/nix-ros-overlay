@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-raptor-pdu-msgs";
   version = "1.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/NewEagleRaptor/raptor-dbw-ros2-release/archive/release/foxy/raptor_pdu_msgs/1.2.0-1.tar.gz";
-    name = "1.2.0-1.tar.gz";
-    sha256 = "d9c680ed10febb546b341c8c2944d0c9a1b9f839aaf5aae4d22f0b386c557b2a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "raptor-dbw-ros2-release";
+    rev = "f0c0f5197f341e8ed1809fe723598e20af1040d3";
+    owner = "NewEagleRaptor";
+    sha256 = "sha256-YwRaEfDzqb4PO12ulBbo3j+u8ZzWU4mWsupKazkpdFI=";
   };
 
   buildType = "ament_cmake";

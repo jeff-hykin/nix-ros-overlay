@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-camera-info-manager";
   version = "2.5.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/image_common-release/archive/release/galactic/camera_info_manager/2.5.1-1.tar.gz";
-    name = "2.5.1-1.tar.gz";
-    sha256 = "2779e78ed64d7717b08123acd2bcc842f2c991e810b75dac6ccbafc7860103fb";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "image_common-release";
+    rev = "e34874cb309f63d50d5f044e5675efce229c3a29";
+    owner = "ros2-gbp";
+    sha256 = "sha256-12IgyJcvh1ATTA4DC+h4MyYjcBZKmAkw+O1NnD2lod0=";
   };
 
   buildType = "ament_cmake";

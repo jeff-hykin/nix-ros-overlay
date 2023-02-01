@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-costmap-cspace-rviz-plugins";
   version = "0.11.6-r1";
 
-  src = fetchurl {
-    url = "https://github.com/at-wat/neonavigation_rviz_plugins-release/archive/release/noetic/costmap_cspace_rviz_plugins/0.11.6-1.tar.gz";
-    name = "0.11.6-1.tar.gz";
-    sha256 = "6c2f6975ca322e23f1254669e5744fffdebe59cefbca478728e34cb73f4b2dce";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "neonavigation_rviz_plugins-release";
+    rev = "2856f26fab8a4a01beece6062395e16746db6f29";
+    owner = "at-wat";
+    sha256 = "sha256-AZXjHbkeKfD4qwfQ4109dCTQVvKOpA6QfPkrNsvaiOc=";
   };
 
   buildType = "catkin";

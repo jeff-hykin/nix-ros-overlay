@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-uncrustify-vendor";
   version = "1.4.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/uncrustify_vendor-release/archive/release/foxy/uncrustify_vendor/1.4.0-1.tar.gz";
-    name = "1.4.0-1.tar.gz";
-    sha256 = "e43689110e4666ef4ca2e722c76dfd584aedc5d759a5bfdeac7ce33f61cbd9cc";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "uncrustify_vendor-release";
+    rev = "04f7bd47dc95d137f4ebafcd1a2fa22aad7d7d3c";
+    owner = "ros2-gbp";
+    sha256 = "sha256-h65qS/QImM9SV6H7bheuJxb5AH7gQOL4FoqXnvZ5yX8=";
   };
 
   buildType = "ament_cmake";

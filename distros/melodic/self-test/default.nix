@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-self-test";
   version = "1.9.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/diagnostics-release/archive/release/melodic/self_test/1.9.7-1.tar.gz";
-    name = "1.9.7-1.tar.gz";
-    sha256 = "8003bc9a5dcc8daae483cced14c86f3a413161871cd48d7d5e9e1277148c8f56";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "diagnostics-release";
+    rev = "a72f26f2998b662ff090d31ead45c10c90d5b82a";
+    owner = "ros-gbp";
+    sha256 = "sha256-CEqYDW+B1IlUSc9N2SVnkJsZg0rUOtgu8Ix+4qc6w2Y=";
   };
 
   buildType = "catkin";

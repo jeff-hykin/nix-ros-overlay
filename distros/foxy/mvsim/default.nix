@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-mvsim";
   version = "0.4.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/mvsim-release/archive/release/foxy/mvsim/0.4.3-1.tar.gz";
-    name = "0.4.3-1.tar.gz";
-    sha256 = "1840a35cd4dc24f7b359929826883df6e36ad5eb5f456029cec233cd377f249d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mvsim-release";
+    rev = "d730b4f377834162da8b59dbcda525137095f1ba";
+    owner = "ros2-gbp";
+    sha256 = "sha256-UsYz5EnFEfqiGCOAZAkr2ZcOhc/+OVX7JTk/H43DS2g=";
   };
 
   buildType = "ament_cmake";

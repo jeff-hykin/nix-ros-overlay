@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-tlsf";
   version = "0.7.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/tlsf-release/archive/release/humble/tlsf/0.7.0-2.tar.gz";
-    name = "0.7.0-2.tar.gz";
-    sha256 = "5529e9e5b73a5800f4ec58d218f1d6c336f33ad153f258f9b379fbd44e28c6e0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "tlsf-release";
+    rev = "77ce2b324b10579e8c09875b3da7de51811693ef";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Gaa53l1Yew9zgTyLFtPie+iQ4w68RsHQ1lJQhVNX6EI=";
   };
 
   buildType = "ament_cmake";

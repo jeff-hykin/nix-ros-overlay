@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-forward-command-controller";
   version = "2.15.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_controllers-release/archive/release/rolling/forward_command_controller/2.15.0-1.tar.gz";
-    name = "2.15.0-1.tar.gz";
-    sha256 = "4434ead7bb5cb87ece4007caff8739004df304b41cc86e5befe048c63356f9b5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_controllers-release";
+    rev = "c298d973b7a764fe0b46ad16ae2c6f42f35bce54";
+    owner = "ros2-gbp";
+    sha256 = "sha256-5zdl3X1mGFc6TlRKcUUlWpZbF/gCAQZLqm8X9VBNKTo=";
   };
 
   buildType = "ament_cmake";

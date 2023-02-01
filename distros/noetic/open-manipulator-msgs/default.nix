@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-open-manipulator-msgs";
   version = "1.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ROBOTIS-GIT-release/open_manipulator_msgs-release/archive/release/noetic/open_manipulator_msgs/1.0.1-1.tar.gz";
-    name = "1.0.1-1.tar.gz";
-    sha256 = "39423343c47cc249fdae4bb7588fc7c6689f49c1374c84e846e7603ea4a09cb3";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "open_manipulator_msgs-release";
+    rev = "6da69311ad92e623f36013736a28cb39466d0d83";
+    owner = "ROBOTIS-GIT-release";
+    sha256 = "sha256-RrPyxm/xt001eXMHg8omNq0U8sHgKRTS8iXc5Q4lLOk=";
   };
 
   buildType = "catkin";

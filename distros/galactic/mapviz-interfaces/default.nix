@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-mapviz-interfaces";
   version = "2.2.0-r3";
 
-  src = fetchurl {
-    url = "https://github.com/swri-robotics-gbp/mapviz-release/archive/release/galactic/mapviz_interfaces/2.2.0-3.tar.gz";
-    name = "2.2.0-3.tar.gz";
-    sha256 = "e3724bcf53241edc734d86500f15df59cc79cf8c5e92baee9403f472f02d21bc";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mapviz-release";
+    rev = "eb57ab41f2341f80601069487a54d6332445a86a";
+    owner = "swri-robotics-gbp";
+    sha256 = "sha256-gw36lLF/MGJyPChAz2I97MjOcQdSnb/7/L6Msg9wZaw=";
   };
 
   buildType = "ament_cmake";

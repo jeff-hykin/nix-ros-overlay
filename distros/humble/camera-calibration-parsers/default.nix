@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-camera-calibration-parsers";
   version = "3.1.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/image_common-release/archive/release/humble/camera_calibration_parsers/3.1.5-1.tar.gz";
-    name = "3.1.5-1.tar.gz";
-    sha256 = "9ee2dd3488180480026f73faba7bd6b481cb7abb690461cfe817c7f47ed879d8";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "image_common-release";
+    rev = "31dcaea8eccbd0b6d93bf1c013c97ade65a669df";
+    owner = "ros2-gbp";
+    sha256 = "sha256-yvIICXbI6lMSXdocZyEbl74VnqSU/Bu3k9PZZLhPtZQ=";
   };
 
   buildType = "ament_cmake";

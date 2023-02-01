@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-jackal-control";
   version = "0.7.9-r1";
 
-  src = fetchurl {
-    url = "https://github.com/clearpath-gbp/jackal-release/archive/release/melodic/jackal_control/0.7.9-1.tar.gz";
-    name = "0.7.9-1.tar.gz";
-    sha256 = "9da372686eb7b4f1d358c49742d05a7fc61bb8a268f471b2c4afd93787f824c0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "jackal-release";
+    rev = "0e86cf975707fad33bc7d13fc7c412e145d05b66";
+    owner = "clearpath-gbp";
+    sha256 = "sha256-zQ9zFqyzbPIrBrkrnqO10Qepd6zvvV8kf3W2qF3oOMA=";
   };
 
   buildType = "catkin";

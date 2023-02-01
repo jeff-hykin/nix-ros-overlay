@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-rmf-ingestor-msgs";
   version = "1.4.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_internal_msgs-release/archive/release/foxy/rmf_ingestor_msgs/1.4.0-1.tar.gz";
-    name = "1.4.0-1.tar.gz";
-    sha256 = "5a6afefac6627f66850b053729fcb13b8b9c1e20aaa07f22f2928309eac135ca";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_internal_msgs-release";
+    rev = "df52eefe980bca1471613cb39c5284b68fedce02";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Xwiv4wp9G1bYLm+ehVeoA3LA7Ll/ahXilMPReTfbHNo=";
   };
 
   buildType = "ament_cmake";

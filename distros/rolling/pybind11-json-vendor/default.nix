@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-pybind11-json-vendor";
   version = "0.2.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/pybind11_json_vendor-release/archive/release/rolling/pybind11_json_vendor/0.2.2-1.tar.gz";
-    name = "0.2.2-1.tar.gz";
-    sha256 = "9a2effacb4289db6471fb972d7e528e31ab51fce12bf32af3ccda012486bef68";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pybind11_json_vendor-release";
+    rev = "d1dc81c4f26163707fda85eb532420872295d2fe";
+    owner = "ros2-gbp";
+    sha256 = "sha256-qoFKeo7jfb52fZdwNmBZ4HguVJdKPPh2ULzBGHZFPJ0=";
   };
 
   buildType = "ament_cmake";

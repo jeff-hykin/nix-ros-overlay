@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-cob-dashboard";
   version = "0.6.30-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_command_tools-release/archive/release/noetic/cob_dashboard/0.6.30-2.tar.gz";
-    name = "0.6.30-2.tar.gz";
-    sha256 = "d8f7f6575d5b7ac07db7c310473556b1a64af6baa157608b915e5f8def2148c8";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_command_tools-release";
+    rev = "67cb89d3fe2cd2ee38da64a90dfd2c7fe2f09f95";
+    owner = "ipa320";
+    sha256 = "sha256-3u3ED7EL0NktfiKRPJA+QTZZKI96YvyL3+p6Ij00ljQ=";
   };
 
   buildType = "catkin";

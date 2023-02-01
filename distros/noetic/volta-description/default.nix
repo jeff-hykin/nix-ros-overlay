@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-volta-description";
   version = "1.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/botsync-gbp/volta-release/archive/release/noetic/volta_description/1.2.0-1.tar.gz";
-    name = "1.2.0-1.tar.gz";
-    sha256 = "43d343a5bdb749a9652a37a2c33b05948199ecddff189420a2bff5478a9b685c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "volta-release";
+    rev = "25fb4406e209d2d1a55db7926cc1f620698ab2f8";
+    owner = "botsync-gbp";
+    sha256 = "sha256-Llh4WxmmNdTxJC8KHCBxkiTtKzJ3iSsOqvHzYzCT968=";
   };
 
   buildType = "catkin";

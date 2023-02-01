@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-khi-rs-ikfast-plugin";
   version = "1.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/Kawasaki-Robotics/khi_robot-release/archive/release/melodic/khi_rs_ikfast_plugin/1.2.0-1.tar.gz";
-    name = "1.2.0-1.tar.gz";
-    sha256 = "d9f697807d99df9fb28ee0e5dacf746d59998eb9e36895e167c80fb571194b2f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "khi_robot-release";
+    rev = "36675e5fc75b2cb259a90c16ae731839f053e40e";
+    owner = "Kawasaki-Robotics";
+    sha256 = "sha256-ZcMgaCsYLH27UT/AtJ5mkNYEu9JHcFue8UEpBixP0K4=";
   };
 
   buildType = "catkin";

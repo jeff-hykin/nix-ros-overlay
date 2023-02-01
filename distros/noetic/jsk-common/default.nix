@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-jsk-common";
   version = "2.2.12-r1";
 
-  src = fetchurl {
-    url = "https://github.com/tork-a/jsk_common-release/archive/release/noetic/jsk_common/2.2.12-1.tar.gz";
-    name = "2.2.12-1.tar.gz";
-    sha256 = "aba0111078224438e6e2135b0553eb2307494052ad39d89f77dc95eab1408945";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "jsk_common-release";
+    rev = "d1a756bc0b140185280ee0b7a6570e9016e61695";
+    owner = "tork-a";
+    sha256 = "sha256-XazgDRNWipT1K+kgE9sQWDoQc/DxjLCpq/C0dgjICtQ=";
   };
 
   buildType = "catkin";

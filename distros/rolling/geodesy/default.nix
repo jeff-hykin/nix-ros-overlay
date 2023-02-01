@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-geodesy";
   version = "1.0.4-r5";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/geographic_info-release/archive/release/rolling/geodesy/1.0.4-5.tar.gz";
-    name = "1.0.4-5.tar.gz";
-    sha256 = "52de865618ce1c63b8f4c91d82c3368c1de63fb466fc9f0d44563b77c1305d63";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "geographic_info-release";
+    rev = "1770b2904d66cd38e6c5f30e995470460526f1b2";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Mzm8AWuKEp7IOCpF3+LvcThDlbjh5/5D9ftJVe7R1AA=";
   };
 
   buildType = "ament_cmake";

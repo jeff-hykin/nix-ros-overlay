@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-key-teleop";
   version = "1.3.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/teleop_tools-release/archive/release/rolling/key_teleop/1.3.0-2.tar.gz";
-    name = "1.3.0-2.tar.gz";
-    sha256 = "b76a355278305d48844605b8351776d77582ab59ef729a54da416431ad0a9776";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "teleop_tools-release";
+    rev = "ddcac8500d1c23c4b6c3351b9849787bfcda3ddb";
+    owner = "ros2-gbp";
+    sha256 = "sha256-87yL4CShLr4rcnlMktKgwgbI5fQEz2pKnQ2f50LTssY=";
   };
 
   buildType = "ament_python";

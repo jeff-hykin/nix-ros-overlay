@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-joy-linux";
   version = "3.1.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/joystick_drivers-release/archive/release/rolling/joy_linux/3.1.0-2.tar.gz";
-    name = "3.1.0-2.tar.gz";
-    sha256 = "cab183b440552dcd1ae15fc0612361fb5da27839abdd3a6da2d5d0390a7c7355";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "joystick_drivers-release";
+    rev = "bf1a1ced2b96d736915f7c26af39a54f6353e0eb";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Ud7B/decJ0vqf/8LrcWatgTku5IS5sZ34MW8VWp23vE=";
   };
 
   buildType = "ament_cmake";

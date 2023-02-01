@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-cob-omni-drive-controller";
   version = "0.8.20-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_control-release/archive/release/noetic/cob_omni_drive_controller/0.8.20-1.tar.gz";
-    name = "0.8.20-1.tar.gz";
-    sha256 = "2f7215f82edf7f0047e61f0ffd212cc92ec419e128611424b736ec44dc842917";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_control-release";
+    rev = "5669dea91f3a460e35e78aaf273274b89d2636ed";
+    owner = "ipa320";
+    sha256 = "sha256-ApTV8pUXTrTNVjxQVfpoP+eAFGsdLDoG2BdDsWR5pfk=";
   };
 
   buildType = "catkin";

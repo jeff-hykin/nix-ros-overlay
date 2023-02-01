@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-controller-interface";
   version = "3.5.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_control-release/archive/release/rolling/controller_interface/3.5.0-1.tar.gz";
-    name = "3.5.0-1.tar.gz";
-    sha256 = "aa1816bc94d1a94c6f46ee44804552d0893a4e9f267ae414ae43395084fc3bc6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_control-release";
+    rev = "aa9bb1957823e117b88b3b38b657d2b2c0700da6";
+    owner = "ros2-gbp";
+    sha256 = "sha256-5NANPwP6eQKs6D35Fi+EBqibr/hcdvZtOOQY5bRb1p0=";
   };
 
   buildType = "ament_cmake";

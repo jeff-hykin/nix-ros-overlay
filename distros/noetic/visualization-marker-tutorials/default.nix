@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-visualization-marker-tutorials";
   version = "0.11.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/visualization_tutorials-release/archive/release/noetic/visualization_marker_tutorials/0.11.0-1.tar.gz";
-    name = "0.11.0-1.tar.gz";
-    sha256 = "403a4658fd70b1faa9b6650839f28751383d1cd57fd7787fc4bee4bf7171fe1c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "visualization_tutorials-release";
+    rev = "4661ec5d26f0a6af379b3f55ee0d049d7a4c58ba";
+    owner = "ros-gbp";
+    sha256 = "sha256-4JRxG3IZFH10fxMDdGmma0hwIdYpUVQ/8zN2IHg7Vk8=";
   };
 
   buildType = "catkin";

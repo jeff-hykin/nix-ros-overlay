@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-ros2launch";
   version = "0.19.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/launch_ros-release/archive/release/humble/ros2launch/0.19.3-1.tar.gz";
-    name = "0.19.3-1.tar.gz";
-    sha256 = "e935b92509e685af5b86d530b4155b2f97fd3cec2f8bce23bb88ccc80254059f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "launch_ros-release";
+    rev = "03a2f829bad029ed29bbc4e1dc16025a97bb86aa";
+    owner = "ros2-gbp";
+    sha256 = "sha256-NEbycVC/SkJ7OwyNBEWgZ/seJvSIZlDX/J/d4lt1xMo=";
   };
 
   buildType = "ament_python";

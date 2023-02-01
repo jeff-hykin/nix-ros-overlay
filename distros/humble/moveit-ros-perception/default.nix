@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-moveit-ros-perception";
   version = "2.5.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/moveit/moveit2-release/archive/release/humble/moveit_ros_perception/2.5.4-1.tar.gz";
-    name = "2.5.4-1.tar.gz";
-    sha256 = "156fa8b5eadace41233c93284d21ce12df2268de4800dcfdd8b561c43f041601";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "moveit2-release";
+    rev = "23138a03fb6dd6d31aba40eac03f2cc8d0a62dcc";
+    owner = "moveit";
+    sha256 = "sha256-qwKkeJum37af3XUC+aPOpdcer2gock2JZXgfZOd2nJI=";
   };
 
   buildType = "ament_cmake";

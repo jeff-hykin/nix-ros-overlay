@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-laser-cb-detector";
   version = "0.10.14";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/calibration-release/archive/release/melodic/laser_cb_detector/0.10.14-0.tar.gz";
-    name = "0.10.14-0.tar.gz";
-    sha256 = "84dfc40a2bed5cc329a50aba2e513550e8a8aa9de1b0d0719676e04ee3107d7e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "calibration-release";
+    rev = "eff3da8c384ec9accd2717cc84a9f6c7f801dd7f";
+    owner = "ros-gbp";
+    sha256 = "sha256-3NnQOLmxvBKEE2zKj5n1/ZjEhBoSzFnS6IQ29AOzaMg=";
   };
 
   buildType = "catkin";

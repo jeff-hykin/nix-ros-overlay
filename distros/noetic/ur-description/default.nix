@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-ur-description";
   version = "1.3.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-industrial-release/universal_robot-release/archive/release/noetic/ur_description/1.3.1-1.tar.gz";
-    name = "1.3.1-1.tar.gz";
-    sha256 = "845fa20c6d5eba1e14b1bd069bac23247dbcf0c49505f5a9023c6b9019888b5f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "universal_robot-release";
+    rev = "03e3e7305dec48078641859f542922d08e12b7c1";
+    owner = "ros-industrial-release";
+    sha256 = "sha256-oBfwM4xdLzEP2wgCWkIfMCPQDILmVaxIayQJOLucr5I=";
   };
 
   buildType = "catkin";

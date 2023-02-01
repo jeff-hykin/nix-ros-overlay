@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-camera-calibration-parsers";
   version = "1.11.13";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/image_common-release/archive/release/melodic/camera_calibration_parsers/1.11.13-0.tar.gz";
-    name = "1.11.13-0.tar.gz";
-    sha256 = "dd350061b03da5dba0315515f603daa31204e71c43389cf9e57bf09c06d8d3ef";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "image_common-release";
+    rev = "101b5fe495cbf1a1bf664a78967eaf53d0bef0e7";
+    owner = "ros-gbp";
+    sha256 = "sha256-dXYfQVjiHRm0PQslj+wCGNAKqyUYAjI0gqesgiV7Org=";
   };
 
   buildType = "catkin";

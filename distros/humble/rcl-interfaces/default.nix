@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-rcl-interfaces";
   version = "1.2.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rcl_interfaces-release/archive/release/humble/rcl_interfaces/1.2.1-1.tar.gz";
-    name = "1.2.1-1.tar.gz";
-    sha256 = "a9fc24c479d99c384f08066f29984444d815712a01ad80fbf5c5cc88be5d6462";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rcl_interfaces-release";
+    rev = "20f5125ef3e37d4c8f99359f0a31664c0e09f30e";
+    owner = "ros2-gbp";
+    sha256 = "sha256-u2J/jcCd1MMdjEgq+WCpXer+ArCc0n37/eBI9WBMV9o=";
   };
 
   buildType = "ament_cmake";

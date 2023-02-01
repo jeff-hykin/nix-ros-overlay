@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-bondpy";
   version = "1.8.6-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/bond_core-release/archive/release/noetic/bondpy/1.8.6-1.tar.gz";
-    name = "1.8.6-1.tar.gz";
-    sha256 = "392cc88d81ede0d5902f36458a88cefe3c66213f4def1cb972d4c4fe80af693b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "bond_core-release";
+    rev = "eb883d48ab4b4e097667ccbef346c9b5300c1bdc";
+    owner = "ros-gbp";
+    sha256 = "sha256-cqfnNxlKTXuHdNfPkD0t7fhQ45gEM9icNi+yLXC2EeY=";
   };
 
   buildType = "catkin";

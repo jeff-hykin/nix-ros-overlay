@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-dingo-description";
   version = "0.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/clearpath-gbp/dingo-release/archive/release/noetic/dingo_description/0.2.0-1.tar.gz";
-    name = "0.2.0-1.tar.gz";
-    sha256 = "eb30f6ea53cd495b9f71a10b01b546c84020a7354be2fc667f767979a3310051";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "dingo-release";
+    rev = "9ef69c57a43cc19d4d76c816b2d4e07fb7f9052e";
+    owner = "clearpath-gbp";
+    sha256 = "sha256-UvchuSE0AwvHKKaPR0vyAQCAdYOEJDQOpkGdYp9E1vA=";
   };
 
   buildType = "catkin";

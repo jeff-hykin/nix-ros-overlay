@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-moveit-resources-fanuc-moveit-config";
   version = "2.0.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/moveit/moveit_resources-release/archive/release/galactic/moveit_resources_fanuc_moveit_config/2.0.3-1.tar.gz";
-    name = "2.0.3-1.tar.gz";
-    sha256 = "e4f1d9fe6e6f1c007bed5513d45e0988ea5e698d4fb09681c61e7514948e9969";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "moveit_resources-release";
+    rev = "7a4071246a617a376cba38639eeb10bdcc54a10b";
+    owner = "moveit";
+    sha256 = "sha256-yU+epK+mBbWBgBdWxhcM+UlkPucehApKbfp1VS0yFhg=";
   };
 
   buildType = "ament_cmake";

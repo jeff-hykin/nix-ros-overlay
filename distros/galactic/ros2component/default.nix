@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ros2component";
   version = "0.13.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2cli-release/archive/release/galactic/ros2component/0.13.5-1.tar.gz";
-    name = "0.13.5-1.tar.gz";
-    sha256 = "aac3b23895fd521c5f8c4aa57ea2d794e8e5068f1ebd3286f3bc6fea7f732080";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2cli-release";
+    rev = "497c3e217ff462e4141c10b599b8a5240b78556f";
+    owner = "ros2-gbp";
+    sha256 = "sha256-L82ED1GeCuAFtKnlEeU3pbLTyJk8OoS9LfCIv6xS08Y=";
   };
 
   buildType = "ament_python";

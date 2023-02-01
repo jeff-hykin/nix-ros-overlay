@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-flir-camera-driver";
   version = "0.2.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-drivers-gbp/flir_camera_driver-release/archive/release/noetic/flir_camera_driver/0.2.3-1.tar.gz";
-    name = "0.2.3-1.tar.gz";
-    sha256 = "327f8ef92766d5cd10aa75ec9a05549509a7d5ef1ca1514f756dd72200c10229";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "flir_camera_driver-release";
+    rev = "7dd2161f5ed7274da96ab226d05e747900fea71c";
+    owner = "ros-drivers-gbp";
+    sha256 = "sha256-rzOUli+sMOwgZPPkEbfKVjT6LoDktUjjqoNYhPsweGw=";
   };
 
   buildType = "catkin";

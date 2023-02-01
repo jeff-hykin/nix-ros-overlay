@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-swri-prefix-tools";
   version = "3.5.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/marti_common-release/archive/release/foxy/swri_prefix_tools/3.5.1-1.tar.gz";
-    name = "3.5.1-1.tar.gz";
-    sha256 = "597b8f44f6f2ccc288dc8c8e6bde4995265f88e68d77398eb01928f2adc2d02e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "marti_common-release";
+    rev = "5e706af7e2d246266c94b2120398b9792e111042";
+    owner = "ros2-gbp";
+    sha256 = "sha256-dH5HNyJE9/48qkrSmDe1cN1n5Px9NWzhrfB76O47Uuc=";
   };
 
   buildType = "ament_cmake";

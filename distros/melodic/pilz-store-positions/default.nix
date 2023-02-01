@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-pilz-store-positions";
   version = "0.4.14-r1";
 
-  src = fetchurl {
-    url = "https://github.com/PilzDE/pilz_industrial_motion-release/archive/release/melodic/pilz_store_positions/0.4.14-1.tar.gz";
-    name = "0.4.14-1.tar.gz";
-    sha256 = "e5b3f77c5955899145e6fd06dc5ba7fab918b651d543aeb27e7b90e4987293f8";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pilz_industrial_motion-release";
+    rev = "d05544981203b8c73e63b932d12737436b5170e7";
+    owner = "PilzDE";
+    sha256 = "sha256-xQzGZkL+EBm8GSc/87XWgS9W5Yy8twBcIKauQnmRf4M=";
   };
 
   buildType = "catkin";

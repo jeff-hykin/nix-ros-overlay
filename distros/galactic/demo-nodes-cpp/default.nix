@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-demo-nodes-cpp";
   version = "0.14.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/demos-release/archive/release/galactic/demo_nodes_cpp/0.14.4-1.tar.gz";
-    name = "0.14.4-1.tar.gz";
-    sha256 = "6868687d7257fcbf42ef4ec9b86025c3bc323517ca5201af3e9a08b77a1599c8";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "demos-release";
+    rev = "b3f5b8cf6c229d189917ac28118ffebbe9e42d12";
+    owner = "ros2-gbp";
+    sha256 = "sha256-F18J2a9WCAEJv8EY96MvmGfxbpJFfgVEdDX/yts9pok=";
   };
 
   buildType = "ament_cmake";

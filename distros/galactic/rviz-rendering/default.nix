@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rviz-rendering";
   version = "8.5.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rviz-release/archive/release/galactic/rviz_rendering/8.5.2-1.tar.gz";
-    name = "8.5.2-1.tar.gz";
-    sha256 = "ba00e19ab25b3ca99d353fe3e402cba9411163d2279a04d6260cb6c077be28d8";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rviz-release";
+    rev = "1964fd64cc7ba58ab2a38f09a1975b195bcf568c";
+    owner = "ros2-gbp";
+    sha256 = "sha256-NdtQhGokLaw+WXkVTInNAVhLR2HXRSPgWamjXoUmGPc=";
   };
 
   buildType = "ament_cmake";

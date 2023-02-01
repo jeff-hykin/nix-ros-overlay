@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-turtlebot3-example";
   version = "1.2.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ROBOTIS-GIT-release/turtlebot3-release/archive/release/noetic/turtlebot3_example/1.2.5-1.tar.gz";
-    name = "1.2.5-1.tar.gz";
-    sha256 = "2af50c6d5cf49106fbe1621db7065e770dff1d781b106f477b25f8294645166c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "turtlebot3-release";
+    rev = "0cc45ddc478f7d2e85b27b17e427506e54cc0486";
+    owner = "ROBOTIS-GIT-release";
+    sha256 = "sha256-s+01xzaIyoB+ZYqvDup3zPc64trqrP7YVEwwQfBEpgE=";
   };
 
   buildType = "catkin";

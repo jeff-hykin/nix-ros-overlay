@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-dingo-viz";
   version = "0.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/clearpath-gbp/dingo_desktop-release/archive/release/melodic/dingo_viz/0.1.1-1.tar.gz";
-    name = "0.1.1-1.tar.gz";
-    sha256 = "e9b4282d6e944beda9b5be7a53f385c0b8a4ce0b0c8f1ae1c08ff6a5544eebcb";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "dingo_desktop-release";
+    rev = "d129fb6a50ac54d4df477b43fc28d72528e5d075";
+    owner = "clearpath-gbp";
+    sha256 = "sha256-IGPvo5OSnIyMik+askiIoowplG4Soh5t1TwuaNrJfcc=";
   };
 
   buildType = "catkin";

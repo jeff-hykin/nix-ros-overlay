@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ur-calibration";
   version = "2.1.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/Universal_Robots_ROS2_Driver-release/archive/release/galactic/ur_calibration/2.1.2-1.tar.gz";
-    name = "2.1.2-1.tar.gz";
-    sha256 = "cff13c3ba6c50f0ce60117f5f24dcb0c4f95869170617ee17655dafe06caf2f6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "Universal_Robots_ROS2_Driver-release";
+    rev = "f8d50ac9fc0bb291e580fe2be2511ad395e5e9da";
+    owner = "ros2-gbp";
+    sha256 = "sha256-TEQcirIlMhnEArKI6r4qDjIILZw6ozvecl2sSYhd+rI=";
   };
 
   buildType = "ament_cmake";

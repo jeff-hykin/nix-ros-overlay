@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-cob-control-msgs";
   version = "0.8.12-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_control-release/archive/release/melodic/cob_control_msgs/0.8.12-1.tar.gz";
-    name = "0.8.12-1.tar.gz";
-    sha256 = "f68fa8e5451d4533f99c97131eea4854b45b4e1d27d42384e0e3112638d4c55f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_control-release";
+    rev = "12e67178ae22f7d9268ceb896396988d92f80dc5";
+    owner = "ipa320";
+    sha256 = "sha256-p8IPn6ShmNLD9suGuZ29F58B+AP5iJPAGhPpZz8X8wY=";
   };
 
   buildType = "catkin";

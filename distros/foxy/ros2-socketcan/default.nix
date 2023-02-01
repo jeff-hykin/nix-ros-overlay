@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-ros2-socketcan";
   version = "1.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_socketcan-release/archive/release/foxy/ros2_socketcan/1.1.0-1.tar.gz";
-    name = "1.1.0-1.tar.gz";
-    sha256 = "0e1d360e58b44ddfa46158a568d646042a0738513f9e42e801de5f73a3eabecb";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_socketcan-release";
+    rev = "ff2e31db965c32195fe1c6aa4cf488a1e15a2991";
+    owner = "ros2-gbp";
+    sha256 = "sha256-5X1Zt8nQDN5Bp9dZgz8CzQW6gMNhDsjMt0D6P1X/JSg=";
   };
 
   buildType = "ament_cmake";

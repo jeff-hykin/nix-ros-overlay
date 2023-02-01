@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-visp-auto-tracker";
   version = "0.13.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/lagadic/vision_visp-release/archive/release/noetic/visp_auto_tracker/0.13.1-1.tar.gz";
-    name = "0.13.1-1.tar.gz";
-    sha256 = "b5792efe8fff571166a20087a56b195e41893ee5ee4ced8d761a6cbe9513f2d9";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "vision_visp-release";
+    rev = "c40c35948b48a0fc934fcfefe7d8e0e01224a080";
+    owner = "lagadic";
+    sha256 = "sha256-ao31/7CGJRNEdwV90bFj4MzSvFlzYK++4OFW9HWExfQ=";
   };
 
   buildType = "catkin";

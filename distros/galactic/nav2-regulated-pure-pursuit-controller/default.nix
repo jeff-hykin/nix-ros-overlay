@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-nav2-regulated-pure-pursuit-controller";
   version = "1.0.12-r1";
 
-  src = fetchurl {
-    url = "https://github.com/SteveMacenski/navigation2-release/archive/release/galactic/nav2_regulated_pure_pursuit_controller/1.0.12-1.tar.gz";
-    name = "1.0.12-1.tar.gz";
-    sha256 = "843e9fadc756207394c3170ed709930f7c4063eb12c3700d6f7a3e8e2b65bdbe";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation2-release";
+    rev = "1b86efe0860c35db085cd7a44631d881e5d3fbac";
+    owner = "SteveMacenski";
+    sha256 = "sha256-4jMND9IvfN9DgPcdElC1ya2kK9+yQjuTQPELQ835K1s=";
   };
 
   buildType = "ament_cmake";

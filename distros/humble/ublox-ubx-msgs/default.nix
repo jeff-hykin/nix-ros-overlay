@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-ublox-ubx-msgs";
   version = "0.3.5-r4";
 
-  src = fetchurl {
-    url = "https://github.com/aussierobots/ublox_dgnss-release/archive/release/humble/ublox_ubx_msgs/0.3.5-4.tar.gz";
-    name = "0.3.5-4.tar.gz";
-    sha256 = "5fe4ec759a8893153e1b13331e26fe44e79cae67074ed288c4ecdc2daba41816";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ublox_dgnss-release";
+    rev = "b80f5792511b321da5e44704c1d3ab7925fd5555";
+    owner = "aussierobots";
+    sha256 = "sha256-rPeG/k/7UAr25C9ghUPya7+ZwS9svz66lkGJCDlEi6w=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-rosee-msg";
   version = "0.0.2-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ADVRHumanoids/rosee2_msg-release/archive/release/foxy/rosee_msg/0.0.2-2.tar.gz";
-    name = "0.0.2-2.tar.gz";
-    sha256 = "b552235dc79a8e18a1acb015b78dee7d205f65c044043da4a73ad07cffddd4c0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosee2_msg-release";
+    rev = "65fa946e7cc3ba48c40f2107f5b29dddd1e34e28";
+    owner = "ADVRHumanoids";
+    sha256 = "sha256-JYoSP63MW/TTdrLINU5lttEVthNCyi9AOlmEi9GApD4=";
   };
 
   buildType = "ament_cmake";

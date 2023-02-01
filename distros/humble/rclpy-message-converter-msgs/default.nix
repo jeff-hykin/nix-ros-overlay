@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-rclpy-message-converter-msgs";
   version = "2.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rospy_message_converter-release/archive/release/humble/rclpy_message_converter_msgs/2.0.1-1.tar.gz";
-    name = "2.0.1-1.tar.gz";
-    sha256 = "3dac64ea287d7826168b18431c24f989621f740a30eeaf13af84e4334b6b4762";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rospy_message_converter-release";
+    rev = "2b35dec565539675d790053767040b3b9ff9493c";
+    owner = "ros2-gbp";
+    sha256 = "sha256-vWAM+JjdKQvohD6qBeuCVmL+zcOgq1szEkS8jYnSPkw=";
   };
 
   buildType = "ament_cmake";

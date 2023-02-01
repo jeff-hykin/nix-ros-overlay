@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-microstrain-inertial-rqt";
   version = "2.7.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/microstrain_inertial-release/archive/release/humble/microstrain_inertial_rqt/2.7.1-1.tar.gz";
-    name = "2.7.1-1.tar.gz";
-    sha256 = "fbd79a61100f44dd30452843c38428ca66d257e89f4a575442ee0b143c70aa9f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "microstrain_inertial-release";
+    rev = "308d8e733465807a147307626ff0882f05fd3cd2";
+    owner = "ros2-gbp";
+    sha256 = "sha256-X+Ln2qrYa5YMXjH/lKuPt55wU6rW1792SMe6RZyi+BU=";
   };
 
   buildType = "ament_python";

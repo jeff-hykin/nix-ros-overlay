@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-ros-testing";
   version = "0.4.0-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros_testing-release/archive/release/humble/ros_testing/0.4.0-3.tar.gz";
-    name = "0.4.0-3.tar.gz";
-    sha256 = "d11fe885a4ee83c4ba2bf312c8d5dd556ab06d32368865741793c04e70660a40";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_testing-release";
+    rev = "d967927d4fd56ff3d6b07a5691d67b14699f8e32";
+    owner = "ros2-gbp";
+    sha256 = "sha256-sUwtH8qmHyoxmIc0wz8dHJFON0w90U1JFymI3aV6c1U=";
   };
 
   buildType = "ament_cmake";

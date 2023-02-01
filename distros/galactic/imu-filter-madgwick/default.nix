@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-imu-filter-madgwick";
   version = "2.0.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/imu_tools-release/archive/release/galactic/imu_filter_madgwick/2.0.3-1.tar.gz";
-    name = "2.0.3-1.tar.gz";
-    sha256 = "1796b29e38544e9bf04be52df9f52e01bb2e661f37c8a65c942cf9173869457a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "imu_tools-release";
+    rev = "c37783ce4b9487cf9a0e9b3d2477724f28f5c94f";
+    owner = "ros2-gbp";
+    sha256 = "sha256-aaLrz8xqFlebBD49O1mm/KPegN86bxS+vqG2RG3xFKY=";
   };
 
   buildType = "ament_cmake";

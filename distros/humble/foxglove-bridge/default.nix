@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-foxglove-bridge";
   version = "0.2.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/foxglove_bridge-release/archive/release/humble/foxglove_bridge/0.2.2-1.tar.gz";
-    name = "0.2.2-1.tar.gz";
-    sha256 = "f24594342f96c3d9cb39c9b3b672c6ef3e41e29169ac9303dd2ee7f071a94e2f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "foxglove_bridge-release";
+    rev = "da77b577e61a3f289b21b3273f31321bfaf907a9";
+    owner = "ros2-gbp";
+    sha256 = "sha256-G1VqLpc+S2Yng1cVVBxbYH4EsGP9TZQWwWa7cj9/8dY=";
   };
 
   buildType = "ament_cmake";

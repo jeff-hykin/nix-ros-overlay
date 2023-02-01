@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-kobuki-velocity-smoother";
   version = "0.15.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/kobuki_velocity_smoother-release/archive/release/galactic/kobuki_velocity_smoother/0.15.0-1.tar.gz";
-    name = "0.15.0-1.tar.gz";
-    sha256 = "60733b41df9bb1dc1cf7478419584c10a90066dd8286a919180d22f0774e5723";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "kobuki_velocity_smoother-release";
+    rev = "6e68c6e80dbdd706fa041644fee91a9e22aa6a18";
+    owner = "ros2-gbp";
+    sha256 = "sha256-kZmyem+NJit8xtwuRz5Zx8AkdojVm7/pxgSOR63CkcM=";
   };
 
   buildType = "ament_cmake";

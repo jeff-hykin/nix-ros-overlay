@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-wiimote-msgs";
   version = "3.1.0-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/joystick_drivers-release/archive/release/humble/wiimote_msgs/3.1.0-3.tar.gz";
-    name = "3.1.0-3.tar.gz";
-    sha256 = "33663c760a07fbdb0145efec5ee3f64846a97d5403c7046fbae7696190e8f7b0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "joystick_drivers-release";
+    rev = "07b358ab40eb3888e79aa4a794a181cae406cdd0";
+    owner = "ros2-gbp";
+    sha256 = "sha256-KavdFBcL1SCgiOn8dA8NfytenhAUvYfbx6ij02ufZyE=";
   };
 
   buildType = "ament_cmake";

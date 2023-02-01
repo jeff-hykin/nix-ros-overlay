@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-plotjuggler";
   version = "3.6.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/facontidavide/plotjuggler-release/archive/release/melodic/plotjuggler/3.6.0-1.tar.gz";
-    name = "3.6.0-1.tar.gz";
-    sha256 = "4c121e9e05c06a734773f922bb792853ac950889143cfd134deaaa36045b3a0b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "plotjuggler-release";
+    rev = "b9c4a944d57dc86ab746ae243f0f29f5de0f4f2c";
+    owner = "facontidavide";
+    sha256 = "sha256-nHSTE9bbmkR6byd/ACSbE16oscBg2pMgQIEUMdXFpg0=";
   };
 
   buildType = "catkin";

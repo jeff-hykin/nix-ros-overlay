@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-examples-rclcpp-cbg-executor";
   version = "0.15.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/examples-release/archive/release/humble/examples_rclcpp_cbg_executor/0.15.1-1.tar.gz";
-    name = "0.15.1-1.tar.gz";
-    sha256 = "c1dfc968aae3056001cc56a646e68ec89d6dad2903e3c92dab8d53bff8fc8482";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "examples-release";
+    rev = "2e99dc73c941ab556666554d2dd7e1ef6a4d2e98";
+    owner = "ros2-gbp";
+    sha256 = "sha256-uZCLXZuMFPvw8m06DCw6rKQ2BRRjssncqnqW/3T+n0I=";
   };
 
   buildType = "ament_cmake";

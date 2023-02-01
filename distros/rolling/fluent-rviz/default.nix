@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-fluent-rviz";
   version = "0.0.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/fluent_rviz-release/archive/release/rolling/fluent_rviz/0.0.3-1.tar.gz";
-    name = "0.0.3-1.tar.gz";
-    sha256 = "cd05e1b0a15e8a5107fac33aa5a632e642ab458ca79a0c840a5773415fd611b9";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "fluent_rviz-release";
+    rev = "6dd4fd5d34f2f00467a515dbf7c3a19f8d24bb8f";
+    owner = "ros2-gbp";
+    sha256 = "sha256-/LmzIiGEHhv+jlon28dyJAjyB233kvyupBzUS01rdjA=";
   };
 
   buildType = "ament_cmake";

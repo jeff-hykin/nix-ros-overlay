@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-geometry-msgs";
   version = "1.13.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/common_msgs-release/archive/release/noetic/geometry_msgs/1.13.1-1.tar.gz";
-    name = "1.13.1-1.tar.gz";
-    sha256 = "0d767550c3e03e287d9606ddac92657c11bb93bf91ec4f3157e3a73e3e2c76dd";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "common_msgs-release";
+    rev = "30d835a7a3b7cce034edc00db8264ada7e0347d6";
+    owner = "ros-gbp";
+    sha256 = "sha256-HAvscctyubs9JETUZg8Wn/OGg2zW0xou4EXiiPpUCYw=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-qt-gui-app";
   version = "1.1.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/qt_gui_core-release/archive/release/foxy/qt_gui_app/1.1.3-1.tar.gz";
-    name = "1.1.3-1.tar.gz";
-    sha256 = "d3ac7eb057b999393f423d79ad7b4646df60653c8e8b5791915af37a25a6fffd";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "qt_gui_core-release";
+    rev = "6148f95d57af52b98d912d3c30a306438aab0577";
+    owner = "ros2-gbp";
+    sha256 = "sha256-dgsuD8dIWIfTBDWaCQrW9+TKfD35nb9O+kqG2d+YfhI=";
   };
 
   buildType = "ament_cmake";

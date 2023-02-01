@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-console-bridge-vendor";
   version = "1.3.2-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/console_bridge_vendor-release/archive/release/galactic/console_bridge_vendor/1.3.2-2.tar.gz";
-    name = "1.3.2-2.tar.gz";
-    sha256 = "7398716464cd68fb9ef6ae2f433aab92892a30ac7fc85b51aa0c5481af50ddad";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "console_bridge_vendor-release";
+    rev = "8b59ed95cb18a9dd67a08bfb22aee3d88c65fa3c";
+    owner = "ros2-gbp";
+    sha256 = "sha256-+RD6R3m8fNz13x2bEGYDlelwinvL9Ku4HaogpAXiCCc=";
   };
 
   buildType = "ament_cmake";

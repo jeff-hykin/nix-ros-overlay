@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-geometry2";
   version = "0.25.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/geometry2-release/archive/release/humble/geometry2/0.25.1-1.tar.gz";
-    name = "0.25.1-1.tar.gz";
-    sha256 = "031e401773b7d82114e09caed4172e0a496acdf3e0a1eeeccc136e9e7d9c71ef";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "geometry2-release";
+    rev = "19932678503608ea4628ee238bda7d9e9c93ac78";
+    owner = "ros2-gbp";
+    sha256 = "sha256-ZQWUEjDaqPeRO5DgJ8KBBOenpSOmJVR50crKZfOkheQ=";
   };
 
   buildType = "ament_cmake";

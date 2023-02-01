@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-ecl-formatters";
   version = "1.2.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/yujinrobot-release/ecl_core-release/archive/release/rolling/ecl_formatters/1.2.1-1.tar.gz";
-    name = "1.2.1-1.tar.gz";
-    sha256 = "ff92e9c767d8ef36d938f63b731ce3bb82efef170f26790f3f4e420c9616d119";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ecl_core-release";
+    rev = "1e08ccd66368d48b3c80146405bb656375bd9194";
+    owner = "yujinrobot-release";
+    sha256 = "sha256-KJ9Xhcl2ACKk7qJz2OTu+dVkgzMcvIBEwmXdl0NaiKg=";
   };
 
   buildType = "ament_cmake";

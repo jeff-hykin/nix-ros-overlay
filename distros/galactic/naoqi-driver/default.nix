@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-naoqi-driver";
   version = "2.0.0";
 
-  src = fetchurl {
-    url = "https://github.com/ros-naoqi/naoqi_driver2-release/archive/release/galactic/naoqi_driver/2.0.0-0.tar.gz";
-    name = "2.0.0-0.tar.gz";
-    sha256 = "d011928c4e7fd0eb722bc22873bb4792986025ae30bb094e8e8b567b7b57af5c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "naoqi_driver2-release";
+    rev = "529dfdb791dc159826d0443acf44ccdb40ffbf58";
+    owner = "ros-naoqi";
+    sha256 = "sha256-1c4WSc7FAAmwhf5InFODoUhkp2v9KlF5W+qEMexjzgc=";
   };
 
   buildType = "ament_cmake";

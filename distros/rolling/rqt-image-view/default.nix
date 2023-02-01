@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-rqt-image-view";
   version = "1.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rqt_image_view-release/archive/release/rolling/rqt_image_view/1.2.0-1.tar.gz";
-    name = "1.2.0-1.tar.gz";
-    sha256 = "6a002934c2e0d00f1bbaec1748ba41ca2d0c2954cc5312badb3325946ab7a94b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt_image_view-release";
+    rev = "ee5e8c771207f7b7502e9bde3e46353b9e9f866c";
+    owner = "ros2-gbp";
+    sha256 = "sha256-X3GHcEegbG/Z45tA1fhYO3xlE1Fr0WKRaNpZRXYhF2Y=";
   };
 
   buildType = "ament_cmake";

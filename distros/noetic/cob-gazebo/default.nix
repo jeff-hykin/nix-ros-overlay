@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-cob-gazebo";
   version = "0.7.6-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_simulation-release/archive/release/noetic/cob_gazebo/0.7.6-1.tar.gz";
-    name = "0.7.6-1.tar.gz";
-    sha256 = "fccbdaaee37073d405016ca4d3d75a1b46a7c7b9b12daf5a186f79526d5fdffc";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_simulation-release";
+    rev = "37d380ac098742d9b67333c0eac0d040be621b1a";
+    owner = "ipa320";
+    sha256 = "sha256-U6/vAxc99kCTGPxarjF5Kj0sP0A+Nd/QQucoNw2CnK8=";
   };
 
   buildType = "catkin";

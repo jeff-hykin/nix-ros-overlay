@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-open-manipulator-p-teleop";
   version = "1.0.0-r5";
 
-  src = fetchurl {
-    url = "https://github.com/ROBOTIS-GIT-release/open_manipulator_p-release/archive/release/melodic/open_manipulator_p_teleop/1.0.0-5.tar.gz";
-    name = "1.0.0-5.tar.gz";
-    sha256 = "bf9fafcdfa007f5cd90496709b0f92fe9b1ee21af0907cbc4d72d55034a86ed1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "open_manipulator_p-release";
+    rev = "3c518d17465a83533ea097a272105e345a32eb97";
+    owner = "ROBOTIS-GIT-release";
+    sha256 = "sha256-Lry5lx+fn8uTB0rJb+oUPPmVA9OoGpVud83lANA2HkI=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-ur-client-library";
   version = "1.3.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/UniversalRobots/Universal_Robots_Client_Library-release/archive/release/melodic/ur_client_library/1.3.1-1.tar.gz";
-    name = "1.3.1-1.tar.gz";
-    sha256 = "73215038c71a1ce226d161a57e14e02b4ceedda416a8f4811a5d859d44d6a5f6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "Universal_Robots_Client_Library-release";
+    rev = "fbbf3d34b47115c2b688275452f4c072bfebd2e4";
+    owner = "UniversalRobots";
+    sha256 = "sha256-AYfd94IM+Etv+B7ZUeZWVMNr98mHHmGlCi5CUh8hhWo=";
   };
 
   buildType = "cmake";

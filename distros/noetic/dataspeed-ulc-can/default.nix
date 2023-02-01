@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-dataspeed-ulc-can";
   version = "0.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/DataspeedInc-release/dataspeed_ulc_ros-release/archive/release/noetic/dataspeed_ulc_can/0.1.0-1.tar.gz";
-    name = "0.1.0-1.tar.gz";
-    sha256 = "be30b8dd3bd2ea035d5fdd71c5dd08eca3defa87fe28f1ded0c44934c7e892f0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "dataspeed_ulc_ros-release";
+    rev = "88cc584333bbb0265d2eb0aea24ed78153f8d35c";
+    owner = "DataspeedInc-release";
+    sha256 = "sha256-TXMu+fqYixQX9l5P7ZBzr1d7Gsr1XcPldWqHkDXGXwg=";
   };
 
   buildType = "catkin";

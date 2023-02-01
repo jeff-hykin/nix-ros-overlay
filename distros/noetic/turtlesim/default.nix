@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-turtlesim";
   version = "0.10.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/ros_tutorials-release/archive/release/noetic/turtlesim/0.10.2-1.tar.gz";
-    name = "0.10.2-1.tar.gz";
-    sha256 = "f5e1c21ee45163443ccc76bdae473e39b1f1015e2289ab13e6a7391c59bd33fb";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_tutorials-release";
+    rev = "09a12fb73ea8160e10f7a0fb5ff55a56b1c7db55";
+    owner = "ros-gbp";
+    sha256 = "sha256-Ql+/zC+9bCpyo8XVWim+24ysmBK0+Ah8qwmKJHmt4z8=";
   };
 
   buildType = "catkin";

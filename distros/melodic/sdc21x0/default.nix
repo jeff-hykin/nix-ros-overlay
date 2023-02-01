@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-sdc21x0";
   version = "1.0.8-r1";
 
-  src = fetchurl {
-    url = "https://github.com/uos-gbp/mir_robot-release/archive/release/melodic/sdc21x0/1.0.8-1.tar.gz";
-    name = "1.0.8-1.tar.gz";
-    sha256 = "ba36cc5570fc9c1e86170c6d6b25c913ff595d792d65b709ea6458be53554c94";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mir_robot-release";
+    rev = "1dceee40603260ea6c05dcd16c95f3426a169b49";
+    owner = "uos-gbp";
+    sha256 = "sha256-yWG2OYjoyIm3k9RfVLqXaVSGWzBLrmm8qGyYgG60vnU=";
   };
 
   buildType = "catkin";

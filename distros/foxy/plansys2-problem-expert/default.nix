@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-plansys2-problem-expert";
   version = "1.0.10-r1";
 
-  src = fetchurl {
-    url = "https://github.com/IntelligentRoboticsLabs/ros2_planning_system-release/archive/release/foxy/plansys2_problem_expert/1.0.10-1.tar.gz";
-    name = "1.0.10-1.tar.gz";
-    sha256 = "1da192f4ee4b104eb621d37fdefb6e4b4e96b923f38490bc979155db1e858e5d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_planning_system-release";
+    rev = "e53898d12c7027c35f7896ba7edb1dbcacbe1751";
+    owner = "IntelligentRoboticsLabs";
+    sha256 = "sha256-06E+wSPzMK37TzWDoL7Rlf4XJL8ZKqsqLs5RuAeyz9o=";
   };
 
   buildType = "ament_cmake";

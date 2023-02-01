@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-fluent-rviz";
   version = "0.0.3-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/fluent_rviz-release/archive/release/humble/fluent_rviz/0.0.3-2.tar.gz";
-    name = "0.0.3-2.tar.gz";
-    sha256 = "79ccc7501cd98044007c166be8ba13ddeb1f13214b2c47de059dbb2500d87aa9";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "fluent_rviz-release";
+    rev = "aef48e1063a9b33619c2d27537e626d287669544";
+    owner = "ros2-gbp";
+    sha256 = "sha256-/LmzIiGEHhv+jlon28dyJAjyB233kvyupBzUS01rdjA=";
   };
 
   buildType = "ament_cmake";

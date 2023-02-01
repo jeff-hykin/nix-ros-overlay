@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-rmw-connext-shared-cpp";
   version = "1.0.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmw_connext-release/archive/release/foxy/rmw_connext_shared_cpp/1.0.3-1.tar.gz";
-    name = "1.0.3-1.tar.gz";
-    sha256 = "ab785510209d499f1c7c6a2709faccfa99b12ad9edc5833f024a69531c89e0ba";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmw_connext-release";
+    rev = "719dd0d05f36d5d456b304b2a8e55ace8ecceec0";
+    owner = "ros2-gbp";
+    sha256 = "sha256-yLQH5EorEsMIdYe6HarSXW7g4j8kOcHK+BdTUi19jUs=";
   };
 
   buildType = "ament_cmake";

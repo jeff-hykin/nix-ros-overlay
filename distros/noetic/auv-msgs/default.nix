@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-auv-msgs";
   version = "0.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/oceansystemslab/auv_msgs-release/archive/release/noetic/auv_msgs/0.1.1-1.tar.gz";
-    name = "0.1.1-1.tar.gz";
-    sha256 = "190104bb958cf67a5ff4ca7cc1ee355c44ed127eb5e074441b0004bc40da61e2";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "auv_msgs-release";
+    rev = "90142975ed375d9ac70f54c8c24ab3755c769e17";
+    owner = "oceansystemslab";
+    sha256 = "sha256-cs5oRlyiuV6Es/pjqEwJdiKfwE83/1Ii28Cw1RU5pMg=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-grbl-msgs";
   version = "0.0.2-r5";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/grbl_msgs-release/archive/release/rolling/grbl_msgs/0.0.2-5.tar.gz";
-    name = "0.0.2-5.tar.gz";
-    sha256 = "419964fa85ad2daeb39a57fa763019303e9db10cf712b9b331228883be90ef34";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "grbl_msgs-release";
+    rev = "8bf02f2d394d4a51c29f5ba0536e38ad5dcee065";
+    owner = "ros2-gbp";
+    sha256 = "sha256-cjvc4arr+Z92IcwzqZryuU4FC2MY+FNpA+6JBe0dhiE=";
   };
 
   buildType = "ament_cmake";

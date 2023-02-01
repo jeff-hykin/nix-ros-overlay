@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-cascade-lifecycle-msgs";
   version = "1.0.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/fmrico/cascade_lifecycle-release/archive/release/humble/cascade_lifecycle_msgs/1.0.2-1.tar.gz";
-    name = "1.0.2-1.tar.gz";
-    sha256 = "0cdf0631d890e4532fbe613b0d61018ebf841a3f8fac225f43775e899e98ad0e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cascade_lifecycle-release";
+    rev = "d0b4d529b42b0fc9d7ff115b3c47907869cfdfac";
+    owner = "fmrico";
+    sha256 = "sha256-OVaCu/o690HLfNOxf7ASXJH0aCw2DlyHza50rSYK/s4=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rclpy-message-converter";
   version = "2.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rospy_message_converter-release/archive/release/galactic/rclpy_message_converter/2.0.1-1.tar.gz";
-    name = "2.0.1-1.tar.gz";
-    sha256 = "a3f4297cbb111e007150a8c1369431a088f1dc16dfe16e88b897335d29e285e5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rospy_message_converter-release";
+    rev = "a6a690e6ef15a674b926b6167ce4663beb7b2c57";
+    owner = "ros2-gbp";
+    sha256 = "sha256-4HeOI1VnkkBwlxa0SlJMAGbmV5bMUIvxslRecDwZm04=";
   };
 
   buildType = "ament_python";

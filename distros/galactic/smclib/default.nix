@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-smclib";
   version = "3.0.1-r4";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/bond_core-release/archive/release/galactic/smclib/3.0.1-4.tar.gz";
-    name = "3.0.1-4.tar.gz";
-    sha256 = "2764ab391d4ee0c4b47af0f8658566c3f1b646e0967a403caf198ca5adc74d06";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "bond_core-release";
+    rev = "0732fac60b64fba042d36a7b467f437922b4851d";
+    owner = "ros2-gbp";
+    sha256 = "sha256-o071FyS6eVC1mNS5HJx5YgczxjOkMKz8tS4F7nLROF8=";
   };
 
   buildType = "ament_cmake";

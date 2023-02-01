@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-find-object-2d";
   version = "0.7.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/introlab/find_object_2d-release/archive/release/rolling/find_object_2d/0.7.0-2.tar.gz";
-    name = "0.7.0-2.tar.gz";
-    sha256 = "17a2b3050d92508fd8cd0b4b67c54de682180ebb11a2c80be7d14b276a31b474";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "find_object_2d-release";
+    rev = "8b8c0cb2596b78df7191149cc97e4bd3dd815e7b";
+    owner = "introlab";
+    sha256 = "sha256-KtLe1v52K9gb/p4t0Yqdkc99Hgi67wNcFpmguOilOnA=";
   };
 
   buildType = "ament_cmake";

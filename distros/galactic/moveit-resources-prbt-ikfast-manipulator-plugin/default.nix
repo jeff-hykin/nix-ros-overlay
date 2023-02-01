@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-moveit-resources-prbt-ikfast-manipulator-plugin";
   version = "2.3.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/moveit/moveit2-release/archive/release/galactic/moveit_resources_prbt_ikfast_manipulator_plugin/2.3.4-1.tar.gz";
-    name = "2.3.4-1.tar.gz";
-    sha256 = "b7a8a317eda9b3961d1bd8169ba0e23df396f25ad8ff0204d51b31b4c1f1a88e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "moveit2-release";
+    rev = "98795834335bead0e8bb87f63756391fe62405a0";
+    owner = "moveit";
+    sha256 = "sha256-vsZ1Tu80cnW5JfMj6JnoRegyqIG9acKveTPUQvzGtzA=";
   };
 
   buildType = "ament_cmake";

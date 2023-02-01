@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-effort-controllers";
   version = "0.8.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_controllers-release/archive/release/foxy/effort_controllers/0.8.2-1.tar.gz";
-    name = "0.8.2-1.tar.gz";
-    sha256 = "031d6d97d1549b3e0a780210fcc2736165493285ffd0ed03e005a1aa1e1ba795";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_controllers-release";
+    rev = "a40f05ac0e1b66b36255df424e5534c04e5e1c87";
+    owner = "ros2-gbp";
+    sha256 = "sha256-hLymCfwSrqmyn+LJJ03zNLyZrdz1awJkw0EyrURzbX0=";
   };
 
   buildType = "ament_cmake";

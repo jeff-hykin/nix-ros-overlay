@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-voxel-grid";
   version = "1.17.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/navigation-release/archive/release/noetic/voxel_grid/1.17.2-1.tar.gz";
-    name = "1.17.2-1.tar.gz";
-    sha256 = "e7c58b56a3b31f78d302aaeeaeba39d9e03a505f053d550b9e3253c8d344aff9";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation-release";
+    rev = "20e531e6925e337840bc5da90a62139e843c6630";
+    owner = "ros-gbp";
+    sha256 = "sha256-X0c+XqbAhq4rSH4Vn64oPXTXskqxStcNFI0XoxmbWaQ=";
   };
 
   buildType = "catkin";

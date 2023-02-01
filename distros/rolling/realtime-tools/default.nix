@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-realtime-tools";
   version = "2.4.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/realtime_tools-release/archive/release/rolling/realtime_tools/2.4.0-1.tar.gz";
-    name = "2.4.0-1.tar.gz";
-    sha256 = "3cbfcf620ba7bb222a9289f097b172bb105c56c2078af6a8522416dfefb8f828";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "realtime_tools-release";
+    rev = "5395a8fcb3d4bee7da06e020f201cb01a320c948";
+    owner = "ros2-gbp";
+    sha256 = "sha256-x4hpsIRPQ3clZ9n9aEo793BI+5NH9a78D+LLknga7Hc=";
   };
 
   buildType = "ament_cmake";

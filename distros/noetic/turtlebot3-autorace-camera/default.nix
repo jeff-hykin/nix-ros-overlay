@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-turtlebot3-autorace-camera";
   version = "1.1.1-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ROBOTIS-GIT-release/turtlebot3_autorace_2020_release/archive/release/noetic/turtlebot3_autorace_camera/1.1.1-2.tar.gz";
-    name = "1.1.1-2.tar.gz";
-    sha256 = "677cf80fe061c8cc01ba31bcb80ffa83907efd5954e4068878bca8a0fe2eb992";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "turtlebot3_autorace_2020_release";
+    rev = "2d5f69c1a75a968a95a12296b8c7ad6fb2e9b26f";
+    owner = "ROBOTIS-GIT-release";
+    sha256 = "sha256-IxFFJdII6nzyCVHxr/PZJi+VytYgdDXdJKuiCbWWj3k=";
   };
 
   buildType = "catkin";

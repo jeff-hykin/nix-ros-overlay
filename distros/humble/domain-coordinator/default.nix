@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-domain-coordinator";
   version = "0.10.0-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ament_cmake_ros-release/archive/release/humble/domain_coordinator/0.10.0-3.tar.gz";
-    name = "0.10.0-3.tar.gz";
-    sha256 = "740bfdb1f618577c9dd97617d9bc20da498b9f8799dd724e3058c2a97a653465";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ament_cmake_ros-release";
+    rev = "a4d43c5a4862a6257d19702b6637d417abea5a18";
+    owner = "ros2-gbp";
+    sha256 = "sha256-2Jhr/k/50dDdybVClohkfUC6hF4CvcM9Hb+aaZSwz4I=";
   };
 
   buildType = "ament_python";

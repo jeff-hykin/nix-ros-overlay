@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-rwt-utils-3rdparty";
   version = "0.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/tork-a/visualization_rwt-release/archive/release/melodic/rwt_utils_3rdparty/0.1.1-1.tar.gz";
-    name = "0.1.1-1.tar.gz";
-    sha256 = "3a6f48ed988311ffcab9a6bbdef0c4f5cc1be08e3c35470e2b3f57bc1076d870";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "visualization_rwt-release";
+    rev = "cf78ea6c0133848f20922c83452ee4c5b71b2228";
+    owner = "tork-a";
+    sha256 = "sha256-PlVplDJ/EAKAUxhoxQRs3L8sbc+XIB3zLS14qk6DZzM=";
   };
 
   buildType = "catkin";

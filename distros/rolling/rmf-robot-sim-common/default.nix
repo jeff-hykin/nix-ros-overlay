@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-rmf-robot-sim-common";
   version = "2.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_simulation-release/archive/release/rolling/rmf_robot_sim_common/2.0.0-1.tar.gz";
-    name = "2.0.0-1.tar.gz";
-    sha256 = "844bbbac13f01bddca23e49e9b94fdfcd6de41ef7bf29e84452924164b74e975";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_simulation-release";
+    rev = "6e402c9ceb7517844234b46168f2eb70986b7250";
+    owner = "ros2-gbp";
+    sha256 = "sha256-IuYKkMsVg6T/njTAoWEph65/bez/rgULyYgub6xPIVE=";
   };
 
   buildType = "ament_cmake";

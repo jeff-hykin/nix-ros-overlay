@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-stubborn-buddies-msgs";
   version = "1.0.0-r5";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/stubborn_buddies-release/archive/release/humble/stubborn_buddies_msgs/1.0.0-5.tar.gz";
-    name = "1.0.0-5.tar.gz";
-    sha256 = "181d2e0c3e55fe6a31da31351747f9dbfb63104952d89c1febc126c7337a3a16";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "stubborn_buddies-release";
+    rev = "74872db5cd5c59c9c27ab80bf224d9fab38f375e";
+    owner = "ros2-gbp";
+    sha256 = "sha256-ca+tBYzurY7xkoSry24RR8HaTLuuHAEKuBOxT57QSXY=";
   };
 
   buildType = "ament_cmake";

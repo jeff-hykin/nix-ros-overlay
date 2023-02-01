@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-vesc-driver";
   version = "1.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/f1tenth/vesc-release/archive/release/melodic/vesc_driver/1.1.0-1.tar.gz";
-    name = "1.1.0-1.tar.gz";
-    sha256 = "735753d64e77b087a403b36386420cda79ede5a5544f541b0a1406fccff95115";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "vesc-release";
+    rev = "c2667af97f7ea9470c41299ce190d4760a6d3e9f";
+    owner = "f1tenth";
+    sha256 = "sha256-8oqBKvY0mOKd/uRgyxBFHkKozmbo7PoQonn/40Xa/Z8=";
   };
 
   buildType = "catkin";

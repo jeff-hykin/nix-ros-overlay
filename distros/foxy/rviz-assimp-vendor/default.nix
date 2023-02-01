@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-rviz-assimp-vendor";
   version = "8.2.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rviz-release/archive/release/foxy/rviz_assimp_vendor/8.2.7-1.tar.gz";
-    name = "8.2.7-1.tar.gz";
-    sha256 = "06d09052b18a8222d98178030bcaf605af6ace29bf1eeae9fc22bf4497b9e969";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rviz-release";
+    rev = "c6ff9b32fb1bf895a3e9e6d8bd7501b23d067bce";
+    owner = "ros2-gbp";
+    sha256 = "sha256-yqWgV9+HBr/kepv28H6t0r4EuG8ZHnOBr+dg9UGx9rQ=";
   };
 
   buildType = "ament_cmake";

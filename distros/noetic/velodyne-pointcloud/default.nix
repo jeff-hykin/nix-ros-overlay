@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-velodyne-pointcloud";
   version = "1.7.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-drivers-gbp/velodyne-release/archive/release/noetic/velodyne_pointcloud/1.7.0-1.tar.gz";
-    name = "1.7.0-1.tar.gz";
-    sha256 = "b8425f2244f94b610459ede15bdb228eb842e4cd84a6ae10aed6dd67962b6de7";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "velodyne-release";
+    rev = "8c34551bd93a2803736728eb9808118b85f1d35b";
+    owner = "ros-drivers-gbp";
+    sha256 = "sha256-/qMBykOXNewqBLR/+1JFoMN+NLbkP6XwPinxyV5zOGI=";
   };
 
   buildType = "catkin";

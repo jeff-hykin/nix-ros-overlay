@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-ur-dashboard-msgs";
   version = "2.2.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/Universal_Robots_ROS2_Driver-release/archive/release/rolling/ur_dashboard_msgs/2.2.4-1.tar.gz";
-    name = "2.2.4-1.tar.gz";
-    sha256 = "f68235f74547cf2ae5d441bd8441be5369c8c97ccec9457aa7939f6e81679b21";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "Universal_Robots_ROS2_Driver-release";
+    rev = "9c93c0f6e2d0ad729d0582246e2b95dc69f84f3e";
+    owner = "ros2-gbp";
+    sha256 = "sha256-oGoC6bHw9Sp7+F34pKPTP88HzPBYD60UkXEj4GShLxY=";
   };
 
   buildType = "ament_cmake";

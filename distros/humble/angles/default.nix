@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-angles";
   version = "1.15.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/angles-release/archive/release/humble/angles/1.15.0-1.tar.gz";
-    name = "1.15.0-1.tar.gz";
-    sha256 = "fb21b4e5062cfbf56918f2ee479ed07d925f2108075f656261078df0eef3c606";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "angles-release";
+    rev = "135341e21daa76932543af10a91a7d9273da40f5";
+    owner = "ros2-gbp";
+    sha256 = "sha256-44NUh6CmR32yzKpcgDPoNtoEV+XCEPCfTx7OL+xUJQ8=";
   };
 
   buildType = "ament_cmake";

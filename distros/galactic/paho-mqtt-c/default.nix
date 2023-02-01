@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-paho-mqtt-c";
   version = "1.3.11-r1";
 
-  src = fetchurl {
-    url = "https://github.com/nobleo/paho.mqtt.c-release/archive/release/galactic/paho-mqtt-c/1.3.11-1.tar.gz";
-    name = "1.3.11-1.tar.gz";
-    sha256 = "4065db87b9427a0f606aa7ebd727cc950047be1a4fdd5af57f19ae44a83228c0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "paho.mqtt.c-release";
+    rev = "3415caa6c28a73f01ea680145bcbf5e42e4889c5";
+    owner = "nobleo";
+    sha256 = "sha256-sO9rVWqyace+Kf6Csb99DmyJid1KjT7SHUY6uKHFk9M=";
   };
 
   buildType = "cmake";

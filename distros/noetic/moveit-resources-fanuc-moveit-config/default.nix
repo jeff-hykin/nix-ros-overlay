@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-moveit-resources-fanuc-moveit-config";
   version = "0.8.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/moveit_resources-release/archive/release/noetic/moveit_resources_fanuc_moveit_config/0.8.2-1.tar.gz";
-    name = "0.8.2-1.tar.gz";
-    sha256 = "5c2471a150b4ab84eb81b1c63e794eb982f9f600401f6d80666d5775d4f044c4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "moveit_resources-release";
+    rev = "a85d04b28728a00dc7e15025b9c613fa06a611e2";
+    owner = "ros-gbp";
+    sha256 = "sha256-KdI+ZkCV7R/zubzWEDdnPO8HajSztsxPjLj4lrsCQ8I=";
   };
 
   buildType = "catkin";

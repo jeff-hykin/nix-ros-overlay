@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-nav2-simple-commander";
   version = "1.0.12-r1";
 
-  src = fetchurl {
-    url = "https://github.com/SteveMacenski/navigation2-release/archive/release/galactic/nav2_simple_commander/1.0.12-1.tar.gz";
-    name = "1.0.12-1.tar.gz";
-    sha256 = "d582ede409d515cd0baa48001c95ba9307cdc4f2f5acf5992c49403c80d7090a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation2-release";
+    rev = "639a7ce3112dee2b1643d387cea4c87513985be4";
+    owner = "SteveMacenski";
+    sha256 = "sha256-cOptLIp/M6bVbz/2J2XZvDbQogXwJgVkd4+kx3kasdI=";
   };
 
   buildType = "ament_python";

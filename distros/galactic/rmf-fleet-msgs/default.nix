@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rmf-fleet-msgs";
   version = "1.4.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_internal_msgs-release/archive/release/galactic/rmf_fleet_msgs/1.4.0-1.tar.gz";
-    name = "1.4.0-1.tar.gz";
-    sha256 = "c3855695045a0376ae4085db79e056a720761c6165be4722ef5aa6c228c7d13c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_internal_msgs-release";
+    rev = "a30b84e4eb216a4b692cb43a4072b99913dcba93";
+    owner = "ros2-gbp";
+    sha256 = "sha256-v4n+h89rKAvNJoABXpsSxf9v1k3kYHYmHmwXtOXHddc=";
   };
 
   buildType = "ament_cmake";

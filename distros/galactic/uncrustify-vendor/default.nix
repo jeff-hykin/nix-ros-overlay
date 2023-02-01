@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-uncrustify-vendor";
   version = "1.5.3-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/uncrustify_vendor-release/archive/release/galactic/uncrustify_vendor/1.5.3-2.tar.gz";
-    name = "1.5.3-2.tar.gz";
-    sha256 = "d15832e5ed9a3873d5f335a11723b403d093c643b429c8f98e8522cafbbed833";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "uncrustify_vendor-release";
+    rev = "f801a36ca9396e0ea5d15d08749b46cbc34cc7dc";
+    owner = "ros2-gbp";
+    sha256 = "sha256-XwwIWOr0xOyUUa/YgYB9Ifj/5VBrtzzsdxyNfXKbg4o=";
   };
 
   buildType = "ament_cmake";

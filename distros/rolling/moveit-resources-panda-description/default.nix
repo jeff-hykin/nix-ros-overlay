@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-moveit-resources-panda-description";
   version = "2.0.6-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/moveit_resources-release/archive/release/rolling/moveit_resources_panda_description/2.0.6-1.tar.gz";
-    name = "2.0.6-1.tar.gz";
-    sha256 = "2fc5f5807a626e084e6679fa5c2412f1dfa739e055092f60c4856260897c54d3";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "moveit_resources-release";
+    rev = "4e0a30ae37d38c5d30fc59104eac5da25fe2e2a9";
+    owner = "ros2-gbp";
+    sha256 = "sha256-9T8wcYBgF1ulNpNXqhBZxswjqvzNOtlDJsno0T83VJ0=";
   };
 
   buildType = "ament_cmake";

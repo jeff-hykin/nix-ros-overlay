@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-random-numbers";
   version = "2.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/moveit/random_numbers-release/archive/release/galactic/random_numbers/2.0.1-1.tar.gz";
-    name = "2.0.1-1.tar.gz";
-    sha256 = "ce520bd61df0ef1a3929bcb59e8d03e4c8345fc0a42206b4f5880dad71359d80";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "random_numbers-release";
+    rev = "70fa07ca377760630e8fbbccc6d00c0098831fa2";
+    owner = "moveit";
+    sha256 = "sha256-hQN9n+tLK1rKA+wXOXW/TfT4RzrXxvaIfDlzgV+LJnU=";
   };
 
   buildType = "ament_cmake";

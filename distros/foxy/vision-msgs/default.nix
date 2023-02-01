@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-vision-msgs";
   version = "2.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/vision_msgs-release/archive/release/foxy/vision_msgs/2.0.0-1.tar.gz";
-    name = "2.0.0-1.tar.gz";
-    sha256 = "3f6e7fde4e470ccb2cbdc0235753a772bb7e2ad1f7f2c6a625a51a2d42f15894";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "vision_msgs-release";
+    rev = "2df716c5b95f605bf16e12e95f3a335d68db70ac";
+    owner = "ros2-gbp";
+    sha256 = "sha256-zHbSbgy/lIRRZ2FIgNyM5AWw7bKjcPCKCzzuImYKE5g=";
   };
 
   buildType = "ament_cmake";

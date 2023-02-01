@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-tf2-geometry-msgs";
   version = "0.25.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/geometry2-release/archive/release/humble/tf2_geometry_msgs/0.25.1-1.tar.gz";
-    name = "0.25.1-1.tar.gz";
-    sha256 = "f019603ebb3c2579231c8f879d40213f87a00f8eab00e701c50ecd2c0838bb6f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "geometry2-release";
+    rev = "a6d8253ef83bb9f1a4c941d824a9fa03bb31dc87";
+    owner = "ros2-gbp";
+    sha256 = "sha256-kyBB4aSUX9KjyrDN0pQD0PiMQHRsEQ8CHTSYI7muQwI=";
   };
 
   buildType = "ament_cmake";

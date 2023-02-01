@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-async-web-server-cpp";
   version = "2.0.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/async_web_server_cpp-release/archive/release/galactic/async_web_server_cpp/2.0.0-2.tar.gz";
-    name = "2.0.0-2.tar.gz";
-    sha256 = "ab69fc26e1a7da03ef1a69335ac7d132470ada68600b06566305624565a5da66";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "async_web_server_cpp-release";
+    rev = "b1741f4116aa206fc5273beb5b601af1321380e1";
+    owner = "ros2-gbp";
+    sha256 = "sha256-bz0je03yD60CjR08T++F1rGD5GhfXZJWAbL6L5rINbo=";
   };
 
   buildType = "catkin";

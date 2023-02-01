@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-position-controllers";
   version = "0.21.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/ros_controllers-release/archive/release/noetic/position_controllers/0.21.0-1.tar.gz";
-    name = "0.21.0-1.tar.gz";
-    sha256 = "062678a7125a118858ed423f1ea21f2a66f70a7452f8ce76bdd58681a55f769c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_controllers-release";
+    rev = "0c1ac68547762147a752039a638b0762655a2862";
+    owner = "ros-gbp";
+    sha256 = "sha256-YJeI3ADOgeS3mFbq7j5KrMfFbUvhYIN2RfCduzPnpnQ=";
   };
 
   buildType = "catkin";

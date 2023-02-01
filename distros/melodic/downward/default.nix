@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-downward";
   version = "2.1.24-r2";
 
-  src = fetchurl {
-    url = "https://github.com/tork-a/jsk_3rdparty-release/archive/release/melodic/downward/2.1.24-2.tar.gz";
-    name = "2.1.24-2.tar.gz";
-    sha256 = "9fe3d8f1499291060044573cdd470514331ebe1f4297b3c8de8eede9a49959ed";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "jsk_3rdparty-release";
+    rev = "77072444607c100076c85bebf1eb06bc45ebe070";
+    owner = "tork-a";
+    sha256 = "sha256-0pd/HaQl8Pk+vrsjE/wGK85KeLx843ZhmIb3GeocJQg=";
   };
 
   buildType = "catkin";

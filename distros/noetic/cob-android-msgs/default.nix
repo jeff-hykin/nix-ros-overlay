@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-cob-android-msgs";
   version = "0.1.10-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_android-release/archive/release/noetic/cob_android_msgs/0.1.10-1.tar.gz";
-    name = "0.1.10-1.tar.gz";
-    sha256 = "aaf0b59312ca1282c2344fc7ed2f338d55e7711d2f03e90b14f2985d924ddb75";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_android-release";
+    rev = "b70d0e9ac3cc6283322a51c780042de1537fe65c";
+    owner = "ipa320";
+    sha256 = "sha256-k1iyipCdOIxBW2SU1M+3yiVRihFYHkTzd9q8wNW9QU4=";
   };
 
   buildType = "catkin";

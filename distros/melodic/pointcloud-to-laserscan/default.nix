@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-pointcloud-to-laserscan";
   version = "1.4.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/pointcloud_to_laserscan-release/archive/release/melodic/pointcloud_to_laserscan/1.4.1-1.tar.gz";
-    name = "1.4.1-1.tar.gz";
-    sha256 = "50bebd62ff6e696bde5dd47a8787709a756d894d6826615b8cbbc54abe7edce4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pointcloud_to_laserscan-release";
+    rev = "e554bbbd36e9c7e1bf810f6d5d5730ad636d4ee7";
+    owner = "ros-gbp";
+    sha256 = "sha256-nbLSYZaMRpvQ4Jp9vmiZXIq+J8Rjjh68l09lpekS/lM=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-rmf-demos";
   version = "1.3.1-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_demos-release/archive/release/humble/rmf_demos/1.3.1-3.tar.gz";
-    name = "1.3.1-3.tar.gz";
-    sha256 = "9700bb49b29f19a496b7ed767de74f24946c2e6e763977557c39b76faf9292c6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_demos-release";
+    rev = "07ac29f0f1d88d3b794d726a88c37d04d3a8876b";
+    owner = "ros2-gbp";
+    sha256 = "sha256-cg6ANPkKz2DRmhlNOKWAJoeoLFi/Hr4ve9UDozx4l/c=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-rc-visard-description";
   version = "3.3.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/roboception-gbp/rc_visard-release/archive/release/noetic/rc_visard_description/3.3.2-1.tar.gz";
-    name = "3.3.2-1.tar.gz";
-    sha256 = "a62f8f4a76e5815a134f1f95ceb64c95d9a91ceefa1ffec8108ebbf843c51a27";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rc_visard-release";
+    rev = "14b3c90395494d9ce61e24c3ee2ec92bec95cef6";
+    owner = "roboception-gbp";
+    sha256 = "sha256-4uDuVtTv4G6Xg3AHZna9JecmNMQrIBrLACOOdR0OoRs=";
   };
 
   buildType = "catkin";

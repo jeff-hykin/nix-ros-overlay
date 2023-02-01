@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-sqlite3-vendor";
   version = "0.9.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rosbag2-release/archive/release/galactic/sqlite3_vendor/0.9.2-1.tar.gz";
-    name = "0.9.2-1.tar.gz";
-    sha256 = "466e66f9afc211057ad6234db1ac4a77e5481fce48244a73a94c1529f16a263c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosbag2-release";
+    rev = "3d5edaf93d263c5ed20576be4d8506c7e0c3c0f7";
+    owner = "ros2-gbp";
+    sha256 = "sha256-vBpKcrsj8/uH10q5HBlkzUFSd3wsQ5KQnST4+ePIARc=";
   };
 
   buildType = "ament_cmake";

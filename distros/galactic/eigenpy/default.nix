@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-eigenpy";
   version = "2.7.14-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/eigenpy-release/archive/release/galactic/eigenpy/2.7.14-1.tar.gz";
-    name = "2.7.14-1.tar.gz";
-    sha256 = "7de1185adac6f18d98d2d9bad11abc68dbb9c70515ed831762d6c477e259a231";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "eigenpy-release";
+    rev = "9ea5950f9832865516e71dfbbb56e0d6db9e935f";
+    owner = "ros2-gbp";
+    sha256 = "sha256-/f4oSYhzqRKCwWVzX7EGLEsSTTNq46/IOULZiHIvE5o=";
   };
 
   buildType = "cmake";

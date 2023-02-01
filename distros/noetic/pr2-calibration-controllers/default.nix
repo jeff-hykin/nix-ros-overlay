@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-pr2-calibration-controllers";
   version = "1.10.18-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pr2-gbp/pr2_controllers-release/archive/release/noetic/pr2_calibration_controllers/1.10.18-1.tar.gz";
-    name = "1.10.18-1.tar.gz";
-    sha256 = "80da6ee89676f08f30ce5148a52d0d63aefe3db6b58f0ae0c4a0ee445761b1c9";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pr2_controllers-release";
+    rev = "ca6bcd8c03008bfb134fa2ef5aeb03f8ed18277e";
+    owner = "pr2-gbp";
+    sha256 = "sha256-xNihhQUis7zOI9Z5HY+KLXZaSMYCeObVHCdw0REAXVM=";
   };
 
   buildType = "catkin";

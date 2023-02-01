@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-pr2-motor-diagnostic-tool";
   version = "1.0.15-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pr2-gbp/pr2_self_test-release/archive/release/melodic/pr2_motor_diagnostic_tool/1.0.15-1.tar.gz";
-    name = "1.0.15-1.tar.gz";
-    sha256 = "e75790673805832f38a80872b25fabef1aa2022bea66ee125c370be5fe1fbbc7";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pr2_self_test-release";
+    rev = "93131ed06f18cb04b402aa85a1ddef1528561935";
+    owner = "pr2-gbp";
+    sha256 = "sha256-5/DmXkwkphIODg+r/GVnWBBFwgrf+oZMOZpX6JZK1UE=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-xpp-quadrotor";
   version = "1.0.10-r1";
 
-  src = fetchurl {
-    url = "https://github.com/leggedrobotics/xpp-release/archive/release/noetic/xpp_quadrotor/1.0.10-1.tar.gz";
-    name = "1.0.10-1.tar.gz";
-    sha256 = "8a031860f897dd32e79b6220ba09faeab92299afb05b4dfa86c686f644a4fa09";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "xpp-release";
+    rev = "a6fb97c94436b20c97b352cb627082c053a85992";
+    owner = "leggedrobotics";
+    sha256 = "sha256-IzqI3I16uhtlIMIfOrzGhD8+YdeJA5psofm0JmMrW9I=";
   };
 
   buildType = "catkin";

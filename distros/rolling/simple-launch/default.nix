@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-simple-launch";
   version = "1.2.1-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/simple_launch-release/archive/release/rolling/simple_launch/1.2.1-2.tar.gz";
-    name = "1.2.1-2.tar.gz";
-    sha256 = "f51e67d1d8402becaba76b41df1ff2e10633427644728396aef538f1f8d9f2a7";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "simple_launch-release";
+    rev = "4d4bb84f811dd0b83719354e3abbe6a73856f797";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Qvqj4XvHn808lZWbNWCd5gATXfj0WL1n4uNfaYoBsbA=";
   };
 
   buildType = "ament_python";

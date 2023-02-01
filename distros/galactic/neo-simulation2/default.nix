@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-neo-simulation2";
   version = "1.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/neobotix/neo_simulation2-release/archive/release/galactic/neo_simulation2/1.0.1-1.tar.gz";
-    name = "1.0.1-1.tar.gz";
-    sha256 = "559fa4b9d33ae08010ecf815ef935f37cdf53a061af0d6c2afc7824c7950bd56";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "neo_simulation2-release";
+    rev = "4898140fdac69a7a8335b03c3abc872f6ee831ae";
+    owner = "neobotix";
+    sha256 = "sha256-fWeuG9AFmELbD7bqRpvQ03cNKYSG3poQhtzpwq7aoOs=";
   };
 
   buildType = "ament_cmake";

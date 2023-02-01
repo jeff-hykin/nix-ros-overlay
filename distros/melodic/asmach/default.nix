@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-asmach";
   version = "1.0.16-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pr2-gbp/linux_networking-release/archive/release/melodic/asmach/1.0.16-1.tar.gz";
-    name = "1.0.16-1.tar.gz";
-    sha256 = "b7eeea554c6038f5c55ebb8a91973c24e8cdb3e20d71ceac5b7d6617b5316952";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "linux_networking-release";
+    rev = "45de46f8bdd0a5c6417259fbbbc48075aa9ebb45";
+    owner = "pr2-gbp";
+    sha256 = "sha256-ChdnDNcg//cY4aCVbTWSSwCz2pJVXZxn678dR65zVSI=";
   };
 
   buildType = "catkin";

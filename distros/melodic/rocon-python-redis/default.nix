@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-rocon-python-redis";
   version = "0.3.2";
 
-  src = fetchurl {
-    url = "https://github.com/yujinrobot-release/rocon_tools-release/archive/release/melodic/rocon_python_redis/0.3.2-0.tar.gz";
-    name = "0.3.2-0.tar.gz";
-    sha256 = "1a4191ef365c4c05d0bc6cc96bf5754a4f6a0b787dedb55e80676cbc03aa71ac";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rocon_tools-release";
+    rev = "8e357e82e7d2420705146cbf0553031385d46dfa";
+    owner = "yujinrobot-release";
+    sha256 = "sha256-7Iaa2CHxSPlYepJ2va5P8R6kI19fagHTjznIOennXMg=";
   };
 
   buildType = "catkin";

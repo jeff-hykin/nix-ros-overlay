@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-ecl-streams";
   version = "1.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/yujinrobot-release/ecl_core-release/archive/release/foxy/ecl_streams/1.2.0-1.tar.gz";
-    name = "1.2.0-1.tar.gz";
-    sha256 = "3a76a1086a981dacd080e33095ef4ebe0db9d575ea55b16ca64f4282939a1bd7";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ecl_core-release";
+    rev = "80809a5e68dfb682abbc1622009e37095e905a1f";
+    owner = "yujinrobot-release";
+    sha256 = "sha256-cIwVmTVfQpEp7ZnC7kABn/Hl+VyNGmWpVNLdogL0kK0=";
   };
 
   buildType = "ament_cmake";

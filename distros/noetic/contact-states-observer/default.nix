@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-contact-states-observer";
   version = "0.1.16-r1";
 
-  src = fetchurl {
-    url = "https://github.com/tork-a/jsk_control-release/archive/release/noetic/contact_states_observer/0.1.16-1.tar.gz";
-    name = "0.1.16-1.tar.gz";
-    sha256 = "88c288a02dac2522b264eccaef37196c36948c6e3c94cae37c910ca22fcf2609";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "jsk_control-release";
+    rev = "505cf8daecba08400319cf8181b28bbe7c51f86a";
+    owner = "tork-a";
+    sha256 = "sha256-U8za93qS+G9b+3u2FnsN9yvZ0ScYyL+wDZvnULweex0=";
   };
 
   buildType = "catkin";

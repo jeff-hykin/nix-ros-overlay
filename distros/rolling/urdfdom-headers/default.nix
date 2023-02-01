@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-urdfdom-headers";
   version = "1.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/urdfdom_headers-release/archive/release/rolling/urdfdom_headers/1.1.0-1.tar.gz";
-    name = "1.1.0-1.tar.gz";
-    sha256 = "ecbc4258054e58e619884f755f106b196d66b0af4ae1e71d7914c8be164fc64a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "urdfdom_headers-release";
+    rev = "ed05b6f5d33051c458ed317317b9106ce802a3ac";
+    owner = "ros2-gbp";
+    sha256 = "sha256-4mf3RaHsghGv697+Xb06kiguKz9LL0GGW0v7dbd7pBU=";
   };
 
   buildType = "cmake";

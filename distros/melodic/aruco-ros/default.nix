@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-aruco-ros";
   version = "2.2.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pal-gbp/aruco_ros-release/archive/release/melodic/aruco_ros/2.2.2-1.tar.gz";
-    name = "2.2.2-1.tar.gz";
-    sha256 = "9a23036d9b6a65a9a75b3182776a3184a5d22ba31d1608d7ef478f237a9beb6d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "aruco_ros-release";
+    rev = "19d3887b87b9eed1d1f12deb5a38578c1f5eb848";
+    owner = "pal-gbp";
+    sha256 = "sha256-bV9ZrCzUaMTGCgl5F3x0V1HCokpB73m9lbS7paN6C6A=";
   };
 
   buildType = "catkin";

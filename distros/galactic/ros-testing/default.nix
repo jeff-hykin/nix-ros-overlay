@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ros-testing";
   version = "0.3.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros_testing-release/archive/release/galactic/ros_testing/0.3.0-2.tar.gz";
-    name = "0.3.0-2.tar.gz";
-    sha256 = "5b928dfe00f11f359ee1a53f0218ba8a625ae4c6c635f8c858ac21d9930368e4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_testing-release";
+    rev = "e83a470c30ad33c19b4bddeed869bb85ccdce6e8";
+    owner = "ros2-gbp";
+    sha256 = "sha256-NtRKzaihixmmyS31ygWFnENQmR2tZWdrcHc7/e0JY4Y=";
   };
 
   buildType = "ament_cmake";

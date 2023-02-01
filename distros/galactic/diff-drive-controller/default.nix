@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-diff-drive-controller";
   version = "1.5.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_controllers-release/archive/release/galactic/diff_drive_controller/1.5.1-1.tar.gz";
-    name = "1.5.1-1.tar.gz";
-    sha256 = "f0bfacc79e77105061283833c49003fab93ba75638d14fd62d91637da37064db";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_controllers-release";
+    rev = "485034a5074b1ca88b8f2917cf254eeda016d94e";
+    owner = "ros2-gbp";
+    sha256 = "sha256-fe3mnwa0I19FfEdytxUc+OgcLuF6Cam0IJ9iuc9Oqzw=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-key-teleop";
   version = "1.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/teleop_tools-release/archive/release/humble/key_teleop/1.3.0-1.tar.gz";
-    name = "1.3.0-1.tar.gz";
-    sha256 = "b8fcb0ebebb9fecbf53027d8faff575aea30d8e8a955207e7792b9c5da8ba7cf";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "teleop_tools-release";
+    rev = "5366531b5b1ff6a9b3941ca313837691a242e7a4";
+    owner = "ros2-gbp";
+    sha256 = "sha256-87yL4CShLr4rcnlMktKgwgbI5fQEz2pKnQ2f50LTssY=";
   };
 
   buildType = "ament_python";

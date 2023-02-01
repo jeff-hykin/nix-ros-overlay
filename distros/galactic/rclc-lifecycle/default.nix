@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rclc-lifecycle";
   version = "2.0.6-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rclc-release/archive/release/galactic/rclc_lifecycle/2.0.6-1.tar.gz";
-    name = "2.0.6-1.tar.gz";
-    sha256 = "7e9d9a05ce5ce18d37c7e30dd9c39d565396570177c653926869a6c42edd8106";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rclc-release";
+    rev = "42114dd4d50e165c975470f4c5d1a9b9b78918de";
+    owner = "ros2-gbp";
+    sha256 = "sha256-UZ7aJSjJK/ZVlwdSM4R+wIKLJJSgF94ZUvoVQngZl/s=";
   };
 
   buildType = "ament_cmake";

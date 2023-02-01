@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-octomap-msgs";
   version = "2.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/octomap_msgs-release/archive/release/foxy/octomap_msgs/2.0.0-1.tar.gz";
-    name = "2.0.0-1.tar.gz";
-    sha256 = "fc4be1b8bf3c54baa958c5038b52178d5a0d652c3f96272e5cb70981cfc5796e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "octomap_msgs-release";
+    rev = "b0587f4d30eba26fa0ad4ec6a5a631e8ee05e933";
+    owner = "ros-gbp";
+    sha256 = "sha256-97tbZTVcZMc2CB2JAW6gn0/ABahvBbfiC3jpHDIJJ6I=";
   };
 
   buildType = "ament_cmake";

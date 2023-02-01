@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-action-msgs";
   version = "1.0.3-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rcl_interfaces-release/archive/release/galactic/action_msgs/1.0.3-2.tar.gz";
-    name = "1.0.3-2.tar.gz";
-    sha256 = "84266ace98ee0d18796984c9bdd7ee915a46f63cc69ceefd7e7fcb72397f1ebb";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rcl_interfaces-release";
+    rev = "9f7e681ce766bf5e8e6897467ac8a86c842146aa";
+    owner = "ros2-gbp";
+    sha256 = "sha256-gcwHvUbx4RS9tUcnq+18AobAfJTsK89QXnCgOPIF10Q=";
   };
 
   buildType = "ament_cmake";

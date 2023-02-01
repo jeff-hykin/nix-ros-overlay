@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-tracetools";
   version = "0.2.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/boschresearch/ros1-tracetools-release/archive/release/melodic/tracetools/0.2.1-1.tar.gz";
-    name = "0.2.1-1.tar.gz";
-    sha256 = "1432003c36ab6c12cd03dc132dba1e8dd87986ae2fbf3bb4537001369bd47fc4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros1-tracetools-release";
+    rev = "043770f3add566077c39d251ce7ab98b5ba2966b";
+    owner = "boschresearch";
+    sha256 = "sha256-rZV5DIFIOeySsNeb5rbsceSjFicuTMpXAmigknhiT7M=";
   };
 
   buildType = "catkin";

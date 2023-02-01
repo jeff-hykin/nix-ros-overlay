@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-rqt-controller-manager";
   version = "3.5.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_control-release/archive/release/rolling/rqt_controller_manager/3.5.0-1.tar.gz";
-    name = "3.5.0-1.tar.gz";
-    sha256 = "5b6a25daa3435a78d89f749c70d862075de0ecbf504ade979ab1e1e725f5e8ff";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_control-release";
+    rev = "44793ddc17b85741ced7b733e55877fb0a727b92";
+    owner = "ros2-gbp";
+    sha256 = "sha256-L3aXJt8hVj+YvhbzYoY3f9JRFw+yNncs9PDkUArZfFg=";
   };
 
   buildType = "ament_python";

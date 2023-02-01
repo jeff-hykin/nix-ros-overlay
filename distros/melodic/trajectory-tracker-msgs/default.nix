@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-trajectory-tracker-msgs";
   version = "0.8.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/at-wat/neonavigation_msgs-release/archive/release/melodic/trajectory_tracker_msgs/0.8.0-1.tar.gz";
-    name = "0.8.0-1.tar.gz";
-    sha256 = "2086e554a50e2b029b0c610edfdbd0d88ce9cb00fb283309acfc501e60b02ac5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "neonavigation_msgs-release";
+    rev = "8b6a3a0282def8665c029457106151a2b5da792c";
+    owner = "at-wat";
+    sha256 = "sha256-paY/YICxyWy9+xpzo9Nf8jWR+4Wt4VhOGAAyQhsalho=";
   };
 
   buildType = "catkin";

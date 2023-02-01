@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-control-msgs";
   version = "3.0.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/control_msgs-release/archive/release/galactic/control_msgs/3.0.0-2.tar.gz";
-    name = "3.0.0-2.tar.gz";
-    sha256 = "c159acb41dab529238cc07e9c0cfb237c72fa99f53625f5d85c40e1c3fbf3599";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "control_msgs-release";
+    rev = "75e9a4d745b6ae618d2013f2c6085c5b549142d6";
+    owner = "ros2-gbp";
+    sha256 = "sha256-FEkQdK1ehgIUo6WD4HvwqfiKhIH6gSJKLBZ7oIRBylA=";
   };
 
   buildType = "ament_cmake";

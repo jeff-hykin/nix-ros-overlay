@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-moveit-resources-prbt-pg70-support";
   version = "2.3.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/moveit/moveit2-release/archive/release/galactic/moveit_resources_prbt_pg70_support/2.3.4-1.tar.gz";
-    name = "2.3.4-1.tar.gz";
-    sha256 = "7a5459712b1dd5a62eaca244c617f25a13969d2e9a1ebf6737d95570723be8d6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "moveit2-release";
+    rev = "d62982fad90436478e906d2457f5cbe65808d238";
+    owner = "moveit";
+    sha256 = "sha256-jifhCBKe43e/ddrpvd44LFvm7aWml1jWpus/3BK7zuk=";
   };
 
   buildType = "ament_cmake";

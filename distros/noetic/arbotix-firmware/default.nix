@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-arbotix-firmware";
   version = "0.11.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/vanadiumlabs/arbotix_ros-release/archive/release/noetic/arbotix_firmware/0.11.0-1.tar.gz";
-    name = "0.11.0-1.tar.gz";
-    sha256 = "a43128a750f19da3267baeb751f4854e60dc0ca1df0514a2afa019986e4dadcd";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "arbotix_ros-release";
+    rev = "2b1fffd61710cf6fe0eaf44e3b8723cbe1c82e91";
+    owner = "vanadiumlabs";
+    sha256 = "sha256-BkxzExAmLRcYekdIOoqt17MqM5wJMZAwzbm/ogv2mbI=";
   };
 
   buildType = "catkin";

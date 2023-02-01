@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-micro-ros-msgs";
   version = "1.0.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/micro_ros_msgs-release/archive/release/rolling/micro_ros_msgs/1.0.0-2.tar.gz";
-    name = "1.0.0-2.tar.gz";
-    sha256 = "8b9b66d98a9fb78e9b5db442c97ad9d70687675984a89d6340f30c9a5d9e10dd";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "micro_ros_msgs-release";
+    rev = "1add8b6a4e44727c4018abf15dbdf337ddbf0ae4";
+    owner = "ros2-gbp";
+    sha256 = "sha256-kuDv7e3C0BCXolx6ePv0TLEpK9E3OfLGFAh0K/9Wb8o=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-move-base";
   version = "1.17.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/navigation-release/archive/release/noetic/move_base/1.17.2-1.tar.gz";
-    name = "1.17.2-1.tar.gz";
-    sha256 = "9d46fc421767d28c64b66649fb743fb371d371d54f4678aa4309dca75c8dd453";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation-release";
+    rev = "94daa412f43c48ddebd2343e3b643cf34b21890e";
+    owner = "ros-gbp";
+    sha256 = "sha256-7ojSdwejPSv7uizpK+5uihBA/tgLQSQodaaI+xNXH+s=";
   };
 
   buildType = "catkin";

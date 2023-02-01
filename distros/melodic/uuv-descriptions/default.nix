@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-uuv-descriptions";
   version = "0.6.13";
 
-  src = fetchurl {
-    url = "https://github.com/uuvsimulator/uuv_simulator-release/archive/release/melodic/uuv_descriptions/0.6.13-0.tar.gz";
-    name = "0.6.13-0.tar.gz";
-    sha256 = "b502f0791f2a6185ec41cd24b0a7bc29d2edb5c219ba6e21e6112017e071eff1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "uuv_simulator-release";
+    rev = "c0a4f4caabad514eac1e30a7db7f86bef7cd5890";
+    owner = "uuvsimulator";
+    sha256 = "sha256-ofTg2eidzAkzG1cQACPTBMjRW/F8DESrnP+93ZEW82Y=";
   };
 
   buildType = "catkin";

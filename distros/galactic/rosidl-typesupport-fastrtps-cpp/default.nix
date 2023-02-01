@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rosidl-typesupport-fastrtps-cpp";
   version = "1.2.1-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rosidl_typesupport_fastrtps-release/archive/release/galactic/rosidl_typesupport_fastrtps_cpp/1.2.1-2.tar.gz";
-    name = "1.2.1-2.tar.gz";
-    sha256 = "8b0f2187f7d8a17256fef1874d78539a8f42b09b5b9b05ce485ffcecc7a949c4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosidl_typesupport_fastrtps-release";
+    rev = "f184f244174f3bcacbb0fc132254cce8b094923c";
+    owner = "ros2-gbp";
+    sha256 = "sha256-ifE1hDSwKsUIg+A0uRBk3iun8cowx6Zrj2bYiv1EO3I=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-libqt-network";
   version = "1.0.1";
 
-  src = fetchurl {
-    url = "https://github.com/swri-robotics-gbp/qt_metapackages-release/archive/release/melodic/libqt_network/1.0.1-0.tar.gz";
-    name = "1.0.1-0.tar.gz";
-    sha256 = "8c33c79ec52d6aa7513f01a41fbdc7fd770f727a854d84bfbb7a31ca4c93dbea";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "qt_metapackages-release";
+    rev = "e650ad39086fa858d8074b4ff0cc108dc008b5a9";
+    owner = "swri-robotics-gbp";
+    sha256 = "sha256-vM1NFzT0u0zzCjfaMxvZi5Q/mBNebtlGgjTf57bpQM0=";
   };
 
   buildType = "catkin";

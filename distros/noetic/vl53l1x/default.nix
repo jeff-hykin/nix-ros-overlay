@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-vl53l1x";
   version = "1.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/okalachev/vl53l1x_ros-release/archive/release/noetic/vl53l1x/1.0.0-1.tar.gz";
-    name = "1.0.0-1.tar.gz";
-    sha256 = "c4b77b41f388eb88ecf0bcd729ae30b6fb7ccadab59add42914a60eacca896a1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "vl53l1x_ros-release";
+    rev = "42cdc69ada0cfeb91d64a1907a237f933cceb33b";
+    owner = "okalachev";
+    sha256 = "sha256-Cojkizq4TxodpUybeWi2ddEtU+uJggu5FEN8cqTGwqA=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rqt-robot-steering";
   version = "1.0.0-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rqt_robot_steering-release/archive/release/galactic/rqt_robot_steering/1.0.0-3.tar.gz";
-    name = "1.0.0-3.tar.gz";
-    sha256 = "6b887a4c499bfb727eb6a36c360678cb713e41fe5b670f8992547e08922b3e1d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt_robot_steering-release";
+    rev = "9d8963d4dd07cf5825cd4a88d241cb90069f1382";
+    owner = "ros2-gbp";
+    sha256 = "sha256-GQCdfFYxE/yR3Eostcf+T9VKwP2N45EzidAhXz5uVrw=";
   };
 
   buildType = "ament_python";

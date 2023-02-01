@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-composition";
   version = "0.20.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/demos-release/archive/release/humble/composition/0.20.2-1.tar.gz";
-    name = "0.20.2-1.tar.gz";
-    sha256 = "33cce6e20b511a347a417a8aefb90562f1b76fc5430d93986f74c22186f9ee6b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "demos-release";
+    rev = "a079743b94541a7a42abf3c566910a8d5737f500";
+    owner = "ros2-gbp";
+    sha256 = "sha256-vNWcC4VzGi+zCQ2CIYRp0W2jirk6dvBi1LHGIDeO7xo=";
   };
 
   buildType = "ament_cmake";

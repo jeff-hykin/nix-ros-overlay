@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-v4l2-camera";
   version = "0.4.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_v4l2_camera-release/archive/release/galactic/v4l2_camera/0.4.0-2.tar.gz";
-    name = "0.4.0-2.tar.gz";
-    sha256 = "6ce06918bb05ad705acbe71db87dd67a787499bc0eafa585adcc43de321345c3";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_v4l2_camera-release";
+    rev = "3b237e5e13a45650f03ef03139256041b586448c";
+    owner = "ros2-gbp";
+    sha256 = "sha256-3JokO3OtCDnmoC8Ie4JmbX8HOe/0T96dAIIevC0l5+8=";
   };
 
   buildType = "ament_cmake";

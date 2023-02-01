@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-maliput-integration";
   version = "0.1.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/maliput_integration-release/archive/release/foxy/maliput_integration/0.1.4-1.tar.gz";
-    name = "0.1.4-1.tar.gz";
-    sha256 = "c5bc9aab2aaa380b1002189e22b2890a15a9ea06116fbf0ef7b40cbcc59086c6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "maliput_integration-release";
+    rev = "aa848bd11d0a417c59805b8f6cdf4d19e4686eba";
+    owner = "ros2-gbp";
+    sha256 = "sha256-1FWPk+oZ0Xl3Tuc9dTlEpRhBeevXuPskgMJTzapLsTE=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-cartesian-msgs";
   version = "0.0.3";
 
-  src = fetchurl {
-    url = "https://github.com/PickNikRobotics/cartesian_msgs-release/archive/release/melodic/cartesian_msgs/0.0.3-0.tar.gz";
-    name = "0.0.3-0.tar.gz";
-    sha256 = "25a7fcf876ffdfc7ee4515d150b777726bca7090c6aa689268643c4dc8d4eb73";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cartesian_msgs-release";
+    rev = "703501c467b72ed308769dc90f4b465e7ea3633c";
+    owner = "PickNikRobotics";
+    sha256 = "sha256-EsIPvtidY69PT/bIxbUcJNoD47MXWgg/pXQ+qfIvSEQ=";
   };
 
   buildType = "catkin";

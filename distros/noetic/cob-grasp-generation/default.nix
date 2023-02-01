@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-cob-grasp-generation";
   version = "0.7.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_manipulation-release/archive/release/noetic/cob_grasp_generation/0.7.7-1.tar.gz";
-    name = "0.7.7-1.tar.gz";
-    sha256 = "1e4af3b7808b40ffd3e1493ed190554496055255a46c103db3e291c92bdb9f36";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_manipulation-release";
+    rev = "cbdf70b8502230291776c1f33692980b9285190b";
+    owner = "ipa320";
+    sha256 = "sha256-Fc+Rt4p7Zj59eR6gJaNWjTk/oLF2onsrp+IqGuU4qQU=";
   };
 
   buildType = "catkin";

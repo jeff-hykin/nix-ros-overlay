@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-rqt-moveit";
   version = "1.0.1-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rqt_moveit-release/archive/release/humble/rqt_moveit/1.0.1-3.tar.gz";
-    name = "1.0.1-3.tar.gz";
-    sha256 = "479029b190e2c85a94f8a82146f968bb2e816b6a5b53d172f1428b3ba21346ae";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt_moveit-release";
+    rev = "b1b83260449489972fa574810727fb5ad842d893";
+    owner = "ros2-gbp";
+    sha256 = "sha256-A4bGoHfpokKaYjSrBzvtYgzyf6sJGECfPJCIM0iZgYU=";
   };
 
   buildType = "ament_python";

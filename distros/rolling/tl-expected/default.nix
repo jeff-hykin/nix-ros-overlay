@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-tl-expected";
   version = "1.0.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/PickNikRobotics/cpp_polyfills-release/archive/release/rolling/tl_expected/1.0.2-1.tar.gz";
-    name = "1.0.2-1.tar.gz";
-    sha256 = "56ee09a50d15df38d60afd8a432504d32a7d7953d0322721bac3a70e1e84354b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cpp_polyfills-release";
+    rev = "31a83a617cfea9ff53318ac8cd39074ced1b7c1a";
+    owner = "PickNikRobotics";
+    sha256 = "sha256-MRDjBU0WqHHPomrtLuNox0zVGvy6aMGTGO8WBV04bF8=";
   };
 
   buildType = "ament_cmake";

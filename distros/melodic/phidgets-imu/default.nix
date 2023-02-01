@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-phidgets-imu";
   version = "0.7.11-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-drivers-gbp/phidgets_drivers-release/archive/release/melodic/phidgets_imu/0.7.11-1.tar.gz";
-    name = "0.7.11-1.tar.gz";
-    sha256 = "734bc239351695bffac0addd1ebbc93fa75d9c6d4f291c05e6cff41fcb4155ae";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "phidgets_drivers-release";
+    rev = "c5df7096a064a273519f53627e96af2d0ff0570f";
+    owner = "ros-drivers-gbp";
+    sha256 = "sha256-J+pWEk6/CcZmrc6UN7FgWFk5xMazH9Fk/xh6hsIIJpQ=";
   };
 
   buildType = "catkin";

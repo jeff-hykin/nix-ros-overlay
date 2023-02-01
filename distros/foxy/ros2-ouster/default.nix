@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-ros2-ouster";
   version = "0.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/SteveMacenski/ros2_ouster_drivers-release/archive/release/foxy/ros2_ouster/0.2.0-1.tar.gz";
-    name = "0.2.0-1.tar.gz";
-    sha256 = "9e3e14ec2e09d2e4933ad22fa11e213b3c231eea02f380c13d5e44ee1cf68f00";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_ouster_drivers-release";
+    rev = "3d05b592e9506f0dfe730e780d237538880e633f";
+    owner = "SteveMacenski";
+    sha256 = "sha256-DTBgXDtfODgOLLLsYdBoYg3hrsgiDlmLbMKdKKB3xWQ=";
   };
 
   buildType = "ament_cmake";

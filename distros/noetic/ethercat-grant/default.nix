@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-ethercat-grant";
   version = "0.3.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/shadow-robot/ethercat_grant-release/archive/release/noetic/ethercat_grant/0.3.2-1.tar.gz";
-    name = "0.3.2-1.tar.gz";
-    sha256 = "4facbf12c0533551d600f3518b49560f9ddde5c9c9b2e30437765f197e4f419c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ethercat_grant-release";
+    rev = "8dbc443e7f2a50820936554c3b0c5438c826ed66";
+    owner = "shadow-robot";
+    sha256 = "sha256-WZ2KN2JIGpwWrwplBHK0/NvGFR+8Qb76EJzPqkcErNw=";
   };
 
   buildType = "catkin";

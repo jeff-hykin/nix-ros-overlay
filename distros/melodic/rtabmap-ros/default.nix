@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-rtabmap-ros";
   version = "0.20.22-r1";
 
-  src = fetchurl {
-    url = "https://github.com/introlab/rtabmap_ros-release/archive/release/melodic/rtabmap_ros/0.20.22-1.tar.gz";
-    name = "0.20.22-1.tar.gz";
-    sha256 = "7b38d0cf63f57c6e08c12dc01439f1f2e28a95564c67cec9419bcb5fe2bc9f15";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rtabmap_ros-release";
+    rev = "fc88b7edb8eafbcbe34bfdd65d833ccb1012494f";
+    owner = "introlab";
+    sha256 = "sha256-FGUGi8ReVWNHVjP/bf/GQvQ0Kv8jFBnMDh4SUmkg6zE=";
   };
 
   buildType = "catkin";

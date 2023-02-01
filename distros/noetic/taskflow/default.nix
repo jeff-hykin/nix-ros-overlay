@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-taskflow";
   version = "3.0.0-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros-industrial-release/taskflow-release/archive/release/noetic/taskflow/3.0.0-3.tar.gz";
-    name = "3.0.0-3.tar.gz";
-    sha256 = "bdf5cfccf688ea15ba7f65fb48f2e2ead80e9ba5e3df5014f50a2b445edf5d78";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "taskflow-release";
+    rev = "1b33822b1cd7811939bf484487afc43da2ee106d";
+    owner = "ros-industrial-release";
+    sha256 = "sha256-qXjvGJYzXO2AmJpuyKgiPsxBn2BdXbYHHycIXeQyKtg=";
   };
 
   buildType = "cmake";

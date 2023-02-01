@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-ament-index-cpp";
   version = "1.4.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ament_index-release/archive/release/humble/ament_index_cpp/1.4.0-2.tar.gz";
-    name = "1.4.0-2.tar.gz";
-    sha256 = "68019c1d5ef3aae614d9d9c5945a3bffbd2ada16a3b23561b91f4fd2fd4e8d5f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ament_index-release";
+    rev = "081764271b49bc4c653bf4bffac386fa0e1110a9";
+    owner = "ros2-gbp";
+    sha256 = "sha256-iYmaYBy5DwvmUykT0T2Nb/aFvEuaoH90l2MJ4Gv+b18=";
   };
 
   buildType = "ament_cmake";

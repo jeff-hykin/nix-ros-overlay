@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rmf-visualization-fleet-states";
   version = "1.2.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_visualization-release/archive/release/galactic/rmf_visualization_fleet_states/1.2.1-1.tar.gz";
-    name = "1.2.1-1.tar.gz";
-    sha256 = "b7b45aa42db7ac293ebbff10be715e0f67c4d3fb6cdca3f59dd7fed3298167f3";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_visualization-release";
+    rev = "1936e2d9d9a5727835d880f702258e8157e76f80";
+    owner = "ros2-gbp";
+    sha256 = "sha256-rMXDIvuXpindhC3hcmSz5F6OXBofjkAey1qC+CPfaVc=";
   };
 
   buildType = "ament_python";

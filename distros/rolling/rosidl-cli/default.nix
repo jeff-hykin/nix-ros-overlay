@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-rosidl-cli";
   version = "3.3.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rosidl-release/archive/release/rolling/rosidl_cli/3.3.1-1.tar.gz";
-    name = "3.3.1-1.tar.gz";
-    sha256 = "d623bd357b3f0a6b959f952baeb9d1dffab76b550e940cd1501d6e6e904792f7";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosidl-release";
+    rev = "5156f34464aa5a06755f58622a323221e05a00ae";
+    owner = "ros2-gbp";
+    sha256 = "sha256-cmJ+qVgQTLvp51CnnE5MpE2t83YBDfw+R1b9G/i7Svg=";
   };
 
   buildType = "ament_python";

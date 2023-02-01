@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-tile-map";
   version = "1.4.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/swri-robotics-gbp/mapviz-release/archive/release/noetic/tile_map/1.4.2-1.tar.gz";
-    name = "1.4.2-1.tar.gz";
-    sha256 = "2c4ecc0cd98353b953027598473433fa7e37f5516fc4cab995098980ca4e18af";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mapviz-release";
+    rev = "daaa1cdcc45326c483379d26c9318ea79bb439ec";
+    owner = "swri-robotics-gbp";
+    sha256 = "sha256-avDvm2BvpzVJJJ88DPTJesFdIznBLyQRyZ12ycmBt7A=";
   };
 
   buildType = "catkin";

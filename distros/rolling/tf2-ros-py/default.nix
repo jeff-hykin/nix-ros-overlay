@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-tf2-ros-py";
   version = "0.29.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/geometry2-release/archive/release/rolling/tf2_ros_py/0.29.0-1.tar.gz";
-    name = "0.29.0-1.tar.gz";
-    sha256 = "edb7111f99ffba4adaeed5b0e55e7ccb2cac4f6b54c84e31fabf9181ad2006b1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "geometry2-release";
+    rev = "67529e59bdf80e74b37a67e643972c3b8f487643";
+    owner = "ros2-gbp";
+    sha256 = "sha256-XEe/38vzwrzVML7dlmALrPbzFct3lasYyHaZ1RHu2Tw=";
   };
 
   buildType = "ament_python";

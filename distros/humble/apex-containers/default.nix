@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-apex-containers";
   version = "0.0.4-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/apex_containers-release/archive/release/humble/apex_containers/0.0.4-3.tar.gz";
-    name = "0.0.4-3.tar.gz";
-    sha256 = "0dde2cc8bd79885d0dbe12d4938ae6c660aae2b9deaec525fe06861ba0574729";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "apex_containers-release";
+    rev = "377b63c3af9da61c7ee03a8275df1582270bf161";
+    owner = "ros2-gbp";
+    sha256 = "sha256-01lF2ZodmNGfazVwwxuHKPBMihyBFcKcwU2K6tpJxmk=";
   };
 
   buildType = "ament_cmake";

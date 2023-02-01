@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-novatel-oem7-driver";
   version = "4.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/novatel-gbp/novatel_oem7_driver-release/archive/release/noetic/novatel_oem7_driver/4.0.0-1.tar.gz";
-    name = "4.0.0-1.tar.gz";
-    sha256 = "35d850869c4e4f84280d16fc9af9e511ba718123a194b1372ae09f25e3c83a97";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "novatel_oem7_driver-release";
+    rev = "1b006bacafd1c773064eb035c1929d40b5e7e9b7";
+    owner = "novatel-gbp";
+    sha256 = "sha256-BrUlfFnQumacDophH1Itb+HJ0Bwzjk7/GReqnBWKzZs=";
   };
 
   buildType = "catkin";

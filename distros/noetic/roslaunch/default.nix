@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-roslaunch";
   version = "1.15.15-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/ros_comm-release/archive/release/noetic/roslaunch/1.15.15-1.tar.gz";
-    name = "1.15.15-1.tar.gz";
-    sha256 = "86d707d175b00b2777f9f5efa4263517334dc32405122b65875d7bc117331901";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_comm-release";
+    rev = "76f66b8fcd012f5b902ba0eb85253302aa710ca0";
+    owner = "ros-gbp";
+    sha256 = "sha256-ws8jgJKJS3FX2QeOM+gOWvfzWZ2lhCuW4mbDVDPejQ4=";
   };
 
   buildType = "catkin";

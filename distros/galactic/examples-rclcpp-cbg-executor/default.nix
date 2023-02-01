@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-examples-rclcpp-cbg-executor";
   version = "0.11.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/examples-release/archive/release/galactic/examples_rclcpp_cbg_executor/0.11.2-1.tar.gz";
-    name = "0.11.2-1.tar.gz";
-    sha256 = "0ac648222c66da3c60039504237483e97b8f2186b092575c82df7c6a45f73543";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "examples-release";
+    rev = "82e58997b0f7f818bcdd37d76dd4a39980646088";
+    owner = "ros2-gbp";
+    sha256 = "sha256-fxqqZ3d3Y2YADKtdoBtcegb43MZLiVv+6ktg2VIp5Fw=";
   };
 
   buildType = "ament_cmake";

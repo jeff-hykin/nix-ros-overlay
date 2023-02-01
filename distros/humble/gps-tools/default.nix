@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-gps-tools";
   version = "1.0.4-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/gps_umd-release/archive/release/humble/gps_tools/1.0.4-3.tar.gz";
-    name = "1.0.4-3.tar.gz";
-    sha256 = "a9d8bb04a110b17816be4445d94ede897536b8c80012ed6916f09eda5a30a493";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "gps_umd-release";
+    rev = "8ccb819845a4808daf634c64832e98f7824fce4d";
+    owner = "ros2-gbp";
+    sha256 = "sha256-a5M/+7i+icLvBEIote2loEZnOP3/xdJ1+xo8RteS8Xg=";
   };
 
   buildType = "ament_cmake";

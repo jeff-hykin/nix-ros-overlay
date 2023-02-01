@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-fath-pivot-mount-description";
   version = "0.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/clearpath-gbp/fath_pivot_mount_description-release/archive/release/melodic/fath_pivot_mount_description/0.1.1-1.tar.gz";
-    name = "0.1.1-1.tar.gz";
-    sha256 = "1c7057694a115d2619cc762d0aeb4d0f421d0f7bfba2a7e155d31d31dee4174d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "fath_pivot_mount_description-release";
+    rev = "06706d14ef1537ab50eb22d55199e791376c7b5b";
+    owner = "clearpath-gbp";
+    sha256 = "sha256-T330klYUS78AFQDqpq/GZy2o49n2tf/5iq7fI5nq8OE=";
   };
 
   buildType = "catkin";

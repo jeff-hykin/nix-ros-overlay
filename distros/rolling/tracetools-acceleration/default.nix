@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-tracetools-acceleration";
   version = "0.4.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/tracetools_acceleration-release/archive/release/rolling/tracetools_acceleration/0.4.1-1.tar.gz";
-    name = "0.4.1-1.tar.gz";
-    sha256 = "79cae6147e1348fbe46ced09cb993e2ec6ae3f320e1ea7d5da5c3acd7f08197a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "tracetools_acceleration-release";
+    rev = "ae8e990b33de51739e4771cecb3290907b4ea006";
+    owner = "ros2-gbp";
+    sha256 = "sha256-8S7qrZQ1ohJoEVhAiMPHVKAD4lCTHCfRb1CD5hu4VWg=";
   };
 
   buildType = "ament_cmake";

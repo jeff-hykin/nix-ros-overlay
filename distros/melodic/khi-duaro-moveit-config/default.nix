@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-khi-duaro-moveit-config";
   version = "1.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/Kawasaki-Robotics/khi_robot-release/archive/release/melodic/khi_duaro_moveit_config/1.2.0-1.tar.gz";
-    name = "1.2.0-1.tar.gz";
-    sha256 = "bbb02ab96961608832b53b3e37256e58849d8e66262b7adece3d6feb9f4cb9ea";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "khi_robot-release";
+    rev = "38eec4252b3bb02bec0b592d2a19c2f45b1af35b";
+    owner = "Kawasaki-Robotics";
+    sha256 = "sha256-u+ggNCUEA/eftyYa7L9fsCqoeDzalbESfo+WdQ5eJ8w=";
   };
 
   buildType = "catkin";

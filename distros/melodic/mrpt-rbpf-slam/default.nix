@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-mrpt-rbpf-slam";
   version = "0.1.12-r1";
 
-  src = fetchurl {
-    url = "https://github.com/mrpt-ros-pkg-release/mrpt_slam-release/archive/release/melodic/mrpt_rbpf_slam/0.1.12-1.tar.gz";
-    name = "0.1.12-1.tar.gz";
-    sha256 = "de2e658b643fe38035439a83db18a58d36f8d4604e8d377a2e0c26cf65b2905e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mrpt_slam-release";
+    rev = "56bf1b2b4e7c6dd8bea78fafb6455985dfc62603";
+    owner = "mrpt-ros-pkg-release";
+    sha256 = "sha256-A8xJL0+3nsuPrhRlB9XM2SQWqEoypmAoZI3egI8VMUE=";
   };
 
   buildType = "catkin";

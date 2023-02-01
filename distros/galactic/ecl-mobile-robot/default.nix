@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ecl-mobile-robot";
   version = "1.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/yujinrobot-release/ecl_core-release/archive/release/galactic/ecl_mobile_robot/1.2.0-1.tar.gz";
-    name = "1.2.0-1.tar.gz";
-    sha256 = "6039ad0f0db4259f482412ead8b468ac54949397431902153233c29e7317b106";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ecl_core-release";
+    rev = "6a8121981e4da55d8ef497dc3ec6045dfaa6e333";
+    owner = "yujinrobot-release";
+    sha256 = "sha256-ZJpDyMOQ2S2KRu0cDW9KhWcQcX65/VPXwVdJFPgjhfI=";
   };
 
   buildType = "ament_cmake";

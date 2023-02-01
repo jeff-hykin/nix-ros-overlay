@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rmf-robot-sim-gazebo-plugins";
   version = "1.3.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_simulation-release/archive/release/galactic/rmf_robot_sim_gazebo_plugins/1.3.1-1.tar.gz";
-    name = "1.3.1-1.tar.gz";
-    sha256 = "b704f2cd8eae03f986de445b7fdc8b440b089a2e1122e861a4b43c87cda896a2";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_simulation-release";
+    rev = "0680240fb7942d6293db3a4f06eeb7e8aa320ead";
+    owner = "ros2-gbp";
+    sha256 = "sha256-gbQaKwq1Msp09Y14FDNVxZi1pjQAn5wih7UXGpJ8BmM=";
   };
 
   buildType = "ament_cmake";

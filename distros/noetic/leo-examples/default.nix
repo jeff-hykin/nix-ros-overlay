@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-leo-examples";
   version = "0.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/fictionlab-gbp/leo_examples-release/archive/release/noetic/leo_examples/0.1.1-1.tar.gz";
-    name = "0.1.1-1.tar.gz";
-    sha256 = "b1900c84ab421a366dc2f9b53753118a3b3c4d22ae4cef2ae34bc3e21d2d0d6b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "leo_examples-release";
+    rev = "80014ec9d11270a48f10fa426c7da9dc027bd312";
+    owner = "fictionlab-gbp";
+    sha256 = "sha256-KBCAGgZly7P8nG8P/yZR52gMBdIDuKUM5Z3+i/tWn6o=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-nao-command-msgs";
   version = "0.0.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ijnek/nao_interfaces-release/archive/release/galactic/nao_command_msgs/0.0.4-1.tar.gz";
-    name = "0.0.4-1.tar.gz";
-    sha256 = "0a97e76e0aada6eabbe460a4cc40657969934eb0bf79862d2aa9136c667ba150";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "nao_interfaces-release";
+    rev = "899d4127741c1ac74abf7f39d2d7034ed13af2a2";
+    owner = "ijnek";
+    sha256 = "sha256-c5MI9xmqIM6a6lV86cpezLUwbxtIfICdZYHA39QMhiw=";
   };
 
   buildType = "ament_cmake";

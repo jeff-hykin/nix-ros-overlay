@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rc-reason-clients";
   version = "0.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/roboception-gbp/rc_reason_clients-release/archive/release/galactic/rc_reason_clients/0.3.0-1.tar.gz";
-    name = "0.3.0-1.tar.gz";
-    sha256 = "3825ba19925bfd8373d590e7d9f9954bb1b0d9bd0d5acd9addd07166ba8add02";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rc_reason_clients-release";
+    rev = "9b883710f661a9260f2868d4fe2a5062941583ee";
+    owner = "roboception-gbp";
+    sha256 = "sha256-q8bf4j9FheYgZ5vye7iL7FeN6Z3sl01sbjjAokkfCKk=";
   };
 
   buildType = "ament_python";

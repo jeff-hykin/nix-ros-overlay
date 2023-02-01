@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rqt-reconfigure";
   version = "1.0.8-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rqt_reconfigure-release/archive/release/galactic/rqt_reconfigure/1.0.8-1.tar.gz";
-    name = "1.0.8-1.tar.gz";
-    sha256 = "31e24d4f9e7ca6134278ab3b87ab7f09cd6baffaa4ea8356151a7a66f6e9c06e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt_reconfigure-release";
+    rev = "7d02b756cdabfc51924a59676ab587f71fe37b87";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Gs4D7boTF9pL2P0QK4kjX2CXjnfzken4zxeZjUSmh1U=";
   };
 
   buildType = "ament_python";

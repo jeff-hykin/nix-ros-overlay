@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rcl-logging-interface";
   version = "2.1.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rcl_logging-release/archive/release/galactic/rcl_logging_interface/2.1.5-1.tar.gz";
-    name = "2.1.5-1.tar.gz";
-    sha256 = "a0dbe0017532d6c51062bb949a4e7d3a512d562ee67446c4bf32d3484873d33a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rcl_logging-release";
+    rev = "643643884210d55464c8de97f98deebbf5f9e258";
+    owner = "ros2-gbp";
+    sha256 = "sha256-bRM9DTUUEcoNOPeg5Tz+yVREkJok8VOJhKeTganYUHo=";
   };
 
   buildType = "ament_cmake";

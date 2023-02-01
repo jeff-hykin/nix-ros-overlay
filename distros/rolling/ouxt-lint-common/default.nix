@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-ouxt-lint-common";
   version = "0.0.8-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ouxt_common-release/archive/release/rolling/ouxt_lint_common/0.0.8-2.tar.gz";
-    name = "0.0.8-2.tar.gz";
-    sha256 = "2be2df274ad1432716eafb6e0fbcd476cd4ccf46ce58b195aacde1c35eb83911";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ouxt_common-release";
+    rev = "9311da9690fa96c40cb2a03210d8419c86d55c45";
+    owner = "ros2-gbp";
+    sha256 = "sha256-CzvbzrJWL16B2/c63ryLS008hT4dSu50P4AhU+lsHpQ=";
   };
 
   buildType = "ament_cmake";

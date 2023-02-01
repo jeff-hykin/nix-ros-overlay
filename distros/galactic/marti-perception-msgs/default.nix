@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-marti-perception-msgs";
   version = "1.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/marti_messages-release/archive/release/galactic/marti_perception_msgs/1.3.0-1.tar.gz";
-    name = "1.3.0-1.tar.gz";
-    sha256 = "e8c38fcf04fb8366c044e7a7a1f008626dd9f0150861b7949e7ff15d6798f012";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "marti_messages-release";
+    rev = "970db1a946aa9327a4b0db5756979f74e037fe07";
+    owner = "ros2-gbp";
+    sha256 = "sha256-exDlhwOZU0vkvXPezARIXpuYzv3B5UEGHR/3Il8kmyA=";
   };
 
   buildType = "ament_cmake";

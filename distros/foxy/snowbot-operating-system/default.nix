@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-snowbot-operating-system";
   version = "0.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/PickNikRobotics/snowbot_release/archive/release/foxy/snowbot_operating_system/0.1.0-1.tar.gz";
-    name = "0.1.0-1.tar.gz";
-    sha256 = "e8347b0ff55173286f290afc16a95e7cc4d3fcd4e2f11f206ab9f29715f535eb";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "snowbot_release";
+    rev = "75dd6a43c9d6ae1fb3f910a7699ab7c0cddcba9a";
+    owner = "PickNikRobotics";
+    sha256 = "sha256-VGfN1Bu6SVqFxWVdoLGf8d53Gk7IvGG6RRDK+j+H3Lw=";
   };
 
   buildType = "ament_cmake";

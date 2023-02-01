@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-cmake-modules";
   version = "0.5.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/cmake_modules-release/archive/release/noetic/cmake_modules/0.5.0-1.tar.gz";
-    name = "0.5.0-1.tar.gz";
-    sha256 = "dfeaf30ec1bc678393abb6429ee19d99582a6df73cdfdf5d8a165bd408ebc46b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cmake_modules-release";
+    rev = "633207b199bbebd18b5014431a7d77f180e9218b";
+    owner = "ros-gbp";
+    sha256 = "sha256-5/ipnK3HVqck/Czo+tngnVz3VhQVhDB2XhTfETa1Dgw=";
   };
 
   buildType = "catkin";

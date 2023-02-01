@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-micro-ros-msgs";
   version = "1.0.0-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/micro_ros_msgs-release/archive/release/humble/micro_ros_msgs/1.0.0-3.tar.gz";
-    name = "1.0.0-3.tar.gz";
-    sha256 = "49cdc5a739a613584c15e44d4d9ceb8669b7991af3be8a5672565725310417a0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "micro_ros_msgs-release";
+    rev = "82c9d8664fe1ef11a9538289b4b1360816cd1ce6";
+    owner = "ros2-gbp";
+    sha256 = "sha256-kuDv7e3C0BCXolx6ePv0TLEpK9E3OfLGFAh0K/9Wb8o=";
   };
 
   buildType = "ament_cmake";

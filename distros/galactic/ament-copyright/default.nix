@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ament-copyright";
   version = "0.10.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ament_lint-release/archive/release/galactic/ament_copyright/0.10.7-1.tar.gz";
-    name = "0.10.7-1.tar.gz";
-    sha256 = "301f88bee34d714c4cd5ce869f41a710ed4667ba14adc69524087c85916b61e0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ament_lint-release";
+    rev = "af672b757fce8e613d7b3172072641f1c6948d8a";
+    owner = "ros2-gbp";
+    sha256 = "sha256-P/VXrfBuA2v5qmh8GnmOFsAT7GAK6l3uPlHDL868tMM=";
   };
 
   buildType = "ament_python";

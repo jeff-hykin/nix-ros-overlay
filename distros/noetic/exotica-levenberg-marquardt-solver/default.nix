@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-exotica-levenberg-marquardt-solver";
   version = "6.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipab-slmc/exotica-release/archive/release/noetic/exotica_levenberg_marquardt_solver/6.2.0-1.tar.gz";
-    name = "6.2.0-1.tar.gz";
-    sha256 = "135bb1e8166b3f10b61c15be56718dc1249b6555404e6026a61df817911e4ef3";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "exotica-release";
+    rev = "2acf781ce42e55ca23d3f0772bdbf6d07c260f57";
+    owner = "ipab-slmc";
+    sha256 = "sha256-MoKLbKXkYLJYuzK0y2S5k6MXb/ePEMTLQBfmecPE7YY=";
   };
 
   buildType = "catkin";

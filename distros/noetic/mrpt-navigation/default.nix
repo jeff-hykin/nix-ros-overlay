@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-mrpt-navigation";
   version = "1.0.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/mrpt-ros-pkg-release/mrpt_navigation-release/archive/release/noetic/mrpt_navigation/1.0.3-1.tar.gz";
-    name = "1.0.3-1.tar.gz";
-    sha256 = "dcdb033ee157f532cb51e3c945b9c8e23a7964a9f411495944dcf279c94d0ae9";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mrpt_navigation-release";
+    rev = "6faa84a73ded0dd7f17d4bce5a147dc8580e8517";
+    owner = "mrpt-ros-pkg-release";
+    sha256 = "sha256-uiNJN999GkU9rDHDzD2qXEkyOiOiZr0Y4OhEKU/AfPc=";
   };
 
   buildType = "catkin";

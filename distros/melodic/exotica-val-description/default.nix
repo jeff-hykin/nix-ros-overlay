@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-exotica-val-description";
   version = "1.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/wxmerkt/exotica_val_description-release/archive/release/melodic/exotica_val_description/1.0.0-1.tar.gz";
-    name = "1.0.0-1.tar.gz";
-    sha256 = "9ffa2502040e704ba54e21b691521ba3e3213011535eef52b7af2a4222dcc8cd";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "exotica_val_description-release";
+    rev = "ad1be7d5602ee7bc5fa670fd5bb705830f1d1e97";
+    owner = "wxmerkt";
+    sha256 = "sha256-3tIPzhzHqVjh09fL/JcRv/CCVyzqgM5xiuOyAFYSYZg=";
   };
 
   buildType = "catkin";

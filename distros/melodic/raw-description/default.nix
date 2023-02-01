@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-raw-description";
   version = "0.7.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_common-release/archive/release/melodic/raw_description/0.7.4-1.tar.gz";
-    name = "0.7.4-1.tar.gz";
-    sha256 = "9970063dc5f8426e1cde0beed70f8534fcd1c7702b85dbdd2e88b72ad795a9df";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_common-release";
+    rev = "41fefbfab6f4f1611cb45b0ea7c1e4e6c0704c37";
+    owner = "ipa320";
+    sha256 = "sha256-BqKfRlD3vqCAdWVEcPFkuRd7AvCK8PM0RWfvCiWofxA=";
   };
 
   buildType = "catkin";

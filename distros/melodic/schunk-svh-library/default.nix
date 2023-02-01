@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-schunk-svh-library";
   version = "1.0.1-r2";
 
-  src = fetchurl {
-    url = "https://github.com/fzi-forschungszentrum-informatik/schunk_svh_library-release/archive/release/melodic/schunk_svh_library/1.0.1-2.tar.gz";
-    name = "1.0.1-2.tar.gz";
-    sha256 = "ac6f8612c04ac2ce32a8e55ed52f236a05305b5c414d2153ff8204a4b8dd879b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "schunk_svh_library-release";
+    rev = "beb2b65b4438a79959ac4c863b18e4d31c57c12c";
+    owner = "fzi-forschungszentrum-informatik";
+    sha256 = "sha256-n1ECtIIlm0bPzlzsul/AH8CHSn5tXYbNJqbiCC9AuSs=";
   };
 
   buildType = "cmake";

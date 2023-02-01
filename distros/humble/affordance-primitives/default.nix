@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-affordance-primitives";
   version = "0.1.0-r3";
 
-  src = fetchurl {
-    url = "https://github.com/PickNikRobotics/affordance_primitives-release/archive/release/humble/affordance_primitives/0.1.0-3.tar.gz";
-    name = "0.1.0-3.tar.gz";
-    sha256 = "eb25ae49b78c3cb702387927258cb4d68a4b1548b403209645a1e7495f5986fa";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "affordance_primitives-release";
+    rev = "4314af7d9f5595083ea8dc9b1ad7e597d034c67b";
+    owner = "PickNikRobotics";
+    sha256 = "sha256-GqEFF/3Ttnk78/fLYfjHlvn3mctvgNnkhS/qTJK/KTM=";
   };
 
   buildType = "ament_cmake";

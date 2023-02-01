@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-nav-core";
   version = "1.17.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/navigation-release/archive/release/noetic/nav_core/1.17.2-1.tar.gz";
-    name = "1.17.2-1.tar.gz";
-    sha256 = "319e2bcb324f9229899c41944ca013d64c1f0d4adaff84a3c53aa7651816fadd";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation-release";
+    rev = "8ddb96b32971a1fe2e404e35199729e5deda71ab";
+    owner = "ros-gbp";
+    sha256 = "sha256-oUItURQor6DDW07zYn3lczOdwJD0tgJM3EL8QA1vD8c=";
   };
 
   buildType = "catkin";

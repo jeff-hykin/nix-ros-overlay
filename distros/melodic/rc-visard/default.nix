@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-rc-visard";
   version = "3.3.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/roboception-gbp/rc_visard-release/archive/release/melodic/rc_visard/3.3.2-1.tar.gz";
-    name = "3.3.2-1.tar.gz";
-    sha256 = "d01ef11e5b53a04e2dddd4876abe79b9255319a552259a372fad5d1a8aa1a36d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rc_visard-release";
+    rev = "a07aca034de66412153dd35e616ce80b23cf65f2";
+    owner = "roboception-gbp";
+    sha256 = "sha256-pdB0aLJNp8TdeE1xR+khVTKl0t3Kdksnt67FPbMHxHM=";
   };
 
   buildType = "catkin";

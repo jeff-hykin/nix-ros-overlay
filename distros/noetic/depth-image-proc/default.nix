@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-depth-image-proc";
   version = "1.17.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/image_pipeline-release/archive/release/noetic/depth_image_proc/1.17.0-1.tar.gz";
-    name = "1.17.0-1.tar.gz";
-    sha256 = "7c544ac45766a57cb9375a00c56156ecec07133c4ebf1166b7325712df69020f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "image_pipeline-release";
+    rev = "059f91d11e3a3da7718799c82769904fafc9fc4d";
+    owner = "ros-gbp";
+    sha256 = "sha256-dIMBZsoqwZH7iHwIj1Fv2IrBuwDIcBHnQXsFxvfNTn8=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-ros-realtime";
   version = "1.0.25";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/ros_realtime-release/archive/release/melodic/ros_realtime/1.0.25-0.tar.gz";
-    name = "1.0.25-0.tar.gz";
-    sha256 = "7106572a7a1fc86e47f9df7ab27badd45a0f8b55c3bbff666fdb8c7a5d0a72e2";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_realtime-release";
+    rev = "b0b7a5977c44353d911a6e232a4ecb27bc4692e7";
+    owner = "ros-gbp";
+    sha256 = "sha256-cSPJq35ndIuCxfW/qa08dpOhEvEk0rlT+bOWNUBVBGc=";
   };
 
   buildType = "catkin";

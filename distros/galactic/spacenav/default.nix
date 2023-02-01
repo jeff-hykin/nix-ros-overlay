@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-spacenav";
   version = "3.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/joystick_drivers-release/archive/release/galactic/spacenav/3.0.1-1.tar.gz";
-    name = "3.0.1-1.tar.gz";
-    sha256 = "349fa335de0b3b900d58255a62f6613a3cf8767e681127078246fdda57dedd82";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "joystick_drivers-release";
+    rev = "c4aa5bd7f7e19e848dec41e97e2598ab12a25f48";
+    owner = "ros2-gbp";
+    sha256 = "sha256-p9jrKPsanoulkXsclPZlz7xYmvCQitubN4UXn8pB5xY=";
   };
 
   buildType = "ament_cmake";

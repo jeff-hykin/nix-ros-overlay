@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-phidgets-motors";
   version = "2.3.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/phidgets_drivers-release/archive/release/humble/phidgets_motors/2.3.0-2.tar.gz";
-    name = "2.3.0-2.tar.gz";
-    sha256 = "f8005b7cd51dbf63de1341c96ff83526b89580554f7b5b21dcfb77210351de62";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "phidgets_drivers-release";
+    rev = "dd6b83c57d8647380ba6fcffcacec50bfe3ed1f7";
+    owner = "ros2-gbp";
+    sha256 = "sha256-CJ15pEIC0w/oEqLyGVnrQZqm/k6hjHTUfobsw9vaRcA=";
   };
 
   buildType = "ament_cmake";

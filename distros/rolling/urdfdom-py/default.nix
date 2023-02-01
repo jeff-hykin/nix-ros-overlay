@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-urdfdom-py";
   version = "1.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/urdfdom_py-release/archive/release/rolling/urdfdom_py/1.2.0-1.tar.gz";
-    name = "1.2.0-1.tar.gz";
-    sha256 = "6e7482693ea9002a004b44a3b8db7c4377392a5749378480c519687e0c91b639";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "urdfdom_py-release";
+    rev = "1b0e31ce9e2d8bd18d5f8374034dcf9611a5e3cf";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Wqb94XN1fUWXLJ5rwzsmePzwagB+j2D66m2gHM+RIx4=";
   };
 
   buildType = "ament_python";

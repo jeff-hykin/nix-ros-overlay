@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-datmo";
   version = "0.1.2-r2";
 
-  src = fetchurl {
-    url = "https://github.com/kostaskonkk/datmo-release/archive/release/melodic/datmo/0.1.2-2.tar.gz";
-    name = "0.1.2-2.tar.gz";
-    sha256 = "7003a039dda59b01b5d934a090ea54ac289ef7653a975b1fda2063d429dee91b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "datmo-release";
+    rev = "0a921021e84d65fa6589969d677a6b789bfcec74";
+    owner = "kostaskonkk";
+    sha256 = "sha256-Mrfo0zFMz/LerjHW+Uh0/ievRlAaHjdThg5oYNX5iwc=";
   };
 
   buildType = "catkin";

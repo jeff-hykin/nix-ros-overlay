@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-joint-trajectory-controller";
   version = "2.15.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_controllers-release/archive/release/humble/joint_trajectory_controller/2.15.0-1.tar.gz";
-    name = "2.15.0-1.tar.gz";
-    sha256 = "f5f6f32b27b12999c5a6c42ff28f60ca20fbc2f84be0ed5eb8f6f86a390b2ab2";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_controllers-release";
+    rev = "2d01e6fe8a3f760cb37782d6dd0994b8717e1408";
+    owner = "ros2-gbp";
+    sha256 = "sha256-xzNXMcd8bqOA/pbIBHKuCF1FfmpWxIn/jI1bjsM5olI=";
   };
 
   buildType = "ament_cmake";

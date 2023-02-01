@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-ackermann-msgs";
   version = "1.0.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-drivers-gbp/ackermann_msgs-release/archive/release/noetic/ackermann_msgs/1.0.2-1.tar.gz";
-    name = "1.0.2-1.tar.gz";
-    sha256 = "07e95f3c6d2f07e9533ff7a2fb99ff6ca5abc394b6ef2c4428431802709fa702";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ackermann_msgs-release";
+    rev = "ed7480696ff3e6527e999dde77e18ca36fada9a3";
+    owner = "ros-drivers-gbp";
+    sha256 = "sha256-joTO8ndBZRqL02NGe2gciiQjTooE60i22xDcTOus8Rk=";
   };
 
   buildType = "catkin";

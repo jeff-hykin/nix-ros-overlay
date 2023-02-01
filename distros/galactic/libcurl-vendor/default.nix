@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-libcurl-vendor";
   version = "2.5.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/resource_retriever-release/archive/release/galactic/libcurl_vendor/2.5.0-2.tar.gz";
-    name = "2.5.0-2.tar.gz";
-    sha256 = "ce11910cee9a8d27e616e51b3d31e4662fa443fbaf61017393de0093b8f742db";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "resource_retriever-release";
+    rev = "b8574c7b47bc5d0f457815f5387f3798fa8b94fd";
+    owner = "ros2-gbp";
+    sha256 = "sha256-YXJSPvXv8fMUovoer6Uz997A7XsyXoP1xXTuzgG/AL4=";
   };
 
   buildType = "ament_cmake";

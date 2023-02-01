@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-vrx-gazebo";
   version = "1.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/vrx-release/archive/release/melodic/vrx_gazebo/1.3.0-1.tar.gz";
-    name = "1.3.0-1.tar.gz";
-    sha256 = "5bcd4e7ec999a9f617586ef2098d3a1fb42b36384d53b661637e5baceb4bb22b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "vrx-release";
+    rev = "c83319ef2796a4ed48c554c94f24d55f1a0ff0bd";
+    owner = "ros-gbp";
+    sha256 = "sha256-Y4eTMMtXI5MJ60cfL3xBuWaPKWfqDWeeyQZsqQZO/bQ=";
   };
 
   buildType = "catkin";

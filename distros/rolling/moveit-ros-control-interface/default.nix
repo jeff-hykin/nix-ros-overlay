@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-moveit-ros-control-interface";
   version = "2.6.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/moveit/moveit2-release/archive/release/rolling/moveit_ros_control_interface/2.6.0-1.tar.gz";
-    name = "2.6.0-1.tar.gz";
-    sha256 = "85c169c8033068ed22777445b5b20c017c57b7b0995b19ec658b34f52dca55f9";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "moveit2-release";
+    rev = "089c80d37e006b59379503d4a5058591a665a8d3";
+    owner = "moveit";
+    sha256 = "sha256-DSEkdmzUrJ4IfnWx247QF8ko9yVcXxbCc15+VXV5D3k=";
   };
 
   buildType = "ament_cmake";

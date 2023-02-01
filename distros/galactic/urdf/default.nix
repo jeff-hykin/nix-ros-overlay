@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-urdf";
   version = "2.5.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/urdf-release/archive/release/galactic/urdf/2.5.2-1.tar.gz";
-    name = "2.5.2-1.tar.gz";
-    sha256 = "33b50fb91931dff064c77e24fe61ca3bf31413822529afe34c7c1aaf909aebd0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "urdf-release";
+    rev = "0aac83081461ba1537d213a4d8a868ea6835e374";
+    owner = "ros2-gbp";
+    sha256 = "sha256-COlKg0y2pc28mTpYYYW6ISW4HSC+1tJ7f8f2+qfYJAI=";
   };
 
   buildType = "ament_cmake";

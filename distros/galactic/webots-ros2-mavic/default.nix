@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-webots-ros2-mavic";
   version = "2022.1.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/webots_ros2-release/archive/release/galactic/webots_ros2_mavic/2022.1.4-1.tar.gz";
-    name = "2022.1.4-1.tar.gz";
-    sha256 = "fcea54dddbea5a1000ac4d31f907192651153e4140ed11277d0b90279f40cd27";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "webots_ros2-release";
+    rev = "6307d57b7a8eb7d825eac137de854688cf06480a";
+    owner = "ros2-gbp";
+    sha256 = "sha256-OtQ0u57iA6MtJR+KI8HkztZ0QIPWM28EdFOPwa6isUA=";
   };
 
   buildType = "ament_python";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-industrial-core";
   version = "0.7.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-industrial-release/industrial_core-release/archive/release/noetic/industrial_core/0.7.3-1.tar.gz";
-    name = "0.7.3-1.tar.gz";
-    sha256 = "60aab3d3952f68fddc9185ae536eda925de829d5d996ee40c5a3c7f84f059979";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "industrial_core-release";
+    rev = "c80124284b89f04f998a2cc091f2d1b44ede2c06";
+    owner = "ros-industrial-release";
+    sha256 = "sha256-ZaZnIom8Fvoem61kUwEJL/xy/b8U8ZAxJoZV6J+zOkE=";
   };
 
   buildType = "catkin";

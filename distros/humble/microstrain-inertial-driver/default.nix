@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-microstrain-inertial-driver";
   version = "2.7.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/microstrain_inertial-release/archive/release/humble/microstrain_inertial_driver/2.7.1-1.tar.gz";
-    name = "2.7.1-1.tar.gz";
-    sha256 = "dc76b008e9c19860cb9d783b7eff5409f1933e6c5647c86fa254e264ea4f2026";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "microstrain_inertial-release";
+    rev = "84f05cc55c8b1706f5c97dbd7f9e8f6833485553";
+    owner = "ros2-gbp";
+    sha256 = "sha256-n0jUy3LuW1QIKU7FTVq1TSDS0e7867MjXhpAeH9DSVg=";
   };
 
   buildType = "ament_cmake";

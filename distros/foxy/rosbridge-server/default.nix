@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-rosbridge-server";
   version = "1.3.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rosbridge_suite-release/archive/release/foxy/rosbridge_server/1.3.1-1.tar.gz";
-    name = "1.3.1-1.tar.gz";
-    sha256 = "cf9417459e21b3b1f377190ae1eb3e224ff506f60830d4f89fe5fecdfcf8d3ff";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosbridge_suite-release";
+    rev = "f03195942684da114829477a4c5ed302c20669f8";
+    owner = "ros2-gbp";
+    sha256 = "sha256-+/YXaqhSZxsnXK/roPCndJ03rrcWji3q1guEQ09g4jE=";
   };
 
   buildType = "ament_cmake";

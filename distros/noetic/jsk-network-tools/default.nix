@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-jsk-network-tools";
   version = "2.2.12-r1";
 
-  src = fetchurl {
-    url = "https://github.com/tork-a/jsk_common-release/archive/release/noetic/jsk_network_tools/2.2.12-1.tar.gz";
-    name = "2.2.12-1.tar.gz";
-    sha256 = "21b402ed5de2bcf9052d49b0c4cb1e5607eeb7320474179995e5d04cfb8d508f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "jsk_common-release";
+    rev = "ce376ee6980515b94024ced9f7872417d9181f13";
+    owner = "tork-a";
+    sha256 = "sha256-5syw3GvBtwT+SoBMPN63X2RLJcMOIXKHwfVXfJxP3FM=";
   };
 
   buildType = "catkin";

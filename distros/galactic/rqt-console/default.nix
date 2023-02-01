@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rqt-console";
   version = "2.0.2-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rqt_console-release/archive/release/galactic/rqt_console/2.0.2-2.tar.gz";
-    name = "2.0.2-2.tar.gz";
-    sha256 = "5d40a7856720945ad968b100e8c03996c87df471015a9608170f3cc7f4ff9305";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt_console-release";
+    rev = "1a7e38dcb904e998d98d1beb56c367e211579402";
+    owner = "ros2-gbp";
+    sha256 = "sha256-a2PcWtK997Gm2BkwEUHFMGfhy29uJPQwRt7CpqL83xg=";
   };
 
   buildType = "ament_python";

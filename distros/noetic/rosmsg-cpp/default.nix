@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-rosmsg-cpp";
   version = "1.0.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ctu-vras/rosmsg_cpp-release/archive/release/noetic/rosmsg_cpp/1.0.2-1.tar.gz";
-    name = "1.0.2-1.tar.gz";
-    sha256 = "55cade697aaddad90380206c883b2a95813bc662810a4adf8ee69c94af140868";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosmsg_cpp-release";
+    rev = "a11d93e6eedc43104e5699ee42fa2bccc08661f2";
+    owner = "ctu-vras";
+    sha256 = "sha256-78DbURdOPEKrEXwGtg/MUxsbNesIKpCn1DjqSh4q8No=";
   };
 
   buildType = "catkin";

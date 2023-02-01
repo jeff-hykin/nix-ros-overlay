@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-dwa-local-planner";
   version = "1.17.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/navigation-release/archive/release/noetic/dwa_local_planner/1.17.2-1.tar.gz";
-    name = "1.17.2-1.tar.gz";
-    sha256 = "7a33aea335a10418c1df4816fbfc210c423151784bec50aad9c749d580b8d737";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation-release";
+    rev = "2aed7aefd8166063ea40fb72c0a528a1fbe9e45d";
+    owner = "ros-gbp";
+    sha256 = "sha256-pkLtLtgZYEeRbDi+OtxAKdJe2UwBgwvi/5Wh1ROk3zE=";
   };
 
   buildType = "catkin";

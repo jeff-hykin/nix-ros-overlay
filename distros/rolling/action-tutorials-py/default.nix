@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-action-tutorials-py";
   version = "0.23.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/demos-release/archive/release/rolling/action_tutorials_py/0.23.0-1.tar.gz";
-    name = "0.23.0-1.tar.gz";
-    sha256 = "69f1fc8b7c77f166721b3676ac76e57d595fcfb4e310658207a215d648597228";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "demos-release";
+    rev = "a484a200e9e2cf4aeca5e7cc3b1de77f01bfe354";
+    owner = "ros2-gbp";
+    sha256 = "sha256-pSzsKfmyXSiTKsRtIEcYM0T/PXsMsl8pQZpG5CDwgE8=";
   };
 
   buildType = "ament_python";

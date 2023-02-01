@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-openzen-sensor";
   version = "1.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/lp-research/openzen_sensor-release/archive/release/melodic/openzen_sensor/1.2.0-1.tar.gz";
-    name = "1.2.0-1.tar.gz";
-    sha256 = "40f8a14c1626135d573751bb79540c429028d462378b39a691d2dcd7e6daec94";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "openzen_sensor-release";
+    rev = "1f69ef67d3d9be6dadabc0db303cb3801634b428";
+    owner = "lp-research";
+    sha256 = "sha256-cywFqPpxCyoovfWUGDFODjiWMGbey98y3cAlR4U9jTA=";
   };
 
   buildType = "catkin";

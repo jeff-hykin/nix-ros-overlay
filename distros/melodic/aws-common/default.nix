@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-aws-common";
   version = "2.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/aws-gbp/aws_common-release/archive/release/melodic/aws_common/2.2.0-1.tar.gz";
-    name = "2.2.0-1.tar.gz";
-    sha256 = "ca6b356a24bbfc7851da14716f3f90cdc751ce5d7620f5eda2401cdfebdddbfe";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "aws_common-release";
+    rev = "1628f1066414d49c91c0a652ecf698f0ab9f0038";
+    owner = "aws-gbp";
+    sha256 = "sha256-1RDpsiryF7yJ4e24yRk9U7xr3RHn9LYYqjKjLWtxT08=";
   };
 
   buildType = "cmake";

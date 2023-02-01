@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-octomap";
   version = "1.9.8-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/octomap-release/archive/release/foxy/octomap/1.9.8-1.tar.gz";
-    name = "1.9.8-1.tar.gz";
-    sha256 = "3c87ff348c5a0afd6f96c0f1ac077fecaccfc82d1fcd5f93ef2d1358dbba671f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "octomap-release";
+    rev = "30223cfe7d87ba938ce98df6ecd3e1d6223e5257";
+    owner = "ros-gbp";
+    sha256 = "sha256-8DAIMo4RdqnTKlM9nK2fg9FEc9jiOtHIL52VQjvOY10=";
   };
 
   buildType = "cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-ublox";
   version = "2.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ublox-release/archive/release/rolling/ublox/2.3.0-1.tar.gz";
-    name = "2.3.0-1.tar.gz";
-    sha256 = "4c3f56b8074c6e218b6eaf09b39114aaf05a995bef0e57ed8e104afc219f9cd7";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ublox-release";
+    rev = "c28cabd41eca78147f5f36fcfd999d742ce035f3";
+    owner = "ros2-gbp";
+    sha256 = "sha256-tCPY6Wu0TQ0Auvkx3xW6yyreMV7K0GruiyS4AZ29LtI=";
   };
 
   buildType = "ament_cmake";

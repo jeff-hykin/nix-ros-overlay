@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-safe-teleop-stage";
   version = "0.0.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/shared_autonomy_manipulation-release/archive/release/melodic/safe_teleop_stage/0.0.3-1.tar.gz";
-    name = "0.0.3-1.tar.gz";
-    sha256 = "ff18ef24923e712f4647f4e03481d7efeb8cb06910599525e6acb1821a71f374";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "shared_autonomy_manipulation-release";
+    rev = "d00cb490b730d656bb04d1f0174d3346178d1926";
+    owner = "ros-gbp";
+    sha256 = "sha256-01/SZ+qAjoSYWM4cBHK+LtYwNiIgpj/m/gt/f2/QtK4=";
   };
 
   buildType = "catkin";

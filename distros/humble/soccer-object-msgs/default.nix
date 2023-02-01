@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-soccer-object-msgs";
   version = "1.0.1-r4";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/soccer_object_msgs-release/archive/release/humble/soccer_object_msgs/1.0.1-4.tar.gz";
-    name = "1.0.1-4.tar.gz";
-    sha256 = "3f97688167bb0c7ae7d550a6063bdaca4b707e5d9e2050091b9630b1428416a3";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "soccer_object_msgs-release";
+    rev = "662d3ec38925a4ffd53e39d7f4d278f6f611ef2d";
+    owner = "ros2-gbp";
+    sha256 = "sha256-L9tzxNygLV6DbioNwnYhQLIEZ49+s1/LRBiPsBXopTw=";
   };
 
   buildType = "ament_cmake";

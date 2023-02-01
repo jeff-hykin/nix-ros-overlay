@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-swri-prefix-tools";
   version = "3.5.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/marti_common-release/archive/release/humble/swri_prefix_tools/3.5.0-1.tar.gz";
-    name = "3.5.0-1.tar.gz";
-    sha256 = "3666674b60ba2d79bca6d3a6959a68436b2ac819d94d81ea28ee9371f2f5a656";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "marti_common-release";
+    rev = "558d8768d44bc5d7609c872e5965824fdb1449f5";
+    owner = "ros2-gbp";
+    sha256 = "sha256-YPzzks6tZxt8XyudUe5w3ph/ys/wbFvqRoqK54Mmnbw=";
   };
 
   buildType = "ament_cmake";

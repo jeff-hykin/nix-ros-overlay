@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-rc-pick-client";
   version = "3.3.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/roboception-gbp/rc_visard-release/archive/release/noetic/rc_pick_client/3.3.2-1.tar.gz";
-    name = "3.3.2-1.tar.gz";
-    sha256 = "1531a57ccb26a177430ac8d1140ac565215aa7f7c4466abaf75d31426c902727";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rc_visard-release";
+    rev = "2963636033474fb9334288890ef662932ae8aa25";
+    owner = "roboception-gbp";
+    sha256 = "sha256-vbcKyiWWms+VGMRQW7iPacZKxZPEHAGU0r4CmkY8bdE=";
   };
 
   buildType = "catkin";

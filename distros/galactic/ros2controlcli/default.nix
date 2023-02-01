@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ros2controlcli";
   version = "1.6.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_control-release/archive/release/galactic/ros2controlcli/1.6.0-1.tar.gz";
-    name = "1.6.0-1.tar.gz";
-    sha256 = "93ba0ce33ea0c04930210435902536162927acc63569cef87e1e7dbdb6906b0e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_control-release";
+    rev = "f5e20b0752f1c4fdd6fe896dd16c8bcc616c091d";
+    owner = "ros2-gbp";
+    sha256 = "sha256-+Uo+dspopzs26e0cxdjjYW4WBpf3ULw+7PsGAzklE8o=";
   };
 
   buildType = "ament_python";

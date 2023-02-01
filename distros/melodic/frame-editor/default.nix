@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-frame-editor";
   version = "1.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/rqt_frame_editor_plugin-release/archive/release/melodic/frame_editor/1.1.0-1.tar.gz";
-    name = "1.1.0-1.tar.gz";
-    sha256 = "8d5c116e76290ef74906fc74f50588c54d9a850ed6af06d766fd37be7ecef4c8";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt_frame_editor_plugin-release";
+    rev = "0cff070dbbc10d9d2a606f4b02c33015e6ab165d";
+    owner = "ipa320";
+    sha256 = "sha256-qDs5a96KG7MXcFyrmHPm3TNXCp2bGmMxuwCiJgXfsjM=";
   };
 
   buildType = "catkin";

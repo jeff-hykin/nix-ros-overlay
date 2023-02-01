@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-rosdiagnostic";
   version = "1.9.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/diagnostics-release/archive/release/melodic/rosdiagnostic/1.9.7-1.tar.gz";
-    name = "1.9.7-1.tar.gz";
-    sha256 = "82844fa5c5ea517247d21e6276b7ebd9047b1ded877206ac3c0a027b176b5bcf";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "diagnostics-release";
+    rev = "9fad37f95b123aba0c6ef8f56b36425cd68c5a2f";
+    owner = "ros-gbp";
+    sha256 = "sha256-Q9pBwNP+1kvRVV4jOVZdk3Uy50rSb9PF/8wwOP+hB2I=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-jackal-navigation";
   version = "1.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/clearpath-gbp/jackal-release/archive/release/foxy/jackal_navigation/1.0.1-1.tar.gz";
-    name = "1.0.1-1.tar.gz";
-    sha256 = "a7dfe807131fa2ea3129b75ead05e14a1071eede76b1a38280097f96c364f792";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "jackal-release";
+    rev = "b0c9bc072140bdee12b2eb12da0ca79dea0976a9";
+    owner = "clearpath-gbp";
+    sha256 = "sha256-hHCcZHx5ubqlcq59UMKmbtdT50A21mfkJsWYZtH6eTA=";
   };
 
   buildType = "ament_cmake";

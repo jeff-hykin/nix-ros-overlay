@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ament-nodl";
   version = "0.1.0-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ament_nodl-release/archive/release/galactic/ament_nodl/0.1.0-3.tar.gz";
-    name = "0.1.0-3.tar.gz";
-    sha256 = "14ee99d1ac40eb2b8e921aed943e6ab6d8ef0b13cdb90dc6c6bbe95506cea0d7";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ament_nodl-release";
+    rev = "0a3a6a6edd0b1a06abccf9b6186fa00516862bf1";
+    owner = "ros2-gbp";
+    sha256 = "sha256-9azhFZrnSaHJiIRFdPiDTiDO3j2v3eKxQBNdAEFwd5A=";
   };
 
   buildType = "ament_cmake";

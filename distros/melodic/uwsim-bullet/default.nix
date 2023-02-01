@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-uwsim-bullet";
   version = "2.82.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/uji-ros-pkg/uwsim_bullet-release/archive/release/melodic/uwsim_bullet/2.82.2-1.tar.gz";
-    name = "2.82.2-1.tar.gz";
-    sha256 = "e2d8638aff5002aa0ce7d104c68258d055ea31ed51eb7555e6694faf66ee35b7";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "uwsim_bullet-release";
+    rev = "ca5d14bb102a39304ad6330035e8660e722e7d53";
+    owner = "uji-ros-pkg";
+    sha256 = "sha256-YAYcFcvAyEV7kfFXCVuXcydDR88uzRrFvJOdV4taH0g=";
   };
 
   buildType = "cmake";

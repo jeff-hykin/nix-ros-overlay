@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-base-local-planner";
   version = "1.17.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/navigation-release/archive/release/noetic/base_local_planner/1.17.2-1.tar.gz";
-    name = "1.17.2-1.tar.gz";
-    sha256 = "b3c85eea5390620d3a05541e22652a1458925d9adbbbcb5e5cea8edd9251e18e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation-release";
+    rev = "8c5dcb59e4db153620b9fb9ed522f8a4d323ee62";
+    owner = "ros-gbp";
+    sha256 = "sha256-ET9p4xjPrCSYqgCeqnUwRwILqjS7u5O97zhEihcdzpg=";
   };
 
   buildType = "catkin";

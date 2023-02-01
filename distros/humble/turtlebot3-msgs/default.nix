@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-turtlebot3-msgs";
   version = "2.2.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/turtlebot3_msgs-release/archive/release/humble/turtlebot3_msgs/2.2.3-1.tar.gz";
-    name = "2.2.3-1.tar.gz";
-    sha256 = "d460ea8afe21446f242c8fedb27fc0a23fb0c76d1944a31654cb36680c239ea3";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "turtlebot3_msgs-release";
+    rev = "b4d93b98e92311a468685cdea75f192d65ee11f0";
+    owner = "ros2-gbp";
+    sha256 = "sha256-pyrS0ZJEAld/gKSXtW5IKrw3YI0fJ2/tnfGULpKNpuE=";
   };
 
   buildType = "ament_cmake";

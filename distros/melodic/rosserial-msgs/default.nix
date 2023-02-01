@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-rosserial-msgs";
   version = "0.8.0";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/rosserial-release/archive/release/melodic/rosserial_msgs/0.8.0-0.tar.gz";
-    name = "0.8.0-0.tar.gz";
-    sha256 = "8e7997385cc06168097b0d5e56c91155f5a3fea6a28cecbc9ba0d9dc48cad6af";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosserial-release";
+    rev = "557b71e31a2cb8c6e31806ce46f9168521e24bfe";
+    owner = "ros-gbp";
+    sha256 = "sha256-D5D+PWVFnQXU5vrLmoc97g3jSIubszLOvWWOD2VJebw=";
   };
 
   buildType = "catkin";

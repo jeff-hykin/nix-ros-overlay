@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-ipa-differential-docking";
   version = "0.6.12-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_substitute-release/archive/release/noetic/ipa_differential_docking/0.6.12-1.tar.gz";
-    name = "0.6.12-1.tar.gz";
-    sha256 = "1702147d1a9b120c18f7c2ee3a821566be140039abbe5013ed217d8383e8e0b7";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_substitute-release";
+    rev = "7691c64468b0a4486111b924e2e3f15f9824e69f";
+    owner = "ipa320";
+    sha256 = "sha256-TqmliUUeFMSe5CuXxxBCnX2nhJJltPS2v1tzmA+P/HE=";
   };
 
   buildType = "catkin";

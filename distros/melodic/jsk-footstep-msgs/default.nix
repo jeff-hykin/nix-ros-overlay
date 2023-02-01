@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-jsk-footstep-msgs";
   version = "4.3.1";
 
-  src = fetchurl {
-    url = "https://github.com/tork-a/jsk_common_msgs-release/archive/release/melodic/jsk_footstep_msgs/4.3.1-0.tar.gz";
-    name = "4.3.1-0.tar.gz";
-    sha256 = "c461c1a447cca272bbd283203796ec6126bb42b6ae13b953f22193d574e49251";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "jsk_common_msgs-release";
+    rev = "e9e356010b22aa5c8640dad840e9cbdbfa39a387";
+    owner = "tork-a";
+    sha256 = "sha256-ggzBQ8USYDm5j2MzyPs8SXtsMHiVNKYqIfZDT8kmsbs=";
   };
 
   buildType = "catkin";

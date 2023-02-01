@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-rqt-service-caller";
   version = "0.4.10-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/rqt_service_caller-release/archive/release/noetic/rqt_service_caller/0.4.10-1.tar.gz";
-    name = "0.4.10-1.tar.gz";
-    sha256 = "dbf87bc996e161a0512b4f0627caa1d66ae00bfcbf28ef8ab6fa58de2fa4d9f5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt_service_caller-release";
+    rev = "f2a6c2b0e61674a94de82eaca74d5726eae1cd97";
+    owner = "ros-gbp";
+    sha256 = "sha256-hVR2qSpIxN/uQxteI8s732r1j24WtGIYG7T8UkeJ8gI=";
   };
 
   buildType = "catkin";

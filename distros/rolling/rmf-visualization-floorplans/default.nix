@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-rmf-visualization-floorplans";
   version = "2.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_visualization-release/archive/release/rolling/rmf_visualization_floorplans/2.0.1-1.tar.gz";
-    name = "2.0.1-1.tar.gz";
-    sha256 = "ae457032b6db60b2dfe03afd357e2874f133360b795bfedbc9ceb277c0e5a10b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_visualization-release";
+    rev = "201c22493d44d320ec5b50dbf787ee36ecb95645";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Wfa+U3d8n/ltb0ETtQhGCwPqWX4JDLFS4axmsKGPdWQ=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-nav2-voxel-grid";
   version = "1.0.12-r1";
 
-  src = fetchurl {
-    url = "https://github.com/SteveMacenski/navigation2-release/archive/release/galactic/nav2_voxel_grid/1.0.12-1.tar.gz";
-    name = "1.0.12-1.tar.gz";
-    sha256 = "d1a24f7db607fbac85f895ce83fce3e369da655a446b7cc361db9d95416a0e70";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation2-release";
+    rev = "05c976cf5825a827b730d395103d580cbcc3e34b";
+    owner = "SteveMacenski";
+    sha256 = "sha256-aWlZaUANkOgcRWd9gE760hLJJmTIkaChkPw9rzir7yA=";
   };
 
   buildType = "ament_cmake";

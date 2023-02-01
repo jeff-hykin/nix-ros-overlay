@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-sol-vendor";
   version = "0.0.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/OUXT-Polaris/sol_vendor-release/archive/release/galactic/sol_vendor/0.0.3-1.tar.gz";
-    name = "0.0.3-1.tar.gz";
-    sha256 = "99769c78a3822a4f526d248b6c9dd58a2194b0d7649c31d854f6c60a738ea92c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "sol_vendor-release";
+    rev = "d9da9f19428d23417b842ffcd5d81ff980f950e9";
+    owner = "OUXT-Polaris";
+    sha256 = "sha256-evTrBEB9O+4Q5o4mkGGcYCSddOKRPjv5HBwtTxbGkQk=";
   };
 
   buildType = "ament_cmake";

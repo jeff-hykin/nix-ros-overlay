@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-rosserial-windows";
   version = "0.8.0";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/rosserial-release/archive/release/melodic/rosserial_windows/0.8.0-0.tar.gz";
-    name = "0.8.0-0.tar.gz";
-    sha256 = "620b3a46eb5abe13e626c55510ee6175e35b0548be995208f0b062cbb02c7089";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosserial-release";
+    rev = "9d2c9b31ce43c3504efc69fe25bedfc4c908325a";
+    owner = "ros-gbp";
+    sha256 = "sha256-gp+H7MAJnKrsWQ6+6SNH6Yib7lZIBK4E4AfR7GJWY5s=";
   };
 
   buildType = "catkin";

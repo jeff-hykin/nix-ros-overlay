@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ecl-linear-algebra";
   version = "1.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/yujinrobot-release/ecl_core-release/archive/release/galactic/ecl_linear_algebra/1.2.0-1.tar.gz";
-    name = "1.2.0-1.tar.gz";
-    sha256 = "3851ab37d71fbb5d8e31816d3d881d348fc63cb4320fe5cd026d1596fa0a9bf3";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ecl_core-release";
+    rev = "52c3ceb5e81752ee1137d8767c96f2a535e65e9a";
+    owner = "yujinrobot-release";
+    sha256 = "sha256-upu315oRuih9S5JxJbp7BKPAQ5Lw8MyvcSYRHSa8V8o=";
   };
 
   buildType = "ament_cmake";

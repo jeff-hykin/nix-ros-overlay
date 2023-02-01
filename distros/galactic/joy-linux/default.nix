@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-joy-linux";
   version = "3.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/joystick_drivers-release/archive/release/galactic/joy_linux/3.0.1-1.tar.gz";
-    name = "3.0.1-1.tar.gz";
-    sha256 = "f7cf460a6939d956ad4ddb556b9247be6158649c49e2299e6834ad294a32b9dc";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "joystick_drivers-release";
+    rev = "16949498a0a05b8310ce807960bbd7798e1d6860";
+    owner = "ros2-gbp";
+    sha256 = "sha256-YlxOcZHQQLAdW445gBw6Vd10DRMHumRdZuFrqnSHfxU=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-jderobot-carviz";
   version = "0.1.6-r1";
 
-  src = fetchurl {
-    url = "https://github.com/JdeRobot/carViz-release/archive/release/melodic/jderobot_carviz/0.1.6-1.tar.gz";
-    name = "0.1.6-1.tar.gz";
-    sha256 = "c1f1e372695ce56a49411a7201deca9be171b704ce55f67f62a60344ae0fd3a4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "carViz-release";
+    rev = "8a255293f3806fb0ce8c324d983e1e0559e56951";
+    owner = "JdeRobot";
+    sha256 = "sha256-hOuvnfPnXmZ52P7Ehs8KxT5ihX0yFFB1JD9zak97BKs=";
   };
 
   buildType = "catkin";

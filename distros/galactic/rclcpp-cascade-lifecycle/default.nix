@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rclcpp-cascade-lifecycle";
   version = "1.0.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/fmrico/cascade_lifecycle-release/archive/release/galactic/rclcpp_cascade_lifecycle/1.0.0-2.tar.gz";
-    name = "1.0.0-2.tar.gz";
-    sha256 = "ac646bf6b93600f497c5cec58ca95ce33c60ea771245c9f19670cfe4f28b2329";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cascade_lifecycle-release";
+    rev = "95c5c31d15424f2422a3687acd469c15f311cd4f";
+    owner = "fmrico";
+    sha256 = "sha256-7DM2UsEm2EJHuiy2YHTX2iStY7s3t8qXqh90bzri8ak=";
   };
 
   buildType = "ament_cmake";

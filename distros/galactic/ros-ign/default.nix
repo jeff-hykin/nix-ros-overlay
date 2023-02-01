@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ros-ign";
   version = "0.233.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros_ign-release/archive/release/galactic/ros_ign/0.233.4-1.tar.gz";
-    name = "0.233.4-1.tar.gz";
-    sha256 = "6cbe901531cc54df4389383e648d6f2de9d7ae40834bd5bf551d3784adc42347";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_ign-release";
+    rev = "85ee07a2a38f4f28bd036a005341a723160d8dcd";
+    owner = "ros2-gbp";
+    sha256 = "sha256-ORNCsy6qH+yLLyy8FCO06NngzGK2YcXwJxmneuez7hk=";
   };
 
   buildType = "ament_cmake";

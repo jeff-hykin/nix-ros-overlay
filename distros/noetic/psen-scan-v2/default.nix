@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-psen-scan-v2";
   version = "0.10.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/PilzDE/psen_scan_v2-release/archive/release/noetic/psen_scan_v2/0.10.2-1.tar.gz";
-    name = "0.10.2-1.tar.gz";
-    sha256 = "3e47d0187a860ce418bc2f42d58aa563da2822585c075ff18793d02671adce9b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "psen_scan_v2-release";
+    rev = "55433af00f6e13f5c15d7b35fcc5e624dcb47ad0";
+    owner = "PilzDE";
+    sha256 = "sha256-Ufw3h/3Yl7IeD+f7U132XgTHjticFhuMQskiyohjrkk=";
   };
 
   buildType = "catkin";

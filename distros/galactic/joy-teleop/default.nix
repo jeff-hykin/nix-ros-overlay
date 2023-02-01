@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-joy-teleop";
   version = "1.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/teleop_tools-release/archive/release/galactic/joy_teleop/1.3.0-1.tar.gz";
-    name = "1.3.0-1.tar.gz";
-    sha256 = "f9ed0d80bddc85701c4673ec1380b262adc97bed480458e6abdf9c78a492db49";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "teleop_tools-release";
+    rev = "d0a84bb76dce217d86444ac9ced33c0601f57a30";
+    owner = "ros2-gbp";
+    sha256 = "sha256-pOO81abXuYpWTZZ3XcPdFNVRBA04FYijCK3alScPZJ8=";
   };
 
   buildType = "ament_python";

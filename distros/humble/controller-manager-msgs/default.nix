@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-controller-manager-msgs";
   version = "2.18.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_control-release/archive/release/humble/controller_manager_msgs/2.18.0-1.tar.gz";
-    name = "2.18.0-1.tar.gz";
-    sha256 = "79d13f2e71dc27601e36751c2049f7ce4c821b32860227dc3b34ba99f4974d24";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_control-release";
+    rev = "4fb84682debdd4ff1eb8be87d4eea5780ca2242a";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Dddw3KM1adBkzryAlCI8HNbBxVmqV0rmG0/tcGoi/hI=";
   };
 
   buildType = "ament_cmake";

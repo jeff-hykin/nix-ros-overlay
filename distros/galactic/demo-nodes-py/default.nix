@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-demo-nodes-py";
   version = "0.14.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/demos-release/archive/release/galactic/demo_nodes_py/0.14.4-1.tar.gz";
-    name = "0.14.4-1.tar.gz";
-    sha256 = "f5249465d9964dbb148455a833b4c49a1141849a35f2ac6ab0284ccc61f5ddf7";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "demos-release";
+    rev = "66b34a5a3d769f28fe5965ea146e48c5948b1115";
+    owner = "ros2-gbp";
+    sha256 = "sha256-U5gwbxidyQ8jDvcxdCo4BWPpCIj2cCrLp9lRLG4P7z8=";
   };
 
   buildType = "ament_python";

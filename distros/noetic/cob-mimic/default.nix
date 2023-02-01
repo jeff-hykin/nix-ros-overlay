@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-cob-mimic";
   version = "0.7.14-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_driver-release/archive/release/noetic/cob_mimic/0.7.14-1.tar.gz";
-    name = "0.7.14-1.tar.gz";
-    sha256 = "0834a9843a3d1ff9d4967b827a08d909b4efbc3b845ede93fba24cff178b029d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_driver-release";
+    rev = "3b2458f1b34b9a63f88c2597904654841d5a3bf6";
+    owner = "ipa320";
+    sha256 = "sha256-86f4A1MxBPT0CcQnFiuYaAPC5aNT512vXj3HvdxqwZo=";
   };
 
   buildType = "catkin";

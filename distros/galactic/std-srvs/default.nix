@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-std-srvs";
   version = "2.2.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/common_interfaces-release/archive/release/galactic/std_srvs/2.2.4-1.tar.gz";
-    name = "2.2.4-1.tar.gz";
-    sha256 = "0abc409bfdf8a76ae15722bdd5b2ebf06f0fe10bcc68cb57629f738db7440985";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "common_interfaces-release";
+    rev = "37ecfbf7745b3710fa08d97a3e315987aed740b1";
+    owner = "ros2-gbp";
+    sha256 = "sha256-0/L4X6fhucIP3J0Ry0sPpL1MjIfvhiR8VOVLYAc+0Ls=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-cob-tricycle-controller";
   version = "0.8.20-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_control-release/archive/release/noetic/cob_tricycle_controller/0.8.20-1.tar.gz";
-    name = "0.8.20-1.tar.gz";
-    sha256 = "16ea625858fc6c755a5833ea9b7f52cc30110584a162672c58bf27ed4d15176e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_control-release";
+    rev = "df07aa8347428e4f736f0704c943bc4986459213";
+    owner = "ipa320";
+    sha256 = "sha256-zXK7WxGkPstGJgbngBe2Rw1FskCOPy/u3TjS5W+1xaM=";
   };
 
   buildType = "catkin";

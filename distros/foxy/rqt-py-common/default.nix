@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-rqt-py-common";
   version = "1.1.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rqt-release/archive/release/foxy/rqt_py_common/1.1.2-1.tar.gz";
-    name = "1.1.2-1.tar.gz";
-    sha256 = "3b4935a602734a0a52b7ed39622b43411e9d297541037c81ed5fc2373eabf112";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt-release";
+    rev = "83b5e6ce4e9c430920eb458eed9af5c037a44743";
+    owner = "ros2-gbp";
+    sha256 = "sha256-DaXn6/0dt+0i5Osr6aLb10vUCMyt7en2Qkhpl7WWARs=";
   };
 
   buildType = "ament_cmake";

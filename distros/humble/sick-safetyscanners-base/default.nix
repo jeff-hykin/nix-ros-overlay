@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-sick-safetyscanners-base";
   version = "1.0.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/SICKAG/sick_safetyscanners_base-release/archive/release/humble/sick_safetyscanners_base/1.0.2-1.tar.gz";
-    name = "1.0.2-1.tar.gz";
-    sha256 = "76d51b27367cd21ae26243c1708211816868ed939079158785594fae3fe35486";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "sick_safetyscanners_base-release";
+    rev = "945be7904f71e57d667a1b895561c675c067546f";
+    owner = "SICKAG";
+    sha256 = "sha256-L5mOmHZbzAUgiusdWoORLFj9p10N8/yCVxxs38YM8sw=";
   };
 
   buildType = "cmake";

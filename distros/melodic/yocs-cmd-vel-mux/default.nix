@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-yocs-cmd-vel-mux";
   version = "0.8.2";
 
-  src = fetchurl {
-    url = "https://github.com/yujinrobot-release/yujin_ocs-release/archive/release/melodic/yocs_cmd_vel_mux/0.8.2-0.tar.gz";
-    name = "0.8.2-0.tar.gz";
-    sha256 = "fb7a0444d33e684e14c5c1b78fa3c2cda433abbd202401316232daff02af5791";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "yujin_ocs-release";
+    rev = "0ba2a596fd9a7a9cd6e17500178c1accc9ee3db4";
+    owner = "yujinrobot-release";
+    sha256 = "sha256-0p5eigiL/G/rn+aNHN3y3JTMhrQn1hCapYHcsZTDyNg=";
   };
 
   buildType = "catkin";

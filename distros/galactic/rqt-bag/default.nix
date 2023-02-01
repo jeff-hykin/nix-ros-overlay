@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rqt-bag";
   version = "1.1.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rqt_bag-release/archive/release/galactic/rqt_bag/1.1.2-1.tar.gz";
-    name = "1.1.2-1.tar.gz";
-    sha256 = "6cfc07c51560bb4ac31b3f2cca712901ff9791c635f637d5e1468a3b88940b12";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt_bag-release";
+    rev = "4139176f1bd851528c7fcd6d2ad1bad6dc7bfce9";
+    owner = "ros2-gbp";
+    sha256 = "sha256-swQhtrOXX+CYj7OjH23dd9CD593xD38Spux4xjWNqKM=";
   };
 
   buildType = "ament_python";

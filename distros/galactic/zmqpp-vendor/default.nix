@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-zmqpp-vendor";
   version = "0.0.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/tier4/zmqpp_vendor-release/archive/release/galactic/zmqpp_vendor/0.0.2-1.tar.gz";
-    name = "0.0.2-1.tar.gz";
-    sha256 = "d161406de0515cd02b1d3c0ba9b89e0bf081ffb54ded21f1727c0e262ff33379";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "zmqpp_vendor-release";
+    rev = "5c001bb98782d512ea34aff7dad3664b57f09d0b";
+    owner = "tier4";
+    sha256 = "sha256-OHJpSJAua016kXvKxcD1ay55wprlXnqSL19uzz/el6w=";
   };
 
   buildType = "ament_cmake";

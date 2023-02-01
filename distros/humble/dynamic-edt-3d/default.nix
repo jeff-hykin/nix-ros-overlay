@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-dynamic-edt-3d";
   version = "1.9.8-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/octomap-release/archive/release/humble/dynamic_edt_3d/1.9.8-1.tar.gz";
-    name = "1.9.8-1.tar.gz";
-    sha256 = "7398fc802f3e6eeb62dfe98df24637fdfcf9cdce9aa7a09859a2d16c1778f865";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "octomap-release";
+    rev = "29c9ce0b0a49db5405883739ee1673e205511f1e";
+    owner = "ros2-gbp";
+    sha256 = "sha256-522JD7zQBjHhrle/McBU6igMD2aGFVJvyheYkpGEJ3g=";
   };
 
   buildType = "cmake";

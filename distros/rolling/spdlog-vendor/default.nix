@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-spdlog-vendor";
   version = "1.4.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/spdlog_vendor-release/archive/release/rolling/spdlog_vendor/1.4.2-1.tar.gz";
-    name = "1.4.2-1.tar.gz";
-    sha256 = "8dcaeada0e126d8bdee56d01311ddc026867405e72fa55df758f1213cc0641d7";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "spdlog_vendor-release";
+    rev = "1266c0c40415689d97ba6d2fb6a701db3163d5ee";
+    owner = "ros2-gbp";
+    sha256 = "sha256-yAP7CDsco1Uuyn6/98H8fz6P3aZSLVJLafqR2ODLl+w=";
   };
 
   buildType = "ament_cmake";

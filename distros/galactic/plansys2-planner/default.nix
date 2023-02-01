@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-plansys2-planner";
   version = "2.0.8-r1";
 
-  src = fetchurl {
-    url = "https://github.com/IntelligentRoboticsLabs/ros2_planning_system-release/archive/release/galactic/plansys2_planner/2.0.8-1.tar.gz";
-    name = "2.0.8-1.tar.gz";
-    sha256 = "86c66621fdb4edb0fde315e63823f5c654e107c3146a8cf34a4a8b847a2ba3bf";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_planning_system-release";
+    rev = "49c3ccc7264f764136d7c79c4b5874a0d0c358c4";
+    owner = "IntelligentRoboticsLabs";
+    sha256 = "sha256-Ozg3YIejlnXVHVkomyAZXqCpq9urtG+wRmlkIACRKJ0=";
   };
 
   buildType = "ament_cmake";

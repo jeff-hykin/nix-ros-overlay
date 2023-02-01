@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-autoware-msgs";
   version = "1.14.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/autoware-ai/messages-release/archive/release/noetic/autoware_msgs/1.14.0-1.tar.gz";
-    name = "1.14.0-1.tar.gz";
-    sha256 = "c5016d542bf88e545096e2fef89cb49ee05afe6dde62c3da59df33a11d02444f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "messages-release";
+    rev = "89010ef8e4e1d7785388a6e5cedaf1a89c461bc0";
+    owner = "autoware-ai";
+    sha256 = "sha256-ENK+9lpQNKoVWYST4JEG/7gZyY4SNwkqlrRg1I6m4E8=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ament-cmake-pycodestyle";
   version = "0.10.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ament_lint-release/archive/release/galactic/ament_cmake_pycodestyle/0.10.7-1.tar.gz";
-    name = "0.10.7-1.tar.gz";
-    sha256 = "07b79eb6ec31db4ad61dd75a16a4c7ce94b1baab7d7cdf04f898351a84d53450";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ament_lint-release";
+    rev = "20901e3753ec69a31d72c52e8f19711e1687567e";
+    owner = "ros2-gbp";
+    sha256 = "sha256-4kzAtusDbyBXfeTl8ReI0SVJXO9yDdxTRJvfhzdjUDQ=";
   };
 
   buildType = "ament_cmake";

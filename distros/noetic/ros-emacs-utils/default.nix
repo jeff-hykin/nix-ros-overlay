@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-ros-emacs-utils";
   version = "0.4.17-r1";
 
-  src = fetchurl {
-    url = "https://github.com/code-iai-release/ros_emacs_utils-release/archive/release/noetic/ros_emacs_utils/0.4.17-1.tar.gz";
-    name = "0.4.17-1.tar.gz";
-    sha256 = "da988791609e3862b3f42087395d9e21a435df3b40a66b9fa7ac3ca43acb73fa";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_emacs_utils-release";
+    rev = "ca7530b4370c8bb32ee0da9752cb51a2c7092311";
+    owner = "code-iai-release";
+    sha256 = "sha256-pPJNq0I8lx6k3KUVU78xKEJFwhNB2bmg/TlFleSVSTw=";
   };
 
   buildType = "catkin";

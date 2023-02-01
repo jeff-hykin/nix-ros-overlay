@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-power-msgs";
   version = "0.4.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/fetchrobotics-gbp/power_msgs-release/archive/release/melodic/power_msgs/0.4.0-1.tar.gz";
-    name = "0.4.0-1.tar.gz";
-    sha256 = "77dade4006aa8238980b62f305d04ffbcfd460fedaed7dba6ebd9db7bb59a299";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "power_msgs-release";
+    rev = "28ab3b5d23757eb17dd9591f2c4f12763768935f";
+    owner = "fetchrobotics-gbp";
+    sha256 = "sha256-PnrRd4P1smgrACPBwW+yrHfWf7JDA9lPUPWItgh/Ku8=";
   };
 
   buildType = "catkin";

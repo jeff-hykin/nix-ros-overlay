@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-rqt-robot-monitor";
   version = "1.0.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rqt_robot_monitor-release/archive/release/rolling/rqt_robot_monitor/1.0.5-1.tar.gz";
-    name = "1.0.5-1.tar.gz";
-    sha256 = "82ae8a7091131530d0248e5c4159e0fb7775d5c153c9a5970ad348b541f5e802";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt_robot_monitor-release";
+    rev = "1e0a599d6aef256c7f6d741a04b9946490f39528";
+    owner = "ros2-gbp";
+    sha256 = "sha256-4cOwsLyW7ouFZM1kNCA3d/8k1Ogm6pt51x0xuWtGqcA=";
   };
 
   buildType = "ament_python";

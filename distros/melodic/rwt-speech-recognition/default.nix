@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-rwt-speech-recognition";
   version = "0.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/tork-a/visualization_rwt-release/archive/release/melodic/rwt_speech_recognition/0.1.1-1.tar.gz";
-    name = "0.1.1-1.tar.gz";
-    sha256 = "3777c5129e7fea8791bfdbcf97400e38f57064ffc3e0c12fe75b78e6ffbfc24e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "visualization_rwt-release";
+    rev = "0df5748daffecac5dc295c3644c745b0d8b8c9b0";
+    owner = "tork-a";
+    sha256 = "sha256-1AJnTg63O6+0ZwC6Ulw02490i1FYqBbs8aKv1zGO5cs=";
   };
 
   buildType = "catkin";

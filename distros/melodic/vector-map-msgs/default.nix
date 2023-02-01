@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-vector-map-msgs";
   version = "1.14.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/autoware-ai/messages-release/archive/release/melodic/vector_map_msgs/1.14.0-1.tar.gz";
-    name = "1.14.0-1.tar.gz";
-    sha256 = "116c8842e3f610f9c6c59fe5db04d2f6cf998a11fb1f85bcb8748cfe247490ec";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "messages-release";
+    rev = "9c1221c8083e253cf5a3e28b8382007807e73325";
+    owner = "autoware-ai";
+    sha256 = "sha256-p+DObvasMzVjl44apS0+ZwczFdtdmsggTOyIDTiYhGE=";
   };
 
   buildType = "catkin";

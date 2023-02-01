@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-laser-proc";
   version = "1.0.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/laser_proc-release/archive/release/foxy/laser_proc/1.0.2-1.tar.gz";
-    name = "1.0.2-1.tar.gz";
-    sha256 = "03c68a7d9b9cef1c049da4b6314cd86514f4f571e3ca02f004aaf92eb97514d4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "laser_proc-release";
+    rev = "33058015c569a6e0d1b87b807099b2c6438fd915";
+    owner = "ros2-gbp";
+    sha256 = "sha256-h2lPjaJimCF/20eVEH3+ZS7CDqoML9voXq2B0x32NSY=";
   };
 
   buildType = "ament_cmake";

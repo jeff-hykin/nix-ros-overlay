@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-rosapi-msgs";
   version = "1.3.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rosbridge_suite-release/archive/release/foxy/rosapi_msgs/1.3.1-1.tar.gz";
-    name = "1.3.1-1.tar.gz";
-    sha256 = "a26a27d80a6793d7a3d18ff938cd6ed9ed0d398790578a5096fd2940c7b0742c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosbridge_suite-release";
+    rev = "746ace9bbba21f8f11978b1479e84a2e3e143e6a";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Q4dTs68oi8RWGF2fto9PtQNCnoH23yoHPnNZkMLJBRE=";
   };
 
   buildType = "ament_cmake";

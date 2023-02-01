@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-rmw-connextdds-common";
   version = "0.13.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmw_connextdds-release/archive/release/rolling/rmw_connextdds_common/0.13.0-1.tar.gz";
-    name = "0.13.0-1.tar.gz";
-    sha256 = "c07a9a8a067f88d24db7c1c6b0ae0e3cee836ca7702c37893ac23a2ebeabb548";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmw_connextdds-release";
+    rev = "19b429032d06810dd8616a0b5dfdc5e298516b71";
+    owner = "ros2-gbp";
+    sha256 = "sha256-wWrKMku/YzsiofxwH3O/LQ1xIrxwtoAy7auf1O4JBoU=";
   };
 
   buildType = "ament_cmake";

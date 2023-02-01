@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-python-orocos-kdl-vendor";
   version = "0.3.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/orocos_kdl_vendor-release/archive/release/rolling/python_orocos_kdl_vendor/0.3.4-1.tar.gz";
-    name = "0.3.4-1.tar.gz";
-    sha256 = "26d3205193deaed462ec00b651cf0be2f7033a5302b4ddd802f3548d67e5da1f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "orocos_kdl_vendor-release";
+    rev = "015e82389a13820d95227142c458ad766e213222";
+    owner = "ros2-gbp";
+    sha256 = "sha256-x4xJ/ugl2IkKnTrezCQgIrkPr3KR+KI1Q7+Y69Wggis=";
   };
 
   buildType = "ament_cmake";

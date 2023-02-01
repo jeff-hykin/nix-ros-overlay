@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-pal-statistics";
   version = "2.1.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pal-gbp/pal_statistics-release/archive/release/galactic/pal_statistics/2.1.2-1.tar.gz";
-    name = "2.1.2-1.tar.gz";
-    sha256 = "f80eb7bfa7d12e8a86024a9f09fcd8ba21a107b3e1c223915452e8ec5df999eb";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pal_statistics-release";
+    rev = "1b252184cd333e98729897069384e4ac206c3a12";
+    owner = "pal-gbp";
+    sha256 = "sha256-HZWPOOXoaJW3dKbCF8ul7USpAJz+zw83ZGMPFdAXys4=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-rmf-visualization-rviz2-plugins";
   version = "1.2.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_visualization-release/archive/release/foxy/rmf_visualization_rviz2_plugins/1.2.1-1.tar.gz";
-    name = "1.2.1-1.tar.gz";
-    sha256 = "94d3952d198807f576f1b533a7c85c61c7cf9655d63ce00b9aa5341672f292d0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_visualization-release";
+    rev = "774b11603d6ce5610a311e727dfe860f5cc427e5";
+    owner = "ros2-gbp";
+    sha256 = "sha256-zR5/3yPfBVaNLDjkYxxAyJuUouKiqCMSK2PTSOkakhM=";
   };
 
   buildType = "ament_cmake";

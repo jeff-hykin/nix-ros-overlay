@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-kinematics-interface";
   version = "0.0.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/kinematics_interface-release/archive/release/rolling/kinematics_interface/0.0.2-1.tar.gz";
-    name = "0.0.2-1.tar.gz";
-    sha256 = "1b9444290bfd0d3a1371d3aa7a26546b6309eab643b4555a18b809d7f791a336";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "kinematics_interface-release";
+    rev = "307bd13a3d376fa639daa312881efac70660713d";
+    owner = "ros2-gbp";
+    sha256 = "sha256-bbGn4QSsa7ZQTvu/HrQb8efTgVxyT+67xs3NLTCKjZ8=";
   };
 
   buildType = "ament_cmake";

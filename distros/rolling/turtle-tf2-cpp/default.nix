@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-turtle-tf2-cpp";
   version = "0.3.6-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/geometry_tutorials-release/archive/release/rolling/turtle_tf2_cpp/0.3.6-1.tar.gz";
-    name = "0.3.6-1.tar.gz";
-    sha256 = "bac4839a62cc5c0a0ebc17d0ab67c53ccd6974b43a130f4102e308e4689e2243";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "geometry_tutorials-release";
+    rev = "793b0d1325586feb1f338db0e4735081965d450a";
+    owner = "ros2-gbp";
+    sha256 = "sha256-/+vZZp6tpMuKd5xAZHma9sMN5Q0aWVwbu5ZnKW6t2nQ=";
   };
 
   buildType = "ament_cmake";

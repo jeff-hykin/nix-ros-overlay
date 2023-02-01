@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-phidgets-magnetometer";
   version = "1.0.6-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-drivers-gbp/phidgets_drivers-release/archive/release/noetic/phidgets_magnetometer/1.0.6-1.tar.gz";
-    name = "1.0.6-1.tar.gz";
-    sha256 = "470abfdebf1cc3cad0196aead1f2856a8d17771dfb9ccb80a00e2801b169fa97";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "phidgets_drivers-release";
+    rev = "eddc6a625822b19e618ddd05c0b3df6ae4fdf031";
+    owner = "ros-drivers-gbp";
+    sha256 = "sha256-dbipRGZxFnfbGsz7IVr8V2DCIzGDMiU5Xt14vxGOzLw=";
   };
 
   buildType = "catkin";

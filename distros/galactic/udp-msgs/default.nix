@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-udp-msgs";
   version = "0.0.3-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/udp_msgs-release/archive/release/galactic/udp_msgs/0.0.3-3.tar.gz";
-    name = "0.0.3-3.tar.gz";
-    sha256 = "525b864535921ef9692b9139de43be94af9c166f87e69bded761fc74e5bacbc2";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "udp_msgs-release";
+    rev = "5d5fd3e4f62d428cc67a0b0c00201525bf931e60";
+    owner = "ros2-gbp";
+    sha256 = "sha256-g0Gi+BMs9cMS5t5Fh+epx+fKUhebhUczapOPMz9Bg5A=";
   };
 
   buildType = "ament_cmake";

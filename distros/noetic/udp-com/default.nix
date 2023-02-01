@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-udp-com";
   version = "1.1.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/flynneva/udp_com-release/archive/release/noetic/udp_com/1.1.2-1.tar.gz";
-    name = "1.1.2-1.tar.gz";
-    sha256 = "aac456e8ac59b6a472358d527eebd3be84021964c48e602adf85d9a1100a9909";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "udp_com-release";
+    rev = "3b18e9330f8c841161fb6e403d5208a002100d89";
+    owner = "flynneva";
+    sha256 = "sha256-/+NB3JgSv1jewDwinkKvkUoa/+BT6++94bgZcIpyYk8=";
   };
 
   buildType = "catkin";

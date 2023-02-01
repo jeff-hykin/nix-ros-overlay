@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-slime-ros";
   version = "0.4.17-r1";
 
-  src = fetchurl {
-    url = "https://github.com/code-iai-release/ros_emacs_utils-release/archive/release/noetic/slime_ros/0.4.17-1.tar.gz";
-    name = "0.4.17-1.tar.gz";
-    sha256 = "c2005a984956b348a191f10d362ce48b3e0d4526b8c72ae31a1e7f8372918e87";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_emacs_utils-release";
+    rev = "7dc9cd48603dddd60129fe954cd684ec0b470a8c";
+    owner = "code-iai-release";
+    sha256 = "sha256-Fb6mw5TgFwQTjAi9hMqX0coIKx6MWWrD0ySKQfN48Hk=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-grid-map-visualization";
   version = "1.6.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/anybotics/grid_map-release/archive/release/noetic/grid_map_visualization/1.6.4-1.tar.gz";
-    name = "1.6.4-1.tar.gz";
-    sha256 = "8c10616dc010c86af00302c0301d01d3b90d7f3207d06bb710f35ff63e2fd79b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "grid_map-release";
+    rev = "d6f38b66fd49a2cb478a2ca987ca90f0ba7d43c4";
+    owner = "anybotics";
+    sha256 = "sha256-t8Fme0mbDCSk+cvB9kgQDk2yl8p0Zh8AeGSegyIxq/A=";
   };
 
   buildType = "catkin";

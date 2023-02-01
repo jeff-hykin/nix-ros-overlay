@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-lifecycle-msgs";
   version = "1.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rcl_interfaces-release/archive/release/foxy/lifecycle_msgs/1.0.0-1.tar.gz";
-    name = "1.0.0-1.tar.gz";
-    sha256 = "8e2652305e3379bbf1d57860fdaa674ac6133563b221612c485fd7c5d48145c2";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rcl_interfaces-release";
+    rev = "cfa384b27af5d3db3b31914b438bfb518d73e597";
+    owner = "ros2-gbp";
+    sha256 = "sha256-y8QGXPHOYjucR3tx4kZVwJ3BZK+OST1mE6ZKW/sejKc=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-pr2-controller-interface";
   version = "1.8.21-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pr2-gbp/pr2_mechanism-release/archive/release/melodic/pr2_controller_interface/1.8.21-1.tar.gz";
-    name = "1.8.21-1.tar.gz";
-    sha256 = "cd8ca8d577d00d71e7dd1a4bd3b922988892b95e14e2c5e49a00e5f2326fad83";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pr2_mechanism-release";
+    rev = "37eec9aba04a37c0b22f99cac85adadb994ac5b5";
+    owner = "pr2-gbp";
+    sha256 = "sha256-5jMSsUc65dvgHNzQGsh8PlQKMUj7jbFiMIa2oRzYHEY=";
   };
 
   buildType = "catkin";

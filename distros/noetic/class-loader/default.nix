@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-class-loader";
   version = "0.5.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/class_loader-release/archive/release/noetic/class_loader/0.5.0-1.tar.gz";
-    name = "0.5.0-1.tar.gz";
-    sha256 = "7c1c002eac68d9c1b8bb82ea68004a444955fb844e444b806b1639501644de1b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "class_loader-release";
+    rev = "48157c440c19cf2874c00ba5591bd80a3bb2e0cd";
+    owner = "ros-gbp";
+    sha256 = "sha256-HyiWrPd/ywGE2mPrDf66eAfbvJcKWtja834dvCcf45Y=";
   };
 
   buildType = "catkin";

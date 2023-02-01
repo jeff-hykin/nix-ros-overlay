@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ecl-converters";
   version = "1.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/yujinrobot-release/ecl_core-release/archive/release/galactic/ecl_converters/1.2.0-1.tar.gz";
-    name = "1.2.0-1.tar.gz";
-    sha256 = "14164a1ff39446863f35131ba4b10cc2b4cd4751a4cf79e7a89c54110b7796a1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ecl_core-release";
+    rev = "c820dd008dba552f08dc46e7b9489a0647e93ad4";
+    owner = "yujinrobot-release";
+    sha256 = "sha256-5OdsVVoGGIIauGFjkmJKsxhh9POv+hRePGfVNmfFK5Q=";
   };
 
   buildType = "ament_cmake";

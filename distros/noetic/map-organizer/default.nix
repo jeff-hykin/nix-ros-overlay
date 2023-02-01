@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-map-organizer";
   version = "0.11.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/at-wat/neonavigation-release/archive/release/noetic/map_organizer/0.11.7-1.tar.gz";
-    name = "0.11.7-1.tar.gz";
-    sha256 = "a9640cc8e1953a173b4a05404d9e6f7e5feab1fe8829314a8ed5006c0338210c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "neonavigation-release";
+    rev = "d2738556a31c19366e4b7fbff1ce4460ba9c912c";
+    owner = "at-wat";
+    sha256 = "sha256-/oZyuKYvwr68UAGho8IJshYRyt8NRfmrjxt5dJ7lZT8=";
   };
 
   buildType = "catkin";

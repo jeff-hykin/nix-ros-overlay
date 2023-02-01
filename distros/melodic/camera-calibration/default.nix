@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-camera-calibration";
   version = "1.15.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/image_pipeline-release/archive/release/melodic/camera_calibration/1.15.2-1.tar.gz";
-    name = "1.15.2-1.tar.gz";
-    sha256 = "f383771fde50848fb35e7dacc89351e9ac856f5b50c7c15d02d5b69dec321e04";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "image_pipeline-release";
+    rev = "c537a6c0e71b9eae56d3cd359d0e03fa20054d37";
+    owner = "ros-gbp";
+    sha256 = "sha256-izwg2Zaq9j7VTE1zFVdpMIzS9XCAeCXaXjCH0CDwZqk=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-soccer-vision-attribute-msgs";
   version = "0.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/soccer_interfaces-release/archive/release/humble/soccer_vision_attribute_msgs/0.1.0-1.tar.gz";
-    name = "0.1.0-1.tar.gz";
-    sha256 = "dbf7fe11d29216fe3df9e25a18acd15628b9337d9ec62e80127dbd5ef1b0f30b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "soccer_interfaces-release";
+    rev = "db7f8c2824d86cd51561fd76b6e2c0cf78be0c13";
+    owner = "ros2-gbp";
+    sha256 = "sha256-3YI3tO0R3y6nA1z66Tg0Eusoa9vpxWc2tpSRHAMoHfI=";
   };
 
   buildType = "ament_cmake";

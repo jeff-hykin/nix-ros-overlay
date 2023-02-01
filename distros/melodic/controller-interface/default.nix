@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-controller-interface";
   version = "0.18.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/ros_control-release/archive/release/melodic/controller_interface/0.18.4-1.tar.gz";
-    name = "0.18.4-1.tar.gz";
-    sha256 = "05014247fbb6cd7ddd66595f36e61f12e2609cdcb791c6a9a1cbce955632c162";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_control-release";
+    rev = "e62083657bd1919383a7bbb431bf9fbe53cf22af";
+    owner = "ros-gbp";
+    sha256 = "sha256-vEKfZvByaI5Iw+dM6d+JsdtI7wekWeZczt63z3tVkUU=";
   };
 
   buildType = "catkin";

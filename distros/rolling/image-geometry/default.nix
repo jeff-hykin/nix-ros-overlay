@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-image-geometry";
   version = "3.4.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/vision_opencv-release/archive/release/rolling/image_geometry/3.4.0-1.tar.gz";
-    name = "3.4.0-1.tar.gz";
-    sha256 = "8c069e621f0782bd9f6f3a52c3f83cdd1648e7d374aec6808244e6ccd74d8a87";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "vision_opencv-release";
+    rev = "35e438976afcd1f145e466b21345766b42fc68d6";
+    owner = "ros2-gbp";
+    sha256 = "sha256-906rFxvVs8/lmvQFj1xxV/qwyGLNGb1zMeXW0h3Q/H0=";
   };
 
   buildType = "ament_cmake";

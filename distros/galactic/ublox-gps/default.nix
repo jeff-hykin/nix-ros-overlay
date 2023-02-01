@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ublox-gps";
   version = "2.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ublox-release/archive/release/galactic/ublox_gps/2.2.0-1.tar.gz";
-    name = "2.2.0-1.tar.gz";
-    sha256 = "1c8aff6dc5db7da7960f118518b830706010b29fdbafe9abbf2acc61c2957b55";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ublox-release";
+    rev = "c1d6ce46088e64053c87565581172ad4d7239c09";
+    owner = "ros2-gbp";
+    sha256 = "sha256-BekPsKPz+ubU7pvypluL8y5kB51cC4B81EHqL9lPhB4=";
   };
 
   buildType = "ament_cmake";

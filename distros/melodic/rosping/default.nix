@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-rosping";
   version = "2.1.24-r2";
 
-  src = fetchurl {
-    url = "https://github.com/tork-a/jsk_3rdparty-release/archive/release/melodic/rosping/2.1.24-2.tar.gz";
-    name = "2.1.24-2.tar.gz";
-    sha256 = "d0a34e3eb3d8bd83f9c2adbf15c35b2a9c476969bbdf6653fc139e0c8b25de84";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "jsk_3rdparty-release";
+    rev = "c2236a609bcc30cdf42b6f2d0f463212ab2f95ee";
+    owner = "tork-a";
+    sha256 = "sha256-cmm07WR5zznQUc3jvFieloEquNCsmNBYBmyPrV9dlbE=";
   };
 
   buildType = "catkin";

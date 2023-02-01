@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-simulation";
   version = "0.10.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/variants-release/archive/release/humble/simulation/0.10.0-1.tar.gz";
-    name = "0.10.0-1.tar.gz";
-    sha256 = "5d874be3abec3ce39ca9b6708b339d729ea3dcbc2acaa1cd4b3cd295c4ad7e61";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "variants-release";
+    rev = "344e6c8287249596d9e6013cf3e8371b0c254d2c";
+    owner = "ros2-gbp";
+    sha256 = "sha256-bvicFtHnIqmwZPfpdtNprdkWQWqSKGs+cezebLL0sUs=";
   };
 
   buildType = "ament_cmake";

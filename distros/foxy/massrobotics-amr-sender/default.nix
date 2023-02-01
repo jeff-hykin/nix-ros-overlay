@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-massrobotics-amr-sender";
   version = "1.0.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/inorbit-ai/ros_amr_interop-release/archive/release/foxy/massrobotics_amr_sender/1.0.0-2.tar.gz";
-    name = "1.0.0-2.tar.gz";
-    sha256 = "b9c69911bba3d3f4343fad093bcc3ba4eab28bf8225804167fb0419a6aea79f2";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_amr_interop-release";
+    rev = "dbce3a333b9e09f07f52b3d4945d19d0a6ba690c";
+    owner = "inorbit-ai";
+    sha256 = "sha256-nhjej3rjHMnjGVqLd5kgaJy1o5OTrRl0Gq/GMBBQq9Q=";
   };
 
   buildType = "ament_python";

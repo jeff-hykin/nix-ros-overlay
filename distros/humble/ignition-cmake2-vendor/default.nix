@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-ignition-cmake2-vendor";
   version = "0.0.2-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ignition_cmake2_vendor-release/archive/release/humble/ignition_cmake2_vendor/0.0.2-2.tar.gz";
-    name = "0.0.2-2.tar.gz";
-    sha256 = "dcb1ce243048b84ce324cd1eacd6af6fc767d53068f2fa2fe472eb8e08cdbb8f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ignition_cmake2_vendor-release";
+    rev = "18bf27798d4be2ba4a85e9e9fb129681e4e7af2b";
+    owner = "ros2-gbp";
+    sha256 = "sha256-bZxidfrsqkCbbKbqdgbiC7SuwHBPMfR+/87ZeJpKzZY=";
   };
 
   buildType = "cmake";

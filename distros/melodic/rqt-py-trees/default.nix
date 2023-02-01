@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-rqt-py-trees";
   version = "0.3.1";
 
-  src = fetchurl {
-    url = "https://github.com/stonier/rqt_py_trees-release/archive/release/melodic/rqt_py_trees/0.3.1-0.tar.gz";
-    name = "0.3.1-0.tar.gz";
-    sha256 = "f01bb9ccb08d23b79f515c9fe65342463911d1af5c2cffec32c33845817b934f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt_py_trees-release";
+    rev = "1ce9a3792c8dad0b8073a905316dd5d9e0b61044";
+    owner = "stonier";
+    sha256 = "sha256-/wNWtcaqa75ru27P1Wb/RAEeugk5M0Ayg40bqt+DEMU=";
   };
 
   buildType = "catkin";

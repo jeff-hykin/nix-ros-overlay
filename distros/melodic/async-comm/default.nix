@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-async-comm";
   version = "0.2.1-r2";
 
-  src = fetchurl {
-    url = "https://github.com/dpkoch/async_comm-release/archive/release/melodic/async_comm/0.2.1-2.tar.gz";
-    name = "0.2.1-2.tar.gz";
-    sha256 = "9cc4a16ea07097a37952f076d5fe82b9cc452f56e75b4bfa7c12786ca1c59926";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "async_comm-release";
+    rev = "2fe2dd987bc224d53fe04b1aa30daab90c094d8b";
+    owner = "dpkoch";
+    sha256 = "sha256-MdiwNzQGrXD3qJY2PCrpJJapB/vVvxbq7tf01owqm2Q=";
   };
 
   buildType = "cmake";

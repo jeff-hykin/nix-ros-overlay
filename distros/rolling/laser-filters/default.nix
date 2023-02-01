@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-laser-filters";
   version = "2.0.5-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/laser_filters-release/archive/release/rolling/laser_filters/2.0.5-2.tar.gz";
-    name = "2.0.5-2.tar.gz";
-    sha256 = "5b6816cd3ce7689513a910e2ac7fbbe2beae9cacd5fb0275ee7dc1c47ae5344c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "laser_filters-release";
+    rev = "cea33ff06336abdf4a75ac05f8400d35c76eec05";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Ce8KbDAKhfJUqoSJZczGprJMyAeUW6KMPE3XrtaevoE=";
   };
 
   buildType = "ament_cmake";

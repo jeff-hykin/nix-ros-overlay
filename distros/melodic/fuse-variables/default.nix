@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-fuse-variables";
   version = "0.4.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/locusrobotics/fuse-release/archive/release/melodic/fuse_variables/0.4.2-1.tar.gz";
-    name = "0.4.2-1.tar.gz";
-    sha256 = "98776b63e33317a449abc8ac1060982454f76d81722f3d8b52c79fbe2f346d4a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "fuse-release";
+    rev = "b19ab5159b53ccccd6842dd1c509e4905aa23339";
+    owner = "locusrobotics";
+    sha256 = "sha256-kjU7t41ZU92TGpGUx9YQeRed1YH90trjYgWlnydKLww=";
   };
 
   buildType = "catkin";

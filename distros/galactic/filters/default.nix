@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-filters";
   version = "2.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/filters-release/archive/release/galactic/filters/2.1.0-1.tar.gz";
-    name = "2.1.0-1.tar.gz";
-    sha256 = "2a6c14d40944d30277c034fd6b83c3e7bcbb5d1c53797881a342f50fb55aff72";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "filters-release";
+    rev = "39e11cb4b232b90d3eaec1d95b32a51ea9f03146";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Re52fPUttgC8YnZIBEC84USVr2a80IwbqJd14I2klNc=";
   };
 
   buildType = "ament_cmake";

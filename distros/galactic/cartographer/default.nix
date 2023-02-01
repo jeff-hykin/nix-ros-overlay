@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-cartographer";
   version = "1.0.9001-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/cartographer-release/archive/release/galactic/cartographer/1.0.9001-3.tar.gz";
-    name = "1.0.9001-3.tar.gz";
-    sha256 = "e6c3cb3747bfe7c2c283be1efb086aaa3c7428c0900b6f5501e68358a4e91fc9";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cartographer-release";
+    rev = "8c52023a2be52dc519245d335ea3023c44aa7af0";
+    owner = "ros2-gbp";
+    sha256 = "sha256-rxyicosQIdt8xA6pfNTFge/sZ210UDpfJDONaluNWjA=";
   };
 
   buildType = "cmake";

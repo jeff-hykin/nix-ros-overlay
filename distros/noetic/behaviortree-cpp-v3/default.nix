@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-behaviortree-cpp-v3";
   version = "3.8.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/BehaviorTree/behaviortree_cpp-release/archive/release/noetic/behaviortree_cpp_v3/3.8.1-1.tar.gz";
-    name = "3.8.1-1.tar.gz";
-    sha256 = "cfceff0272ff4c5cbd3245ce4ae0689cd5789003e9d99dbff638f4a29be2b4ec";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "behaviortree_cpp-release";
+    rev = "811d82ac7052e5dcc7d23c79b776bc268eb68665";
+    owner = "BehaviorTree";
+    sha256 = "sha256-zq/X+gs+jKx0Kd1+b1OjjwTc0e6v8pdBqc5XH0M/WsE=";
   };
 
   buildType = "catkin";

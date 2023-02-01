@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-rcl-yaml-param-parser";
   version = "5.3.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rcl-release/archive/release/humble/rcl_yaml_param_parser/5.3.2-1.tar.gz";
-    name = "5.3.2-1.tar.gz";
-    sha256 = "315e39ba847d1af9ae7b3a2331a128fc69dea09a095c8bbad39f1c02640d0701";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rcl-release";
+    rev = "cf81f82facfdeb8b5f77b5bb13d99b957d5f92d4";
+    owner = "ros2-gbp";
+    sha256 = "sha256-/hLKrjyz3EE96a8LdsS5yvcZelIzcL8uR2nWQuOMEgM=";
   };
 
   buildType = "ament_cmake";

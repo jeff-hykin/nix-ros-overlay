@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-ublox-gps";
   version = "2.3.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ublox-release/archive/release/humble/ublox_gps/2.3.0-2.tar.gz";
-    name = "2.3.0-2.tar.gz";
-    sha256 = "a57315ef0ebff9d8cb780627c8fbd30d9c907d2c1c118d51657ec042809305c4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ublox-release";
+    rev = "798c57e76c5b0441148b22241166acd0c4362558";
+    owner = "ros2-gbp";
+    sha256 = "sha256-reZXChxPuNCtJNjWaATs7ozW63ldzYenGz4KQv8rJ1M=";
   };
 
   buildType = "ament_cmake";

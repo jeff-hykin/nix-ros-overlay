@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ompl";
   version = "1.5.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/ompl-release/archive/release/galactic/ompl/1.5.2-1.tar.gz";
-    name = "1.5.2-1.tar.gz";
-    sha256 = "8d934b56bf7beadf142bed18a7053168461ea9c6c9023817680c7e2a17a28b70";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ompl-release";
+    rev = "b05b1ec17f01a45a6ba5812b44c1fd4355085ed2";
+    owner = "ros-gbp";
+    sha256 = "sha256-5BOfJbZfx2T6vZS5UOpQh9XueTRPtNBGmpHauSbvUxw=";
   };
 
   buildType = "cmake";

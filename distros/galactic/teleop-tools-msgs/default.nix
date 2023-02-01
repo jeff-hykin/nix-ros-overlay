@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-teleop-tools-msgs";
   version = "1.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/teleop_tools-release/archive/release/galactic/teleop_tools_msgs/1.3.0-1.tar.gz";
-    name = "1.3.0-1.tar.gz";
-    sha256 = "e2f43ce8ce5236ec2fc4eabfee2a32f2f6a70b33398a5b0c5146e630222651ed";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "teleop_tools-release";
+    rev = "ce3e90fc72adf73b67758be3427f698bc65c5d72";
+    owner = "ros2-gbp";
+    sha256 = "sha256-aJPfIXQj3fiXkpH0V5nGEywzdRvtnKtp2K1qWb/fw30=";
   };
 
   buildType = "ament_cmake";

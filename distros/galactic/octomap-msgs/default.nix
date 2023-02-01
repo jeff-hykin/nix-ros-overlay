@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-octomap-msgs";
   version = "2.0.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/octomap_msgs-release/archive/release/galactic/octomap_msgs/2.0.0-2.tar.gz";
-    name = "2.0.0-2.tar.gz";
-    sha256 = "afc9ac01863877d9abcaa494e428dbf6c28874060f67ff89d42faa9f12fbf17a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "octomap_msgs-release";
+    rev = "18efd1cfa22d89900bfb156f70f4dcc47099743f";
+    owner = "ros2-gbp";
+    sha256 = "sha256-97tbZTVcZMc2CB2JAW6gn0/ABahvBbfiC3jpHDIJJ6I=";
   };
 
   buildType = "ament_cmake";

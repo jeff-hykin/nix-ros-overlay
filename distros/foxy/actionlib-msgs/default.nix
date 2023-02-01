@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-actionlib-msgs";
   version = "2.0.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/common_interfaces-release/archive/release/foxy/actionlib_msgs/2.0.5-1.tar.gz";
-    name = "2.0.5-1.tar.gz";
-    sha256 = "33fb6df04e2ca0b411c62a1fb6d51a9b1983a93fad02234ccd2368267341f148";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "common_interfaces-release";
+    rev = "24dfe3cb3c665440d4b133f094d8ddd64571f5a1";
+    owner = "ros2-gbp";
+    sha256 = "sha256-rZVlG7U3YAyT+It4PGrm/X+2/lS844XOJvdxaJY++54=";
   };
 
   buildType = "ament_cmake";

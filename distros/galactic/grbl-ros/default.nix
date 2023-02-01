@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-grbl-ros";
   version = "0.0.16-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/grbl_ros-release/archive/release/galactic/grbl_ros/0.0.16-1.tar.gz";
-    name = "0.0.16-1.tar.gz";
-    sha256 = "13184d926c6e8ae2b47b7dc7397a22ac39838ddf3a06de4a607d2b0d00c08741";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "grbl_ros-release";
+    rev = "fdcf513e34040825b81a4b026f93bbcc202b15ae";
+    owner = "ros2-gbp";
+    sha256 = "sha256-F1t2vcBH6JU+xByKp5lu3SCks+qWKp4ztQ5WkL6N+rI=";
   };
 
   buildType = "ament_python";

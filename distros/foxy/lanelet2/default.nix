@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-lanelet2";
   version = "1.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/fzi-forschungszentrum-informatik/lanelet2-release/archive/release/foxy/lanelet2/1.1.1-1.tar.gz";
-    name = "1.1.1-1.tar.gz";
-    sha256 = "807cf757bea51d3ef5fdc224ee075ab75c49acc6d5e27bdaf62d10e748b881ca";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "lanelet2-release";
+    rev = "6662e084071acf1344231ad323ce5ff3e2651909";
+    owner = "fzi-forschungszentrum-informatik";
+    sha256 = "sha256-xW2nmdxh/bfs+AVc/+WN+rgfRzsuy9u8TH7w21x7g90=";
   };
 
   buildType = "ament_cmake";

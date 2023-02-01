@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-joint-state-broadcaster";
   version = "1.5.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_controllers-release/archive/release/galactic/joint_state_broadcaster/1.5.1-1.tar.gz";
-    name = "1.5.1-1.tar.gz";
-    sha256 = "4b9166255e34be696a03758207a71533e7b5e6e4cfe329695876dd4a69224ecc";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_controllers-release";
+    rev = "35c4b34cc1689a40a172850cd9b7087e6431fea6";
+    owner = "ros2-gbp";
+    sha256 = "sha256-sATGgzPQFh314a4t4OpeOczp0E/HAbR8zfGAKjXj5ws=";
   };
 
   buildType = "ament_cmake";

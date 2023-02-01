@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-label-manager";
   version = "1.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/uos-gbp/mesh-tools/archive/release/melodic/label_manager/1.1.0-1.tar.gz";
-    name = "1.1.0-1.tar.gz";
-    sha256 = "4dfe909eaef99fc3c632498a58de78e48bff3a2fb7cede0c3a8bfe2043b68ed4";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mesh-tools";
+    rev = "62fe300fb100755f41e86a87230cfd845b651187";
+    owner = "uos-gbp";
+    sha256 = "sha256-z4qdRuckd+O/q4Y3ibC6/Fyao0yGI+IZIWVGj2PK/Mk=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-mbf-abstract-core";
   version = "0.4.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/uos-gbp/move_base_flex-release/archive/release/melodic/mbf_abstract_core/0.4.0-1.tar.gz";
-    name = "0.4.0-1.tar.gz";
-    sha256 = "a323bca90523550d24a7519c6a3dd2e764bbd7301f8fa50a33dbbeb25e23d41e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "move_base_flex-release";
+    rev = "4fc7f4c24091c8039b71fac0215ed56d3275a525";
+    owner = "uos-gbp";
+    sha256 = "sha256-cVZQuNJVL83ts/zUtcmLWtEIfYN7V8L2FzU+Kps9pXo=";
   };
 
   buildType = "catkin";

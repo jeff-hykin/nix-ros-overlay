@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-dolly-gazebo";
   version = "0.4.0-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/dolly-release/archive/release/humble/dolly_gazebo/0.4.0-3.tar.gz";
-    name = "0.4.0-3.tar.gz";
-    sha256 = "ba2e5c2490cb07a74a3c7f553f6c6d4205c7393d9e8dddfb4604fb20d87da7c0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "dolly-release";
+    rev = "1faae2586d9bff0da482d5d2dcb4716e649790f7";
+    owner = "ros2-gbp";
+    sha256 = "sha256-sLCbhJjIRzZvq15SlStZjonIvhpPw57fK5vRlQ3689A=";
   };
 
   buildType = "ament_cmake";

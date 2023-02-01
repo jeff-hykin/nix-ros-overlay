@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-khi-duaro-description";
   version = "1.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/Kawasaki-Robotics/khi_robot-release/archive/release/melodic/khi_duaro_description/1.2.0-1.tar.gz";
-    name = "1.2.0-1.tar.gz";
-    sha256 = "a4666e742360013543b7fd11c8b01367f8abe03a01430fd247126b1222d8ff52";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "khi_robot-release";
+    rev = "12d9e3f7dfb082fb7cada4c6bdf6c673e4046bf5";
+    owner = "Kawasaki-Robotics";
+    sha256 = "sha256-5KcfuEsce1jCtytLxV5DvsKEQLWAdjlc5vJkNB6KU78=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-visualization-msgs";
   version = "2.0.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/common_interfaces-release/archive/release/foxy/visualization_msgs/2.0.5-1.tar.gz";
-    name = "2.0.5-1.tar.gz";
-    sha256 = "47e0214afe3e7a94c8b2a87d3408ab69ce860663e6d02aa1c3568e10cb0fad8e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "common_interfaces-release";
+    rev = "c30e5fa0dda2d0aef974f4573f898f9f03f23638";
+    owner = "ros2-gbp";
+    sha256 = "sha256-IPBMmwFCH4n25lNf/Oppy4klXd9FDwkvWCPjLAkWn84=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-bondcpp";
   version = "1.8.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/bond_core-release/archive/release/melodic/bondcpp/1.8.5-1.tar.gz";
-    name = "1.8.5-1.tar.gz";
-    sha256 = "f889b4bbeb494215d8ea3aba0080c775a87bce44e94fc184b3359c39874a0968";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "bond_core-release";
+    rev = "8ad1dedbfc7bf08dff25553e44a9c65b40cf94e5";
+    owner = "ros-gbp";
+    sha256 = "sha256-OkR7SzujB+qZ/uUMZb6rrdb78spbzTqffFAXX4IMuHQ=";
   };
 
   buildType = "catkin";

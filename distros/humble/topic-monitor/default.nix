@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-topic-monitor";
   version = "0.20.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/demos-release/archive/release/humble/topic_monitor/0.20.2-1.tar.gz";
-    name = "0.20.2-1.tar.gz";
-    sha256 = "3c1b6d734e0602c443d99f3356a4965cace4d9b491eaa4933f03879cd42fe463";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "demos-release";
+    rev = "1ba3ebbc17c9d1e2ef4e8a309a0e85d5c96cf915";
+    owner = "ros2-gbp";
+    sha256 = "sha256-2Tp1870X9Pka8Q97gbCXz5vBCWCX4L1w+rvTE2gLqCE=";
   };
 
   buildType = "ament_python";

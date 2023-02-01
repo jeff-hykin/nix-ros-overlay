@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-swri-math-util";
   version = "3.5.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/marti_common-release/archive/release/humble/swri_math_util/3.5.0-1.tar.gz";
-    name = "3.5.0-1.tar.gz";
-    sha256 = "c5ec7358625f45594a6fe64a8060ba27f1c2ea0333f5b399b4e85be96286a18c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "marti_common-release";
+    rev = "2eb93f55baea55aca8dab9197bf1402cca229850";
+    owner = "ros2-gbp";
+    sha256 = "sha256-LMN/kFCh+IzKuiqfJ62WGlQH5iXamdyX0abZVtuEZf0=";
   };
 
   buildType = "ament_cmake";

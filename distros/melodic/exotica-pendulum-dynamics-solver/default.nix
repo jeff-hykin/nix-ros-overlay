@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-exotica-pendulum-dynamics-solver";
   version = "6.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipab-slmc/exotica-release/archive/release/melodic/exotica_pendulum_dynamics_solver/6.2.0-1.tar.gz";
-    name = "6.2.0-1.tar.gz";
-    sha256 = "8a80eee1ef29f578cc6ccf406b01044127ed46c988dab54484779b2b2b9963f0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "exotica-release";
+    rev = "fc0d35d4bbf2b7c0197ef66e4a7228ba360d92d6";
+    owner = "ipab-slmc";
+    sha256 = "sha256-GgjRMUyY9F9oyhbigD8D+lWZXNHX0pZE1UHxaNqQDxA=";
   };
 
   buildType = "catkin";

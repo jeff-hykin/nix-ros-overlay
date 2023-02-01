@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-pal-statistics-msgs";
   version = "2.0.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pal-gbp/pal_statistics-release/archive/release/foxy/pal_statistics_msgs/2.0.2-1.tar.gz";
-    name = "2.0.2-1.tar.gz";
-    sha256 = "a03ae26d1f588a3be67d74842ebe9480b03d7b4b9e830ec07924404fb662ecf2";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pal_statistics-release";
+    rev = "2251b1883a0fb9a19c902e48c8d8b93cbd0eaf47";
+    owner = "pal-gbp";
+    sha256 = "sha256-MK5S6pwF8nW5DXAlrwZIgnpf372fFD2OKm6tNF0AGwU=";
   };
 
   buildType = "ament_cmake";

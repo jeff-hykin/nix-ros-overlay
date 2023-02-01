@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-mini-maxwell";
   version = "2.1.24-r2";
 
-  src = fetchurl {
-    url = "https://github.com/tork-a/jsk_3rdparty-release/archive/release/melodic/mini_maxwell/2.1.24-2.tar.gz";
-    name = "2.1.24-2.tar.gz";
-    sha256 = "d2673819f9a22a3ecdb132d8e154ce27047b60962473b51ed8b1246826269e59";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "jsk_3rdparty-release";
+    rev = "4d44dcd153faf1f2943c8e978d4b689802cd788d";
+    owner = "tork-a";
+    sha256 = "sha256-oT1hNiJifCti55ifS3qRGLvhCF4UlvL0M1A7Cw6Haik=";
   };
 
   buildType = "catkin";

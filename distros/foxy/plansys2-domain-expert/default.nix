@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-plansys2-domain-expert";
   version = "1.0.10-r1";
 
-  src = fetchurl {
-    url = "https://github.com/IntelligentRoboticsLabs/ros2_planning_system-release/archive/release/foxy/plansys2_domain_expert/1.0.10-1.tar.gz";
-    name = "1.0.10-1.tar.gz";
-    sha256 = "04733c12496eb67b36d05f1e0e9bd1b22e278d78647c2f9cd5d2340f02f9b1d5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_planning_system-release";
+    rev = "11108857779f20d078a0d8a59f3b8fe8f9942abf";
+    owner = "IntelligentRoboticsLabs";
+    sha256 = "sha256-buIhl1LRE+FsF8PZ0jCEP31nzY1ChQAssrjzGIddTBw=";
   };
 
   buildType = "ament_cmake";

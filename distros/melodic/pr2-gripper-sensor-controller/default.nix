@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-pr2-gripper-sensor-controller";
   version = "1.0.11-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pr2-gbp/pr2_gripper_sensor-release/archive/release/melodic/pr2_gripper_sensor_controller/1.0.11-1.tar.gz";
-    name = "1.0.11-1.tar.gz";
-    sha256 = "3e681c304070ead6e875be6fa66bf85ca38897dac7d332fbfab2714755b42c99";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pr2_gripper_sensor-release";
+    rev = "13e899554d1ffcf5d74d8c6e693e3591472513a4";
+    owner = "pr2-gbp";
+    sha256 = "sha256-1bCtmSvjVgItidpA/d4YwkW97mCCXFcU748JRUQ/D1I=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-ros2-controllers";
   version = "2.15.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_controllers-release/archive/release/rolling/ros2_controllers/2.15.0-1.tar.gz";
-    name = "2.15.0-1.tar.gz";
-    sha256 = "8ba6c71dafebdeb0a8dcdd254c4f6318bf14b982648b6671f4c3d0bbb7e5e35e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_controllers-release";
+    rev = "c19b3299fd115f4932b5a51c36be0a792c8f65da";
+    owner = "ros2-gbp";
+    sha256 = "sha256-99UsDEyhHz7YZOyxWOtPvyUcK9AZ0kPgPx4gbm925eI=";
   };
 
   buildType = "ament_cmake";

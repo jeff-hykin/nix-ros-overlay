@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-rosbag2-storage-default-plugins";
   version = "0.3.9-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rosbag2-release/archive/release/foxy/rosbag2_storage_default_plugins/0.3.9-1.tar.gz";
-    name = "0.3.9-1.tar.gz";
-    sha256 = "b7fe3b35448b47d2250b11cd67c8e2774c8c230027b86be539d7c2d0639a609b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosbag2-release";
+    rev = "5681aa6f1058cdb4b06a2a492f000c56d94f21f2";
+    owner = "ros2-gbp";
+    sha256 = "sha256-0PoC4MBmqp56rZCT83vSi4DU7nBPB6Uo1G9nmjZOjPU=";
   };
 
   buildType = "ament_cmake";

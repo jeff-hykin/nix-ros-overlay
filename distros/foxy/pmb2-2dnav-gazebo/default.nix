@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-pmb2-2dnav-gazebo";
   version = "3.0.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pal-gbp/pmb2_simulation-gbp/archive/release/foxy/pmb2_2dnav_gazebo/3.0.2-1.tar.gz";
-    name = "3.0.2-1.tar.gz";
-    sha256 = "cb0cd5657a62eb893314ffe69deaca91b90e651e840eb8263bf192c8a180c4c6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pmb2_simulation-gbp";
+    rev = "09ad4e9534bc789600048a54a87cd530adf8987a";
+    owner = "pal-gbp";
+    sha256 = "sha256-DoILVIWnbep7REpipKXbXnLX85MmV62Qka4AVeIYWGM=";
   };
 
   buildType = "ament_cmake";

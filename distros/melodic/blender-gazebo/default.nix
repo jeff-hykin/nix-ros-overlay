@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-blender-gazebo";
   version = "0.0.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/david0429-gbp/blender_gazebo_gbp/archive/release/melodic/blender_gazebo/0.0.4-1.tar.gz";
-    name = "0.0.4-1.tar.gz";
-    sha256 = "ca41a7b8fbb299e647314ea3aefbca8b162617487784140646726df92a8909f3";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "blender_gazebo_gbp";
+    rev = "864c51ec584c344187a4e82a2c3b4e0c1556bc10";
+    owner = "david0429-gbp";
+    sha256 = "sha256-fFBi+usLcfPYmYW+qOyP8XIbhiAa4A2PSh7/75bA8XI=";
   };
 
   buildType = "catkin";

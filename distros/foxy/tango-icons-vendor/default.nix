@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-tango-icons-vendor";
   version = "0.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/tango_icons_vendor-release/archive/release/foxy/tango_icons_vendor/0.1.0-1.tar.gz";
-    name = "0.1.0-1.tar.gz";
-    sha256 = "4b446b64501c6b98c051963c3902d4e6a282ecb44b0290ee0cd47a923cb643c2";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "tango_icons_vendor-release";
+    rev = "689f0473dda9bd6fa46441edd17219d7d4497014";
+    owner = "ros2-gbp";
+    sha256 = "sha256-KYWpnGweFrcZ6B1TZpvga3g7b7BSw/gpETwjyjhaPz4=";
   };
 
   buildType = "ament_cmake";

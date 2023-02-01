@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-kdl-parser";
   version = "2.5.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/kdl_parser-release/archive/release/galactic/kdl_parser/2.5.0-2.tar.gz";
-    name = "2.5.0-2.tar.gz";
-    sha256 = "c2f3144b150c7da7f4f179a678ffbce2b8424a8358cb3797822f575757f9c04a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "kdl_parser-release";
+    rev = "a2774d72beba3da6ed243e6eabb5bc638dd600f4";
+    owner = "ros2-gbp";
+    sha256 = "sha256-JCGCW9eA0S9Xazi6ysRDPHsu52alo3BAUUm8h8Y1y20=";
   };
 
   buildType = "ament_cmake";

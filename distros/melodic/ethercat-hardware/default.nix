@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-ethercat-hardware";
   version = "1.8.19-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pr2-gbp/pr2_ethercat_drivers-release/archive/release/melodic/ethercat_hardware/1.8.19-1.tar.gz";
-    name = "1.8.19-1.tar.gz";
-    sha256 = "b2d0eea54e31386b19e79f7929b0885f1e5402b3c0efaafe70267bc5c51dbbfc";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pr2_ethercat_drivers-release";
+    rev = "3aca31c5d46d7fd96f2fd74ff66edf0147329a9a";
+    owner = "pr2-gbp";
+    sha256 = "sha256-8rvRR8AmqC5Yxtx+PGh4ghcRvTG7ehlHiLdFSjZ6NkQ=";
   };
 
   buildType = "catkin";

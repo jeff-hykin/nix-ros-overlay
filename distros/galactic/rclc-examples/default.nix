@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rclc-examples";
   version = "2.0.6-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rclc-release/archive/release/galactic/rclc_examples/2.0.6-1.tar.gz";
-    name = "2.0.6-1.tar.gz";
-    sha256 = "1151fc300c706af40e880624a96377b301df0ea0b34c9e83bb11945e32872202";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rclc-release";
+    rev = "1e49c1ed51401176cbbf1ef3d309a20bb3530449";
+    owner = "ros2-gbp";
+    sha256 = "sha256-vFvzcbBugXwQE50ZFDHBK4p4fvWnNsInQ8/zyNFWqjM=";
   };
 
   buildType = "ament_cmake";

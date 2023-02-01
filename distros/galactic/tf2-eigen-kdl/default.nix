@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-tf2-eigen-kdl";
   version = "0.17.5-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/geometry2-release/archive/release/galactic/tf2_eigen_kdl/0.17.5-1.tar.gz";
-    name = "0.17.5-1.tar.gz";
-    sha256 = "81c5dc17b6b013111dd92e2ea23e3d6c718ffa766b23428171bef028b56efcf6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "geometry2-release";
+    rev = "c7581b673dc6c55c83afa2f2371bd0254c7b1178";
+    owner = "ros2-gbp";
+    sha256 = "sha256-cXEHK/TGYuCZq42I2YkIWD7JGDMYD+jhG+N4xVzvk+4=";
   };
 
   buildType = "ament_cmake";

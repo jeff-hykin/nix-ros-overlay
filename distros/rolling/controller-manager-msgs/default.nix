@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-controller-manager-msgs";
   version = "3.5.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_control-release/archive/release/rolling/controller_manager_msgs/3.5.0-1.tar.gz";
-    name = "3.5.0-1.tar.gz";
-    sha256 = "9f352212ea79b57254bfca904b4e62fab39c034b9af16ff8a2dc3e65cc431b87";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_control-release";
+    rev = "8542d6c390f7efea9108ccd7e5bc6568e86fb529";
+    owner = "ros2-gbp";
+    sha256 = "sha256-1bp2Xd61nrYiq44gX5nq2SGKaXRzwC8g8jjfvj6eDo0=";
   };
 
   buildType = "ament_cmake";

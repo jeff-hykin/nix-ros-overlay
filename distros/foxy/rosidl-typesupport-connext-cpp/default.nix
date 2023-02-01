@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-rosidl-typesupport-connext-cpp";
   version = "1.0.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rosidl_typesupport_connext-release/archive/release/foxy/rosidl_typesupport_connext_cpp/1.0.3-1.tar.gz";
-    name = "1.0.3-1.tar.gz";
-    sha256 = "8edd59200934ec40dc9a1ff0b1b4e543c550f69efa8b5332735b686caede6ba7";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosidl_typesupport_connext-release";
+    rev = "8a5cd47bcb1c5f79fb96ff01ea3d844ab9d8ca43";
+    owner = "ros2-gbp";
+    sha256 = "sha256-ah1NXOmQ1Whr93MAS40xAOzYiQ/HhWVP6G3bBh0BCao=";
   };
 
   buildType = "ament_cmake";

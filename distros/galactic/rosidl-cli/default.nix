@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-rosidl-cli";
   version = "2.2.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rosidl-release/archive/release/galactic/rosidl_cli/2.2.3-1.tar.gz";
-    name = "2.2.3-1.tar.gz";
-    sha256 = "c58d59ed22ed2ecb43d314dcaf906c1a9d00fff4095a43b4a261f89aa35f752c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosidl-release";
+    rev = "377fa1b58da6217f3984d850710d0ee484b58457";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Qn8J50dNtdwM7u0tjm+wenJ1Sd//vvoQCSiHrYx3lfU=";
   };
 
   buildType = "ament_python";

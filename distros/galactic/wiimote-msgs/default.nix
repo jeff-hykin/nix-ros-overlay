@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-wiimote-msgs";
   version = "3.0.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/joystick_drivers-release/archive/release/galactic/wiimote_msgs/3.0.1-1.tar.gz";
-    name = "3.0.1-1.tar.gz";
-    sha256 = "76e4b645e25d56935f61d3e63d68179d8f12da8e98f30b3626c92aa07d76dfc8";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "joystick_drivers-release";
+    rev = "173134db00fb72ac90f2fe7df6c98f521b2eba85";
+    owner = "ros2-gbp";
+    sha256 = "sha256-DcCzI7pqnh3vDkWqS2XUVSzoV3JfHEAYmxUFRb2pxuw=";
   };
 
   buildType = "ament_cmake";

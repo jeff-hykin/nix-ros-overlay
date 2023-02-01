@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-moveit-ros-visualization";
   version = "2.5.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/moveit/moveit2-release/archive/release/humble/moveit_ros_visualization/2.5.4-1.tar.gz";
-    name = "2.5.4-1.tar.gz";
-    sha256 = "9b99d2a6942431a44b4212669da686266de659f12fdc79ca9b8ac2e7a7e37054";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "moveit2-release";
+    rev = "ada5edae29b39ba115bb8e89dc1da552efadb6ca";
+    owner = "moveit";
+    sha256 = "sha256-YbTYnvFkXlXsosNKQQ2A7jVxSPjataFByjyhKv+FNCs=";
   };
 
   buildType = "ament_cmake";

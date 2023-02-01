@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-assisted-teleop";
   version = "0.4.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/navigation_experimental-release/archive/release/noetic/assisted_teleop/0.4.1-1.tar.gz";
-    name = "0.4.1-1.tar.gz";
-    sha256 = "9e042f7baa2bde5b61167779213879d69fd495edc48afdb0ba4d407878256af2";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation_experimental-release";
+    rev = "da8f06eed65146ca2de6cb9b71ba8f42b4884680";
+    owner = "ros-gbp";
+    sha256 = "sha256-NUEhH4Dhv3IAq9y6AdUfH1LSwbphqdGa/zeDMXUaCnY=";
   };
 
   buildType = "catkin";

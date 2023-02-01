@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-bosch-locator-bridge";
   version = "1.0.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/locator_ros_bridge-release/archive/release/noetic/bosch_locator_bridge/1.0.7-1.tar.gz";
-    name = "1.0.7-1.tar.gz";
-    sha256 = "8f074e3d6d13ef356be42a772650e883ed64792d05775d353c41badd74779dec";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "locator_ros_bridge-release";
+    rev = "0bbaed7851648147b174f85a6a1e0c24bd2aefac";
+    owner = "ros-gbp";
+    sha256 = "sha256-AxIVcGElHdq6qVfKpB+615hhv3PKKJb/eIyXsvsRnt0=";
   };
 
   buildType = "catkin";

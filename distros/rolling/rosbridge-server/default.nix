@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-rosbridge-server";
   version = "1.3.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rosbridge_suite-release/archive/release/rolling/rosbridge_server/1.3.1-1.tar.gz";
-    name = "1.3.1-1.tar.gz";
-    sha256 = "3bc1229daa7f01d918e14e2283a7e3e7e80c3e467785801afa15425f99e176d2";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rosbridge_suite-release";
+    rev = "3f842cebeabf09b463eb94197394588ca4fa4752";
+    owner = "ros2-gbp";
+    sha256 = "sha256-+/YXaqhSZxsnXK/roPCndJ03rrcWji3q1guEQ09g4jE=";
   };
 
   buildType = "ament_cmake";

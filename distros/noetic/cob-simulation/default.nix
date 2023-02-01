@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-cob-simulation";
   version = "0.7.6-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_simulation-release/archive/release/noetic/cob_simulation/0.7.6-1.tar.gz";
-    name = "0.7.6-1.tar.gz";
-    sha256 = "c99f3a562752d04de2a51d85ccb2ef9417111d556dc3c9492935e5ed11124b2b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_simulation-release";
+    rev = "3bea53121023630b89e3002b3baf4a40f4c4a587";
+    owner = "ipa320";
+    sha256 = "sha256-yaoNddvca1vFrBN+fExsmf2qYXQ50PHu8JWMc+A3wB4=";
   };
 
   buildType = "catkin";

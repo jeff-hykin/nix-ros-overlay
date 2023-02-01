@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-cob-default-robot-behavior";
   version = "0.7.8-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_robots-release/archive/release/noetic/cob_default_robot_behavior/0.7.8-1.tar.gz";
-    name = "0.7.8-1.tar.gz";
-    sha256 = "e8ecfc9ad2070f2f1cdf974cc6592612f1b83dc5e555fe870068c64df1dce2f6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_robots-release";
+    rev = "dd94c01381e97d50eedfb5767bec99ffd059ba92";
+    owner = "ipa320";
+    sha256 = "sha256-FYiTq2mQz87XHWqkddtYc9XBks1qvIpbukFR/jwGKDo=";
   };
 
   buildType = "catkin";

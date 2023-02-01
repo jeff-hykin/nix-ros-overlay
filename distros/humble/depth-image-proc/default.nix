@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-depth-image-proc";
   version = "3.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/image_pipeline-release/archive/release/humble/depth_image_proc/3.0.0-1.tar.gz";
-    name = "3.0.0-1.tar.gz";
-    sha256 = "132c1e189f7efdfa0d861ea2592268e9319930dccd3f4fbf9a42f90d47e51d59";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "image_pipeline-release";
+    rev = "ac8700f961f81b6882a54a0c3332d2f5582fc025";
+    owner = "ros2-gbp";
+    sha256 = "sha256-hhdPbnpwfVcIU1NQ+ZXHiyOJbbgEl/bQw/Re0ULNDe0=";
   };
 
   buildType = "ament_cmake";

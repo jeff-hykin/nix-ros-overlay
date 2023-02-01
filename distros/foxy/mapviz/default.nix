@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-mapviz";
   version = "2.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/swri-robotics-gbp/mapviz-release/archive/release/foxy/mapviz/2.1.0-1.tar.gz";
-    name = "2.1.0-1.tar.gz";
-    sha256 = "85137789c152bcd0bf0020d369422d2dc7138630a2fae26e3c9251866a4dd82d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "mapviz-release";
+    rev = "7c6e6f83e63bc50ee013f9f23b3bf9853c1ee3bb";
+    owner = "swri-robotics-gbp";
+    sha256 = "sha256-3VAZVkl814yvxuyLHkxTGpOlPpord8E/4oPI2RlecWM=";
   };
 
   buildType = "ament_cmake";

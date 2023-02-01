@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-rcpputils";
   version = "1.3.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rcpputils-release/archive/release/foxy/rcpputils/1.3.2-1.tar.gz";
-    name = "1.3.2-1.tar.gz";
-    sha256 = "9320a98fab63a0e1b7516f5fb16d49f6bfd6f4a50f8e37f02c52296c410d4725";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rcpputils-release";
+    rev = "d1668c19f773e60ae3d546b902b07db67ddb418f";
+    owner = "ros2-gbp";
+    sha256 = "sha256-jYekHZ+I606+zQ1EpqYTJsGkcUitNBcYbkkfKdy1dvQ=";
   };
 
   buildType = "ament_cmake";

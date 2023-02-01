@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-tango-icons-vendor";
   version = "0.1.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/tango_icons_vendor-release/archive/release/galactic/tango_icons_vendor/0.1.1-1.tar.gz";
-    name = "0.1.1-1.tar.gz";
-    sha256 = "e55e99c0c1d66102074064f2a41bf432ee579f096c463f5afd671bc4dddc24e8";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "tango_icons_vendor-release";
+    rev = "3efd4e0f53fdefa1ffcf6016353b9ec409278cd9";
+    owner = "ros2-gbp";
+    sha256 = "sha256-W3FsRXSDdse1uyGMIWSNAcAyiWYLQ6heM2+2/WTta4s=";
   };
 
   buildType = "ament_cmake";

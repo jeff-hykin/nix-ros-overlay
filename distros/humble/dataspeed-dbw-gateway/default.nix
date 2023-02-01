@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-dataspeed-dbw-gateway";
   version = "2.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/DataspeedInc-release/dbw_ros-release/archive/release/humble/dataspeed_dbw_gateway/2.1.0-1.tar.gz";
-    name = "2.1.0-1.tar.gz";
-    sha256 = "e3ba55b2f45417cea4a2f26ce7d7b8b616b190249faf4970f0bac17698792d05";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "dbw_ros-release";
+    rev = "b6dc8f7f01689969ba30621e753590241e1325af";
+    owner = "DataspeedInc-release";
+    sha256 = "sha256-hTtqX2TJmgsx/Aam6gR2Y8ollukRDs+9O15e7u/bt5o=";
   };
 
   buildType = "ament_cmake";

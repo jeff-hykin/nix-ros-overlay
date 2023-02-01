@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-vision-msgs";
   version = "4.0.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/vision_msgs-release/archive/release/humble/vision_msgs/4.0.0-2.tar.gz";
-    name = "4.0.0-2.tar.gz";
-    sha256 = "e55b534da7dc4e01ab989080bf1252086ea9b1a48bc80f320dedd697258a8d9e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "vision_msgs-release";
+    rev = "b6e06b9d0af97a6143bae998d8e600cb8b0ffc01";
+    owner = "ros2-gbp";
+    sha256 = "sha256-eow1ZEywd5gzzb1zifOk/GXuWnmCrFL4gM1Iq7qN7wo=";
   };
 
   buildType = "ament_cmake";

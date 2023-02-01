@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-bayesian-belief-networks";
   version = "2.1.24-r2";
 
-  src = fetchurl {
-    url = "https://github.com/tork-a/jsk_3rdparty-release/archive/release/melodic/bayesian_belief_networks/2.1.24-2.tar.gz";
-    name = "2.1.24-2.tar.gz";
-    sha256 = "6d1673ffd1144446dd32eda73d25e4885dccce3f4c922e4a2ec9fb9214310af8";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "jsk_3rdparty-release";
+    rev = "b8efad33335878aee55fc3e462ee74e82d485e37";
+    owner = "tork-a";
+    sha256 = "sha256-oJqMKKsU0839UQ+91U3SZUHADm0li5ma0Ec28vNZ2CQ=";
   };
 
   buildType = "catkin";

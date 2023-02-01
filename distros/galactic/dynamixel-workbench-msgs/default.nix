@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-dynamixel-workbench-msgs";
   version = "2.0.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/dynamixel_workbench_msgs-release/archive/release/galactic/dynamixel_workbench_msgs/2.0.3-1.tar.gz";
-    name = "2.0.3-1.tar.gz";
-    sha256 = "221a2209d15aeb2ba966d8591b0eb44f5152ba1231f0509f435623cadf1f34b9";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "dynamixel_workbench_msgs-release";
+    rev = "c0f935a9c2443c420fbeb156134b9d4148862925";
+    owner = "ros2-gbp";
+    sha256 = "sha256-NMrVMFxbUmSDCdSRTO6gRJtKsmEeqY4Q5FqkBQCeY3I=";
   };
 
   buildType = "ament_cmake";

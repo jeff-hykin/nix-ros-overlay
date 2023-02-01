@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-adaptive-component";
   version = "0.2.1-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/adaptive_component-release/archive/release/humble/adaptive_component/0.2.1-2.tar.gz";
-    name = "0.2.1-2.tar.gz";
-    sha256 = "1f5342ab47d2ce73439426d4848febae2b6e8cbedceee193c9973399e67119c0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "adaptive_component-release";
+    rev = "d02767b88396cd734926ccd6c08cdae656c6bb65";
+    owner = "ros2-gbp";
+    sha256 = "sha256-W7/vGlSCfAW+RH7nsv4Po+MFZLDvwzuq/iSATbF9jaQ=";
   };
 
   buildType = "ament_cmake";

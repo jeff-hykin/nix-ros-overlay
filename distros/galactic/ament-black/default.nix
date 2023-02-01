@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ament-black";
   version = "0.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/Timple/ament_black-release/archive/release/galactic/ament_black/0.1.0-1.tar.gz";
-    name = "0.1.0-1.tar.gz";
-    sha256 = "1ced1fa05353c97580ce6d0a5fa784c338d94b4b2f31172e636d30d0e30dd72f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ament_black-release";
+    rev = "f2c52ec86aafb33b60092d813c6de21eb6ac4a6e";
+    owner = "Timple";
+    sha256 = "sha256-NIMCiRWgwau4ngagdScX3/OvxtmMNZ8bJKLEoHpvkMg=";
   };
 
   buildType = "ament_python";

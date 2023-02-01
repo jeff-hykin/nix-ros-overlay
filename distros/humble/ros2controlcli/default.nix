@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-ros2controlcli";
   version = "2.18.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2_control-release/archive/release/humble/ros2controlcli/2.18.0-1.tar.gz";
-    name = "2.18.0-1.tar.gz";
-    sha256 = "b6daff70a1acc11affcfd2f0ee68162003d5a0491c4d1384bcca044b4dbbcf88";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2_control-release";
+    rev = "91e87b46a38006d13bd9c5723d0be8faf2df796b";
+    owner = "ros2-gbp";
+    sha256 = "sha256-hlUjg/WkNgP7DwGeBz/+NTYBZfN/UQJn/8l0jPtIAdU=";
   };
 
   buildType = "ament_python";

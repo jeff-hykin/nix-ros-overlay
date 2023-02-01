@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-swri-dbw-interface";
   version = "3.5.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/marti_common-release/archive/release/humble/swri_dbw_interface/3.5.0-1.tar.gz";
-    name = "3.5.0-1.tar.gz";
-    sha256 = "144903ffc07cee95f132277cbc2c638fb8cd772bce41a43a263ad29be37f0393";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "marti_common-release";
+    rev = "2bb365487b054bf617d512e82ea99eb5ac499d93";
+    owner = "ros2-gbp";
+    sha256 = "sha256-35WnQWZ5aKJ69dL8Bg4iySWFqeGjdjZhts5rmuyn+SU=";
   };
 
   buildType = "ament_cmake";

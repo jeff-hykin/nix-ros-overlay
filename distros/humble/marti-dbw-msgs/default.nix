@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-marti-dbw-msgs";
   version = "1.3.0-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/marti_messages-release/archive/release/humble/marti_dbw_msgs/1.3.0-3.tar.gz";
-    name = "1.3.0-3.tar.gz";
-    sha256 = "16bdc61b4b067c8349920d8933753e79fa54463d49c75bf8d99982e7c705123a";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "marti_messages-release";
+    rev = "0f466d4271431876c791811298d17a757341d171";
+    owner = "ros2-gbp";
+    sha256 = "sha256-JvC6VZgKaBLZehzL6s0p9Ce81FcuP/N42zHmtGhRBVQ=";
   };
 
   buildType = "ament_cmake";

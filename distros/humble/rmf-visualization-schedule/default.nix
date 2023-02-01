@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-rmf-visualization-schedule";
   version = "2.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rmf_visualization-release/archive/release/humble/rmf_visualization_schedule/2.0.0-1.tar.gz";
-    name = "2.0.0-1.tar.gz";
-    sha256 = "9fea5a72fd57a06aff03e25e2e6200894972ba66ca7715aaf27ed600f5b22581";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rmf_visualization-release";
+    rev = "b972ac0792057a15022c97d953a7d9b06e58107c";
+    owner = "ros2-gbp";
+    sha256 = "sha256-TOSTTF4/3P9a02qJDFN5OHiEAnq1Wby9RUmK2AEv4FA=";
   };
 
   buildType = "ament_cmake";

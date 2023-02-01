@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-webots-ros";
   version = "2023.0.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/cyberbotics/webots_ros-release/archive/release/noetic/webots_ros/2023.0.0-1.tar.gz";
-    name = "2023.0.0-1.tar.gz";
-    sha256 = "05ebb7d96c29c12d054743870411fe330a77e5f48373baab922a9e4dbbd05a22";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "webots_ros-release";
+    rev = "7696e2876de0ec0751ff1709c9a39e7c9fc1faec";
+    owner = "cyberbotics";
+    sha256 = "sha256-wkK7ziiWtHL0KFaov94f+qAFNwyRWkZryiu1zMjR0Zk=";
   };
 
   buildType = "catkin";

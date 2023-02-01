@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-dwb-plugins";
   version = "0.3.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/DLu/robot_navigation-release/archive/release/noetic/dwb_plugins/0.3.0-2.tar.gz";
-    name = "0.3.0-2.tar.gz";
-    sha256 = "25246bce1d54d7eee93213312e53902c7e20db9431b517064c6db2c4009145bf";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "robot_navigation-release";
+    rev = "a62aeba30a106707f109cdf0feaba2ae90349907";
+    owner = "DLu";
+    sha256 = "sha256-s31vclUUNwCOKDflO7TYPyvwNtn+wwLgCzhTr28OTzE=";
   };
 
   buildType = "catkin";

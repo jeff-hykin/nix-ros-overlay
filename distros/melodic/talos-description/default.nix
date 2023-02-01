@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-talos-description";
   version = "1.0.45";
 
-  src = fetchurl {
-    url = "https://github.com/pal-gbp/talos_robot-release/archive/release/melodic/talos_description/1.0.45-0.tar.gz";
-    name = "1.0.45-0.tar.gz";
-    sha256 = "a50d729ebe08f18e3cf29dc44d284453434e04c9dc2b41be74bf5e7ec79832c0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "talos_robot-release";
+    rev = "f6175c897b750107f73b5b0effb2d56cd8a2b055";
+    owner = "pal-gbp";
+    sha256 = "sha256-8f2UUM5XZKb4du8Zso8+gOHEdCXDx0a2kGPdUHUkHFU=";
   };
 
   buildType = "catkin";

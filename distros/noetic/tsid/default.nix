@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-tsid";
   version = "1.6.2-r2";
 
-  src = fetchurl {
-    url = "https://github.com/stack-of-tasks/tsid-ros-release/archive/release/noetic/tsid/1.6.2-2.tar.gz";
-    name = "1.6.2-2.tar.gz";
-    sha256 = "a3f670afcb35a69415fe784584e853e309771c4954bbf36b90019f900bfa2409";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "tsid-ros-release";
+    rev = "7bbb10643957472fdfebf26238b71e0bf2d55bd7";
+    owner = "stack-of-tasks";
+    sha256 = "sha256-Dze2KvE6Jk8GBedbnTgD2Qro+yV/OonJ4A/dFdKIJFo=";
   };
 
   buildType = "cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-hri";
   version = "0.5.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros4hri/libhri-release/archive/release/melodic/hri/0.5.0-1.tar.gz";
-    name = "0.5.0-1.tar.gz";
-    sha256 = "f1855981d95343c53912ee8fcbfabc4526465636ed127fce75f14ef89698ad89";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "libhri-release";
+    rev = "b683b7ae1684722322c554554c4a43b546968018";
+    owner = "ros4hri";
+    sha256 = "sha256-YiF4YWCrgf8xBMq4lHtXfoIAcSwND8iHlaiQQx5Kh5k=";
   };
 
   buildType = "catkin";

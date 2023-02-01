@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ur-client-library";
   version = "1.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/UniversalRobots/Universal_Robots_Client_Library-release/archive/release/galactic/ur_client_library/1.2.0-1.tar.gz";
-    name = "1.2.0-1.tar.gz";
-    sha256 = "0c1efadbe38fd93622774f1c79dd7bb2dfe8b29b743dcf318400bb6025514e83";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "Universal_Robots_Client_Library-release";
+    rev = "82852c5a7ad290c3d3db2a8cb35473f84446cc6c";
+    owner = "UniversalRobots";
+    sha256 = "sha256-GH6q2wUUbNl8k1iqhaWIS3YcB3tper83m3r90dh2O9Y=";
   };
 
   buildType = "cmake";

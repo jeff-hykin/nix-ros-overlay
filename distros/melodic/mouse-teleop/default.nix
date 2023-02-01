@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-mouse-teleop";
   version = "0.3.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/teleop_tools-release/archive/release/melodic/mouse_teleop/0.3.1-1.tar.gz";
-    name = "0.3.1-1.tar.gz";
-    sha256 = "c87ffb687d83e3ac8b63d82ec3ff641b77b085e2f6379d2bc0a01c7cd8607e20";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "teleop_tools-release";
+    rev = "acba64483d713317c6a6fca68f834127240d71ed";
+    owner = "ros-gbp";
+    sha256 = "sha256-iLl66nz2ojwSXJIQzHCC9/9TTdNcOjJv24pYSZrfVLA=";
   };
 
   buildType = "catkin";

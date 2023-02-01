@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-rqt-reconfigure";
   version = "1.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rqt_reconfigure-release/archive/release/rolling/rqt_reconfigure/1.3.0-1.tar.gz";
-    name = "1.3.0-1.tar.gz";
-    sha256 = "ccfafba30324330e7f6f9e7417a8b697803daf0445f64a3b9ce50f3e46d3c70c";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt_reconfigure-release";
+    rev = "8c0f378b302c37a345b9faa0555486fe2ef13893";
+    owner = "ros2-gbp";
+    sha256 = "sha256-imyCM9Mvm/eGzYdTLUH0yhaKTw/+vyKTGdQ0AyPpHjo=";
   };
 
   buildType = "ament_python";

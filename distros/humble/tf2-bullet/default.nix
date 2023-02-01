@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-tf2-bullet";
   version = "0.25.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/geometry2-release/archive/release/humble/tf2_bullet/0.25.1-1.tar.gz";
-    name = "0.25.1-1.tar.gz";
-    sha256 = "93905b41fcbcf9a94779f786850062cdf806d7a2342a2fb66386dafa158ed27f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "geometry2-release";
+    rev = "4e083d7f50880604b051f466b2e4ea46506d35f3";
+    owner = "ros2-gbp";
+    sha256 = "sha256-2viPVTXFjBw1x6ZmdSDuWOFYjJhiRZKz7EOM0djTR9w=";
   };
 
   buildType = "ament_cmake";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-rqt-gui";
   version = "0.5.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/rqt-release/archive/release/noetic/rqt_gui/0.5.3-1.tar.gz";
-    name = "0.5.3-1.tar.gz";
-    sha256 = "aa55a946456a86035c97ea159bd9c71d8a410e8e069fc3df1cd585649b78308d";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt-release";
+    rev = "8678eb3e05ad550c664358a0d565fd2efa0c6c5f";
+    owner = "ros-gbp";
+    sha256 = "sha256-8LWZVobGPDEMsp45yFGHB6JfoYe57ROlArBVzSk4oa4=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-dbw-polaris-msgs";
   version = "2.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/DataspeedInc-release/dbw_ros-release/archive/release/foxy/dbw_polaris_msgs/2.1.0-1.tar.gz";
-    name = "2.1.0-1.tar.gz";
-    sha256 = "e00773281b340d80ba9b4b5c164329be96d978f3df85d3c5d6e151f6364afe83";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "dbw_ros-release";
+    rev = "5d6a3bfec0dcb9de73a83945bb59047152e8fd1d";
+    owner = "DataspeedInc-release";
+    sha256 = "sha256-+b1plkD+ImeTBzSwqD6ALIuIeSJ7xv03yXJjo4ZSwAk=";
   };
 
   buildType = "ament_cmake";

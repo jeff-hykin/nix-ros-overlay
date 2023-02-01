@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ament-cmake-pep257";
   version = "0.10.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ament_lint-release/archive/release/galactic/ament_cmake_pep257/0.10.7-1.tar.gz";
-    name = "0.10.7-1.tar.gz";
-    sha256 = "c8b92f8a4b9b4e4be2a1f53bd3a3b7e0a71b06b4ffef7973c542e77aa5d8863b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ament_lint-release";
+    rev = "e5efa05b994a9a18f77b7899b273f491b336aa87";
+    owner = "ros2-gbp";
+    sha256 = "sha256-ksFklj07R0GG8HRXPI5TLzZzaGg1Ft1Z6fRTx/YfK0c=";
   };
 
   buildType = "ament_cmake";

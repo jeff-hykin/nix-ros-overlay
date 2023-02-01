@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-robot-localization";
   version = "3.1.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/cra-ros-pkg/robot_localization-release/archive/release/foxy/robot_localization/3.1.2-1.tar.gz";
-    name = "3.1.2-1.tar.gz";
-    sha256 = "495d5a7059f0edb14fdb145b723590360f4236d1f2fb8d59d7170735761cc91b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "robot_localization-release";
+    rev = "1cf584b8b573c46202e7b35550ce2febf918baee";
+    owner = "cra-ros-pkg";
+    sha256 = "sha256-cWiwgcDFldzeouNSvD+l4PRYSeUgzOxa2b3k6ZFKSmw=";
   };
 
   buildType = "ament_cmake";

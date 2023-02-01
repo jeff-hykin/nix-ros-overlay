@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-phidgets-magnetometer";
   version = "2.3.0-r2";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/phidgets_drivers-release/archive/release/humble/phidgets_magnetometer/2.3.0-2.tar.gz";
-    name = "2.3.0-2.tar.gz";
-    sha256 = "6dee3ea4367ad546c09c45d96873ea4439ed714dfb944065ec777197231c599f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "phidgets_drivers-release";
+    rev = "fd4fb99546eeb2e0e035f6dd5ffe3770ad9bfebd";
+    owner = "ros2-gbp";
+    sha256 = "sha256-YG+rzCkh8JuJ+3squICUuWd97KP/uZQ7JW9+r/teKow=";
   };
 
   buildType = "ament_cmake";

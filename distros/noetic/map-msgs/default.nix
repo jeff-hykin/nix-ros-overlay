@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-map-msgs";
   version = "1.14.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/navigation_msgs-release/archive/release/noetic/map_msgs/1.14.1-1.tar.gz";
-    name = "1.14.1-1.tar.gz";
-    sha256 = "e9ae695b8c3f745dc6c3878810a97546c4dd528000a0c8058d6f1f41983df432";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation_msgs-release";
+    rev = "1981ced7f713181a3364b8027ad03a0ffcd2a21c";
+    owner = "ros-gbp";
+    sha256 = "sha256-7IurC6RLbfmueYraUPE0560XMCKFL7Ld61V9DfOD5eE=";
   };
 
   buildType = "catkin";

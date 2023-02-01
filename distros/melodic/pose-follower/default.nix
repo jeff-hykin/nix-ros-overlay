@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-pose-follower";
   version = "0.3.6-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/navigation_experimental-release/archive/release/melodic/pose_follower/0.3.6-1.tar.gz";
-    name = "0.3.6-1.tar.gz";
-    sha256 = "d2d883103ef47535e1dcf8c09c0473d1123354f8e6b19452ed95c1beeb771a57";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation_experimental-release";
+    rev = "0bfdd6ccbc715df1a8de0c432f48344d8c5a0353";
+    owner = "ros-gbp";
+    sha256 = "sha256-bC9soEQchLTLRT4/9sg3mJa+Ou0iCcEjr9/JP68GqNU=";
   };
 
   buildType = "catkin";

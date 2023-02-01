@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-gpio-controller";
   version = "0.1.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/rm-controls/rm_controllers-release/archive/release/noetic/gpio_controller/0.1.7-1.tar.gz";
-    name = "0.1.7-1.tar.gz";
-    sha256 = "975510a3a726dcfdc2671a805327a54837451999c9826d5e6490ba352430fff8";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rm_controllers-release";
+    rev = "48b8e18c8654b488215481d9819724e0c8628e93";
+    owner = "rm-controls";
+    sha256 = "sha256-gipeU1X7C7ldshZqyontdWjndgn1EOPEmwidPGzIp4U=";
   };
 
   buildType = "catkin";

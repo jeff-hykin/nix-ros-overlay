@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-nav-msgs";
   version = "4.2.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/common_interfaces-release/archive/release/humble/nav_msgs/4.2.2-1.tar.gz";
-    name = "4.2.2-1.tar.gz";
-    sha256 = "0604b5e75b4ed680be9fbfb8c32a72192c8615b2c7313f59cfc5a4715185dc3e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "common_interfaces-release";
+    rev = "537f86e1aac32ed1d9971fcdec49d44b0fa46fff";
+    owner = "ros2-gbp";
+    sha256 = "sha256-VbVjlL1sdlCdkfZPzML2kXf1Xqj3MXNEF4VEvJ5aC2A=";
   };
 
   buildType = "ament_cmake";

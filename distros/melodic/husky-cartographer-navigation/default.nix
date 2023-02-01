@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-husky-cartographer-navigation";
   version = "0.0.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/clearpath-gbp/husky_cartographer_navigation-release/archive/release/melodic/husky_cartographer_navigation/0.0.2-1.tar.gz";
-    name = "0.0.2-1.tar.gz";
-    sha256 = "1912f181984d2181fd512a7612854756ecc53be736d111c8cc9d59cca2304c24";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "husky_cartographer_navigation-release";
+    rev = "56b9ac4d15de9088ff9965a99406627538e0b7c3";
+    owner = "clearpath-gbp";
+    sha256 = "sha256-uiS2PHEQVmE/RF6ANQDdE/xoN3mBBvqAme+Dp6gdJAE=";
   };
 
   buildType = "catkin";

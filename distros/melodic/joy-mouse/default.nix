@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-joy-mouse";
   version = "0.1.16-r1";
 
-  src = fetchurl {
-    url = "https://github.com/tork-a/jsk_control-release/archive/release/melodic/joy_mouse/0.1.16-1.tar.gz";
-    name = "0.1.16-1.tar.gz";
-    sha256 = "84854fafbddce5196ff24be375d857dabea63062d3a973f6f2ce7b3c4636b6fc";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "jsk_control-release";
+    rev = "1efeb54f846fc648429738217a415661231cad68";
+    owner = "tork-a";
+    sha256 = "sha256-MvD0OmrRF3bH9VZNfQGwdi0KjliMpZdKbmn+lBJkByc=";
   };
 
   buildType = "catkin";

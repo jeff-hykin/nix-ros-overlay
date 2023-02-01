@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-laser-scan-publisher-tutorial";
   version = "0.2.4-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/navigation_tutorials-release/archive/release/melodic/laser_scan_publisher_tutorial/0.2.4-1.tar.gz";
-    name = "0.2.4-1.tar.gz";
-    sha256 = "c0b0218c7cd794f7c3a06cb85c2d8d3df2fce24a5a8ebea919021ec6084d98c5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation_tutorials-release";
+    rev = "5fce6d384054eaa5b391ba6dca86c2c47cf9ac83";
+    owner = "ros-gbp";
+    sha256 = "sha256-EqNTi1WNsONVL8yf9S2uCHq2uwclDtcHD3TlTmEsWF4=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ament-uncrustify";
   version = "0.10.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ament_lint-release/archive/release/galactic/ament_uncrustify/0.10.7-1.tar.gz";
-    name = "0.10.7-1.tar.gz";
-    sha256 = "77bf7841dca0533fe0005a51a197eeac712a508eb0c0f48aedffe27bf0626592";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ament_lint-release";
+    rev = "b0d560561b35d13537f068b4ff1c1193611c7f23";
+    owner = "ros2-gbp";
+    sha256 = "sha256-EhCZHs8KVutpaaaEqN13z88B7YYVHS6UHdP0JYshZnI=";
   };
 
   buildType = "ament_python";

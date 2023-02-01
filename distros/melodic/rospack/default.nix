@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-rospack";
   version = "2.5.6-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/rospack-release/archive/release/melodic/rospack/2.5.6-1.tar.gz";
-    name = "2.5.6-1.tar.gz";
-    sha256 = "5d348a4428f344ecbde8d0ceed9d38b4326d45538d5875ead0b5498804d8f30e";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rospack-release";
+    rev = "751429dfb21bd8c8488f36c850100869c3739346";
+    owner = "ros-gbp";
+    sha256 = "sha256-Ij+5dpmFxgLhtUWZffhEHNmnyzHJOdCjrp4T6tYB8xI=";
   };
 
   buildType = "catkin";

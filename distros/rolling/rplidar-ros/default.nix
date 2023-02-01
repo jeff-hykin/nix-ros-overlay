@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-rplidar-ros";
   version = "2.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rplidar_ros-release/archive/release/rolling/rplidar_ros/2.1.0-1.tar.gz";
-    name = "2.1.0-1.tar.gz";
-    sha256 = "63a4f5e52e276264d0749a33acf62eafcb385b018e63aabd8118f5cc8713bfb0";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rplidar_ros-release";
+    rev = "f0c6b9c3f27cd1261f0c2204afbc7a6bcdec5f1a";
+    owner = "ros2-gbp";
+    sha256 = "sha256-lOiYrTggsDiQb9sCYtWAup4+kVoMnpSYqKqWGtnb2AU=";
   };
 
   buildType = "ament_cmake";

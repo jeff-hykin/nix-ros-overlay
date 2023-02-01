@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-pr2-power-board";
   version = "1.1.7";
 
-  src = fetchurl {
-    url = "https://github.com/pr2-gbp/pr2_power_drivers-release/archive/release/melodic/pr2_power_board/1.1.7-0.tar.gz";
-    name = "1.1.7-0.tar.gz";
-    sha256 = "9e6596dd8cdea88ca5abd93ecf2d567d34b89e97a4ffa32dbfdc8f001ce0cea9";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "pr2_power_drivers-release";
+    rev = "7b7b81c59c2c958044a1bd84fbc977f6ade89977";
+    owner = "pr2-gbp";
+    sha256 = "sha256-LlxzWccusj0MllE3PH9TxALq76gEqiOy9ggcd3bqN0g=";
   };
 
   buildType = "catkin";

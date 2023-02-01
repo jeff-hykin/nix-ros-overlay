@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-depthimage-to-laserscan";
   version = "2.3.1-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/depthimage_to_laserscan-release/archive/release/foxy/depthimage_to_laserscan/2.3.1-1.tar.gz";
-    name = "2.3.1-1.tar.gz";
-    sha256 = "6f9a4fac2cd4999f0317b6d4fdc57c9400ace3e7ad4ecf9ae6fc3e831b4306ea";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "depthimage_to_laserscan-release";
+    rev = "10eb2fbad38415f282b53ab0cd189accd8e72b5c";
+    owner = "ros2-gbp";
+    sha256 = "sha256-MEwcfPJWOQKOdasLQvBqRKJxQwC6F4fwlQMLoxKdNr8=";
   };
 
   buildType = "ament_cmake";

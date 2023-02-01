@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-naoqi-libqi";
   version = "2.9.0-r8";
 
-  src = fetchurl {
-    url = "https://github.com/ros-naoqi/libqi-release/archive/release/melodic/naoqi_libqi/2.9.0-8.tar.gz";
-    name = "2.9.0-8.tar.gz";
-    sha256 = "cdf737deff9e6e4887b3aff0c777c1fef8e9ff28c85d9b62a18c91771f8c7c07";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "libqi-release";
+    rev = "9eb7286e402f7e7c9069f9c60231f29421184828";
+    owner = "ros-naoqi";
+    sha256 = "sha256-Wa7KENxGqSTOJ7DLNOFWqlfC6x91OAf5WdR0xHHQbtU=";
   };
 
   buildType = "catkin";

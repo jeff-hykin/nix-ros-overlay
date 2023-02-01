@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-hostapd-access-point";
   version = "1.0.16-r1";
 
-  src = fetchurl {
-    url = "https://github.com/pr2-gbp/linux_networking-release/archive/release/melodic/hostapd_access_point/1.0.16-1.tar.gz";
-    name = "1.0.16-1.tar.gz";
-    sha256 = "ab8712b49eb1b1b3cd7b99e4966225807714ea52a589777089d9fb99ea5ed293";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "linux_networking-release";
+    rev = "13d0f31c1f828bdd3b8fbe08f5015cb2abfbf390";
+    owner = "pr2-gbp";
+    sha256 = "sha256-6GHJCeVsqVYp/9ow6DFkE4bhypXzqgHbomvBFrsJC3Q=";
   };
 
   buildType = "catkin";

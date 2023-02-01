@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-qt-gui-app";
   version = "2.2.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/qt_gui_core-release/archive/release/humble/qt_gui_app/2.2.2-1.tar.gz";
-    name = "2.2.2-1.tar.gz";
-    sha256 = "3f0e9fead7cc231ceb97b4dba8ed6613bbbfa30ff5a1f18a0475bfea86287f5b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "qt_gui_core-release";
+    rev = "2681b2fc992d1b2ee75dd653429522085abaa162";
+    owner = "ros2-gbp";
+    sha256 = "sha256-SkWOExe6kPZvGwPqxp25nGJdwi/BL5oSKA05o57Jk9Y=";
   };
 
   buildType = "ament_cmake";

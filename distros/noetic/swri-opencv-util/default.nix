@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-swri-opencv-util";
   version = "2.15.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/swri-robotics-gbp/marti_common-release/archive/release/noetic/swri_opencv_util/2.15.2-1.tar.gz";
-    name = "2.15.2-1.tar.gz";
-    sha256 = "88191075c951b11757814bb2515d9ea440c0635ce26ef71510951a03ecb17bdb";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "marti_common-release";
+    rev = "d26e8799b467f83d92b2446d177348a6fe6cd768";
+    owner = "swri-robotics-gbp";
+    sha256 = "sha256-M2CNQviWLd4XNqcjlH9HhDDKf2wfAdDqr9vuU13Fy1U=";
   };
 
   buildType = "catkin";

@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-pcl-ros";
   version = "2.4.0-r4";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/perception_pcl-release/archive/release/humble/pcl_ros/2.4.0-4.tar.gz";
-    name = "2.4.0-4.tar.gz";
-    sha256 = "1bf600634be4e90bf828217c936e395e2369f9c9e2dd0272013c6d82e200de82";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "perception_pcl-release";
+    rev = "95bd06280ff47add82a0992975567460dc9f60fe";
+    owner = "ros2-gbp";
+    sha256 = "sha256-y37VynRX0MmG+KHoNnewCb8S6U4+GBY8nETGRMq+pY8=";
   };
 
   buildType = "ament_cmake";

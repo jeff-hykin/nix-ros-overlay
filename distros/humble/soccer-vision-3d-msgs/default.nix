@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-soccer-vision-3d-msgs";
   version = "0.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/soccer_interfaces-release/archive/release/humble/soccer_vision_3d_msgs/0.1.0-1.tar.gz";
-    name = "0.1.0-1.tar.gz";
-    sha256 = "2cee361ffc8624a6ff9836b411cba5520a00097b458e3e284c9661897dcc066f";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "soccer_interfaces-release";
+    rev = "647267fd8222e8823123334fc8133f9a4dc2b7a1";
+    owner = "ros2-gbp";
+    sha256 = "sha256-bLQzBOaQ2AgcW/nho3XL9j4iSYR1Y5Ne05AkI0Ey8ns=";
   };
 
   buildType = "ament_cmake";

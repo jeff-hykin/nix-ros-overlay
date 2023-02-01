@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-aruco-pose";
   version = "0.21.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/CopterExpress/clover-release/archive/release/melodic/aruco_pose/0.21.2-1.tar.gz";
-    name = "0.21.2-1.tar.gz";
-    sha256 = "2506649647c6e2372fe659fe72c03888aefe3fa5a395c765a4d381def7be84ce";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "clover-release";
+    rev = "7c3ec3e1eb1182dcc37cd9877b9f6651462cf28a";
+    owner = "CopterExpress";
+    sha256 = "sha256-YQna+5/hJHU8tefG6ZyHsvRdj8oWDD6mMbsZ/ISzWm0=";
   };
 
   buildType = "catkin";

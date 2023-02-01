@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-rqt-plot";
   version = "1.2.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/rqt_plot-release/archive/release/rolling/rqt_plot/1.2.0-1.tar.gz";
-    name = "1.2.0-1.tar.gz";
-    sha256 = "848be295eae20f6773361f22d2153514ad13fd705424bccea9ee601110fae027";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rqt_plot-release";
+    rev = "43e036a3632f72e54b9f910a23095294e324e06d";
+    owner = "ros2-gbp";
+    sha256 = "sha256-PJU2kackdJeYUl2WYo1gPwH9Hy9+V1/OJwIPGqA58oo=";
   };
 
   buildType = "ament_python";

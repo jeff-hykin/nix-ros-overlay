@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-ecl-sigslots-lite";
   version = "0.61.6";
 
-  src = fetchurl {
-    url = "https://github.com/yujinrobot-release/ecl_lite-release/archive/release/melodic/ecl_sigslots_lite/0.61.6-0.tar.gz";
-    name = "0.61.6-0.tar.gz";
-    sha256 = "6f41052abdb5ac99e0e5d7e0675b2798d1cc570cebd16b303e035b00d66afe96";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ecl_lite-release";
+    rev = "2c0961ab194aecfd747dee28f72ee158a4f58521";
+    owner = "yujinrobot-release";
+    sha256 = "sha256-XRh+v69rNxpzDX3jNqCvJ14M9uF2Xe78WIKnnBt2rb8=";
   };
 
   buildType = "catkin";

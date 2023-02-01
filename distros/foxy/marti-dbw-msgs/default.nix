@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-marti-dbw-msgs";
   version = "1.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/marti_messages-release/archive/release/foxy/marti_dbw_msgs/1.3.0-1.tar.gz";
-    name = "1.3.0-1.tar.gz";
-    sha256 = "935ee0e10ba191473c4158f64e95f8f8020106da60f647837cbee5dd239e6ed1";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "marti_messages-release";
+    rev = "210f8fdfb60eba12f8b7d14c666abcf80f963b07";
+    owner = "ros2-gbp";
+    sha256 = "sha256-JvC6VZgKaBLZehzL6s0p9Ce81FcuP/N42zHmtGhRBVQ=";
   };
 
   buildType = "ament_cmake";

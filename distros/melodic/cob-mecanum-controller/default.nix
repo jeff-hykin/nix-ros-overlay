@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-cob-mecanum-controller";
   version = "0.8.12-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ipa320/cob_control-release/archive/release/melodic/cob_mecanum_controller/0.8.12-1.tar.gz";
-    name = "0.8.12-1.tar.gz";
-    sha256 = "ab44a926e2dcda6cd6f79a0748a1954ced404f32c83a170f64e42a8e4888aaf5";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "cob_control-release";
+    rev = "f84e20893e926ce6012625229505126b0443997d";
+    owner = "ipa320";
+    sha256 = "sha256-qHnEAsasDgbGzgHu4vAhINIv6BizetuBIlx8fwbmc+o=";
   };
 
   buildType = "catkin";

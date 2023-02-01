@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-foxy-depth-image-proc";
   version = "2.3.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/image_pipeline-release/archive/release/foxy/depth_image_proc/2.3.0-1.tar.gz";
-    name = "2.3.0-1.tar.gz";
-    sha256 = "6632a63208dc1a9644c67e3ec7bfbb2521547187e66a5f0c64a8bf7e1deb99e7";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "image_pipeline-release";
+    rev = "ba2f258d3cf4952074e9a26933966f4032696c95";
+    owner = "ros2-gbp";
+    sha256 = "sha256-Lp2Kn9Xlodod8//Nel+FytgvTgcyPyNb1eFyFHw7hzs=";
   };
 
   buildType = "ament_cmake";

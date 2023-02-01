@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-amcl";
   version = "1.17.2-r1";
 
-  src = fetchurl {
-    url = "https://github.com/ros-gbp/navigation-release/archive/release/noetic/amcl/1.17.2-1.tar.gz";
-    name = "1.17.2-1.tar.gz";
-    sha256 = "176626de453a712746fd4d999d87fec0529884168f63587fba32bdc9a3a27abb";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "navigation-release";
+    rev = "a1ded129823bd932273571b4f4c94f4d43d24763";
+    owner = "ros-gbp";
+    sha256 = "sha256-J7reS5aEx0jwq7vYnrJI3ukEli3rHjaFn0VaWw7bTAI=";
   };
 
   buildType = "catkin";

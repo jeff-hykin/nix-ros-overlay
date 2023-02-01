@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-rolling-moveit-hybrid-planning";
   version = "2.6.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/moveit/moveit2-release/archive/release/rolling/moveit_hybrid_planning/2.6.0-1.tar.gz";
-    name = "2.6.0-1.tar.gz";
-    sha256 = "4db511ebd90c7834c390b0726cf0fd0e2d41c68e492f35a3f46056df28d0a740";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "moveit2-release";
+    rev = "7be53ee4ee27bd51faedee71266a1edf6890bda7";
+    owner = "moveit";
+    sha256 = "sha256-WeIpWCGtjbH9dFeBncJfxO6xBpj/ayNv0Yczu9b5jXo=";
   };
 
   buildType = "ament_cmake";

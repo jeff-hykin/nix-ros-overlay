@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-humble-ros2launch-security";
   version = "1.0.0-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/ros2launch_security-release/archive/release/humble/ros2launch_security/1.0.0-3.tar.gz";
-    name = "1.0.0-3.tar.gz";
-    sha256 = "0d1b712369ee608f63c57553254d1245da1d1e6bf559fddf68f4902d6d91a65b";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros2launch_security-release";
+    rev = "0319b727c62bf805b225995defc6b952374d19af";
+    owner = "ros2-gbp";
+    sha256 = "sha256-MM1mvGLVBpSePXEUKQScahRPpulucGxMTaTp+jSKbNo=";
   };
 
   buildType = "ament_python";

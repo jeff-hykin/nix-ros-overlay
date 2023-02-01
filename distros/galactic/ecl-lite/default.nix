@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-ecl-lite";
   version = "1.1.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/yujinrobot-release/ecl_lite-release/archive/release/galactic/ecl_lite/1.1.0-1.tar.gz";
-    name = "1.1.0-1.tar.gz";
-    sha256 = "ec604e99ca45b5bb6d97708b8570928f17e264f1894ad9308c07f423a6f140a6";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ecl_lite-release";
+    rev = "00e26ed9a46becc131ca7aa5866994a1b8562935";
+    owner = "yujinrobot-release";
+    sha256 = "sha256-Bo3qZ6OV/BumHraTvYP3fAoz3XTj9B4wqOpJEA6G8JI=";
   };
 
   buildType = "ament_cmake";

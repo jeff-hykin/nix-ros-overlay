@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-robot-state-controller";
   version = "0.1.7-r1";
 
-  src = fetchurl {
-    url = "https://github.com/rm-controls/rm_controllers-release/archive/release/noetic/robot_state_controller/0.1.7-1.tar.gz";
-    name = "0.1.7-1.tar.gz";
-    sha256 = "402219993ee32c1a0d3b283b78d6a6bb296c055c8ede05a5126cbc464b21cabe";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "rm_controllers-release";
+    rev = "fb49e6bb0b15141372b0b40a353b6ef5e7e158a5";
+    owner = "rm-controls";
+    sha256 = "sha256-2geSWtlcmmreuGS3JynN30tdhtBkCOS3Xzn6tFvJaa8=";
   };
 
   buildType = "catkin";

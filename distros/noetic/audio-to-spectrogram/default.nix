@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-noetic-audio-to-spectrogram";
   version = "1.2.15-r1";
 
-  src = fetchurl {
-    url = "https://github.com/tork-a/jsk_recognition-release/archive/release/noetic/audio_to_spectrogram/1.2.15-1.tar.gz";
-    name = "1.2.15-1.tar.gz";
-    sha256 = "0fab3f1ebc2e5af100b82a3212977344ed94c59fdac0f0bb7c71b2fb3b65d216";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "jsk_recognition-release";
+    rev = "95b0f482c9854a1c08f146b122f53757e62616b7";
+    owner = "tork-a";
+    sha256 = "sha256-3JZL2ciRG8aecL9sBrfEGNYlAcdP0xrezuHrdZKswMw=";
   };
 
   buildType = "catkin";

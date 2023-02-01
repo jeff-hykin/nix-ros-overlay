@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-eband-local-planner";
   version = "0.4.0-r1";
 
-  src = fetchurl {
-    url = "https://github.com/utexas-bwi-gbp/eband_local_planner-release/archive/release/melodic/eband_local_planner/0.4.0-1.tar.gz";
-    name = "0.4.0-1.tar.gz";
-    sha256 = "5c4fcdfb8e5d7fa63ba539b3cb4017a9d1f315a4133fad4277f7df4c53254a92";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "eband_local_planner-release";
+    rev = "d48dd752dbfdbbe1a4da3c821609200ddaadfd91";
+    owner = "utexas-bwi-gbp";
+    sha256 = "sha256-SaGeuQz9z/FAVwfXeeOffKPf7mZn5dqe7wczd0tuIm8=";
   };
 
   buildType = "catkin";

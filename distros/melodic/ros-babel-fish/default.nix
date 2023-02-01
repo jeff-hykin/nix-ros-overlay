@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-melodic-ros-babel-fish";
   version = "0.9.3-r1";
 
-  src = fetchurl {
-    url = "https://github.com/StefanFabian/ros_babel_fish-release/archive/release/melodic/ros_babel_fish/0.9.3-1.tar.gz";
-    name = "0.9.3-1.tar.gz";
-    sha256 = "52f42f185f4f8f1a838bdfa1057bbd33d2927b5a24d236fa8bff867dff011a05";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "ros_babel_fish-release";
+    rev = "200405999284af2a6189ccbfb7cf74b8c17ee9b5";
+    owner = "StefanFabian";
+    sha256 = "sha256-+xeOjDeg3TplCq9bs36KVK4svNzdUIPrFfutRjE1gCA=";
   };
 
   buildType = "catkin";

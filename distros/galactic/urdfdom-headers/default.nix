@@ -7,10 +7,11 @@ buildRosPackage {
   pname = "ros-galactic-urdfdom-headers";
   version = "1.0.5-r3";
 
-  src = fetchurl {
-    url = "https://github.com/ros2-gbp/urdfdom_headers-release/archive/release/galactic/urdfdom_headers/1.0.5-3.tar.gz";
-    name = "1.0.5-3.tar.gz";
-    sha256 = "c90f598d305fdf9908dd10d8f88e7a0cd4f7ce5ff38b15f348215421043dfefb";
+  src =  (builtins.import (builtins.fetchTarball ({ url = "https://github.com/NixOS/nixpkgs/archive/aa0e8072a57e879073cee969a780e586dbe57997.tar.gz"; })) ({})).fetchFromGitHub {
+    repo = "urdfdom_headers-release";
+    rev = "6e84ebf0bff3bbca159e92322921f33144425c03";
+    owner = "ros2-gbp";
+    sha256 = "sha256-lJ6+SPbBfHw8MA4RU+NqSCErpOXv1bM/FKl7lVkbsqY=";
   };
 
   buildType = "cmake";
